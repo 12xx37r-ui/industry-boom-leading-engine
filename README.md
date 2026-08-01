@@ -99,3 +99,17 @@ Script Properties에 다음 값을 추가합니다.
 - 값: `https://raw.githubusercontent.com/본인계정/industry-boom-leading-engine/main/outputs`
 
 그다음 웹 앱으로 배포합니다. 저장소가 비공개이면 Raw URL을 직접 읽을 수 없으므로 공개 출력 전용 저장소 또는 인증 프록시가 필요합니다.
+
+## V0.1.2 SEC 403 수정
+
+- GitHub Actions에서 차단될 수 있는 `www.sec.gov/files/company_tickers.json` 호출을 완전히 제거했습니다.
+- 분석 대상 86개 기업의 공식 SEC CIK를 `config/sec_cik_map.json`에 내장했습니다.
+- Company Facts 본자료는 `data.sec.gov`에서 직접 수집합니다.
+- 동시 요청은 3개, 전체 요청속도는 초당 약 3.3회 이하로 제한합니다.
+- 물 인프라 테마의 잘못된 티커 `IDEX`를 IDEX Corporation의 실제 티커 `IEX`로 수정했습니다.
+
+로그가 다음처럼 나오면 수정본이 적용된 것입니다.
+
+```text
+[SEC] collecting 86 companyfacts with 3 workers (local CIK map)
+```

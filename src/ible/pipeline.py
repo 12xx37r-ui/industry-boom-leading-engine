@@ -31,11 +31,11 @@ class EnginePipeline:
         self.http = JsonHttpClient(
             user_agent=user_agent,
             timeout=12,
-            min_interval=0.22,
+            min_interval=0.30,
             retries=1,
             cache_dir=root / ".cache",
         )
-        self.sec = SecClient(self.http)
+        self.sec = SecClient(self.http, root / "config" / "sec_cik_map.json")
         self.fred = FredClient(os.getenv("FRED_API_KEY", ""), self.http) if os.getenv("FRED_API_KEY") else None
         self.bea = BeaClient(os.getenv("BEA_API_KEY", ""), self.http) if os.getenv("BEA_API_KEY") else None
         self.dart = OpenDartClient(os.getenv("OPENDART_API_KEY", ""), self.http) if os.getenv("OPENDART_API_KEY") else None
@@ -52,13 +52,13 @@ class EnginePipeline:
         errors: dict[str, str] = {}
         started = time.monotonic()
         total = len(requested)
-        print(f"[SEC] collecting {total} companyfacts with 4 workers", flush=True)
+        print(f"[SEC] collecting {total} companyfacts with 3 workers (local CIK map)", flush=True)
 
         # Work in small batches so a broad SEC/network failure aborts quickly instead of hanging for 20+ minutes.
         batch_size = 12
         for batch_start in range(0, total, batch_size):
             batch = requested[batch_start : batch_start + batch_size]
-            with ThreadPoolExecutor(max_workers=4) as pool:
+            with ThreadPoolExecutor(max_workers=3) as pool:
                 future_map = {pool.submit(self.sec.companyfacts, ticker): ticker for ticker in batch}
                 for future in as_completed(future_map):
                     ticker = future_map[future]
@@ -184,7 +184,7 @@ class EnginePipeline:
         def fetch(code: str) -> list[dict[str, Any]]:
             return self.dart.disclosures(code, begin.strftime("%Y%m%d"), end.strftime("%Y%m%d"), 100)
 
-        with ThreadPoolExecutor(max_workers=4) as pool:
+        with ThreadPoolExecutor(max_workers=3) as pool:
             future_map = {pool.submit(fetch, code): code for code in stock_codes}
             for future in as_completed(future_map):
                 code = future_map[future]
@@ -268,7 +268,7 @@ class EnginePipeline:
         bea = self.bea_health()
         health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.1.1",
+            "engine_version": "0.1.2",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {

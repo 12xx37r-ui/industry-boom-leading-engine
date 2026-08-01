@@ -97,7 +97,7 @@ themes:
       - 현금소진 속도 악화
   - id: WATER_INFRA
     name: 물·환경 인프라
-    us_tickers: [XYL, AWK, WTRG, ECL, IDEX, PNR, WMS, BMI]
+    us_tickers: [XYL, AWK, WTRG, ECL, IEX, PNR, WMS, BMI]
     kr_stock_codes: ["060150", "298690", "004980", "112610"]
     invalidations:
       - 공공·산업 프로젝트 수주 감소
