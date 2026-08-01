@@ -32,8 +32,8 @@ class OpenDartClient:
         response = requests.get(
             self.CORP_CODE_URL,
             params={"crtfc_key": self.api_key},
-            headers={"User-Agent": self.http.session.headers["User-Agent"]},
-            timeout=45,
+            headers={"User-Agent": self.http.user_agent},
+            timeout=15,
         )
         response.raise_for_status()
         with zipfile.ZipFile(io.BytesIO(response.content)) as archive:

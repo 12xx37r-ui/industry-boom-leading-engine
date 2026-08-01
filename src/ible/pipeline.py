@@ -3,6 +3,8 @@ from __future__ import annotations
 import datetime as dt
 import json
 import os
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
@@ -28,8 +30,9 @@ class EnginePipeline:
             )
         self.http = JsonHttpClient(
             user_agent=user_agent,
-            min_interval=0.13,
-            retries=4,
+            timeout=12,
+            min_interval=0.22,
+            retries=1,
             cache_dir=root / ".cache",
         )
         self.sec = SecClient(self.http)
@@ -47,11 +50,40 @@ class EnginePipeline:
         requested = sorted({ticker for theme in self.config["themes"] for ticker in theme.get("us_tickers", [])})
         facts: dict[str, dict[str, Any]] = {}
         errors: dict[str, str] = {}
-        for ticker in requested:
-            try:
-                facts[ticker] = self.sec.companyfacts(ticker)
-            except Exception as exc:  # one company must not break the entire engine
-                errors[ticker] = str(exc)
+        started = time.monotonic()
+        total = len(requested)
+        print(f"[SEC] collecting {total} companyfacts with 4 workers", flush=True)
+
+        # Work in small batches so a broad SEC/network failure aborts quickly instead of hanging for 20+ minutes.
+        batch_size = 12
+        for batch_start in range(0, total, batch_size):
+            batch = requested[batch_start : batch_start + batch_size]
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                future_map = {pool.submit(self.sec.companyfacts, ticker): ticker for ticker in batch}
+                for future in as_completed(future_map):
+                    ticker = future_map[future]
+                    try:
+                        facts[ticker] = future.result()
+                    except Exception as exc:  # one company must not break the entire engine
+                        errors[ticker] = str(exc)
+                    done = len(facts) + len(errors)
+                    if done == total or done % 5 == 0:
+                        elapsed = time.monotonic() - started
+                        print(
+                            f"[SEC] {done}/{total} complete | ok={len(facts)} error={len(errors)} | {elapsed:.1f}s",
+                            flush=True,
+                        )
+
+            attempted = len(facts) + len(errors)
+            # If the first broad sample cannot reach SEC, stop with a useful error in under ~1 minute.
+            if attempted >= batch_size and len(facts) < 2 and len(errors) >= batch_size - 1:
+                first_errors = list(errors.items())[:3]
+                raise RuntimeError(
+                    "SEC_BROAD_CONNECTIVITY_FAILURE: almost all initial companyfacts requests failed. "
+                    f"sample_errors={first_errors}"
+                )
+
+        print(f"[SEC] finished in {time.monotonic() - started:.1f}s", flush=True)
         return facts, errors
 
     def score_as_of(self, as_of: str, facts: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
@@ -142,33 +174,52 @@ class EnginePipeline:
         facility_terms = ("신규시설투자", "시설투자", "타법인주식및출자증권취득결정")
         contract_terms = ("단일판매", "공급계약", "수주")
         output: dict[str, Any] = {"status": "OK", "as_of": as_of, "themes": {}, "errors": {}}
+
+        theme_companies = {theme["id"]: theme.get("kr_stock_codes", [])[:4] for theme in self.config["themes"]}
+        stock_codes = sorted({code for codes in theme_companies.values() for code in codes})
+        disclosures_by_code: dict[str, list[dict[str, Any]]] = {}
+        started = time.monotonic()
+        print(f"[DART] collecting {len(stock_codes)} companies with 4 workers", flush=True)
+
+        def fetch(code: str) -> list[dict[str, Any]]:
+            return self.dart.disclosures(code, begin.strftime("%Y%m%d"), end.strftime("%Y%m%d"), 100)
+
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            future_map = {pool.submit(fetch, code): code for code in stock_codes}
+            for future in as_completed(future_map):
+                code = future_map[future]
+                try:
+                    disclosures_by_code[code] = future.result()
+                except Exception as exc:
+                    output["errors"][code] = str(exc)
+                done = len(disclosures_by_code) + len(output["errors"])
+                if done == len(stock_codes) or done % 5 == 0:
+                    print(
+                        f"[DART] {done}/{len(stock_codes)} complete | error={len(output['errors'])}",
+                        flush=True,
+                    )
+
         for theme in self.config["themes"]:
-            companies = theme.get("kr_stock_codes", [])[:4]
+            companies = theme_companies[theme["id"]]
             reports: list[dict[str, Any]] = []
             for stock_code in companies:
-                try:
-                    disclosures = self.dart.disclosures(
-                        stock_code, begin.strftime("%Y%m%d"), end.strftime("%Y%m%d"), 100
-                    )
-                    for row in disclosures:
-                        name = row.get("report_nm", "")
-                        category = None
-                        if any(term in name for term in facility_terms):
-                            category = "FACILITY_INVESTMENT"
-                        elif any(term in name for term in contract_terms):
-                            category = "SUPPLY_CONTRACT"
-                        if category:
-                            reports.append(
-                                {
-                                    "stock_code": stock_code,
-                                    "category": category,
-                                    "report_name": name,
-                                    "receipt_date": row.get("rcept_dt"),
-                                    "receipt_no": row.get("rcept_no"),
-                                }
-                            )
-                except Exception as exc:
-                    output["errors"][stock_code] = str(exc)
+                for row in disclosures_by_code.get(stock_code, []):
+                    name = row.get("report_nm", "")
+                    category = None
+                    if any(term in name for term in facility_terms):
+                        category = "FACILITY_INVESTMENT"
+                    elif any(term in name for term in contract_terms):
+                        category = "SUPPLY_CONTRACT"
+                    if category:
+                        reports.append(
+                            {
+                                "stock_code": stock_code,
+                                "category": category,
+                                "report_name": name,
+                                "receipt_date": row.get("rcept_dt"),
+                                "receipt_no": row.get("rcept_no"),
+                            }
+                        )
             output["themes"][theme["id"]] = {
                 "company_count": len(companies),
                 "event_count": len(reports),
@@ -178,15 +229,20 @@ class EnginePipeline:
             }
         if output["errors"]:
             output["status"] = "PARTIAL"
+        print(f"[DART] finished in {time.monotonic() - started:.1f}s", flush=True)
         return output
 
     def run(self, *, current_as_of: str, replay_as_of: str | None, include_dart: bool) -> dict[str, Any]:
         outputs = self.root / "outputs"
+        run_started = time.monotonic()
+        print(f"[ENGINE] start current_as_of={current_as_of} replay_as_of={replay_as_of} include_dart={include_dart}", flush=True)
         facts, sec_errors = self._fetch_companyfacts()
+        print("[SCORING] current ranking", flush=True)
         current = self.score_as_of(current_as_of, facts)
         self._write_json(outputs / "industry_boom_ranking.json", current)
         self._write_json(outputs / "industry_boom_detail.json", {row["theme_id"]: row for row in current})
 
+        print("[SCORING] historical replay", flush=True)
         replay = self.score_as_of(replay_as_of, facts) if replay_as_of else []
         self._write_json(
             outputs / "ai_replay_2022.json",
@@ -203,14 +259,16 @@ class EnginePipeline:
             },
         )
 
+        print("[FRED] macro context", flush=True)
         macro = self.fred_context(current_as_of)
         self._write_json(outputs / "macro_context.json", macro)
         dart = self.dart_corroboration(current_as_of, include_dart)
         self._write_json(outputs / "korea_corroboration.json", dart)
+        print("[BEA] connectivity check", flush=True)
         bea = self.bea_health()
         health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.1.0",
+            "engine_version": "0.1.1",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
@@ -243,4 +301,5 @@ class EnginePipeline:
                 ],
             },
         )
+        print(f"[ENGINE] finished in {time.monotonic() - run_started:.1f}s", flush=True)
         return health
