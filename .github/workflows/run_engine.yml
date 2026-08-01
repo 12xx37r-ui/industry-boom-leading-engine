@@ -15,7 +15,7 @@ on:
       include_dart:
         description: "한국 OpenDART 보강 실행"
         required: true
-        default: true
+        default: false
         type: boolean
   schedule:
     - cron: "17 21 * * 1-5"
@@ -25,12 +25,12 @@ permissions:
 
 concurrency:
   group: industry-boom-engine
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -67,27 +67,34 @@ jobs:
           REPLAY="${{ inputs.replay_as_of }}"
           if [ -z "$REPLAY" ]; then REPLAY="2022-10-31"; fi
           INCLUDE_DART="${{ inputs.include_dart }}"
-          if [ -z "$INCLUDE_DART" ]; then INCLUDE_DART="true"; fi
+          if [ -z "$INCLUDE_DART" ]; then INCLUDE_DART="false"; fi
           echo "as_of=$AS_OF" >> "$GITHUB_OUTPUT"
           echo "replay=$REPLAY" >> "$GITHUB_OUTPUT"
           echo "include_dart=$INCLUDE_DART" >> "$GITHUB_OUTPUT"
 
       - name: Run engine
         env:
+          PYTHONUNBUFFERED: "1"
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
           OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
           SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
         shell: bash
         run: |
-          for NAME in FRED_API_KEY BEA_API_KEY OPENDART_API_KEY SEC_USER_AGENT; do
+          for NAME in FRED_API_KEY BEA_API_KEY SEC_USER_AGENT; do
             if [ -z "${!NAME}" ]; then
               echo "MISSING_REQUIRED_CONFIGURATION: $NAME"
               exit 1
             fi
           done
           EXTRA=""
-          if [ "${{ steps.vars.outputs.include_dart }}" = "true" ]; then EXTRA="--include-dart"; fi
+          if [ "${{ steps.vars.outputs.include_dart }}" = "true" ]; then
+            if [ -z "$OPENDART_API_KEY" ]; then
+              echo "MISSING_REQUIRED_CONFIGURATION: OPENDART_API_KEY"
+              exit 1
+            fi
+            EXTRA="--include-dart"
+          fi
           python -m ible.cli \
             --as-of "${{ steps.vars.outputs.as_of }}" \
             --replay-as-of "${{ steps.vars.outputs.replay }}" \
