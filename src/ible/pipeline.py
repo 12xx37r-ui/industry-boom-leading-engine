@@ -8,7 +8,19 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
-from ible.analytics.scoring import build_margin_signal, build_metric_signal, build_theme_result
+from ible.analytics.dart_metrics import (
+    REPORTS,
+    build_quarterly_financial_series,
+    event_series,
+    report_available,
+)
+from ible.analytics.scoring import (
+    build_dart_theme_result,
+    build_event_signal,
+    build_margin_signal,
+    build_metric_signal,
+    build_theme_result,
+)
 from ible.analytics.sec_metrics import FLOW_TAGS, quarterly_flow
 from ible.collectors.bea import BeaClient
 from ible.collectors.fred import FredClient
@@ -22,16 +34,11 @@ class EnginePipeline:
     def __init__(self, root: Path) -> None:
         self.root = root
         self.config = load_yaml(root / "config" / "themes.yml")
-        user_agent = os.getenv("SEC_USER_AGENT", "").strip()
-        if not user_agent or "@" not in user_agent:
-            raise RuntimeError(
-                "SEC_USER_AGENT repository variable is required and must include a contact email. "
-                "Example: IndustryBoomLeadingEngine/0.1 your-email@example.com"
-            )
+        user_agent = os.getenv("SEC_USER_AGENT", "Industry Boom Leading Engine contact@example.com").strip()
         self.http = JsonHttpClient(
             user_agent=user_agent,
-            timeout=12,
-            min_interval=0.30,
+            timeout=15,
+            min_interval=0.28,
             retries=1,
             cache_dir=root / ".cache",
         )
@@ -43,50 +50,28 @@ class EnginePipeline:
     @staticmethod
     def _write_json(path: Path, payload: Any) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        with path.open("w", encoding="utf-8") as handle:
-            json.dump(payload, handle, ensure_ascii=False, indent=2)
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    def _fetch_companyfacts(self) -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
+    def _fetch_companyfacts_optional(self, enabled: bool) -> tuple[dict[str, dict[str, Any]], dict[str, str], str]:
+        if not enabled:
+            return {}, {}, "SKIPPED"
         requested = sorted({ticker for theme in self.config["themes"] for ticker in theme.get("us_tickers", [])})
         facts: dict[str, dict[str, Any]] = {}
         errors: dict[str, str] = {}
-        started = time.monotonic()
-        total = len(requested)
-        print(f"[SEC] collecting {total} companyfacts with 3 workers (local CIK map)", flush=True)
+        print(f"[SEC] optional probe/collection for {len(requested)} companies", flush=True)
+        for ticker in requested:
+            try:
+                facts[ticker] = self.sec.companyfacts(ticker)
+            except Exception as exc:
+                errors[ticker] = str(exc)
+                if "403 Client Error" in str(exc) and len(errors) >= 2 and not facts:
+                    print("[SEC] GitHub-hosted runner is blocked with HTTP 403; continuing with OpenDART core.", flush=True)
+                    return {}, errors, "BLOCKED_403"
+            if len(facts) + len(errors) >= 8 and not facts:
+                return {}, errors, "UNAVAILABLE"
+        return facts, errors, "CONNECTED" if facts else "UNAVAILABLE"
 
-        # Work in small batches so a broad SEC/network failure aborts quickly instead of hanging for 20+ minutes.
-        batch_size = 12
-        for batch_start in range(0, total, batch_size):
-            batch = requested[batch_start : batch_start + batch_size]
-            with ThreadPoolExecutor(max_workers=3) as pool:
-                future_map = {pool.submit(self.sec.companyfacts, ticker): ticker for ticker in batch}
-                for future in as_completed(future_map):
-                    ticker = future_map[future]
-                    try:
-                        facts[ticker] = future.result()
-                    except Exception as exc:  # one company must not break the entire engine
-                        errors[ticker] = str(exc)
-                    done = len(facts) + len(errors)
-                    if done == total or done % 5 == 0:
-                        elapsed = time.monotonic() - started
-                        print(
-                            f"[SEC] {done}/{total} complete | ok={len(facts)} error={len(errors)} | {elapsed:.1f}s",
-                            flush=True,
-                        )
-
-            attempted = len(facts) + len(errors)
-            # If the first broad sample cannot reach SEC, stop with a useful error in under ~1 minute.
-            if attempted >= batch_size and len(facts) < 2 and len(errors) >= batch_size - 1:
-                first_errors = list(errors.items())[:3]
-                raise RuntimeError(
-                    "SEC_BROAD_CONNECTIVITY_FAILURE: almost all initial companyfacts requests failed. "
-                    f"sample_errors={first_errors}"
-                )
-
-        print(f"[SEC] finished in {time.monotonic() - started:.1f}s", flush=True)
-        return facts, errors
-
-    def score_as_of(self, as_of: str, facts: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    def score_sec_as_of(self, as_of: str, facts: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
         results = []
         for theme in self.config["themes"]:
             ticker_list = theme.get("us_tickers", [])
@@ -122,6 +107,99 @@ class EnginePipeline:
             )
             results.append(result.to_dict())
         return sorted(results, key=lambda x: (x["boom_score"], x["data_confidence"]), reverse=True)
+
+    def _dart_disclosures(self, as_of: dt.date) -> tuple[dict[str, list[dict[str, Any]]], dict[str, str]]:
+        if not self.dart:
+            raise RuntimeError("OPENDART_API_KEY is required for the GitHub-compatible core engine")
+        stock_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
+        begin = as_of - dt.timedelta(days=8 * 91 + 14)
+        collected: dict[str, list[dict[str, Any]]] = {}
+        errors: dict[str, str] = {}
+        print(f"[DART] disclosures {begin}~{as_of}, companies={len(stock_codes)}", flush=True)
+
+        def fetch(code: str) -> list[dict[str, Any]]:
+            return self.dart.disclosures(code, begin.strftime("%Y%m%d"), as_of.strftime("%Y%m%d"), 100)
+
+        started = time.monotonic()
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            futures = {pool.submit(fetch, code): code for code in stock_codes}
+            for future in as_completed(futures):
+                code = futures[future]
+                try:
+                    collected[code] = future.result()
+                except Exception as exc:
+                    errors[code] = str(exc)
+                done = len(collected) + len(errors)
+                if done == len(stock_codes) or done % 8 == 0:
+                    print(f"[DART] disclosure progress {done}/{len(stock_codes)} errors={len(errors)}", flush=True)
+        print(f"[DART] disclosure collection finished in {time.monotonic() - started:.1f}s", flush=True)
+        return collected, errors
+
+    def _dart_financials(self, as_of: dt.date) -> tuple[dict[str, list[tuple[str, float]]], dict[str, list[tuple[str, float]]], dict[str, str]]:
+        if not self.dart:
+            raise RuntimeError("OPENDART_API_KEY is required for the GitHub-compatible core engine")
+        stock_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
+        rows_by_report: dict[tuple[int, str], list[dict[str, Any]]] = {}
+        errors: dict[str, str] = {}
+        start_year = max(2018, as_of.year - 5)
+        jobs = [
+            (year, report_code)
+            for year in range(start_year, as_of.year + 1)
+            for report_code, _, _, _ in REPORTS
+            if report_available(as_of, year, report_code)
+        ]
+        print(f"[DART] financial report batches={len(jobs)} companies={len(stock_codes)}", flush=True)
+        for index, (year, report_code) in enumerate(jobs, start=1):
+            try:
+                rows_by_report[(year, report_code)] = self.dart.major_accounts_multi(stock_codes, year, report_code)
+            except Exception as exc:
+                errors[f"{year}:{report_code}"] = str(exc)
+            if index == len(jobs) or index % 5 == 0:
+                print(f"[DART] financial progress {index}/{len(jobs)} errors={len(errors)}", flush=True)
+        revenue, operating_profit = build_quarterly_financial_series(rows_by_report, stock_codes)
+        return revenue, operating_profit, errors
+
+    def score_dart_as_of(self, as_of: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+        date_value = dt.date.fromisoformat(as_of)
+        disclosures, disclosure_errors = self._dart_disclosures(date_value)
+        revenue, operating_profit, financial_errors = self._dart_financials(date_value)
+        results: list[dict[str, Any]] = []
+        for theme in self.config["themes"]:
+            codes = theme.get("kr_stock_codes", [])
+            capital_series = event_series(disclosures, codes, date_value, "CAPITAL_EVENT")
+            contract_series = event_series(disclosures, codes, date_value, "CONTRACT_EVENT")
+            revenue_series = {code: revenue.get(code, []) for code in codes}
+            op_profit_series = {code: operating_profit.get(code, []) for code in codes}
+            signals = {
+                "capital_events": build_event_signal("facility_and_asset_investment", capital_series),
+                "supply_contracts": build_event_signal("supply_contract_and_orders", contract_series),
+                "revenue": build_metric_signal("revenue_demand", revenue_series),
+                "operating_margin": build_margin_signal(revenue_series, op_profit_series),
+            }
+            usable = sum(
+                1
+                for code in codes
+                if len(revenue_series.get(code, [])) >= 5
+                or sum(value for _, value in capital_series.get(code, [])) > 0
+                or sum(value for _, value in contract_series.get(code, [])) > 0
+            )
+            result = build_dart_theme_result(
+                theme_id=theme["id"],
+                theme_name=theme["name"],
+                as_of=as_of,
+                signals=signals,
+                requested_companies=len(codes),
+                usable_companies=usable,
+                invalidations=theme.get("invalidations", []),
+            )
+            results.append(result.to_dict())
+        metadata = {
+            "source": "OpenDART",
+            "disclosure_errors": disclosure_errors,
+            "financial_errors": financial_errors,
+            "disclosure_company_count": len(disclosures),
+        }
+        return sorted(results, key=lambda x: (x["boom_score"], x["data_confidence"]), reverse=True), metadata
 
     def fred_context(self, as_of: str) -> dict[str, Any]:
         if not self.fred:
@@ -159,131 +237,74 @@ class EnginePipeline:
                 "status": "CONNECTED",
                 "dataset_count": len(datasets),
                 "datasets": [row.get("DatasetName") for row in datasets],
-                "note": "V0.1은 BEA 연결상태를 검증하고, 산업별 고정자산 매핑은 V0.2에서 점수에 편입합니다.",
+                "note": "BEA 산업별 고정자산 점수 편입은 다음 검증 단계에서 진행합니다.",
             }
         except Exception as exc:
             return {"status": "ERROR", "error": str(exc)}
 
-    def dart_corroboration(self, as_of: str, enabled: bool) -> dict[str, Any]:
-        if not enabled:
-            return {"status": "SKIPPED", "reason": "include_dart=false"}
-        if not self.dart:
-            return {"status": "SKIPPED", "reason": "OPENDART_API_KEY missing"}
-        end = dt.date.fromisoformat(as_of)
-        begin = end - dt.timedelta(days=550)
-        facility_terms = ("신규시설투자", "시설투자", "타법인주식및출자증권취득결정")
-        contract_terms = ("단일판매", "공급계약", "수주")
-        output: dict[str, Any] = {"status": "OK", "as_of": as_of, "themes": {}, "errors": {}}
-
-        theme_companies = {theme["id"]: theme.get("kr_stock_codes", [])[:4] for theme in self.config["themes"]}
-        stock_codes = sorted({code for codes in theme_companies.values() for code in codes})
-        disclosures_by_code: dict[str, list[dict[str, Any]]] = {}
-        started = time.monotonic()
-        print(f"[DART] collecting {len(stock_codes)} companies with 4 workers", flush=True)
-
-        def fetch(code: str) -> list[dict[str, Any]]:
-            return self.dart.disclosures(code, begin.strftime("%Y%m%d"), end.strftime("%Y%m%d"), 100)
-
-        with ThreadPoolExecutor(max_workers=3) as pool:
-            future_map = {pool.submit(fetch, code): code for code in stock_codes}
-            for future in as_completed(future_map):
-                code = future_map[future]
-                try:
-                    disclosures_by_code[code] = future.result()
-                except Exception as exc:
-                    output["errors"][code] = str(exc)
-                done = len(disclosures_by_code) + len(output["errors"])
-                if done == len(stock_codes) or done % 5 == 0:
-                    print(
-                        f"[DART] {done}/{len(stock_codes)} complete | error={len(output['errors'])}",
-                        flush=True,
-                    )
-
-        for theme in self.config["themes"]:
-            companies = theme_companies[theme["id"]]
-            reports: list[dict[str, Any]] = []
-            for stock_code in companies:
-                for row in disclosures_by_code.get(stock_code, []):
-                    name = row.get("report_nm", "")
-                    category = None
-                    if any(term in name for term in facility_terms):
-                        category = "FACILITY_INVESTMENT"
-                    elif any(term in name for term in contract_terms):
-                        category = "SUPPLY_CONTRACT"
-                    if category:
-                        reports.append(
-                            {
-                                "stock_code": stock_code,
-                                "category": category,
-                                "report_name": name,
-                                "receipt_date": row.get("rcept_dt"),
-                                "receipt_no": row.get("rcept_no"),
-                            }
-                        )
-            output["themes"][theme["id"]] = {
-                "company_count": len(companies),
-                "event_count": len(reports),
-                "facility_event_count": sum(1 for row in reports if row["category"] == "FACILITY_INVESTMENT"),
-                "contract_event_count": sum(1 for row in reports if row["category"] == "SUPPLY_CONTRACT"),
-                "events": reports[:30],
-            }
-        if output["errors"]:
-            output["status"] = "PARTIAL"
-        print(f"[DART] finished in {time.monotonic() - started:.1f}s", flush=True)
-        return output
-
-    def run(self, *, current_as_of: str, replay_as_of: str | None, include_dart: bool) -> dict[str, Any]:
+    def run(self, *, current_as_of: str, replay_as_of: str | None, include_dart: bool, use_sec: bool = False) -> dict[str, Any]:
+        del include_dart  # OpenDART is now the core source, not an optional add-on.
         outputs = self.root / "outputs"
         run_started = time.monotonic()
-        print(f"[ENGINE] start current_as_of={current_as_of} replay_as_of={replay_as_of} include_dart={include_dart}", flush=True)
-        facts, sec_errors = self._fetch_companyfacts()
-        print("[SCORING] current ranking", flush=True)
-        current = self.score_as_of(current_as_of, facts)
+        print(
+            f"[ENGINE] start current_as_of={current_as_of} replay_as_of={replay_as_of} core=OpenDART use_sec={use_sec}",
+            flush=True,
+        )
+        current, current_meta = self.score_dart_as_of(current_as_of)
         self._write_json(outputs / "industry_boom_ranking.json", current)
         self._write_json(outputs / "industry_boom_detail.json", {row["theme_id"]: row for row in current})
 
-        print("[SCORING] historical replay", flush=True)
-        replay = self.score_as_of(replay_as_of, facts) if replay_as_of else []
+        replay: list[dict[str, Any]] = []
+        replay_meta: dict[str, Any] = {}
+        if replay_as_of:
+            print("[SCORING] historical AI replay with report-availability cutoff", flush=True)
+            replay, replay_meta = self.score_dart_as_of(replay_as_of)
         self._write_json(
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
+                "primary_source": "OpenDART",
                 "methodology_warning": (
-                    "이 재현시험은 당시 공시일 기준 데이터만 사용하지만 산업 테마 정의 자체는 사후적으로 구성된 "
-                    "taxonomy-aware replay입니다. 완전한 블라인드 산업발견 시험은 V0.3에서 별도 수행해야 합니다."
+                    "이번 버전은 GitHub 호스팅 러너의 SEC 403 차단을 피하기 위해 한국 상장 공급망의 시설투자, "
+                    "수주·공급계약, 매출, 영업이익률을 당시 보고서 이용 가능시점 기준으로 재현합니다. "
+                    "현재 API로 과거 보고서를 조회하므로 당시 원본 빈티지와 이후 정정공시를 완전히 분리하지는 못합니다. 산업 분류는 사전 정의형입니다."
                 ),
                 "ranking": replay,
                 "ai_theme_rank": next(
                     (index + 1 for index, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None
                 ),
+                "metadata": replay_meta,
             },
         )
+
+        facts, sec_errors, sec_status = self._fetch_companyfacts_optional(use_sec)
+        if facts:
+            self._write_json(outputs / "sec_supplemental_ranking.json", self.score_sec_as_of(current_as_of, facts))
 
         print("[FRED] macro context", flush=True)
         macro = self.fred_context(current_as_of)
         self._write_json(outputs / "macro_context.json", macro)
-        dart = self.dart_corroboration(current_as_of, include_dart)
-        self._write_json(outputs / "korea_corroboration.json", dart)
         print("[BEA] connectivity check", flush=True)
         bea = self.bea_health()
-        health = {
+        source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.1.2",
+            "engine_version": "0.1.3",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
-                "sec": {"status": "CONNECTED" if facts else "ERROR", "company_count": len(facts), "errors": sec_errors},
+                "opendart": {"status": "CONNECTED", "metadata": current_meta},
+                "sec": {"status": sec_status, "company_count": len(facts), "errors": dict(list(sec_errors.items())[:10])},
                 "fred": {"status": macro.get("status")},
                 "bea": bea,
-                "opendart": {"status": dart.get("status")},
             },
             "limitations": [
-                "V0.1은 사전 정의된 산업 테마를 순위화하며 완전한 신규 산업 자동발견 기능은 아직 포함하지 않습니다.",
-                "붐 확률은 초기 단조 변환값이며 과거 성공·실패 산업의 워크포워드 백테스트로 보정해야 합니다.",
-                "BEA 산업별 고정자산과 시장 주가 미반영 점수는 후속 버전에서 정식 편입합니다.",
+                "현재 GitHub 호스팅 러너에서 SEC가 HTTP 403을 반환하므로 OpenDART 한국 공급망 지표가 핵심 계산원입니다.",
+                "V0.1.3은 사전 정의된 산업을 순위화하며 완전한 신규 산업 자동발견 기능은 아직 포함하지 않습니다.",
+                "붐 확률은 초기 점수 변환값이며 성공·실패 산업 워크포워드 백테스트로 보정해야 합니다.",
             ],
         }
-        self._write_json(outputs / "engine_health.json", health)
+        self._write_json(outputs / "engine_health.json", source_health)
+        self._write_json(outputs / "korea_corroboration.json", current_meta)
         self._write_json(
             outputs / "run_manifest.json",
             {
@@ -302,4 +323,4 @@ class EnginePipeline:
             },
         )
         print(f"[ENGINE] finished in {time.monotonic() - run_started:.1f}s", flush=True)
-        return health
+        return source_health

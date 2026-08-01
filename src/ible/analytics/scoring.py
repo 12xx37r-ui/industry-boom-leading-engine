@@ -210,3 +210,127 @@ def build_theme_result(
         },
         warnings=sorted(set(warnings)),
     )
+
+
+def build_dart_theme_result(
+    *,
+    theme_id: str,
+    theme_name: str,
+    as_of: str,
+    signals: dict[str, Signal],
+    requested_companies: int,
+    usable_companies: int,
+    invalidations: list[str],
+) -> ThemeResult:
+    capital = signals["capital_events"]
+    contracts = signals["supply_contracts"]
+    demand = signals["revenue"]
+    margin = signals["operating_margin"]
+    breadth_engine = _mean([capital.breadth, contracts.breadth, demand.breadth])
+    persistence_engine = _mean([capital.persistence, contracts.persistence, demand.persistence])
+    boom_score = (
+        0.28 * capital.score
+        + 0.27 * contracts.score
+        + 0.25 * demand.score
+        + 0.10 * margin.score
+        + 0.06 * breadth_engine
+        + 0.04 * persistence_engine
+    )
+    coverage = usable_companies / max(1, requested_companies)
+    metric_coverage = _mean(
+        [capital.coverage, contracts.coverage, demand.coverage, margin.coverage],
+        0.0,
+    )
+    confidence = clamp(100.0 * (0.60 * coverage + 0.40 * metric_coverage))
+    stage = stage_for(boom_score, confidence, persistence_engine, breadth_engine)
+    reasons = [
+        (capital.score, f"시설투자·자산취득 공시 가속 점수 {capital.score:.1f}"),
+        (contracts.score, f"공급계약·수주 공시 가속 점수 {contracts.score:.1f}"),
+        (demand.score, f"매출 수요 가속 점수 {demand.score:.1f}"),
+        (margin.score, f"영업이익률 개선 점수 {margin.score:.1f}"),
+        (breadth_engine, f"참여기업 확산도 {breadth_engine:.1f}"),
+        (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
+    ]
+    warnings: list[str] = [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다."
+    ]
+    for signal in signals.values():
+        warnings.extend(signal.warnings)
+    if confidence < 60:
+        warnings.append("데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.")
+    return ThemeResult(
+        theme_id=theme_id,
+        theme_name=theme_name,
+        as_of=as_of,
+        stage=stage,
+        boom_score=round(boom_score, 2),
+        boom_probability_6m=probability(boom_score, 6, confidence),
+        boom_probability_12m=probability(boom_score, 12, confidence),
+        boom_probability_24m=probability(boom_score, 24, confidence),
+        data_confidence=round(confidence, 2),
+        engines=signals,
+        top_reasons=[text for _, text in sorted(reasons, reverse=True)[:3]],
+        invalidations=invalidations,
+        coverage={
+            "requested_companies": requested_companies,
+            "usable_companies": usable_companies,
+            "company_coverage": round(coverage, 4),
+            "metric_coverage": round(metric_coverage, 4),
+            "primary_source": "OpenDART",
+        },
+        warnings=sorted(set(warnings)),
+    )
+
+
+def build_event_signal(name: str, company_series: dict[str, list[tuple[str, float]]]) -> Signal:
+    max_len = max((len(series) for series in company_series.values()), default=0)
+    totals = [0.0] * max_len
+    for series in company_series.values():
+        values = [value for _, value in series]
+        for index, value in enumerate(values[-max_len:]):
+            totals[index] += value
+    recent = sum(totals[-2:]) if totals else 0.0
+    prior = sum(totals[-4:-2]) if len(totals) >= 4 else 0.0
+    older = sum(totals[-6:-4]) if len(totals) >= 6 else 0.0
+    baseline = sum(totals[:-2]) / max(1, len(totals[:-2])) if len(totals) > 2 else 0.0
+    level_ratio = (recent / 2.0 - baseline) / (baseline + 1.0)
+    velocity = (recent - prior) / (prior + 1.0)
+    prior_velocity = (prior - older) / (older + 1.0)
+    acceleration = velocity - prior_velocity
+    recent_periods = totals[-4:]
+    persistence = sum(1 for value in recent_periods if value > 0) / max(1, len(recent_periods))
+    active = 0
+    for series in company_series.values():
+        if sum(value for _, value in series[-2:]) > 0:
+            active += 1
+    breadth = active / max(1, len(company_series))
+    level_score = _feature_to_score(level_ratio, 28.0)
+    velocity_score = _feature_to_score(velocity, 24.0)
+    acceleration_score = _feature_to_score(acceleration, 20.0)
+    persistence_score = 100.0 * persistence
+    breadth_score = 100.0 * breadth
+    score = (
+        0.25 * level_score
+        + 0.25 * velocity_score
+        + 0.20 * acceleration_score
+        + 0.15 * persistence_score
+        + 0.15 * breadth_score
+    )
+    return Signal(
+        name=name,
+        score=round(score, 2),
+        level=round(level_score, 2),
+        velocity=round(velocity_score, 2),
+        acceleration=round(acceleration_score, 2),
+        persistence=round(persistence_score, 2),
+        breadth=round(breadth_score, 2),
+        coverage=round(len(company_series) / max(1, len(company_series)), 4),
+        raw={
+            "period_totals": totals,
+            "recent_two_periods": recent,
+            "prior_two_periods": prior,
+            "active_company_count": active,
+            "company_count": len(company_series),
+        },
+        warnings=[] if recent > 0 else ["최근 6개월 관련 공시가 없어 신호가 약합니다."],
+    )

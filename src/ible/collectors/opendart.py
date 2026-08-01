@@ -32,13 +32,12 @@ class OpenDartClient:
         response = requests.get(
             self.CORP_CODE_URL,
             params={"crtfc_key": self.api_key},
-            headers={"User-Agent": self.http.user_agent},
-            timeout=15,
+            headers={"User-Agent": self.http.user_agent, "Accept": "application/zip,application/octet-stream,*/*"},
+            timeout=20,
         )
         response.raise_for_status()
         with zipfile.ZipFile(io.BytesIO(response.content)) as archive:
             xml_data = archive.read(archive.namelist()[0]).decode("utf-8")
-        # Deliberately avoid an extra XML dependency.
         import xml.etree.ElementTree as ET
 
         root = ET.fromstring(xml_data)
@@ -67,7 +66,7 @@ class OpenDartClient:
                 "end_de": end_date,
                 "page_count": page_count,
                 "sort": "date",
-                "sort_mth": "desc",
+                "sort_mth": "asc",
             },
             cache_key=f"opendart_list_{stock_code}_{begin_date}_{end_date}",
             cache_ttl_seconds=21600,
@@ -77,4 +76,27 @@ class OpenDartClient:
             return []
         if status != "000":
             raise RuntimeError(f"OpenDART error {status}: {payload.get('message')}")
+        return payload.get("list", [])
+
+    def major_accounts_multi(self, stock_codes: list[str], business_year: int, report_code: str) -> list[dict[str, Any]]:
+        mapping = self.stock_to_corp_map()
+        corp_codes = [mapping[code] for code in stock_codes if code in mapping]
+        if not corp_codes:
+            return []
+        payload = self.http.get_json(
+            f"{self.API_BASE}/fnlttMultiAcnt.json",
+            params={
+                "crtfc_key": self.api_key,
+                "corp_code": ",".join(corp_codes[:100]),
+                "bsns_year": str(business_year),
+                "reprt_code": report_code,
+            },
+            cache_key=f"opendart_multi_{business_year}_{report_code}_{len(corp_codes)}",
+            cache_ttl_seconds=86400,
+        )
+        status = payload.get("status")
+        if status == "013":
+            return []
+        if status != "000":
+            raise RuntimeError(f"OpenDART financials error {status}: {payload.get('message')}")
         return payload.get("list", [])
