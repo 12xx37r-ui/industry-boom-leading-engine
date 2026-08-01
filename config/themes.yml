@@ -1,0 +1,113 @@
+version: 1
+
+fred_context:
+  - name: industrial_production
+    series_id: INDPRO
+  - name: durable_goods_new_orders
+    series_id: DGORDER
+  - name: nondefense_capital_goods_orders_ex_aircraft
+    series_id: NEWORDER
+  - name: capacity_utilization_total_industry
+    series_id: TCU
+  - name: business_inventories
+    series_id: BUSINV
+  - name: manufacturers_inventory_sales_ratio
+    series_id: ISRATIO
+
+themes:
+  - id: AI_COMPUTE_INFRA
+    name: AI 연산·데이터센터 인프라
+    us_tickers: [MSFT, GOOGL, META, AMZN, NVDA, AMD, AVGO, MU, ORCL, ANET, VRT, AMAT, LRCX, KLAC]
+    kr_stock_codes: ["005930", "000660", "042700", "240810"]
+    invalidations:
+      - 빅테크 CAPEX가 2개 분기 연속 감소
+      - AI 관련 매출 증가율이 2개 분기 연속 둔화
+      - 핵심 반도체·메모리 공급병목이 수요 둔화와 함께 해소
+  - id: POWER_GRID_ELECTRIFICATION
+    name: 전력망·전기화 인프라
+    us_tickers: [ETN, HUBB, POWL, GEV, VRT, NVT, CARR, EMR, ROK]
+    kr_stock_codes: ["267260", "010120", "298040", "006260"]
+    invalidations:
+      - 전력기기 수주잔고 증가율 0% 이하
+      - 데이터센터·전력망 프로젝트 연기 증가
+      - 가격 상승 없이 재고만 증가
+  - id: SEMICONDUCTOR_EQUIPMENT
+    name: 반도체 장비·첨단패키징
+    us_tickers: [AMAT, LRCX, KLAC, TER, COHU, FORM, MKSI, ENTG]
+    kr_stock_codes: ["042700", "036930", "240810", "039030"]
+    invalidations:
+      - 주요 고객사 WFE 투자가 2개 분기 연속 감소
+      - 장비 수주잔고와 선급금 동반 감소
+      - 메모리·파운드리 가동률 회복 지연
+  - id: DEFENSE_AUTONOMY
+    name: 국방·무인체계
+    us_tickers: [LMT, RTX, NOC, GD, LHX, HII, AVAV, KTOS]
+    kr_stock_codes: ["012450", "047810", "079550", "272210"]
+    invalidations:
+      - 정부 확정예산·계약액 감소
+      - 수주잔고 감소와 납품 지연 동시 발생
+      - 무인체계 관련 매출 전환 지연
+  - id: CYBERSECURITY
+    name: 사이버보안
+    us_tickers: [PANW, CRWD, FTNT, ZS, OKTA, NET, TENB, S]
+    kr_stock_codes: ["053800", "078350", "136540", "356680"]
+    invalidations:
+      - 잔여계약가치·반복매출 성장 급락
+      - 고객 유지율 악화
+      - 영업비용 증가가 매출 증가를 지속 초과
+  - id: ROBOTICS_AUTOMATION
+    name: 로봇·산업자동화
+    us_tickers: [ROK, TER, HON, ISRG, SYM, CGNX, ZBRA, EMR]
+    kr_stock_codes: ["277810", "108490", "090360", "454910"]
+    invalidations:
+      - 제조업 자동화 CAPEX 감소
+      - 수주 대비 재고 증가
+      - 로봇 설치 증가가 서비스·소프트웨어 매출로 연결되지 않음
+  - id: NUCLEAR_FIRM_POWER
+    name: 원전·무탄소 기저전력
+    us_tickers: [CEG, VST, NEE, BWXT, LEU, GEV, ETN]
+    kr_stock_codes: ["034020", "052690", "010620", "000720"]
+    invalidations:
+      - 신규 원전·SMR 프로젝트 일정 지연 확대
+      - 연료·인허가 병목으로 상업운전 시점 후퇴
+      - 확정계약 없이 주가·뉴스만 상승
+  - id: ENERGY_STORAGE
+    name: 에너지저장·전력변환
+    us_tickers: [TSLA, FLNC, ENPH, ALB, AES, STEM, NEE, "ON"]
+    kr_stock_codes: ["373220", "006400", "247540", "066970"]
+    invalidations:
+      - 설치량 둔화와 재고 증가 동시 발생
+      - 제품가격 하락이 원가 하락보다 빠름
+      - 프로젝트 금융비용 상승으로 취소율 증가
+  - id: BIOTECH_PLATFORM
+    name: 바이오 플랫폼·정밀의료
+    us_tickers: [REGN, VRTX, GILD, MRNA, CRSP, NTLA, BEAM, RXRX]
+    kr_stock_codes: ["207940", "068270", "326030", "145020"]
+    invalidations:
+      - 임상 실패율 상승 또는 핵심 파이프라인 중단
+      - 연구개발비 증가가 임상 진척으로 연결되지 않음
+      - 자금조달 환경 악화로 현금소진 위험 상승
+  - id: SPACE_INFRA
+    name: 우주·위성 인프라
+    us_tickers: [RKLB, LUNR, RDW, ASTS, PL, BA, LMT, NOC]
+    kr_stock_codes: ["099320", "211270", "047810", "012450"]
+    invalidations:
+      - 발사·위성 배치 일정 지연 반복
+      - 정부계약 외 상업매출 전환 실패
+      - 현금소진 속도 악화
+  - id: WATER_INFRA
+    name: 물·환경 인프라
+    us_tickers: [XYL, AWK, WTRG, ECL, IDEX, PNR, WMS, BMI]
+    kr_stock_codes: ["060150", "298690", "004980", "112610"]
+    invalidations:
+      - 공공·산업 프로젝트 수주 감소
+      - 원가 상승을 가격에 전가하지 못함
+      - 설비투자 확대가 매출로 전환되지 않음
+  - id: QUANTUM_COMPUTING
+    name: 양자컴퓨팅
+    us_tickers: [IBM, GOOGL, MSFT, IONQ, RGTI, QBTS]
+    kr_stock_codes: ["170920", "388720", "089230", "054450"]
+    invalidations:
+      - 기술성능 개선이 상용계약 증가로 연결되지 않음
+      - 연구개발비 대비 고객매출 정체
+      - 자금조달 의존도가 과도하게 상승
