@@ -9,10 +9,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 53.61,
-      "boom_probability_6m": 0.2077,
-      "boom_probability_12m": 0.3455,
-      "boom_probability_24m": 0.4406,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.161,
+      "boom_probability_12m": 0.2678,
+      "boom_probability_24m": 0.3414,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -140,7 +140,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -150,10 +152,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 52.03,
-      "boom_probability_6m": 0.1645,
-      "boom_probability_12m": 0.2795,
-      "boom_probability_24m": 0.3618,
-      "data_confidence": 80.0,
+      "boom_probability_6m": 0.1417,
+      "boom_probability_12m": 0.2407,
+      "boom_probability_24m": 0.3115,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -274,7 +276,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다."
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다."
       ]
     },
     {
@@ -283,10 +287,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 48.63,
-      "boom_probability_6m": 0.1374,
-      "boom_probability_12m": 0.2429,
-      "boom_probability_24m": 0.3237,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.1065,
+      "boom_probability_12m": 0.1882,
+      "boom_probability_24m": 0.2508,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -414,7 +418,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -424,10 +430,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 48.58,
-      "boom_probability_6m": 0.1369,
-      "boom_probability_12m": 0.242,
-      "boom_probability_24m": 0.3226,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.1061,
+      "boom_probability_12m": 0.1876,
+      "boom_probability_24m": 0.25,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -555,7 +561,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -565,10 +573,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 46.05,
-      "boom_probability_6m": 0.1096,
-      "boom_probability_12m": 0.1987,
-      "boom_probability_24m": 0.27,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.085,
+      "boom_probability_12m": 0.154,
+      "boom_probability_24m": 0.2093,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -696,7 +704,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -706,10 +716,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 45.09,
-      "boom_probability_6m": 0.0917,
-      "boom_probability_12m": 0.1677,
-      "boom_probability_24m": 0.2294,
-      "data_confidence": 82.5,
+      "boom_probability_6m": 0.0779,
+      "boom_probability_12m": 0.1424,
+      "boom_probability_24m": 0.1948,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -832,7 +842,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -842,10 +854,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 43.77,
-      "boom_probability_6m": 0.0892,
-      "boom_probability_12m": 0.1648,
-      "boom_probability_24m": 0.2274,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.0692,
+      "boom_probability_12m": 0.1277,
+      "boom_probability_24m": 0.1763,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -975,7 +987,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -985,10 +999,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 40.92,
-      "boom_probability_6m": 0.0686,
-      "boom_probability_12m": 0.1292,
-      "boom_probability_24m": 0.1812,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.0532,
+      "boom_probability_12m": 0.1001,
+      "boom_probability_24m": 0.1404,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -1118,7 +1132,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -1128,10 +1144,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 40.73,
-      "boom_probability_6m": 0.0607,
-      "boom_probability_12m": 0.1144,
-      "boom_probability_24m": 0.1606,
-      "data_confidence": 80.0,
+      "boom_probability_6m": 0.0523,
+      "boom_probability_12m": 0.0985,
+      "boom_probability_24m": 0.1383,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -1256,7 +1272,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -1266,10 +1284,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 39.41,
-      "boom_probability_6m": 0.0596,
-      "boom_probability_12m": 0.1131,
-      "boom_probability_24m": 0.1598,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.0462,
+      "boom_probability_12m": 0.0877,
+      "boom_probability_24m": 0.1239,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -1399,7 +1417,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -1409,10 +1429,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 39.38,
-      "boom_probability_6m": 0.0594,
-      "boom_probability_12m": 0.1128,
-      "boom_probability_24m": 0.1595,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.046,
+      "boom_probability_12m": 0.0874,
+      "boom_probability_24m": 0.1236,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -1542,7 +1562,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     },
@@ -1552,10 +1574,10 @@
       "as_of": "2022-10-31",
       "stage": "NO_SIGNAL",
       "boom_score": 38.39,
-      "boom_probability_6m": 0.0541,
-      "boom_probability_12m": 0.1033,
-      "boom_probability_24m": 0.1467,
-      "data_confidence": 100.0,
+      "boom_probability_6m": 0.0419,
+      "boom_probability_12m": 0.0801,
+      "boom_probability_24m": 0.1137,
+      "data_confidence": 55.0,
       "engines": {
         "capital_events": {
           "name": "facility_and_asset_investment",
@@ -1685,7 +1707,9 @@
         "primary_source": "OpenDART"
       },
       "warnings": [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
         "최근 6개월 관련 공시가 없어 신호가 약합니다."
       ]
     }

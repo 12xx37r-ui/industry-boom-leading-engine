@@ -5,8 +5,31 @@
     "ai_replay_2022.json",
     "macro_context.json",
     "korea_corroboration.json",
-    "engine_health.json"
+    "engine_health.json",
+    "model_validation.json"
   ],
+  "model_validation": {
+    "status": "FAILED",
+    "investment_use_allowed": false,
+    "reason": "2022-10-31 AI 재현이 상위 3위 및 67점 기준을 통과하지 못했습니다. 현재 순위는 투자판정에 사용할 수 없습니다.",
+    "criteria": {
+      "ai_rank_max": 3,
+      "ai_score_min": 67,
+      "additional_backtests_required": true
+    },
+    "observed": {
+      "ai_rank": 10,
+      "ai_score": 39.41,
+      "theme_count": 12
+    },
+    "known_design_gaps": [
+      "시설투자·공급계약의 금액이 아니라 공시 건수를 사용합니다.",
+      "산업별 한국 대표기업이 4개뿐이라 확산도를 제대로 측정하지 못합니다.",
+      "미국 원천수요·빅테크 CAPEX·벤처투자·고용·특허·정부지출이 핵심점수에 편입되지 않았습니다.",
+      "사전 정의된 12개 산업만 비교하므로 아무도 모르는 신규 산업을 자동발견하지 못합니다.",
+      "붐 확률은 백테스트로 보정되지 않은 단조 변환값입니다."
+    ]
+  },
   "current_top5": [
     {
       "rank": 1,
