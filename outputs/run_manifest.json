@@ -1,0 +1,42 @@
+{
+  "files": [
+    "industry_boom_ranking.json",
+    "industry_boom_detail.json",
+    "ai_replay_2022.json",
+    "macro_context.json",
+    "korea_corroboration.json",
+    "engine_health.json"
+  ],
+  "current_top5": [
+    {
+      "rank": 1,
+      "theme_id": "ROBOTICS_AUTOMATION",
+      "name": "로봇·산업자동화",
+      "score": 55.79
+    },
+    {
+      "rank": 2,
+      "theme_id": "QUANTUM_COMPUTING",
+      "name": "양자컴퓨팅",
+      "score": 54.35
+    },
+    {
+      "rank": 3,
+      "theme_id": "BIOTECH_PLATFORM",
+      "name": "바이오 플랫폼·정밀의료",
+      "score": 54.16
+    },
+    {
+      "rank": 4,
+      "theme_id": "NUCLEAR_FIRM_POWER",
+      "name": "원전·무탄소 기저전력",
+      "score": 47.13
+    },
+    {
+      "rank": 5,
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "name": "전력망·전기화 인프라",
+      "score": 43.6
+    }
+  ]
+}

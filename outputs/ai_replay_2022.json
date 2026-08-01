@@ -1,0 +1,1700 @@
+{
+  "as_of": "2022-10-31",
+  "primary_source": "OpenDART",
+  "methodology_warning": "이번 버전은 GitHub 호스팅 러너의 SEC 403 차단을 피하기 위해 한국 상장 공급망의 시설투자, 수주·공급계약, 매출, 영업이익률을 당시 보고서 이용 가능시점 기준으로 재현합니다. 현재 API로 과거 보고서를 조회하므로 당시 원본 빈티지와 이후 정정공시를 완전히 분리하지는 못합니다. 산업 분류는 사전 정의형입니다.",
+  "ranking": [
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장·전력변환",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 53.61,
+      "boom_probability_6m": 0.2077,
+      "boom_probability_12m": 0.3455,
+      "boom_probability_24m": 0.4406,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 54.03,
+          "level": 50.0,
+          "velocity": 57.72,
+          "acceleration": 60.5,
+          "persistence": 75.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              1.0,
+              3.0,
+              2.0,
+              1.0,
+              0.0,
+              2.0,
+              2.0,
+              1.0
+            ],
+            "recent_two_periods": 3.0,
+            "prior_two_periods": 2.0,
+            "active_company_count": 1,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 32.34,
+          "level": 39.36,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              2.0,
+              2.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 77.99,
+          "level": 81.25,
+          "velocity": 81.38,
+          "acceleration": 66.83,
+          "persistence": 87.5,
+          "breadth": 75.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 1.622978654321205,
+            "median_acceleration": 0.21179900254720188,
+            "positive_breadth": 0.75
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 60.87,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 1.0,
+          "raw": {
+            "373220": {
+              "latest_margin": 0.04909426094490723,
+              "prior_margin": -0.037748362656830646,
+              "delta": 0.08684262360173788
+            },
+            "006400": {
+              "latest_margin": 0.08504433951304333,
+              "prior_margin": 0.0891055407474693,
+              "delta": -0.004061201234425979
+            },
+            "247540": {
+              "latest_margin": 0.07432850297109016,
+              "prior_margin": 0.07710764550798709,
+              "delta": -0.002779142536896928
+            },
+            "066970": {
+              "latest_margin": 0.08345604874677261,
+              "prior_margin": 0.06524554893756146,
+              "delta": 0.018210499809211148
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 78.0",
+        "영업이익률 개선 점수 60.9",
+        "긍정 흐름 지속성 54.2"
+      ],
+      "invalidations": [
+        "설치량 둔화와 재고 증가 동시 발생",
+        "제품가격 하락이 원가 하락보다 빠름",
+        "프로젝트 금융비용 상승으로 취소율 증가"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "ROBOTICS_AUTOMATION",
+      "theme_name": "로봇·산업자동화",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 52.03,
+      "boom_probability_6m": 0.1645,
+      "boom_probability_12m": 0.2795,
+      "boom_probability_24m": 0.3618,
+      "data_confidence": 80.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 57.47,
+          "level": 71.32,
+          "velocity": 73.14,
+          "acceleration": 69.28,
+          "persistence": 25.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              2.0
+            ],
+            "recent_two_periods": 2.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 1,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 56.53,
+          "level": 72.83,
+          "velocity": 68.28,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              3.0,
+              0.0
+            ],
+            "recent_two_periods": 3.0,
+            "prior_two_periods": 1.0,
+            "active_company_count": 1,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 52.18,
+          "level": 50.59,
+          "velocity": 62.16,
+          "acceleration": 39.29,
+          "persistence": 50.0,
+          "breadth": 66.67,
+          "coverage": 0.75,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 3,
+            "median_yoy": 0.007140038329617767,
+            "median_acceleration": -0.33344379950433267,
+            "positive_breadth": 0.6666666666666666
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 36.27,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 33.33,
+          "coverage": 0.75,
+          "raw": {
+            "277810": {
+              "latest_margin": 0.1127686081175272,
+              "prior_margin": 0.05070385004364987,
+              "delta": 0.06206475807387733
+            },
+            "108490": {
+              "latest_margin": -0.08205664164081579,
+              "prior_margin": -0.006302086286151708,
+              "delta": -0.07575455535466408
+            },
+            "090360": {
+              "latest_margin": -0.0206973890887832,
+              "prior_margin": 0.024603760838718396,
+              "delta": -0.045301149927501595
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "시설투자·자산취득 공시 가속 점수 57.5",
+        "공급계약·수주 공시 가속 점수 56.5",
+        "매출 수요 가속 점수 52.2"
+      ],
+      "invalidations": [
+        "제조업 자동화 CAPEX 감소",
+        "수주 대비 재고 증가",
+        "로봇 설치 증가가 서비스·소프트웨어 매출로 연결되지 않음"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 3,
+        "company_coverage": 0.75,
+        "metric_coverage": 0.875,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다."
+      ]
+    },
+    {
+      "theme_id": "NUCLEAR_FIRM_POWER",
+      "theme_name": "원전·무탄소 기저전력",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 48.63,
+      "boom_probability_6m": 0.1374,
+      "boom_probability_12m": 0.2429,
+      "boom_probability_24m": 0.3237,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 47.14,
+          "level": 30.74,
+          "velocity": 38.91,
+          "acceleration": 54.9,
+          "persistence": 100.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              22.0,
+              21.0,
+              21.0,
+              2.0,
+              3.0,
+              2.0,
+              1.0,
+              1.0
+            ],
+            "recent_two_periods": 2.0,
+            "prior_two_periods": 5.0,
+            "active_company_count": 1,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 66.88,
+          "level": 54.35,
+          "velocity": 67.78,
+          "acceleration": 70.4,
+          "persistence": 58.33,
+          "breadth": 100.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.38085082143597526,
+            "median_acceleration": 0.29364050793260354,
+            "positive_breadth": 1.0
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 47.71,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 1.0,
+          "raw": {
+            "034020": {
+              "latest_margin": 0.07476896285505816,
+              "prior_margin": 0.06437195942736121,
+              "delta": 0.01039700342769695
+            },
+            "052690": {
+              "latest_margin": 0.0013838619143569375,
+              "prior_margin": 8.156721928764821e-05,
+              "delta": 0.0013022946950692893
+            },
+            "010620": {
+              "latest_margin": -0.038823799150670225,
+              "prior_margin": -0.0170877902546252,
+              "delta": -0.021736008896045024
+            },
+            "000720": {
+              "latest_margin": 0.036402889221384904,
+              "prior_margin": 0.04377877752594462,
+              "delta": -0.007375888304559715
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 66.9",
+        "긍정 흐름 지속성 52.8",
+        "영업이익률 개선 점수 47.7"
+      ],
+      "invalidations": [
+        "신규 원전·SMR 프로젝트 일정 지연 확대",
+        "연료·인허가 병목으로 상업운전 시점 후퇴",
+        "확정계약 없이 주가·뉴스만 상승"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "SPACE_INFRA",
+      "theme_name": "우주·위성 인프라",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 48.58,
+      "boom_probability_6m": 0.1369,
+      "boom_probability_12m": 0.242,
+      "boom_probability_24m": 0.3226,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 32.74,
+          "level": 37.06,
+          "velocity": 38.91,
+          "acceleration": 50.0,
+          "persistence": 25.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              1.0,
+              1.0,
+              2.0,
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 1.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 52.76,
+          "level": 43.65,
+          "velocity": 44.12,
+          "acceleration": 41.56,
+          "persistence": 100.0,
+          "breadth": 50.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              9.0,
+              4.0,
+              7.0,
+              2.0,
+              7.0,
+              4.0,
+              3.0,
+              5.0
+            ],
+            "recent_two_periods": 8.0,
+            "prior_two_periods": 11.0,
+            "active_company_count": 2,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 51.5,
+          "level": 52.34,
+          "velocity": 61.2,
+          "acceleration": 54.96,
+          "persistence": 45.83,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": -0.03281410241048457,
+            "median_acceleration": -0.12481134584356228,
+            "positive_breadth": 0.25
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 85.18,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 100.0,
+          "coverage": 1.0,
+          "raw": {
+            "099320": {
+              "latest_margin": 0.0029769239758830265,
+              "prior_margin": -0.08672748955149881,
+              "delta": 0.08970441352738184
+            },
+            "211270": {
+              "latest_margin": 0.023975981071342915,
+              "prior_margin": -0.01228914208000012,
+              "delta": 0.03626512315134303
+            },
+            "047810": {
+              "latest_margin": 0.05636891085353958,
+              "prior_margin": -0.00495512502455093,
+              "delta": 0.06132403587809051
+            },
+            "012450": {
+              "latest_margin": 0.05786762535548508,
+              "prior_margin": 0.054084688476975444,
+              "delta": 0.0037829368785096337
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "영업이익률 개선 점수 85.2",
+        "긍정 흐름 지속성 56.9",
+        "공급계약·수주 공시 가속 점수 52.8"
+      ],
+      "invalidations": [
+        "발사·위성 배치 일정 지연 반복",
+        "정부계약 외 상업매출 전환 실패",
+        "현금소진 속도 악화"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비·첨단패키징",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 46.05,
+      "boom_probability_6m": 0.1096,
+      "boom_probability_12m": 0.1987,
+      "boom_probability_24m": 0.27,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 34.01,
+          "level": 46.03,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 41.74,
+          "level": 30.2,
+          "velocity": 36.01,
+          "acceleration": 50.95,
+          "persistence": 75.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              26.0,
+              19.0,
+              11.0,
+              9.0,
+              2.0,
+              3.0,
+              0.0,
+              1.0
+            ],
+            "recent_two_periods": 1.0,
+            "prior_two_periods": 5.0,
+            "active_company_count": 1,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 57.17,
+          "level": 62.13,
+          "velocity": 52.54,
+          "acceleration": 49.0,
+          "persistence": 58.33,
+          "breadth": 75.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.0956388029903221,
+            "median_acceleration": 0.011142067042006376,
+            "positive_breadth": 0.75
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 71.91,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 75.0,
+          "coverage": 1.0,
+          "raw": {
+            "042700": {
+              "latest_margin": 0.34635413966804285,
+              "prior_margin": 0.34437642623690895,
+              "delta": 0.0019777134311338984
+            },
+            "036930": {
+              "latest_margin": 0.2884976633455163,
+              "prior_margin": 0.31401756533127534,
+              "delta": -0.02551990198575904
+            },
+            "240810": {
+              "latest_margin": 0.09914742755645814,
+              "prior_margin": 0.01173725704174329,
+              "delta": 0.08741017051471485
+            },
+            "039030": {
+              "latest_margin": 0.2349811312259109,
+              "prior_margin": 0.16182134974209028,
+              "delta": 0.07315978148382063
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "영업이익률 개선 점수 71.9",
+        "매출 수요 가속 점수 57.2",
+        "긍정 흐름 지속성 44.4"
+      ],
+      "invalidations": [
+        "주요 고객사 WFE 투자가 2개 분기 연속 감소",
+        "장비 수주잔고와 선급금 동반 감소",
+        "메모리·파운드리 가동률 회복 지연"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 45.09,
+      "boom_probability_6m": 0.0917,
+      "boom_probability_12m": 0.1677,
+      "boom_probability_24m": 0.2294,
+      "data_confidence": 82.5,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 44.64,
+          "level": 59.0,
+          "velocity": 50.0,
+          "acceleration": 30.72,
+          "persistence": 50.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              2.0,
+              0.0,
+              2.0
+            ],
+            "recent_two_periods": 2.0,
+            "prior_two_periods": 2.0,
+            "active_company_count": 1,
+            "company_count": 4
+          },
+          "warnings": []
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 64.63,
+          "level": 57.47,
+          "velocity": 72.62,
+          "acceleration": 71.76,
+          "persistence": 50.0,
+          "breadth": 66.67,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.09755801056413714,
+            "median_acceleration": -0.003625842624396247,
+            "positive_breadth": 0.6666666666666666
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 38.15,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 33.33,
+          "coverage": 0.75,
+          "raw": {
+            "170920": {
+              "latest_margin": 0.05156685449023442,
+              "prior_margin": -0.0885329385397824,
+              "delta": 0.14009979303001682
+            },
+            "089230": {
+              "latest_margin": -0.024555534653358087,
+              "prior_margin": 0.2357968400825487,
+              "delta": -0.2603523747359068
+            },
+            "054450": {
+              "latest_margin": 0.057291269249299295,
+              "prior_margin": 0.101169753113824,
+              "delta": -0.04387848386452471
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 64.6",
+        "시설투자·자산취득 공시 가속 점수 44.6",
+        "영업이익률 개선 점수 38.1"
+      ],
+      "invalidations": [
+        "기술성능 개선이 상용계약 증가로 연결되지 않음",
+        "연구개발비 대비 고객매출 정체",
+        "자금조달 의존도가 과도하게 상승"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 3,
+        "company_coverage": 0.75,
+        "metric_coverage": 0.9375,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화 인프라",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 43.77,
+      "boom_probability_6m": 0.0892,
+      "boom_probability_12m": 0.1648,
+      "boom_probability_24m": 0.2274,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 33.32,
+          "level": 39.36,
+          "velocity": 38.91,
+          "acceleration": 50.0,
+          "persistence": 25.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              2.0,
+              1.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 1.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 29.94,
+          "level": 31.63,
+          "velocity": 32.81,
+          "acceleration": 31.67,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              6.0,
+              2.0,
+              0.0,
+              5.0,
+              6.0,
+              3.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 9.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 63.82,
+          "level": 57.93,
+          "velocity": 59.82,
+          "acceleration": 57.51,
+          "persistence": 66.67,
+          "breadth": 100.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.2942847125231578,
+            "median_acceleration": 0.20686293090454977,
+            "positive_breadth": 1.0
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 65.14,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 75.0,
+          "coverage": 1.0,
+          "raw": {
+            "267260": {
+              "latest_margin": 0.04899404201626002,
+              "prior_margin": -0.024862663235013297,
+              "delta": 0.07385670525127332
+            },
+            "010120": {
+              "latest_margin": 0.06199037776755914,
+              "prior_margin": 0.05903865656839333,
+              "delta": 0.002951721199165813
+            },
+            "298040": {
+              "latest_margin": 0.018759005623701468,
+              "prior_margin": 0.03407993660441766,
+              "delta": -0.015320930980716192
+            },
+            "006260": {
+              "latest_margin": 0.0464129893845092,
+              "prior_margin": 0.037750858398290905,
+              "delta": 0.008662130986218292
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "영업이익률 개선 점수 65.1",
+        "매출 수요 가속 점수 63.8",
+        "긍정 흐름 지속성 47.2"
+      ],
+      "invalidations": [
+        "전력기기 수주잔고 증가율 0% 이하",
+        "데이터센터·전력망 프로젝트 연기 증가",
+        "가격 상승 없이 재고만 증가"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "WATER_INFRA",
+      "theme_name": "물·환경 인프라",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 40.92,
+      "boom_probability_6m": 0.0686,
+      "boom_probability_12m": 0.1292,
+      "boom_probability_24m": 0.1812,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 35.86,
+          "level": 46.03,
+          "velocity": 50.0,
+          "acceleration": 59.24,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 30.77,
+          "level": 33.08,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              5.0,
+              9.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 60.79,
+          "level": 59.18,
+          "velocity": 61.26,
+          "acceleration": 55.25,
+          "persistence": 45.83,
+          "breadth": 100.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.3043831431906421,
+            "median_acceleration": 0.05861197419083296,
+            "positive_breadth": 1.0
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 47.59,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "060150": {
+              "latest_margin": 0.15569874055645444,
+              "prior_margin": 0.16561951228855398,
+              "delta": -0.009920771732099543
+            },
+            "298690": {
+              "latest_margin": -0.48178484659432286,
+              "prior_margin": -1.13439236206088,
+              "delta": 0.6526075154665572
+            },
+            "004980": {
+              "latest_margin": 0.030973494994135525,
+              "prior_margin": 0.047324378425908795,
+              "delta": -0.01635088343177327
+            },
+            "112610": {
+              "latest_margin": 0.044332246597057944,
+              "prior_margin": 0.06021701459196553,
+              "delta": -0.015884767994907588
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 60.8",
+        "영업이익률 개선 점수 47.6",
+        "시설투자·자산취득 공시 가속 점수 35.9"
+      ],
+      "invalidations": [
+        "공공·산업 프로젝트 수주 감소",
+        "원가 상승을 가격에 전가하지 못함",
+        "설비투자 확대가 매출로 전환되지 않음"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 40.73,
+      "boom_probability_6m": 0.0607,
+      "boom_probability_12m": 0.1144,
+      "boom_probability_24m": 0.1606,
+      "data_confidence": 80.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 64.37,
+          "level": 66.11,
+          "velocity": 61.61,
+          "acceleration": 46.43,
+          "persistence": 72.22,
+          "breadth": 100.0,
+          "coverage": 0.75,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 3,
+            "median_yoy": 0.2257333396136967,
+            "median_acceleration": -0.012624795926710092,
+            "positive_breadth": 1.0
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 24.29,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 33.33,
+          "coverage": 0.75,
+          "raw": {
+            "053800": {
+              "latest_margin": 0.068238138375212,
+              "prior_margin": 0.12463712353416724,
+              "delta": -0.05639898515895524
+            },
+            "078350": {
+              "latest_margin": 0.11741140307822989,
+              "prior_margin": 0.11269923146341358,
+              "delta": 0.00471217161481631
+            },
+            "136540": {
+              "latest_margin": 0.158663780730121,
+              "prior_margin": 0.25182810141753564,
+              "delta": -0.09316432068741465
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 64.4",
+        "시설투자·자산취득 공시 가속 점수 35.0",
+        "공급계약·수주 공시 가속 점수 35.0"
+      ],
+      "invalidations": [
+        "잔여계약가치·반복매출 성장 급락",
+        "고객 유지율 악화",
+        "영업비용 증가가 매출 증가를 지속 초과"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 3,
+        "company_coverage": 0.75,
+        "metric_coverage": 0.875,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "AI_COMPUTE_INFRA",
+      "theme_name": "AI 연산·데이터센터 인프라",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 39.41,
+      "boom_probability_6m": 0.0596,
+      "boom_probability_12m": 0.1131,
+      "boom_probability_24m": 0.1598,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 34.01,
+          "level": 46.03,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 32.92,
+          "level": 29.9,
+          "velocity": 50.0,
+          "acceleration": 64.75,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              23.0,
+              16.0,
+              10.0,
+              7.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 55.35,
+          "level": 54.65,
+          "velocity": 51.22,
+          "acceleration": 48.03,
+          "persistence": 62.5,
+          "breadth": 75.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.17178480919466083,
+            "median_acceleration": -0.0349984595390172,
+            "positive_breadth": 0.75
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 48.24,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 1.0,
+          "raw": {
+            "005930": {
+              "latest_margin": 0.1820739837076871,
+              "prior_margin": 0.19745981982900102,
+              "delta": -0.015385836121313917
+            },
+            "000660": {
+              "latest_margin": 0.2694103162577946,
+              "prior_margin": 0.3471560095394323,
+              "delta": -0.07774569328163772
+            },
+            "042700": {
+              "latest_margin": 0.34635413966804285,
+              "prior_margin": 0.34437642623690895,
+              "delta": 0.0019777134311338984
+            },
+            "240810": {
+              "latest_margin": 0.09914742755645814,
+              "prior_margin": 0.01173725704174329,
+              "delta": 0.08741017051471485
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 55.4",
+        "영업이익률 개선 점수 48.2",
+        "시설투자·자산취득 공시 가속 점수 34.0"
+      ],
+      "invalidations": [
+        "빅테크 CAPEX가 2개 분기 연속 감소",
+        "AI 관련 매출 증가율이 2개 분기 연속 둔화",
+        "핵심 반도체·메모리 공급병목이 수요 둔화와 함께 해소"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "BIOTECH_PLATFORM",
+      "theme_name": "바이오 플랫폼·정밀의료",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 39.38,
+      "boom_probability_6m": 0.0594,
+      "boom_probability_12m": 0.1128,
+      "boom_probability_24m": 0.1595,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 30.11,
+          "level": 41.0,
+          "velocity": 38.91,
+          "acceleration": 31.9,
+          "persistence": 25.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              2.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 1.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 29.89,
+          "level": 30.41,
+          "velocity": 32.48,
+          "acceleration": 33.32,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              9.0,
+              7.0,
+              5.0,
+              5.0,
+              10.0,
+              3.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 13.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 67.83,
+          "level": 64.21,
+          "velocity": 67.24,
+          "acceleration": 67.36,
+          "persistence": 54.17,
+          "breadth": 100.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.4805096559671491,
+            "median_acceleration": 0.10164618207726014,
+            "positive_breadth": 1.0
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 21.96,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 25.0,
+          "coverage": 1.0,
+          "raw": {
+            "207940": {
+              "latest_margin": 0.3027495113539477,
+              "prior_margin": 0.3307000056144983,
+              "delta": -0.02795049426055063
+            },
+            "068270": {
+              "latest_margin": 0.29610591878572967,
+              "prior_margin": 0.382975981174122,
+              "delta": -0.08687006238839234
+            },
+            "326030": {
+              "latest_margin": -0.8262820575357103,
+              "prior_margin": -0.75204278321198,
+              "delta": -0.07423927432373023
+            },
+            "145020": {
+              "latest_margin": 0.3580840332136168,
+              "prior_margin": 0.3533053399024676,
+              "delta": 0.004778693311149218
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "매출 수요 가속 점수 67.8",
+        "긍정 흐름 지속성 43.1",
+        "참여기업 확산도 33.3"
+      ],
+      "invalidations": [
+        "임상 실패율 상승 또는 핵심 파이프라인 중단",
+        "연구개발비 증가가 임상 진척으로 연결되지 않음",
+        "자금조달 환경 악화로 현금소진 위험 상승"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMY",
+      "theme_name": "국방·무인체계",
+      "as_of": "2022-10-31",
+      "stage": "NO_SIGNAL",
+      "boom_score": 38.39,
+      "boom_probability_6m": 0.0541,
+      "boom_probability_12m": 0.1033,
+      "boom_probability_24m": 0.1467,
+      "data_confidence": 100.0,
+      "engines": {
+        "capital_events": {
+          "name": "facility_and_asset_investment",
+          "score": 33.93,
+          "level": 35.54,
+          "velocity": 50.0,
+          "acceleration": 62.7,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              4.0,
+              1.0,
+              2.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "supply_contract_and_orders",
+          "score": 25.84,
+          "level": 30.13,
+          "velocity": 32.38,
+          "acceleration": 32.33,
+          "persistence": 25.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              21.0,
+              1.0,
+              7.0,
+              3.0,
+              15.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 15.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 51.13,
+          "level": 53.62,
+          "velocity": 50.85,
+          "acceleration": 45.04,
+          "persistence": 58.33,
+          "breadth": 50.0,
+          "coverage": 1.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 4,
+            "median_yoy": 0.020782282051980124,
+            "median_acceleration": -0.11249730089008184,
+            "positive_breadth": 0.5
+          },
+          "warnings": []
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 70.19,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 75.0,
+          "coverage": 1.0,
+          "raw": {
+            "012450": {
+              "latest_margin": 0.05786762535548508,
+              "prior_margin": 0.054084688476975444,
+              "delta": 0.0037829368785096337
+            },
+            "047810": {
+              "latest_margin": 0.05636891085353958,
+              "prior_margin": -0.00495512502455093,
+              "delta": 0.06132403587809051
+            },
+            "079550": {
+              "latest_margin": 0.10719872860417755,
+              "prior_margin": 0.056221602383082894,
+              "delta": 0.050977126221094654
+            },
+            "272210": {
+              "latest_margin": 0.033737317435367786,
+              "prior_margin": 0.04360009343441635,
+              "delta": -0.009862775999048563
+            }
+          },
+          "warnings": []
+        }
+      },
+      "top_reasons": [
+        "영업이익률 개선 점수 70.2",
+        "매출 수요 가속 점수 51.1",
+        "시설투자·자산취득 공시 가속 점수 33.9"
+      ],
+      "invalidations": [
+        "정부 확정예산·계약액 감소",
+        "수주잔고 감소와 납품 지연 동시 발생",
+        "무인체계 관련 매출 전환 지연"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 4,
+        "company_coverage": 1.0,
+        "metric_coverage": 1.0,
+        "primary_source": "OpenDART"
+      },
+      "warnings": [
+        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    }
+  ],
+  "ai_theme_rank": 10,
+  "metadata": {
+    "source": "OpenDART",
+    "disclosure_errors": {},
+    "financial_errors": {},
+    "disclosure_company_count": 44
+  }
+}

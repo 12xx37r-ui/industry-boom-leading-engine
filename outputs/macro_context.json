@@ -1,0 +1,13 @@
+{
+  "status": "PARTIAL",
+  "as_of": "2026-08-01",
+  "series": {},
+  "errors": {
+    "industrial_production": "GET failed after 2 attempts: https://api.stlouisfed.org/fred/series/observations: 403 Client Error: Forbidden for url: https://api.stlouisfed.org/fred/series/observations?api_key=277a27af6fb5f8d424e40f669165fc01&file_type=json&series_id=INDPRO&observation_start=2018-01-01&observation_end=2026-08-01&sort_order=asc&realtime_start=2026-08-01&realtime_end=2026-08-01",
+    "durable_goods_new_orders": "GET failed after 2 attempts: https://api.stlouisfed.org/fred/series/observations: 403 Client Error: Forbidden for url: https://api.stlouisfed.org/fred/series/observations?api_key=277a27af6fb5f8d424e40f669165fc01&file_type=json&series_id=DGORDER&observation_start=2018-01-01&observation_end=2026-08-01&sort_order=asc&realtime_start=2026-08-01&realtime_end=2026-08-01",
+    "nondefense_capital_goods_orders_ex_aircraft": "GET failed after 2 attempts: https://api.stlouisfed.org/fred/series/observations: 403 Client Error: Forbidden for url: https://api.stlouisfed.org/fred/series/observations?api_key=277a27af6fb5f8d424e40f669165fc01&file_type=json&series_id=NEWORDER&observation_start=2018-01-01&observation_end=2026-08-01&sort_order=asc&realtime_start=2026-08-01&realtime_end=2026-08-01",
+    "capacity_utilization_total_industry": "GET failed after 2 attempts: https://api.stlouisfed.org/fred/series/observations: 403 Client Error: Forbidden for url: https://api.stlouisfed.org/fred/series/observations?api_key=277a27af6fb5f8d424e40f669165fc01&file_type=json&series_id=TCU&observation_start=2018-01-01&observation_end=2026-08-01&sort_order=asc&realtime_start=2026-08-01&realtime_end=2026-08-01",
+    "business_inventories": "GET failed after 2 attempts: https://api.stlouisfed.org/fred/series/observations: 403 Client Error: Forbidden for url: https://api.stlouisfed.org/fred/series/observations?api_key=277a27af6fb5f8d424e40f669165fc01&file_type=json&series_id=BUSINV&observation_start=2018-01-01&observation_end=2026-08-01&sort_order=asc&realtime_start=2026-08-01&realtime_end=2026-08-01",
+    "manufacturers_inventory_sales_ratio": "GET failed after 2 attempts: https://api.stlouisfed.org/fred/series/observations: 403 Client Error: Forbidden for url: https://api.stlouisfed.org/fred/series/observations?api_key=277a27af6fb5f8d424e40f669165fc01&file_type=json&series_id=ISRATIO&observation_start=2018-01-01&observation_end=2026-08-01&sort_order=asc&realtime_start=2026-08-01&realtime_end=2026-08-01"
+  }
+}
