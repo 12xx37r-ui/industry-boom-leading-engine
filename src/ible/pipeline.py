@@ -27,7 +27,7 @@ from ible.collectors.fred import FredClient
 from ible.collectors.opendart import OpenDartClient
 from ible.collectors.sec import SecClient
 from ible.config import load_yaml
-from ible.http import JsonHttpClient
+from ible.http import JsonHttpClient, redact_text
 
 
 class EnginePipeline:
@@ -48,9 +48,22 @@ class EnginePipeline:
         self.dart = OpenDartClient(os.getenv("OPENDART_API_KEY", ""), self.http) if os.getenv("OPENDART_API_KEY") else None
 
     @staticmethod
+    def _sanitize_payload(value: Any) -> Any:
+        if isinstance(value, dict):
+            return {k: EnginePipeline._sanitize_payload(v) for k, v in value.items()}
+        if isinstance(value, list):
+            return [EnginePipeline._sanitize_payload(v) for v in value]
+        if isinstance(value, tuple):
+            return [EnginePipeline._sanitize_payload(v) for v in value]
+        if isinstance(value, str):
+            return redact_text(value)
+        return value
+
+    @staticmethod
     def _write_json(path: Path, payload: Any) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        safe_payload = EnginePipeline._sanitize_payload(payload)
+        path.write_text(json.dumps(safe_payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
     def _fetch_companyfacts_optional(self, enabled: bool) -> tuple[dict[str, dict[str, Any]], dict[str, str], str]:
         if not enabled:
@@ -223,8 +236,10 @@ class EnginePipeline:
                 }
             except Exception as exc:
                 output["errors"][item["name"]] = str(exc)
-        if output["errors"]:
+        if output["errors"] and output["series"]:
             output["status"] = "PARTIAL"
+        elif output["errors"] and not output["series"]:
+            output["status"] = "ERROR"
         return output
 
     def bea_health(self) -> dict[str, Any]:
@@ -232,7 +247,18 @@ class EnginePipeline:
             return {"status": "SKIPPED", "reason": "BEA_API_KEY missing"}
         try:
             payload = self.bea.dataset_list()
-            datasets = payload.get("BEAAPI", {}).get("Results", {}).get("Dataset", [])
+            results = payload.get("BEAAPI", {}).get("Results", {})
+            error = results.get("Error") if isinstance(results, dict) else None
+            datasets = results.get("Dataset", []) if isinstance(results, dict) else []
+            if isinstance(datasets, dict):
+                datasets = [datasets]
+            if error or not datasets:
+                return {
+                    "status": "ERROR",
+                    "dataset_count": 0,
+                    "datasets": [],
+                    "error": error or "BEA returned no dataset list",
+                }
             return {
                 "status": "CONNECTED",
                 "dataset_count": len(datasets),
@@ -277,6 +303,33 @@ class EnginePipeline:
             },
         )
 
+        ai_rank = next((index + 1 for index, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
+        ai_row = next((row for row in replay if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
+        validation_passed = bool(ai_rank is not None and ai_rank <= 3 and ai_row and ai_row.get("boom_score", 0) >= 67)
+        model_validation = {
+            "status": "PASSED" if validation_passed else "FAILED",
+            "investment_use_allowed": False,
+            "reason": (
+                "AI 재현이 사전 기준을 통과했습니다. 추가 성공·실패 산업 워크포워드 검증이 필요합니다."
+                if validation_passed else
+                "2022-10-31 AI 재현이 상위 3위 및 67점 기준을 통과하지 못했습니다. 현재 순위는 투자판정에 사용할 수 없습니다."
+            ),
+            "criteria": {"ai_rank_max": 3, "ai_score_min": 67, "additional_backtests_required": True},
+            "observed": {
+                "ai_rank": ai_rank,
+                "ai_score": ai_row.get("boom_score") if ai_row else None,
+                "theme_count": len(replay),
+            },
+            "known_design_gaps": [
+                "시설투자·공급계약의 금액이 아니라 공시 건수를 사용합니다.",
+                "산업별 한국 대표기업이 4개뿐이라 확산도를 제대로 측정하지 못합니다.",
+                "미국 원천수요·빅테크 CAPEX·벤처투자·고용·특허·정부지출이 핵심점수에 편입되지 않았습니다.",
+                "사전 정의된 12개 산업만 비교하므로 아무도 모르는 신규 산업을 자동발견하지 못합니다.",
+                "붐 확률은 백테스트로 보정되지 않은 단조 변환값입니다.",
+            ],
+        }
+        self._write_json(outputs / "model_validation.json", model_validation)
+
         facts, sec_errors, sec_status = self._fetch_companyfacts_optional(use_sec)
         if facts:
             self._write_json(outputs / "sec_supplemental_ranking.json", self.score_sec_as_of(current_as_of, facts))
@@ -288,7 +341,7 @@ class EnginePipeline:
         bea = self.bea_health()
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.1.3",
+            "engine_version": "0.1.4",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
@@ -299,7 +352,9 @@ class EnginePipeline:
             },
             "limitations": [
                 "현재 GitHub 호스팅 러너에서 SEC가 HTTP 403을 반환하므로 OpenDART 한국 공급망 지표가 핵심 계산원입니다.",
-                "V0.1.3은 사전 정의된 산업을 순위화하며 완전한 신규 산업 자동발견 기능은 아직 포함하지 않습니다.",
+                "V0.1.4는 보안·검증 안전판 버전이며 현재 순위는 투자판정에 사용할 수 없습니다.",
+                "사전 정의된 산업을 순위화하며 완전한 신규 산업 자동발견 기능은 아직 포함하지 않습니다.",
+                "시설투자·수주 공시는 금액이 아닌 건수 프록시입니다.",
                 "붐 확률은 초기 점수 변환값이며 성공·실패 산업 워크포워드 백테스트로 보정해야 합니다.",
             ],
         }
@@ -315,7 +370,9 @@ class EnginePipeline:
                     "macro_context.json",
                     "korea_corroboration.json",
                     "engine_health.json",
+                    "model_validation.json",
                 ],
+                "model_validation": model_validation,
                 "current_top5": [
                     {"rank": i + 1, "theme_id": row["theme_id"], "name": row["theme_name"], "score": row["boom_score"]}
                     for i, row in enumerate(current[:5])

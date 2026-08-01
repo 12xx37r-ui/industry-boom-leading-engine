@@ -1,8 +1,16 @@
-# Industry Boom Leading Engine v0.1.3
+# Industry Boom Leading Engine v0.1.4
 
 GitHub Actions에서 계산하고 Google Apps Script는 결과 JSON을 표시하는 산업 붐 선행예측 엔진입니다.
 
-## v0.1.3 핵심 변경
+## 긴급 보안 원칙
+
+- API 오류 URL과 JSON에는 인증키를 절대 기록하지 않습니다.
+- `src/ible/http.py`와 JSON 출력 단계에서 `api_key`, `UserID`, `crtfc_key`, token 계열을 자동 마스킹합니다.
+- 과거 V0.1.3 결과물에 FRED 키가 노출됐다면 해당 키를 폐기하고 새 키로 교체해야 합니다.
+- `model_validation.json`이 `PASSED`가 아니면 현재 산업 순위를 투자판정에 사용하지 않습니다.
+
+
+## v0.1.4 핵심 변경
 
 GitHub 호스팅 러너의 공용 IP가 SEC `data.sec.gov`에서 HTTP 403으로 차단되는 환경에서도 실행이 중단되지 않습니다.
 

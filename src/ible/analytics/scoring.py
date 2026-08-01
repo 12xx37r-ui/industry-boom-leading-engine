@@ -241,7 +241,10 @@ def build_dart_theme_result(
         [capital.coverage, contracts.coverage, demand.coverage, margin.coverage],
         0.0,
     )
-    confidence = clamp(100.0 * (0.60 * coverage + 0.40 * metric_coverage))
+    # This version uses one country, one primary source and four hand-picked companies per theme.
+    # Coverage is not predictive confidence. Cap confidence until independent sources and wider breadth are integrated.
+    raw_coverage_confidence = clamp(100.0 * (0.60 * coverage + 0.40 * metric_coverage))
+    confidence = min(55.0, raw_coverage_confidence)
     stage = stage_for(boom_score, confidence, persistence_engine, breadth_engine)
     reasons = [
         (capital.score, f"시설투자·자산취득 공시 가속 점수 {capital.score:.1f}"),
@@ -252,7 +255,8 @@ def build_dart_theme_result(
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "SEC가 GitHub 호스팅 러너에서 차단되어 이번 판정은 OpenDART 한국 공급망 신호를 중심으로 계산했습니다."
+        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다."
     ]
     for signal in signals.values():
         warnings.extend(signal.warnings)

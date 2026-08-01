@@ -2,16 +2,56 @@ from __future__ import annotations
 
 import json
 import random
+import re
 import threading
 import time
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
 
 
 class HttpError(RuntimeError):
     pass
+
+
+_SECRET_KEYS = {
+    "api_key", "apikey", "user_id", "userid", "crtfc_key", "access_token",
+    "token", "secret", "client_secret", "authorization", "auth",
+}
+_SECRET_RE = re.compile(
+    r"(?i)(api_key|apikey|user_id|userid|crtfc_key|access_token|token|secret|client_secret|authorization|auth)"
+    r"([=:][^&\s\"']+)"
+)
+
+
+def _is_secret_key(key: str) -> bool:
+    normalized = key.strip().lower().replace("-", "_")
+    return normalized in _SECRET_KEYS or normalized.endswith("_key") or normalized.endswith("_token")
+
+
+def redact_text(value: str) -> str:
+    """Remove credential-like values from arbitrary error text."""
+    if not value:
+        return value
+    redacted = _SECRET_RE.sub(lambda m: f"{m.group(1)}=<redacted>", value)
+    try:
+        parts = urlsplit(redacted)
+        if parts.scheme and parts.netloc and parts.query:
+            safe_query = [(k, "<redacted>" if _is_secret_key(k) else v) for k, v in parse_qsl(parts.query, keep_blank_values=True)]
+            redacted = urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(safe_query), parts.fragment))
+    except Exception:
+        pass
+    return redacted
+
+
+def safe_request_url(url: str, params: dict[str, Any] | None = None) -> str:
+    if not params:
+        return redact_text(url)
+    safe_params = {k: ("<redacted>" if _is_secret_key(k) else v) for k, v in params.items()}
+    separator = "&" if "?" in url else "?"
+    return redact_text(url + separator + urlencode(safe_params, doseq=True))
 
 
 class JsonHttpClient:
@@ -40,7 +80,6 @@ class JsonHttpClient:
 
     @property
     def session(self) -> requests.Session:
-        """Return one requests.Session per worker thread."""
         session = getattr(self._local, "session", None)
         if session is None:
             session = requests.Session()
@@ -70,7 +109,8 @@ class JsonHttpClient:
                 with self._cache_lock, cache_path.open("r", encoding="utf-8") as handle:
                     return json.load(handle)
 
-        last_exc: Exception | None = None
+        last_detail = "unknown error"
+        safe_url = safe_request_url(url, params)
         for attempt in range(self.retries + 1):
             self._wait_for_slot()
             try:
@@ -80,7 +120,7 @@ class JsonHttpClient:
                 response.raise_for_status()
                 payload = response.json()
                 if not isinstance(payload, dict):
-                    raise HttpError(f"Expected JSON object from {url}")
+                    raise HttpError("Expected JSON object")
                 if cache_path:
                     tmp = cache_path.with_suffix(".tmp")
                     with self._cache_lock, tmp.open("w", encoding="utf-8") as handle:
@@ -88,8 +128,9 @@ class JsonHttpClient:
                     tmp.replace(cache_path)
                 return payload
             except (requests.RequestException, ValueError, HttpError) as exc:
-                last_exc = exc
+                status = getattr(getattr(exc, "response", None), "status_code", None)
+                last_detail = f"{exc.__class__.__name__}" + (f" status={status}" if status else "")
                 if attempt >= self.retries:
                     break
                 time.sleep(0.75 * (2**attempt) + random.random() * 0.25)
-        raise HttpError(f"GET failed after {self.retries + 1} attempts: {url}: {last_exc}")
+        raise HttpError(f"GET failed after {self.retries + 1} attempts: {safe_url}: {last_detail}")
