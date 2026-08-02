@@ -198,7 +198,7 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
     )
     summary = run_global_holdout(tmp_path, tmp_path / "outputs")
     assert summary["dataset_gate_passed"] is True
-    assert summary["status"] == "DEVELOPMENT_DIAGNOSTIC_V090"
+    assert summary["status"] == "DEVELOPMENT_DIAGNOSTIC_V091"
     assert len(summary["ranking"]) == 7
 
 

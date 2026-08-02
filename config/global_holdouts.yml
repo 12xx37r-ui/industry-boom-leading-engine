@@ -1,5 +1,5 @@
 version: 2
-benchmark_name: V0.9.0 development diagnostic on V0.8.10 SEC FSDS cohort
+benchmark_name: V0.9.1 development diagnostic on V0.8.10 SEC FSDS cohort
 development_only: true
 cohort:
   as_of: '2022-04-30'

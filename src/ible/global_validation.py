@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import statistics
 from copy import deepcopy
 from pathlib import Path
@@ -19,6 +20,98 @@ from ible.collectors.sec_fsds import METRICS, SecFsdsClient
 from ible.config import load_yaml
 
 ALERT_STAGES = {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
+
+
+def _balanced_adoption_layer(
+    capex_score: float,
+    rd_score: float,
+    revenue_score: float,
+    operating_score: float,
+    research_score: float,
+    economic_scale_score: float,
+    capital_without_demand_gap: float,
+) -> dict[str, Any]:
+    """Balance capital formation with durable commercial demand.
+
+    A boom precursor should not be rewarded merely because CAPEX/R&D/research are
+    high.  The capital side and the demand/viability side must both be present.
+    The harmonic mean makes the weaker side binding, while explicit low-viability
+    and low-scale penalties suppress capital-only bubbles.
+    """
+    capital_commitment = (
+        0.45 * float(capex_score)
+        + 0.30 * float(rd_score)
+        + 0.25 * float(research_score)
+    )
+    demand_durability = (
+        0.45 * float(revenue_score)
+        + 0.30 * float(operating_score)
+        + 0.25 * float(economic_scale_score)
+    )
+    balanced_raw = harmonic_mean([capital_commitment, demand_durability])
+    viability_penalty = 0.50 * max(0.0, 45.0 - float(operating_score))
+    scale_penalty = 0.20 * max(0.0, 45.0 - float(economic_scale_score))
+    imbalance_penalty = 0.40 * max(0.0, float(capital_without_demand_gap) - 5.0)
+    quality_raw = clamp(
+        balanced_raw - viability_penalty - scale_penalty - imbalance_penalty
+    )
+    # Smoothly map the balanced 0-100 diagnostic around a neutral raw value of 45.
+    quality_score = clamp(100.0 / (1.0 + math.exp(-(quality_raw - 45.0) / 7.0)))
+
+    pathways: list[str] = []
+    if (
+        capex_score >= 58.0
+        and operating_score >= 48.0
+        and revenue_score >= 42.0
+        and economic_scale_score >= 45.0
+    ):
+        pathways.append("INFRASTRUCTURE_CAPITAL")
+    if (
+        revenue_score >= 50.0
+        and operating_score >= 48.0
+        and economic_scale_score >= 40.0
+    ):
+        pathways.append("DEMAND_DURABILITY")
+    if (
+        rd_score >= 62.0
+        and research_score >= 50.0
+        and revenue_score >= 45.0
+        and operating_score >= 42.0
+        and economic_scale_score >= 50.0
+    ):
+        pathways.append("INNOVATION_SCALE")
+
+    return {
+        "capital_commitment": clamp(capital_commitment),
+        "demand_durability": clamp(demand_durability),
+        "balanced_raw": clamp(balanced_raw),
+        "quality_raw": quality_raw,
+        "quality_score": quality_score,
+        "viability_penalty": viability_penalty,
+        "scale_penalty": scale_penalty,
+        "imbalance_penalty": imbalance_penalty,
+        "confirmed_pathways": pathways,
+    }
+
+
+def _balanced_stage(
+    score: float,
+    confidence: float,
+    confirmed_pathways: list[str],
+    commercial: float,
+    revenue_score: float,
+) -> str:
+    if confidence < 45.0:
+        return "INSUFFICIENT_DATA"
+    if not confirmed_pathways:
+        return "WATCH" if score >= 53.0 else "NO_SIGNAL"
+    if commercial >= 68.0 and revenue_score >= 58.0:
+        return "COMMERCIAL_BOOM"
+    if score >= 68.0:
+        return "EARLY_ACCUMULATION"
+    if score >= 58.0:
+        return "CAPITAL_LED_ACCUMULATION"
+    return "WATCH" if score >= 53.0 else "NO_SIGNAL"
 
 
 def _stage(
@@ -110,6 +203,15 @@ def _theme_result(
     average_scale_score = statistics.mean(scale_scores) if scale_scores else 0.0
     low_scale_penalty = 0.22 * max(0.0, 42.0 - average_scale_score)
     speculative_penalty = capital_without_demand_penalty + operating_burn_penalty + low_scale_penalty
+    balanced_adoption = _balanced_adoption_layer(
+        capex.score,
+        rd.score,
+        revenue.score,
+        operating.score,
+        research.score,
+        average_scale_score,
+        capital_without_demand_gap,
+    )
     exposure_coverage = statistics.mean([capex.coverage, rd.coverage, revenue.coverage])
     eligible_weights = [
         effective_weight(profile)
@@ -122,7 +224,7 @@ def _theme_result(
         else 0.0
     )
     coverage_penalty = max(0.0, 0.60 - exposure_coverage) * 30.0
-    boom_score = clamp(
+    legacy_boom_score = clamp(
         0.60 * raw_early
         + 0.22 * cross
         + 0.18 * commercial
@@ -130,6 +232,7 @@ def _theme_result(
         - speculative_penalty
         - coverage_penalty
     )
+    boom_score = clamp(float(balanced_adoption["quality_score"]) - coverage_penalty)
     confidence = clamp(
         100.0
         * (
@@ -138,15 +241,12 @@ def _theme_result(
             + 0.20 * exposure_quality / 100.0
         )
     )
-    stage = _stage(
+    stage = _balanced_stage(
         boom_score,
         confidence,
-        cross,
+        list(balanced_adoption["confirmed_pathways"]),
         commercial,
         revenue.score,
-        revenue.breadth,
-        rd.score,
-        operating.score,
     )
     usable = sum(
         1
@@ -154,7 +254,8 @@ def _theme_result(
         if len(series["revenue"].get(ticker, [])) >= 5
         or len(series["capex"].get(ticker, [])) >= 5
     )
-    early = clamp(raw_early - hype_penalty - speculative_penalty - coverage_penalty)
+    legacy_early = clamp(raw_early - hype_penalty - speculative_penalty - coverage_penalty)
+    early = clamp(0.65 * boom_score + 0.35 * legacy_early)
 
     return {
         "theme_id": theme["id"],
@@ -187,6 +288,7 @@ def _theme_result(
             f"기술·기업 R&D 결합 {innovation:.1f}",
             f"영업생존력 {operating.score:.1f}",
             f"독립신호 교차확인 {cross:.1f}",
+            f"자본-수요 균형점수 {boom_score:.1f}",
         ],
         "invalidations": theme.get("invalidations", []),
         "coverage": {
@@ -210,6 +312,17 @@ def _theme_result(
             "speculative_penalty": round(speculative_penalty, 2),
             "coverage_penalty": round(coverage_penalty, 2),
             "evaluation_class": theme.get("evaluation_class", "structural"),
+            "legacy_boom_score": round(legacy_boom_score, 2),
+            "legacy_early_signal_score": round(legacy_early, 2),
+            "capital_commitment_score": round(float(balanced_adoption["capital_commitment"]), 2),
+            "demand_durability_score": round(float(balanced_adoption["demand_durability"]), 2),
+            "balanced_adoption_raw": round(float(balanced_adoption["balanced_raw"]), 2),
+            "balanced_adoption_quality_raw": round(float(balanced_adoption["quality_raw"]), 2),
+            "balanced_adoption_score": round(float(balanced_adoption["quality_score"]), 2),
+            "balanced_viability_penalty": round(float(balanced_adoption["viability_penalty"]), 2),
+            "balanced_scale_penalty": round(float(balanced_adoption["scale_penalty"]), 2),
+            "balanced_imbalance_penalty": round(float(balanced_adoption["imbalance_penalty"]), 2),
+            "confirmed_pathways": list(balanced_adoption["confirmed_pathways"]),
         },
         "warnings": [
             warning
@@ -367,15 +480,15 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         and auc >= 0.70
     )
     if not dataset_gate_passed or not eligible:
-        run_status = "INSUFFICIENT_V090_DEVELOPMENT_DIAGNOSTIC"
+        run_status = "INSUFFICIENT_V091_DEVELOPMENT_DIAGNOSTIC"
     else:
-        run_status = "DEVELOPMENT_DIAGNOSTIC_V090"
+        run_status = "DEVELOPMENT_DIAGNOSTIC_V091"
 
     summary = {
         "status": run_status,
         "investment_use_allowed": False,
-        "validation_role": "development_diagnostic_after_v0.8.10_failure_analysis",
-        "model_version": "0.9.0",
+        "validation_role": "development_diagnostic_balanced_capital_demand_layer",
+        "model_version": "0.9.1",
         "seed_compatibility": "v0.8.10_schema5",
         "financial_source": "offline_sec_fsds_plus_arxiv_seed",
         "dataset_gate_passed": dataset_gate_passed,
@@ -406,8 +519,8 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             "당시 상장·공시 이력이 없는 현재 기업은 역사적 분모에서 제외합니다.",
             "테마 노출도는 보수적 수동 프로필이며 사업부 매출 공시로 계속 갱신해야 합니다.",
             "시장 미반영도와 실제 주가수익 백테스트는 아직 포함되지 않았습니다.",
-            "V0.9.0은 V0.8.10 실패 결과를 본 뒤 만든 개발진단 모델이므로 같은 코호트의 성능을 일반화 검증으로 간주하지 않습니다.",
-            "다음 공식 홀드아웃에서는 이 점수파일을 동결하고 새로운 시점·산업을 사용해야 합니다.",
+            "V0.9.1은 V0.9.0 진단 결과를 본 뒤 자본-수요 균형층을 추가한 개발진단 모델이므로 같은 코호트 성능을 일반화 검증으로 간주하지 않습니다.",
+            "다음 공식 홀드아웃에서는 V0.9.1 점수파일을 동결하고 새로운 시점·산업을 사용해야 합니다.",
         ],
     }
     output_dir.mkdir(parents=True, exist_ok=True)
