@@ -1,49 +1,47 @@
-# 산업 붐 선행예측 엔진 V5.1 — 역사 워크포워드 감사 + 미래 자동검증
+# 산업 붐 선행예측 엔진 V6.0 — Champion–Challenger
 
-## 이번 단계의 목적
+## 이번 버전의 목적
 
-V5.0의 월별 미래검증을 유지하면서, 기다리지 않고 과거 성능을 먼저 재감사합니다.
+V5.1 감사에서 확인된 문제는 **오경보율 0%를 유지했지만 성공산업 재현율이 33.33%에 그쳤다는 것**입니다.
 
-- 기존 역사 벤치마크: 7개 기준일
-- V1.1 봉인 블라인드 테마·날짜 사례: 8개
-- V0.9.1 계산식: 변경 없이 SHA-256 잠금
-- 역사 seed: 개별 SHA-256 봉인
-- 미래 검증: 기존 월별 불변 스냅샷과 6·12·24개월 자동평가 유지
+V6.0은 기존 V0.9.1을 수정하지 않습니다.
 
-## 중요한 사실
+- **Champion:** V0.9.1 완전 동결·현행 유지
+- **Challenger:** `WATCH` 단계 중 정량 확인이 강한 사례만 추가 경보
+- **사용 상태:** 연구용 Shadow only
+- **자동 승격:** 금지
+- **투자 사용:** 금지
 
-이 버전은 과거 결과를 좋게 보이도록 자동 통과시키지 않습니다. 기존 7개 벤치마크의 성공산업 재현율이 기준보다 낮으면 `RECALL_GAP`으로 정확히 표시합니다.
+## Challenger 정책
 
-또한 기존 7개와 V1.1 8개는 신규 외부 데이터가 아니므로 `external_independence=false`, `investment_use_allowed=false`를 유지합니다.
+기존 Champion 경보는 모두 보존합니다. 추가 경보는 아래 조건을 전부 만족할 때만 발생합니다.
 
-완전한 월별 과거 빈티지 데이터가 없기 때문에 7개 기준일 사이를 임의 보간하거나 가짜 월별 결과를 만들지 않습니다.
+- 단계: `WATCH`
+- 순위: 4위 이내
+- Boom score: 58.0 이상
+- Early signal score: 57.5 이상
+- 데이터 신뢰도: 60 이상
 
-## 실행할 워크플로 하나
+이 정책은 V5.1 진단 뒤 만들어졌으므로 같은 역사자료에서 성적이 좋아져도 외부 독립검증으로 간주하지 않습니다.
 
-GitHub Actions에서 다음만 실행합니다.
+## 실행
 
-**`00 - RUN THIS ONLY - Industry Boom V5.1 Historical + Prospective Validator`**
+GitHub Actions에서 아래 워크플로만 실행합니다.
 
-`run_date`는 비워 둡니다. 첫 실행 이후 매주 월요일 자동 실행됩니다.
+`00 - RUN THIS ONLY - Industry Boom V6.0 Champion Challenger`
 
-## 생성 Artifact
+`run_date`는 일반 실행 시 비워둡니다.
 
-`industry-boom-v5.1-historical-prospective-result`
+## 예상 연구 비교 결과
 
-핵심 결과:
+- 역사 벤치마크 Champion 재현율: 33.33%
+- 역사 벤치마크 Challenger 재현율: 66.67%
+- 봉인 홀드아웃 Champion 재현율: 75%
+- 봉인 홀드아웃 Challenger 재현율: 100%
+- Challenger 오경보율: 0%
 
-- `v51_run_summary.json`
-- `v51_historical_audit.json`
-- `v51_benchmark_scenarios.json`
-- `v51_blind_holdout_cases.json`
-- `v51_dashboard_payload.json`
-- `v51_next_gate.json`
-- 기존 V5.0 미래검증 결과 전체
+단, 동일 증거 재사용이므로 **Champion은 계속 현행 모델로 남고 Challenger는 미래 Shadow 검증만 진행**합니다.
 
-## 금지사항 유지
+## 다음 관문
 
-- BAT/CMD/Colab 없음
-- GitHub에서 SEC/FMP 호출 없음
-- 결과를 보고 V0.9.1 가중치 수정 없음
-- 최종 `boom_score` 임의 생성 없음
-- 100개 이상 파일 배포 금지
+Challenger를 새 월별 시점자료에 동시에 기록하고 6·12·24개월 실제 성과를 Champion과 비교합니다.

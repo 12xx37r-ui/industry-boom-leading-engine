@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "engine_release": "6.0.0-champion-challenger-research",
+  "policy_id": "WATCH_BRIDGE_STRONG_CONFIRMATION_V1",
+  "policy_status": "RESEARCH_CHALLENGER_SHADOW_ONLY",
+  "derived_after_diagnostic": "V5.1 historical recall gap",
+  "champion": {
+    "model_version": "0.9.1",
+    "rule": "기존 V0.9.1 경보 판정을 그대로 사용"
+  },
+  "challenger": {
+    "base_rule": "Champion 경보를 모두 유지",
+    "watch_bridge": {
+      "enabled": true,
+      "required_stage": "WATCH",
+      "rank_max": 4,
+      "boom_score_min": 58.0,
+      "early_signal_score_min": 57.5,
+      "data_confidence_min": 60.0
+    }
+  },
+  "research_gates": {
+    "benchmark_positive_recall_min": 0.6667,
+    "benchmark_false_alarm_rate_max": 0.3333,
+    "benchmark_balanced_score_min": 0.67,
+    "blind_positive_recall_min": 0.75,
+    "blind_false_alarm_rate_max": 0.0,
+    "require_no_false_alarm_increase": true,
+    "require_positive_recall_improvement": true
+  },
+  "promotion_rules": {
+    "automatic_promotion_allowed": false,
+    "reason": "정책은 V5.1 진단 후 같은 역사·봉인 자료를 참고해 만든 연구 후보이므로 외부 독립검증 없이 Champion으로 승격할 수 없습니다.",
+    "required_next_gate": "RUN_CHALLENGER_IN_PROSPECTIVE_SHADOW_AND_COMPARE_6_12_24_MONTH_OUTCOMES"
+  }
+}
