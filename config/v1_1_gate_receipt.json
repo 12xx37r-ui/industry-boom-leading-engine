@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "source_artifact": "industry-boom-v1.1-blind-holdout-result",
+  "source_summary_file": "v1_1_blind_holdout_summary.json",
+  "status": "V1_1_BLIND_THEME_HOLDOUT_PASSED",
+  "model_lock_status": "LOCK_VERIFIED",
+  "frozen_model_version": "0.9.1",
+  "metrics": {
+    "positive_recall": 0.75,
+    "false_alarm_rate": 0.0,
+    "alert_precision": 1.0,
+    "pairwise_auc": 0.9375,
+    "median_successful_lead_months": 9.0
+  },
+  "next_required_gate": "PROSPECTIVE_SHADOW_WINDOW",
+  "investment_use_allowed": false,
+  "receipt_sha256": "31c41b701130879cb161a8caf183d965915513bb56755e415e3417e80ed56904"
+}
