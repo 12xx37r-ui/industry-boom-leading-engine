@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.2.0-github-corporate-investment",
+  "timezone": "Asia/Seoul",
+  "minimum_theme_count": 50,
+  "sources": {
+    "aies_capex": {
+      "name": "US_CENSUS_AIES_CAPEX_2023",
+      "url": "https://www2.census.gov/data/experimental-data-products/capex-aies/capex-estimates-for-2023-aies.xlsx",
+      "bundled_seed": "data_seed/official/aies_capex_2023.xlsx",
+      "reference_year": 2023,
+      "description": "2023 AIES 미국 산업별 고용주기업 자본지출 실험통계",
+      "official_page": "https://www.census.gov/data/experimental-data-products/capex-aies.html"
+    },
+    "berd_rd": {
+      "name": "NSF_NCSES_BERD_TABLE58_2023",
+      "url": "https://ncses.nsf.gov/pubs/nsf25354/assets/data-tables/tables/nsf25354-tab058.xlsx",
+      "bundled_seed": "data_seed/official/berd_table58_2008_2023.xlsx",
+      "reference_year": 2023,
+      "prior_year": 2022,
+      "description": "미국 기업 국내 R&D 수행액 산업별 2008~2023 시계열",
+      "official_page": "https://ncses.nsf.gov/surveys/business-enterprise-research-development/2023"
+    }
+  },
+  "network": {
+    "timeout_seconds": 45,
+    "max_attempts": 3,
+    "base_backoff_seconds": 2.0,
+    "user_agent": "IndustryBoomLeadingEngine/3.2 public-data-research"
+  },
+  "weights": {
+    "phase2_real_economy": 0.40,
+    "capex_investment": 0.30,
+    "business_rd": 0.30,
+    "capex_scale": 0.80,
+    "capex_reliability": 0.20,
+    "rd_growth": 0.60,
+    "rd_scale": 0.40
+  },
+  "rules": {
+    "prefer_live_download_then_bundled_official_seed": true,
+    "deduplicate_parent_naics_rows": true,
+    "never_convert_phase3_signal_to_frozen_boom_score": true,
+    "investment_use_allowed": false,
+    "missing_source_must_remain_null": true,
+    "aies_2023_is_experimental": true
+  }
+}

@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
-  "engine_release": "3.1.0-github-qcew-real-economy",
-  "file_count": 47,
-  "github_web_upload_limit_guard": 100,
+  "release": "3.2.0-github-corporate-investment",
+  "file_count": 57,
+  "github_web_upload_limit": 100,
   "files": [
     ".github/workflows/run_v2_shadow.yml",
     ".github/workflows/run_v31_real_economy.yml",
+    ".github/workflows/run_v32_investment.yml",
     ".github/workflows/run_v3_data.yml",
     "README.md",
     "config/backtests.yml",
@@ -18,9 +19,13 @@
     "config/v1_1_gate_receipt.json",
     "config/v31_real_economy_sources.json",
     "config/v31_theme_naics.json",
+    "config/v32_investment_sources.json",
     "config/v3_data_sources.json",
     "config/v3_theme_queries.json",
+    "data_cache/latest/v31_real_economy_observations.json",
     "data_cache/latest/v3_source_observations.json",
+    "data_seed/official/aies_capex_2023.xlsx",
+    "data_seed/official/berd_table58_2008_2023.xlsx",
     "google_apps_script/Code.gs",
     "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
@@ -43,6 +48,10 @@
     "src/ible/v31_cli.py",
     "src/ible/v31_engine.py",
     "src/ible/v31_qcew.py",
+    "src/ible/v32_cli.py",
+    "src/ible/v32_engine.py",
+    "src/ible/v32_investment.py",
+    "src/ible/v32_xlsx.py",
     "src/ible/v3_collectors.py",
     "src/ible/v3_data_cli.py",
     "src/ible/v3_data_engine.py",
@@ -50,6 +59,7 @@
     "tests/__init__.py",
     "tests/test_v2_1_release.py",
     "tests/test_v31_release.py",
+    "tests/test_v32_release.py",
     "tests/test_v3_release.py"
   ]
 }
