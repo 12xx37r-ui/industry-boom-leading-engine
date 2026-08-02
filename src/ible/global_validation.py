@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import datetime as dt
 import json
-import os
 import statistics
 from copy import deepcopy
 from pathlib import Path
@@ -16,10 +14,8 @@ from ible.analytics.exposure_scoring import (
 )
 from ible.analytics.scoring import build_research_signal, clamp, probability
 from ible.backtest import evaluate_scenario
-from ible.collectors.arxiv import ArxivClient
 from ible.collectors.sec_fsds import METRICS, SecFsdsClient
 from ible.config import load_yaml
-from ible.http import JsonHttpClient
 
 ALERT_STAGES = {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
 
@@ -169,8 +165,24 @@ def _load_sec_fsds_series(
     root: Path,
     tickers: list[str],
 ) -> tuple[dict[str, dict[str, list[tuple[str, float]]]], dict[str, Any], dict[str, str]]:
-    client = SecFsdsClient(root / ".cache" / "sec_fsds", os.getenv("SEC_USER_AGENT", ""))
+    client = SecFsdsClient(root / ".cache" / "sec_fsds", "offline-seed@example.invalid")
     return client.load_seed(root / "validation_seed" / "sec_fsds_fy2021.json", tickers)
+
+
+def _load_offline_research(root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
+    path = root / "validation_seed" / "sec_fsds_fy2021.json"
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        return {}, {"_seed": f"offline research seed unavailable: {exc}"}
+    research = {
+        str(key): value
+        for key, value in (payload.get("research") or {}).items()
+        if isinstance(value, dict)
+    }
+    status = payload.get("status") or {}
+    errors = {str(key): str(value) for key, value in (status.get("research_errors") or {}).items()}
+    return research, errors
 
 
 def _mark_insufficient(scenario: dict[str, Any], reason: str) -> dict[str, Any]:
@@ -208,32 +220,27 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         and len(financial_status.get("periods_downloaded") or []) == len(financial_status.get("periods_required") or [])
     )
 
-    research: dict[str, dict[str, Any]] = {}
-    research_errors: dict[str, str] = {}
+    research, research_errors = _load_offline_research(root)
+    required_research = {theme["id"] for theme in themes}
+    missing_research = sorted(required_research - set(research))
+    for theme_id in missing_research:
+        research_errors.setdefault(theme_id, "offline arXiv research seed missing")
+    research_gate_passed = len(required_research & set(research)) >= 6
+    dataset_gate_passed = bool(dataset_gate_passed and research_gate_passed)
     if not dataset_gate_passed:
-        for theme in themes:
-            research_errors[theme["id"]] = "skipped because SEC FSDS dataset gate did not pass"
         print(
-            f"[GLOBAL] SEC FSDS gate failed status={financial_status.get('status')} "
-            f"available={financial_status.get('available', 0)}; producing insufficient-data output",
+            f"[GLOBAL] offline seed gate failed status={financial_status.get('status')} "
+            f"available={financial_status.get('available', 0)} "
+            f"research={len(required_research & set(research))}/{len(required_research)}; "
+            "producing insufficient-data output",
             flush=True,
         )
     else:
-        http = JsonHttpClient(
-            user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.6 contact@example.com"),
-            timeout=20,
-            min_interval=3.2,
-            retries=1,
-            cache_dir=root / ".cache" / "http",
+        print(
+            f"[GLOBAL] offline seed ready financial={financial_status.get('available', 0)} "
+            f"research={len(required_research & set(research))}/{len(required_research)}",
+            flush=True,
         )
-        arxiv = ArxivClient(http)
-        cutoff = dt.date.fromisoformat(as_of)
-        for index, theme in enumerate(themes, 1):
-            try:
-                research[theme["id"]] = arxiv.momentum(theme["arxiv_query"], cutoff)
-            except Exception as exc:  # noqa: BLE001
-                research_errors[theme["id"]] = str(exc)
-            print(f"[GLOBAL] arXiv {index}/{len(themes)} errors={len(research_errors)}", flush=True)
 
     ranking = [
         _theme_result(
@@ -285,14 +292,14 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         and auc >= 0.70
     )
     if not dataset_gate_passed or not eligible:
-        run_status = "INSUFFICIENT_V086_GLOBAL_HOLDOUT"
+        run_status = "INSUFFICIENT_V087_GLOBAL_HOLDOUT"
     else:
-        run_status = "PASSED_V086_GLOBAL_HOLDOUT" if passed else "FAILED_V086_GLOBAL_HOLDOUT"
+        run_status = "PASSED_V087_GLOBAL_HOLDOUT" if passed else "FAILED_V087_GLOBAL_HOLDOUT"
 
     summary = {
         "status": run_status,
         "investment_use_allowed": False,
-        "financial_source": "sec_financial_statement_data_sets",
+        "financial_source": "offline_sec_fsds_plus_arxiv_seed",
         "dataset_gate_passed": dataset_gate_passed,
         "metrics": {
             "eligible_scenarios": len(eligible),
@@ -313,8 +320,8 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         "ranking": ranking,
         "scenarios": scenarios,
         "known_limitations": [
-            "SEC Financial Statement Data Sets의 원공시 숫자를 사용하지만 XBRL 태그 선택과 분기값 환산에는 모델링 판단이 포함됩니다.",
-            "2021Q1~2022Q2 제출자료만 사용하고 제출일과 재무기간이 2022-04-30을 넘는 숫자는 제외합니다.",
+            "SEC Financial Statement Data Sets의 원공시 숫자를 로컬에서 추출하지만 XBRL 태그 선택과 분기값 환산에는 모델링 판단이 포함됩니다.",
+            "2021Q1~2022Q2 자료와 2022-04-30 이전 arXiv 시계열을 로컬 seed에 고정해 GitHub 실행 중 외부 API를 호출하지 않습니다.",
             "당시 상장·공시 이력이 없는 현재 기업은 역사적 분모에서 제외합니다.",
             "테마 노출도는 보수적 수동 프로필이며 사업부 매출 공시로 계속 갱신해야 합니다.",
             "시장 미반영도와 실제 주가수익 백테스트는 아직 포함되지 않았습니다.",

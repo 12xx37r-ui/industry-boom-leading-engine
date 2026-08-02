@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.8.7",
+  "cutoff": "2022-04-30",
+  "periods": [
+    "2021q1",
+    "2021q2",
+    "2021q3",
+    "2021q4",
+    "2022q1",
+    "2022q2"
+  ],
+  "source_url_template": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/{period}.zip",
+  "tickers": [
+    {
+      "ticker": "APTV",
+      "cik": "0001521332"
+    },
+    {
+      "ticker": "AVAV",
+      "cik": "0001368622"
+    },
+    {
+      "ticker": "BE",
+      "cik": "0001664703"
+    },
+    {
+      "ticker": "BWXT",
+      "cik": "0001486957"
+    },
+    {
+      "ticker": "CEG",
+      "cik": "0001868275"
+    },
+    {
+      "ticker": "CRWD",
+      "cik": "0001535527"
+    },
+    {
+      "ticker": "DDD",
+      "cik": "0000910638"
+    },
+    {
+      "ticker": "DM",
+      "cik": "0001754820"
+    },
+    {
+      "ticker": "ETN",
+      "cik": "0001551182"
+    },
+    {
+      "ticker": "FCEL",
+      "cik": "0000886128"
+    },
+    {
+      "ticker": "FTNT",
+      "cik": "0001262039"
+    },
+    {
+      "ticker": "GD",
+      "cik": "0000040533"
+    },
+    {
+      "ticker": "GEV",
+      "cik": "0001996810"
+    },
+    {
+      "ticker": "HII",
+      "cik": "0001501585"
+    },
+    {
+      "ticker": "HUBB",
+      "cik": "0000048898"
+    },
+    {
+      "ticker": "INVZ",
+      "cik": "0001835654"
+    },
+    {
+      "ticker": "KTOS",
+      "cik": "0001069258"
+    },
+    {
+      "ticker": "LAZR",
+      "cik": "0001758057"
+    },
+    {
+      "ticker": "LEU",
+      "cik": "0001065059"
+    },
+    {
+      "ticker": "LHX",
+      "cik": "0000202058"
+    },
+    {
+      "ticker": "LMT",
+      "cik": "0000936468"
+    },
+    {
+      "ticker": "MBLY",
+      "cik": "0001910139"
+    },
+    {
+      "ticker": "NET",
+      "cik": "0001477333"
+    },
+    {
+      "ticker": "NOC",
+      "cik": "0001133421"
+    },
+    {
+      "ticker": "NVT",
+      "cik": "0001720635"
+    },
+    {
+      "ticker": "OKTA",
+      "cik": "0001660134"
+    },
+    {
+      "ticker": "PANW",
+      "cik": "0001327567"
+    },
+    {
+      "ticker": "PLUG",
+      "cik": "0001093691"
+    },
+    {
+      "ticker": "POWL",
+      "cik": "0000080420"
+    },
+    {
+      "ticker": "RTX",
+      "cik": "0000101829"
+    },
+    {
+      "ticker": "S",
+      "cik": "0001583708"
+    },
+    {
+      "ticker": "SSYS",
+      "cik": "0001517396"
+    },
+    {
+      "ticker": "TENB",
+      "cik": "0001660280"
+    },
+    {
+      "ticker": "VLD",
+      "cik": "0001825079"
+    },
+    {
+      "ticker": "VRT",
+      "cik": "0001674101"
+    },
+    {
+      "ticker": "VST",
+      "cik": "0001692819"
+    },
+    {
+      "ticker": "ZS",
+      "cik": "0001713683"
+    }
+  ],
+  "research": [
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "query": "(all:\"power grid\" OR all:\"grid modernization\" OR all:\"high voltage transformer\")"
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMY",
+      "query": "(all:\"unmanned aerial vehicle\" OR all:\"autonomous defense\" OR all:\"military robotics\")"
+    },
+    {
+      "theme_id": "NUCLEAR_FIRM_POWER",
+      "query": "(all:\"small modular reactor\" OR all:\"nuclear energy\" OR all:\"nuclear fuel\")"
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "query": "(all:\"cybersecurity\" OR all:\"zero trust\" OR all:\"ransomware detection\")"
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "query": "(all:\"autonomous driving\" OR all:\"self driving vehicle\" OR all:\"lidar perception\")"
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "query": "(all:\"additive manufacturing\" OR all:\"3d printing\" OR all:\"metal printing\")"
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "query": "(all:\"green hydrogen\" OR all:\"fuel cell\" OR all:\"hydrogen economy\")"
+    }
+  ],
+  "minimum_financial_coverage": 0.75,
+  "minimum_available_companies": 20,
+  "minimum_research_themes": 6
+}

@@ -157,6 +157,11 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
         }
         for metric in ("capex", "rd", "revenue", "gross_profit", "operating_income")
     }
+    theme_ids = list(holdout["cohort"]["theme_ids"])
+    research = {
+        theme_id: {"counts": {"recent": 120, "prior": 90, "older": 70}}
+        for theme_id in theme_ids
+    }
     status = {
         "status": "READY",
         "requested": len(tickers),
@@ -167,6 +172,9 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
         "coverage_of_historically_eligible": 1.0,
         "periods_required": ["x"],
         "periods_downloaded": ["x"],
+        "research_required": len(theme_ids),
+        "research_available": len(theme_ids),
+        "research_errors": {},
         "company_status": {ticker: {"usable": True} for ticker in tickers},
     }
     seed = {
@@ -177,6 +185,7 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
         "status": status,
         "series": series,
         "tags_used": {},
+        "research": research,
     }
     seed_dir = tmp_path / "validation_seed"
     seed_dir.mkdir()
@@ -189,5 +198,5 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
     )
     summary = run_global_holdout(tmp_path, tmp_path / "outputs")
     assert summary["dataset_gate_passed"] is True
-    assert summary["status"] in {"PASSED_V086_GLOBAL_HOLDOUT", "FAILED_V086_GLOBAL_HOLDOUT"}
+    assert summary["status"] in {"PASSED_V087_GLOBAL_HOLDOUT", "FAILED_V087_GLOBAL_HOLDOUT"}
     assert len(summary["ranking"]) == 7
