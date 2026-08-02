@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "engine_release": "3.0.1-github-live-data-phase1",
-  "file_count": 39,
+  "engine_release": "3.1.0-github-qcew-real-economy",
+  "file_count": 47,
   "github_web_upload_limit_guard": 100,
   "files": [
     ".github/workflows/run_v2_shadow.yml",
+    ".github/workflows/run_v31_real_economy.yml",
     ".github/workflows/run_v3_data.yml",
     "README.md",
     "config/backtests.yml",
@@ -15,8 +16,11 @@
     "config/theme_exposures.yml",
     "config/theme_universe.json",
     "config/v1_1_gate_receipt.json",
+    "config/v31_real_economy_sources.json",
+    "config/v31_theme_naics.json",
     "config/v3_data_sources.json",
     "config/v3_theme_queries.json",
+    "data_cache/latest/v3_source_observations.json",
     "google_apps_script/Code.gs",
     "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
@@ -36,12 +40,16 @@
     "src/ible/shadow.py",
     "src/ible/shadow_cli.py",
     "src/ible/universe.py",
+    "src/ible/v31_cli.py",
+    "src/ible/v31_engine.py",
+    "src/ible/v31_qcew.py",
     "src/ible/v3_collectors.py",
     "src/ible/v3_data_cli.py",
     "src/ible/v3_data_engine.py",
     "src/ible/v3_http.py",
     "tests/__init__.py",
     "tests/test_v2_1_release.py",
+    "tests/test_v31_release.py",
     "tests/test_v3_release.py"
   ]
 }

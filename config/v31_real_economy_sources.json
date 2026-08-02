@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.1.0-github-qcew-real-economy",
+  "timezone": "Asia/Seoul",
+  "minimum_theme_count": 50,
+  "source": {
+    "name": "BLS_QCEW",
+    "base_url_template": "https://data.bls.gov/cew/data/api/{year}/{quarter}/area/US000.csv",
+    "source_family": "US_PRIVATE_EMPLOYMENT_ESTABLISHMENTS_WAGES",
+    "ownership_code": "5",
+    "area_fips": "US000",
+    "maximum_quarter_probes": 10,
+    "description": "미국 민간 산업별 고용·사업체·임금 분기 자료"
+  },
+  "network": {
+    "timeout_seconds": 35,
+    "max_attempts": 3,
+    "base_backoff_seconds": 2.0,
+    "user_agent": "IndustryBoomLeadingEngine/3.1 contact=public-data-research",
+    "minimum_valid_csv_rows": 100
+  },
+  "weights": {
+    "employment_growth": 0.45,
+    "establishment_growth": 0.25,
+    "wage_growth": 0.20,
+    "employment_scale": 0.10,
+    "phase1_public_signal": 0.45,
+    "qcew_real_economy_signal": 0.55
+  },
+  "rules": {
+    "use_national_private_ownership_only": true,
+    "never_convert_phase2_signal_to_frozen_boom_score": true,
+    "investment_use_allowed": false,
+    "missing_source_must_remain_null": true
+  }
+}
