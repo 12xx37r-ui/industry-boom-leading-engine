@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "universe_version": "2026.08-50T",
+  "theme_count": 50,
+  "themes": [
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "openalex_search": "AI semiconductor accelerators",
+      "usaspending_keywords": [
+        "AI semiconductor accelerator"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "openalex_search": "high bandwidth memory advanced semiconductor packaging",
+      "usaspending_keywords": [
+        "high bandwidth memory semiconductor packaging"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "openalex_search": "data center infrastructure power cooling",
+      "usaspending_keywords": [
+        "data center infrastructure"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "openalex_search": "semiconductor manufacturing equipment",
+      "usaspending_keywords": [
+        "semiconductor manufacturing equipment"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "openalex_search": "power semiconductors silicon carbide gallium nitride",
+      "usaspending_keywords": [
+        "power semiconductor silicon carbide"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "openalex_search": "edge artificial intelligence inference",
+      "usaspending_keywords": [
+        "edge artificial intelligence"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "openalex_search": "silicon photonics optical interconnect",
+      "usaspending_keywords": [
+        "silicon photonics optical interconnect"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 3,
+      "openalex_search": "quantum computing",
+      "usaspending_keywords": [
+        "quantum computing"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "openalex_search": "cloud computing infrastructure",
+      "usaspending_keywords": [
+        "cloud computing infrastructure"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "openalex_search": "cybersecurity zero trust ransomware",
+      "usaspending_keywords": [
+        "cybersecurity zero trust"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "openalex_search": "electric grid modernization transmission electrification",
+      "usaspending_keywords": [
+        "electric grid modernization transmission"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "openalex_search": "grid energy storage battery storage",
+      "usaspending_keywords": [
+        "grid energy storage"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "openalex_search": "nuclear energy reactor technology",
+      "usaspending_keywords": [
+        "nuclear energy reactor"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "openalex_search": "small modular reactor microreactor",
+      "usaspending_keywords": [
+        "small modular reactor"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "openalex_search": "green hydrogen electrolyzer fuel cell",
+      "usaspending_keywords": [
+        "hydrogen electrolyzer fuel cell"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "openalex_search": "carbon capture utilization storage",
+      "usaspending_keywords": [
+        "carbon capture storage"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "openalex_search": "solar photovoltaic manufacturing",
+      "usaspending_keywords": [
+        "solar photovoltaic"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "openalex_search": "offshore wind energy",
+      "usaspending_keywords": [
+        "offshore wind"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "data_build_priority": 3,
+      "openalex_search": "enhanced geothermal systems",
+      "usaspending_keywords": [
+        "geothermal energy"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "openalex_search": "liquefied natural gas infrastructure",
+      "usaspending_keywords": [
+        "liquefied natural gas infrastructure"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "openalex_search": "industrial robotics automation",
+      "usaspending_keywords": [
+        "industrial robotics automation"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "openalex_search": "humanoid robots embodied artificial intelligence",
+      "usaspending_keywords": [
+        "humanoid robot"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "openalex_search": "smart factory industrial internet",
+      "usaspending_keywords": [
+        "smart factory industrial internet"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "openalex_search": "warehouse logistics automation robotics",
+      "usaspending_keywords": [
+        "warehouse logistics automation"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 3,
+      "openalex_search": "construction robotics automation",
+      "usaspending_keywords": [
+        "construction robotics automation"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "openalex_search": "additive manufacturing 3D printing",
+      "usaspending_keywords": [
+        "additive manufacturing 3D printing"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "openalex_search": "autonomous driving advanced driver assistance",
+      "usaspending_keywords": [
+        "autonomous driving vehicle"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "openalex_search": "defense autonomous systems unmanned military",
+      "usaspending_keywords": [
+        "autonomous unmanned defense system"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "openalex_search": "commercial drones unmanned aerial systems",
+      "usaspending_keywords": [
+        "commercial drone unmanned aerial"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "openalex_search": "commercial space satellite launch",
+      "usaspending_keywords": [
+        "commercial space satellite launch"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "openalex_search": "autonomous ships maritime unmanned systems",
+      "usaspending_keywords": [
+        "autonomous maritime unmanned"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 3,
+      "openalex_search": "rail modernization signaling high speed rail",
+      "usaspending_keywords": [
+        "rail modernization signaling"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "openalex_search": "artificial intelligence drug discovery",
+      "usaspending_keywords": [
+        "AI drug discovery"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "openalex_search": "gene therapy cell therapy",
+      "usaspending_keywords": [
+        "gene therapy cell therapy"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "openalex_search": "precision oncology targeted cancer therapy",
+      "usaspending_keywords": [
+        "precision oncology"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "openalex_search": "obesity metabolic disease therapeutics GLP-1",
+      "usaspending_keywords": [
+        "obesity metabolic disease treatment"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "openalex_search": "robotic surgery surgical robotics",
+      "usaspending_keywords": [
+        "surgical robotics"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "openalex_search": "liquid biopsy advanced molecular diagnostics",
+      "usaspending_keywords": [
+        "liquid biopsy molecular diagnostics"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "openalex_search": "synthetic biology biomanufacturing",
+      "usaspending_keywords": [
+        "synthetic biology biomanufacturing"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 3,
+      "openalex_search": "longevity aging therapeutics geroscience",
+      "usaspending_keywords": [
+        "longevity aging therapeutics"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "openalex_search": "critical minerals supply chain",
+      "usaspending_keywords": [
+        "critical minerals supply chain"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "openalex_search": "copper supply mining infrastructure",
+      "usaspending_keywords": [
+        "copper supply infrastructure"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "openalex_search": "rare earth elements supply chain",
+      "usaspending_keywords": [
+        "rare earth supply chain"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "openalex_search": "lithium ion battery recycling",
+      "usaspending_keywords": [
+        "battery recycling lithium ion"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "openalex_search": "advanced materials nanomaterials composites",
+      "usaspending_keywords": [
+        "advanced materials composites"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "openalex_search": "water infrastructure treatment desalination",
+      "usaspending_keywords": [
+        "water infrastructure treatment"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "openalex_search": "agricultural technology food technology precision agriculture",
+      "usaspending_keywords": [
+        "precision agriculture food technology"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "openalex_search": "heat pumps building energy efficiency",
+      "usaspending_keywords": [
+        "heat pump energy efficiency"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "data_build_priority": 2,
+      "openalex_search": "digital identity authentication biometrics",
+      "usaspending_keywords": [
+        "digital identity authentication"
+      ],
+      "query_version": "2026.08.02-v1"
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "data_build_priority": 3,
+      "openalex_search": "financial technology payments infrastructure",
+      "usaspending_keywords": [
+        "financial technology payments infrastructure"
+      ],
+      "query_version": "2026.08.02-v1"
+    }
+  ]
+}

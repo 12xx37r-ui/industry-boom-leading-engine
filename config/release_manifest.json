@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "engine_release": "2.1.0-github-50theme-expansion",
-  "file_count": 31,
+  "engine_release": "3.0.0-github-live-data-phase1",
+  "file_count": 39,
   "github_web_upload_limit_guard": 100,
   "files": [
     ".github/workflows/run_v2_shadow.yml",
+    ".github/workflows/run_v3_data.yml",
     "README.md",
     "config/backtests.yml",
     "config/indicator_contract.json",
@@ -14,6 +15,8 @@
     "config/theme_exposures.yml",
     "config/theme_universe.json",
     "config/v1_1_gate_receipt.json",
+    "config/v3_data_sources.json",
+    "config/v3_theme_queries.json",
     "google_apps_script/Code.gs",
     "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
@@ -33,7 +36,12 @@
     "src/ible/shadow.py",
     "src/ible/shadow_cli.py",
     "src/ible/universe.py",
+    "src/ible/v3_collectors.py",
+    "src/ible/v3_data_cli.py",
+    "src/ible/v3_data_engine.py",
+    "src/ible/v3_http.py",
     "tests/__init__.py",
-    "tests/test_v2_1_release.py"
+    "tests/test_v2_1_release.py",
+    "tests/test_v3_release.py"
   ]
 }

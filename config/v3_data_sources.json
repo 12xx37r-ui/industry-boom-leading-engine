@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.0.0-github-live-data-phase1",
+  "timezone": "Asia/Seoul",
+  "lookback_days": 365,
+  "minimum_theme_count": 50,
+  "minimum_source_families_for_phase1_observed": 2,
+  "network": {
+    "timeout_seconds": 25,
+    "max_attempts": 3,
+    "base_backoff_seconds": 2.0,
+    "max_workers": 4,
+    "user_agent": "IndustryBoomLeadingEngine/3.0 (GitHub Actions; public research project)"
+  },
+  "sources": {
+    "openalex": {
+      "enabled": true,
+      "base_url": "https://api.openalex.org/works",
+      "source_family": "GLOBAL_RESEARCH",
+      "documentation": "https://docs.openalex.org/api-entities/works"
+    },
+    "usaspending": {
+      "enabled": true,
+      "base_url": "https://api.usaspending.gov/api/v2/search/spending_by_award_count/",
+      "source_family": "US_GOVERNMENT_AWARDS",
+      "documentation": "https://api.usaspending.gov/docs/endpoints"
+    }
+  },
+  "rules": {
+    "never_fabricate_missing_values": true,
+    "never_convert_phase1_signal_to_frozen_boom_score": true,
+    "preserve_previous_cache_on_source_failure": true,
+    "investment_use_allowed": false,
+    "api_revision_risk_must_be_disclosed": true
+  }
+}
