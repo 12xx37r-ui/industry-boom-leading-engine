@@ -1,0 +1,72 @@
+version: 1
+method: frozen_v091_exposure_gate
+minimum_exposure: 0.30
+notes:
+  - V0.9.1 점수공식은 수정하지 않고 새로운 산업·시점에만 적용합니다.
+  - 기업 전체 재무는 테마 노출도와 근거 신뢰도를 곱한 유효가중치로 제한합니다.
+themes:
+  - id: SEMICONDUCTOR_EQUIPMENT
+    name: 반도체 제조장비
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"semiconductor manufacturing equipment" OR all:"wafer fabrication equipment" OR all:"advanced lithography")'
+    us_companies:
+      - {ticker: AMAT, exposure: 0.94, confidence: 0.97, evidence: wafer_fab_equipment_pure_play}
+      - {ticker: LRCX, exposure: 0.96, confidence: 0.97, evidence: wafer_fab_equipment_pure_play}
+      - {ticker: KLAC, exposure: 0.95, confidence: 0.97, evidence: process_control_pure_play}
+      - {ticker: TER, exposure: 0.72, confidence: 0.88, evidence: semiconductor_test_majority}
+      - {ticker: MKSI, exposure: 0.62, confidence: 0.82, evidence: semiconductor_process_components}
+      - {ticker: COHU, exposure: 0.76, confidence: 0.86, evidence: semiconductor_test_and_handling}
+    invalidations: [메모리·파운드리 CAPEX 동반 감소, 장비 수주잔고 감소, 고객 재고조정 장기화]
+  - id: DIGITAL_PAYMENTS
+    name: 디지털 결제 인프라
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"digital payment" OR all:"mobile payment" OR all:"payment network")'
+    us_companies:
+      - {ticker: V, exposure: 0.98, confidence: 0.98, evidence: payment_network_pure_play}
+      - {ticker: MA, exposure: 0.98, confidence: 0.98, evidence: payment_network_pure_play}
+      - {ticker: PYPL, exposure: 0.95, confidence: 0.96, evidence: digital_payments_pure_play}
+      - {ticker: SQ, exposure: 0.86, confidence: 0.90, evidence: merchant_and_consumer_payments}
+      - {ticker: GPN, exposure: 0.91, confidence: 0.93, evidence: payment_processing_majority}
+      - {ticker: FIS, exposure: 0.58, confidence: 0.80, evidence: payments_and_banking_technology}
+      - {ticker: FISV, exposure: 0.70, confidence: 0.86, evidence: merchant_acquiring_and_payments}
+    invalidations: [결제액 성장 급락, 가맹점 이탈, 규제비용이 네트워크 효과를 상쇄]
+  - id: STREAMING_MEDIA
+    name: 스트리밍 미디어 플랫폼
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"video streaming" OR all:"over the top media" OR all:"adaptive video streaming")'
+    us_companies:
+      - {ticker: NFLX, exposure: 0.98, confidence: 0.98, evidence: streaming_subscription_pure_play}
+      - {ticker: ROKU, exposure: 0.96, confidence: 0.95, evidence: streaming_platform_pure_play}
+      - {ticker: SPOT, exposure: 0.96, confidence: 0.95, evidence: audio_streaming_pure_play}
+      - {ticker: TTD, exposure: 0.44, confidence: 0.72, evidence: connected_tv_adtech_partial}
+    invalidations: [가입자 순증 정체, 콘텐츠비용이 매출보다 빠르게 증가, 플랫폼 광고수요 급락]
+  - id: GENE_EDITING
+    name: 유전자편집 치료제
+    evaluation_class: negative_control
+    arxiv_query: '(all:"gene editing" OR all:"CRISPR therapeutics" OR all:"genome editing")'
+    us_companies:
+      - {ticker: CRSP, exposure: 0.98, confidence: 0.96, evidence: crispr_therapeutics_pure_play}
+      - {ticker: EDIT, exposure: 0.98, confidence: 0.95, evidence: gene_editing_pure_play}
+      - {ticker: NTLA, exposure: 0.98, confidence: 0.95, evidence: gene_editing_pure_play}
+      - {ticker: SGMO, exposure: 0.82, confidence: 0.86, evidence: genomic_medicine_majority}
+      - {ticker: BLUE, exposure: 0.56, confidence: 0.76, evidence: gene_therapy_platform_partial}
+    invalidations: [임상중단 증가, 파트너십 축소, 상업매출 전환 지연]
+  - id: ONLINE_LENDING
+    name: 온라인 대출 플랫폼
+    evaluation_class: negative_control
+    arxiv_query: '(all:"online lending" OR all:"peer to peer lending" OR all:"digital credit underwriting")'
+    us_companies:
+      - {ticker: LC, exposure: 0.94, confidence: 0.92, evidence: online_lending_pure_play}
+      - {ticker: TREE, exposure: 0.83, confidence: 0.86, evidence: digital_loan_marketplace_majority}
+      - {ticker: ENVA, exposure: 0.91, confidence: 0.90, evidence: online_consumer_credit_majority}
+      - {ticker: ONDK, exposure: 0.96, confidence: 0.92, evidence: online_small_business_lending_pure_play}
+      - {ticker: GDOT, exposure: 0.38, confidence: 0.66, evidence: fintech_and_prepaid_platform_partial}
+    invalidations: [대손률 상승, 조달비용 급증, 규제강화로 고객획득비용 상승]
+  - id: RIDE_HAILING
+    name: 승차공유 플랫폼
+    evaluation_class: negative_control
+    arxiv_query: '(all:"ride hailing" OR all:"ride sharing platform" OR all:"mobility platform")'
+    us_companies:
+      - {ticker: UBER, exposure: 0.84, confidence: 0.88, evidence: ride_hailing_and_delivery_majority}
+      - {ticker: LYFT, exposure: 0.96, confidence: 0.93, evidence: ride_hailing_pure_play}
+    invalidations: [단위경제성 악화, 운전자 인센티브 급증, 규제비용 증가]

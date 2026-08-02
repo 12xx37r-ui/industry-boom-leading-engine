@@ -1,0 +1,31 @@
+version: 1
+model_version: 0.9.1
+role: independent_walkforward_holdout
+criteria:
+  minimum_eligible_scenarios: 9
+  positive_recall_min: 0.67
+  false_alarm_rate_max: 0.33
+  pairwise_auc_min: 0.70
+  positive_persistence_min: 0.67
+snapshots:
+  - id: WF_2019H1
+    as_of: '2019-04-30'
+    seed_file: validation_seed/walkforward/wf_2019h1.json
+    theme_ids: [SEMICONDUCTOR_EQUIPMENT, DIGITAL_PAYMENTS, STREAMING_MEDIA, GENE_EDITING, ONLINE_LENDING]
+    scenarios:
+      - {id: WF19H1_SEMICAP, name: 반도체 제조장비 선행축적, label: positive, target_theme_id: SEMICONDUCTOR_EQUIPMENT, expected_boom_start: '2020-04-01', criteria: {rank_max: 3, score_min: 56, early_signal_min: 53}}
+      - {id: WF19H1_PAYMENTS, name: 디지털 결제 구조적 확산, label: positive, target_theme_id: DIGITAL_PAYMENTS, expected_boom_start: '2020-03-01', criteria: {rank_max: 3, score_min: 56, early_signal_min: 53}}
+      - {id: WF19H1_STREAMING, name: 스트리밍 플랫폼 확산, label: positive, target_theme_id: STREAMING_MEDIA, expected_boom_start: '2020-03-01', criteria: {rank_max: 4, score_min: 54, early_signal_min: 52}}
+      - {id: WF19H1_GENE_EDIT, name: 유전자편집 연구과열 통제군, label: negative, target_theme_id: GENE_EDITING, criteria: {strong_alert_rank_max: 2, strong_alert_score_min: 61, strong_alert_early_min: 59}}
+      - {id: WF19H1_LENDING, name: 온라인대출 수익성 통제군, label: negative, target_theme_id: ONLINE_LENDING, criteria: {strong_alert_rank_max: 2, strong_alert_score_min: 61, strong_alert_early_min: 59}}
+  - id: WF_2019H2
+    as_of: '2019-10-31'
+    seed_file: validation_seed/walkforward/wf_2019h2.json
+    theme_ids: [SEMICONDUCTOR_EQUIPMENT, DIGITAL_PAYMENTS, STREAMING_MEDIA, GENE_EDITING, ONLINE_LENDING, RIDE_HAILING]
+    scenarios:
+      - {id: WF19H2_SEMICAP, name: 반도체 제조장비 지속성, label: positive, target_theme_id: SEMICONDUCTOR_EQUIPMENT, expected_boom_start: '2020-04-01', criteria: {rank_max: 3, score_min: 56, early_signal_min: 53}}
+      - {id: WF19H2_PAYMENTS, name: 디지털 결제 지속성, label: positive, target_theme_id: DIGITAL_PAYMENTS, expected_boom_start: '2020-03-01', criteria: {rank_max: 3, score_min: 56, early_signal_min: 53}}
+      - {id: WF19H2_STREAMING, name: 스트리밍 지속성, label: positive, target_theme_id: STREAMING_MEDIA, expected_boom_start: '2020-03-01', criteria: {rank_max: 4, score_min: 54, early_signal_min: 52}}
+      - {id: WF19H2_GENE_EDIT, name: 유전자편집 지속 과열 통제군, label: negative, target_theme_id: GENE_EDITING, criteria: {strong_alert_rank_max: 2, strong_alert_score_min: 61, strong_alert_early_min: 59}}
+      - {id: WF19H2_LENDING, name: 온라인대출 지속 통제군, label: negative, target_theme_id: ONLINE_LENDING, criteria: {strong_alert_rank_max: 2, strong_alert_score_min: 61, strong_alert_early_min: 59}}
+      - {id: WF19H2_RIDE, name: 승차공유 단위경제성 통제군, label: negative, target_theme_id: RIDE_HAILING, criteria: {strong_alert_rank_max: 2, strong_alert_score_min: 61, strong_alert_early_min: 59}}

@@ -1,11 +1,12 @@
 @echo off
 setlocal EnableExtensions DisableDelayedExpansion
 cd /d "%~dp0"
-title Industry Boom V0.8.10 Offline Seed Builder
+title Industry Boom V1.0.0 Independent Walkforward Seed Builder
 
 echo ================================================================
-echo  Industry Boom V0.8.10 - Offline Seed Builder
-echo  This runs on your PC. GitHub will not call SEC or FMP.
+echo  Industry Boom V1.0.0 - Independent Walkforward Seed Builder
+echo  SEC and arXiv data are collected once on this PC.
+echo  GitHub Actions will use only the checked-in seed files.
 echo ================================================================
 echo.
 
@@ -18,9 +19,7 @@ if not errorlevel 1 (
     set "PYARGS=-3"
 ) else (
     where python >nul 2>nul
-    if not errorlevel 1 (
-        set "PYEXE=python"
-    )
+    if not errorlevel 1 set "PYEXE=python"
 )
 
 if not defined PYEXE (
@@ -32,35 +31,25 @@ if not defined PYEXE (
         pause
         exit /b 2
     )
-
     winget install -e --id Python.Python.3.12 --accept-package-agreements --accept-source-agreements
     if errorlevel 1 (
         echo [ERROR] Automatic Python installation failed.
-        echo Install Python 3.12 manually, then run this file again.
         pause
         exit /b 2
     )
-
     if exist "%LocalAppData%\Programs\Python\Python312\python.exe" (
         set "PYEXE=%LocalAppData%\Programs\Python\Python312\python.exe"
         set "PYARGS="
     ) else (
-        where py >nul 2>nul
-        if not errorlevel 1 (
-            set "PYEXE=py"
-            set "PYARGS=-3"
-        ) else (
-            echo [ERROR] Python was installed but cannot be found in this window.
-            echo Close this window and run this BAT file again.
-            pause
-            exit /b 2
-        )
+        echo [ERROR] Python was installed but is not visible in this window.
+        echo Close this window and run the BAT again.
+        pause
+        exit /b 2
     )
 )
 
 echo Python command: %PYEXE% %PYARGS%
 echo.
-
 set "SEC_EMAIL="
 set /p "SEC_EMAIL=Enter your SEC contact email: "
 if not defined SEC_EMAIL (
@@ -70,19 +59,18 @@ if not defined SEC_EMAIL (
 )
 
 echo.
-echo Downloading official SEC quarterly files and building the offline seed.
-echo Existing downloads will be reused if this process is restarted.
+echo Building two independent point-in-time seeds: 2019-04-30 and 2019-10-31.
+echo Existing SEC ZIP files in local_sec_data will be reused.
+echo If SEC blocks one ZIP, download the exact URL shown in the error,
+echo save it into local_sec_data with the same file name, and run this BAT again.
 echo.
 
-"%PYEXE%" %PYARGS% "tools\build_offline_seed_local.py" --email "%SEC_EMAIL%"
+"%PYEXE%" %PYARGS% "tools\build_walkforward_seed_local.py" --email "%SEC_EMAIL%"
 set "RC=%ERRORLEVEL%"
 if not "%RC%"=="0" (
     echo.
-    echo [ERROR] Offline seed build failed. Exit code: %RC%
-    echo Check the last OFFLINE-SEED-ERROR message above.
-    echo If an SEC ZIP is blocked, download the shown URL in your browser,
-    echo save it into the local_sec_data folder with the same file name,
-    echo and run this BAT file again.
+    echo [ERROR] Walkforward seed build failed. Exit code: %RC%
+    echo Read the final WALKFORWARD-SEED-ERROR line above.
     pause
     exit /b %RC%
 )
@@ -90,13 +78,9 @@ if not "%RC%"=="0" (
 echo.
 echo ================================================================
 echo  COMPLETE
-echo  Upload this folder to the TOP LEVEL of your GitHub repository:
-echo  UPLOAD_THIS_FOLDER_TO_GITHUB\validation_seed
+echo  Upload this folder to the TOP LEVEL of the GitHub repository:
+echo  UPLOAD_THIS_FOLDER_TO_GITHUB\validation_seed\walkforward
 echo ================================================================
-
-if exist "%CD%\UPLOAD_THIS_FOLDER_TO_GITHUB" (
-    start "" explorer.exe "%CD%\UPLOAD_THIS_FOLDER_TO_GITHUB"
-)
-
+if exist "%CD%\UPLOAD_THIS_FOLDER_TO_GITHUB" start "" explorer.exe "%CD%\UPLOAD_THIS_FOLDER_TO_GITHUB"
 pause
 exit /b 0

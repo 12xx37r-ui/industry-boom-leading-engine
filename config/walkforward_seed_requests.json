@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "frozen_model_version": "0.9.1",
+  "snapshots": [
+    {
+      "source_url_template": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/{period}.zip",
+      "tickers": [
+        {
+          "ticker": "AMAT",
+          "cik": "0000006951"
+        },
+        {
+          "ticker": "LRCX",
+          "cik": "0000707549"
+        },
+        {
+          "ticker": "KLAC",
+          "cik": "0000319201"
+        },
+        {
+          "ticker": "TER",
+          "cik": "0000097210"
+        },
+        {
+          "ticker": "MKSI",
+          "cik": "0001049502"
+        },
+        {
+          "ticker": "COHU",
+          "cik": "0000021535"
+        },
+        {
+          "ticker": "V",
+          "cik": "0001403161"
+        },
+        {
+          "ticker": "MA",
+          "cik": "0001141391"
+        },
+        {
+          "ticker": "PYPL",
+          "cik": "0001633917"
+        },
+        {
+          "ticker": "SQ",
+          "cik": "0001512673"
+        },
+        {
+          "ticker": "GPN",
+          "cik": "0001123360"
+        },
+        {
+          "ticker": "FIS",
+          "cik": "0001136893"
+        },
+        {
+          "ticker": "FISV",
+          "cik": "0000798354"
+        },
+        {
+          "ticker": "NFLX",
+          "cik": "0001065280"
+        },
+        {
+          "ticker": "ROKU",
+          "cik": "0001428439"
+        },
+        {
+          "ticker": "SPOT",
+          "cik": "0001639920"
+        },
+        {
+          "ticker": "TTD",
+          "cik": "0001671933"
+        },
+        {
+          "ticker": "CRSP",
+          "cik": "0001674416"
+        },
+        {
+          "ticker": "EDIT",
+          "cik": "0001650664"
+        },
+        {
+          "ticker": "NTLA",
+          "cik": "0001652130"
+        },
+        {
+          "ticker": "SGMO",
+          "cik": "0001001233"
+        },
+        {
+          "ticker": "BLUE",
+          "cik": "0001293971"
+        },
+        {
+          "ticker": "LC",
+          "cik": "0001409970"
+        },
+        {
+          "ticker": "TREE",
+          "cik": "0001434621"
+        },
+        {
+          "ticker": "ENVA",
+          "cik": "0001529864"
+        },
+        {
+          "ticker": "ONDK",
+          "cik": "0001420811"
+        },
+        {
+          "ticker": "GDOT",
+          "cik": "0001386278"
+        },
+        {
+          "ticker": "UBER",
+          "cik": "0001543151"
+        },
+        {
+          "ticker": "LYFT",
+          "cik": "0001759509"
+        }
+      ],
+      "research": [
+        {
+          "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+          "query": "(all:\"semiconductor manufacturing equipment\" OR all:\"wafer fabrication equipment\" OR all:\"advanced lithography\")"
+        },
+        {
+          "theme_id": "DIGITAL_PAYMENTS",
+          "query": "(all:\"digital payment\" OR all:\"mobile payment\" OR all:\"payment network\")"
+        },
+        {
+          "theme_id": "STREAMING_MEDIA",
+          "query": "(all:\"video streaming\" OR all:\"over the top media\" OR all:\"adaptive video streaming\")"
+        },
+        {
+          "theme_id": "GENE_EDITING",
+          "query": "(all:\"gene editing\" OR all:\"CRISPR therapeutics\" OR all:\"genome editing\")"
+        },
+        {
+          "theme_id": "ONLINE_LENDING",
+          "query": "(all:\"online lending\" OR all:\"peer to peer lending\" OR all:\"digital credit underwriting\")"
+        },
+        {
+          "theme_id": "RIDE_HAILING",
+          "query": "(all:\"ride hailing\" OR all:\"ride sharing platform\" OR all:\"mobility platform\")"
+        }
+      ],
+      "minimum_financial_coverage": 0.68,
+      "minimum_available_companies": 18,
+      "minimum_research_themes": 5,
+      "id": "WF_2019H1",
+      "cutoff": "2019-04-30",
+      "periods": [
+        "2018q1",
+        "2018q2",
+        "2018q3",
+        "2018q4",
+        "2019q1",
+        "2019q2"
+      ],
+      "seed_file": "validation_seed/walkforward/wf_2019h1.json"
+    },
+    {
+      "source_url_template": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/{period}.zip",
+      "tickers": [
+        {
+          "ticker": "AMAT",
+          "cik": "0000006951"
+        },
+        {
+          "ticker": "LRCX",
+          "cik": "0000707549"
+        },
+        {
+          "ticker": "KLAC",
+          "cik": "0000319201"
+        },
+        {
+          "ticker": "TER",
+          "cik": "0000097210"
+        },
+        {
+          "ticker": "MKSI",
+          "cik": "0001049502"
+        },
+        {
+          "ticker": "COHU",
+          "cik": "0000021535"
+        },
+        {
+          "ticker": "V",
+          "cik": "0001403161"
+        },
+        {
+          "ticker": "MA",
+          "cik": "0001141391"
+        },
+        {
+          "ticker": "PYPL",
+          "cik": "0001633917"
+        },
+        {
+          "ticker": "SQ",
+          "cik": "0001512673"
+        },
+        {
+          "ticker": "GPN",
+          "cik": "0001123360"
+        },
+        {
+          "ticker": "FIS",
+          "cik": "0001136893"
+        },
+        {
+          "ticker": "FISV",
+          "cik": "0000798354"
+        },
+        {
+          "ticker": "NFLX",
+          "cik": "0001065280"
+        },
+        {
+          "ticker": "ROKU",
+          "cik": "0001428439"
+        },
+        {
+          "ticker": "SPOT",
+          "cik": "0001639920"
+        },
+        {
+          "ticker": "TTD",
+          "cik": "0001671933"
+        },
+        {
+          "ticker": "CRSP",
+          "cik": "0001674416"
+        },
+        {
+          "ticker": "EDIT",
+          "cik": "0001650664"
+        },
+        {
+          "ticker": "NTLA",
+          "cik": "0001652130"
+        },
+        {
+          "ticker": "SGMO",
+          "cik": "0001001233"
+        },
+        {
+          "ticker": "BLUE",
+          "cik": "0001293971"
+        },
+        {
+          "ticker": "LC",
+          "cik": "0001409970"
+        },
+        {
+          "ticker": "TREE",
+          "cik": "0001434621"
+        },
+        {
+          "ticker": "ENVA",
+          "cik": "0001529864"
+        },
+        {
+          "ticker": "ONDK",
+          "cik": "0001420811"
+        },
+        {
+          "ticker": "GDOT",
+          "cik": "0001386278"
+        },
+        {
+          "ticker": "UBER",
+          "cik": "0001543151"
+        },
+        {
+          "ticker": "LYFT",
+          "cik": "0001759509"
+        }
+      ],
+      "research": [
+        {
+          "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+          "query": "(all:\"semiconductor manufacturing equipment\" OR all:\"wafer fabrication equipment\" OR all:\"advanced lithography\")"
+        },
+        {
+          "theme_id": "DIGITAL_PAYMENTS",
+          "query": "(all:\"digital payment\" OR all:\"mobile payment\" OR all:\"payment network\")"
+        },
+        {
+          "theme_id": "STREAMING_MEDIA",
+          "query": "(all:\"video streaming\" OR all:\"over the top media\" OR all:\"adaptive video streaming\")"
+        },
+        {
+          "theme_id": "GENE_EDITING",
+          "query": "(all:\"gene editing\" OR all:\"CRISPR therapeutics\" OR all:\"genome editing\")"
+        },
+        {
+          "theme_id": "ONLINE_LENDING",
+          "query": "(all:\"online lending\" OR all:\"peer to peer lending\" OR all:\"digital credit underwriting\")"
+        },
+        {
+          "theme_id": "RIDE_HAILING",
+          "query": "(all:\"ride hailing\" OR all:\"ride sharing platform\" OR all:\"mobility platform\")"
+        }
+      ],
+      "minimum_financial_coverage": 0.68,
+      "minimum_available_companies": 18,
+      "minimum_research_themes": 5,
+      "id": "WF_2019H2",
+      "cutoff": "2019-10-31",
+      "periods": [
+        "2018q1",
+        "2018q2",
+        "2018q3",
+        "2018q4",
+        "2019q1",
+        "2019q2",
+        "2019q3",
+        "2019q4"
+      ],
+      "seed_file": "validation_seed/walkforward/wf_2019h2.json"
+    }
+  ]
+}

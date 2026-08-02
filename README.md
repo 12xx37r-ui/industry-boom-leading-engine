@@ -1,32 +1,42 @@
-# Industry Boom Leading Engine V0.9.1
+# Industry Boom Leading Engine V1.0.0
 
-V0.9.1 is a **development diagnostic**, not an independent holdout. It reuses the checked-in V0.8.10 offline SEC/arXiv seed and adds a balanced capital-demand adoption layer.
+V1.0.0 is the first independent walkforward validation package for the frozen V0.9.1 scoring model.
 
-The new layer requires both:
+## What is frozen
 
-- capital commitment: CAPEX + R&D + research diffusion
-- demand durability: revenue + operating viability + exposed economic scale
+The following V0.9.1 scoring files are SHA-256 locked before validation:
 
-The weaker side is binding through a harmonic mean. Capital-only spikes receive additional viability, scale, and imbalance penalties. A strong stage also requires one of three generic pathways: infrastructure capital, demand durability, or innovation at scale.
+- `src/ible/global_validation.py`
+- `src/ible/analytics/exposure_scoring.py`
+- `src/ible/analytics/scoring.py`
 
-## Run
+Any change causes `MODEL_LOCK_MISMATCH` and stops validation.
 
-Upload the V0.9.1 source over the GitHub repository. **Do not rebuild the PC seed and do not run the BAT file.** Keep the existing file:
+## Independent test cohort
 
-```text
-validation_seed/sec_fsds_fy2021.json
-```
+Two point-in-time snapshots are built locally:
 
-Then run:
+- `WF_2019H1`: cutoff 2019-04-30
+- `WF_2019H2`: cutoff 2019-10-31
 
-```text
-Actions -> Industry Boom Development Diagnostic V0.9.1 -> Run workflow
-```
+New themes not used to tune V0.9.1:
 
-Upload this artifact after completion:
+- Semiconductor manufacturing equipment
+- Digital payments
+- Streaming media
+- Gene editing therapeutics control
+- Online lending control
+- Ride-hailing control at the second snapshot
 
-```text
-industry-boom-global-diagnostic-v0.9.1
-```
+## Run order
 
-This result remains investment-disabled. Because V0.9.1 was designed after reviewing V0.9.0 on the same cohort, any improvement is in-sample diagnostic evidence only. The next official step must freeze V0.9.1 and test unseen themes and an unseen date.
+1. Extract this ZIP on the Windows PC.
+2. Keep the existing `local_sec_data` folder if present.
+3. Run `1_BUILD_WALKFORWARD_SEED.bat`.
+4. Upload `UPLOAD_THIS_FOLDER_TO_GITHUB/validation_seed/walkforward` to the repository top level.
+5. Upload the V1.0.0 project files to the repository.
+6. Ensure `.github/workflows/run_independent_walkforward.yml` exists.
+7. Run `Industry Boom Independent Walkforward V1.0.0` in GitHub Actions.
+8. Download the artifact `industry-boom-independent-walkforward-v1.0.0`.
+
+GitHub Actions performs no SEC, FMP, or arXiv network calls. It only validates the checked-in seed and runs the frozen model.

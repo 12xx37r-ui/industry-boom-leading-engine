@@ -136,7 +136,11 @@ def download_archive(url: str, destination: Path, user_agent: str, retries: int 
             print(f"[LOCAL-SEC] ready {destination.name} size={destination.stat().st_size:,}", flush=True)
             return destination
         except urllib.error.HTTPError as exc:
-            last_error = f"HTTP {exc.code} body={_safe_body(exc)}"
+            body = _safe_body(exc)
+            last_error = f"HTTP {exc.code} body={body}"
+            if exc.code == 403 and "Request Rate Threshold Exceeded" in body:
+                print("[LOCAL-SEC] SEC rate gate detected; stopping automatic retries. Use the browser URL shown below.", flush=True)
+                break
         except (urllib.error.URLError, TimeoutError, OSError, OfflineSeedError) as exc:
             last_error = str(exc)
         finally:

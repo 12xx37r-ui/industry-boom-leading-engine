@@ -1,0 +1,10 @@
+{
+  "frozen_model_version": "0.9.1",
+  "validation_engine_version": "1.0.0",
+  "rule": "V0.9.1 scoring files are locked before independent walkforward execution.",
+  "files": {
+    "src/ible/global_validation.py": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
+    "src/ible/analytics/exposure_scoring.py": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
+    "src/ible/analytics/scoring.py": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6"
+  }
+}
