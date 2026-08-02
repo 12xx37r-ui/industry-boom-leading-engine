@@ -1,0 +1,506 @@
+{
+  "status": "NOT_A_BOOM_SCORE_RANKING",
+  "as_of": "2026-08-01",
+  "ranking": [
+    {
+      "rank": 1,
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 59.4958,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 2,
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 54.8516,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 3,
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 54.8446,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 4,
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 54.5755,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 5,
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "phase1_data_signal_score": 52.4442,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 6,
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 51.4156,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 7,
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 51.3166,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 8,
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 50.3837,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 9,
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 49.6284,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 10,
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 49.6243,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 11,
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 48.9719,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 12,
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 48.2619,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 13,
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 48.2586,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 14,
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 48.258,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 15,
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 47.847,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 16,
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 47.6409,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 17,
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 47.1357,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 18,
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "phase1_data_signal_score": 46.969,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 19,
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 46.5613,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 20,
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "phase1_data_signal_score": 46.218,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 21,
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "phase1_data_signal_score": 45.5498,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 22,
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 44.7844,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 23,
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 44.5569,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 24,
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 44.5531,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 25,
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산",
+      "phase1_data_signal_score": 44.4312,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 26,
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 44.4303,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 27,
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 44.2322,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 28,
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 44.1798,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 29,
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "phase1_data_signal_score": 44.0307,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 30,
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "phase1_data_signal_score": 43.8123,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 31,
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 43.7012,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 32,
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 43.3479,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 33,
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 43.2439,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 34,
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 43.1318,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 35,
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 42.9216,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 36,
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 42.668,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 37,
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "phase1_data_signal_score": 42.572,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 38,
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "phase1_data_signal_score": 42.508,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 39,
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "phase1_data_signal_score": 42.1584,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 40,
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "phase1_data_signal_score": 42.156,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 41,
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 41.9325,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 42,
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 41.5166,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 43,
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산",
+      "phase1_data_signal_score": 41.1895,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 44,
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "phase1_data_signal_score": 40.7264,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 45,
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 40.3109,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 46,
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "phase1_data_signal_score": 40.2219,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 47,
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "phase1_data_signal_score": 39.9801,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 48,
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "phase1_data_signal_score": 39.2547,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 49,
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "phase1_data_signal_score": 38.7146,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    },
+    {
+      "rank": 50,
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화",
+      "phase1_data_signal_score": 38.078,
+      "source_family_count": 2,
+      "boom_score": null,
+      "warning": "데이터 수집 우선순위용 신호이며 V0.9.1 산업 붐 점수가 아닙니다."
+    }
+  ]
+}

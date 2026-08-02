@@ -1,0 +1,2934 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.0.0-github-live-data-phase1",
+  "as_of": "2026-08-01",
+  "captured_at": "2026-08-02T20:14:00+09:00",
+  "recent_period": {
+    "start_date": "2025-08-02",
+    "end_date": "2026-08-01"
+  },
+  "prior_period": {
+    "start_date": "2024-08-02",
+    "end_date": "2025-08-01"
+  },
+  "theme_count": 50,
+  "source_provenance": {
+    "openalex": {
+      "enabled": true,
+      "base_url": "https://api.openalex.org/works",
+      "source_family": "GLOBAL_RESEARCH",
+      "documentation": "https://docs.openalex.org/api-entities/works"
+    },
+    "usaspending": {
+      "enabled": true,
+      "base_url": "https://api.usaspending.gov/api/v2/search/spending_by_award_count/",
+      "source_family": "US_GOVERNMENT_AWARDS",
+      "documentation": "https://api.usaspending.gov/docs/endpoints"
+    }
+  },
+  "revision_risk": "Public APIs may revise historical records after capture; committed cache preserves what this run received.",
+  "investment_use_allowed": false,
+  "themes": [
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 43.2439,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "high bandwidth memory advanced semiconductor packaging",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 779,
+          "prior_count": 551,
+          "growth_percent": 41.3793,
+          "growth_score": 59.4413,
+          "scale_score": 52.0577,
+          "source_signal_score": 56.4879
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "high bandwidth memory semiconductor packaging"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 48.9719,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "artificial intelligence drug discovery",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 36768,
+          "prior_count": 27021,
+          "growth_percent": 36.0719,
+          "growth_score": 58.4537,
+          "scale_score": 82.1787,
+          "source_signal_score": 67.9437
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "AI drug discovery"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.5569,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "AI semiconductor accelerators",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1792,
+          "prior_count": 1266,
+          "growth_percent": 41.5482,
+          "growth_score": 59.4801,
+          "scale_score": 58.5644,
+          "source_signal_score": 59.1138
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "AI semiconductor accelerator"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.4312,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "autonomous driving advanced driver assistance",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 5940,
+          "prior_count": 6111,
+          "growth_percent": -2.7982,
+          "growth_score": 49.2056,
+          "scale_score": 67.9295,
+          "source_signal_score": 56.6951
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "autonomous driving vehicle"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1,
+          "prior_count": 1,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 5.4185,
+          "source_signal_score": 32.1674
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 42.1584,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "copper supply mining infrastructure",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 3182,
+          "prior_count": 3358,
+          "growth_percent": -5.2412,
+          "growth_score": 48.494,
+          "scale_score": 63.0511,
+          "source_signal_score": 54.3168
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "copper supply infrastructure"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 54.8446,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "critical minerals supply chain",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 25645,
+          "prior_count": 23089,
+          "growth_percent": 11.0702,
+          "growth_score": 52.9328,
+          "scale_score": 79.3624,
+          "source_signal_score": 63.5046
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "critical minerals supply chain"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 5,
+          "prior_count": 2,
+          "growth_percent": 150.0,
+          "growth_score": 67.6364,
+          "scale_score": 14.0067,
+          "source_signal_score": 46.1846
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 43.3479,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "cybersecurity zero trust ransomware",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 2416,
+          "prior_count": 2101,
+          "growth_percent": 14.9929,
+          "growth_score": 53.8937,
+          "scale_score": 60.899,
+          "source_signal_score": 56.6958
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "cybersecurity zero trust"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 49.6243,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "data center infrastructure power cooling",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 15164,
+          "prior_count": 12886,
+          "growth_percent": 17.6781,
+          "growth_score": 54.532,
+          "scale_score": 75.2552,
+          "source_signal_score": 62.8213
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "data center infrastructure"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 11,
+          "prior_count": 12,
+          "growth_percent": -8.3333,
+          "growth_score": 47.7619,
+          "scale_score": 19.4253,
+          "source_signal_score": 36.4272
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 41.1895,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "defense autonomous systems unmanned military",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1783,
+          "prior_count": 1896,
+          "growth_percent": -5.9599,
+          "growth_score": 48.2817,
+          "scale_score": 58.5251,
+          "source_signal_score": 52.3791
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "autonomous unmanned defense system"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 51.4156,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "grid energy storage battery storage",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 28038,
+          "prior_count": 25299,
+          "growth_percent": 10.8265,
+          "growth_score": 52.8717,
+          "scale_score": 80.0597,
+          "source_signal_score": 63.7469
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "grid energy storage"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 3,
+          "prior_count": 2,
+          "growth_percent": 50.0,
+          "growth_score": 57.9158,
+          "scale_score": 10.8371,
+          "source_signal_score": 39.0843
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 48.2619,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "gene therapy cell therapy",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 190384,
+          "prior_count": 208068,
+          "growth_percent": -8.4991,
+          "growth_score": 47.5172,
+          "scale_score": 95.0334,
+          "source_signal_score": 66.5237
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "gene therapy cell therapy"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 45.5498,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "humanoid robots embodied artificial intelligence",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1900,
+          "prior_count": 1345,
+          "growth_percent": 41.2639,
+          "growth_score": 59.4283,
+          "scale_score": 59.0217,
+          "source_signal_score": 59.2656
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "humanoid robot"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 12,
+          "prior_count": 18,
+          "growth_percent": -33.3333,
+          "growth_score": 39.6891,
+          "scale_score": 20.051,
+          "source_signal_score": 31.8339
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 52.4442,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "industrial robotics automation",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 33414,
+          "prior_count": 34287,
+          "growth_percent": -2.5462,
+          "growth_score": 49.278,
+          "scale_score": 81.4309,
+          "source_signal_score": 62.1392
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "industrial robotics automation"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1,
+          "prior_count": 0,
+          "growth_percent": 100.0,
+          "growth_score": 67.6364,
+          "scale_score": 5.4185,
+          "source_signal_score": 42.7493
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 43.7012,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "nuclear energy reactor technology",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 10208,
+          "prior_count": 11138,
+          "growth_percent": -8.3498,
+          "growth_score": 47.5628,
+          "scale_score": 72.1617,
+          "source_signal_score": 57.4024
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "nuclear energy reactor"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.7844,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "obesity metabolic disease therapeutics GLP-1",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 2920,
+          "prior_count": 2208,
+          "growth_percent": 32.2464,
+          "growth_score": 57.6951,
+          "scale_score": 62.3796,
+          "source_signal_score": 59.5689
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "obesity metabolic disease treatment"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 40.2219,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "electric grid modernization transmission electrification",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 651,
+          "prior_count": 644,
+          "growth_percent": 1.087,
+          "growth_score": 50.3022,
+          "scale_score": 50.6565,
+          "source_signal_score": 50.4439
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "electric grid modernization transmission"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 39.9801,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "power semiconductors silicon carbide gallium nitride",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 707,
+          "prior_count": 731,
+          "growth_percent": -3.2832,
+          "growth_score": 49.0668,
+          "scale_score": 51.3006,
+          "source_signal_score": 49.9603
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "power semiconductor silicon carbide"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 49.6284,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "rare earth elements supply chain",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 5706,
+          "prior_count": 5892,
+          "growth_percent": -3.1568,
+          "growth_score": 49.1022,
+          "scale_score": 67.6153,
+          "source_signal_score": 56.5075
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "rare earth supply chain"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1,
+          "prior_count": 0,
+          "growth_percent": 100.0,
+          "growth_score": 67.6364,
+          "scale_score": 5.4185,
+          "source_signal_score": 42.7493
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 42.9216,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "semiconductor manufacturing equipment",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 7700,
+          "prior_count": 8750,
+          "growth_percent": -12.0,
+          "growth_score": 46.4335,
+          "scale_score": 69.9578,
+          "source_signal_score": 55.8433
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "semiconductor manufacturing equipment"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 41.5166,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "small modular reactor microreactor",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 416,
+          "prior_count": 341,
+          "growth_percent": 21.9941,
+          "growth_score": 55.5056,
+          "scale_score": 47.1624,
+          "source_signal_score": 52.1683
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "small modular reactor"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 8,
+          "prior_count": 12,
+          "growth_percent": -33.3333,
+          "growth_score": 39.9908,
+          "scale_score": 17.1764,
+          "source_signal_score": 30.865
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 42.508,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "commercial space satellite launch",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 5156,
+          "prior_count": 5711,
+          "growth_percent": -9.7181,
+          "growth_score": 47.1444,
+          "scale_score": 66.8231,
+          "source_signal_score": 55.0159
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "commercial space satellite launch"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 38.078,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "additive manufacturing 3D printing",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 18452,
+          "prior_count": 18165,
+          "growth_percent": 1.58,
+          "growth_score": 50.4389,
+          "scale_score": 76.7892,
+          "source_signal_score": 60.979
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "additive manufacturing 3D printing"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 2,
+          "growth_percent": -100.0,
+          "growth_score": 25.2948,
+          "scale_score": 0.0,
+          "source_signal_score": 15.1769
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 39.2547,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "liquid biopsy advanced molecular diagnostics",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 8259,
+          "prior_count": 7833,
+          "growth_percent": 5.4385,
+          "growth_score": 51.4818,
+          "scale_score": 70.5056,
+          "source_signal_score": 59.0913
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "liquid biopsy molecular diagnostics"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 1,
+          "growth_percent": -100.0,
+          "growth_score": 32.3636,
+          "scale_score": 0.0,
+          "source_signal_score": 19.4181
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 46.5613,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "advanced materials nanomaterials composites",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 23586,
+          "prior_count": 21389,
+          "growth_percent": 10.2716,
+          "growth_score": 52.7321,
+          "scale_score": 78.7081,
+          "source_signal_score": 63.1225
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "advanced materials composites"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.5531,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "lithium ion battery recycling",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 8128,
+          "prior_count": 7679,
+          "growth_percent": 5.8471,
+          "growth_score": 51.5898,
+          "scale_score": 70.3807,
+          "source_signal_score": 59.1062
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "battery recycling lithium ion"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 43.1318,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "carbon capture utilization storage",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 45258,
+          "prior_count": 42243,
+          "growth_percent": 7.1373,
+          "growth_score": 51.9283,
+          "scale_score": 83.8027,
+          "source_signal_score": 64.6781
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "carbon capture storage"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1,
+          "prior_count": 3,
+          "growth_percent": -66.6667,
+          "growth_score": 32.3636,
+          "scale_score": 5.4185,
+          "source_signal_score": 21.5855
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 48.2586,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "cloud computing infrastructure",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 76945,
+          "prior_count": 61272,
+          "growth_percent": 25.5794,
+          "growth_score": 56.3078,
+          "scale_score": 87.9513,
+          "source_signal_score": 68.9652
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "cloud computing infrastructure"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 6,
+          "prior_count": 11,
+          "growth_percent": -45.4545,
+          "growth_score": 35.7788,
+          "scale_score": 15.2118,
+          "source_signal_score": 27.552
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.0307,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "commercial drones unmanned aerial systems",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 4626,
+          "prior_count": 4187,
+          "growth_percent": 10.4848,
+          "growth_score": 52.7853,
+          "scale_score": 65.9754,
+          "source_signal_score": 58.0613
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "commercial drone unmanned aerial"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 43.8123,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "digital identity authentication biometrics",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 4904,
+          "prior_count": 4606,
+          "growth_percent": 6.4698,
+          "growth_score": 51.7535,
+          "scale_score": 66.4315,
+          "source_signal_score": 57.6247
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "digital identity authentication"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 54.8516,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "edge artificial intelligence inference",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 56791,
+          "prior_count": 36563,
+          "growth_percent": 55.3237,
+          "growth_score": 61.8434,
+          "scale_score": 85.5772,
+          "source_signal_score": 71.3369
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "edge artificial intelligence"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 28,
+          "prior_count": 32,
+          "growth_percent": -12.5,
+          "growth_score": 46.3949,
+          "scale_score": 26.3232,
+          "source_signal_score": 38.3662
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 42.668,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "green hydrogen electrolyzer fuel cell",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 2976,
+          "prior_count": 2919,
+          "growth_percent": 1.9527,
+          "growth_score": 50.5413,
+          "scale_score": 62.528,
+          "source_signal_score": 55.336
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "hydrogen electrolyzer fuel cell"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 41.9325,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "liquefied natural gas infrastructure",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 2892,
+          "prior_count": 3080,
+          "growth_percent": -6.1039,
+          "growth_score": 48.2386,
+          "scale_score": 62.3043,
+          "source_signal_score": 53.8649
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "liquefied natural gas infrastructure"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 42.156,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "warehouse logistics automation robotics",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 3318,
+          "prior_count": 3530,
+          "growth_percent": -6.0057,
+          "growth_score": 48.2677,
+          "scale_score": 63.3781,
+          "source_signal_score": 54.3119
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "warehouse logistics automation"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 40.7264,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "autonomous ships maritime unmanned systems",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1271,
+          "prior_count": 1341,
+          "growth_percent": -5.22,
+          "growth_score": 48.5009,
+          "scale_score": 55.8808,
+          "source_signal_score": 51.4529
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "autonomous maritime unmanned"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 47.6409,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "offshore wind energy",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 15913,
+          "prior_count": 16249,
+          "growth_percent": -2.0678,
+          "growth_score": 49.415,
+          "scale_score": 75.632,
+          "source_signal_score": 59.9018
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "offshore wind"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 77,
+          "prior_count": 130,
+          "growth_percent": -40.7692,
+          "growth_score": 36.2613,
+          "scale_score": 34.0577,
+          "source_signal_score": 35.3799
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.2322,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "silicon photonics optical interconnect",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1730,
+          "prior_count": 1265,
+          "growth_percent": 36.7589,
+          "growth_score": 58.581,
+          "scale_score": 58.2893,
+          "source_signal_score": 58.4644
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "silicon photonics optical interconnect"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 54.5755,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "precision oncology targeted cancer therapy",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 32503,
+          "prior_count": 25852,
+          "growth_percent": 25.7272,
+          "growth_score": 56.3395,
+          "scale_score": 81.2149,
+          "source_signal_score": 66.2896
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "precision oncology"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 90,
+          "prior_count": 97,
+          "growth_percent": -7.2165,
+          "growth_score": 47.9274,
+          "scale_score": 35.2627,
+          "source_signal_score": 42.8615
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 42.572,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "smart factory industrial internet",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 7755,
+          "prior_count": 9205,
+          "growth_percent": -15.7523,
+          "growth_score": 45.231,
+          "scale_score": 70.0135,
+          "source_signal_score": 55.144
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "smart factory industrial internet"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 48.258,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "solar photovoltaic manufacturing",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 11162,
+          "prior_count": 12049,
+          "growth_percent": -7.3616,
+          "growth_score": 47.8618,
+          "scale_score": 72.8601,
+          "source_signal_score": 57.8611
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "solar photovoltaic"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 57,
+          "prior_count": 73,
+          "growth_percent": -21.9178,
+          "growth_score": 43.2637,
+          "scale_score": 31.7417,
+          "source_signal_score": 38.6549
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 51.3166,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "robotic surgery surgical robotics",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 21536,
+          "prior_count": 22375,
+          "growth_percent": -3.7497,
+          "growth_score": 48.9303,
+          "scale_score": 77.9973,
+          "source_signal_score": 60.5571
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "surgical robotics"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 18,
+          "prior_count": 15,
+          "growth_percent": 20.0,
+          "growth_score": 54.7817,
+          "scale_score": 23.0176,
+          "source_signal_score": 42.0761
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 50.3837,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "synthetic biology biomanufacturing",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1721,
+          "prior_count": 1293,
+          "growth_percent": 33.1013,
+          "growth_score": 57.8644,
+          "scale_score": 58.2486,
+          "source_signal_score": 58.0181
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "synthetic biology biomanufacturing"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 1,
+          "prior_count": 0,
+          "growth_percent": 100.0,
+          "growth_score": 67.6364,
+          "scale_score": 5.4185,
+          "source_signal_score": 42.7493
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.4303,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "water infrastructure treatment desalination",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 3290,
+          "prior_count": 2660,
+          "growth_percent": 23.6842,
+          "growth_score": 55.8931,
+          "scale_score": 63.3119,
+          "source_signal_score": 58.8606
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "water infrastructure treatment"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 47.847,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "agricultural technology food technology precision agriculture",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 43863,
+          "prior_count": 38297,
+          "growth_percent": 14.5338,
+          "growth_score": 53.7846,
+          "scale_score": 83.5579,
+          "source_signal_score": 65.694
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "precision agriculture food technology"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 46.218,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "construction robotics automation",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 24607,
+          "prior_count": 23434,
+          "growth_percent": 5.0055,
+          "growth_score": 51.3669,
+          "scale_score": 79.0394,
+          "source_signal_score": 62.4359
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "construction robotics automation"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 46.969,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "financial technology payments infrastructure",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 40590,
+          "prior_count": 38800,
+          "growth_percent": 4.6134,
+          "growth_score": 51.2623,
+          "scale_score": 82.9517,
+          "source_signal_score": 63.9381
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "financial technology payments infrastructure"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 47.1357,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "enhanced geothermal systems",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 12015,
+          "prior_count": 12496,
+          "growth_percent": -3.8492,
+          "growth_score": 48.9014,
+          "scale_score": 73.4357,
+          "source_signal_score": 58.7151
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "geothermal energy"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 26,
+          "prior_count": 35,
+          "growth_percent": -25.7143,
+          "growth_score": 42.0842,
+          "scale_score": 25.7645,
+          "source_signal_score": 35.5563
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 44.1798,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "heat pumps building energy efficiency",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 11974,
+          "prior_count": 12712,
+          "growth_percent": -5.8055,
+          "growth_score": 48.3268,
+          "scale_score": 73.409,
+          "source_signal_score": 58.3596
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "heat pump energy efficiency"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 40.3109,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "longevity aging therapeutics geroscience",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 471,
+          "prior_count": 434,
+          "growth_percent": 8.5253,
+          "growth_score": 52.2825,
+          "scale_score": 48.131,
+          "source_signal_score": 50.6219
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "longevity aging therapeutics"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 59.4958,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "quantum computing",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 121073,
+          "prior_count": 90427,
+          "growth_percent": 33.8903,
+          "growth_score": 58.0264,
+          "scale_score": 91.4949,
+          "source_signal_score": 71.4138
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "quantum computing"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 350,
+          "prior_count": 366,
+          "growth_percent": -4.3716,
+          "growth_score": 48.7524,
+          "scale_score": 45.8155,
+          "source_signal_score": 47.5777
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 3,
+      "status": "PHASE1_OBSERVED",
+      "source_family_count": 2,
+      "phase1_data_signal_score": 38.7146,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "query": "rail modernization signaling high speed rail",
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 743,
+          "prior_count": 903,
+          "growth_percent": -17.7187,
+          "growth_score": 44.5896,
+          "scale_score": 51.6883,
+          "source_signal_score": 47.4291
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "query": [
+            "rail modernization signaling"
+          ],
+          "captured_at": "2026-08-02T20:14:00+09:00",
+          "recent_period": {
+            "start_date": "2025-08-02",
+            "end_date": "2026-08-01"
+          },
+          "prior_period": {
+            "start_date": "2024-08-02",
+            "end_date": "2025-08-01"
+          },
+          "recent_count": 0,
+          "prior_count": 0,
+          "growth_percent": 0.0,
+          "growth_score": 50.0,
+          "scale_score": 0.0,
+          "source_signal_score": 30.0
+        }
+      },
+      "errors": [],
+      "limitations": [
+        "Phase 1 신호는 연구 및 미국 연방정부 수상·계약 건수만 반영합니다.",
+        "CAPEX·기업 R&D·채용·매출 전환·영업생존력 자료가 없어 V0.9.1 boom_score로 변환하지 않습니다."
+      ]
+    }
+  ],
+  "content_sha256": "c642ea4fbe76cc3e4c3fc801a60b728df930d8d7927539c528ecd41c9697d58e"
+}

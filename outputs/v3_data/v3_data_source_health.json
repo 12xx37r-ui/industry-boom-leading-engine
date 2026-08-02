@@ -1,0 +1,11 @@
+{
+  "status": "SOURCE_HEALTH_RECORDED",
+  "as_of": "2026-08-01",
+  "source_cells": {
+    "live": 100,
+    "cache_fallback": 0,
+    "unavailable": 0
+  },
+  "themes_with_errors": 0,
+  "errors": []
+}
