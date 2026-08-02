@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "engine_release": "6.1.0-prospective-policy-ledger",
+  "policy_id": "LIVE_PREVALIDATION_BRIDGE_V1",
+  "policy_status": "PROSPECTIVE_SHADOW_ONLY",
+  "created_after": "V6.0 champion-challenger research comparison",
+  "scope_warning": "이 정책은 V5의 50개 산업 prevalidation score에 적용하는 별도 미래검증 정책이며 V0.9.1 boom_score 계산식이 아닙니다.",
+  "champion_live_policy": {
+    "rule": "candidate_stage가 PREVALIDATION_HIGH_CANDIDATE인 산업만 경보"
+  },
+  "challenger_live_policy": {
+    "base_rule": "Champion 경보를 모두 유지",
+    "watch_bridge": {
+      "required_stage": "PREVALIDATION_WATCH",
+      "rank_max": 10,
+      "predicted_score_min": 60.0,
+      "direct_commercialization_score_min": 60.0,
+      "phase3_investment_score_min": 60.0,
+      "source_diffusion_percent_min": 60.0
+    }
+  },
+  "evaluation_horizons_months": [6, 12, 24],
+  "promotion_gate": {
+    "minimum_matured_snapshots": {"6": 3, "12": 2, "24": 1},
+    "minimum_challenger_recall_improvement": 0.1,
+    "maximum_precision_deterioration": 0.05,
+    "automatic_promotion_allowed": false
+  }
+}
