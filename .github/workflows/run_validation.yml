@@ -1,0 +1,191 @@
+name: Industry Boom Validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: industry-boom-validation
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install and test
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+          pytest -q
+
+  scenario:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        scenario_id:
+          - AI_2022
+          - CLOUD_2018
+          - EV_2019
+          - SOLAR_2019
+          - METAVERSE_2020
+          - HYDROGEN_2020
+          - ADDITIVE_2019
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Restore API cache
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: ible-validation-${{ runner.os }}-${{ matrix.scenario_id }}-${{ github.run_id }}
+          restore-keys: |
+            ible-validation-${{ runner.os }}-${{ matrix.scenario_id }}-
+            ible-cache-${{ runner.os }}-
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run scenario
+        env:
+          PYTHONUNBUFFERED: "1"
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+        run: |
+          if [ -z "$OPENDART_API_KEY" ]; then
+            echo "MISSING_REQUIRED_CONFIGURATION: OPENDART_API_KEY"
+            exit 1
+          fi
+          mkdir -p outputs/backtests
+          python -m ible.backtest_cli \
+            --scenario-id "${{ matrix.scenario_id }}" \
+            --output "outputs/backtests/${{ matrix.scenario_id }}.json"
+
+      - name: Validate scenario output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("outputs/backtests/${{ matrix.scenario_id }}.json")
+          payload = json.loads(path.read_text(encoding="utf-8"))
+          required = {"scenario_id", "status", "label", "observed", "ranking"}
+          missing = required - set(payload)
+          if missing:
+              raise SystemExit(f"missing scenario fields: {sorted(missing)}")
+          if "api_key=" in json.dumps(payload).lower() and "<redacted>" not in json.dumps(payload).lower():
+              raise SystemExit("unredacted secret detected")
+          print("SCENARIO_OUTPUT_OK", payload["scenario_id"], payload["status"])
+          PY
+
+      - name: Upload scenario artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-${{ matrix.scenario_id }}
+          path: outputs/backtests/${{ matrix.scenario_id }}.json
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    needs: scenario
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Download scenario artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: backtest-*
+          path: outputs/backtests
+          merge-multiple: true
+
+      - name: Aggregate validation
+        run: |
+          python -m ible.aggregate_backtests \
+            --input-dir outputs/backtests \
+            --output-dir outputs
+
+      - name: Validate aggregate outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          required = [
+              "walkforward_backtest.json",
+              "backtest_summary.json",
+              "model_validation.json",
+          ]
+          for name in required:
+              path = Path("outputs") / name
+              if not path.exists() or path.stat().st_size == 0:
+                  raise SystemExit(f"missing aggregate output: {path}")
+              json.loads(path.read_text(encoding="utf-8"))
+          scenario_files = list(Path("outputs/backtests").glob("*.json"))
+          if len(scenario_files) != 7:
+              raise SystemExit(f"expected 7 scenario files, got {len(scenario_files)}")
+          print("VALIDATION_OUTPUT_OK")
+          PY
+
+      - name: Upload validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: industry-boom-validation-output
+          path: |
+            outputs/backtests/*.json
+            outputs/walkforward_backtest.json
+            outputs/backtest_summary.json
+            outputs/model_validation.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit validation summary
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f outputs/walkforward_backtest.json outputs/backtest_summary.json outputs/model_validation.json
+          if git diff --cached --quiet; then
+            echo "No validation summary changes"
+          else
+            git commit -m "chore: refresh multi-scenario validation v0.5.0"
+            git push
+          fi
