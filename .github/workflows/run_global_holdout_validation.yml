@@ -1,10 +1,10 @@
-name: Industry Boom Global Holdout V0.8.5
+name: Industry Boom Global Holdout V0.8.6
 
 on:
   workflow_dispatch:
     inputs:
-      refresh_financial_data:
-        description: 'Ignore cached FMP annual snapshots and download again'
+      refresh_sec_fsds:
+        description: 'Ignore cached SEC quarterly data and rebuild the point-in-time seed'
         required: false
         default: false
         type: boolean
@@ -15,13 +15,10 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 60
     env:
-      FINANCIAL_SOURCE: fmp
-      FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
       PYTHONUNBUFFERED: '1'
-      FMP_ANNUAL_LIMIT: '5'
       PYTHONPATH: ${{ github.workspace }}/src
     steps:
       - uses: actions/checkout@v6
@@ -33,27 +30,29 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install -r requirements.txt
-          python -c "import ible, ible.fmp_cli, ible.global_holdout_cli; print('IBLE_IMPORT_OK', ible.__version__)"
-          test -n "${FMP_API_KEY:-}" || { echo 'FMP_API_KEY repository secret is required'; exit 1; }
+          python -c "import ible, ible.sec_fsds_cli, ible.global_holdout_cli; print('IBLE_IMPORT_OK', ible.__version__)"
           python - <<'PY'
           import os
-          from ible.collectors.fmp import FmpClient
-          FmpClient('.cache/fmp', os.environ['FMP_API_KEY']).validate_api_key()
-          print('FMP_API_KEY_FORMAT_OK')
+          from ible.collectors.sec_fsds import SecFsdsClient
+          client = SecFsdsClient('.cache/sec_fsds', os.environ.get('SEC_USER_AGENT', ''))
+          client.validate_user_agent()
+          print('SEC_USER_AGENT_FORMAT_OK')
           PY
           python -m pytest -q
-      - name: Restore FMP annual snapshot cache
-        if: ${{ !inputs.refresh_financial_data }}
+      - name: Restore SEC FSDS cache
+        if: ${{ !inputs.refresh_sec_fsds }}
         uses: actions/cache@v5
         with:
-          path: .cache/fmp/subset
-          key: fmp-annual-v085-${{ hashFiles('config/global_holdouts.yml', 'config/theme_exposures.yml') }}
-      - name: Prepare free-plan annual snapshots
+          path: |
+            .cache/sec_fsds/downloads
+            validation_seed/sec_fsds_fy2021.json
+          key: sec-fsds-v086-${{ hashFiles('config/global_holdouts.yml', 'config/theme_exposures.yml', 'config/sec_cik_map.json', 'src/ible/collectors/sec_fsds.py') }}
+      - name: Build official SEC point-in-time seed
         run: |
           set -euo pipefail
           FORCE=''
-          if [ "${{ inputs.refresh_financial_data }}" = 'true' ]; then FORCE='--force'; fi
-          python -m ible.fmp_cli --root . ${FORCE}
+          if [ "${{ inputs.refresh_sec_fsds }}" = 'true' ]; then FORCE='--force'; fi
+          python -m ible.sec_fsds_cli --root . ${FORCE}
       - name: Run global holdout
         run: |
           set -euo pipefail
@@ -70,30 +69,46 @@ jobs:
           print(json.dumps({
             'status':p['status'],
             'financial_source':p['financial_source'],
+            'dataset_gate_passed':p['dataset_gate_passed'],
             'metrics':p['metrics'],
-            'financial_data':p['financial_data'],
+            'financial_data':{
+              'status':p['financial_data'].get('status'),
+              'requested':p['financial_data'].get('requested'),
+              'historically_eligible_count':p['financial_data'].get('historically_eligible_count'),
+              'available':p['financial_data'].get('available'),
+              'coverage':p['financial_data'].get('coverage_of_historically_eligible'),
+            },
           },ensure_ascii=False,indent=2))
           assert p.get('investment_use_allowed') is False
-          assert p.get('financial_source') == 'fmp'
+          assert p.get('financial_source') == 'sec_financial_statement_data_sets'
           assert p.get('status') in {
-            'PASSED_V085_GLOBAL_HOLDOUT',
-            'FAILED_V085_GLOBAL_HOLDOUT',
-            'INSUFFICIENT_V085_GLOBAL_HOLDOUT',
+            'PASSED_V086_GLOBAL_HOLDOUT',
+            'FAILED_V086_GLOBAL_HOLDOUT',
+            'INSUFFICIENT_V086_GLOBAL_HOLDOUT',
           }
           PY
-      - name: Upload financial diagnostics
+      - name: Upload SEC FSDS diagnostics
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-financial-diagnostics-v0.8.5
-          path: .cache/fmp/fmp_download_status.json
+          name: industry-boom-sec-fsds-diagnostics-v0.8.6
+          path: .cache/sec_fsds/sec_fsds_status.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload compact SEC seed
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: industry-boom-sec-fsds-seed-v0.8.6
+          path: validation_seed/sec_fsds_fy2021.json
           if-no-files-found: ignore
-          retention-days: 7
+          retention-days: 30
+          compression-level: 9
       - name: Upload result
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-global-holdout-v0.8.5
+          name: industry-boom-global-holdout-v0.8.6
           path: outputs/global_holdout
           if-no-files-found: warn
           retention-days: 30
