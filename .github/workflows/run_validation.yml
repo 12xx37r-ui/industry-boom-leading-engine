@@ -186,6 +186,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No validation summary changes"
           else
-            git commit -m "chore: refresh multi-scenario validation v0.6.0"
+            git commit -m "chore: refresh multi-scenario validation v0.6.1"
             git push
           fi
