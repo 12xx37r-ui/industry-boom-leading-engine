@@ -1,5 +1,6 @@
-version: 1
-benchmark_name: V0.8.10 official SEC FSDS point-in-time global holdout
+version: 2
+benchmark_name: V0.9.0 development diagnostic on V0.8.10 SEC FSDS cohort
+development_only: true
 cohort:
   as_of: '2022-04-30'
   theme_ids:

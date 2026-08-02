@@ -76,3 +76,43 @@ def test_margin_signal_rejects_profit_above_revenue() -> None:
     assert signal.coverage == 0.0
     assert signal.score == 50.0
     assert signal.raw["rejected_implausible_margin_points"] == len(dates)
+
+
+def test_low_base_spike_receives_scale_penalty() -> None:
+    dates = [
+        "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-31",
+        "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-31",
+    ]
+    low = list(zip(dates, [1, 1, 1, 1, 10, 10, 10, 10], strict=True))
+    high = list(zip(dates, [100_000_000, 100_000_000, 100_000_000, 100_000_000,
+                            1_000_000_000, 1_000_000_000, 1_000_000_000, 1_000_000_000], strict=True))
+    profiles = {"A": {"exposure": 1.0, "confidence": 1.0}}
+    low_signal = build_exposure_weighted_signal("us_exposure_capex", {"A": low}, profiles)
+    high_signal = build_exposure_weighted_signal("us_exposure_capex", {"A": high}, profiles)
+    assert low_signal.raw["low_base_spike_penalty"] > 0
+    assert high_signal.raw["economic_scale_score"] > low_signal.raw["economic_scale_score"]
+    assert high_signal.score > low_signal.score
+
+
+def test_operating_viability_penalizes_deep_losses() -> None:
+    from ible.analytics.exposure_scoring import build_operating_viability_signal
+
+    dates = [
+        "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-31",
+        "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-31",
+    ]
+    revenue = {"A": [(date, 100.0) for date in dates]}
+    losses = {"A": [(date, -100.0) for date in dates]}
+    profits = {"A": [(date, 15.0) for date in dates]}
+    profiles = {"A": {"exposure": 1.0, "confidence": 1.0}}
+    loss_signal = build_operating_viability_signal(revenue, losses, profiles)
+    profit_signal = build_operating_viability_signal(revenue, profits, profiles)
+    assert loss_signal.score < 35
+    assert profit_signal.score > 50
+
+
+def test_stage_requires_commercial_support() -> None:
+    from ible.global_validation import _stage
+
+    assert _stage(66, 90, 60, 55, 40, 80, 75, 20) == "WATCH"
+    assert _stage(66, 90, 60, 55, 58, 80, 75, 20) == "EARLY_ACCUMULATION"

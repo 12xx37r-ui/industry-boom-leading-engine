@@ -9,6 +9,7 @@ from typing import Any
 from ible.analytics.exposure_scoring import (
     build_exposure_weighted_margin_signal,
     build_exposure_weighted_signal,
+    build_operating_viability_signal,
     effective_weight,
     harmonic_mean,
 )
@@ -20,16 +21,29 @@ from ible.config import load_yaml
 ALERT_STAGES = {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
 
 
-def _stage(score: float, confidence: float, cross: float, commercial: float) -> str:
+def _stage(
+    score: float,
+    confidence: float,
+    cross: float,
+    commercial: float,
+    revenue_score: float,
+    revenue_breadth: float,
+    rd_score: float,
+    operating_score: float,
+) -> str:
     if confidence < 45:
         return "INSUFFICIENT_DATA"
-    if score >= 64 and cross >= 54 and commercial < 60:
+    commercial_support = bool(
+        (revenue_score >= 48 and operating_score >= 30)
+        or (revenue_score >= 55 and revenue_breadth >= 60 and rd_score >= 55)
+    )
+    if score >= 64 and cross >= 54 and commercial < 60 and commercial_support:
         return "EARLY_ACCUMULATION"
-    if score >= 58 and cross >= 52:
+    if score >= 58 and cross >= 52 and commercial_support:
         return "CAPITAL_LED_ACCUMULATION"
-    if score >= 58 and commercial >= 58:
+    if score >= 58 and commercial >= 58 and revenue_score >= 52:
         return "TRANSITION"
-    if commercial >= 68:
+    if commercial >= 68 and revenue_score >= 58:
         return "COMMERCIAL_BOOM"
     if score >= 53:
         return "WATCH"
@@ -58,22 +72,44 @@ def _theme_result(
     capex = build_exposure_weighted_signal("us_exposure_capex", series["capex"], profiles, minimum_exposure)
     rd = build_exposure_weighted_signal("us_exposure_rd", series["rd"], profiles, minimum_exposure)
     revenue = build_exposure_weighted_signal("us_exposure_revenue", series["revenue"], profiles, minimum_exposure)
-    margin = build_exposure_weighted_margin_signal(series["revenue"], series["gross_profit"], profiles, minimum_exposure)
+    margin = build_exposure_weighted_margin_signal(
+        series["revenue"], series["gross_profit"], profiles, minimum_exposure
+    )
+    operating = build_operating_viability_signal(
+        series["revenue"], series["operating_income"], profiles, minimum_exposure
+    )
     research = build_research_signal("technology_research_diffusion", research_momentum)
 
     innovation = 0.55 * rd.score + 0.45 * research.score
     cross = harmonic_mean([capex.score, revenue.score, innovation])
     weighted_breadth = statistics.mean([capex.breadth, rd.breadth, revenue.breadth])
-    commercial = 0.45 * revenue.score + 0.25 * margin.score + 0.30 * capex.score
+    commercial = (
+        0.40 * revenue.score
+        + 0.18 * margin.score
+        + 0.22 * operating.score
+        + 0.20 * capex.score
+    )
     raw_early = (
-        0.32 * capex.score
-        + 0.23 * rd.score
-        + 0.18 * research.score
-        + 0.17 * revenue.score
-        + 0.10 * weighted_breadth
+        0.27 * capex.score
+        + 0.20 * rd.score
+        + 0.15 * research.score
+        + 0.20 * revenue.score
+        + 0.08 * weighted_breadth
+        + 0.10 * operating.score
     )
     hype_gap = max(0.0, research.score - statistics.mean([capex.score, revenue.score]))
     hype_penalty = max(0.0, hype_gap - 12.0) * 0.32
+    capital_without_demand_gap = max(0.0, 0.5 * (capex.score + rd.score) - revenue.score - 12.0)
+    capital_without_demand_penalty = 0.35 * capital_without_demand_gap
+    operating_burn_penalty = 0.45 * max(0.0, 35.0 - operating.score)
+    scale_scores = [
+        float(signal.raw.get("economic_scale_score") or 0.0)
+        for signal in (capex, rd, revenue)
+        if isinstance(signal.raw, dict)
+    ]
+    average_scale_score = statistics.mean(scale_scores) if scale_scores else 0.0
+    low_scale_penalty = 0.22 * max(0.0, 42.0 - average_scale_score)
+    speculative_penalty = capital_without_demand_penalty + operating_burn_penalty + low_scale_penalty
     exposure_coverage = statistics.mean([capex.coverage, rd.coverage, revenue.coverage])
     eligible_weights = [
         effective_weight(profile)
@@ -87,10 +123,11 @@ def _theme_result(
     )
     coverage_penalty = max(0.0, 0.60 - exposure_coverage) * 30.0
     boom_score = clamp(
-        0.62 * raw_early
-        + 0.23 * cross
-        + 0.15 * commercial
+        0.60 * raw_early
+        + 0.22 * cross
+        + 0.18 * commercial
         - hype_penalty
+        - speculative_penalty
         - coverage_penalty
     )
     confidence = clamp(
@@ -101,14 +138,23 @@ def _theme_result(
             + 0.20 * exposure_quality / 100.0
         )
     )
-    stage = _stage(boom_score, confidence, cross, commercial)
+    stage = _stage(
+        boom_score,
+        confidence,
+        cross,
+        commercial,
+        revenue.score,
+        revenue.breadth,
+        rd.score,
+        operating.score,
+    )
     usable = sum(
         1
         for ticker in profiles
         if len(series["revenue"].get(ticker, [])) >= 5
         or len(series["capex"].get(ticker, [])) >= 5
     )
-    early = clamp(raw_early - hype_penalty - coverage_penalty)
+    early = clamp(raw_early - hype_penalty - speculative_penalty - coverage_penalty)
 
     return {
         "theme_id": theme["id"],
@@ -131,13 +177,15 @@ def _theme_result(
             "capex": capex.to_dict(),
             "rd": rd.to_dict(),
             "revenue": revenue.to_dict(),
-            "margin": margin.to_dict(),
+            "gross_margin": margin.to_dict(),
+            "operating_viability": operating.to_dict(),
             "research": research.to_dict(),
         },
         "top_reasons": [
             f"노출도 통과 기업 CAPEX {capex.score:.1f}",
             f"노출도 통과 기업 매출수요 {revenue.score:.1f}",
             f"기술·기업 R&D 결합 {innovation:.1f}",
+            f"영업생존력 {operating.score:.1f}",
             f"독립신호 교차확인 {cross:.1f}",
         ],
         "invalidations": theme.get("invalidations", []),
@@ -154,10 +202,20 @@ def _theme_result(
         "diagnostics": {
             "hype_gap": round(hype_gap, 2),
             "hype_penalty": round(hype_penalty, 2),
+            "capital_without_demand_gap": round(capital_without_demand_gap, 2),
+            "capital_without_demand_penalty": round(capital_without_demand_penalty, 2),
+            "operating_burn_penalty": round(operating_burn_penalty, 2),
+            "average_economic_scale_score": round(average_scale_score, 2),
+            "low_scale_penalty": round(low_scale_penalty, 2),
+            "speculative_penalty": round(speculative_penalty, 2),
             "coverage_penalty": round(coverage_penalty, 2),
             "evaluation_class": theme.get("evaluation_class", "structural"),
         },
-        "warnings": [warning for signal in (capex, rd, revenue, margin, research) for warning in signal.warnings],
+        "warnings": [
+            warning
+            for signal in (capex, rd, revenue, margin, operating, research)
+            for warning in signal.warnings
+        ],
     }
 
 
@@ -260,6 +318,7 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         scenario = dict(raw)
         scenario["comparison_theme_ids"] = cohort_ids
         evaluated = evaluate_scenario(scenario, ranking)
+        evaluated["evaluation_class"] = scenario.get("evaluation_class")
         if not dataset_gate_passed:
             evaluated = _mark_insufficient(evaluated, "SEC FSDS coverage gate failed")
         scenarios.append(evaluated)
@@ -282,6 +341,22 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
                 1.0 if positive_score > negative_score else 0.5 if positive_score == negative_score else 0.0
             )
     auc = statistics.mean(pairwise) if pairwise else None
+    structural_positives = [
+        scenario for scenario in positives
+        if str(scenario.get("evaluation_class") or "") == "structural"
+    ]
+    shock_sensitive_positives = [
+        scenario for scenario in positives
+        if str(scenario.get("evaluation_class") or "") == "shock_sensitive"
+    ]
+    structural_recall = (
+        sum(bool(scenario.get("passed")) for scenario in structural_positives) / len(structural_positives)
+        if structural_positives else None
+    )
+    shock_sensitive_recall = (
+        sum(bool(scenario.get("passed")) for scenario in shock_sensitive_positives) / len(shock_sensitive_positives)
+        if shock_sensitive_positives else None
+    )
     passed = bool(
         dataset_gate_passed
         and recall is not None
@@ -292,13 +367,16 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         and auc >= 0.70
     )
     if not dataset_gate_passed or not eligible:
-        run_status = "INSUFFICIENT_V0810_GLOBAL_HOLDOUT"
+        run_status = "INSUFFICIENT_V090_DEVELOPMENT_DIAGNOSTIC"
     else:
-        run_status = "PASSED_V0810_GLOBAL_HOLDOUT" if passed else "FAILED_V0810_GLOBAL_HOLDOUT"
+        run_status = "DEVELOPMENT_DIAGNOSTIC_V090"
 
     summary = {
         "status": run_status,
         "investment_use_allowed": False,
+        "validation_role": "development_diagnostic_after_v0.8.10_failure_analysis",
+        "model_version": "0.9.0",
+        "seed_compatibility": "v0.8.10_schema5",
         "financial_source": "offline_sec_fsds_plus_arxiv_seed",
         "dataset_gate_passed": dataset_gate_passed,
         "metrics": {
@@ -306,6 +384,9 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             "positive_recall": round(recall, 4) if recall is not None else None,
             "false_alarm_rate": round(false_alarm, 4) if false_alarm is not None else None,
             "pairwise_auc": round(auc, 4) if auc is not None else None,
+            "structural_positive_recall": round(structural_recall, 4) if structural_recall is not None else None,
+            "shock_sensitive_positive_recall": round(shock_sensitive_recall, 4) if shock_sensitive_recall is not None else None,
+            "candidate_would_meet_old_gate": passed,
         },
         "criteria": {
             "financial_coverage_min": 0.75,
@@ -325,6 +406,8 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             "당시 상장·공시 이력이 없는 현재 기업은 역사적 분모에서 제외합니다.",
             "테마 노출도는 보수적 수동 프로필이며 사업부 매출 공시로 계속 갱신해야 합니다.",
             "시장 미반영도와 실제 주가수익 백테스트는 아직 포함되지 않았습니다.",
+            "V0.9.0은 V0.8.10 실패 결과를 본 뒤 만든 개발진단 모델이므로 같은 코호트의 성능을 일반화 검증으로 간주하지 않습니다.",
+            "다음 공식 홀드아웃에서는 이 점수파일을 동결하고 새로운 시점·산업을 사용해야 합니다.",
         ],
     }
     output_dir.mkdir(parents=True, exist_ok=True)

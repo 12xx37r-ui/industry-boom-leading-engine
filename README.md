@@ -1,3 +1,39 @@
+# Industry Boom Leading Engine V0.9.0
+
+## Purpose
+
+V0.9.0 is a **development diagnostic**, not a new independent holdout. It reuses the already checked-in V0.8.10 offline SEC/arXiv seed and fixes the main structural failure found in V0.8.10:
+
+- percentage growth from tiny low-base firms no longer receives full weight without meaningful dollar scale;
+- exposure-weighted aggregate dollars are measured alongside company growth rates;
+- operating-income viability is separated from gross-margin trend;
+- CAPEX/R&D acceleration without revenue demand or operating viability receives a speculative-investment penalty;
+- an accumulation stage requires commercial support.
+
+## Upgrade from V0.8.10
+
+Upload the V0.9.0 source over the GitHub repository. **Do not rebuild the PC seed and do not run the BAT file.** Keep the existing file:
+
+```text
+validation_seed/sec_fsds_fy2021.json
+```
+
+Run:
+
+```text
+Actions -> Industry Boom Development Diagnostic V0.9.0 -> Run workflow
+```
+
+Artifact:
+
+```text
+industry-boom-global-diagnostic-v0.9.0
+```
+
+This result remains investment-disabled. The next official validation must freeze V0.9.0 and use an unseen period and unseen themes.
+
+---
+
 # Industry Boom Leading Engine V0.8.10
 
 V0.8.10 fixes the V0.8.9 offline-seed failure where the strict fiscal-quarter filter left only 14 of 35 historically eligible companies.
