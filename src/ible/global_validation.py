@@ -216,7 +216,7 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         raise ValueError("FINANCIAL_SOURCE must be 'fmp' or 'sec'")
 
     http = JsonHttpClient(
-        user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.3"),
+        user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.4"),
         timeout=20,
         min_interval=3.2,
         retries=1,
@@ -272,7 +272,7 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
     )
 
     summary = {
-        "status": "PASSED_V083_GLOBAL_HOLDOUT" if passed else "FAILED_V083_GLOBAL_HOLDOUT",
+        "status": "PASSED_V084_GLOBAL_HOLDOUT" if passed else "FAILED_V084_GLOBAL_HOLDOUT",
         "investment_use_allowed": False,
         "financial_source": financial_source,
         "metrics": {

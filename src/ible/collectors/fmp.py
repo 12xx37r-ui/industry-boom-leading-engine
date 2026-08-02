@@ -3,6 +3,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+import os
 import time
 from pathlib import Path
 from typing import Any, Iterable
@@ -15,17 +16,17 @@ class FmpError(RuntimeError):
 
 
 class FmpClient:
-    """Download standardized quarterly statements from Financial Modeling Prep.
+    """Download point-in-time quarterly statements from Financial Modeling Prep.
 
-    This collector exists as a network-independent alternative to SEC EDGAR for
-    GitHub-hosted runners, whose shared IPs can be rejected by SEC.  Raw payloads
-    are cached per ticker and all observations are filtered by filing date before
-    the historical as-of date is scored.
+    V0.8.4 performs one real preflight request before downloading the cohort.  A
+    bad key, unavailable endpoint, or subscription restriction therefore fails
+    immediately with the provider's response instead of retrying every ticker.
     """
 
     STABLE_BASE = "https://financialmodelingprep.com/stable"
     LEGACY_BASE = "https://financialmodelingprep.com/api/v3"
     METRICS = ("capex", "rd", "revenue", "gross_profit", "operating_income")
+    PERMANENT_HTTP_CODES = {400, 401, 402, 403, 404, 422}
 
     def __init__(
         self,
@@ -33,21 +34,39 @@ class FmpClient:
         api_key: str,
         timeout: int = 45,
         min_interval: float = 0.35,
+        quarter_limit: int | None = None,
     ) -> None:
         self.cache_dir = Path(cache_dir)
         self.subset_dir = self.cache_dir / "subset"
         self.status_path = self.cache_dir / "fmp_download_status.json"
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.subset_dir.mkdir(parents=True, exist_ok=True)
-        self.api_key = api_key.strip()
+        self.api_key = self._sanitize_api_key(api_key)
         self.timeout = int(timeout)
         self.min_interval = max(0.25, float(min_interval))
+        configured_limit = quarter_limit or int(os.getenv("FMP_QUARTER_LIMIT", "20"))
+        self.quarter_limit = max(8, min(20, int(configured_limit)))
         self._last_request_at = 0.0
         self.session = requests.Session()
+        self.preflight_result: dict[str, Any] | None = None
+
+    @staticmethod
+    def _sanitize_api_key(value: str) -> str:
+        text = str(value or "").strip().strip('"').strip("'")
+        for prefix in ("?apikey=", "&apikey=", "apikey="):
+            if text.lower().startswith(prefix):
+                text = text[len(prefix):].strip()
+                break
+        return text
+
+    def _redact(self, text: str) -> str:
+        if self.api_key:
+            return str(text).replace(self.api_key, "***")
+        return str(text)
 
     def validate_api_key(self) -> None:
-        if len(self.api_key) < 8:
-            raise FmpError("FMP_API_KEY secret is missing or invalid")
+        if len(self.api_key) < 8 or any(ch.isspace() for ch in self.api_key):
+            raise FmpError("FMP_API_KEY secret is missing or malformed; store only the key value")
 
     def _respect_rate_limit(self) -> None:
         elapsed = time.monotonic() - self._last_request_at
@@ -55,70 +74,197 @@ class FmpClient:
             time.sleep(self.min_interval - elapsed)
         self._last_request_at = time.monotonic()
 
-    @staticmethod
-    def _response_detail(response: requests.Response) -> str:
+    def _response_detail(self, response: requests.Response) -> str:
         body = ""
         try:
-            body = response.text[:300].replace("\n", " ").strip()
+            body = response.text[:500].replace("\n", " ").strip()
         except Exception:  # noqa: BLE001
             pass
         detail = f"HTTP {response.status_code}"
         if body:
             detail += f" body={body}"
-        return detail
+        return self._redact(detail)
 
     @staticmethod
-    def _validate_rows(payload: Any, endpoint: str) -> list[dict[str, Any]]:
-        if isinstance(payload, dict):
-            message = payload.get("Error Message") or payload.get("error") or payload.get("message")
-            if message:
-                raise FmpError(f"{endpoint}: {message}")
-        if not isinstance(payload, list):
-            raise FmpError(f"{endpoint}: response is not a statement list")
-        return [row for row in payload if isinstance(row, dict)]
+    def _payload_message(payload: Any) -> str | None:
+        if not isinstance(payload, dict):
+            return None
+        for key in ("Error Message", "error", "message", "detail", "status"):
+            value = payload.get(key)
+            if value and not isinstance(value, (dict, list)):
+                return str(value)
+        return None
 
-    def _get_json(self, urls: list[str], params: dict[str, Any]) -> tuple[list[dict[str, Any]], str]:
+    @classmethod
+    def _is_permanent_message(cls, message: str) -> bool:
+        lowered = message.lower()
+        permanent_terms = (
+            "invalid api key",
+            "missing api key",
+            "subscription",
+            "upgrade",
+            "not available under your current subscription",
+            "not authorized",
+            "unauthorized",
+            "forbidden",
+            "endpoint not available",
+        )
+        return any(term in lowered for term in permanent_terms)
+
+    def _request_rows(
+        self,
+        url: str,
+        params: dict[str, Any],
+        *,
+        purpose: str,
+    ) -> list[dict[str, Any]]:
         last_error = "unknown error"
-        for url in urls:
-            endpoint_name = url.rsplit("/", 1)[-1]
-            for attempt in range(1, 4):
+        for attempt in range(1, 4):
+            try:
+                self._respect_rate_limit()
+                response = self.session.get(
+                    url,
+                    params={**params, "apikey": self.api_key},
+                    headers={
+                        "Accept": "application/json",
+                        "User-Agent": "IndustryBoomLeadingEngine/0.8.4",
+                    },
+                    timeout=(15, self.timeout),
+                )
+                if response.status_code >= 400:
+                    detail = self._response_detail(response)
+                    if response.status_code in self.PERMANENT_HTTP_CODES:
+                        raise FmpError(f"{purpose}: permanent access failure: {detail}")
+                    raise RuntimeError(f"{purpose}: transient provider failure: {detail}")
                 try:
-                    self._respect_rate_limit()
-                    response = self.session.get(
-                        url,
-                        params={**params, "apikey": self.api_key},
-                        headers={"Accept": "application/json", "User-Agent": "IndustryBoomLeadingEngine/0.8.3"},
-                        timeout=(15, self.timeout),
-                    )
-                    if response.status_code >= 400:
-                        raise FmpError(self._response_detail(response))
-                    rows = self._validate_rows(response.json(), endpoint_name)
-                    return rows, url
+                    payload = response.json()
                 except Exception as exc:  # noqa: BLE001
-                    last_error = str(exc)
-                    if attempt < 3:
-                        time.sleep(2**attempt)
+                    raise RuntimeError(f"{purpose}: invalid JSON response") from exc
+                message = self._payload_message(payload)
+                if message:
+                    clean = self._redact(message)
+                    if self._is_permanent_message(clean):
+                        raise FmpError(f"{purpose}: permanent access failure: {clean}")
+                    raise RuntimeError(f"{purpose}: provider error: {clean}")
+                if not isinstance(payload, list):
+                    raise RuntimeError(f"{purpose}: response is not a statement list")
+                return [row for row in payload if isinstance(row, dict)]
+            except FmpError:
+                raise
+            except Exception as exc:  # noqa: BLE001
+                last_error = self._redact(str(exc))
+                if attempt < 3:
+                    time.sleep(2**attempt)
         raise FmpError(last_error)
 
-    def _download_ticker(self, ticker: str) -> dict[str, Any]:
-        income, income_source = self._get_json(
-            [
-                f"{self.STABLE_BASE}/income-statement",
-                f"{self.LEGACY_BASE}/income-statement/{ticker}",
-            ],
-            {"symbol": ticker, "period": "quarter", "limit": 80},
+    def _statement_rows(
+        self,
+        ticker: str,
+        statement: str,
+        *,
+        limit: int,
+    ) -> tuple[list[dict[str, Any]], str]:
+        stable_url = f"{self.STABLE_BASE}/{statement}"
+        legacy_url = f"{self.LEGACY_BASE}/{statement}/{ticker}"
+        errors: list[str] = []
+        candidates = (
+            (stable_url, {"symbol": ticker, "period": "quarter", "limit": limit}),
+            (legacy_url, {"period": "quarter", "limit": limit}),
         )
-        cashflow, cashflow_source = self._get_json(
-            [
-                f"{self.STABLE_BASE}/cash-flow-statement",
-                f"{self.LEGACY_BASE}/cash-flow-statement/{ticker}",
-            ],
-            {"symbol": ticker, "period": "quarter", "limit": 80},
+        for url, params in candidates:
+            try:
+                rows = self._request_rows(
+                    url,
+                    params,
+                    purpose=f"{statement} {ticker}",
+                )
+                if rows:
+                    return rows, url
+                errors.append(f"{url}: empty response")
+            except FmpError as exc:
+                errors.append(str(exc))
+                # A stable-endpoint plan restriction does not prove the legacy
+                # endpoint is unavailable, so try both official forms once.
+                continue
+        raise FmpError(" | ".join(errors))
+
+    def preflight(self) -> dict[str, Any]:
+        """Validate the exact quarterly request used by the cohort.
+
+        The API key is supplied as the ``apikey`` query parameter by requests.
+        The key itself is never printed or written to diagnostics.
+        """
+        self.validate_api_key()
+        try:
+            rows, source = self._statement_rows(
+                "AAPL",
+                "income-statement",
+                limit=min(20, self.quarter_limit),
+            )
+            result = {
+                "status": "OK",
+                "ticker": "AAPL",
+                "period": "quarter",
+                "limit": self.quarter_limit,
+                "rows": len(rows),
+                "source": source,
+            }
+            self.preflight_result = result
+            print(
+                f"[FMP-PREFLIGHT] OK rows={len(rows)} source={source} "
+                f"period=quarter limit={self.quarter_limit}",
+                flush=True,
+            )
+            return result
+        except Exception as exc:  # noqa: BLE001
+            detail = self._redact(str(exc))
+            result = {
+                "status": "FAILED",
+                "ticker": "AAPL",
+                "period": "quarter",
+                "limit": self.quarter_limit,
+                "error": detail,
+            }
+            self.preflight_result = result
+            self.status_path.write_text(
+                json.dumps(
+                    {
+                        "status": "PREFLIGHT_FAILED",
+                        "provider": "financialmodelingprep",
+                        "preflight": result,
+                        "requested": 0,
+                        "downloaded": 0,
+                        "available": 0,
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+            print(f"[FMP-PREFLIGHT] FAILED {detail}", flush=True)
+            raise FmpError(
+                "FMP preflight failed before cohort download. "
+                "The API key or quarterly-statement access is unavailable. "
+                f"Provider response: {detail}"
+            ) from exc
+
+    def _download_ticker(self, ticker: str) -> dict[str, Any]:
+        income, income_source = self._statement_rows(
+            ticker,
+            "income-statement",
+            limit=self.quarter_limit,
+        )
+        cashflow, cashflow_source = self._statement_rows(
+            ticker,
+            "cash-flow-statement",
+            limit=self.quarter_limit,
         )
         if not income and not cashflow:
             raise FmpError("empty income and cash-flow statements")
         return {
             "ticker": ticker,
+            "period_mode": "quarter",
+            "quarter_limit": self.quarter_limit,
             "income_statement": income,
             "cash_flow_statement": cashflow,
             "provenance": {
@@ -137,10 +283,17 @@ class FmpClient:
                 (self.subset_dir / f"{ticker}.json").unlink(missing_ok=True)
 
         existing = [ticker for ticker in requested if (self.subset_dir / f"{ticker}.json").exists()]
+        remaining = [ticker for ticker in requested if ticker not in existing]
+        if remaining:
+            self.preflight()
+
         errors: dict[str, str] = {}
         downloaded = 0
-        remaining = [ticker for ticker in requested if ticker not in existing]
-        print(f"[FMP] companies={len(requested)} cached={len(existing)} download={len(remaining)}", flush=True)
+        print(
+            f"[FMP] companies={len(requested)} cached={len(existing)} download={len(remaining)} "
+            f"quarter_limit={self.quarter_limit}",
+            flush=True,
+        )
 
         for index, ticker in enumerate(remaining, start=1):
             try:
@@ -151,10 +304,13 @@ class FmpClient:
                 )
                 downloaded += 1
             except Exception as exc:  # noqa: BLE001
-                errors[ticker] = str(exc)
+                errors[ticker] = self._redact(str(exc))
             if index == len(remaining) or index % 5 == 0:
+                first_error = next(iter(errors.values()), "")
+                suffix = f" first_error={first_error[:220]}" if first_error else ""
                 print(
-                    f"[FMP] {index}/{len(remaining)} downloaded={downloaded} errors={len(errors)}",
+                    f"[FMP] {index}/{len(remaining)} downloaded={downloaded} "
+                    f"errors={len(errors)}{suffix}",
                     flush=True,
                 )
 
@@ -163,6 +319,9 @@ class FmpClient:
         result = {
             "status": "COMPLETE" if not missing else "PARTIAL" if present else "UNAVAILABLE",
             "provider": "financialmodelingprep",
+            "period": "quarter",
+            "quarter_limit": self.quarter_limit,
+            "preflight": self.preflight_result,
             "requested": len(requested),
             "cached": len(existing),
             "downloaded": downloaded,
@@ -173,7 +332,11 @@ class FmpClient:
         }
         self.status_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         if not present:
-            raise FmpError(f"FMP financial statements unavailable for all {len(requested)} companies")
+            first_error = next(iter(result["errors"].values()), "unknown provider response")
+            raise FmpError(
+                f"FMP financial statements unavailable for all {len(requested)} companies. "
+                f"First error: {first_error}"
+            )
         return result
 
     @staticmethod
@@ -193,7 +356,7 @@ class FmpClient:
         cutoff = dt.date.fromisoformat(as_of)
         by_period: dict[str, dict[str, Any]] = {}
         for row in rows:
-            period = str(row.get("period") or row.get("calendarYear") or "").upper()
+            period = str(row.get("period") or "").upper()
             if period and period not in {"Q1", "Q2", "Q3", "Q4"}:
                 continue
             end = cls._date_text(row, "date")
@@ -272,5 +435,5 @@ class FmpClient:
                     absolute=True,
                 )
             except Exception as exc:  # noqa: BLE001
-                errors[ticker] = str(exc)
+                errors[ticker] = self._redact(str(exc))
         return output, errors

@@ -63,3 +63,62 @@ def test_fmp_api_key_validation(tmp_path: Path):
         assert "FMP_API_KEY" in str(exc)
     else:
         raise AssertionError("short API key should fail")
+
+
+class _FakeResponse:
+    def __init__(self, status_code=200, payload=None, text=""):
+        self.status_code = status_code
+        self._payload = payload
+        self.text = text
+
+    def json(self):
+        return self._payload
+
+
+class _FakeSession:
+    def __init__(self, responses):
+        self.responses = list(responses)
+        self.calls = []
+
+    def get(self, url, **kwargs):
+        self.calls.append((url, kwargs))
+        return self.responses.pop(0)
+
+
+def test_fmp_sanitizes_accidental_apikey_prefix(tmp_path: Path):
+    client = FmpClient(tmp_path / "cache", "?apikey=1234567890")
+    assert client.api_key == "1234567890"
+
+
+def test_fmp_request_uses_apikey_query_parameter(tmp_path: Path):
+    client = FmpClient(tmp_path / "cache", "1234567890", min_interval=0.25)
+    session = _FakeSession([_FakeResponse(payload=[{"date": "2021-09-30"}])])
+    client.session = session
+    rows = client._request_rows(
+        "https://financialmodelingprep.com/stable/income-statement",
+        {"symbol": "AAPL", "period": "quarter", "limit": 20},
+        purpose="test",
+    )
+    assert rows
+    _, kwargs = session.calls[0]
+    assert kwargs["params"]["apikey"] == "1234567890"
+    assert kwargs["params"]["symbol"] == "AAPL"
+    assert kwargs["params"]["limit"] == 20
+
+
+def test_fmp_preflight_records_provider_error_without_cohort_loop(tmp_path: Path):
+    client = FmpClient(tmp_path / "cache", "1234567890", min_interval=0.25)
+    client.session = _FakeSession([
+        _FakeResponse(status_code=401, text='{"Error Message":"Invalid API Key"}'),
+        _FakeResponse(status_code=401, text='{"Error Message":"Invalid API Key"}'),
+    ])
+    try:
+        client.prepare_subset(["AAA", "BBB"])
+    except FmpError as exc:
+        assert "preflight" in str(exc).lower()
+    else:
+        raise AssertionError("preflight should fail")
+    status = json.loads(client.status_path.read_text(encoding="utf-8"))
+    assert status["status"] == "PREFLIGHT_FAILED"
+    assert status["requested"] == 0
+    assert len(client.session.calls) == 2
