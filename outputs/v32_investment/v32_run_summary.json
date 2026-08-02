@@ -1,0 +1,80 @@
+{
+  "status": "V3_2_CORPORATE_INVESTMENT_COLLECTED",
+  "engine_release": "3.2.0-github-corporate-investment",
+  "as_of": "2026-08-01",
+  "theme_count": 50,
+  "phase3_observed_theme_count": 50,
+  "capex_observed_theme_count": 50,
+  "business_rd_observed_theme_count": 50,
+  "source_status": {
+    "aies_capex": "LIVE_COLLECTED",
+    "berd_business_rd": "LIVE_COLLECTED"
+  },
+  "model_lock": {
+    "status": "LOCK_VERIFIED",
+    "lock_schema_version": 3,
+    "frozen_model_version": "0.9.1",
+    "engine_release": "1.0.4-github-robust",
+    "sealed_at": "2026-08-02T18:29:00+09:00",
+    "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.4은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
+    "checks": [
+      {
+        "file": "config/backtests.yml",
+        "status": "MATCH",
+        "expected_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7",
+        "actual_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7"
+      },
+      {
+        "file": "config/theme_exposures.yml",
+        "status": "MATCH",
+        "expected_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037",
+        "actual_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037"
+      },
+      {
+        "file": "src/ible/analytics/exposure_scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
+        "actual_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4"
+      },
+      {
+        "file": "src/ible/analytics/scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
+        "actual_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6"
+      },
+      {
+        "file": "src/ible/analytics/sec_metrics.py",
+        "status": "MATCH",
+        "expected_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9",
+        "actual_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9"
+      },
+      {
+        "file": "src/ible/analytics/timeseries.py",
+        "status": "MATCH",
+        "expected_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551",
+        "actual_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551"
+      },
+      {
+        "file": "src/ible/backtest.py",
+        "status": "MATCH",
+        "expected_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+        "actual_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24"
+      },
+      {
+        "file": "src/ible/global_validation.py",
+        "status": "MATCH",
+        "expected_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
+        "actual_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60"
+      }
+    ],
+    "failures": []
+  },
+  "frozen_boom_score_new_theme_count": 0,
+  "investment_use_allowed": false,
+  "next_required_gate": "ADD_REVENUE_CONVERSION_SUPPLY_CHAIN_AND_PROSPECTIVE_OUTCOMES_BEFORE_FROZEN_BOOM_SCORING",
+  "limitations": [
+    "CAPEX는 2023 산업별 수준·신뢰도 신호이며 시계열 증가율 신호가 아닙니다.",
+    "R&D는 2022~2023 증가율과 2023 규모를 함께 반영합니다.",
+    "최종 boom_score는 계속 null로 유지합니다."
+  ]
+}

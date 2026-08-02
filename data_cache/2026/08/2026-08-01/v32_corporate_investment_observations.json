@@ -1,0 +1,3004 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.2.0-github-corporate-investment",
+  "as_of": "2026-08-01",
+  "captured_at": "2026-08-02T20:41:02+09:00",
+  "theme_count": 50,
+  "source_provenance": {
+    "aies_capex": {
+      "name": "US_CENSUS_AIES_CAPEX_2023",
+      "url": "https://www2.census.gov/data/experimental-data-products/capex-aies/capex-estimates-for-2023-aies.xlsx",
+      "bundled_seed": "data_seed/official/aies_capex_2023.xlsx",
+      "reference_year": 2023,
+      "description": "2023 AIES 미국 산업별 고용주기업 자본지출 실험통계",
+      "official_page": "https://www.census.gov/data/experimental-data-products/capex-aies.html",
+      "status": "LIVE_COLLECTED",
+      "sha256": "c592abc078a5521f67b4e9a0dd6d3f5bce0cb2182a1e1b7c18489588ea46fedc",
+      "live_error": null
+    },
+    "berd_rd": {
+      "name": "NSF_NCSES_BERD_TABLE58_2023",
+      "url": "https://ncses.nsf.gov/pubs/nsf25354/assets/data-tables/tables/nsf25354-tab058.xlsx",
+      "bundled_seed": "data_seed/official/berd_table58_2008_2023.xlsx",
+      "reference_year": 2023,
+      "prior_year": 2022,
+      "description": "미국 기업 국내 R&D 수행액 산업별 2008~2023 시계열",
+      "official_page": "https://ncses.nsf.gov/surveys/business-enterprise-research-development/2023",
+      "status": "LIVE_COLLECTED",
+      "sha256": "8db22c5cffbea175f9495fcbf643d03b0c5c3a95db6e39afdad151bd3099c405",
+      "live_error": null
+    }
+  },
+  "investment_use_allowed": false,
+  "themes": [
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 48.507,
+      "capex_investment_signal_score": 70.0,
+      "business_rd_signal_score": 37.6343,
+      "phase3_investment_signal_score": 51.6931,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3344"
+          ],
+          "total_capex_thousand_usd": 25189214.0,
+          "coefficient_of_variation_pct": null,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 75.0,
+          "reliability_score": 50.0,
+          "source_signal_score": 70.0
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            3344
+          ],
+          "rd_million_usd_2022": 53054.0,
+          "rd_million_usd_2023": 50079.0,
+          "rd_growth_ratio": -0.056075,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 42.0571,
+          "scale_percentile_score": 31.0,
+          "source_signal_score": 37.6343
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.7802,
+      "capex_investment_signal_score": 67.4627,
+      "business_rd_signal_score": 58.3898,
+      "phase3_investment_signal_score": 59.2678,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5417",
+            "3254"
+          ],
+          "total_capex_thousand_usd": 19170007.0,
+          "coefficient_of_variation_pct": 1.3432,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 60.0,
+          "reliability_score": 97.3136,
+          "source_signal_score": 67.4627
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            5417,
+            3254
+          ],
+          "rd_million_usd_2022": 155166.0,
+          "rd_million_usd_2023": 160231.0,
+          "rd_growth_ratio": 0.032642,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 54.6497,
+          "scale_percentile_score": 64.0,
+          "source_signal_score": 58.3898
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5417",
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.0979,
+      "capex_investment_signal_score": 70.0,
+      "business_rd_signal_score": 37.6343,
+      "phase3_investment_signal_score": 51.9295,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3344"
+          ],
+          "total_capex_thousand_usd": 25189214.0,
+          "coefficient_of_variation_pct": null,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 75.0,
+          "reliability_score": 50.0,
+          "source_signal_score": 70.0
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            3344
+          ],
+          "rd_million_usd_2022": 53054.0,
+          "rd_million_usd_2023": 50079.0,
+          "rd_growth_ratio": -0.056075,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 42.0571,
+          "scale_percentile_score": 31.0,
+          "source_signal_score": 37.6343
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.9799,
+      "capex_investment_signal_score": 74.2,
+      "business_rd_signal_score": 41.9071,
+      "phase3_investment_signal_score": 55.6241,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3361",
+            "5417"
+          ],
+          "total_capex_thousand_usd": 23114823.0,
+          "coefficient_of_variation_pct": 2.5,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 69.0,
+          "reliability_score": 95.0,
+          "source_signal_score": 74.2
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3361–63",
+            5417
+          ],
+          "rd_million_usd_2022": 72778.0,
+          "rd_million_usd_2023": 66819.0,
+          "rd_growth_ratio": -0.081879,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 38.5118,
+          "scale_percentile_score": 47.0,
+          "source_signal_score": 41.9071
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3361",
+          "5417"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 47.8073,
+      "capex_investment_signal_score": 50.7832,
+      "business_rd_signal_score": 62.1404,
+      "phase3_investment_signal_score": 53.0,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "212",
+            "3314"
+          ],
+          "total_capex_thousand_usd": 10796654.0,
+          "coefficient_of_variation_pct": 1.0421,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 39.0,
+          "reliability_score": 97.9158,
+          "source_signal_score": 50.7832
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            21,
+            331
+          ],
+          "rd_million_usd_2022": 1007393.0,
+          "rd_million_usd_2023": 1051583.0,
+          "rd_growth_ratio": 0.043866,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.234,
+          "scale_percentile_score": 71.0,
+          "source_signal_score": 62.1404
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2122",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.5161,
+      "capex_investment_signal_score": 50.7832,
+      "business_rd_signal_score": 62.1404,
+      "phase3_investment_signal_score": 55.2835,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "212",
+            "3314"
+          ],
+          "total_capex_thousand_usd": 10796654.0,
+          "coefficient_of_variation_pct": 1.0421,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 39.0,
+          "reliability_score": 97.9158,
+          "source_signal_score": 50.7832
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            21,
+            331
+          ],
+          "rd_million_usd_2022": 1007393.0,
+          "rd_million_usd_2023": 1051583.0,
+          "rd_growth_ratio": 0.043866,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.234,
+          "scale_percentile_score": 71.0,
+          "source_signal_score": 62.1404
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2122",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.5305,
+      "capex_investment_signal_score": 83.7293,
+      "business_rd_signal_score": 57.6795,
+      "phase3_investment_signal_score": 62.2348,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5415",
+            "5182"
+          ],
+          "total_capex_thousand_usd": 26991310.0,
+          "coefficient_of_variation_pct": 0.6767,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 80.0,
+          "reliability_score": 98.6466,
+          "source_signal_score": 83.7293
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            5415,
+            518
+          ],
+          "rd_million_usd_2022": 71952.0,
+          "rd_million_usd_2023": 78545.0,
+          "rd_growth_ratio": 0.091631,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 62.7991,
+          "scale_percentile_score": 50.0,
+          "source_signal_score": 57.6795
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5415",
+          "5182"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 52.9013,
+      "capex_investment_signal_score": 95.7869,
+      "business_rd_signal_score": 71.0725,
+      "phase3_investment_signal_score": 71.2183,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5182",
+            "2211"
+          ],
+          "total_capex_thousand_usd": 128702982.0,
+          "coefficient_of_variation_pct": 0.5328,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 95.0,
+          "reliability_score": 98.9344,
+          "source_signal_score": 95.7869
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            518,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            22
+          ],
+          "rd_million_usd_2022": 1055677.0,
+          "rd_million_usd_2023": 1103638.0,
+          "rd_growth_ratio": 0.045432,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.4541,
+          "scale_percentile_score": 93.0,
+          "source_signal_score": 71.0725
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5182",
+          "2211"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.2738,
+      "capex_investment_signal_score": 54.3005,
+      "business_rd_signal_score": 49.7206,
+      "phase3_investment_signal_score": 51.7159,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3364",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 10958109.0,
+          "coefficient_of_variation_pct": 0.2488,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 43.0,
+          "reliability_score": 99.5024,
+          "source_signal_score": 54.3005
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3364,
+            3345
+          ],
+          "rd_million_usd_2022": 48800.0,
+          "rd_million_usd_2023": 51627.0,
+          "rd_growth_ratio": 0.05793,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 58.201,
+          "scale_percentile_score": 37.0,
+          "source_signal_score": 49.7206
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3364",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 54.1193,
+      "capex_investment_signal_score": 99.08,
+      "business_rd_signal_score": 43.1013,
+      "phase3_investment_signal_score": 64.3021,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "31-33",
+            "3344"
+          ],
+          "total_capex_thousand_usd": 237712454.0,
+          "coefficient_of_variation_pct": 0.3,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 99.0,
+          "reliability_score": 99.4,
+          "source_signal_score": 99.08
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            335,
+            3344
+          ],
+          "rd_million_usd_2022": 60143.0,
+          "rd_million_usd_2023": 57249.0,
+          "rd_growth_ratio": -0.048119,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 43.1688,
+          "scale_percentile_score": 43.0,
+          "source_signal_score": 43.1013
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3359",
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.4607,
+      "capex_investment_signal_score": 67.4627,
+      "business_rd_signal_score": 58.3898,
+      "phase3_investment_signal_score": 59.14,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3254",
+            "5417"
+          ],
+          "total_capex_thousand_usd": 19170007.0,
+          "coefficient_of_variation_pct": 1.3432,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 60.0,
+          "reliability_score": 97.3136,
+          "source_signal_score": 67.4627
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3254,
+            5417
+          ],
+          "rd_million_usd_2022": 155166.0,
+          "rd_million_usd_2023": 160231.0,
+          "rd_growth_ratio": 0.032642,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 54.6497,
+          "scale_percentile_score": 64.0,
+          "source_signal_score": 58.3898
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3254",
+          "5417"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.1566,
+      "capex_investment_signal_score": 39.65,
+      "business_rd_signal_score": 46.7911,
+      "phase3_investment_signal_score": 46.395,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3339",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 8970472.0,
+          "coefficient_of_variation_pct": 0.8751,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 25.0,
+          "reliability_score": 98.2498,
+          "source_signal_score": 39.65
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            333,
+            3345
+          ],
+          "rd_million_usd_2022": 32856.0,
+          "rd_million_usd_2023": 36666.0,
+          "rd_growth_ratio": 0.115961,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 65.9852,
+          "scale_percentile_score": 18.0,
+          "source_signal_score": 46.7911
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3339",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.5331,
+      "capex_investment_signal_score": 23.2,
+      "business_rd_signal_score": 45.4266,
+      "phase3_investment_signal_score": 42.0012,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3339"
+          ],
+          "total_capex_thousand_usd": 3364409.0,
+          "coefficient_of_variation_pct": 2.0,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 5.0,
+          "reliability_score": 96.0,
+          "source_signal_score": 23.2
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            333
+          ],
+          "rd_million_usd_2022": 19410.0,
+          "rd_million_usd_2023": 22682.0,
+          "rd_growth_ratio": 0.168573,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 72.3777,
+          "scale_percentile_score": 5.0,
+          "source_signal_score": 45.4266
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3339"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.0295,
+      "capex_investment_signal_score": 92.4212,
+      "business_rd_signal_score": 64.991,
+      "phase3_investment_signal_score": 68.4355,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "2211",
+            "237"
+          ],
+          "total_capex_thousand_usd": 114729193.0,
+          "coefficient_of_variation_pct": 0.947,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 91.0,
+          "reliability_score": 98.106,
+          "source_signal_score": 92.4212
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            22,
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1009654.0,
+          "rd_million_usd_2023": 1054549.0,
+          "rd_growth_ratio": 0.044466,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.3183,
+          "scale_percentile_score": 78.0,
+          "source_signal_score": 64.991
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2211",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.1264,
+      "capex_investment_signal_score": 47.88,
+      "business_rd_signal_score": 59.9519,
+      "phase3_investment_signal_score": 52.8001,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3254"
+          ],
+          "total_capex_thousand_usd": 10079994.0,
+          "coefficient_of_variation_pct": 0.3,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 35.0,
+          "reliability_score": 99.4,
+          "source_signal_score": 47.88
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            3254
+          ],
+          "rd_million_usd_2022": 116108.0,
+          "rd_million_usd_2023": 125986.0,
+          "rd_growth_ratio": 0.085076,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 61.9199,
+          "scale_percentile_score": 57.0,
+          "source_signal_score": 59.9519
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.4638,
+      "capex_investment_signal_score": 92.4212,
+      "business_rd_signal_score": 64.991,
+      "phase3_investment_signal_score": 67.8092,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "2211",
+            "237"
+          ],
+          "total_capex_thousand_usd": 114729193.0,
+          "coefficient_of_variation_pct": 0.947,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 91.0,
+          "reliability_score": 98.106,
+          "source_signal_score": 92.4212
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            22,
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1009654.0,
+          "rd_million_usd_2023": 1054549.0,
+          "rd_growth_ratio": 0.044466,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.3183,
+          "scale_percentile_score": 78.0,
+          "source_signal_score": 64.991
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2211",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 47.0383,
+      "capex_investment_signal_score": 70.0,
+      "business_rd_signal_score": 37.6343,
+      "phase3_investment_signal_score": 51.1056,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3344"
+          ],
+          "total_capex_thousand_usd": 25189214.0,
+          "coefficient_of_variation_pct": null,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 75.0,
+          "reliability_score": 50.0,
+          "source_signal_score": 70.0
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            3344
+          ],
+          "rd_million_usd_2022": 53054.0,
+          "rd_million_usd_2023": 50079.0,
+          "rd_growth_ratio": -0.056075,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 42.0571,
+          "scale_percentile_score": 31.0,
+          "source_signal_score": 37.6343
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.1688,
+      "capex_investment_signal_score": 50.7832,
+      "business_rd_signal_score": 62.1404,
+      "phase3_investment_signal_score": 54.3446,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "212",
+            "3314"
+          ],
+          "total_capex_thousand_usd": 10796654.0,
+          "coefficient_of_variation_pct": 1.0421,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 39.0,
+          "reliability_score": 97.9158,
+          "source_signal_score": 50.7832
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            21,
+            331
+          ],
+          "rd_million_usd_2022": 1007393.0,
+          "rd_million_usd_2023": 1051583.0,
+          "rd_growth_ratio": 0.043866,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.234,
+          "scale_percentile_score": 71.0,
+          "source_signal_score": 62.1404
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2122",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 50.2098,
+      "capex_investment_signal_score": 28.6631,
+      "business_rd_signal_score": 46.7911,
+      "phase3_investment_signal_score": 42.7202,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3332",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 6536398.0,
+          "coefficient_of_variation_pct": 0.3423,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 11.0,
+          "reliability_score": 99.3154,
+          "source_signal_score": 28.6631
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            333,
+            3345
+          ],
+          "rd_million_usd_2022": 32856.0,
+          "rd_million_usd_2023": 36666.0,
+          "rd_growth_ratio": 0.115961,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 65.9852,
+          "scale_percentile_score": 18.0,
+          "source_signal_score": 46.7911
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3332",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 52.0499,
+      "capex_investment_signal_score": 33.9269,
+      "business_rd_signal_score": 67.4563,
+      "phase3_investment_signal_score": 51.2349,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3336",
+            "237"
+          ],
+          "total_capex_thousand_usd": 8605246.0,
+          "coefficient_of_variation_pct": 5.1828,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 20.0,
+          "reliability_score": 89.6344,
+          "source_signal_score": 33.9269
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            3336,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1012576.0,
+          "rd_million_usd_2023": 1058385.0,
+          "rd_growth_ratio": 0.04524,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.4271,
+          "scale_percentile_score": 84.0,
+          "source_signal_score": 67.4563
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3336",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.2352,
+      "capex_investment_signal_score": 26.28,
+      "business_rd_signal_score": 44.2871,
+      "phase3_investment_signal_score": 42.4642,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3364"
+          ],
+          "total_capex_thousand_usd": 5352046.0,
+          "coefficient_of_variation_pct": 0.3,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 8.0,
+          "reliability_score": 99.4,
+          "source_signal_score": 26.28
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            3364
+          ],
+          "rd_million_usd_2022": 35354.0,
+          "rd_million_usd_2023": 37643.0,
+          "rd_growth_ratio": 0.064745,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 59.1452,
+          "scale_percentile_score": 22.0,
+          "source_signal_score": 44.2871
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3364"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 48.8192,
+      "capex_investment_signal_score": 43.8483,
+      "business_rd_signal_score": 44.1452,
+      "phase3_investment_signal_score": 45.9257,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3332",
+            "5417"
+          ],
+          "total_capex_thousand_usd": 10020348.0,
+          "coefficient_of_variation_pct": 2.3793,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 31.0,
+          "reliability_score": 95.2414,
+          "source_signal_score": 43.8483
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            333,
+            5417
+          ],
+          "rd_million_usd_2022": 58468.0,
+          "rd_million_usd_2023": 56927.0,
+          "rd_growth_ratio": -0.026356,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 46.242,
+          "scale_percentile_score": 41.0,
+          "source_signal_score": 44.1452
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3332",
+          "5417"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.7593,
+      "capex_investment_signal_score": 21.8622,
+      "business_rd_signal_score": 32.5378,
+      "phase3_investment_signal_score": 36.2237,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3391",
+            "6215"
+          ],
+          "total_capex_thousand_usd": 3124305.0,
+          "coefficient_of_variation_pct": 1.3445,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 3.0,
+          "reliability_score": 97.311,
+          "source_signal_score": 21.8622
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3391,
+            "621–23"
+          ],
+          "rd_million_usd_2022": 23212.0,
+          "rd_million_usd_2023": 23141.0,
+          "rd_growth_ratio": -0.003059,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 49.563,
+          "scale_percentile_score": 7.0,
+          "source_signal_score": 32.5378
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3391",
+          "6215"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.8477,
+      "capex_investment_signal_score": 59.7957,
+      "business_rd_signal_score": 18.1502,
+      "phase3_investment_signal_score": 43.3229,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 3,
+          "matched_naics": [
+            "3252",
+            "3259",
+            "3314"
+          ],
+          "total_capex_thousand_usd": 14023302.0,
+          "coefficient_of_variation_pct": 2.5108,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 51.0,
+          "reliability_score": 94.9784,
+          "source_signal_score": 59.7957
+        },
+        "berd_business_rd": {
+          "matched_rows": 3,
+          "matched_naics": [
+            3252,
+            "3255, 3259",
+            331
+          ],
+          "rd_million_usd_2022": 3835.0,
+          "rd_million_usd_2023": 3253.0,
+          "rd_growth_ratio": -0.15176,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 29.5837,
+          "scale_percentile_score": 1.0,
+          "source_signal_score": 18.1502
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3252",
+          "3259",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.2991,
+      "capex_investment_signal_score": 97.4426,
+      "business_rd_signal_score": 37.067,
+      "phase3_investment_signal_score": 61.6725,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5629",
+            "31-33"
+          ],
+          "total_capex_thousand_usd": 214218521.0,
+          "coefficient_of_variation_pct": 0.3934,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 97.0,
+          "reliability_score": 99.2132,
+          "source_signal_score": 97.4426
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81",
+            335
+          ],
+          "rd_million_usd_2022": 10470.0,
+          "rd_million_usd_2023": 11196.0,
+          "rd_growth_ratio": 0.069341,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 59.7783,
+          "scale_percentile_score": 3.0,
+          "source_signal_score": 37.067
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5629",
+          "3359"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.8664,
+      "capex_investment_signal_score": 70.5309,
+      "business_rd_signal_score": 72.217,
+      "phase3_investment_signal_score": 63.5709,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 3,
+          "matched_naics": [
+            "5417",
+            "3339",
+            "237"
+          ],
+          "total_capex_thousand_usd": 20111180.0,
+          "coefficient_of_variation_pct": 3.6727,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 65.0,
+          "reliability_score": 92.6546,
+          "source_signal_score": 70.5309
+        },
+        "berd_business_rd": {
+          "matched_rows": 5,
+          "matched_naics": [
+            5417,
+            333,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1068122.0,
+          "rd_million_usd_2023": 1110889.0,
+          "rd_growth_ratio": 0.040039,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 55.695,
+          "scale_percentile_score": 97.0,
+          "source_signal_score": 72.217
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5417",
+          "3339",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 50.6886,
+      "capex_investment_signal_score": 73.52,
+      "business_rd_signal_score": 51.9413,
+      "phase3_investment_signal_score": 57.9138,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5182"
+          ],
+          "total_capex_thousand_usd": 21630547.0,
+          "coefficient_of_variation_pct": 0.2,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 67.0,
+          "reliability_score": 99.6,
+          "source_signal_score": 73.52
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            518
+          ],
+          "rd_million_usd_2022": 49404.0,
+          "rd_million_usd_2023": 53115.0,
+          "rd_growth_ratio": 0.075115,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 60.5689,
+          "scale_percentile_score": 39.0,
+          "source_signal_score": 51.9413
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5182"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.9204,
+      "capex_investment_signal_score": 26.28,
+      "business_rd_signal_score": 44.2871,
+      "phase3_investment_signal_score": 42.7383,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "3364"
+          ],
+          "total_capex_thousand_usd": 5352046.0,
+          "coefficient_of_variation_pct": 0.3,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 8.0,
+          "reliability_score": 99.4,
+          "source_signal_score": 26.28
+        },
+        "berd_business_rd": {
+          "matched_rows": 1,
+          "matched_naics": [
+            3364
+          ],
+          "rd_million_usd_2022": 35354.0,
+          "rd_million_usd_2023": 37643.0,
+          "rd_growth_ratio": 0.064745,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 59.1452,
+          "scale_percentile_score": 22.0,
+          "source_signal_score": 44.2871
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3364"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.7394,
+      "capex_investment_signal_score": 83.7293,
+      "business_rd_signal_score": 57.6795,
+      "phase3_investment_signal_score": 62.3184,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5415",
+            "5182"
+          ],
+          "total_capex_thousand_usd": 26991310.0,
+          "coefficient_of_variation_pct": 0.6767,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 80.0,
+          "reliability_score": 98.6466,
+          "source_signal_score": 83.7293
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            5415,
+            518
+          ],
+          "rd_million_usd_2022": 71952.0,
+          "rd_million_usd_2023": 78545.0,
+          "rd_growth_ratio": 0.091631,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 62.7991,
+          "scale_percentile_score": 50.0,
+          "source_signal_score": 57.6795
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5415",
+          "5182"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.5919,
+      "capex_investment_signal_score": 20.64,
+      "business_rd_signal_score": 53.9943,
+      "phase3_investment_signal_score": 43.827,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3341",
+            "3342"
+          ],
+          "total_capex_thousand_usd": 1038592.0,
+          "coefficient_of_variation_pct": 0.4,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 1.0,
+          "reliability_score": 99.2,
+          "source_signal_score": 20.64
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            334,
+            3342
+          ],
+          "rd_million_usd_2022": 120762.0,
+          "rd_million_usd_2023": 123576.0,
+          "rd_growth_ratio": 0.023302,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 53.3239,
+          "scale_percentile_score": 55.0,
+          "source_signal_score": 53.9943
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3341",
+          "3342"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.1377,
+      "capex_investment_signal_score": 56.6269,
+      "business_rd_signal_score": 46.5311,
+      "phase3_investment_signal_score": 50.6025,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3251",
+            "3339"
+          ],
+          "total_capex_thousand_usd": 12064579.0,
+          "coefficient_of_variation_pct": 2.4327,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 47.0,
+          "reliability_score": 95.1346,
+          "source_signal_score": 56.6269
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3251,
+            333
+          ],
+          "rd_million_usd_2022": 22285.0,
+          "rd_million_usd_2023": 25882.0,
+          "rd_growth_ratio": 0.161409,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 71.5518,
+          "scale_percentile_score": 9.0,
+          "source_signal_score": 46.5311
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3251",
+          "3339"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.2745,
+      "capex_investment_signal_score": 88.9252,
+      "business_rd_signal_score": 68.8297,
+      "phase3_investment_signal_score": 67.8363,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 3,
+          "matched_naics": [
+            "211",
+            "4862",
+            "237"
+          ],
+          "total_capex_thousand_usd": 67073183.0,
+          "coefficient_of_variation_pct": 1.6871,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 87.0,
+          "reliability_score": 96.6258,
+          "source_signal_score": 88.9252
+        },
+        "berd_business_rd": {
+          "matched_rows": 5,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            21,
+            "48–49",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1019049.0,
+          "rd_million_usd_2023": 1067249.0,
+          "rd_growth_ratio": 0.047299,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.7162,
+          "scale_percentile_score": 87.0,
+          "source_signal_score": 68.8297
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2111",
+          "4862",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 48.4202,
+      "capex_investment_signal_score": 40.955,
+      "business_rd_signal_score": 52.2884,
+      "phase3_investment_signal_score": 47.3411,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "493",
+            "3339"
+          ],
+          "total_capex_thousand_usd": 9503661.0,
+          "coefficient_of_variation_pct": 1.6124,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 27.0,
+          "reliability_score": 96.7752,
+          "source_signal_score": 40.955
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "48–49",
+            333
+          ],
+          "rd_million_usd_2022": 28805.0,
+          "rd_million_usd_2023": 34938.0,
+          "rd_growth_ratio": 0.212914,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 77.1474,
+          "scale_percentile_score": 15.0,
+          "source_signal_score": 52.2884
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "4931",
+          "3339"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.5775,
+      "capex_investment_signal_score": 30.2634,
+      "business_rd_signal_score": 53.5709,
+      "phase3_investment_signal_score": 44.9813,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3366",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 7333788.0,
+          "coefficient_of_variation_pct": 0.3414,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 13.0,
+          "reliability_score": 99.3172,
+          "source_signal_score": 30.2634
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            336,
+            3345
+          ],
+          "rd_million_usd_2022": 85541.0,
+          "rd_million_usd_2023": 87912.0,
+          "rd_growth_ratio": 0.027718,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 53.9515,
+          "scale_percentile_score": 53.0,
+          "source_signal_score": 53.5709
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3366",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 54.8058,
+      "capex_investment_signal_score": 33.9269,
+      "business_rd_signal_score": 67.4563,
+      "phase3_investment_signal_score": 52.3373,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3336",
+            "237"
+          ],
+          "total_capex_thousand_usd": 8605246.0,
+          "coefficient_of_variation_pct": 5.1828,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 20.0,
+          "reliability_score": 89.6344,
+          "source_signal_score": 33.9269
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            3336,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1012576.0,
+          "rd_million_usd_2023": 1058385.0,
+          "rd_growth_ratio": 0.04524,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.4271,
+          "scale_percentile_score": 84.0,
+          "source_signal_score": 67.4563
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3336",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.9429,
+      "capex_investment_signal_score": 86.32,
+      "business_rd_signal_score": 44.8703,
+      "phase3_investment_signal_score": 59.3342,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3344",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 30795277.0,
+          "coefficient_of_variation_pct": 0.2,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 83.0,
+          "reliability_score": 99.6,
+          "source_signal_score": 86.32
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3344,
+            3345
+          ],
+          "rd_million_usd_2022": 66500.0,
+          "rd_million_usd_2023": 64063.0,
+          "rd_growth_ratio": -0.036647,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 44.7838,
+          "scale_percentile_score": 45.0,
+          "source_signal_score": 44.8703
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3344",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 56.3845,
+      "capex_investment_signal_score": 55.7778,
+      "business_rd_signal_score": 60.5055,
+      "phase3_investment_signal_score": 57.4388,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3254",
+            "6215"
+          ],
+          "total_capex_thousand_usd": 11227189.0,
+          "coefficient_of_variation_pct": 0.5555,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 45.0,
+          "reliability_score": 98.889,
+          "source_signal_score": 55.7778
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3254,
+            "621–23"
+          ],
+          "rd_million_usd_2022": 118926.0,
+          "rd_million_usd_2023": 128682.0,
+          "rd_growth_ratio": 0.082034,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 61.5092,
+          "scale_percentile_score": 59.0,
+          "source_signal_score": 60.5055
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3254",
+          "6215"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.3323,
+      "capex_investment_signal_score": 37.4526,
+      "business_rd_signal_score": 51.8841,
+      "phase3_investment_signal_score": 46.5339,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3339",
+            "5415"
+          ],
+          "total_capex_thousand_usd": 8725172.0,
+          "coefficient_of_variation_pct": 2.3686,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 23.0,
+          "reliability_score": 95.2628,
+          "source_signal_score": 37.4526
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            333,
+            5415
+          ],
+          "rd_million_usd_2022": 41958.0,
+          "rd_million_usd_2023": 48112.0,
+          "rd_growth_ratio": 0.14667,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 69.8068,
+          "scale_percentile_score": 25.0,
+          "source_signal_score": 51.8841
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3339",
+          "5415"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.6616,
+      "capex_investment_signal_score": 85.68,
+      "business_rd_signal_score": 71.3201,
+      "phase3_investment_signal_score": 68.5647,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3344",
+            "237"
+          ],
+          "total_capex_thousand_usd": 32845972.0,
+          "coefficient_of_variation_pct": 5.8,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 85.0,
+          "reliability_score": 88.4,
+          "source_signal_score": 85.68
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            3344,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1062708.0,
+          "rd_million_usd_2023": 1104041.0,
+          "rd_growth_ratio": 0.038894,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 55.5335,
+          "scale_percentile_score": 95.0,
+          "source_signal_score": 71.3201
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3344",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 54.3075,
+      "capex_investment_signal_score": 31.8887,
+      "business_rd_signal_score": 36.6906,
+      "phase3_investment_signal_score": 42.2968,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3391",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 7583173.0,
+          "coefficient_of_variation_pct": 0.2782,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 15.0,
+          "reliability_score": 99.4436,
+          "source_signal_score": 31.8887
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            3391,
+            3345
+          ],
+          "rd_million_usd_2022": 33840.0,
+          "rd_million_usd_2023": 34429.0,
+          "rd_growth_ratio": 0.017405,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 52.4844,
+          "scale_percentile_score": 13.0,
+          "source_signal_score": 36.6906
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3391",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 54.4155,
+      "capex_investment_signal_score": 67.4627,
+      "business_rd_signal_score": 58.3898,
+      "phase3_investment_signal_score": 59.5219,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5417",
+            "3254"
+          ],
+          "total_capex_thousand_usd": 19170007.0,
+          "coefficient_of_variation_pct": 1.3432,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 60.0,
+          "reliability_score": 97.3136,
+          "source_signal_score": 67.4627
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            5417,
+            3254
+          ],
+          "rd_million_usd_2022": 155166.0,
+          "rd_million_usd_2023": 160231.0,
+          "rd_growth_ratio": 0.032642,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 54.6497,
+          "scale_percentile_score": 64.0,
+          "source_signal_score": 58.3898
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5417",
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.4868,
+      "capex_investment_signal_score": 56.4995,
+      "business_rd_signal_score": 64.991,
+      "phase3_investment_signal_score": 57.8419,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "2213",
+            "237"
+          ],
+          "total_capex_thousand_usd": 13489621.0,
+          "coefficient_of_variation_pct": 6.7513,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 49.0,
+          "reliability_score": 86.4974,
+          "source_signal_score": 56.4995
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            22,
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1009654.0,
+          "rd_million_usd_2023": 1054549.0,
+          "rd_growth_ratio": 0.044466,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.3183,
+          "scale_percentile_score": 78.0,
+          "source_signal_score": 64.991
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2213",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.3614,
+      "capex_investment_signal_score": 76.6169,
+      "business_rd_signal_score": 40.6092,
+      "phase3_investment_signal_score": 55.7124,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "311",
+            "3331"
+          ],
+          "total_capex_thousand_usd": 23674819.0,
+          "coefficient_of_variation_pct": 0.4577,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 71.0,
+          "reliability_score": 99.0846,
+          "source_signal_score": 76.6169
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            311,
+            333
+          ],
+          "rd_million_usd_2022": 26557.0,
+          "rd_million_usd_2023": 28509.0,
+          "rd_growth_ratio": 0.073502,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 60.3486,
+          "scale_percentile_score": 11.0,
+          "source_signal_score": 40.6092
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "111",
+          "311",
+          "3331"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 53.3967,
+      "capex_investment_signal_score": 42.2085,
+      "business_rd_signal_score": 69.9402,
+      "phase3_investment_signal_score": 55.0033,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "236",
+            "3331"
+          ],
+          "total_capex_thousand_usd": 10046247.0,
+          "coefficient_of_variation_pct": 10.4788,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 33.0,
+          "reliability_score": 79.0424,
+          "source_signal_score": 42.2085
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81",
+            333
+          ],
+          "rd_million_usd_2022": 1029064.0,
+          "rd_million_usd_2023": 1076644.0,
+          "rd_growth_ratio": 0.046236,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.567,
+          "scale_percentile_score": 90.0,
+          "source_signal_score": 69.9402
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2362",
+          "3331"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 51.4236,
+      "capex_investment_signal_score": 42.4291,
+      "business_rd_signal_score": 64.7318,
+      "phase3_investment_signal_score": 52.7177,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5223",
+            "5415"
+          ],
+          "total_capex_thousand_usd": 9719272.0,
+          "coefficient_of_variation_pct": 1.9273,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 29.0,
+          "reliability_score": 96.1454,
+          "source_signal_score": 42.4291
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            52,
+            5415
+          ],
+          "rd_million_usd_2022": 39779.0,
+          "rd_million_usd_2023": 51613.0,
+          "rd_growth_ratio": 0.297494,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 84.553,
+          "scale_percentile_score": 35.0,
+          "source_signal_score": 64.7318
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5223",
+          "5415"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 54.575,
+      "capex_investment_signal_score": 92.4212,
+      "business_rd_signal_score": 64.991,
+      "phase3_investment_signal_score": 69.0537,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "2211",
+            "237"
+          ],
+          "total_capex_thousand_usd": 114729193.0,
+          "coefficient_of_variation_pct": 0.947,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 91.0,
+          "reliability_score": 98.106,
+          "source_signal_score": 92.4212
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            22,
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1009654.0,
+          "rd_million_usd_2023": 1054549.0,
+          "rd_growth_ratio": 0.044466,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.3183,
+          "scale_percentile_score": 78.0,
+          "source_signal_score": 64.991
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "2211",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 52.7361,
+      "capex_investment_signal_score": 58.6212,
+      "business_rd_signal_score": 69.9402,
+      "phase3_investment_signal_score": 59.6629,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3334",
+            "238"
+          ],
+          "total_capex_thousand_usd": 14437614.0,
+          "coefficient_of_variation_pct": 9.4471,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 53.0,
+          "reliability_score": 81.1058,
+          "source_signal_score": 58.6212
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            333,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1029064.0,
+          "rd_million_usd_2023": 1076644.0,
+          "rd_growth_ratio": 0.046236,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.567,
+          "scale_percentile_score": 90.0,
+          "source_signal_score": 69.9402
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3334",
+          "2382"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.8827,
+      "capex_investment_signal_score": 67.4627,
+      "business_rd_signal_score": 58.3898,
+      "phase3_investment_signal_score": 57.7088,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5417",
+            "3254"
+          ],
+          "total_capex_thousand_usd": 19170007.0,
+          "coefficient_of_variation_pct": 1.3432,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 60.0,
+          "reliability_score": 97.3136,
+          "source_signal_score": 67.4627
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            5417,
+            3254
+          ],
+          "rd_million_usd_2022": 155166.0,
+          "rd_million_usd_2023": 160231.0,
+          "rd_growth_ratio": 0.032642,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 54.6497,
+          "scale_percentile_score": 64.0,
+          "source_signal_score": 58.3898
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5417",
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 58.3827,
+      "capex_investment_signal_score": 63.351,
+      "business_rd_signal_score": 33.9442,
+      "phase3_investment_signal_score": 52.5416,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5417",
+            "3345"
+          ],
+          "total_capex_thousand_usd": 14696076.0,
+          "coefficient_of_variation_pct": 1.6226,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 55.0,
+          "reliability_score": 96.7548,
+          "source_signal_score": 63.351
+        },
+        "berd_business_rd": {
+          "matched_rows": 2,
+          "matched_naics": [
+            5417,
+            3345
+          ],
+          "rd_million_usd_2022": 52504.0,
+          "rd_million_usd_2023": 48229.0,
+          "rd_growth_ratio": -0.081422,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 38.5737,
+          "scale_percentile_score": 27.0,
+          "source_signal_score": 33.9442
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "5417",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 3,
+      "status": "PHASE3_OBSERVED",
+      "phase2_data_signal_score": 49.9716,
+      "capex_investment_signal_score": 31.3376,
+      "business_rd_signal_score": 73.238,
+      "phase3_investment_signal_score": 51.3613,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "aies_capex": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "3365",
+            "237"
+          ],
+          "total_capex_thousand_usd": 7898504.0,
+          "coefficient_of_variation_pct": 5.6561,
+          "status": "LIVE_COLLECTED",
+          "reference_year": 2023,
+          "scale_percentile_score": 17.0,
+          "reliability_score": 88.6878,
+          "source_signal_score": 31.3376
+        },
+        "berd_business_rd": {
+          "matched_rows": 4,
+          "matched_naics": [
+            336,
+            "21–23, 31–33, 42–81",
+            "21–23, 42–81",
+            "23, 44–45 (excluding 454111–12), 55–56, 624, 71–72, 81"
+          ],
+          "rd_million_usd_2022": 1081749.0,
+          "rd_million_usd_2023": 1127890.0,
+          "rd_growth_ratio": 0.042654,
+          "status": "LIVE_COLLECTED",
+          "prior_year": 2022,
+          "reference_year": 2023,
+          "growth_score": 56.0634,
+          "scale_percentile_score": 99.0,
+          "source_signal_score": 73.238
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "naics_proxy_basket": [
+          "3365",
+          "2379"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "AIES·BERD 산업자료는 테마별 대표기업 재무제표가 아니라 NAICS 프록시입니다.",
+        "2023 AIES CAPEX는 실험통계이며 전년도 ACES와 직접 성장률 비교하지 않습니다.",
+        "BERD R&D는 공시기업뿐 아니라 비상장기업을 포함한 미국 산업 추정치입니다.",
+        "phase3_investment_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    }
+  ],
+  "content_sha256": "0a7e5fbefaefff62d83112f3def379d2234c437d70eda7811c0daf4c57261a65"
+}

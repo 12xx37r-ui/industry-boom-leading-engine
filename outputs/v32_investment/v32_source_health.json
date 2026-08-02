@@ -1,0 +1,37 @@
+{
+  "status": "SOURCE_HEALTH_RECORDED",
+  "sources": {
+    "aies_capex": {
+      "name": "US_CENSUS_AIES_CAPEX_2023",
+      "url": "https://www2.census.gov/data/experimental-data-products/capex-aies/capex-estimates-for-2023-aies.xlsx",
+      "bundled_seed": "data_seed/official/aies_capex_2023.xlsx",
+      "reference_year": 2023,
+      "description": "2023 AIES 미국 산업별 고용주기업 자본지출 실험통계",
+      "official_page": "https://www.census.gov/data/experimental-data-products/capex-aies.html",
+      "status": "LIVE_COLLECTED",
+      "sha256": "c592abc078a5521f67b4e9a0dd6d3f5bce0cb2182a1e1b7c18489588ea46fedc",
+      "live_error": null
+    },
+    "berd_rd": {
+      "name": "NSF_NCSES_BERD_TABLE58_2023",
+      "url": "https://ncses.nsf.gov/pubs/nsf25354/assets/data-tables/tables/nsf25354-tab058.xlsx",
+      "bundled_seed": "data_seed/official/berd_table58_2008_2023.xlsx",
+      "reference_year": 2023,
+      "prior_year": 2022,
+      "description": "미국 기업 국내 R&D 수행액 산업별 2008~2023 시계열",
+      "official_page": "https://ncses.nsf.gov/surveys/business-enterprise-research-development/2023",
+      "status": "LIVE_COLLECTED",
+      "sha256": "8db22c5cffbea175f9495fcbf643d03b0c5c3a95db6e39afdad151bd3099c405",
+      "live_error": null
+    }
+  },
+  "usable_rows": {
+    "aies_capex": 764,
+    "berd_rd": 66
+  },
+  "observed_themes": {
+    "capex": 50,
+    "business_rd": 50,
+    "phase3": 50
+  }
+}
