@@ -1,10 +1,10 @@
-name: Industry Boom Global Holdout V0.8.4
+name: Industry Boom Global Holdout V0.8.5
 
 on:
   workflow_dispatch:
     inputs:
       refresh_financial_data:
-        description: 'Ignore cached FMP statements and download again'
+        description: 'Ignore cached FMP annual snapshots and download again'
         required: false
         default: false
         type: boolean
@@ -21,7 +21,7 @@ jobs:
       FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
       PYTHONUNBUFFERED: '1'
-      FMP_QUARTER_LIMIT: '20'
+      FMP_ANNUAL_LIMIT: '5'
       PYTHONPATH: ${{ github.workspace }}/src
     steps:
       - uses: actions/checkout@v6
@@ -42,13 +42,13 @@ jobs:
           print('FMP_API_KEY_FORMAT_OK')
           PY
           python -m pytest -q
-      - name: Restore FMP statement cache
+      - name: Restore FMP annual snapshot cache
         if: ${{ !inputs.refresh_financial_data }}
         uses: actions/cache@v5
         with:
           path: .cache/fmp/subset
-          key: fmp-quarterly-v084-${{ hashFiles('config/global_holdouts.yml', 'config/theme_exposures.yml') }}
-      - name: Prepare standardized quarterly statements
+          key: fmp-annual-v085-${{ hashFiles('config/global_holdouts.yml', 'config/theme_exposures.yml') }}
+      - name: Prepare free-plan annual snapshots
         run: |
           set -euo pipefail
           FORCE=''
@@ -75,19 +75,26 @@ jobs:
           },ensure_ascii=False,indent=2))
           assert p.get('investment_use_allowed') is False
           assert p.get('financial_source') == 'fmp'
+          assert p.get('status') in {
+            'PASSED_V085_GLOBAL_HOLDOUT',
+            'FAILED_V085_GLOBAL_HOLDOUT',
+            'INSUFFICIENT_V085_GLOBAL_HOLDOUT',
+          }
           PY
       - name: Upload financial diagnostics
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-financial-diagnostics-v0.8.4
+          name: industry-boom-financial-diagnostics-v0.8.5
           path: .cache/fmp/fmp_download_status.json
           if-no-files-found: ignore
           retention-days: 7
       - name: Upload result
+        if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-global-holdout-v0.8.4
+          name: industry-boom-global-holdout-v0.8.5
           path: outputs/global_holdout
+          if-no-files-found: warn
           retention-days: 30
           compression-level: 9

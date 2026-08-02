@@ -51,13 +51,7 @@ jobs:
               -H "Accept: application/vnd.github+json" \
               -H "X-GitHub-Api-Version: 2022-11-28" \
               "$API_PATH")
-            DOWNLOAD_URL=$(printf '%s' "$ARTIFACT_JSON" | python -c '
-import json,sys
-p=json.load(sys.stdin)
-rows=[a for a in p.get("artifacts",[]) if not a.get("expired") and a.get("name")=="industry-boom-validation-output"]
-rows.sort(key=lambda x:x.get("created_at", ""), reverse=True)
-print(rows[0].get("archive_download_url", "") if rows else "")
-')
+            DOWNLOAD_URL=$(printf '%s' "$ARTIFACT_JSON" | python -c 'import json,sys; p=json.load(sys.stdin); rows=[a for a in p.get("artifacts",[]) if not a.get("expired") and a.get("name")=="industry-boom-validation-output"]; rows.sort(key=lambda x:x.get("created_at", ""), reverse=True); print(rows[0].get("archive_download_url", "") if rows else "")')
             if [ -z "$DOWNLOAD_URL" ]; then
               echo "No validation_seed and no readable industry-boom-validation-output artifact"
               exit 1
