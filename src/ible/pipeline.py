@@ -407,7 +407,13 @@ class EnginePipeline:
             if isinstance(datasets, dict):
                 datasets = [datasets]
             if error or not datasets:
-                return {"status": "ERROR", "dataset_count": 0, "datasets": [], "error": error or "no datasets"}
+                return {
+                    "status": "ERROR",
+                    "dataset_count": 0,
+                    "datasets": [],
+                    "error": error or "no datasets",
+                    "key_format_warning": getattr(self.bea, "key_format_warning", None),
+                }
             catalog_payload = self.bea.fixed_asset_table_catalog()
             catalog_results = catalog_payload.get("BEAAPI", {}).get("Results", {})
             values = catalog_results.get("ParamValue", []) if isinstance(catalog_results, dict) else []
@@ -422,6 +428,7 @@ class EnginePipeline:
                 "dataset_count": len(datasets),
                 "datasets": [row.get("DatasetName") for row in datasets],
                 "fixed_asset_catalog_matches": matches,
+                "key_format_warning": getattr(self.bea, "key_format_warning", None),
             }
         except Exception as exc:
             return {"status": "ERROR", "error": str(exc)}
@@ -438,7 +445,7 @@ class EnginePipeline:
         outputs = self.root / "outputs"
         run_started = time.monotonic()
         print(
-            f"[ENGINE] start version=0.4.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
+            f"[ENGINE] start version=0.4.1 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
             flush=True,
         )
         current, current_meta = self.score_dart_as_of(current_as_of)
@@ -478,7 +485,7 @@ class EnginePipeline:
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
-                "engine_version": "0.4.0",
+                "engine_version": "0.4.1",
                 "primary_sources": ["OpenDART original documents", "OpenDART financials", "arXiv"],
                 "methodology_warning": (
                     "투자·계약 원문 금액과 기술연구 확산을 추가했지만 미국 빅테크 CAPEX 원천자료와 "
@@ -572,7 +579,7 @@ class EnginePipeline:
 
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.4.0",
+            "engine_version": "0.4.1",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {

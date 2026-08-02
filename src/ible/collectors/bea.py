@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from ible.http import JsonHttpClient
@@ -11,13 +12,33 @@ class BeaClient:
         "https://apps.bea.gov/api/data/",
     )
 
+    UUID_PATTERN = re.compile(
+        r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+    )
+
     def __init__(self, api_key: str, http: JsonHttpClient) -> None:
-        if not api_key:
+        raw_key = str(api_key or "")
+        if not raw_key.strip():
             raise ValueError("BEA_API_KEY is required")
-        self.api_key = api_key.strip()
+
+        # GitHub Secrets에 따옴표·제로폭 문자·복사 잔여문자가 섞여도
+        # 공식 36자 UUID 본문이 있으면 자동으로 추출한다.
+        uuid_match = self.UUID_PATTERN.search(raw_key)
+        if uuid_match:
+            normalized = uuid_match.group(0)
+        else:
+            normalized = "".join(
+                ch for ch in raw_key
+                if not ch.isspace() and ch not in {"\u200b", "\u200c", "\u200d", "\ufeff", '"', "'"}
+            )
+
+        self.api_key = normalized
+        self.key_format_warning = None
         if len(self.api_key) != 36:
-            raise ValueError(
-                f"BEA_API_KEY format invalid: expected 36 characters, got {len(self.api_key)}"
+            # BEA는 보조 데이터원이다. 형식이 비정상이어도 엔진 전체를
+            # 중단하지 않고 실제 API 응답을 bea_context.json에 기록한다.
+            self.key_format_warning = (
+                f"BEA_API_KEY unusual length after normalization: {len(self.api_key)}"
             )
         self.http = http
 
