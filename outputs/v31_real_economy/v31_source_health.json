@@ -1,0 +1,11 @@
+{
+  "status": "SOURCE_HEALTH_RECORDED",
+  "source": "BLS_QCEW",
+  "qcew_quarter": "2025Q4",
+  "source_error": null,
+  "source_cells": {
+    "live": 50,
+    "cache_fallback": 0,
+    "unavailable": 0
+  }
+}

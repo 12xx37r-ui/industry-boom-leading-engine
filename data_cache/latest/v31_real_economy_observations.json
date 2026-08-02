@@ -1,0 +1,2713 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.1.0-github-qcew-real-economy",
+  "as_of": "2026-08-01",
+  "captured_at": "2026-08-02T20:23:11+09:00",
+  "qcew_quarter": "2025Q4",
+  "theme_count": 50,
+  "source_provenance": {
+    "name": "BLS_QCEW",
+    "base_url_template": "https://data.bls.gov/cew/data/api/{year}/{quarter}/area/US000.csv",
+    "source_family": "US_PRIVATE_EMPLOYMENT_ESTABLISHMENTS_WAGES",
+    "ownership_code": "5",
+    "area_fips": "US000",
+    "maximum_quarter_probes": 10,
+    "description": "미국 민간 산업별 고용·사업체·임금 분기 자료"
+  },
+  "investment_use_allowed": false,
+  "themes": [
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 43.2439,
+      "qcew_real_economy_signal_score": 52.8132,
+      "phase2_data_signal_score": 48.507,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3344"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 380197.0,
+            "establishments": 7218.0,
+            "total_quarterly_wages": 19398687791.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 390160.0,
+            "establishments": 7094.0,
+            "total_quarterly_wages": 18728458942.0
+          },
+          "employment_growth_percent": -2.5536,
+          "establishment_growth_percent": 1.748,
+          "wage_growth_percent": 3.5787,
+          "employment_scale_score": 78.1201,
+          "source_signal_score": 52.8132
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 48.9719,
+      "qcew_real_economy_signal_score": 57.7142,
+      "phase2_data_signal_score": 53.7802,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5417",
+            "3254"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1261648.6667,
+            "establishments": 69257.0,
+            "total_quarterly_wages": 53947550356.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1268863.0,
+            "establishments": 67111.0,
+            "total_quarterly_wages": 49645159495.0
+          },
+          "employment_growth_percent": -0.5686,
+          "establishment_growth_percent": 3.1977,
+          "wage_growth_percent": 8.6663,
+          "employment_scale_score": 85.4131,
+          "source_signal_score": 57.7142
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5417",
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.5569,
+      "qcew_real_economy_signal_score": 52.8132,
+      "phase2_data_signal_score": 49.0979,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3344"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 380197.0,
+            "establishments": 7218.0,
+            "total_quarterly_wages": 19398687791.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 390160.0,
+            "establishments": 7094.0,
+            "total_quarterly_wages": 18728458942.0
+          },
+          "employment_growth_percent": -2.5536,
+          "establishment_growth_percent": 1.748,
+          "wage_growth_percent": 3.5787,
+          "employment_scale_score": 78.1201,
+          "source_signal_score": 52.8132
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.4312,
+      "qcew_real_economy_signal_score": 58.1561,
+      "phase2_data_signal_score": 51.9799,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3361",
+            "5417"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1199070.3333,
+            "establishments": 62305.0,
+            "total_quarterly_wages": 50196200530.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1203856.0,
+            "establishments": 60325.0,
+            "total_quarterly_wages": 45799549437.0
+          },
+          "employment_growth_percent": -0.3975,
+          "establishment_growth_percent": 3.2822,
+          "wage_growth_percent": 9.5998,
+          "employment_scale_score": 85.1038,
+          "source_signal_score": 58.1561
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3361",
+          "5417"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 42.1584,
+      "qcew_real_economy_signal_score": 52.4291,
+      "phase2_data_signal_score": 47.8073,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2122",
+            "3314"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 106218.3333,
+            "establishments": 1693.0,
+            "total_quarterly_wages": 2724846393.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 107948.6667,
+            "establishments": 1665.0,
+            "total_quarterly_wages": 2657693771.0
+          },
+          "employment_growth_percent": -1.6029,
+          "establishment_growth_percent": 1.6817,
+          "wage_growth_percent": 2.5267,
+          "employment_scale_score": 70.3668,
+          "source_signal_score": 52.4291
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2122",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 54.8446,
+      "qcew_real_economy_signal_score": 52.4291,
+      "phase2_data_signal_score": 53.5161,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2122",
+            "3314"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 106218.3333,
+            "establishments": 1693.0,
+            "total_quarterly_wages": 2724846393.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 107948.6667,
+            "establishments": 1665.0,
+            "total_quarterly_wages": 2657693771.0
+          },
+          "employment_growth_percent": -1.6029,
+          "establishment_growth_percent": 1.6817,
+          "wage_growth_percent": 2.5267,
+          "employment_scale_score": 70.3668,
+          "source_signal_score": 52.4291
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2122",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 43.3479,
+      "qcew_real_economy_signal_score": 54.5889,
+      "phase2_data_signal_score": 49.5305,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5415",
+            "5182"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 2868074.0,
+            "establishments": 485611.0,
+            "total_quarterly_wages": 129935850049.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 2914735.0,
+            "establishments": 479071.0,
+            "total_quarterly_wages": 125739911669.0
+          },
+          "employment_growth_percent": -1.6009,
+          "establishment_growth_percent": 1.3651,
+          "wage_growth_percent": 3.337,
+          "employment_scale_score": 90.4063,
+          "source_signal_score": 54.5889
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5415",
+          "5182"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 49.6243,
+      "qcew_real_economy_signal_score": 55.5824,
+      "phase2_data_signal_score": 52.9013,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5182",
+            "2211"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 910444.6667,
+            "establishments": 71607.0,
+            "total_quarterly_wages": 39439009545.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 896910.6667,
+            "establishments": 70478.0,
+            "total_quarterly_wages": 39291971891.0
+          },
+          "employment_growth_percent": 1.509,
+          "establishment_growth_percent": 1.6019,
+          "wage_growth_percent": 0.3742,
+          "employment_scale_score": 83.4296,
+          "source_signal_score": 55.5824
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5182",
+          "2211"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 41.1895,
+      "qcew_real_economy_signal_score": 59.5246,
+      "phase2_data_signal_score": 51.2738,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3364",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 974802.0,
+            "establishments": 16123.0,
+            "total_quarterly_wages": 32542788613.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 961035.6667,
+            "establishments": 15679.0,
+            "total_quarterly_wages": 29592435438.0
+          },
+          "employment_growth_percent": 1.4324,
+          "establishment_growth_percent": 2.8318,
+          "wage_growth_percent": 9.97,
+          "employment_scale_score": 83.8448,
+          "source_signal_score": 59.5246
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3364",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 51.4156,
+      "qcew_real_economy_signal_score": 56.3314,
+      "phase2_data_signal_score": 54.1193,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3359",
+            "3344"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 560944.0,
+            "establishments": 12390.0,
+            "total_quarterly_wages": 23807747398.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 561725.3333,
+            "establishments": 11996.0,
+            "total_quarterly_wages": 22716229865.0
+          },
+          "employment_growth_percent": -0.1391,
+          "establishment_growth_percent": 3.2844,
+          "wage_growth_percent": 4.805,
+          "employment_scale_score": 80.4849,
+          "source_signal_score": 56.3314
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3359",
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 48.2619,
+      "qcew_real_economy_signal_score": 57.7142,
+      "phase2_data_signal_score": 53.4607,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3254",
+            "5417"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1261648.6667,
+            "establishments": 69257.0,
+            "total_quarterly_wages": 53947550356.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1268863.0,
+            "establishments": 67111.0,
+            "total_quarterly_wages": 49645159495.0
+          },
+          "employment_growth_percent": -0.5686,
+          "establishment_growth_percent": 3.1977,
+          "wage_growth_percent": 8.6663,
+          "employment_scale_score": 85.4131,
+          "source_signal_score": 57.7142
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3254",
+          "5417"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 45.5498,
+      "qcew_real_economy_signal_score": 55.7439,
+      "phase2_data_signal_score": 51.1566,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3339",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 680813.6667,
+            "establishments": 20685.0,
+            "total_quarterly_wages": 20229942614.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 687595.0,
+            "establishments": 20120.0,
+            "total_quarterly_wages": 19169674501.0
+          },
+          "employment_growth_percent": -0.9862,
+          "establishment_growth_percent": 2.8082,
+          "wage_growth_percent": 5.531,
+          "employment_scale_score": 81.6624,
+          "source_signal_score": 55.7439
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3339",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 52.4442,
+      "qcew_real_economy_signal_score": 54.424,
+      "phase2_data_signal_score": 53.5331,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3339"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 276240.6667,
+            "establishments": 9413.0,
+            "total_quarterly_wages": 6493168339.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 279459.3333,
+            "establishments": 9091.0,
+            "total_quarterly_wages": 6311044336.0
+          },
+          "employment_growth_percent": -1.1517,
+          "establishment_growth_percent": 3.542,
+          "wage_growth_percent": 2.8858,
+          "employment_scale_score": 76.178,
+          "source_signal_score": 54.424
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3339"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 43.7012,
+      "qcew_real_economy_signal_score": 60.6617,
+      "phase2_data_signal_score": 53.0295,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2211",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1058728.6667,
+            "establishments": 46511.0,
+            "total_quarterly_wages": 31848422355.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1020484.0,
+            "establishments": 45234.0,
+            "total_quarterly_wages": 29731434481.0
+          },
+          "employment_growth_percent": 3.7477,
+          "establishment_growth_percent": 2.8231,
+          "wage_growth_percent": 7.1204,
+          "employment_scale_score": 84.347,
+          "source_signal_score": 60.6617
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2211",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.7844,
+      "qcew_real_economy_signal_score": 56.3153,
+      "phase2_data_signal_score": 51.1264,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3254"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 348813.0,
+            "establishments": 7898.0,
+            "total_quarterly_wages": 11580255505.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 346929.3333,
+            "establishments": 7708.0,
+            "total_quarterly_wages": 11030561475.0
+          },
+          "employment_growth_percent": 0.543,
+          "establishment_growth_percent": 2.465,
+          "wage_growth_percent": 4.9834,
+          "employment_scale_score": 77.5963,
+          "source_signal_score": 56.3153
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 40.2219,
+      "qcew_real_economy_signal_score": 60.6617,
+      "phase2_data_signal_score": 51.4638,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2211",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1058728.6667,
+            "establishments": 46511.0,
+            "total_quarterly_wages": 31848422355.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1020484.0,
+            "establishments": 45234.0,
+            "total_quarterly_wages": 29731434481.0
+          },
+          "employment_growth_percent": 3.7477,
+          "establishment_growth_percent": 2.8231,
+          "wage_growth_percent": 7.1204,
+          "employment_scale_score": 84.347,
+          "source_signal_score": 60.6617
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2211",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 39.9801,
+      "qcew_real_economy_signal_score": 52.8132,
+      "phase2_data_signal_score": 47.0383,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3344"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 380197.0,
+            "establishments": 7218.0,
+            "total_quarterly_wages": 19398687791.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 390160.0,
+            "establishments": 7094.0,
+            "total_quarterly_wages": 18728458942.0
+          },
+          "employment_growth_percent": -2.5536,
+          "establishment_growth_percent": 1.748,
+          "wage_growth_percent": 3.5787,
+          "employment_scale_score": 78.1201,
+          "source_signal_score": 52.8132
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3344"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 49.6284,
+      "qcew_real_economy_signal_score": 52.4291,
+      "phase2_data_signal_score": 51.1688,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2122",
+            "3314"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 106218.3333,
+            "establishments": 1693.0,
+            "total_quarterly_wages": 2724846393.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 107948.6667,
+            "establishments": 1665.0,
+            "total_quarterly_wages": 2657693771.0
+          },
+          "employment_growth_percent": -1.6029,
+          "establishment_growth_percent": 1.6817,
+          "wage_growth_percent": 2.5267,
+          "employment_scale_score": 70.3668,
+          "source_signal_score": 52.4291
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2122",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 42.9216,
+      "qcew_real_economy_signal_score": 56.1728,
+      "phase2_data_signal_score": 50.2098,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3332",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 533660.3333,
+            "establishments": 16943.0,
+            "total_quarterly_wages": 17975891422.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 537738.6667,
+            "establishments": 16559.0,
+            "total_quarterly_wages": 16751069945.0
+          },
+          "employment_growth_percent": -0.7584,
+          "establishment_growth_percent": 2.319,
+          "wage_growth_percent": 7.3119,
+          "employment_scale_score": 80.1817,
+          "source_signal_score": 56.1728
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3332",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 41.5166,
+      "qcew_real_economy_signal_score": 60.668,
+      "phase2_data_signal_score": 52.0499,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3336",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 726546.6667,
+            "establishments": 33001.0,
+            "total_quarterly_wages": 19305684992.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 698790.0,
+            "establishments": 32172.0,
+            "total_quarterly_wages": 17938891935.0
+          },
+          "employment_growth_percent": 3.9721,
+          "establishment_growth_percent": 2.5768,
+          "wage_growth_percent": 7.6192,
+          "employment_scale_score": 82.0577,
+          "source_signal_score": 60.668
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3336",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 42.508,
+      "qcew_real_economy_signal_score": 62.012,
+      "phase2_data_signal_score": 53.2352,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3364"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 570229.0,
+            "establishments": 4851.0,
+            "total_quarterly_wages": 18806014338.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 552900.0,
+            "establishments": 4650.0,
+            "total_quarterly_wages": 16733805273.0
+          },
+          "employment_growth_percent": 3.1342,
+          "establishment_growth_percent": 4.3226,
+          "wage_growth_percent": 12.3834,
+          "employment_scale_score": 80.5847,
+          "source_signal_score": 62.012
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3364"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 38.078,
+      "qcew_real_economy_signal_score": 57.6074,
+      "phase2_data_signal_score": 48.8192,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3332",
+            "5417"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1041923.0,
+            "establishments": 67030.0,
+            "total_quarterly_wages": 46606411998.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1051536.6667,
+            "establishments": 64933.0,
+            "total_quarterly_wages": 42507037800.0
+          },
+          "employment_growth_percent": -0.9142,
+          "establishment_growth_percent": 3.2295,
+          "wage_growth_percent": 9.644,
+          "employment_scale_score": 84.2497,
+          "source_signal_score": 57.6074
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3332",
+          "5417"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 39.2547,
+      "qcew_real_economy_signal_score": 58.3539,
+      "phase2_data_signal_score": 49.7593,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3391",
+            "6215"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 636702.0,
+            "establishments": 45263.0,
+            "total_quarterly_wages": 14797056027.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 631068.6667,
+            "establishments": 43795.0,
+            "total_quarterly_wages": 13734108730.0
+          },
+          "employment_growth_percent": 0.8927,
+          "establishment_growth_percent": 3.352,
+          "wage_growth_percent": 7.7395,
+          "employment_scale_score": 81.2551,
+          "source_signal_score": 58.3539
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3391",
+          "6215"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 46.5613,
+      "qcew_real_economy_signal_score": 52.5365,
+      "phase2_data_signal_score": 49.8477,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3252",
+            "3259",
+            "3314"
+          ],
+          "recent": {
+            "matched_naics_count": 3.0,
+            "employment": 231322.6667,
+            "establishments": 6870.0,
+            "total_quarterly_wages": 5857900501.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 3.0,
+            "employment": 235800.3333,
+            "establishments": 6708.0,
+            "total_quarterly_wages": 5781195748.0
+          },
+          "employment_growth_percent": -1.8989,
+          "establishment_growth_percent": 2.415,
+          "wage_growth_percent": 1.3268,
+          "employment_scale_score": 75.0991,
+          "source_signal_score": 52.5365
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3252",
+          "3259",
+          "3314"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.5531,
+      "qcew_real_economy_signal_score": 60.4549,
+      "phase2_data_signal_score": 53.2991,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5629",
+            "3359"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 366794.6667,
+            "establishments": 24027.0,
+            "total_quarterly_wages": 8430259070.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 355622.0,
+            "establishments": 23114.0,
+            "total_quarterly_wages": 7775884769.0
+          },
+          "employment_growth_percent": 3.1417,
+          "establishment_growth_percent": 3.95,
+          "wage_growth_percent": 8.4154,
+          "employment_scale_score": 77.9019,
+          "source_signal_score": 60.4549
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5629",
+          "3359"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 43.1318,
+      "qcew_real_economy_signal_score": 59.0129,
+      "phase2_data_signal_score": 51.8664,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5417",
+            "3339",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 3.0,
+            "employment": 1822586.3333,
+            "establishments": 102289.0,
+            "total_quarterly_wages": 65728795379.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 3.0,
+            "employment": 1808176.3333,
+            "establishments": 99206.0,
+            "total_quarterly_wages": 60623534025.0
+          },
+          "employment_growth_percent": 0.7969,
+          "establishment_growth_percent": 3.1077,
+          "wage_growth_percent": 8.4213,
+          "employment_scale_score": 87.6496,
+          "source_signal_score": 59.0129
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5417",
+          "3339",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 48.2586,
+      "qcew_real_economy_signal_score": 52.6768,
+      "phase2_data_signal_score": 50.6886,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5182"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 485226.0,
+            "establishments": 56613.0,
+            "total_quarterly_wages": 24458919379.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 483210.0,
+            "establishments": 55956.0,
+            "total_quarterly_wages": 25258429079.0
+          },
+          "employment_growth_percent": 0.4172,
+          "establishment_growth_percent": 1.1741,
+          "wage_growth_percent": -3.1653,
+          "employment_scale_score": 79.6032,
+          "source_signal_score": 52.6768
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5182"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.0307,
+      "qcew_real_economy_signal_score": 62.012,
+      "phase2_data_signal_score": 53.9204,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3364"
+          ],
+          "recent": {
+            "matched_naics_count": 1.0,
+            "employment": 570229.0,
+            "establishments": 4851.0,
+            "total_quarterly_wages": 18806014338.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 1.0,
+            "employment": 552900.0,
+            "establishments": 4650.0,
+            "total_quarterly_wages": 16733805273.0
+          },
+          "employment_growth_percent": 3.1342,
+          "establishment_growth_percent": 4.3226,
+          "wage_growth_percent": 12.3834,
+          "employment_scale_score": 80.5847,
+          "source_signal_score": 62.012
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3364"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 43.8123,
+      "qcew_real_economy_signal_score": 54.5889,
+      "phase2_data_signal_score": 49.7394,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5415",
+            "5182"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 2868074.0,
+            "establishments": 485611.0,
+            "total_quarterly_wages": 129935850049.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 2914735.0,
+            "establishments": 479071.0,
+            "total_quarterly_wages": 125739911669.0
+          },
+          "employment_growth_percent": -1.6009,
+          "establishment_growth_percent": 1.3651,
+          "wage_growth_percent": 3.337,
+          "employment_scale_score": 90.4063,
+          "source_signal_score": 54.5889
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5415",
+          "5182"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 54.8516,
+      "qcew_real_economy_signal_score": 52.5612,
+      "phase2_data_signal_score": 53.5919,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3341",
+            "3342"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 178662.0,
+            "establishments": 5517.0,
+            "total_quarterly_wages": 8821070680.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 184058.0,
+            "establishments": 5442.0,
+            "total_quarterly_wages": 8359467012.0
+          },
+          "employment_growth_percent": -2.9317,
+          "establishment_growth_percent": 1.3782,
+          "wage_growth_percent": 5.5219,
+          "employment_scale_score": 73.5285,
+          "source_signal_score": 52.5612
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3341",
+          "3342"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 42.668,
+      "qcew_real_economy_signal_score": 54.431,
+      "phase2_data_signal_score": 49.1377,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3251",
+            "3339"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 429373.0,
+            "establishments": 13581.0,
+            "total_quarterly_wages": 11382156721.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 434960.6667,
+            "establishments": 13163.0,
+            "total_quarterly_wages": 11055349589.0
+          },
+          "employment_growth_percent": -1.2846,
+          "establishment_growth_percent": 3.1756,
+          "wage_growth_percent": 2.9561,
+          "employment_scale_score": 78.8597,
+          "source_signal_score": 54.431
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3251",
+          "3339"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 41.9325,
+      "qcew_real_economy_signal_score": 58.918,
+      "phase2_data_signal_score": 51.2745,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2111",
+            "4862",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 3.0,
+            "employment": 785463.3333,
+            "establishments": 39919.0,
+            "total_quarterly_wages": 24562743043.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 3.0,
+            "employment": 762988.0,
+            "establishments": 39215.0,
+            "total_quarterly_wages": 23178837892.0
+          },
+          "employment_growth_percent": 2.9457,
+          "establishment_growth_percent": 1.7952,
+          "wage_growth_percent": 5.9706,
+          "employment_scale_score": 82.5318,
+          "source_signal_score": 58.918
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2111",
+          "4862",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 42.156,
+      "qcew_real_economy_signal_score": 53.5454,
+      "phase2_data_signal_score": 48.4202,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "4931",
+            "3339"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 2235138.3333,
+            "establishments": 33170.0,
+            "total_quarterly_wages": 34882520121.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 2262275.6667,
+            "establishments": 32020.0,
+            "total_quarterly_wages": 35827676895.0
+          },
+          "employment_growth_percent": -1.1996,
+          "establishment_growth_percent": 3.5915,
+          "wage_growth_percent": -2.6381,
+          "employment_scale_score": 88.8903,
+          "source_signal_score": 53.5454
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "4931",
+          "3339"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 40.7264,
+      "qcew_real_economy_signal_score": 56.8193,
+      "phase2_data_signal_score": 49.5775,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3366",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 553520.3333,
+            "establishments": 13658.0,
+            "total_quarterly_wages": 17073636086.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 556429.3333,
+            "establishments": 13294.0,
+            "total_quarterly_wages": 15811597354.0
+          },
+          "employment_growth_percent": -0.5228,
+          "establishment_growth_percent": 2.7381,
+          "wage_growth_percent": 7.9817,
+          "employment_scale_score": 80.4039,
+          "source_signal_score": 56.8193
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3366",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 47.6409,
+      "qcew_real_economy_signal_score": 60.668,
+      "phase2_data_signal_score": 54.8058,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3336",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 726546.6667,
+            "establishments": 33001.0,
+            "total_quarterly_wages": 19305684992.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 698790.0,
+            "establishments": 32172.0,
+            "total_quarterly_wages": 17938891935.0
+          },
+          "employment_growth_percent": 3.9721,
+          "establishment_growth_percent": 2.5768,
+          "wage_growth_percent": 7.6192,
+          "employment_scale_score": 82.0577,
+          "source_signal_score": 60.668
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3336",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.2322,
+      "qcew_real_economy_signal_score": 54.6153,
+      "phase2_data_signal_score": 49.9429,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3344",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 784770.0,
+            "establishments": 18490.0,
+            "total_quarterly_wages": 33135462066.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 798295.6667,
+            "establishments": 18123.0,
+            "total_quarterly_wages": 31587089107.0
+          },
+          "employment_growth_percent": -1.6943,
+          "establishment_growth_percent": 2.0251,
+          "wage_growth_percent": 4.9019,
+          "employment_scale_score": 82.5264,
+          "source_signal_score": 54.6153
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3344",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 54.5755,
+      "qcew_real_economy_signal_score": 57.8646,
+      "phase2_data_signal_score": 56.3845,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3254",
+            "6215"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 662640.3333,
+            "establishments": 38495.0,
+            "total_quarterly_wages": 18530599627.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 657446.3333,
+            "establishments": 37177.0,
+            "total_quarterly_wages": 17447583535.0
+          },
+          "employment_growth_percent": 0.79,
+          "establishment_growth_percent": 3.5452,
+          "wage_growth_percent": 6.2073,
+          "employment_scale_score": 81.4979,
+          "source_signal_score": 57.8646
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3254",
+          "6215"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 42.572,
+      "qcew_real_economy_signal_score": 54.8635,
+      "phase2_data_signal_score": 49.3323,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3339",
+            "5415"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 2659088.6667,
+            "establishments": 438411.0,
+            "total_quarterly_wages": 111970099009.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 2710984.3333,
+            "establishments": 432206.0,
+            "total_quarterly_wages": 106792526926.0
+          },
+          "employment_growth_percent": -1.9143,
+          "establishment_growth_percent": 1.4357,
+          "wage_growth_percent": 4.8483,
+          "employment_scale_score": 89.9463,
+          "source_signal_score": 54.8635
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3339",
+          "5415"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 48.258,
+      "qcew_real_economy_signal_score": 58.0827,
+      "phase2_data_signal_score": 53.6616,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3344",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1013707.0,
+            "establishments": 38735.0,
+            "total_quarterly_wages": 36267019980.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 996943.3333,
+            "establishments": 37806.0,
+            "total_quarterly_wages": 34426350611.0
+          },
+          "employment_growth_percent": 1.6815,
+          "establishment_growth_percent": 2.4573,
+          "wage_growth_percent": 5.3467,
+          "employment_scale_score": 84.0828,
+          "source_signal_score": 58.0827
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3344",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 51.3166,
+      "qcew_real_economy_signal_score": 56.7546,
+      "phase2_data_signal_score": 54.3075,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3391",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 727447.6667,
+            "establishments": 25938.0,
+            "total_quarterly_wages": 21583486180.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 728687.3333,
+            "establishments": 25355.0,
+            "total_quarterly_wages": 20175716835.0
+          },
+          "employment_growth_percent": -0.1701,
+          "establishment_growth_percent": 2.2993,
+          "wage_growth_percent": 6.9775,
+          "employment_scale_score": 82.0652,
+          "source_signal_score": 56.7546
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3391",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 50.3837,
+      "qcew_real_economy_signal_score": 57.7142,
+      "phase2_data_signal_score": 54.4155,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5417",
+            "3254"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1261648.6667,
+            "establishments": 69257.0,
+            "total_quarterly_wages": 53947550356.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1268863.0,
+            "establishments": 67111.0,
+            "total_quarterly_wages": 49645159495.0
+          },
+          "employment_growth_percent": -0.5686,
+          "establishment_growth_percent": 3.1977,
+          "wage_growth_percent": 8.6663,
+          "employment_scale_score": 85.4131,
+          "source_signal_score": 57.7142
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5417",
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.4303,
+      "qcew_real_economy_signal_score": 60.8967,
+      "phase2_data_signal_score": 53.4868,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2213",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 696755.3333,
+            "establishments": 38451.0,
+            "total_quarterly_wages": 18327619120.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 668156.6667,
+            "establishments": 37575.0,
+            "total_quarterly_wages": 16973954996.0
+          },
+          "employment_growth_percent": 4.2802,
+          "establishment_growth_percent": 2.3313,
+          "wage_growth_percent": 7.9749,
+          "employment_scale_score": 81.8031,
+          "source_signal_score": 60.8967
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2213",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 47.847,
+      "qcew_real_economy_signal_score": 54.2369,
+      "phase2_data_signal_score": 51.3614,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "111",
+            "311",
+            "3331"
+          ],
+          "recent": {
+            "matched_naics_count": 3.0,
+            "employment": 2494460.3333,
+            "establishments": 99824.0,
+            "total_quarterly_wages": 40738618792.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 3.0,
+            "employment": 2524738.0,
+            "establishments": 99042.0,
+            "total_quarterly_wages": 39766014706.0
+          },
+          "employment_growth_percent": -1.1992,
+          "establishment_growth_percent": 0.7896,
+          "wage_growth_percent": 2.4458,
+          "employment_scale_score": 89.5577,
+          "source_signal_score": 54.2369
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "111",
+          "311",
+          "3331"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 46.218,
+      "qcew_real_economy_signal_score": 59.2701,
+      "phase2_data_signal_score": 53.3967,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2362",
+            "3331"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1136608.3333,
+            "establishments": 71426.0,
+            "total_quarterly_wages": 33583234403.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1118078.0,
+            "establishments": 69416.0,
+            "total_quarterly_wages": 31069214800.0
+          },
+          "employment_growth_percent": 1.6573,
+          "establishment_growth_percent": 2.8956,
+          "wage_growth_percent": 8.0917,
+          "employment_scale_score": 84.7786,
+          "source_signal_score": 59.2701
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2362",
+          "3331"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 46.969,
+      "qcew_real_economy_signal_score": 55.0683,
+      "phase2_data_signal_score": 51.4236,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5223",
+            "5415"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 2664860.0,
+            "establishments": 463477.0,
+            "total_quarterly_wages": 115650504823.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 2713218.0,
+            "establishments": 457592.0,
+            "total_quarterly_wages": 109831921815.0
+          },
+          "employment_growth_percent": -1.7823,
+          "establishment_growth_percent": 1.2861,
+          "wage_growth_percent": 5.2977,
+          "employment_scale_score": 89.9594,
+          "source_signal_score": 55.0683
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5223",
+          "5415"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 47.1357,
+      "qcew_real_economy_signal_score": 60.6617,
+      "phase2_data_signal_score": 54.575,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "2211",
+            "2371"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1058728.6667,
+            "establishments": 46511.0,
+            "total_quarterly_wages": 31848422355.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1020484.0,
+            "establishments": 45234.0,
+            "total_quarterly_wages": 29731434481.0
+          },
+          "employment_growth_percent": 3.7477,
+          "establishment_growth_percent": 2.8231,
+          "wage_growth_percent": 7.1204,
+          "employment_scale_score": 84.347,
+          "source_signal_score": 60.6617
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "2211",
+          "2371"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 44.1798,
+      "qcew_real_economy_signal_score": 59.7367,
+      "phase2_data_signal_score": 52.7361,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3334",
+            "2382"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 2772065.0,
+            "establishments": 242737.0,
+            "total_quarterly_wages": 65029512314.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 2713110.0,
+            "establishments": 238702.0,
+            "total_quarterly_wages": 60066008370.0
+          },
+          "employment_growth_percent": 2.173,
+          "establishment_growth_percent": 1.6904,
+          "wage_growth_percent": 8.2634,
+          "employment_scale_score": 90.1992,
+          "source_signal_score": 59.7367
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3334",
+          "2382"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 40.3109,
+      "qcew_real_economy_signal_score": 57.7142,
+      "phase2_data_signal_score": 49.8827,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5417",
+            "3254"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1261648.6667,
+            "establishments": 69257.0,
+            "total_quarterly_wages": 53947550356.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1268863.0,
+            "establishments": 67111.0,
+            "total_quarterly_wages": 49645159495.0
+          },
+          "employment_growth_percent": -0.5686,
+          "establishment_growth_percent": 3.1977,
+          "wage_growth_percent": 8.6663,
+          "employment_scale_score": 85.4131,
+          "source_signal_score": 57.7142
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5417",
+          "3254"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 59.4958,
+      "qcew_real_economy_signal_score": 57.4719,
+      "phase2_data_signal_score": 58.3827,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "5417",
+            "3345"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 1317408.6667,
+            "establishments": 72631.0,
+            "total_quarterly_wages": 56104069126.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 1330069.3333,
+            "establishments": 70432.0,
+            "total_quarterly_wages": 51473228185.0
+          },
+          "employment_growth_percent": -0.9519,
+          "establishment_growth_percent": 3.1222,
+          "wage_growth_percent": 8.9966,
+          "employment_scale_score": 85.6761,
+          "source_signal_score": 57.4719
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "5417",
+          "3345"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 3,
+      "status": "PHASE2_OBSERVED",
+      "phase1_data_signal_score": 38.7146,
+      "qcew_real_economy_signal_score": 59.1818,
+      "phase2_data_signal_score": 49.9716,
+      "boom_score": null,
+      "frozen_model_score_eligible": false,
+      "sources": {
+        "qcew": {
+          "status": "LIVE_COLLECTED",
+          "captured_at": "2026-08-02T20:23:11+09:00",
+          "quarter": "2025Q4",
+          "prior_year_quarter": "2024Q4",
+          "qcew_naics": [
+            "3365",
+            "2379"
+          ],
+          "recent": {
+            "matched_naics_count": 2.0,
+            "employment": 168625.3333,
+            "establishments": 10735.0,
+            "total_quarterly_wages": 4602259892.0
+          },
+          "prior_year_same_quarter": {
+            "matched_naics_count": 2.0,
+            "employment": 164222.0,
+            "establishments": 10402.0,
+            "total_quarterly_wages": 4252241622.0
+          },
+          "employment_growth_percent": 2.6813,
+          "establishment_growth_percent": 3.2013,
+          "wage_growth_percent": 8.2314,
+          "employment_scale_score": 73.177,
+          "source_signal_score": 59.1818
+        }
+      },
+      "mapping": {
+        "scope": "PROXY_INDUSTRY_BASKET",
+        "qcew_naics": [
+          "3365",
+          "2379"
+        ],
+        "version": "2026.08.02-v1"
+      },
+      "limitations": [
+        "QCEW NAICS 바스켓은 테마의 미국 산업 프록시이며 개별 기업 매출을 뜻하지 않습니다.",
+        "기업 CAPEX·기업 R&D·매출 전환·영업생존력은 아직 연결되지 않았습니다.",
+        "phase2_data_signal_score는 최종 산업 붐 점수가 아닙니다."
+      ]
+    }
+  ],
+  "content_sha256": "fab50a4fbf540dce20dfc04fb7e938248a5845eeb81e5722f6303325e77ebb99"
+}
