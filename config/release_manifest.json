@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "6.1.1-prospective-policy-ledger-manifest-fix",
+  "engine_release": "6.2.0-gas-dashboard-prospective-ledger",
   "file_count": 88,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
@@ -80,7 +80,7 @@
     "src/ible/v61_cli.py",
     "src/ible/v61_shadow.py",
     "tests/__init__.py",
-    "tests/test_v61_release.py",
+    "tests/test_v62_release.py",
     "validation_seed/backtests/ADDITIVE_2019.json",
     "validation_seed/backtests/AI_2022.json",
     "validation_seed/backtests/CLOUD_2018.json",
@@ -98,6 +98,8 @@
     "bat_cmd_colab_prohibited": true,
     "sec_fmp_collection_prohibited": true,
     "workflow_count": 1,
-    "boom_score_must_remain_null": true
+    "boom_score_must_remain_null": true,
+    "gas_dashboard_included": true,
+    "dashboard_reads_committed_outputs": true
   }
 }

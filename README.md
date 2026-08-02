@@ -1,35 +1,61 @@
-# 산업 붐 선행예측 엔진 V6.1
+# 산업 붐 선행예측 엔진 V6.2 — GAS Dashboard + Prospective Ledger
 
-## 목적
+V6.1의 Champion–Challenger 월별 불변 예측을 유지하면서, GitHub에 커밋된 최신 결과 JSON을 읽는 Google Apps Script 대시보드를 추가한 통합 릴리즈입니다.
 
-V6.1은 새 점수를 다시 튜닝하는 버전이 아니라 운영 검증판입니다.
+## GitHub 실행
 
-- V0.9.1 Champion 계산식은 계속 동결합니다.
-- V6.0 연구 Challenger는 자동 승격하지 않습니다.
-- 50개 산업의 월별 prevalidation 순위에 보수 정책과 확장 정책의 경보를 동시에 기록합니다.
-- 같은 달의 정책 스냅샷은 수정하거나 덮어쓰지 않습니다.
-- V5 결과가 6·12·24개월 만기에 도달하면 각 정책의 정밀도·재현율·오경보를 자동 비교합니다.
+1. ZIP의 내용물 전체를 기존 저장소에 덮어씁니다.
+2. Actions에서 **`00 - RUN THIS ONLY - Industry Boom V6.2 Dashboard + Ledger`**만 실행합니다.
+3. 이후 매주 월요일 자동 실행되며 결과 JSON이 저장소 `outputs/`와 `prospective_history/`에 커밋됩니다.
 
-## 실행
+## GAS 대시보드 배포
 
-GitHub Actions에서 다음 워크플로 하나만 실행합니다.
+`google_apps_script/` 폴더의 다음 3개 파일을 하나의 Apps Script 프로젝트에 넣습니다.
 
-`00 - RUN THIS ONLY - Industry Boom V6.1.1 Prospective Ledger`
+- `Code.gs`
+- `Index.html`
+- `appsscript.json`
 
-`run_date`는 일반 실행 시 비워둡니다. 최초 실행 이후 매주 월요일 자동 실행됩니다.
+### Script Properties
 
-## 현재 판정
+Apps Script 왼쪽 **프로젝트 설정 → 스크립트 속성**에서 등록합니다.
 
-- 기능 개발: 완료
-- 50개 산업 데이터 파이프라인: 운영 중
-- 역사 검증: Champion 재현율 부족, Challenger 연구 성적 개선
-- 미래 독립검증: 아직 6개월 만기 전
-- 투자 사용: 금지
+공개 GitHub 저장소:
 
-## 중요 제한
+- `GITHUB_OWNER`: GitHub 사용자명
+- `GITHUB_REPO`: 저장소명, 기본값 `industry-boom-leading-engine`
+- `GITHUB_BRANCH`: 기본값 `main`
 
-V6.1 live policy는 V5의 `prevalidation_candidate_score`에 적용하는 별도 미래검증 정책입니다. V0.9.1의 `boom_score`와 같은 점수라고 표시하지 않으며 모든 `boom_score`는 `null`로 유지합니다.
+비공개 저장소는 추가로:
 
-## GitHub 업로드 제한
+- `GITHUB_TOKEN`: Fine-grained token, 해당 저장소 **Contents: Read**
 
-릴리즈 실제 파일 수와 manifest 파일 수를 모두 검사하며 90개 미만만 허용합니다. BAT·CMD·Colab·SEC·FMP는 사용하지 않습니다.
+대체 설정:
+
+- `OUTPUT_BASE_URL`: `https://raw.githubusercontent.com/<owner>/<repo>/<branch>` 형태의 저장소 루트 URL
+
+### 웹 앱 배포
+
+1. Apps Script에서 `diagnoseDashboardConnection`을 한 번 실행해 권한을 승인합니다.
+2. **배포 → 새 배포 → 웹 앱**
+3. 실행 사용자: 나
+4. 액세스 권한: 모든 사용자
+5. 배포 URL을 엽니다.
+
+## 화면 구성
+
+- 전체 진행률과 데이터 기준일
+- Champion·Challenger 경보 수
+- 산업 TOP20 및 섹터/경보 필터
+- 사업화·기업투자·원천 확산 점수
+- 월별 순위 변화 및 신규 진입
+- 역사 벤치마크와 봉인 블라인드 성적
+- 6·12·24개월 미래검증 성적표
+
+## 고정 원칙
+
+- V0.9.1 계산식 변경 금지
+- Challenger 자동 승격 금지
+- `boom_score` 임의 생성 금지
+- BAT·CMD·Colab·SEC·FMP 사용 금지
+- GitHub 업로드 파일 90개 미만
