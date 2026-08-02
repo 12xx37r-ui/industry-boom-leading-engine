@@ -1,0 +1,11 @@
+{
+  "current_status": "V6_1_PROSPECTIVE_POLICY_LEDGER_ACTIVE",
+  "next_required_gate": "ACCUMULATE_LOCKED_6_12_24_MONTH_CHAMPION_CHALLENGER_OUTCOMES",
+  "next_evaluation_due": {
+    "snapshot_id": "2026-08",
+    "horizon_months": 6,
+    "due_date": "2027-02-02"
+  },
+  "manual_run_required_after_bootstrap": false,
+  "investment_use_allowed": false
+}

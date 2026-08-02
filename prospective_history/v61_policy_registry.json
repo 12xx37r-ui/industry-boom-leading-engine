@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-08",
+      "as_of": "2026-08-02",
+      "snapshot_sha256": "319986306c133149ae7ee4bfd18df869287cb9bb08dd75f534b5f53f47bd0682",
+      "status": "AWAITING_FUTURE_OUTCOMES"
+    }
+  ],
+  "content_sha256": "bf467da056fbc670e0cbe95c06686556f16629a2d2d769319cf4503d2b5d9fd4"
+}
