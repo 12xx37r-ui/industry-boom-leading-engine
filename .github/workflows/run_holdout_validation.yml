@@ -1,0 +1,109 @@
+name: Industry Boom Holdout Validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: industry-boom-holdout-validation
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install and test
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+          pytest -q
+
+  holdout:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Restore stable holdout cache
+        uses: actions/cache@v5
+        with:
+          path: .cache
+          key: ible-holdout-${{ runner.os }}-2021-12-31-v070-${{ hashFiles('config/holdouts.yml', 'config/themes.yml') }}
+          restore-keys: |
+            ible-holdout-${{ runner.os }}-2021-12-31-v070-
+            ible-cache-${{ runner.os }}-
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run frozen-model holdout
+        env:
+          PYTHONUNBUFFERED: "1"
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+        run: |
+          if [ -z "$OPENDART_API_KEY" ]; then
+            echo "MISSING_REQUIRED_CONFIGURATION: OPENDART_API_KEY"
+            exit 1
+          fi
+          python -m ible.holdout_cli --output-dir outputs/holdout
+
+      - name: Validate holdout outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          required = [
+              "holdout_snapshot.json",
+              "holdout_scenarios.json",
+              "holdout_summary.json",
+              "model_validation_stage3.json",
+              "model_lock_verification.json",
+          ]
+          for name in required:
+              path = Path("outputs/holdout") / name
+              if not path.exists() or path.stat().st_size == 0:
+                  raise SystemExit(f"missing holdout output: {path}")
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              text = json.dumps(payload, ensure_ascii=False).lower()
+              if "api_key=" in text and "<redacted>" not in text:
+                  raise SystemExit(f"unredacted secret detected in {name}")
+          lock = json.loads((Path("outputs/holdout") / "model_lock_verification.json").read_text(encoding="utf-8"))
+          if not lock.get("matches"):
+              raise SystemExit("model lock mismatch")
+          summary = json.loads((Path("outputs/holdout") / "holdout_summary.json").read_text(encoding="utf-8"))
+          if len(summary.get("scenario_table", [])) != 8:
+              raise SystemExit("expected 8 holdout scenarios")
+          print("HOLDOUT_OUTPUT_OK", summary.get("status"), summary.get("metrics"))
+          PY
+
+      - name: Upload holdout artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: industry-boom-holdout-v0.7.0
+          path: outputs/holdout/*.json
+          if-no-files-found: error
+          retention-days: 30
