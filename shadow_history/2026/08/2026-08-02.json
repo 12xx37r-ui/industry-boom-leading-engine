@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "engine_release": "2.0.0-github-shadow-ledger",
+  "frozen_model_version": "0.9.1",
+  "as_of": "2026-08-02",
+  "recorded_at": "2026-08-02T19:46:32+09:00",
+  "run_date": "2026-08-02",
+  "source_role": "bootstrap_from_v0_9_1_current_development_diagnosis",
+  "externally_independent": false,
+  "new_point_in_time_data": false,
+  "forecast_eligible": false,
+  "investment_use_allowed": false,
+  "input_sha256": "90917cccacaf1931e180e9ffec4f3b7c51cd3e409fdba702b5b5a03bad2a4a32",
+  "previous_record_sha256": null,
+  "ranking": [
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "boom_score": 81.21,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 1
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "boom_score": 76.25,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 2
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "boom_score": 72.21,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 3
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "boom_score": 58.44,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 4
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "boom_score": 58.0,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 5
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "boom_score": 37.41,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 6
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "boom_score": 8.0,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 7
+    }
+  ],
+  "top_themes": [
+    {
+      "rank": 1,
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "boom_score": 81.21
+    },
+    {
+      "rank": 2,
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "boom_score": 76.25
+    },
+    {
+      "rank": 3,
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "boom_score": 72.21
+    },
+    {
+      "rank": 4,
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "boom_score": 58.44
+    },
+    {
+      "rank": 5,
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "boom_score": 58.0
+    }
+  ],
+  "limitations": [
+    "V0.9.1 계산식은 SHA-256 잠금 상태입니다.",
+    "기준선 입력은 신규 외부 점시점 데이터가 아니므로 실전 예측 적중으로 계산하지 않습니다.",
+    "6·12·24개월 사후 채점 전까지 투자 사용을 금지합니다."
+  ],
+  "record_sha256": "7fc9268cbe1b7b527b3381207930192a52f79642d9f09904b7fd3f82d456cc75"
+}

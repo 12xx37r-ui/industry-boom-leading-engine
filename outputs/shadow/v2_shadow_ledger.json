@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "engine_release": "2.0.0-github-shadow-ledger",
+  "history_count": 1,
+  "latest_as_of": "2026-08-02",
+  "records": [
+    {
+      "path": "shadow_history/2026/08/2026-08-02.json",
+      "as_of": "2026-08-02",
+      "record_sha256": "7fc9268cbe1b7b527b3381207930192a52f79642d9f09904b7fd3f82d456cc75",
+      "input_sha256": "90917cccacaf1931e180e9ffec4f3b7c51cd3e409fdba702b5b5a03bad2a4a32",
+      "recorded_at": "2026-08-02T19:46:32+09:00",
+      "forecast_eligible": false,
+      "top_themes": [
+        {
+          "rank": 1,
+          "theme_id": "CYBERSECURITY",
+          "theme_name": "사이버보안",
+          "boom_score": 81.21
+        },
+        {
+          "rank": 2,
+          "theme_id": "POWER_GRID_ELECTRIFICATION",
+          "theme_name": "전력망·전기화",
+          "boom_score": 76.25
+        },
+        {
+          "rank": 3,
+          "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+          "theme_name": "국방·무인체계",
+          "boom_score": 72.21
+        },
+        {
+          "rank": 4,
+          "theme_id": "NUCLEAR_ENERGY",
+          "theme_name": "원전",
+          "boom_score": 58.44
+        },
+        {
+          "rank": 5,
+          "theme_id": "HYDROGEN_ECONOMY",
+          "theme_name": "수소",
+          "boom_score": 58.0
+        }
+      ]
+    }
+  ],
+  "ledger_sha256": "f603d94b22b4dc7c57796a75d5560234b4f14bc1c36d0a5caa272caf3e48fe35"
+}

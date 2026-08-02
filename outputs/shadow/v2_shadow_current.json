@@ -1,0 +1,73 @@
+{
+  "status": "V2_SHADOW_BOOTSTRAP_REGISTERED",
+  "as_of": "2026-08-02",
+  "forecast_eligible": false,
+  "investment_use_allowed": false,
+  "ranking": [
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "boom_score": 81.21,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 1
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "boom_score": 76.25,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 2
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "boom_score": 72.21,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 3
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "boom_score": 58.44,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 4
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "boom_score": 58.0,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 5
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "boom_score": 37.41,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 6
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "boom_score": 8.0,
+      "early_signal_score": null,
+      "stage": "UNAVAILABLE",
+      "data_confidence": null,
+      "rank": 7
+    }
+  ],
+  "input_sha256": "90917cccacaf1931e180e9ffec4f3b7c51cd3e409fdba702b5b5a03bad2a4a32",
+  "history_action": "CREATED"
+}

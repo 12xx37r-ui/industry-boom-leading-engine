@@ -1,0 +1,26 @@
+[
+  {
+    "snapshot_as_of": "2026-08-02",
+    "record_sha256": "7fc9268cbe1b7b527b3381207930192a52f79642d9f09904b7fd3f82d456cc75",
+    "horizon_months": 6,
+    "due_date": "2027-02-02",
+    "status": "PENDING",
+    "outcome_scored": false
+  },
+  {
+    "snapshot_as_of": "2026-08-02",
+    "record_sha256": "7fc9268cbe1b7b527b3381207930192a52f79642d9f09904b7fd3f82d456cc75",
+    "horizon_months": 12,
+    "due_date": "2027-08-02",
+    "status": "PENDING",
+    "outcome_scored": false
+  },
+  {
+    "snapshot_as_of": "2026-08-02",
+    "record_sha256": "7fc9268cbe1b7b527b3381207930192a52f79642d9f09904b7fd3f82d456cc75",
+    "horizon_months": 24,
+    "due_date": "2028-08-02",
+    "status": "PENDING",
+    "outcome_scored": false
+  }
+]
