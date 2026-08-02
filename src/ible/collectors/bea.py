@@ -7,8 +7,8 @@ from ible.http import JsonHttpClient
 
 class BeaClient:
     BASE_URLS = (
-        "https://apps.bea.gov/api/data/",
         "https://apps.bea.gov/api/data",
+        "https://apps.bea.gov/api/data/",
     )
 
     def __init__(self, api_key: str, http: JsonHttpClient) -> None:
@@ -35,7 +35,7 @@ class BeaClient:
                 title_case = dict(canonical)
                 method = str(title_case["method"])
                 title_case["method"] = {
-                    "GETDATASETLIST": "GetDataSetList",
+                    "GETDATASETLIST": "GetDatasetList",
                     "GETPARAMETERLIST": "GetParameterList",
                     "GETPARAMETERVALUES": "GetParameterValues",
                     "GETDATA": "GetData",

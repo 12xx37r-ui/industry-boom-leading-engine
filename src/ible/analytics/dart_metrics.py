@@ -221,6 +221,76 @@ def extract_disclosure_amount(text: str, event_type: str) -> tuple[float | None,
     return float(best["amount_krw"]), best
 
 
+
+_DATE_TOKEN = re.compile(
+    r"(?P<y>20\d{2})\s*(?:년|[.\-/])\s*(?P<m>0?[1-9]|1[0-2])\s*(?:월|[.\-/])\s*(?P<d>3[01]|[12]\d|0?[1-9])\s*일?"
+)
+
+
+def _parse_date_token(text: str) -> dt.date | None:
+    match = _DATE_TOKEN.search(text or "")
+    if not match:
+        compact = re.search(r"(?<!\d)(20\d{6})(?!\d)", text or "")
+        if compact:
+            try:
+                return dt.datetime.strptime(compact.group(1), "%Y%m%d").date()
+            except ValueError:
+                return None
+        return None
+    try:
+        return dt.date(int(match.group("y")), int(match.group("m")), int(match.group("d")))
+    except ValueError:
+        return None
+
+
+def extract_event_schedule(text: str, event_type: str) -> dict[str, Any]:
+    """Extract investment/contract start and end dates from a DART document.
+
+    Flattened DART tables commonly expose labels such as 투자기간, 계약기간,
+    시작일 and 종료일.  We intentionally require two plausible dates close to
+    a period label to avoid mistaking filing dates or board-meeting dates for
+    the economic schedule.
+    """
+    if not text:
+        return {"status": "NO_TEXT"}
+    normalized = re.sub(r"[\u00a0\t\r]+", " ", text)
+    labels = (
+        ("투자기간", "투자시작일", "투자종료일", "취득예정기간")
+        if event_type == "CAPITAL_EVENT"
+        else ("계약기간", "계약시작일", "계약종료일", "공급기간")
+    )
+    candidates: list[tuple[dt.date, dt.date, str]] = []
+    for label in labels:
+        for match in re.finditer(re.escape(label), normalized):
+            snippet = normalized[match.start(): min(len(normalized), match.start() + 420)]
+            dates = [_parse_date_token(m.group(0)) for m in _DATE_TOKEN.finditer(snippet)]
+            dates = [d for d in dates if d]
+            if len(dates) >= 2:
+                start, end = dates[0], dates[1]
+                if start <= end and (end - start).days <= 3650:
+                    candidates.append((start, end, label))
+    # Fallback for flattened rows that retain explicit start/end labels.
+    if not candidates:
+        start_match = re.search(r"(?:시작일|개시일)[^0-9]{0,80}((?:20\d{2})[^\n]{0,20})", normalized)
+        end_match = re.search(r"(?:종료일|만료일)[^0-9]{0,80}((?:20\d{2})[^\n]{0,20})", normalized)
+        if start_match and end_match:
+            start = _parse_date_token(start_match.group(1))
+            end = _parse_date_token(end_match.group(1))
+            if start and end and start <= end and (end - start).days <= 3650:
+                candidates.append((start, end, "start_end_labels"))
+    if not candidates:
+        return {"status": "NOT_FOUND"}
+    start, end, label = max(candidates, key=lambda row: (row[1] - row[0]).days)
+    return {
+        "status": "FOUND",
+        "start_date": start.isoformat(),
+        "end_date": end.isoformat(),
+        "duration_days": (end - start).days + 1,
+        "label": label,
+        "candidate_count": len(candidates),
+    }
+
+
 def enrich_disclosure_amount(row: dict[str, Any], document_text: str) -> dict[str, Any]:
     output = dict(row)
     event_type = classify_disclosure(str(row.get("report_nm") or ""))
@@ -228,8 +298,13 @@ def enrich_disclosure_amount(row: dict[str, Any], document_text: str) -> dict[st
     if not event_type:
         return output
     amount, metadata = extract_disclosure_amount(document_text, event_type)
+    schedule = extract_event_schedule(document_text, event_type)
     output["event_amount_krw"] = amount
     output["event_amount_metadata"] = metadata
+    output["event_schedule"] = schedule
+    if schedule.get("status") == "FOUND":
+        output["event_start_date"] = schedule.get("start_date")
+        output["event_end_date"] = schedule.get("end_date")
     return output
 
 
@@ -242,6 +317,33 @@ def _period_bounds(as_of: dt.date, periods: int, days_per_period: int) -> list[t
     return bounds
 
 
+def _event_window(row: dict[str, Any]) -> tuple[dt.date, dt.date] | None:
+    raw_date = str(row.get("rcept_dt") or "")
+    receipt = None
+    if len(raw_date) == 8:
+        try:
+            receipt = dt.datetime.strptime(raw_date, "%Y%m%d").date()
+        except ValueError:
+            receipt = None
+    try:
+        start = dt.date.fromisoformat(str(row.get("event_start_date"))) if row.get("event_start_date") else None
+        end = dt.date.fromisoformat(str(row.get("event_end_date"))) if row.get("event_end_date") else None
+    except ValueError:
+        start = end = None
+    if start and end and start <= end:
+        # Economic activity cannot be known before the disclosure date.
+        return max(start, receipt) if receipt else start, end
+    if receipt:
+        return receipt, receipt
+    return None
+
+
+def _overlap_days(start_a: dt.date, end_a: dt.date, start_b: dt.date, end_b: dt.date) -> int:
+    start = max(start_a, start_b)
+    end = min(end_a, end_b)
+    return max(0, (end - start).days + 1)
+
+
 def event_series(
     disclosures_by_code: dict[str, list[dict[str, Any]]],
     stock_codes: list[str],
@@ -250,22 +352,24 @@ def event_series(
     periods: int = 12,
     days_per_period: int = 91,
 ) -> dict[str, list[tuple[str, float]]]:
+    """Count economically active projects/contracts in each period.
+
+    A multi-year contract is counted in every period in which it is active;
+    a disclosure without an extractable schedule remains a one-period event.
+    """
     output: dict[str, list[tuple[str, float]]] = {code: [] for code in stock_codes}
     bounds = _period_bounds(as_of, periods, days_per_period)
     for code in stock_codes:
-        events: list[dt.date] = []
+        windows: list[tuple[dt.date, dt.date]] = []
         for row in disclosures_by_code.get(code, []):
             category = row.get("event_type") or classify_disclosure(str(row.get("report_nm") or ""))
             if category != event_type:
                 continue
-            raw_date = str(row.get("rcept_dt") or "")
-            if len(raw_date) == 8:
-                try:
-                    events.append(dt.datetime.strptime(raw_date, "%Y%m%d").date())
-                except ValueError:
-                    pass
+            window = _event_window(row)
+            if window:
+                windows.append(window)
         for start, end in bounds:
-            count = sum(1 for event_date in events if start <= event_date <= end)
+            count = sum(1 for event_start, event_end in windows if _overlap_days(event_start, event_end, start, end) > 0)
             output[code].append((end.isoformat(), float(count)))
     return output
 
@@ -278,44 +382,64 @@ def event_amount_series(
     periods: int = 12,
     days_per_period: int = 91,
 ) -> tuple[dict[str, list[tuple[str, float]]], dict[str, Any]]:
+    """Allocate disclosed amounts across their economic schedule.
+
+    When a contract/investment period is available, the amount is allocated
+    pro-rata by overlapping days.  This avoids treating a three-year contract
+    as a one-day pulse at the announcement date.
+    """
     output: dict[str, list[tuple[str, float]]] = {code: [] for code in stock_codes}
     bounds = _period_bounds(as_of, periods, days_per_period)
     total_events = 0
     events_with_amount = 0
+    events_with_schedule = 0
     per_company: dict[str, dict[str, int]] = {}
     for code in stock_codes:
-        events: list[tuple[dt.date, float]] = []
-        company_total = 0
-        company_found = 0
+        events: list[tuple[dt.date, dt.date, float]] = []
+        company_total = company_found = company_scheduled = 0
         for row in disclosures_by_code.get(code, []):
             category = row.get("event_type") or classify_disclosure(str(row.get("report_nm") or ""))
             if category != event_type:
                 continue
             company_total += 1
             total_events += 1
-            raw_date = str(row.get("rcept_dt") or "")
             amount = row.get("event_amount_krw")
-            if len(raw_date) != 8 or amount is None:
+            window = _event_window(row)
+            if amount is None or not window:
                 continue
             try:
-                event_date = dt.datetime.strptime(raw_date, "%Y%m%d").date()
                 numeric_amount = float(amount)
             except (ValueError, TypeError):
                 continue
             if not math.isfinite(numeric_amount) or numeric_amount <= 0:
                 continue
-            events.append((event_date, numeric_amount))
+            event_start, event_end = window
+            if event_end > event_start:
+                company_scheduled += 1
+                events_with_schedule += 1
+            events.append((event_start, event_end, numeric_amount))
             company_found += 1
             events_with_amount += 1
-        per_company[code] = {"total_events": company_total, "events_with_amount": company_found}
-        for start, end in bounds:
-            amount_sum = sum(amount for event_date, amount in events if start <= event_date <= end)
-            output[code].append((end.isoformat(), amount_sum))
+        per_company[code] = {
+            "total_events": company_total,
+            "events_with_amount": company_found,
+            "events_with_schedule": company_scheduled,
+        }
+        for period_start, period_end in bounds:
+            amount_sum = 0.0
+            for event_start, event_end, amount in events:
+                total_days = max(1, (event_end - event_start).days + 1)
+                overlap = _overlap_days(event_start, event_end, period_start, period_end)
+                if overlap:
+                    amount_sum += amount * overlap / total_days
+            output[code].append((period_end.isoformat(), amount_sum))
     quality = {
         "event_type": event_type,
         "total_events": total_events,
         "events_with_amount": events_with_amount,
+        "events_with_schedule": events_with_schedule,
         "amount_coverage": round(events_with_amount / max(1, total_events), 4),
+        "schedule_coverage": round(events_with_schedule / max(1, events_with_amount), 4),
         "per_company": per_company,
     }
     return output, quality
@@ -338,4 +462,119 @@ def normalize_event_amounts_by_revenue(
             output[code] = [(date, 0.0) for date, _ in series]
             continue
         output[code] = [(date, amount / ttm_revenue) for date, amount in series]
+    return output
+
+_CAPEX_PRIMARY_IDS = (
+    "PurchaseOfPropertyPlantAndEquipment",
+    "PaymentsToAcquirePropertyPlantAndEquipment",
+)
+_CAPEX_PRIMARY_NAMES = {
+    "유형자산의 취득",
+    "유형자산 취득",
+    "유형자산의취득",
+    "유형자산취득",
+    "유형자산의 증가",
+    "유형자산의증가",
+    "유무형자산의 취득",
+    "유·무형자산의 취득",
+}
+_CAPEX_COMPONENT_TERMS = (
+    "토지의 취득",
+    "건물의 취득",
+    "구축물의 취득",
+    "기계장치의 취득",
+    "건설중인자산의 취득",
+    "공구와기구의 취득",
+    "비품의 취득",
+    "시설장치의 취득",
+)
+
+
+def _annual_row_amount(row: dict[str, Any]) -> float | None:
+    amount = parse_amount(row.get("thstrm_amount"))
+    if amount is None:
+        amount = parse_amount(row.get("thstrm_add_amount"))
+    if amount is None or not math.isfinite(amount):
+        return None
+    return abs(amount)
+
+
+def annual_capex_from_full_accounts(rows: list[dict[str, Any]]) -> tuple[float | None, dict[str, Any]]:
+    """Extract annual PP&E acquisition cash outflow from a full DART statement."""
+    cf_rows = [row for row in rows if str(row.get("sj_div") or "").upper() == "CF"]
+    primary: list[tuple[float, str, str]] = []
+    components: list[tuple[float, str, str]] = []
+    for row in cf_rows:
+        name = re.sub(r"\s+", " ", str(row.get("account_nm") or "")).strip()
+        compact = name.replace(" ", "")
+        account_id = str(row.get("account_id") or "")
+        amount = _annual_row_amount(row)
+        if amount is None:
+            continue
+        if any(token.lower() in account_id.lower() for token in _CAPEX_PRIMARY_IDS) or name in _CAPEX_PRIMARY_NAMES or compact in {n.replace(" ", "") for n in _CAPEX_PRIMARY_NAMES}:
+            primary.append((amount, name, account_id))
+        elif any(term.replace(" ", "") in compact for term in _CAPEX_COMPONENT_TERMS):
+            components.append((amount, name, account_id))
+    if primary:
+        # Duplicated extension rows can occur; the largest total is the safest parent line.
+        amount, name, account_id = max(primary, key=lambda row: row[0])
+        return amount, {"status": "FOUND_PRIMARY", "account_nm": name, "account_id": account_id, "candidate_count": len(primary)}
+    if components:
+        total = sum(row[0] for row in components)
+        return total, {
+            "status": "FOUND_COMPONENT_SUM",
+            "component_count": len(components),
+            "accounts": [row[1] for row in components],
+        }
+    return None, {"status": "NOT_FOUND"}
+
+
+def build_annual_capex_series(
+    rows_by_company_year: dict[tuple[str, int], list[dict[str, Any]]],
+    stock_codes: list[str],
+) -> tuple[dict[str, list[tuple[str, float]]], dict[str, Any]]:
+    output: dict[str, list[tuple[str, float]]] = {code: [] for code in stock_codes}
+    quality: dict[str, Any] = {}
+    for code in stock_codes:
+        found = 0
+        requested = 0
+        details: dict[str, Any] = {}
+        for (stock_code, year), rows in sorted(rows_by_company_year.items()):
+            if stock_code != code:
+                continue
+            requested += 1
+            amount, metadata = annual_capex_from_full_accounts(rows)
+            details[str(year)] = metadata
+            if amount is not None:
+                output[code].append((f"{year}-12-31", float(amount)))
+                found += 1
+        quality[code] = {
+            "requested_years": requested,
+            "years_with_capex": found,
+            "coverage": round(found / max(1, requested), 4),
+            "details": details,
+        }
+    return output, quality
+
+
+def normalize_annual_capex_by_revenue(
+    capex_series: dict[str, list[tuple[str, float]]],
+    quarterly_revenue: dict[str, list[tuple[str, float]]],
+) -> dict[str, list[tuple[str, float]]]:
+    output: dict[str, list[tuple[str, float]]] = {}
+    for code, series in capex_series.items():
+        revenue_by_year: dict[int, float] = defaultdict(float)
+        for date_text, value in quarterly_revenue.get(code, []):
+            try:
+                year = int(date_text[:4])
+            except (ValueError, TypeError):
+                continue
+            if value > 0:
+                revenue_by_year[year] += value
+        normalized: list[tuple[str, float]] = []
+        for date_text, capex in series:
+            year = int(date_text[:4])
+            revenue = revenue_by_year.get(year)
+            normalized.append((date_text, capex / revenue if revenue and revenue > 0 else 0.0))
+        output[code] = normalized
     return output

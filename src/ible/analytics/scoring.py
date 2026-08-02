@@ -226,12 +226,16 @@ def build_dart_theme_result(
     contract_count = signals["supply_contracts"]
     capital = signals.get("capital_amounts", capital_count)
     contracts = signals.get("contract_amounts", contract_count)
+    cashflow_capex = signals.get("cashflow_capex")
     demand = signals["revenue"]
     margin = signals["operating_margin"]
     research = signals.get("research_momentum")
 
     breadth_parts = [capital.breadth, contracts.breadth, demand.breadth]
     persistence_parts = [capital.persistence, contracts.persistence, demand.persistence]
+    if cashflow_capex:
+        breadth_parts.append(cashflow_capex.breadth)
+        persistence_parts.append(cashflow_capex.persistence)
     if research:
         breadth_parts.append(research.breadth)
         persistence_parts.append(research.persistence)
@@ -239,18 +243,20 @@ def build_dart_theme_result(
     persistence_engine = _mean(persistence_parts)
 
     research_score = research.score if research else 50.0
+    cashflow_capex_score = cashflow_capex.score if cashflow_capex else 50.0
     boom_score = (
-        0.22 * capital.score
-        + 0.22 * contracts.score
-        + 0.22 * demand.score
-        + 0.14 * research_score
-        + 0.08 * margin.score
+        0.13 * capital.score
+        + 0.17 * contracts.score
+        + 0.16 * cashflow_capex_score
+        + 0.20 * demand.score
+        + 0.16 * research_score
+        + 0.06 * margin.score
         + 0.07 * breadth_engine
         + 0.05 * persistence_engine
     )
     coverage = usable_companies / max(1, requested_companies)
     metric_coverage = _mean(
-        [capital.coverage, contracts.coverage, demand.coverage, margin.coverage],
+        [capital.coverage, contracts.coverage, cashflow_capex.coverage if cashflow_capex else 0.0, demand.coverage, margin.coverage],
         0.0,
     )
     amount_coverage = _mean(
@@ -276,6 +282,7 @@ def build_dart_theme_result(
     reasons = [
         (capital.score, f"실제 투자금액·시설투자 가속 점수 {capital.score:.1f}"),
         (contracts.score, f"실제 공급계약·수주금액 가속 점수 {contracts.score:.1f}"),
+        (cashflow_capex_score, f"현금흐름표 실집행 CAPEX 가속 점수 {cashflow_capex_score:.1f}"),
         (demand.score, f"매출 수요 가속 점수 {demand.score:.1f}"),
         (research_score, f"기술연구 확산 가속 점수 {research_score:.1f}"),
         (margin.score, f"영업이익률 개선 점수 {margin.score:.1f}"),
@@ -283,7 +290,7 @@ def build_dart_theme_result(
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+        "V0.3.0은 OpenDART 계약기간 배분·현금흐름표 CAPEX·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
         "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
     ]
     if amount_coverage < 0.5:
@@ -462,4 +469,61 @@ def build_research_signal(name: str, momentum: dict[str, Any] | None) -> Signal:
         coverage=1.0,
         raw=momentum,
         warnings=[] if recent > 0 else ["최근 12개월 관련 arXiv 논문이 검색되지 않았습니다."],
+    )
+
+
+def build_annual_capex_signal(
+    name: str,
+    capex_ratio_series: dict[str, list[tuple[str, float]]],
+) -> Signal:
+    """Score annual cash-flow CAPEX intensity and acceleration across companies."""
+    company_scores: list[float] = []
+    latest_growths: list[float] = []
+    accelerations: list[float] = []
+    positive = 0
+    persistent = 0
+    usable = 0
+    raw: dict[str, Any] = {}
+    for code, series in capex_ratio_series.items():
+        values = [max(0.0, float(value)) for _, value in sorted(series)]
+        if len(values) < 3:
+            continue
+        usable += 1
+        latest = values[-1]
+        prior = values[-2]
+        older = values[-3]
+        growth = (latest - prior) / (abs(prior) + 0.01)
+        prior_growth = (prior - older) / (abs(older) + 0.01)
+        accel = growth - prior_growth
+        level_score = _feature_to_score(math.log1p(latest * 20.0), 18.0)
+        growth_score = _feature_to_score(growth, 22.0)
+        accel_score = _feature_to_score(accel, 18.0)
+        trend_persistence = 100.0 * ((float(latest > prior) + float(prior > older)) / 2.0)
+        company_score = 0.28 * level_score + 0.32 * growth_score + 0.25 * accel_score + 0.15 * trend_persistence
+        company_scores.append(company_score)
+        latest_growths.append(growth)
+        accelerations.append(accel)
+        positive += int(growth > 0)
+        persistent += int(latest > prior > older)
+        raw[code] = {
+            "latest_capex_to_revenue": latest,
+            "prior_capex_to_revenue": prior,
+            "older_capex_to_revenue": older,
+            "growth": growth,
+            "acceleration": accel,
+        }
+    breadth = positive / usable if usable else 0.0
+    persistence = persistent / usable if usable else 0.0
+    score = 0.75 * _mean(company_scores) + 0.15 * 100.0 * breadth + 0.10 * 100.0 * persistence if usable else 50.0
+    return Signal(
+        name=name,
+        score=round(score, 2),
+        level=round(_mean([50.0 + min(50.0, max(-50.0, value * 100.0)) for value in latest_growths]), 2),
+        velocity=round(_feature_to_score(_mean(latest_growths, 0.0), 22.0), 2),
+        acceleration=round(_feature_to_score(_mean(accelerations, 0.0), 18.0), 2),
+        persistence=round(100.0 * persistence, 2),
+        breadth=round(100.0 * breadth, 2),
+        coverage=round(usable / max(1, len(capex_ratio_series)), 4),
+        raw=raw,
+        warnings=[] if usable else ["연간 현금흐름표 CAPEX 데이터가 부족합니다."],
     )

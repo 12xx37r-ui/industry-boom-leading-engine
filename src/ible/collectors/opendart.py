@@ -111,11 +111,42 @@ class OpenDartClient:
                     continue
             if not text:
                 text = blob.decode("utf-8", errors="ignore")
-            soup = BeautifulSoup(text, "html.parser")
+            soup = BeautifulSoup(text, "xml" if text.lstrip().startswith("<?xml") else "html.parser")
             for tag in soup(["script", "style"]):
                 tag.decompose()
             chunks.append(soup.get_text(" ", strip=True))
         return "\n".join(chunks)
+
+    def full_accounts(self, stock_code: str, business_year: int, report_code: str) -> list[dict[str, Any]]:
+        corp_code = self.stock_to_corp_map().get(stock_code)
+        if not corp_code:
+            return []
+        last_error: Exception | None = None
+        for fs_div in ("CFS", "OFS"):
+            try:
+                payload = self.http.get_json(
+                    f"{self.API_BASE}/fnlttSinglAcntAll.json",
+                    params={
+                        "crtfc_key": self.api_key,
+                        "corp_code": corp_code,
+                        "bsns_year": str(business_year),
+                        "reprt_code": report_code,
+                        "fs_div": fs_div,
+                    },
+                    cache_key=f"opendart_full_{stock_code}_{business_year}_{report_code}_{fs_div}",
+                    cache_ttl_seconds=86400,
+                )
+                status = payload.get("status")
+                if status == "000":
+                    return payload.get("list", [])
+                if status == "013":
+                    continue
+                last_error = RuntimeError(f"OpenDART full accounts error {status}: {payload.get('message')}")
+            except Exception as exc:
+                last_error = exc
+        if last_error:
+            raise last_error
+        return []
 
     def major_accounts_multi(self, stock_codes: list[str], business_year: int, report_code: str) -> list[dict[str, Any]]:
         mapping = self.stock_to_corp_map()

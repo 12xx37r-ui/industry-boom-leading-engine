@@ -11,6 +11,8 @@ from typing import Any
 from ible.analytics.dart_metrics import (
     REPORTS,
     build_quarterly_financial_series,
+    build_annual_capex_series,
+    normalize_annual_capex_by_revenue,
     classify_disclosure,
     enrich_disclosure_amount,
     event_amount_series,
@@ -20,6 +22,7 @@ from ible.analytics.dart_metrics import (
 )
 from ible.analytics.scoring import (
     build_amount_event_signal,
+    build_annual_capex_signal,
     build_dart_theme_result,
     build_event_signal,
     build_margin_signal,
@@ -228,6 +231,38 @@ class EnginePipeline:
         revenue, operating_profit = build_quarterly_financial_series(rows_by_report, stock_codes)
         return revenue, operating_profit, errors
 
+    def _dart_annual_capex(
+        self, as_of: dt.date, stock_codes: list[str]
+    ) -> tuple[dict[str, list[tuple[str, float]]], dict[str, Any], dict[str, str]]:
+        if not self.dart:
+            raise RuntimeError("OPENDART_API_KEY is required")
+        latest_year = as_of.year - 1 if as_of >= dt.date(as_of.year, 3, 31) else as_of.year - 2
+        years = list(range(max(2015, latest_year - 3), latest_year + 1))
+        jobs = [(code, year) for code in stock_codes for year in years]
+        rows_by_company_year: dict[tuple[str, int], list[dict[str, Any]]] = {}
+        errors: dict[str, str] = {}
+        print(f"[DART] annual cash-flow CAPEX jobs={len(jobs)} years={years[0]}-{years[-1]}", flush=True)
+
+        def fetch(job: tuple[str, int]) -> tuple[str, int, list[dict[str, Any]]]:
+            code, year = job
+            return code, year, self.dart.full_accounts(code, year, "11011")
+
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            futures = {pool.submit(fetch, job): job for job in jobs}
+            completed = 0
+            for future in as_completed(futures):
+                code, year = futures[future]
+                try:
+                    result_code, result_year, rows = future.result()
+                    rows_by_company_year[(result_code, result_year)] = rows
+                except Exception as exc:
+                    errors[f"{code}:{year}"] = str(exc)
+                completed += 1
+                if completed == len(jobs) or completed % 25 == 0:
+                    print(f"[DART] annual CAPEX progress {completed}/{len(jobs)} errors={len(errors)}", flush=True)
+        series, quality = build_annual_capex_series(rows_by_company_year, stock_codes)
+        return series, quality, errors
+
     def _research_momentum(self, as_of: dt.date) -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
         results: dict[str, dict[str, Any]] = {}
         errors: dict[str, str] = {}
@@ -249,6 +284,9 @@ class EnginePipeline:
         disclosures, disclosure_errors = self._dart_disclosures(date_value)
         disclosures, amount_errors = self._enrich_disclosure_amounts(disclosures)
         revenue, operating_profit, financial_errors = self._dart_financials(date_value)
+        all_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
+        annual_capex, annual_capex_quality, annual_capex_errors = self._dart_annual_capex(date_value, all_codes)
+        normalized_annual_capex = normalize_annual_capex_by_revenue(annual_capex, revenue)
         research, research_errors = self._research_momentum(date_value)
         results: list[dict[str, Any]] = []
         amount_quality_by_theme: dict[str, Any] = {}
@@ -267,8 +305,9 @@ class EnginePipeline:
             op_profit_series = {code: operating_profit.get(code, []) for code in codes}
             normalized_capital = normalize_event_amounts_by_revenue(capital_amounts, revenue_series)
             normalized_contracts = normalize_event_amounts_by_revenue(contract_amounts, revenue_series)
-            capital_count_signal = build_event_signal("facility_investment_event_count", capital_counts)
-            contract_count_signal = build_event_signal("supply_contract_event_count", contract_counts)
+            theme_annual_capex = {code: normalized_annual_capex.get(code, []) for code in codes}
+            capital_count_signal = build_event_signal("active_facility_investment_count", capital_counts)
+            contract_count_signal = build_event_signal("active_supply_contract_count", contract_counts)
             signals = {
                 "capital_events": capital_count_signal,
                 "capital_amounts": build_amount_event_signal(
@@ -278,6 +317,9 @@ class EnginePipeline:
                     float(capital_quality["amount_coverage"]),
                 ),
                 "supply_contracts": contract_count_signal,
+                "cashflow_capex": build_annual_capex_signal(
+                    "cashflow_capex_intensity", theme_annual_capex
+                ),
                 "contract_amounts": build_amount_event_signal(
                     "supply_contract_amount",
                     normalized_contracts,
@@ -316,6 +358,8 @@ class EnginePipeline:
             "disclosure_errors": disclosure_errors,
             "amount_document_errors": dict(list(amount_errors.items())[:50]),
             "financial_errors": financial_errors,
+            "annual_capex_errors": dict(list(annual_capex_errors.items())[:50]),
+            "annual_capex_quality": annual_capex_quality,
             "research_errors": research_errors,
             "disclosure_company_count": len(disclosures),
             "technology_momentum": research,
@@ -394,7 +438,7 @@ class EnginePipeline:
         outputs = self.root / "outputs"
         run_started = time.monotonic()
         print(
-            f"[ENGINE] start version=0.2.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
+            f"[ENGINE] start version=0.3.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
             flush=True,
         )
         current, current_meta = self.score_dart_as_of(current_as_of)
@@ -402,6 +446,7 @@ class EnginePipeline:
         self._write_json(outputs / "industry_boom_detail.json", {row["theme_id"]: row for row in current})
         self._write_json(outputs / "technology_momentum.json", current_meta.get("technology_momentum", {}))
         self._write_json(outputs / "event_amount_quality.json", current_meta.get("event_amount_quality", {}))
+        self._write_json(outputs / "cashflow_capex_quality.json", current_meta.get("annual_capex_quality", {}))
 
         replay: list[dict[str, Any]] = []
         replay_meta: dict[str, Any] = {}
@@ -410,13 +455,19 @@ class EnginePipeline:
             replay, replay_meta = self.score_dart_as_of(replay_as_of)
         ai_rank = next((i + 1 for i, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
         ai_row = next((row for row in replay if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
+        semi_row = next((row for row in replay if row["theme_id"] == "SEMICONDUCTOR_EQUIPMENT"), None)
+        ai_value_chain_score = None
+        ai_value_chain_rank = None
+        if ai_row and semi_row:
+            ai_value_chain_score = round(0.62 * float(ai_row.get("boom_score", 0)) + 0.38 * float(semi_row.get("boom_score", 0)), 2)
+            ai_value_chain_rank = 1 + sum(1 for row in replay if float(row.get("boom_score", 0)) > ai_value_chain_score)
         ai_amount_coverage = ai_row.get("coverage", {}).get("amount_coverage", 0.0) if ai_row else 0.0
         ai_research = bool(ai_row and ai_row.get("coverage", {}).get("independent_research_source"))
         self._write_json(
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
-                "engine_version": "0.2.0",
+                "engine_version": "0.3.0",
                 "primary_sources": ["OpenDART original documents", "OpenDART financials", "arXiv"],
                 "methodology_warning": (
                     "투자·계약 원문 금액과 기술연구 확산을 추가했지만 미국 빅테크 CAPEX 원천자료와 "
@@ -424,6 +475,12 @@ class EnginePipeline:
                 ),
                 "ranking": replay,
                 "ai_theme_rank": ai_rank,
+                "ai_value_chain_diagnostic": {
+                    "definition": "62% AI compute + 38% semiconductor equipment/advanced packaging",
+                    "score": ai_value_chain_score,
+                    "rank_equivalent": ai_value_chain_rank,
+                    "validation_target": False,
+                },
                 "metadata": replay_meta,
             },
         )
@@ -456,6 +513,8 @@ class EnginePipeline:
                 "ai_score": ai_row.get("boom_score") if ai_row else None,
                 "ai_amount_coverage": ai_amount_coverage,
                 "ai_research_source": ai_research,
+                "ai_value_chain_score": ai_value_chain_score,
+                "ai_value_chain_rank_equivalent": ai_value_chain_rank,
                 "theme_count": len(replay),
             },
             "known_design_gaps": [
@@ -480,7 +539,7 @@ class EnginePipeline:
 
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.2.0",
+            "engine_version": "0.3.0",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
@@ -505,6 +564,7 @@ class EnginePipeline:
             "ai_replay_2022.json",
             "technology_momentum.json",
             "event_amount_quality.json",
+            "cashflow_capex_quality.json",
             "macro_context.json",
             "bea_context.json",
             "korea_corroboration.json",

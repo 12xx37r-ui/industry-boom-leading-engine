@@ -1,84 +1,47 @@
-# Industry Boom Leading Engine v0.2.0
+# Industry Boom Leading Engine v0.3.0
 
-산업의 현재 인기가 아니라 **실제 투자·계약금액, 매출·이익, 기술연구 확산이 지속·가속되는지**를 계산해 향후 산업 붐 후보를 순위화하는 GitHub Actions 엔진입니다. Google Apps Script는 계산하지 않고 `outputs/*.json`만 표시합니다.
+GitHub Actions에서 데이터 수집·계산·과거 재현·JSON 생성을 수행하고, Google Apps Script는 결과만 표시합니다.
 
-## V0.2.0 핵심 변경
+## V0.3.0 핵심 변경
 
-- OpenDART 공시 **건수 중심 계산을 폐기**하고 공시 원문에서 투자금액·계약금액을 추출
-- 기업 규모 왜곡을 줄이기 위해 추출금액을 최근 4개 분기 매출로 정규화
-- 금액 추출 실패 시 건수 신호를 제한적으로 폴백하며 추출률을 별도 공개
-- 키 없이 쓰는 arXiv 기술연구 확산 신호 추가
-- FRED API 우선 사용, GitHub 403 발생 시 공식 FRED CSV 자동 우회
-- BEA 요청 메서드·URL 변형 자동 교정 및 FixedAssets 카탈로그 확인
-- AI 재현 검증에 순위·점수 외 금액추출률·독립연구신호 기준 추가
-- 모든 오류·JSON의 API 키 자동 마스킹 유지
+- 장기 공급계약과 시설투자를 공시일 하루짜리 이벤트로 보지 않고 **실제 계약·투자기간 전체에 금액을 배분**합니다.
+- OpenDART 전체 재무제표의 현금흐름표에서 **유형자산 취득액(CAPEX)** 을 직접 추출합니다.
+- 기업별 CAPEX를 연매출로 나누고 4개년 수준·증가속도·가속도·확산도를 계산합니다.
+- 공시 XML은 XML 파서로 처리해 기존 `XMLParsedAsHTMLWarning`을 제거합니다.
+- BEA 메타데이터 요청의 `GetDatasetList` 표기를 공식 규격에 맞게 수정했습니다.
+- AI 단일 산업 순위와 별도로 AI 연산 + 반도체 장비·첨단패키징 결합 진단값을 출력합니다. 결합값은 검증 합격판정에는 사용하지 않습니다.
+- 비밀키 자동 마스킹과 `investment_use_allowed=false` 안전장치를 유지합니다.
 
-## 필요한 GitHub Secrets
+## 필요한 Secrets
 
-```text
-OPENDART_API_KEY   # 필수
-FRED_API_KEY       # 권장, 기존 키 그대로 사용
-BEA_API_KEY        # 권장
-```
+- `OPENDART_API_KEY` — 필수
+- `FRED_API_KEY` — 선택 보조, 기존 키 그대로 사용
+- `BEA_API_KEY` — 선택 보조
 
-선택 Repository Variable:
-
-```text
-SEC_USER_AGENT
-```
-
-SEC는 GitHub 호스팅 러너에서 403이 발생할 수 있어 기본적으로 사용하지 않습니다.
+`SEC_USER_AGENT`는 `use_sec=true`일 때만 사용합니다.
 
 ## 실행
 
 Actions → **Industry Boom Engine** → **Run workflow**
 
-```text
-as_of: 비워두기
-replay_as_of: 2022-10-31
-use_sec: false
-```
+- `as_of`: 비움
+- `replay_as_of`: `2022-10-31`
+- `use_sec`: `false`
 
-로그의 주요 구간:
-
-```text
-[DART] original-document amount extraction targets=...
-[DART] amount extraction ...
-[ARXIV] technology momentum ...
-[FRED] macro context with official CSV fallback
-[BEA] dataset/catalog check
-```
+첫 실행은 OpenDART 전체 재무제표를 추가 수집하므로 이전 버전보다 호출 수가 많습니다. 이후 실행부터 GitHub 캐시를 재사용합니다.
 
 ## 주요 출력
 
-```text
-outputs/industry_boom_ranking.json
-outputs/industry_boom_detail.json
-outputs/ai_replay_2022.json
-outputs/technology_momentum.json
-outputs/event_amount_quality.json
-outputs/macro_context.json
-outputs/bea_context.json
-outputs/model_validation.json
-outputs/engine_health.json
-```
+- `industry_boom_ranking.json`
+- `ai_replay_2022.json`
+- `model_validation.json`
+- `event_amount_quality.json`
+- `cashflow_capex_quality.json`
+- `technology_momentum.json`
+- `macro_context.json`
+- `bea_context.json`
+- `engine_health.json`
 
-`model_validation.json`의 `investment_use_allowed`는 V0.2.0에서도 의도적으로 `false`입니다. AI 재현 1단계가 통과해도 성공·실패 산업 전체 워크포워드 백테스트를 통과하기 전에는 실전 투자판정에 사용하지 않습니다.
+## 판정 원칙
 
-## Google Apps Script
-
-`google_apps_script/Code.gs`, `Index.html`, `appsscript.json`을 Apps Script 프로젝트에 넣고 Script Properties에 다음을 설정합니다.
-
-```text
-OUTPUT_BASE_URL = GitHub Raw outputs 폴더 URL
-```
-
-예: 저장소의 `outputs` 폴더가 Raw로 읽히는 기본 URL이며, 끝에 `/`는 넣지 않습니다.
-
-## 로컬 테스트
-
-```bash
-python -m pip install -r requirements.txt
-pip install -e .
-pytest -q
-```
+AI 과거 재현시험이 3위 이내·65점 이상 등 1단계 기준을 통과하더라도, 성공·실패 산업 전체 워크포워드 백테스트가 끝나기 전에는 투자판정에 사용하지 않습니다.
