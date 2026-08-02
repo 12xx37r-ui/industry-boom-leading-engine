@@ -1,21 +1,30 @@
 {
-  "status": "FAILED",
+  "status": "PASSED_STAGE1",
   "investment_use_allowed": false,
-  "reason": "AI 재현 순위·점수·금액추출률·독립연구신호 기준 중 하나 이상을 통과하지 못했습니다.",
+  "reason": "AI 붐 이전 선행축적 재현은 통과했지만 성공·실패 산업 전체 워크포워드 검증 전에는 투자에 사용할 수 없습니다.",
   "criteria": {
-    "ai_rank_max": 3,
-    "ai_score_min": 65,
+    "ai_preboom_rank_max": 3,
+    "ai_preboom_score_min": 60,
+    "ai_early_signal_score_min": 60,
+    "ai_phase_allowed": [
+      "EARLY_ACCUMULATION",
+      "TRANSITION"
+    ],
     "ai_amount_coverage_min": 0.35,
     "independent_research_source_required": true,
     "additional_backtests_required": true
   },
   "observed": {
-    "ai_rank": 5,
-    "ai_score": 52.04,
+    "ai_preboom_rank": 1,
+    "ai_preboom_score": 63.14,
+    "ai_early_signal_score": 61.16,
+    "ai_commercial_realization_score": 43.21,
+    "ai_cross_confirmation_score": 56.44,
+    "ai_phase": "EARLY_ACCUMULATION",
     "ai_amount_coverage": 0.4904,
     "ai_research_source": true,
-    "ai_value_chain_score": 52.75,
-    "ai_value_chain_rank_equivalent": 4,
+    "ai_value_chain_score": 58.85,
+    "ai_value_chain_rank_equivalent": 2,
     "theme_count": 12
   },
   "known_design_gaps": [

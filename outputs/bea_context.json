@@ -23,5 +23,6 @@
         "APIErrorDescription": "Invalid Request - Invalid Parameters."
       }
     ]
-  }
+  },
+  "key_format_warning": null
 }

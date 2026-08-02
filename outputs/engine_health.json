@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-02T00:52:51.000034+00:00",
-  "engine_version": "0.3.0",
+  "generated_at": "2026-08-02T01:13:25.934501+00:00",
+  "engine_version": "0.4.1",
   "current_as_of": "2026-08-02",
   "replay_as_of": "2022-10-31",
   "sources": {
@@ -2540,7 +2540,8 @@
             "APIErrorDescription": "Invalid Request - Invalid Parameters."
           }
         ]
-      }
+      },
+      "key_format_warning": null
     }
   },
   "limitations": [
