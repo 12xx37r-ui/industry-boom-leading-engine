@@ -136,11 +136,7 @@ def download_archive(url: str, destination: Path, user_agent: str, retries: int 
             print(f"[LOCAL-SEC] ready {destination.name} size={destination.stat().st_size:,}", flush=True)
             return destination
         except urllib.error.HTTPError as exc:
-            body = _safe_body(exc)
-            last_error = f"HTTP {exc.code} body={body}"
-            if exc.code == 403 and "Request Rate Threshold Exceeded" in body:
-                print("[LOCAL-SEC] SEC rate gate detected; stopping automatic retries. Use the browser URL shown below.", flush=True)
-                break
+            last_error = f"HTTP {exc.code} body={_safe_body(exc)}"
         except (urllib.error.URLError, TimeoutError, OSError, OfflineSeedError) as exc:
             last_error = str(exc)
         finally:
@@ -314,8 +310,9 @@ def compute_seed_sha256(seed: dict[str, Any]) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
-def load_request(root: Path) -> dict[str, Any]:
-    path = root / "config" / "offline_seed_request.json"
+def load_request(root: Path, request_file: str | Path = "config/offline_seed_request.json") -> dict[str, Any]:
+    request_path = Path(request_file)
+    path = request_path if request_path.is_absolute() else root / request_path
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
@@ -325,8 +322,16 @@ def load_request(root: Path) -> dict[str, Any]:
     return payload
 
 
-def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_research: bool = False) -> dict[str, Any]:
-    request = load_request(root)
+def build_seed(
+    root: Path,
+    user_agent: str,
+    *,
+    refresh: bool = False,
+    skip_research: bool = False,
+    request_file: str | Path = "config/offline_seed_request.json",
+    output_file: str | Path = "validation_seed/sec_fsds_fy2021.json",
+) -> dict[str, Any]:
+    request = load_request(root, request_file)
     if "@" not in user_agent or len(user_agent) < 12:
         raise OfflineSeedError("User-Agent must include an application name and real contact email")
 
@@ -392,7 +397,8 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
     research: dict[str, Any] = {}
     research_errors: dict[str, str] = {}
     research_rows = list(request.get("research") or [])
-    existing_seed_path = root / "validation_seed" / "sec_fsds_fy2021.json"
+    output_path = Path(output_file)
+    existing_seed_path = output_path if output_path.is_absolute() else root / output_path
     existing_research: dict[str, Any] = {}
     try:
         existing_payload = json.loads(existing_seed_path.read_text(encoding="utf-8"))
@@ -505,13 +511,17 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
         "research": research,
     }
     seed["metadata"]["content_sha256"] = compute_seed_sha256(seed)
-    seed_path = root / "validation_seed" / "sec_fsds_fy2021.json"
+    output_path = Path(output_file)
+    seed_path = output_path if output_path.is_absolute() else root / output_path
     seed_path.parent.mkdir(parents=True, exist_ok=True)
     seed_path.write_text(json.dumps(seed, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    upload_dir = root / "UPLOAD_THIS_FOLDER_TO_GITHUB" / "validation_seed"
-    upload_dir.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(seed_path, upload_dir / seed_path.name)
+    relative_output = Path(output_file)
+    if relative_output.is_absolute():
+        relative_output = Path("validation_seed") / seed_path.name
+    upload_target = root / "UPLOAD_THIS_FOLDER_TO_GITHUB" / relative_output
+    upload_target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(seed_path, upload_target)
 
     print(
         f"[OFFLINE-SEED] status={status_value} eligible={eligible_count} available={available_count} "
@@ -519,7 +529,7 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
         flush=True,
     )
     print(f"[OFFLINE-SEED] file={seed_path}", flush=True)
-    print(f"[OFFLINE-SEED] upload_folder={upload_dir.parent}", flush=True)
+    print(f"[OFFLINE-SEED] upload_folder={root / 'UPLOAD_THIS_FOLDER_TO_GITHUB'}", flush=True)
     if status_value != "READY":
         raise OfflineSeedError(
             "Seed did not pass completeness gate. Re-run after failed downloads/queries are available. "
@@ -528,13 +538,17 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
     return seed
 
 
-def validate_seed(root: Path) -> dict[str, Any]:
-    request = load_request(root)
-    path = root / "validation_seed" / "sec_fsds_fy2021.json"
+def validate_seed(
+    root: Path,
+    request_file: str | Path = "config/offline_seed_request.json",
+    output_file: str | Path = "validation_seed/sec_fsds_fy2021.json",
+) -> dict[str, Any]:
+    request = load_request(root, request_file)
+    output_path = Path(output_file)
+    path = output_path if output_path.is_absolute() else root / output_path
     if not path.exists():
-        raise OfflineSeedError(
-            "validation_seed/sec_fsds_fy2021.json is missing. Run 1_BUILD_OFFLINE_SEED.bat on a Windows PC first."
-        )
+        default_hint = " Run 1_BUILD_OFFLINE_SEED.bat on a Windows PC first." if str(output_file) == "validation_seed/sec_fsds_fy2021.json" else " Run the matching offline seed BAT file on a Windows PC first."
+        raise OfflineSeedError(f"{output_file} is missing.{default_hint}")
     try:
         seed = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
@@ -590,14 +604,23 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--refresh", action="store_true")
     parser.add_argument("--skip-research", action="store_true")
     parser.add_argument("--validate-only", action="store_true")
+    parser.add_argument("--request-file", default="config/offline_seed_request.json")
+    parser.add_argument("--output-file", default="validation_seed/sec_fsds_fy2021.json")
     args = parser.parse_args(argv)
     root = Path(args.root).resolve()
     try:
         if args.validate_only:
-            validate_seed(root)
+            validate_seed(root, args.request_file, args.output_file)
             return 0
         user_agent = args.user_agent.strip() or f"IndustryBoomLeadingEngine/0.8.10 {args.email.strip()}"
-        build_seed(root, user_agent, refresh=args.refresh, skip_research=args.skip_research)
+        build_seed(
+            root,
+            user_agent,
+            refresh=args.refresh,
+            skip_research=args.skip_research,
+            request_file=args.request_file,
+            output_file=args.output_file,
+        )
         return 0
     except OfflineSeedError as exc:
         print(f"[OFFLINE-SEED-ERROR] {exc}", file=sys.stderr, flush=True)

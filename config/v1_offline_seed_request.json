@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.8.10",
+  "request_role": "v1_independent_walkforward_holdout",
+  "cutoff": "2022-10-31",
+  "periods": [
+    "2021q1",
+    "2021q2",
+    "2021q3",
+    "2021q4",
+    "2022q1",
+    "2022q2",
+    "2022q3",
+    "2022q4"
+  ],
+  "source_url_template": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/{period}.zip",
+  "tickers": [
+    {
+      "ticker": "AES",
+      "cik": "0000874761"
+    },
+    {
+      "ticker": "ALB",
+      "cik": "0000915913"
+    },
+    {
+      "ticker": "AMAT",
+      "cik": "0000006951"
+    },
+    {
+      "ticker": "AMD",
+      "cik": "0000002488"
+    },
+    {
+      "ticker": "AMZN",
+      "cik": "0001018724"
+    },
+    {
+      "ticker": "ANET",
+      "cik": "0001596532"
+    },
+    {
+      "ticker": "AVGO",
+      "cik": "0001730168"
+    },
+    {
+      "ticker": "COHU",
+      "cik": "0000021535"
+    },
+    {
+      "ticker": "DDD",
+      "cik": "0000910638"
+    },
+    {
+      "ticker": "DM",
+      "cik": "0001754820"
+    },
+    {
+      "ticker": "ENPH",
+      "cik": "0001463101"
+    },
+    {
+      "ticker": "ENTG",
+      "cik": "0001101302"
+    },
+    {
+      "ticker": "FLNC",
+      "cik": "0001868941"
+    },
+    {
+      "ticker": "FORM",
+      "cik": "0001039399"
+    },
+    {
+      "ticker": "GOOGL",
+      "cik": "0001652044"
+    },
+    {
+      "ticker": "IBM",
+      "cik": "0000051143"
+    },
+    {
+      "ticker": "IONQ",
+      "cik": "0001824920"
+    },
+    {
+      "ticker": "KLAC",
+      "cik": "0000319201"
+    },
+    {
+      "ticker": "LRCX",
+      "cik": "0000707549"
+    },
+    {
+      "ticker": "META",
+      "cik": "0001326801"
+    },
+    {
+      "ticker": "MKSI",
+      "cik": "0001049502"
+    },
+    {
+      "ticker": "MSFT",
+      "cik": "0000789019"
+    },
+    {
+      "ticker": "MU",
+      "cik": "0000723125"
+    },
+    {
+      "ticker": "NEE",
+      "cik": "0000753308"
+    },
+    {
+      "ticker": "NVDA",
+      "cik": "0001045810"
+    },
+    {
+      "ticker": "ORCL",
+      "cik": "0001341439"
+    },
+    {
+      "ticker": "QBTS",
+      "cik": "0001907982"
+    },
+    {
+      "ticker": "RBLX",
+      "cik": "0001315098"
+    },
+    {
+      "ticker": "RGTI",
+      "cik": "0001838359"
+    },
+    {
+      "ticker": "SSYS",
+      "cik": "0001517396"
+    },
+    {
+      "ticker": "STEM",
+      "cik": "0001758766"
+    },
+    {
+      "ticker": "TER",
+      "cik": "0000097210"
+    },
+    {
+      "ticker": "TSLA",
+      "cik": "0001318605"
+    },
+    {
+      "ticker": "VLD",
+      "cik": "0001825079"
+    },
+    {
+      "ticker": "VRT",
+      "cik": "0001674101"
+    }
+  ],
+  "research": [
+    {
+      "theme_id": "AI_COMPUTE_INFRA",
+      "query": "(all:\"large language model\" OR all:\"generative artificial intelligence\" OR all:\"deep learning accelerator\")"
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "query": "(all:\"advanced packaging\" OR all:\"semiconductor manufacturing\" OR all:\"chiplet\")"
+    },
+    {
+      "theme_id": "CLOUD_INFRA",
+      "query": "(all:\"cloud computing\" OR all:\"distributed systems\" OR all:\"data center networking\")"
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "query": "(all:\"energy storage\" OR all:\"battery management system\" OR all:\"power conversion system\")"
+    },
+    {
+      "theme_id": "METAVERSE_XR",
+      "query": "(all:\"metaverse\" OR all:\"virtual reality\" OR all:\"extended reality\")"
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "query": "(all:\"quantum computing\" OR all:\"quantum error correction\" OR all:\"quantum processor\")"
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "query": "(all:\"additive manufacturing\" OR all:\"3d printing\" OR all:\"metal printing\")"
+    }
+  ],
+  "minimum_financial_coverage": 0.72,
+  "minimum_available_companies": 24,
+  "minimum_research_themes": 6,
+  "output_file": "validation_seed/sec_fsds_v1_ai_2022.json"
+}

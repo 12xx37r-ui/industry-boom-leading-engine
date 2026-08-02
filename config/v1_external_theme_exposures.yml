@@ -1,0 +1,97 @@
+version: 1
+model_input_role: sealed_external_holdout_taxonomy
+minimum_exposure: 0.30
+sealed_before_execution: true
+notes:
+  - V0.9.1 점수식은 변경하지 않고 2023-06-30의 별도 산업 코호트를 평가합니다.
+  - AI_2022 기존 벤치마크는 독립 게이트에서 제외하고 별도 잠금 재현 결과로만 보고합니다.
+themes:
+  - id: SPACE_INFRA_EXTERNAL
+    name: 우주·위성 인프라
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"satellite constellation" OR all:"space infrastructure" OR all:"launch vehicle")'
+    us_companies:
+      - {ticker: RKLB, exposure: 0.94, confidence: 0.90, evidence: launch_and_space_systems_pure_play}
+      - {ticker: LUNR, exposure: 0.96, confidence: 0.86, evidence: lunar_infrastructure_pure_play}
+      - {ticker: RDW, exposure: 0.92, confidence: 0.88, evidence: space_infrastructure_pure_play}
+      - {ticker: ASTS, exposure: 0.94, confidence: 0.86, evidence: satellite_connectivity_pure_play}
+      - {ticker: PL, exposure: 0.92, confidence: 0.88, evidence: earth_observation_pure_play}
+      - {ticker: BA, exposure: 0.12, confidence: 0.50, evidence: space_partial_below_gate}
+      - {ticker: LMT, exposure: 0.18, confidence: 0.56, evidence: space_partial_below_gate}
+      - {ticker: NOC, exposure: 0.18, confidence: 0.56, evidence: space_partial_below_gate}
+    invalidations: [발사일정 반복 지연, 위성배치 실패, 정부계약이 상업매출로 전환되지 않음]
+
+  - id: DATA_CENTER_POWER_COOLING_EXTERNAL
+    name: 데이터센터 전력·냉각 인프라
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"data center cooling" OR all:"liquid cooling" OR all:"data center power infrastructure")'
+    us_companies:
+      - {ticker: VRT, exposure: 0.88, confidence: 0.93, evidence: data_center_power_cooling_majority}
+      - {ticker: ETN, exposure: 0.48, confidence: 0.82, evidence: electrical_data_center_material}
+      - {ticker: CARR, exposure: 0.34, confidence: 0.72, evidence: cooling_infrastructure_threshold}
+      - {ticker: NVT, exposure: 0.52, confidence: 0.80, evidence: electrical_connection_protection_material}
+      - {ticker: POWL, exposure: 0.42, confidence: 0.76, evidence: power_distribution_material}
+      - {ticker: HUBB, exposure: 0.32, confidence: 0.70, evidence: electrical_components_threshold}
+    invalidations: [하이퍼스케일러 CAPEX 감소, 전력인입 지연, 냉각 수주잔고 감소]
+
+  - id: CYBERSECURITY_FORWARD_EXTERNAL
+    name: 사이버보안 구조적 수요
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"cybersecurity" OR all:"zero trust" OR all:"ransomware detection")'
+    us_companies:
+      - {ticker: PANW, exposure: 0.96, confidence: 0.97, evidence: cybersecurity_pure_play}
+      - {ticker: CRWD, exposure: 0.97, confidence: 0.97, evidence: cybersecurity_pure_play}
+      - {ticker: FTNT, exposure: 0.96, confidence: 0.96, evidence: cybersecurity_pure_play}
+      - {ticker: ZS, exposure: 0.97, confidence: 0.96, evidence: cybersecurity_pure_play}
+      - {ticker: OKTA, exposure: 0.93, confidence: 0.94, evidence: identity_security_pure_play}
+      - {ticker: TENB, exposure: 0.95, confidence: 0.94, evidence: exposure_management_pure_play}
+      - {ticker: S, exposure: 0.92, confidence: 0.88, evidence: endpoint_security_pure_play}
+      - {ticker: NET, exposure: 0.46, confidence: 0.70, evidence: security_and_networking_mixed}
+    invalidations: [반복매출 성장 급락, 고객 유지율 악화, 영업비용이 매출보다 빠르게 증가]
+
+  - id: DEFENSE_DRONE_EXTERNAL
+    name: 국방 드론·무인체계
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"military drone" OR all:"unmanned aerial vehicle" OR all:"autonomous defense")'
+    us_companies:
+      - {ticker: AVAV, exposure: 0.92, confidence: 0.92, evidence: unmanned_systems_majority}
+      - {ticker: KTOS, exposure: 0.78, confidence: 0.86, evidence: unmanned_and_defense_systems}
+      - {ticker: LHX, exposure: 0.46, confidence: 0.78, evidence: defense_electronics_and_autonomy_material}
+      - {ticker: NOC, exposure: 0.36, confidence: 0.72, evidence: autonomous_defense_material}
+      - {ticker: LMT, exposure: 0.31, confidence: 0.68, evidence: unmanned_systems_threshold}
+      - {ticker: RTX, exposure: 0.22, confidence: 0.58, evidence: autonomy_partial_below_gate}
+    invalidations: [확정계약 감소, 수주잔고 감소, 무인체계 매출 전환 지연]
+
+  - id: GENE_EDITING_PRECOMMERCIAL_EXTERNAL
+    name: 유전자편집 조기상용화 통제군
+    evaluation_class: negative_control
+    arxiv_query: '(all:"gene editing" OR all:"CRISPR therapy" OR all:"base editing")'
+    us_companies:
+      - {ticker: CRSP, exposure: 0.96, confidence: 0.92, evidence: gene_editing_pure_play}
+      - {ticker: NTLA, exposure: 0.96, confidence: 0.92, evidence: gene_editing_pure_play}
+      - {ticker: BEAM, exposure: 0.96, confidence: 0.90, evidence: base_editing_pure_play}
+      - {ticker: VRTX, exposure: 0.18, confidence: 0.58, evidence: gene_editing_partnership_below_gate}
+      - {ticker: REGN, exposure: 0.12, confidence: 0.52, evidence: gene_editing_partial_below_gate}
+      - {ticker: GILD, exposure: 0.10, confidence: 0.50, evidence: gene_therapy_partial_below_gate}
+    invalidations: [임상진척이 매출로 전환되지 않음, 현금소진 악화, 파이프라인 중단]
+
+  - id: AUTONOMOUS_LIDAR_FORWARD_EXTERNAL
+    name: 자율주행·라이다 과잉기대 통제군
+    evaluation_class: negative_control
+    arxiv_query: '(all:"autonomous driving" OR all:"self driving vehicle" OR all:"lidar perception")'
+    us_companies:
+      - {ticker: MBLY, exposure: 0.92, confidence: 0.92, evidence: autonomous_driving_pure_play}
+      - {ticker: LAZR, exposure: 0.96, confidence: 0.92, evidence: lidar_pure_play}
+      - {ticker: INVZ, exposure: 0.96, confidence: 0.90, evidence: lidar_pure_play}
+      - {ticker: APTV, exposure: 0.36, confidence: 0.68, evidence: active_safety_and_adas_partial}
+    invalidations: [상용화 일정 반복 연기, 유료서비스 매출 부재, 규제승인 지연]
+
+  - id: HYDROGEN_FORWARD_EXTERNAL
+    name: 수소·연료전지 과잉투자 통제군
+    evaluation_class: negative_control
+    arxiv_query: '(all:"green hydrogen" OR all:"fuel cell" OR all:"hydrogen economy")'
+    us_companies:
+      - {ticker: PLUG, exposure: 0.94, confidence: 0.92, evidence: hydrogen_fuel_cell_pure_play}
+      - {ticker: BE, exposure: 0.78, confidence: 0.84, evidence: fuel_cell_and_hydrogen_majority}
+      - {ticker: FCEL, exposure: 0.95, confidence: 0.92, evidence: fuel_cell_pure_play}
+    invalidations: [보조금 제외 경제성 미달, 생산원가 개선 지연, 수주 없이 증설만 확대]

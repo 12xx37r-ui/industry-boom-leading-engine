@@ -1,0 +1,106 @@
+version: 1
+model_input_role: sealed_holdout_taxonomy
+minimum_exposure: 0.30
+sealed_before_execution: true
+notes:
+  - V0.9.1 계산식은 변경하지 않고, 개발 코호트에 없던 산업을 독립 시점에서 평가합니다.
+  - 노출도는 기업 전체 재무를 산업에 과대귀속하지 않도록 보수적으로 설정했습니다.
+  - 30% 미만 노출 기업은 비교 설명에는 남길 수 있으나 점수 계산에서는 제외됩니다.
+themes:
+  - id: AI_COMPUTE_INFRA
+    name: AI 연산·데이터센터 인프라
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"large language model" OR all:"generative artificial intelligence" OR all:"deep learning accelerator")'
+    us_companies:
+      - {ticker: NVDA, exposure: 0.92, confidence: 0.94, evidence: accelerated_compute_majority}
+      - {ticker: AMD, exposure: 0.58, confidence: 0.82, evidence: data_center_and_accelerator_material}
+      - {ticker: AVGO, exposure: 0.40, confidence: 0.75, evidence: networking_and_custom_compute_partial}
+      - {ticker: MU, exposure: 0.38, confidence: 0.72, evidence: memory_for_accelerated_compute_partial}
+      - {ticker: ANET, exposure: 0.62, confidence: 0.84, evidence: data_center_networking_majority}
+      - {ticker: VRT, exposure: 0.58, confidence: 0.82, evidence: data_center_power_and_cooling_majority}
+      - {ticker: AMAT, exposure: 0.34, confidence: 0.72, evidence: advanced_compute_fab_equipment_partial}
+      - {ticker: LRCX, exposure: 0.34, confidence: 0.72, evidence: advanced_compute_fab_equipment_partial}
+      - {ticker: KLAC, exposure: 0.34, confidence: 0.72, evidence: advanced_compute_process_control_partial}
+      - {ticker: MSFT, exposure: 0.30, confidence: 0.68, evidence: cloud_ai_infrastructure_threshold}
+      - {ticker: GOOGL, exposure: 0.30, confidence: 0.68, evidence: cloud_ai_infrastructure_threshold}
+      - {ticker: META, exposure: 0.30, confidence: 0.66, evidence: ai_infrastructure_capex_threshold}
+    invalidations: [하이퍼스케일러 CAPEX 감소, 가속기 수요 둔화, AI 매출 전환 지연]
+
+  - id: SEMICONDUCTOR_EQUIPMENT
+    name: 반도체 장비·첨단패키징
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"advanced packaging" OR all:"semiconductor manufacturing" OR all:"chiplet")'
+    us_companies:
+      - {ticker: AMAT, exposure: 0.88, confidence: 0.93, evidence: wafer_fab_equipment_majority}
+      - {ticker: LRCX, exposure: 0.91, confidence: 0.94, evidence: wafer_fab_equipment_majority}
+      - {ticker: KLAC, exposure: 0.92, confidence: 0.94, evidence: process_control_majority}
+      - {ticker: TER, exposure: 0.62, confidence: 0.82, evidence: semiconductor_test_majority}
+      - {ticker: ENTG, exposure: 0.78, confidence: 0.88, evidence: semiconductor_materials_majority}
+      - {ticker: MKSI, exposure: 0.56, confidence: 0.78, evidence: semiconductor_process_partial}
+      - {ticker: COHU, exposure: 0.82, confidence: 0.88, evidence: semiconductor_test_majority}
+      - {ticker: FORM, exposure: 0.88, confidence: 0.90, evidence: semiconductor_probe_majority}
+    invalidations: [WFE 투자 감소, 수주잔고 감소, 첨단패키징 증설 지연]
+
+  - id: CLOUD_INFRA
+    name: 클라우드·데이터 인프라
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"cloud computing" OR all:"distributed systems" OR all:"data center networking")'
+    us_companies:
+      - {ticker: MSFT, exposure: 0.55, confidence: 0.86, evidence: cloud_segment_material}
+      - {ticker: AMZN, exposure: 0.42, confidence: 0.82, evidence: aws_material_profit_driver}
+      - {ticker: GOOGL, exposure: 0.31, confidence: 0.72, evidence: cloud_segment_threshold}
+      - {ticker: ORCL, exposure: 0.48, confidence: 0.80, evidence: cloud_and_infrastructure_material}
+      - {ticker: IBM, exposure: 0.34, confidence: 0.70, evidence: hybrid_cloud_threshold}
+      - {ticker: ANET, exposure: 0.72, confidence: 0.88, evidence: cloud_networking_majority}
+      - {ticker: VRT, exposure: 0.62, confidence: 0.84, evidence: data_center_infrastructure_majority}
+    invalidations: [클라우드 CAPEX 둔화, 데이터센터 착공 감소, 서버 네트워크 재고 증가]
+
+  - id: ENERGY_STORAGE
+    name: 에너지저장·전력변환
+    evaluation_class: structural_positive
+    arxiv_query: '(all:"energy storage" OR all:"battery management system" OR all:"power conversion system")'
+    us_companies:
+      - {ticker: FLNC, exposure: 0.94, confidence: 0.90, evidence: grid_storage_pure_play}
+      - {ticker: STEM, exposure: 0.86, confidence: 0.84, evidence: storage_software_and_projects_majority}
+      - {ticker: ENPH, exposure: 0.52, confidence: 0.80, evidence: distributed_energy_and_storage_material}
+      - {ticker: ALB, exposure: 0.58, confidence: 0.82, evidence: battery_materials_majority}
+      - {ticker: AES, exposure: 0.32, confidence: 0.66, evidence: storage_development_threshold}
+      - {ticker: TSLA, exposure: 0.18, confidence: 0.58, evidence: storage_partial_below_gate}
+      - {ticker: NEE, exposure: 0.22, confidence: 0.58, evidence: storage_partial_below_gate}
+      - {ticker: ON, exposure: 0.20, confidence: 0.56, evidence: power_semiconductor_partial_below_gate}
+    invalidations: [설치량 둔화, 재고 증가, 프로젝트 금융비용 상승]
+
+  - id: METAVERSE_XR
+    name: 메타버스·XR 플랫폼
+    evaluation_class: negative_control
+    arxiv_query: '(all:"metaverse" OR all:"virtual reality" OR all:"extended reality")'
+    us_companies:
+      - {ticker: RBLX, exposure: 0.94, confidence: 0.92, evidence: immersive_platform_pure_play}
+      - {ticker: META, exposure: 0.24, confidence: 0.62, evidence: reality_labs_below_gate}
+      - {ticker: MSFT, exposure: 0.08, confidence: 0.48, evidence: xr_partial_below_gate}
+      - {ticker: NVDA, exposure: 0.08, confidence: 0.48, evidence: omniverse_partial_below_gate}
+    invalidations: [사용자 성장 정체, 가상경제 매출 부진, 영업손실 확대]
+
+  - id: QUANTUM_COMPUTING
+    name: 양자컴퓨팅
+    evaluation_class: negative_control
+    arxiv_query: '(all:"quantum computing" OR all:"quantum error correction" OR all:"quantum processor")'
+    us_companies:
+      - {ticker: IONQ, exposure: 0.96, confidence: 0.88, evidence: quantum_pure_play}
+      - {ticker: RGTI, exposure: 0.96, confidence: 0.86, evidence: quantum_pure_play}
+      - {ticker: QBTS, exposure: 0.96, confidence: 0.84, evidence: quantum_pure_play}
+      - {ticker: IBM, exposure: 0.06, confidence: 0.45, evidence: quantum_research_below_gate}
+      - {ticker: GOOGL, exposure: 0.03, confidence: 0.42, evidence: quantum_research_below_gate}
+      - {ticker: MSFT, exposure: 0.03, confidence: 0.42, evidence: quantum_research_below_gate}
+    invalidations: [기술성능이 상용계약으로 전환되지 않음, 고객매출 정체, 자금조달 의존 심화]
+
+  - id: ADDITIVE_MANUFACTURING
+    name: 3D프린팅·적층제조
+    evaluation_class: negative_control
+    arxiv_query: '(all:"additive manufacturing" OR all:"3d printing" OR all:"metal printing")'
+    us_companies:
+      - {ticker: DDD, exposure: 0.96, confidence: 0.95, evidence: additive_manufacturing_pure_play}
+      - {ticker: SSYS, exposure: 0.96, confidence: 0.95, evidence: additive_manufacturing_pure_play}
+      - {ticker: DM, exposure: 0.96, confidence: 0.90, evidence: additive_manufacturing_pure_play}
+      - {ticker: VLD, exposure: 0.96, confidence: 0.88, evidence: additive_manufacturing_pure_play}
+    invalidations: [장비판매가 반복매출로 전환되지 않음, 산업고객 정체, 현금소진 악화]

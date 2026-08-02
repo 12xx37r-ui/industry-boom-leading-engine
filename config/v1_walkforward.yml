@@ -1,0 +1,75 @@
+version: 1
+benchmark_name: V1.0 locked AI benchmark replay - 2022
+validation_role: locked_ai_replay_not_independent
+investment_use_allowed: false
+sealed_before_execution: true
+model_version: 0.9.1
+engine_release: 1.0.0
+seed_file: validation_seed/sec_fsds_v1_ai_2022.json
+exposure_file: config/v1_theme_exposures.yml
+cohort:
+  as_of: '2022-10-31'
+  outcome_observation_end: '2025-12-31'
+  theme_ids:
+    - AI_COMPUTE_INFRA
+    - SEMICONDUCTOR_EQUIPMENT
+    - CLOUD_INFRA
+    - ENERGY_STORAGE
+    - METAVERSE_XR
+    - QUANTUM_COMPUTING
+    - ADDITIVE_MANUFACTURING
+scenarios:
+  - id: V1_AI_COMPUTE_2022
+    name: 생성형 AI 연산 인프라 붐 선행탐지
+    label: positive
+    target_theme_id: AI_COMPUTE_INFRA
+    outcome_class: broad_boom_observed
+    boom_start: '2023-01-01'
+    criteria: {rank_max: 3, score_min: 58, early_signal_min: 56}
+  - id: V1_SEMI_EQUIPMENT_2022
+    name: AI 반도체 장비·첨단패키징 확장 선행탐지
+    label: positive
+    target_theme_id: SEMICONDUCTOR_EQUIPMENT
+    outcome_class: supply_chain_boom_observed
+    boom_start: '2023-06-01'
+    criteria: {rank_max: 4, score_min: 55, early_signal_min: 53}
+  - id: V1_CLOUD_INFRA_2022
+    name: AI 연계 클라우드·데이터 인프라 재가속 탐지
+    label: positive
+    target_theme_id: CLOUD_INFRA
+    outcome_class: infrastructure_reacceleration_observed
+    boom_start: '2023-03-01'
+    criteria: {rank_max: 5, score_min: 53, early_signal_min: 51}
+  - id: V1_ENERGY_STORAGE_2022
+    name: 에너지저장·전력변환 산업화 확장 탐지
+    label: positive
+    target_theme_id: ENERGY_STORAGE
+    outcome_class: deployment_growth_observed
+    boom_start: '2023-07-01'
+    criteria: {rank_max: 5, score_min: 53, early_signal_min: 51}
+  - id: V1_METAVERSE_CONTROL_2022
+    name: 메타버스 과열 음성 통제군
+    label: negative
+    target_theme_id: METAVERSE_XR
+    outcome_class: no_broad_durable_boom
+    criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 60, strong_alert_early_min: 58}
+  - id: V1_QUANTUM_CONTROL_2022
+    name: 양자컴퓨팅 조기상용화 과열 통제군
+    label: negative
+    target_theme_id: QUANTUM_COMPUTING
+    outcome_class: commercialization_not_yet_broad
+    criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 60, strong_alert_early_min: 58}
+  - id: V1_ADDITIVE_CONTROL_2022
+    name: 3D프린팅 장기정체 통제군
+    label: negative
+    target_theme_id: ADDITIVE_MANUFACTURING
+    outcome_class: no_broad_durable_boom
+    criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 60, strong_alert_early_min: 58}
+gates:
+  financial_coverage_min: 0.72
+  available_company_min: 24
+  research_theme_min: 6
+  positive_recall_min: 0.75
+  false_alarm_rate_max: 0.3334
+  pairwise_auc_min: 0.70
+  ai_target_must_pass: true

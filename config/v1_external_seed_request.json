@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.8.10",
+  "request_role": "v1_external_independent_holdout",
+  "cutoff": "2023-06-30",
+  "periods": [
+    "2022q1",
+    "2022q2",
+    "2022q3",
+    "2022q4",
+    "2023q1",
+    "2023q2",
+    "2023q3"
+  ],
+  "source_url_template": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/{period}.zip",
+  "tickers": [
+    {
+      "ticker": "APTV",
+      "cik": "0001521332"
+    },
+    {
+      "ticker": "ASTS",
+      "cik": "0001780312"
+    },
+    {
+      "ticker": "AVAV",
+      "cik": "0001368622"
+    },
+    {
+      "ticker": "BA",
+      "cik": "0000012927"
+    },
+    {
+      "ticker": "BE",
+      "cik": "0001664703"
+    },
+    {
+      "ticker": "BEAM",
+      "cik": "0001745999"
+    },
+    {
+      "ticker": "CARR",
+      "cik": "0001783180"
+    },
+    {
+      "ticker": "CRSP",
+      "cik": "0001674416"
+    },
+    {
+      "ticker": "CRWD",
+      "cik": "0001535527"
+    },
+    {
+      "ticker": "ETN",
+      "cik": "0001551182"
+    },
+    {
+      "ticker": "FCEL",
+      "cik": "0000886128"
+    },
+    {
+      "ticker": "FTNT",
+      "cik": "0001262039"
+    },
+    {
+      "ticker": "GILD",
+      "cik": "0000882095"
+    },
+    {
+      "ticker": "HUBB",
+      "cik": "0000048898"
+    },
+    {
+      "ticker": "INVZ",
+      "cik": "0001835654"
+    },
+    {
+      "ticker": "KTOS",
+      "cik": "0001069258"
+    },
+    {
+      "ticker": "LAZR",
+      "cik": "0001758057"
+    },
+    {
+      "ticker": "LHX",
+      "cik": "0000202058"
+    },
+    {
+      "ticker": "LMT",
+      "cik": "0000936468"
+    },
+    {
+      "ticker": "LUNR",
+      "cik": "0001844452"
+    },
+    {
+      "ticker": "MBLY",
+      "cik": "0001910139"
+    },
+    {
+      "ticker": "NET",
+      "cik": "0001477333"
+    },
+    {
+      "ticker": "NOC",
+      "cik": "0001133421"
+    },
+    {
+      "ticker": "NTLA",
+      "cik": "0001652130"
+    },
+    {
+      "ticker": "NVT",
+      "cik": "0001720635"
+    },
+    {
+      "ticker": "OKTA",
+      "cik": "0001660134"
+    },
+    {
+      "ticker": "PANW",
+      "cik": "0001327567"
+    },
+    {
+      "ticker": "PL",
+      "cik": "0001836833"
+    },
+    {
+      "ticker": "PLUG",
+      "cik": "0001093691"
+    },
+    {
+      "ticker": "POWL",
+      "cik": "0000080420"
+    },
+    {
+      "ticker": "RDW",
+      "cik": "0001819810"
+    },
+    {
+      "ticker": "REGN",
+      "cik": "0000872589"
+    },
+    {
+      "ticker": "RKLB",
+      "cik": "0001819994"
+    },
+    {
+      "ticker": "RTX",
+      "cik": "0000101829"
+    },
+    {
+      "ticker": "S",
+      "cik": "0001583708"
+    },
+    {
+      "ticker": "TENB",
+      "cik": "0001660280"
+    },
+    {
+      "ticker": "VRT",
+      "cik": "0001674101"
+    },
+    {
+      "ticker": "VRTX",
+      "cik": "0000875320"
+    },
+    {
+      "ticker": "ZS",
+      "cik": "0001713683"
+    }
+  ],
+  "research": [
+    {
+      "theme_id": "SPACE_INFRA_EXTERNAL",
+      "query": "(all:\"satellite constellation\" OR all:\"space infrastructure\" OR all:\"launch vehicle\")"
+    },
+    {
+      "theme_id": "DATA_CENTER_POWER_COOLING_EXTERNAL",
+      "query": "(all:\"data center cooling\" OR all:\"liquid cooling\" OR all:\"data center power infrastructure\")"
+    },
+    {
+      "theme_id": "CYBERSECURITY_FORWARD_EXTERNAL",
+      "query": "(all:\"cybersecurity\" OR all:\"zero trust\" OR all:\"ransomware detection\")"
+    },
+    {
+      "theme_id": "DEFENSE_DRONE_EXTERNAL",
+      "query": "(all:\"military drone\" OR all:\"unmanned aerial vehicle\" OR all:\"autonomous defense\")"
+    },
+    {
+      "theme_id": "GENE_EDITING_PRECOMMERCIAL_EXTERNAL",
+      "query": "(all:\"gene editing\" OR all:\"CRISPR therapy\" OR all:\"base editing\")"
+    },
+    {
+      "theme_id": "AUTONOMOUS_LIDAR_FORWARD_EXTERNAL",
+      "query": "(all:\"autonomous driving\" OR all:\"self driving vehicle\" OR all:\"lidar perception\")"
+    },
+    {
+      "theme_id": "HYDROGEN_FORWARD_EXTERNAL",
+      "query": "(all:\"green hydrogen\" OR all:\"fuel cell\" OR all:\"hydrogen economy\")"
+    }
+  ],
+  "minimum_financial_coverage": 0.72,
+  "minimum_available_companies": 25,
+  "minimum_research_themes": 6,
+  "output_file": "validation_seed/sec_fsds_v1_external_2023h1.json"
+}

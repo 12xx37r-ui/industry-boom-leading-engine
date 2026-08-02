@@ -1,0 +1,74 @@
+version: 1
+benchmark_name: V1.0 external walk-forward holdout - 2023H1 cohort
+validation_role: independent_external_holdout
+investment_use_allowed: false
+sealed_before_execution: true
+model_version: 0.9.1
+engine_release: 1.0.0
+seed_file: validation_seed/sec_fsds_v1_external_2023h1.json
+exposure_file: config/v1_external_theme_exposures.yml
+cohort:
+  as_of: '2023-06-30'
+  outcome_observation_end: '2025-12-31'
+  theme_ids:
+    - SPACE_INFRA_EXTERNAL
+    - DATA_CENTER_POWER_COOLING_EXTERNAL
+    - CYBERSECURITY_FORWARD_EXTERNAL
+    - DEFENSE_DRONE_EXTERNAL
+    - GENE_EDITING_PRECOMMERCIAL_EXTERNAL
+    - AUTONOMOUS_LIDAR_FORWARD_EXTERNAL
+    - HYDROGEN_FORWARD_EXTERNAL
+scenarios:
+  - id: V1_EXT_SPACE_2023H1
+    name: 우주·위성 인프라 확장 선행탐지
+    label: positive
+    target_theme_id: SPACE_INFRA_EXTERNAL
+    outcome_class: capital_and_contract_boom_observed
+    boom_start: '2024-01-01'
+    criteria: {rank_max: 4, score_min: 54, early_signal_min: 52}
+  - id: V1_EXT_DATACENTER_POWER_2023H1
+    name: 데이터센터 전력·냉각 붐 선행탐지
+    label: positive
+    target_theme_id: DATA_CENTER_POWER_COOLING_EXTERNAL
+    outcome_class: infrastructure_boom_observed
+    boom_start: '2024-01-01'
+    criteria: {rank_max: 3, score_min: 56, early_signal_min: 54}
+  - id: V1_EXT_CYBER_2023H1
+    name: 사이버보안 구조적 수요 재가속 탐지
+    label: positive
+    target_theme_id: CYBERSECURITY_FORWARD_EXTERNAL
+    outcome_class: durable_demand_observed
+    boom_start: '2023-09-01'
+    criteria: {rank_max: 4, score_min: 55, early_signal_min: 53}
+  - id: V1_EXT_DEFENSE_DRONE_2023H1
+    name: 국방 드론·무인체계 확장 탐지
+    label: positive
+    target_theme_id: DEFENSE_DRONE_EXTERNAL
+    outcome_class: procurement_and_revenue_expansion_observed
+    boom_start: '2024-01-01'
+    criteria: {rank_max: 4, score_min: 54, early_signal_min: 52}
+  - id: V1_EXT_GENE_EDIT_CONTROL_2023H1
+    name: 유전자편집 조기상용화 통제군
+    label: negative
+    target_theme_id: GENE_EDITING_PRECOMMERCIAL_EXTERNAL
+    outcome_class: broad_commercial_boom_not_observed
+    criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 60, strong_alert_early_min: 58}
+  - id: V1_EXT_AUTONOMOUS_CONTROL_2023H1
+    name: 자율주행·라이다 과열 통제군
+    label: negative
+    target_theme_id: AUTONOMOUS_LIDAR_FORWARD_EXTERNAL
+    outcome_class: broad_commercial_boom_not_observed
+    criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 60, strong_alert_early_min: 58}
+  - id: V1_EXT_HYDROGEN_CONTROL_2023H1
+    name: 수소·연료전지 과잉투자 통제군
+    label: negative
+    target_theme_id: HYDROGEN_FORWARD_EXTERNAL
+    outcome_class: durable_economic_boom_not_observed
+    criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 60, strong_alert_early_min: 58}
+gates:
+  financial_coverage_min: 0.72
+  available_company_min: 25
+  research_theme_min: 6
+  positive_recall_min: 0.75
+  false_alarm_rate_max: 0.3334
+  pairwise_auc_min: 0.70

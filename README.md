@@ -1,42 +1,60 @@
 # Industry Boom Leading Engine V1.0.0
 
-V1.0.0 is the first independent walkforward validation package for the frozen V0.9.1 scoring model.
+V1.0 freezes the V0.9.1 scoring model and runs two separate checks without retuning weights.
 
-## What is frozen
+1. **AI 2022 locked replay**: answers whether the frozen model still detects the AI-compute precursor. This is reported separately because an AI_2022 benchmark already existed in earlier project files, so it is not counted as a fully independent holdout.
+2. **2023H1 external walk-forward holdout**: the official V1 independent gate, using a later point-in-time seed and a separately sealed seven-theme cohort.
 
-The following V0.9.1 scoring files are SHA-256 locked before validation:
+## Fixed architecture
 
-- `src/ible/global_validation.py`
-- `src/ible/analytics/exposure_scoring.py`
-- `src/ible/analytics/scoring.py`
+- PC: download official SEC Financial Statement Data Sets and arXiv counts once, then create point-in-time JSON seeds.
+- GitHub Actions: no SEC, FMP, or other external API calls. It verifies hashes, calculates scores, evaluates both panels, and exports JSON.
+- Google Apps Script: display-only. It must not recalculate scores.
 
-Any change causes `MODEL_LOCK_MISMATCH` and stops validation.
+## Official independent panel
 
-## Independent test cohort
+- Point-in-time date: `2023-06-30`
+- Positive cases: space infrastructure, data-center power/cooling, cybersecurity forward demand, defense drones
+- Negative controls: premature gene-editing commercialization, autonomous-driving/lidar overexpectation, hydrogen/fuel-cell overinvestment
+- Outcome observation window ends: `2025-12-31`
 
-Two point-in-time snapshots are built locally:
+## AI locked replay
 
-- `WF_2019H1`: cutoff 2019-04-30
-- `WF_2019H2`: cutoff 2019-10-31
+- Point-in-time date: `2022-10-31`
+- Main target: AI compute and data-center infrastructure
+- The result is useful diagnostic evidence but does **not** determine the official independent-holdout pass/fail status.
 
-New themes not used to tune V0.9.1:
+## Model freeze
 
-- Semiconductor manufacturing equipment
-- Digital payments
-- Streaming media
-- Gene editing therapeutics control
-- Online lending control
-- Ride-hailing control at the second snapshot
+`config/model_lock.json` protects all model-affecting scoring, normalization, exposure, seed-generation, holdout-design, and evaluation files with SHA-256. GitHub stops immediately if any protected file differs.
 
 ## Run order
 
-1. Extract this ZIP on the Windows PC.
-2. Keep the existing `local_sec_data` folder if present.
-3. Run `1_BUILD_WALKFORWARD_SEED.bat`.
-4. Upload `UPLOAD_THIS_FOLDER_TO_GITHUB/validation_seed/walkforward` to the repository top level.
-5. Upload the V1.0.0 project files to the repository.
-6. Ensure `.github/workflows/run_independent_walkforward.yml` exists.
-7. Run `Industry Boom Independent Walkforward V1.0.0` in GitHub Actions.
-8. Download the artifact `industry-boom-independent-walkforward-v1.0.0`.
+1. Replace the repository with this complete V1.0 ZIP.
+2. On Windows, run `1_BUILD_V1_HOLDOUT_SEED.bat` once.
+3. Upload both generated JSON files from `UPLOAD_THIS_FOLDER_TO_GITHUB/validation_seed` into the repository's `validation_seed` folder.
+4. Run GitHub Actions: `Industry Boom V1.0 Independent Walk-Forward`.
+5. Download artifact: `industry-boom-v1-independent-walkforward`.
 
-GitHub Actions performs no SEC, FMP, or arXiv network calls. It only validates the checked-in seed and runs the frozen model.
+## Final status
+
+The official V1 decision is the external panel status:
+
+- `V1_EXTERNAL_HOLDOUT_PASSED`
+- `V1_EXTERNAL_HOLDOUT_FAILED`
+- `V1_EXTERNAL_HOLDOUT_INSUFFICIENT_DATA`
+
+AI replay has separate statuses:
+
+- `V1_AI_LOCKED_REPLAY_PASSED`
+- `V1_AI_LOCKED_REPLAY_FAILED`
+- `V1_AI_LOCKED_REPLAY_INSUFFICIENT_DATA`
+
+Every status keeps `investment_use_allowed=false`. Market-pricing, portfolio-return, and transaction-cost validation remain later stages.
+
+## Prohibited
+
+- Do not reintroduce FMP.
+- Do not call SEC directly from GitHub Actions.
+- Do not change V0.9.1 weights after viewing V1 results.
+- Do not alter the sealed exposure files or thresholds to force a pass.

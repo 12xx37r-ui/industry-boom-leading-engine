@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "industry-boom-leading-engine"
 version = "1.0.0"
-description = "Point-in-time industry boom leading indicator engine"
+description = "Frozen-model independent walk-forward industry boom leading indicator engine"
 requires-python = ">=3.11"
 dependencies = [
   "requests>=2.32.3,<3",
