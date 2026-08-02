@@ -1,0 +1,99 @@
+version: 1
+benchmark_name: V0.7.0 frozen-model holdout
+model_frozen_from: 0.6.2
+notes:
+  - 점수 공식은 V0.6.2 상태로 동결하며 홀드아웃 결과를 본 뒤 수정하지 않습니다.
+  - 모든 시나리오는 2021-12-31 동일 스냅샷과 동일 8개 산업 코호트에서 평가합니다.
+  - 성공·실패 라벨은 공개 역사자료 기반 연구용 벤치마크이며 완전한 인과적 정답표가 아닙니다.
+default_alert:
+  score_min: 55
+  early_signal_min: 54
+  allowed_stages:
+    - EARLY_ACCUMULATION
+    - CAPITAL_LED_ACCUMULATION
+    - TRANSITION
+    - COMMERCIAL_BOOM
+cohort:
+  as_of: '2021-12-31'
+  theme_ids:
+    - POWER_GRID_ELECTRIFICATION
+    - DEFENSE_AUTONOMY
+    - NUCLEAR_FIRM_POWER
+    - CYBERSECURITY
+    - AUTONOMOUS_DRIVING
+    - NFT_BLOCKCHAIN
+    - ALT_PROTEIN
+    - SPACE_TOURISM
+scenarios:
+  - id: HOLDOUT_GRID_2021
+    name: 전력망·변압기 투자확대 전조
+    label: positive
+    as_of: '2021-12-31'
+    target_theme_id: POWER_GRID_ELECTRIFICATION
+    criteria:
+      rank_max: 4
+      score_min: 55
+      early_signal_min: 54
+  - id: HOLDOUT_DEFENSE_2021
+    name: 방산·무인체계 재평가 전조
+    label: positive
+    as_of: '2021-12-31'
+    target_theme_id: DEFENSE_AUTONOMY
+    criteria:
+      rank_max: 4
+      score_min: 55
+      early_signal_min: 54
+  - id: HOLDOUT_NUCLEAR_2021
+    name: 원전·무탄소 기저전력 재평가 전조
+    label: positive
+    as_of: '2021-12-31'
+    target_theme_id: NUCLEAR_FIRM_POWER
+    criteria:
+      rank_max: 4
+      score_min: 54
+      early_signal_min: 53
+  - id: HOLDOUT_CYBER_2021
+    name: 사이버보안 구조적 수요 확대
+    label: positive
+    as_of: '2021-12-31'
+    target_theme_id: CYBERSECURITY
+    criteria:
+      rank_max: 4
+      score_min: 54
+      early_signal_min: 53
+  - id: HOLDOUT_AUTONOMOUS_2021
+    name: 자율주행 과잉기대 통제군
+    label: negative
+    as_of: '2021-12-31'
+    target_theme_id: AUTONOMOUS_DRIVING
+    criteria:
+      strong_alert_rank_max: 3
+      strong_alert_score_min: 60
+      strong_alert_early_min: 58
+  - id: HOLDOUT_NFT_2021
+    name: NFT·블록체인 과열 통제군
+    label: negative
+    as_of: '2021-12-31'
+    target_theme_id: NFT_BLOCKCHAIN
+    criteria:
+      strong_alert_rank_max: 3
+      strong_alert_score_min: 60
+      strong_alert_early_min: 58
+  - id: HOLDOUT_ALT_PROTEIN_2021
+    name: 대체단백질 과잉기대 통제군
+    label: negative
+    as_of: '2021-12-31'
+    target_theme_id: ALT_PROTEIN
+    criteria:
+      strong_alert_rank_max: 3
+      strong_alert_score_min: 60
+      strong_alert_early_min: 58
+  - id: HOLDOUT_SPACE_TOURISM_2021
+    name: 우주관광 과잉기대 통제군
+    label: negative
+    as_of: '2021-12-31'
+    target_theme_id: SPACE_TOURISM
+    criteria:
+      strong_alert_rank_max: 3
+      strong_alert_score_min: 60
+      strong_alert_early_min: 58

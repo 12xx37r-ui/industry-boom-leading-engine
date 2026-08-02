@@ -1,0 +1,8 @@
+{
+  "frozen_model_version": "0.6.2",
+  "holdout_engine_version": "0.7.0",
+  "scoring_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
+  "backtest_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+  "locked_at_design": "before holdout API execution",
+  "rule": "홀드아웃 결과를 확인하기 전에 잠근 점수·판정 파일입니다."
+}

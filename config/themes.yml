@@ -408,3 +408,80 @@ themes:
   - 수소 생산원가 하락이 지연
   - 수주 증가 없이 증설과 자금조달만 확대
   sec_enabled: false
+- id: AUTONOMOUS_DRIVING
+  name: 자율주행·라이다 생태계
+  arxiv_query: (all:"autonomous driving" OR all:"self driving vehicle" OR all:"lidar perception")
+  us_tickers:
+  - TSLA
+  - MBLY
+  - APTV
+  - LAZR
+  - INVZ
+  - QCOM
+  kr_stock_codes:
+  - '012330'
+  - '204320'
+  - '011070'
+  - '054450'
+  invalidations:
+  - 완전자율주행 상용화 일정이 반복 연기
+  - 센서·소프트웨어 투자 증가가 유료 서비스 매출로 전환되지 않음
+  - 규제 승인과 사고책임 체계 정비가 지연
+  sec_enabled: false
+- id: NFT_BLOCKCHAIN
+  name: NFT·블록체인 플랫폼
+  arxiv_query: (all:"non fungible token" OR all:"blockchain gaming" OR all:"web3 platform")
+  us_tickers:
+  - COIN
+  - HOOD
+  - PYPL
+  - SQ
+  - MARA
+  - RIOT
+  kr_stock_codes:
+  - '112040'
+  - '078340'
+  - '035720'
+  - '035420'
+  invalidations:
+  - 이용자·거래액 감소가 2개 분기 이상 지속
+  - 토큰가격 상승을 제외한 반복매출이 정체
+  - 규제비용과 고객획득비용이 매출 증가를 초과
+  sec_enabled: false
+- id: ALT_PROTEIN
+  name: 대체단백질·식품테크
+  arxiv_query: (all:"plant based meat" OR all:"alternative protein" OR all:"cultivated meat")
+  us_tickers:
+  - BYND
+  - TSN
+  - ADM
+  - K
+  - CAG
+  kr_stock_codes:
+  - '097950'
+  - '017810'
+  - '001680'
+  - '003230'
+  invalidations:
+  - 소비자 재구매율과 유통점 판매가 감소
+  - 생산원가가 축산 단백질 대비 개선되지 않음
+  - 판촉비 증가 없이 매출을 유지하지 못함
+  sec_enabled: false
+- id: SPACE_TOURISM
+  name: 우주관광·민간유인비행
+  arxiv_query: (all:"space tourism" OR all:"commercial human spaceflight" OR all:"suborbital flight")
+  us_tickers:
+  - SPCE
+  - RKLB
+  - BA
+  - NOC
+  kr_stock_codes:
+  - '003490'
+  - '012450'
+  - '211270'
+  - '047810'
+  invalidations:
+  - 유인비행 일정이 반복 연기
+  - 예약금이 실제 탑승매출로 전환되지 않음
+  - 현금소진과 추가 자금조달 의존도가 상승
+  sec_enabled: false
