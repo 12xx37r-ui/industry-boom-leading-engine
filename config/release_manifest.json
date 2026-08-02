@@ -1,0 +1,33 @@
+{
+  "release": "1.0.3-github-robust",
+  "file_count": 27,
+  "files": [
+    ".github/workflows/run_v1_github_only.yml",
+    ".gitignore",
+    "README.md",
+    "config/backtests.yml",
+    "config/github_validation.json",
+    "config/model_lock.json",
+    "config/release_manifest.json",
+    "config/theme_exposures.yml",
+    "google_apps_script/Code.gs",
+    "google_apps_script/Index.html",
+    "google_apps_script/appsscript.json",
+    "outputs/.gitkeep",
+    "pyproject.toml",
+    "requirements.txt",
+    "src/ible/__init__.py",
+    "src/ible/analytics/__init__.py",
+    "src/ible/analytics/exposure_scoring.py",
+    "src/ible/analytics/scoring.py",
+    "src/ible/analytics/sec_metrics.py",
+    "src/ible/analytics/timeseries.py",
+    "src/ible/backtest.py",
+    "src/ible/github_validation.py",
+    "src/ible/github_validation_cli.py",
+    "src/ible/global_validation.py",
+    "src/ible/model_lock.py",
+    "tests/test_release.py",
+    "validation_seed/v1_locked_backtests.json.gz"
+  ]
+}

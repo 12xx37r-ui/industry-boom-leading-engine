@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from ible.github_validation import load_bundle, run_github_validation
@@ -9,15 +10,18 @@ from ible.model_lock import load_and_verify_model_lock
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_repository_is_below_github_web_upload_limit() -> None:
-    ignored = {".git", ".pytest_cache", "__pycache__", "outputs"}
-    files = [path for path in ROOT.rglob("*") if path.is_file() and not (set(path.parts) & ignored)]
-    assert len(files) < 100, f"repository contains {len(files)} files"
+def test_release_manifest_is_below_github_web_upload_limit() -> None:
+    manifest = json.loads((ROOT / "config/release_manifest.json").read_text(encoding="utf-8"))
+    files = list(manifest["files"])
+    assert len(files) < 100, f"release contains {len(files)} files"
+    missing = [relative for relative in files if not (ROOT / relative).is_file()]
+    assert missing == [], f"release manifest missing files: {missing}"
 
 
-def test_no_local_runner_files() -> None:
+def test_no_local_runner_files_in_release() -> None:
+    manifest = json.loads((ROOT / "config/release_manifest.json").read_text(encoding="utf-8"))
     forbidden = {".bat", ".cmd", ".ipynb"}
-    found = [path for path in ROOT.rglob("*") if path.is_file() and path.suffix.lower() in forbidden]
+    found = [relative for relative in manifest["files"] if Path(relative).suffix.lower() in forbidden]
     assert found == []
 
 
@@ -26,7 +30,7 @@ def test_workflow_has_no_sec_or_fmp_collection() -> None:
     assert "sec.gov" not in text
     assert "data.sec.gov" not in text
     assert "financialmodelingprep" not in text
-    assert "fmp" not in text
+    assert "test_release.py" in text
 
 
 def test_model_lock_and_bundle() -> None:

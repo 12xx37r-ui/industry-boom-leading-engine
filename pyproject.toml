@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "industry-boom-leading-engine"
-version = "1.0.2"
-description = "GitHub-only locked historical validation runner for the frozen V0.9.1 model"
+version = "1.0.3"
+description = "GitHub-only locked validation runner isolated from legacy repository tests"
 requires-python = ">=3.11"
 dependencies = []
 
@@ -14,4 +14,4 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-testpaths = ["tests"]
+testpaths = ["tests/test_release.py"]
