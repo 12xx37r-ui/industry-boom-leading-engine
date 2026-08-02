@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "engine_release": "4.0.0-direct-revenue-final-auto",
+  "engine_release": "4.1.0-direct-revenue-coverage-fix",
   "as_of": "2026-08-02",
-  "captured_at": "2026-08-02T21:23:30+09:00",
+  "captured_at": "2026-08-02T22:00:11+09:00",
   "theme_count": 50,
-  "direct_commercialization_observed_theme_count": 48,
+  "direct_commercialization_observed_theme_count": 50,
   "investment_use_allowed": false,
   "themes": [
     {
@@ -19,6 +19,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 2,
@@ -69,6 +70,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -117,6 +119,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -165,6 +168,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -213,6 +217,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -271,6 +276,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -322,6 +328,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 2,
@@ -372,6 +379,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 2,
@@ -417,11 +425,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 62.2318,
-      "direct_commercialization_score": 66.3016,
-      "prevalidation_candidate_score": 63.4527,
+      "direct_commercialization_score": 65.7178,
+      "prevalidation_candidate_score": 63.2776,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -454,7 +463,7 @@
       "components": {
         "primary_growth_percent": 6.8142,
         "primary_growth_score": 59.6134,
-        "source_specific_scale_percentile": 82.6923,
+        "source_specific_scale_percentile": 80.3571,
         "new_orders_growth_score": 64.2058
       },
       "limitations": [
@@ -470,11 +479,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 56.7893,
-      "direct_commercialization_score": 68.7989,
-      "prevalidation_candidate_score": 60.3922,
+      "direct_commercialization_score": 68.8333,
+      "prevalidation_candidate_score": 60.4025,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -506,7 +516,7 @@
       "components": {
         "primary_growth_percent": 3.7301,
         "primary_growth_score": 55.3086,
-        "source_specific_scale_percentile": 98.0769,
+        "source_specific_scale_percentile": 98.2143,
         "new_orders_growth_score": 69.2999
       },
       "limitations": [
@@ -527,6 +537,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -575,6 +586,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -628,6 +640,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -681,6 +694,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -729,11 +743,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 61.4135,
-      "direct_commercialization_score": 55.5665,
-      "prevalidation_candidate_score": 59.6594,
+      "direct_commercialization_score": 56.2877,
+      "prevalidation_candidate_score": 59.8758,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -764,7 +779,7 @@
       "components": {
         "primary_growth_percent": 14.2591,
         "primary_growth_score": 69.3133,
-        "source_specific_scale_percentile": 9.6154,
+        "source_specific_scale_percentile": 12.5,
         "new_orders_growth_score": 75.2017
       },
       "limitations": [
@@ -780,11 +795,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 55.6645,
-      "direct_commercialization_score": 64.5721,
-      "prevalidation_candidate_score": 58.3368,
+      "direct_commercialization_score": 64.3317,
+      "prevalidation_candidate_score": 58.2647,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -815,7 +831,7 @@
       "components": {
         "primary_growth_percent": 9.5829,
         "primary_growth_score": 63.3577,
-        "source_specific_scale_percentile": 63.4615,
+        "source_specific_scale_percentile": 62.5,
         "new_orders_growth_score": 69.2999
       },
       "limitations": [
@@ -831,11 +847,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 56.3358,
-      "direct_commercialization_score": 62.6305,
-      "prevalidation_candidate_score": 58.2242,
+      "direct_commercialization_score": 62.2528,
+      "prevalidation_candidate_score": 58.1109,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -868,7 +885,7 @@
       "components": {
         "primary_growth_percent": 5.3085,
         "primary_growth_score": 57.526,
-        "source_specific_scale_percentile": 71.1538,
+        "source_specific_scale_percentile": 69.6429,
         "new_orders_growth_score": 66.0138
       },
       "limitations": [
@@ -889,6 +906,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -942,6 +960,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 2,
@@ -992,6 +1011,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1039,17 +1059,70 @@
       ]
     },
     {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 52.7512,
+      "direct_commercialization_score": 65.4448,
+      "prevalidation_candidate_score": 56.5593,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12179.0,
+          "prior_year_value_million_usd": 10001.0,
+          "yoy_percent": 21.7778
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12431.0,
+          "prior_year_value_million_usd": 9982.0,
+          "yoy_percent": 24.5342
+        }
+      },
+      "components": {
+        "primary_growth_percent": 21.7778,
+        "primary_growth_score": 77.6337,
+        "source_specific_scale_percentile": 26.7857,
+        "new_orders_growth_score": 80.2494
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
       "theme_id": "HYDROGEN_ECONOMY",
       "theme_name": "수소",
       "sector": "에너지·전력",
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 50.0504,
-      "direct_commercialization_score": 71.5208,
-      "prevalidation_candidate_score": 56.4915,
+      "direct_commercialization_score": 71.6238,
+      "prevalidation_candidate_score": 56.5224,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1081,7 +1154,7 @@
       "components": {
         "primary_growth_percent": 8.5713,
         "primary_growth_score": 62.0057,
-        "source_specific_scale_percentile": 94.2308,
+        "source_specific_scale_percentile": 94.6429,
         "new_orders_growth_score": 69.2999
       },
       "limitations": [
@@ -1102,6 +1175,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1139,17 +1213,18 @@
       ]
     },
     {
-      "theme_id": "CRITICAL_MINERALS",
-      "theme_name": "핵심광물",
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
       "sector": "소재·자원·인프라",
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "phase4_readiness_signal_score": 52.7512,
-      "direct_commercialization_score": 64.9984,
-      "prevalidation_candidate_score": 56.4254,
+      "phase4_readiness_signal_score": 52.2348,
+      "direct_commercialization_score": 65.4448,
+      "prevalidation_candidate_score": 56.1978,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1180,7 +1255,7 @@
       "components": {
         "primary_growth_percent": 21.7778,
         "primary_growth_score": 77.6337,
-        "source_specific_scale_percentile": 25.0,
+        "source_specific_scale_percentile": 26.7857,
         "new_orders_growth_score": 80.2494
       },
       "limitations": [
@@ -1201,6 +1276,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1248,68 +1324,18 @@
       ]
     },
     {
-      "theme_id": "RARE_EARTHS",
-      "theme_name": "희토류 공급망",
-      "sector": "소재·자원·인프라",
-      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "phase4_readiness_signal_score": 52.2348,
-      "direct_commercialization_score": 64.9984,
-      "prevalidation_candidate_score": 56.0639,
-      "boom_score": null,
-      "investment_use_allowed": false,
-      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
-      "sources": {
-        "qss_revenue": {
-          "matched_rows": 0,
-          "current_revenue_million_usd": null,
-          "revenue_yoy_percent": null
-        },
-        "m3_shipments": {
-          "matched_series": 1,
-          "matched_m3_codes": [
-            "ANM"
-          ],
-          "latest_period": "2026-05",
-          "latest_value_million_usd": 12179.0,
-          "prior_year_value_million_usd": 10001.0,
-          "yoy_percent": 21.7778
-        },
-        "m3_new_orders": {
-          "matched_series": 1,
-          "matched_m3_codes": [
-            "ANM"
-          ],
-          "latest_period": "2026-05",
-          "latest_value_million_usd": 12431.0,
-          "prior_year_value_million_usd": 9982.0,
-          "yoy_percent": 24.5342
-        }
-      },
-      "components": {
-        "primary_growth_percent": 21.7778,
-        "primary_growth_score": 77.6337,
-        "source_specific_scale_percentile": 25.0,
-        "new_orders_growth_score": 80.2494
-      },
-      "limitations": [
-        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
-        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
-        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
-      ]
-    },
-    {
       "theme_id": "ADVANCED_MATERIALS",
       "theme_name": "첨단소재",
       "sector": "소재·자원·인프라",
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 48.2581,
-      "direct_commercialization_score": 72.5467,
-      "prevalidation_candidate_score": 55.5447,
+      "direct_commercialization_score": 71.8942,
+      "prevalidation_candidate_score": 55.3489,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1341,7 +1367,7 @@
       "components": {
         "primary_growth_percent": 9.6041,
         "primary_growth_score": 63.3858,
-        "source_specific_scale_percentile": 86.5385,
+        "source_specific_scale_percentile": 83.9286,
         "new_orders_growth_score": 80.2494
       },
       "limitations": [
@@ -1362,6 +1388,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1420,6 +1447,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1468,6 +1496,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1516,11 +1545,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 50.9479,
-      "direct_commercialization_score": 63.2123,
-      "prevalidation_candidate_score": 54.6272,
+      "direct_commercialization_score": 62.9376,
+      "prevalidation_candidate_score": 54.5448,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1551,7 +1581,7 @@
       "components": {
         "primary_growth_percent": 11.492,
         "primary_growth_score": 65.8515,
-        "source_specific_scale_percentile": 90.3846,
+        "source_specific_scale_percentile": 89.2857,
         "new_orders_growth_score": 21.9892
       },
       "limitations": [
@@ -1567,11 +1597,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 49.0953,
-      "direct_commercialization_score": 64.9984,
-      "prevalidation_candidate_score": 53.8662,
+      "direct_commercialization_score": 65.4448,
+      "prevalidation_candidate_score": 54.0001,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1602,7 +1633,7 @@
       "components": {
         "primary_growth_percent": 21.7778,
         "primary_growth_score": 77.6337,
-        "source_specific_scale_percentile": 25.0,
+        "source_specific_scale_percentile": 26.7857,
         "new_orders_growth_score": 80.2494
       },
       "limitations": [
@@ -1618,11 +1649,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 53.7924,
-      "direct_commercialization_score": 52.7404,
-      "prevalidation_candidate_score": 53.4768,
+      "direct_commercialization_score": 53.5646,
+      "prevalidation_candidate_score": 53.7241,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1653,7 +1685,7 @@
       "components": {
         "primary_growth_percent": 12.5027,
         "primary_growth_score": 67.1381,
-        "source_specific_scale_percentile": 3.8462,
+        "source_specific_scale_percentile": 7.1429,
         "new_orders_growth_score": 74.2646
       },
       "limitations": [
@@ -1669,11 +1701,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 47.1189,
-      "direct_commercialization_score": 66.1159,
-      "prevalidation_candidate_score": 52.818,
+      "direct_commercialization_score": 65.6352,
+      "prevalidation_candidate_score": 52.6738,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1706,7 +1739,7 @@
       "components": {
         "primary_growth_percent": 7.5927,
         "primary_growth_score": 60.6797,
-        "source_specific_scale_percentile": 76.9231,
+        "source_specific_scale_percentile": 75.0,
         "new_orders_growth_score": 67.5567
       },
       "limitations": [
@@ -1722,11 +1755,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "PREVALIDATION_WATCH",
       "phase4_readiness_signal_score": 50.3038,
-      "direct_commercialization_score": 57.1785,
-      "prevalidation_candidate_score": 52.3662,
+      "direct_commercialization_score": 57.3931,
+      "prevalidation_candidate_score": 52.4306,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1752,7 +1786,7 @@
       "components": {
         "primary_growth_percent": 10.6888,
         "primary_growth_score": 64.8121,
-        "source_specific_scale_percentile": 40.3846,
+        "source_specific_scale_percentile": 41.0714,
         "new_orders_growth_score": null
       },
       "limitations": [
@@ -1768,11 +1802,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
       "phase4_readiness_signal_score": 50.7861,
-      "direct_commercialization_score": 52.7404,
-      "prevalidation_candidate_score": 51.3724,
+      "direct_commercialization_score": 53.5646,
+      "prevalidation_candidate_score": 51.6196,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -1803,7 +1838,7 @@
       "components": {
         "primary_growth_percent": 12.5027,
         "primary_growth_score": 67.1381,
-        "source_specific_scale_percentile": 3.8462,
+        "source_specific_scale_percentile": 7.1429,
         "new_orders_growth_score": 74.2646
       },
       "limitations": [
@@ -1824,6 +1859,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1871,59 +1907,6 @@
       ]
     },
     {
-      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
-      "theme_name": "반도체 장비",
-      "sector": "AI·컴퓨팅",
-      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
-      "candidate_stage": "MONITOR_ONLY",
-      "phase4_readiness_signal_score": 44.6837,
-      "direct_commercialization_score": 66.1159,
-      "prevalidation_candidate_score": 51.1134,
-      "boom_score": null,
-      "investment_use_allowed": false,
-      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
-      "sources": {
-        "qss_revenue": {
-          "matched_rows": 0,
-          "current_revenue_million_usd": null,
-          "revenue_yoy_percent": null
-        },
-        "m3_shipments": {
-          "matched_series": 2,
-          "matched_m3_codes": [
-            "33S",
-            "34K"
-          ],
-          "latest_period": "2026-05",
-          "latest_value_million_usd": 51425.0,
-          "prior_year_value_million_usd": 47796.0,
-          "yoy_percent": 7.5927
-        },
-        "m3_new_orders": {
-          "matched_series": 2,
-          "matched_m3_codes": [
-            "33S",
-            "34K"
-          ],
-          "latest_period": "2026-05",
-          "latest_value_million_usd": 53808.0,
-          "prior_year_value_million_usd": 47687.0,
-          "yoy_percent": 12.8358
-        }
-      },
-      "components": {
-        "primary_growth_percent": 7.5927,
-        "primary_growth_score": 60.6797,
-        "source_specific_scale_percentile": 76.9231,
-        "new_orders_growth_score": 67.5567
-      },
-      "limitations": [
-        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
-        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
-        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
-      ]
-    },
-    {
       "theme_id": "SMART_FACTORY",
       "theme_name": "스마트팩토리",
       "sector": "산업·자동화",
@@ -1935,6 +1918,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -1982,6 +1966,60 @@
       ]
     },
     {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 44.6837,
+      "direct_commercialization_score": 65.6352,
+      "prevalidation_candidate_score": 50.9691,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "33S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 51425.0,
+          "prior_year_value_million_usd": 47796.0,
+          "yoy_percent": 7.5927
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "33S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 53808.0,
+          "prior_year_value_million_usd": 47687.0,
+          "yoy_percent": 12.8358
+        }
+      },
+      "components": {
+        "primary_growth_percent": 7.5927,
+        "primary_growth_score": 60.6797,
+        "source_specific_scale_percentile": 75.0,
+        "new_orders_growth_score": 67.5567
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
       "theme_id": "AI_SEMICONDUCTORS",
       "theme_name": "AI 반도체",
       "sector": "AI·컴퓨팅",
@@ -1993,6 +2031,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2044,6 +2083,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2090,11 +2130,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
       "phase4_readiness_signal_score": 42.4261,
-      "direct_commercialization_score": 64.5721,
-      "prevalidation_candidate_score": 49.0699,
+      "direct_commercialization_score": 64.3317,
+      "prevalidation_candidate_score": 48.9978,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2125,8 +2166,62 @@
       "components": {
         "primary_growth_percent": 9.5829,
         "primary_growth_score": 63.3577,
-        "source_specific_scale_percentile": 63.4615,
+        "source_specific_scale_percentile": 62.5,
         "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 42.3851,
+      "direct_commercialization_score": 63.8578,
+      "prevalidation_candidate_score": 48.8269,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "CRP",
+            "34X"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 7602.0,
+          "prior_year_value_million_usd": 6212.0,
+          "yoy_percent": 22.376
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "CRP",
+            "34X"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 7960.0,
+          "prior_year_value_million_usd": 6164.0,
+          "yoy_percent": 29.1369
+        }
+      },
+      "components": {
+        "primary_growth_percent": 22.376,
+        "primary_growth_score": 78.2216,
+        "source_specific_scale_percentile": 16.0714,
+        "new_orders_growth_score": 84.0903
       },
       "limitations": [
         "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
@@ -2146,6 +2241,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2186,17 +2282,18 @@
       ]
     },
     {
-      "theme_id": "EDGE_AI",
-      "theme_name": "엣지 AI",
-      "sector": "AI·컴퓨팅",
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
-      "phase4_readiness_signal_score": 42.3851,
-      "direct_commercialization_score": 63.2053,
-      "prevalidation_candidate_score": 48.6312,
+      "phase4_readiness_signal_score": 41.638,
+      "direct_commercialization_score": 62.9376,
+      "prevalidation_candidate_score": 48.0279,
       "boom_score": null,
       "investment_use_allowed": false,
-      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_quality": "M3_BROAD_TRANSPORTATION_EQUIPMENT_PROXY",
+      "mapping_note": "상업용 드론은 M3에 독립 세부계열이 없어 운송장비 광의 프록시를 사용합니다.",
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2204,33 +2301,31 @@
           "revenue_yoy_percent": null
         },
         "m3_shipments": {
-          "matched_series": 2,
+          "matched_series": 1,
           "matched_m3_codes": [
-            "CRP",
-            "34X"
+            "36S"
           ],
           "latest_period": "2026-05",
-          "latest_value_million_usd": 7602.0,
-          "prior_year_value_million_usd": 6212.0,
-          "yoy_percent": 22.376
+          "latest_value_million_usd": 109474.0,
+          "prior_year_value_million_usd": 98190.0,
+          "yoy_percent": 11.492
         },
         "m3_new_orders": {
-          "matched_series": 2,
+          "matched_series": 1,
           "matched_m3_codes": [
-            "CRP",
-            "34X"
+            "36S"
           ],
           "latest_period": "2026-05",
-          "latest_value_million_usd": 7960.0,
-          "prior_year_value_million_usd": 6164.0,
-          "yoy_percent": 29.1369
+          "latest_value_million_usd": 113390.0,
+          "prior_year_value_million_usd": 145671.0,
+          "yoy_percent": -22.1602
         }
       },
       "components": {
-        "primary_growth_percent": 22.376,
-        "primary_growth_score": 78.2216,
-        "source_specific_scale_percentile": 13.4615,
-        "new_orders_growth_score": 84.0903
+        "primary_growth_percent": 11.492,
+        "primary_growth_score": 65.8515,
+        "source_specific_scale_percentile": 89.2857,
+        "new_orders_growth_score": 21.9892
       },
       "limitations": [
         "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
@@ -2245,11 +2340,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
       "phase4_readiness_signal_score": 49.0392,
-      "direct_commercialization_score": 43.8315,
-      "prevalidation_candidate_score": 47.4769,
+      "direct_commercialization_score": 44.4153,
+      "prevalidation_candidate_score": 47.652,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2280,7 +2376,7 @@
       "components": {
         "primary_growth_percent": -0.0608,
         "primary_growth_score": 49.9131,
-        "source_specific_scale_percentile": 17.3077,
+        "source_specific_scale_percentile": 19.6429,
         "new_orders_growth_score": 60.2619
       },
       "limitations": [
@@ -2296,11 +2392,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
       "phase4_readiness_signal_score": 44.2453,
-      "direct_commercialization_score": 50.939,
-      "prevalidation_candidate_score": 46.2534,
+      "direct_commercialization_score": 51.1794,
+      "prevalidation_candidate_score": 46.3255,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2332,7 +2429,7 @@
       "components": {
         "primary_growth_percent": 2.8726,
         "primary_growth_score": 54.0945,
-        "source_specific_scale_percentile": 36.5385,
+        "source_specific_scale_percentile": 37.5,
         "new_orders_growth_score": 60.2619
       },
       "limitations": [
@@ -2348,11 +2445,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
       "phase4_readiness_signal_score": 37.5561,
-      "direct_commercialization_score": 64.5721,
-      "prevalidation_candidate_score": 45.6609,
+      "direct_commercialization_score": 64.3317,
+      "prevalidation_candidate_score": 45.5888,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2383,7 +2481,7 @@
       "components": {
         "primary_growth_percent": 9.5829,
         "primary_growth_score": 63.3577,
-        "source_specific_scale_percentile": 63.4615,
+        "source_specific_scale_percentile": 62.5,
         "new_orders_growth_score": 69.2999
       },
       "limitations": [
@@ -2399,11 +2497,12 @@
       "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
       "candidate_stage": "MONITOR_ONLY",
       "phase4_readiness_signal_score": 43.9652,
-      "direct_commercialization_score": 44.0397,
-      "prevalidation_candidate_score": 43.9875,
+      "direct_commercialization_score": 44.3488,
+      "prevalidation_candidate_score": 44.0803,
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 0,
@@ -2436,90 +2535,8 @@
       "components": {
         "primary_growth_percent": 0.8561,
         "primary_growth_score": 51.2228,
-        "source_specific_scale_percentile": 32.6923,
+        "source_specific_scale_percentile": 33.9286,
         "new_orders_growth_score": 38.4704
-      },
-      "limitations": [
-        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
-        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
-        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
-      ]
-    },
-    {
-      "theme_id": "COMMERCIAL_DRONES",
-      "theme_name": "상업용 드론",
-      "sector": "모빌리티·우주·방산",
-      "status": "DIRECT_REVENUE_UNAVAILABLE",
-      "candidate_stage": "MONITOR_ONLY",
-      "phase4_readiness_signal_score": 41.638,
-      "direct_commercialization_score": null,
-      "prevalidation_candidate_score": 41.638,
-      "boom_score": null,
-      "investment_use_allowed": false,
-      "mapping_quality": "NO_DIRECT_REVENUE_COVERAGE",
-      "sources": {
-        "qss_revenue": {
-          "matched_rows": 0,
-          "current_revenue_million_usd": null,
-          "revenue_yoy_percent": null
-        },
-        "m3_shipments": {
-          "matched_series": 0,
-          "latest_value_million_usd": null,
-          "yoy_percent": null
-        },
-        "m3_new_orders": {
-          "matched_series": 0,
-          "latest_value_million_usd": null,
-          "yoy_percent": null
-        }
-      },
-      "components": {
-        "primary_growth_percent": null,
-        "primary_growth_score": null,
-        "source_specific_scale_percentile": null,
-        "new_orders_growth_score": null
-      },
-      "limitations": [
-        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
-        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
-        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
-      ]
-    },
-    {
-      "theme_id": "SPACE_ECONOMY",
-      "theme_name": "우주산업",
-      "sector": "모빌리티·우주·방산",
-      "status": "DIRECT_REVENUE_UNAVAILABLE",
-      "candidate_stage": "MONITOR_ONLY",
-      "phase4_readiness_signal_score": 41.4873,
-      "direct_commercialization_score": null,
-      "prevalidation_candidate_score": 41.4873,
-      "boom_score": null,
-      "investment_use_allowed": false,
-      "mapping_quality": "NO_DIRECT_REVENUE_COVERAGE",
-      "sources": {
-        "qss_revenue": {
-          "matched_rows": 0,
-          "current_revenue_million_usd": null,
-          "revenue_yoy_percent": null
-        },
-        "m3_shipments": {
-          "matched_series": 0,
-          "latest_value_million_usd": null,
-          "yoy_percent": null
-        },
-        "m3_new_orders": {
-          "matched_series": 0,
-          "latest_value_million_usd": null,
-          "yoy_percent": null
-        }
-      },
-      "components": {
-        "primary_growth_percent": null,
-        "primary_growth_score": null,
-        "source_specific_scale_percentile": null,
-        "new_orders_growth_score": null
       },
       "limitations": [
         "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
@@ -2539,6 +2556,7 @@
       "boom_score": null,
       "investment_use_allowed": false,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "mapping_note": null,
       "sources": {
         "qss_revenue": {
           "matched_rows": 1,
@@ -2579,7 +2597,59 @@
         "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
         "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
       ]
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 41.4873,
+      "direct_commercialization_score": 33.6565,
+      "prevalidation_candidate_score": 39.1381,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_GUIDED_MISSILE_SPACE_VEHICLE_PROXY",
+      "mapping_note": "우주산업은 M3 유도미사일·우주비행체 관련 계열 프록시를 사용합니다.",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "36Z"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 4279.0,
+          "prior_year_value_million_usd": 4153.0,
+          "yoy_percent": 3.034
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "36Z"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 5400.0,
+          "prior_year_value_million_usd": 7518.0,
+          "yoy_percent": -28.1724
+        }
+      },
+      "components": {
+        "primary_growth_percent": 3.034,
+        "primary_growth_score": 54.3235,
+        "source_specific_scale_percentile": 1.7857,
+        "new_orders_growth_score": 16.6609
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
     }
   ],
-  "content_sha256": "43048151d6da581dde11504770bc93c1b9b239ee3e25b1af4207819ca533301c"
+  "content_sha256": "015bd29e6433e6ce446cc8f83bc09d57b7b80372582432aa5924ab76ffc166e6"
 }
