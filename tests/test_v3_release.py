@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
@@ -11,6 +10,7 @@ from ible.v3_data_engine import source_signal
 
 
 ROOT = Path(__file__).resolve().parents[1]
+MANIFEST_PATH = ROOT / "config/release_manifest.json"
 
 
 class FakeClient:
@@ -23,6 +23,11 @@ class FakeClient:
         return self.responses.pop(0)
 
 
+def release_files() -> list[str]:
+    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    return list(manifest["files"])
+
+
 class V3ReleaseTests(unittest.TestCase):
     def test_query_universe_has_exactly_50_unique_themes(self):
         payload = json.loads((ROOT / "config/v3_theme_queries.json").read_text(encoding="utf-8"))
@@ -32,9 +37,22 @@ class V3ReleaseTests(unittest.TestCase):
         self.assertTrue(all(x["openalex_search"] for x in payload["themes"]))
         self.assertTrue(all(x["usaspending_keywords"] for x in payload["themes"]))
 
-    def test_release_file_count_below_100(self):
-        files = [p for p in ROOT.rglob("*") if p.is_file() and ".git" not in p.parts and "__pycache__" not in p.parts]
-        self.assertLess(len(files), 100)
+    def test_release_manifest_is_below_github_web_upload_limit(self):
+        manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        files = release_files()
+        self.assertEqual(manifest["file_count"], len(files))
+        self.assertLess(len(files), manifest["github_web_upload_limit_guard"])
+        self.assertEqual(len(files), len(set(files)), "release manifest contains duplicate paths")
+
+        missing = [relative for relative in files if not (ROOT / relative).is_file()]
+        self.assertEqual(missing, [], f"release manifest missing files: {missing}")
+
+        forbidden = [
+            relative
+            for relative in files
+            if "__pycache__" in Path(relative).parts or Path(relative).suffix in {".pyc", ".pyo"}
+        ]
+        self.assertEqual(forbidden, [], f"compiled/cache files must not ship: {forbidden}")
 
     def test_periods_do_not_overlap(self):
         recent, prior = comparison_periods(date(2026, 8, 1), 365)
