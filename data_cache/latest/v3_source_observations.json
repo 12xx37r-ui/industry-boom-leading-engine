@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.0.0-github-live-data-phase1",
   "as_of": "2026-08-01",
-  "captured_at": "2026-08-02T20:14:00+09:00",
+  "captured_at": "2026-08-02T22:34:46+09:00",
   "recent_period": {
     "start_date": "2025-08-02",
     "end_date": "2026-08-01"
@@ -43,7 +43,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "high bandwidth memory advanced semiconductor packaging",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -64,7 +64,7 @@
           "query": [
             "high bandwidth memory semiconductor packaging"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -101,7 +101,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "artificial intelligence drug discovery",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -122,7 +122,7 @@
           "query": [
             "AI drug discovery"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -159,7 +159,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "AI semiconductor accelerators",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -180,7 +180,7 @@
           "query": [
             "AI semiconductor accelerator"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -217,7 +217,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous driving advanced driver assistance",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -238,7 +238,7 @@
           "query": [
             "autonomous driving vehicle"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -275,7 +275,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "copper supply mining infrastructure",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -296,7 +296,7 @@
           "query": [
             "copper supply infrastructure"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -333,7 +333,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "critical minerals supply chain",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -354,7 +354,7 @@
           "query": [
             "critical minerals supply chain"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -391,7 +391,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cybersecurity zero trust ransomware",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -412,7 +412,7 @@
           "query": [
             "cybersecurity zero trust"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -449,7 +449,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "data center infrastructure power cooling",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -470,7 +470,7 @@
           "query": [
             "data center infrastructure"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -507,7 +507,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "defense autonomous systems unmanned military",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -528,7 +528,7 @@
           "query": [
             "autonomous unmanned defense system"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -565,7 +565,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "grid energy storage battery storage",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -586,7 +586,7 @@
           "query": [
             "grid energy storage"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -623,7 +623,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "gene therapy cell therapy",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -644,7 +644,7 @@
           "query": [
             "gene therapy cell therapy"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -681,7 +681,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "humanoid robots embodied artificial intelligence",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -702,7 +702,7 @@
           "query": [
             "humanoid robot"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -739,7 +739,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "industrial robotics automation",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -760,7 +760,7 @@
           "query": [
             "industrial robotics automation"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -797,7 +797,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "nuclear energy reactor technology",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -818,7 +818,7 @@
           "query": [
             "nuclear energy reactor"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -855,7 +855,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "obesity metabolic disease therapeutics GLP-1",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -876,7 +876,7 @@
           "query": [
             "obesity metabolic disease treatment"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -913,7 +913,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "electric grid modernization transmission electrification",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -934,7 +934,7 @@
           "query": [
             "electric grid modernization transmission"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -971,7 +971,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "power semiconductors silicon carbide gallium nitride",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -992,7 +992,7 @@
           "query": [
             "power semiconductor silicon carbide"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1029,7 +1029,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rare earth elements supply chain",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1050,7 +1050,7 @@
           "query": [
             "rare earth supply chain"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1087,7 +1087,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "semiconductor manufacturing equipment",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1108,7 +1108,7 @@
           "query": [
             "semiconductor manufacturing equipment"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1145,7 +1145,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "small modular reactor microreactor",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1166,7 +1166,7 @@
           "query": [
             "small modular reactor"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1203,7 +1203,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial space satellite launch",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1224,7 +1224,7 @@
           "query": [
             "commercial space satellite launch"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1261,7 +1261,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "additive manufacturing 3D printing",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1282,7 +1282,7 @@
           "query": [
             "additive manufacturing 3D printing"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1319,7 +1319,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquid biopsy advanced molecular diagnostics",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1340,7 +1340,7 @@
           "query": [
             "liquid biopsy molecular diagnostics"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1377,7 +1377,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "advanced materials nanomaterials composites",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1398,7 +1398,7 @@
           "query": [
             "advanced materials composites"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1435,7 +1435,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "lithium ion battery recycling",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1456,7 +1456,7 @@
           "query": [
             "battery recycling lithium ion"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1493,7 +1493,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "carbon capture utilization storage",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1514,7 +1514,7 @@
           "query": [
             "carbon capture storage"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1551,7 +1551,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cloud computing infrastructure",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1572,7 +1572,7 @@
           "query": [
             "cloud computing infrastructure"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1609,7 +1609,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial drones unmanned aerial systems",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1630,7 +1630,7 @@
           "query": [
             "commercial drone unmanned aerial"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1667,7 +1667,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "digital identity authentication biometrics",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1688,7 +1688,7 @@
           "query": [
             "digital identity authentication"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1725,7 +1725,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "edge artificial intelligence inference",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1746,7 +1746,7 @@
           "query": [
             "edge artificial intelligence"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1783,7 +1783,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "green hydrogen electrolyzer fuel cell",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1804,7 +1804,7 @@
           "query": [
             "hydrogen electrolyzer fuel cell"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1841,7 +1841,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquefied natural gas infrastructure",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1862,7 +1862,7 @@
           "query": [
             "liquefied natural gas infrastructure"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1899,7 +1899,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "warehouse logistics automation robotics",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1920,7 +1920,7 @@
           "query": [
             "warehouse logistics automation"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1957,7 +1957,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous ships maritime unmanned systems",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -1978,7 +1978,7 @@
           "query": [
             "autonomous maritime unmanned"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2015,7 +2015,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "offshore wind energy",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2036,7 +2036,7 @@
           "query": [
             "offshore wind"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2073,7 +2073,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "silicon photonics optical interconnect",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2094,7 +2094,7 @@
           "query": [
             "silicon photonics optical interconnect"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2131,7 +2131,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "precision oncology targeted cancer therapy",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2152,7 +2152,7 @@
           "query": [
             "precision oncology"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2189,7 +2189,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "smart factory industrial internet",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2210,7 +2210,7 @@
           "query": [
             "smart factory industrial internet"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2247,7 +2247,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "solar photovoltaic manufacturing",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2268,7 +2268,7 @@
           "query": [
             "solar photovoltaic"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2305,7 +2305,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "robotic surgery surgical robotics",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2326,7 +2326,7 @@
           "query": [
             "surgical robotics"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2363,7 +2363,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "synthetic biology biomanufacturing",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2384,7 +2384,7 @@
           "query": [
             "synthetic biology biomanufacturing"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2421,7 +2421,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "water infrastructure treatment desalination",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2442,7 +2442,7 @@
           "query": [
             "water infrastructure treatment"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2479,7 +2479,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "agricultural technology food technology precision agriculture",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2500,7 +2500,7 @@
           "query": [
             "precision agriculture food technology"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2537,7 +2537,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "construction robotics automation",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2558,7 +2558,7 @@
           "query": [
             "construction robotics automation"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2595,7 +2595,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "financial technology payments infrastructure",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2616,7 +2616,7 @@
           "query": [
             "financial technology payments infrastructure"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2653,7 +2653,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "enhanced geothermal systems",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2674,7 +2674,7 @@
           "query": [
             "geothermal energy"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2711,7 +2711,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "heat pumps building energy efficiency",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2732,7 +2732,7 @@
           "query": [
             "heat pump energy efficiency"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2769,7 +2769,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "longevity aging therapeutics geroscience",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2790,7 +2790,7 @@
           "query": [
             "longevity aging therapeutics"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2827,7 +2827,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "quantum computing",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2848,7 +2848,7 @@
           "query": [
             "quantum computing"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2885,7 +2885,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rail modernization signaling high speed rail",
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2906,7 +2906,7 @@
           "query": [
             "rail modernization signaling"
           ],
-          "captured_at": "2026-08-02T20:14:00+09:00",
+          "captured_at": "2026-08-02T22:34:46+09:00",
           "recent_period": {
             "start_date": "2025-08-02",
             "end_date": "2026-08-01"
@@ -2930,5 +2930,5 @@
       ]
     }
   ],
-  "content_sha256": "c642ea4fbe76cc3e4c3fc801a60b728df930d8d7927539c528ecd41c9697d58e"
+  "content_sha256": "a8f8f330e31b6cf08a4929fbd3b39e25af6561612973868cdbb15861539e98d9"
 }

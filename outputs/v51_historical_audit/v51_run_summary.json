@@ -1,0 +1,184 @@
+{
+  "status": "V5_1_HISTORICAL_AUDIT_COMPLETED_RECALL_GAP",
+  "engine_release": "5.1.0-historical-prospective-audit",
+  "as_of": "2026-08-02",
+  "audit_receipt_action": "REUSED_IMMUTABLE_AUDIT_RECEIPT",
+  "benchmark_metrics": {
+    "scenario_count": 7,
+    "eligible_scenario_count": 6,
+    "positive_count": 3,
+    "negative_count": 3,
+    "positive_pass_count": 1,
+    "negative_pass_count": 3,
+    "positive_recall": 0.3333,
+    "false_alarm_rate": 0.0,
+    "specificity": 1.0,
+    "balanced_score": 0.6666,
+    "alert_precision": 1.0
+  },
+  "blind_metrics": {
+    "scenario_count": 8,
+    "eligible_scenario_count": 8,
+    "positive_count": 4,
+    "negative_count": 4,
+    "positive_pass_count": 3,
+    "negative_pass_count": 4,
+    "positive_recall": 0.75,
+    "false_alarm_rate": 0.0,
+    "specificity": 1.0,
+    "balanced_score": 0.875,
+    "alert_precision": 1.0
+  },
+  "benchmark_gate_passed": false,
+  "blind_gate_passed": true,
+  "historical_research_gate_passed": false,
+  "external_independence": false,
+  "model_lock": {
+    "status": "LOCK_VERIFIED",
+    "lock_schema_version": 3,
+    "frozen_model_version": "0.9.1",
+    "engine_release": "1.0.4-github-robust",
+    "sealed_at": "2026-08-02T18:29:00+09:00",
+    "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.4은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
+    "checks": [
+      {
+        "file": "config/backtests.yml",
+        "status": "MATCH",
+        "expected_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7",
+        "actual_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7"
+      },
+      {
+        "file": "config/theme_exposures.yml",
+        "status": "MATCH",
+        "expected_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037",
+        "actual_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037"
+      },
+      {
+        "file": "src/ible/analytics/exposure_scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
+        "actual_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4"
+      },
+      {
+        "file": "src/ible/analytics/scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
+        "actual_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6"
+      },
+      {
+        "file": "src/ible/analytics/sec_metrics.py",
+        "status": "MATCH",
+        "expected_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9",
+        "actual_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9"
+      },
+      {
+        "file": "src/ible/analytics/timeseries.py",
+        "status": "MATCH",
+        "expected_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551",
+        "actual_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551"
+      },
+      {
+        "file": "src/ible/backtest.py",
+        "status": "MATCH",
+        "expected_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+        "actual_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24"
+      },
+      {
+        "file": "src/ible/global_validation.py",
+        "status": "MATCH",
+        "expected_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
+        "actual_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60"
+      }
+    ],
+    "failures": []
+  },
+  "prospective_validator": {
+    "status": "V5_0_PROSPECTIVE_VALIDATION_ACTIVE",
+    "engine_release": "5.0.0-prospective-validation-final",
+    "as_of": "2026-08-02",
+    "theme_count": 50,
+    "commercialization_coverage_theme_count": 50,
+    "monthly_snapshot_action": "REUSED_IMMUTABLE_MONTHLY_SNAPSHOT",
+    "monthly_snapshot_count": 1,
+    "evaluations_created_this_run": 0,
+    "total_matured_evaluation_count": 0,
+    "next_evaluation_due": {
+      "snapshot_id": "2026-08",
+      "horizon_months": 6,
+      "due_date": "2027-02-02"
+    },
+    "model_lock": {
+      "status": "LOCK_VERIFIED",
+      "lock_schema_version": 3,
+      "frozen_model_version": "0.9.1",
+      "engine_release": "1.0.4-github-robust",
+      "sealed_at": "2026-08-02T18:29:00+09:00",
+      "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.4은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
+      "checks": [
+        {
+          "file": "config/backtests.yml",
+          "status": "MATCH",
+          "expected_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7",
+          "actual_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7"
+        },
+        {
+          "file": "config/theme_exposures.yml",
+          "status": "MATCH",
+          "expected_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037",
+          "actual_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037"
+        },
+        {
+          "file": "src/ible/analytics/exposure_scoring.py",
+          "status": "MATCH",
+          "expected_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
+          "actual_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4"
+        },
+        {
+          "file": "src/ible/analytics/scoring.py",
+          "status": "MATCH",
+          "expected_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
+          "actual_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6"
+        },
+        {
+          "file": "src/ible/analytics/sec_metrics.py",
+          "status": "MATCH",
+          "expected_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9",
+          "actual_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9"
+        },
+        {
+          "file": "src/ible/analytics/timeseries.py",
+          "status": "MATCH",
+          "expected_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551",
+          "actual_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551"
+        },
+        {
+          "file": "src/ible/backtest.py",
+          "status": "MATCH",
+          "expected_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+          "actual_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24"
+        },
+        {
+          "file": "src/ible/global_validation.py",
+          "status": "MATCH",
+          "expected_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
+          "actual_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60"
+        }
+      ],
+      "failures": []
+    },
+    "engine_build_progress_percent": 100,
+    "total_project_progress_percent": 88,
+    "automatic_weekly_run_enabled": true,
+    "manual_run_required_after_bootstrap": false,
+    "investment_use_allowed": false,
+    "next_required_gate": "WAIT_FOR_AND_AUTOMATICALLY_SCORE_6_12_24_MONTH_OUTCOMES",
+    "remaining": [
+      "월별 신규 시점 스냅샷 누적",
+      "6·12·24개월 만기 성과 자동 채점",
+      "예측 순위와 실현 산업성과의 분리도 검증"
+    ]
+  },
+  "investment_use_allowed": false,
+  "next_required_gate": "CONTINUE_MONTHLY_POINT_IN_TIME_ARCHIVE_AND_6_12_24_MONTH_PROSPECTIVE_SCORING",
+  "manual_run_required_after_bootstrap": false
+}

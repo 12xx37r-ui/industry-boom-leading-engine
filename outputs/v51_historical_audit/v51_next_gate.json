@@ -1,0 +1,20 @@
+{
+  "current_status": "V5_1_HISTORICAL_AUDIT_COMPLETED_RECALL_GAP",
+  "failed_checks": [
+    {
+      "check": "positive_recall",
+      "actual": 0.3333,
+      "required": 0.6667,
+      "passed": false
+    },
+    {
+      "check": "balanced_score",
+      "actual": 0.6666,
+      "required": 0.67,
+      "passed": false
+    }
+  ],
+  "next_required_gate": "CONTINUE_MONTHLY_POINT_IN_TIME_ARCHIVE_AND_6_12_24_MONTH_PROSPECTIVE_SCORING",
+  "manual_run_required_after_bootstrap": false,
+  "investment_use_allowed": false
+}

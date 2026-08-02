@@ -1,0 +1,119 @@
+{
+  "status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
+  "horizon_metrics": {
+    "6": {
+      "matured_snapshot_count": 0,
+      "theme_observation_count": 0,
+      "top_10": {
+        "theme_observation_count": 0,
+        "top_k": 10,
+        "top_success_rate": null,
+        "top_average_outcome_score": null,
+        "bottom_average_outcome_score": null,
+        "top_bottom_outcome_spread": null,
+        "rank_correlation": null
+      }
+    },
+    "12": {
+      "matured_snapshot_count": 0,
+      "theme_observation_count": 0,
+      "top_10": {
+        "theme_observation_count": 0,
+        "top_k": 10,
+        "top_success_rate": null,
+        "top_average_outcome_score": null,
+        "bottom_average_outcome_score": null,
+        "top_bottom_outcome_spread": null,
+        "rank_correlation": null
+      }
+    },
+    "24": {
+      "matured_snapshot_count": 0,
+      "theme_observation_count": 0,
+      "top_10": {
+        "theme_observation_count": 0,
+        "top_k": 10,
+        "top_success_rate": null,
+        "top_average_outcome_score": null,
+        "bottom_average_outcome_score": null,
+        "top_bottom_outcome_spread": null,
+        "rank_correlation": null
+      }
+    }
+  },
+  "gate_checks": [
+    {
+      "check": "6m_matured_snapshots",
+      "passed": false,
+      "actual": 0,
+      "required": 6
+    },
+    {
+      "check": "6m_top10_success_rate",
+      "passed": false,
+      "actual": null,
+      "required": 0.6
+    },
+    {
+      "check": "6m_top_bottom_spread",
+      "passed": false,
+      "actual": null,
+      "required": 5.0
+    },
+    {
+      "check": "6m_rank_correlation",
+      "passed": false,
+      "actual": null,
+      "required": 0.2
+    },
+    {
+      "check": "12m_matured_snapshots",
+      "passed": false,
+      "actual": 0,
+      "required": 4
+    },
+    {
+      "check": "12m_top10_success_rate",
+      "passed": false,
+      "actual": null,
+      "required": 0.6
+    },
+    {
+      "check": "12m_top_bottom_spread",
+      "passed": false,
+      "actual": null,
+      "required": 5.0
+    },
+    {
+      "check": "12m_rank_correlation",
+      "passed": false,
+      "actual": null,
+      "required": 0.2
+    },
+    {
+      "check": "24m_matured_snapshots",
+      "passed": false,
+      "actual": 0,
+      "required": 2
+    },
+    {
+      "check": "24m_top10_success_rate",
+      "passed": false,
+      "actual": null,
+      "required": 0.6
+    },
+    {
+      "check": "24m_top_bottom_spread",
+      "passed": false,
+      "actual": null,
+      "required": 5.0
+    },
+    {
+      "check": "24m_rank_correlation",
+      "passed": false,
+      "actual": null,
+      "required": 0.2
+    }
+  ],
+  "investment_use_allowed": false
+}
