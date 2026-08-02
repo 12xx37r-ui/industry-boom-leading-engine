@@ -31,57 +31,60 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
-      - name: Download latest validation artifact by artifact name
+      - name: Resolve validation input
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p previous_validation/backtests
 
-          API_PATH="/repos/${GITHUB_REPOSITORY}/actions/artifacts?name=industry-boom-validation-output&per_page=100"
-
-          ARTIFACT_ID=$(gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "$API_PATH" \
-            --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | reverse | .[0].id')
-
-          DOWNLOAD_URL=$(gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "$API_PATH" \
-            --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | reverse | .[0].archive_download_url')
-
-          if [ -z "${ARTIFACT_ID:-}" ] || [ "$ARTIFACT_ID" = "null" ] || \
-             [ -z "${DOWNLOAD_URL:-}" ] || [ "$DOWNLOAD_URL" = "null" ]; then
-            echo "No non-expired artifact named industry-boom-validation-output found"
-            echo "Open the successful Industry Boom Validation run and confirm the final artifact exists."
-            exit 1
+          # V0.6.2 includes the already collected seven scenario files so this
+          # workflow never depends on a GitHub artifact remaining available.
+          if compgen -G "validation_seed/backtests/*.json" > /dev/null; then
+            cp validation_seed/backtests/*.json previous_validation/backtests/
+            echo "Using repository validation_seed"
+          else
+            echo "No local validation_seed; trying repository artifact fallback"
+            API_PATH="/repos/${GITHUB_REPOSITORY}/actions/artifacts?per_page=100"
+            ARTIFACT_JSON=$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "$API_PATH")
+            DOWNLOAD_URL=$(printf '%s' "$ARTIFACT_JSON" | python -c '
+import json,sys
+p=json.load(sys.stdin)
+rows=[a for a in p.get("artifacts",[]) if not a.get("expired") and a.get("name")=="industry-boom-validation-output"]
+rows.sort(key=lambda x:x.get("created_at", ""), reverse=True)
+print(rows[0].get("archive_download_url", "") if rows else "")
+')
+            if [ -z "$DOWNLOAD_URL" ]; then
+              echo "No validation_seed and no readable industry-boom-validation-output artifact"
+              exit 1
+            fi
+            curl --fail --location --silent --show-error \
+              --retry 3 --retry-delay 2 \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "$DOWNLOAD_URL" --output previous_validation.zip
+            unzip -q previous_validation.zip -d previous_validation
           fi
 
-          echo "Using artifact id: $ARTIFACT_ID"
-          mkdir -p previous_validation
-
-          curl --fail --location --silent --show-error \
-            --retry 3 --retry-delay 2 \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "$DOWNLOAD_URL" \
-            --output previous_validation.zip
-
-          unzip -q previous_validation.zip -d previous_validation
-          find previous_validation -maxdepth 3 -type f -print
+          COUNT=$(find previous_validation/backtests -maxdepth 1 -name '*.json' | wc -l)
+          if [ "$COUNT" -ne 7 ]; then
+            echo "Expected 7 validation scenario files, got $COUNT"
+            find previous_validation -maxdepth 3 -type f -print
+            exit 1
+          fi
+          find previous_validation/backtests -maxdepth 1 -type f -print
 
       - name: Rescore without API recollection
         run: |
+          rm -rf outputs/rescored_validation
           mkdir -p outputs/rescored_validation
-          INPUT_DIR="previous_validation/backtests"
-          if [ ! -d "$INPUT_DIR" ]; then
-            INPUT_DIR="previous_validation"
-          fi
           python -m ible.rescore_validation \
-            --input-dir "$INPUT_DIR" \
+            --input-dir previous_validation/backtests \
             --output-dir outputs/rescored_validation
 
       - name: Validate rescored outputs
@@ -90,12 +93,8 @@ jobs:
           import json
           from pathlib import Path
           root = Path("outputs/rescored_validation")
-          required = [
-              root / "walkforward_backtest.json",
-              root / "backtest_summary.json",
-              root / "model_validation.json",
-          ]
-          for path in required:
+          for name in ["walkforward_backtest.json", "backtest_summary.json", "model_validation.json"]:
+              path = root / name
               if not path.exists() or path.stat().st_size == 0:
                   raise SystemExit(f"missing output: {path}")
               json.loads(path.read_text(encoding="utf-8"))
@@ -108,7 +107,7 @@ jobs:
       - name: Upload rescored validation artifact
         uses: actions/upload-artifact@v4
         with:
-          name: industry-boom-validation-rescored-v0.6.1
+          name: industry-boom-validation-rescored-v0.6.2
           path: |
             outputs/rescored_validation/backtests/*.json
             outputs/rescored_validation/walkforward_backtest.json
@@ -129,6 +128,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No rescored validation summary changes"
           else
-            git commit -m "chore: rescore validation with dual-path model v0.6.1"
+            git commit -m "chore: rescore validation with repository seed v0.6.2"
             git push
           fi
