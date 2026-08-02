@@ -1,0 +1,123 @@
+name: 00 - Industry Boom V2.0 Shadow Start
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_date:
+        description: "검증용 실행일 YYYY-MM-DD (일반 실행은 비워두기)"
+        required: false
+        type: string
+  schedule:
+    - cron: "35 0 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: industry-boom-v2-shadow
+  cancel-in-progress: false
+
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONPATH: ${{ github.workspace }}/src
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Test V2.0 release only
+        run: python -m unittest -q tests.test_v2_release
+
+      - name: Resolve run date
+        id: vars
+        shell: bash
+        run: |
+          RUN_DATE="${{ inputs.run_date }}"
+          if [ -z "$RUN_DATE" ]; then RUN_DATE="$(TZ=Asia/Seoul date +%F)"; fi
+          echo "run_date=$RUN_DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Run immutable shadow ledger
+        run: |
+          rm -rf outputs/shadow
+          python -m ible.shadow_cli \
+            --root . \
+            --output-dir outputs/shadow \
+            --run-date "${{ steps.vars.outputs.run_date }}"
+
+      - name: Verify outputs
+        run: |
+          test -s outputs/shadow/v2_shadow_summary.json
+          test -s outputs/shadow/v2_shadow_current.json
+          test -s outputs/shadow/v2_shadow_ledger.json
+          test -s outputs/shadow/v2_shadow_scorecard_queue.json
+          test -s outputs/shadow/v2_model_lock_verification.json
+          test -s outputs/shadow/v2_next_gate.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('outputs/shadow/v2_shadow_summary.json').read_text(encoding='utf-8'))
+          allowed = {
+              'V2_SHADOW_BOOTSTRAP_REGISTERED',
+              'V2_SHADOW_SNAPSHOT_RECORDED',
+              'V2_SHADOW_DUPLICATE_CONFIRMED',
+              'V2_SHADOW_STALE_INPUT_BLOCKED',
+          }
+          if p['status'] not in allowed:
+              raise SystemExit(f"unexpected status: {p['status']}")
+          if p['model_lock']['status'] != 'LOCK_VERIFIED':
+              raise SystemExit('model lock failed')
+          if p['previous_gate']['status'] != 'V1_1_GATE_VERIFIED':
+              raise SystemExit('previous gate failed')
+          if p['investment_use_allowed'] is not False:
+              raise SystemExit('investment use must stay disabled')
+          print(json.dumps({k: p[k] for k in ['status','history_action','history_count','input_age_days']}, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Commit shadow history and dashboard
+        id: persist
+        shell: bash
+        run: |
+          set +e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          find outputs/shadow -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          if [ -d shadow_history ]; then
+            find shadow_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          fi
+          if git diff --cached --quiet; then
+            echo '{"status":"NO_CHANGES"}' > outputs/shadow/v2_persistence.json
+            echo "status=NO_CHANGES" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "shadow: update prospective ledger ${{ steps.vars.outputs.run_date }}"
+            if git push; then
+              echo '{"status":"COMMITTED"}' > outputs/shadow/v2_persistence.json
+              echo "status=COMMITTED" >> "$GITHUB_OUTPUT"
+            else
+              echo '{"status":"PUSH_FAILED","artifact_contains_results":true}' > outputs/shadow/v2_persistence.json
+              echo "status=PUSH_FAILED" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+          exit 0
+
+      - name: Upload V2.0 shadow result
+        uses: actions/upload-artifact@v7
+        with:
+          name: industry-boom-v2.0-shadow-result
+          path: |
+            outputs/shadow
+            shadow_history
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 9
