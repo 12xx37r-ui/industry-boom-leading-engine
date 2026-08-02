@@ -1,19 +1,25 @@
-# Industry Boom Leading Engine V3.2.0
+# 산업 붐 선행예측 엔진 V3.3 FINAL AUTO
 
-GitHub Actions 전용 기업투자 계층입니다.
+## 현재 진척도
 
-## 새 데이터
+- 엔진 구축: **90%**
+- 전체 프로젝트: **80%**
+- 남은 작업: 신규 시점 예측을 6·12·24개월 뒤 실제 성과로 자동 검증하고, 직접 매출 원천을 정밀화하는 일
 
-- 미국 Census 2023 AIES 산업별 CAPEX
-- NSF NCSES BERD 산업별 기업 R&D 2008~2023
-- 기존 V3.1 연구·정부지출·고용·사업체·임금 신호
+## 이제 실행할 것
 
-공식 XLSX 원본 2개를 저장소 안에도 시점 고정 seed로 포함합니다. 라이브 다운로드가 실패하면 해당 공식 seed를 사용합니다. SEC·FMP·BAT·CMD·Colab은 사용하지 않습니다.
+GitHub Actions에서 **`00 - FINAL Industry Boom Auto Engine`**을 최초 한 번만 실행합니다.
+그 뒤에는 기존 V3.0·V3.1·V3.2 수집 워크플로가 월요일에 순서대로 자동 갱신되고, FINAL 워크플로가 마지막에 자동 통합합니다. 사용자는 더 이상 수동 Run을 반복하지 않습니다.
 
-## 실행
+## 한 번에 수행하는 단계
 
-Actions에서 `00 - Industry Boom V3.2 Corporate Investment`만 실행합니다. `run_date`는 일반 실행 시 비워둡니다.
+1. OpenAlex 연구 확산
+2. USAspending 정부 지출
+3. BLS QCEW 고용·사업체·임금
+4. Census AIES CAPEX
+5. NSF BERD 기업 R&D
+6. 사업화 프록시
+7. 공급망 확산 프록시
+8. 시점 스냅샷과 6·12·24개월 검증 큐 저장
 
-생성 Artifact: `industry-boom-v3.2-corporate-investment-result`
-
-`phase3_investment_signal_score`는 최종 `boom_score`가 아닙니다. 매출 전환·공급망 확산·미래 성과 검증 전까지 투자 사용은 금지됩니다.
+`phase4_readiness_signal_score`는 최종 `boom_score`가 아닙니다. 직접 기업 매출과 미래 성과 검증 전에는 투자용으로 사용할 수 없습니다.

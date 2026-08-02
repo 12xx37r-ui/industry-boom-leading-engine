@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "engine_release": "3.3.0-github-final-auto",
+  "timezone": "Asia/Seoul",
+  "minimum_theme_count": 50,
+  "automatic_schedule": "WEEKLY_MONDAY",
+  "progress": {
+    "engine_build_percent_after_release": 90,
+    "total_project_percent_after_release": 80,
+    "remaining": "6·12·24개월 신규 시점 성과 누적과 실제 매출 원천의 정밀화"
+  },
+  "weights": {
+    "commercialization": {
+      "employment_growth": 0.20,
+      "establishment_growth": 0.20,
+      "wage_growth": 0.25,
+      "capex": 0.20,
+      "business_rd": 0.15
+    },
+    "supply_chain_proxy": {
+      "naics_breadth": 0.40,
+      "cross_source_diffusion": 0.60
+    },
+    "phase4": {
+      "phase3": 0.55,
+      "commercialization_proxy": 0.25,
+      "supply_chain_diffusion_proxy": 0.20
+    }
+  },
+  "thresholds": {
+    "high_readiness": 65,
+    "watch_readiness": 52,
+    "positive_source_signal": 55
+  },
+  "rules": {
+    "actual_company_revenue_is_not_claimed": true,
+    "supply_chain_proxy_is_not_bea_input_output": true,
+    "never_convert_phase4_to_frozen_boom_score": true,
+    "investment_use_allowed": false,
+    "manual_run_required_after_bootstrap": false,
+    "preserve_dated_snapshots": true
+  }
+}
