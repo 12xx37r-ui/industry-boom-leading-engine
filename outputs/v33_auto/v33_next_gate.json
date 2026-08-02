@@ -1,0 +1,6 @@
+{
+  "status": "ENGINE_BUILD_NEAR_COMPLETE_PROSPECTIVE_VALIDATION_RUNNING",
+  "next_required_gate": "ACCUMULATE_NEW_POINT_IN_TIME_OUTCOMES_AT_6_12_24_MONTHS_AND_ADD_DIRECT_REVENUE_SOURCE",
+  "manual_run_required_after_bootstrap": false,
+  "investment_use_allowed": false
+}
