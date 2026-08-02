@@ -47,7 +47,7 @@ def evaluate_scenario(scenario: dict[str, Any], ranking: list[dict[str, Any]]) -
     early = _finite(target.get("early_signal_score"))
     confidence = _finite(target.get("data_confidence"))
     stage = str(target.get("stage") or "")
-    allowed_stages = {"EARLY_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
+    allowed_stages = {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
 
     if label == "positive":
         rank_max = int(criteria.get("rank_max", 4))

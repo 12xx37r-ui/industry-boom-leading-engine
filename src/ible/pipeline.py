@@ -470,7 +470,7 @@ class EnginePipeline:
         outputs = self.root / "outputs"
         run_started = time.monotonic()
         print(
-            f"[ENGINE] start version=0.5.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
+            f"[ENGINE] start version=0.6.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
             flush=True,
         )
         current, current_meta = self.score_dart_as_of(current_as_of)
@@ -510,7 +510,7 @@ class EnginePipeline:
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
-                "engine_version": "0.5.0",
+                "engine_version": "0.6.0",
                 "primary_sources": ["OpenDART original documents", "OpenDART financials", "arXiv"],
                 "methodology_warning": (
                     "투자·계약 원문 금액과 기술연구 확산을 추가했지만 미국 빅테크 CAPEX 원천자료와 "
@@ -548,7 +548,7 @@ class EnginePipeline:
             and ai_row
             and float(ai_row.get("boom_score", 0)) >= 60
             and float(ai_early_score or 0) >= 60
-            and ai_stage in {"EARLY_ACCUMULATION", "TRANSITION"}
+            and ai_stage in {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION"}
             and ai_amount_coverage >= 0.35
             and ai_research
         )
@@ -564,7 +564,7 @@ class EnginePipeline:
                 "ai_preboom_rank_max": 3,
                 "ai_preboom_score_min": 60,
                 "ai_early_signal_score_min": 60,
-                "ai_phase_allowed": ["EARLY_ACCUMULATION", "TRANSITION"],
+                "ai_phase_allowed": ["EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION"],
                 "ai_amount_coverage_min": 0.35,
                 "independent_research_source_required": True,
                 "additional_backtests_required": True,
@@ -617,7 +617,7 @@ class EnginePipeline:
 
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.5.0",
+            "engine_version": "0.6.0",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {

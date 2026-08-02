@@ -53,3 +53,18 @@ def test_aggregate_requires_recall_and_low_false_alarm():
     result = aggregate_results(rows)
     assert result["stage2_passed"] is True
     assert result["investment_use_allowed"] is False
+
+
+def test_positive_scenario_accepts_capital_led_accumulation_stage():
+    scenario = {
+        "id": "EV",
+        "name": "capital-led positive",
+        "label": "positive",
+        "as_of": "2019-12-31",
+        "target_theme_id": "TARGET",
+        "criteria": {"rank_max": 4, "score_min": 55, "early_signal_min": 54},
+    }
+    row = _row("TARGET", 57.4, 58.6, stage="CAPITAL_LED_ACCUMULATION")
+    result = evaluate_scenario(scenario, [row, _row("OTHER", 56, 56)])
+    assert result["status"] == "PASSED"
+    assert result["alert_triggered"] is True

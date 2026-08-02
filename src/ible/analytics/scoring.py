@@ -162,6 +162,8 @@ def phase_for(
         return "INSUFFICIENT_DATA"
     if early_signal >= 60 and commercial_realization < 55 and cross_confirmation >= 52:
         return "EARLY_ACCUMULATION"
+    if early_signal >= 56 and commercial_realization < 57 and cross_confirmation >= 54:
+        return "CAPITAL_LED_ACCUMULATION"
     if early_signal >= 58 and commercial_realization >= 55:
         return "TRANSITION"
     if commercial_realization >= 64:
@@ -188,13 +190,25 @@ def _phase_scores(
     research acceleration -> real CAPEX -> early demand before broad commercialization.
     """
     capital_formation = 0.65 * cashflow_capex.score + 0.35 * capital.score
-    early_signal = (
+    research_led_early = (
         0.35 * research.score
         + 0.30 * capital_formation
         + 0.20 * demand.score
         + 0.05 * margin.score
         + 0.10 * breadth_engine
     )
+    capital_led_early = (
+        0.15 * research.score
+        + 0.45 * capital_formation
+        + 0.25 * demand.score
+        + 0.05 * margin.score
+        + 0.10 * breadth_engine
+    )
+    # Structural booms do not all begin the same way. Software/AI themes can be
+    # research-led, while EV/battery, grid and industrial themes can be led by
+    # hard CAPEX before the research count accelerates. Use the stronger pathway,
+    # but still require independent cross-confirmation below.
+    early_signal = max(research_led_early, capital_led_early)
     commercial_realization = (
         0.25 * capital.score
         + 0.30 * contracts.score
@@ -213,8 +227,12 @@ def _phase_scores(
     prediction_6m = 0.35 * preboom_score + 0.65 * commercial_realization
     prediction_12m = 0.70 * preboom_score + 0.30 * commercial_realization
     prediction_24m = 0.82 * early_signal + 0.18 * cross_confirmation
+    dominant_path = "RESEARCH_LED" if research_led_early >= capital_led_early else "CAPITAL_LED"
     return {
         "capital_formation": clamp(capital_formation),
+        "research_led_early": clamp(research_led_early),
+        "capital_led_early": clamp(capital_led_early),
+        "dominant_path": dominant_path,
         "early_signal": clamp(early_signal),
         "commercial_realization": clamp(commercial_realization),
         "cross_confirmation": clamp(cross_confirmation),
@@ -394,8 +412,9 @@ def build_dart_theme_result(
         phase["cross_confirmation"],
     )
 
+    pathway_label = "연구주도" if phase["dominant_path"] == "RESEARCH_LED" else "실물투자주도"
     reasons = [
-        (phase["early_signal"], f"초기 자금·기술 선행점수 {phase['early_signal']:.1f}"),
+        (phase["early_signal"], f"{pathway_label} 선행점수 {phase['early_signal']:.1f}"),
         (phase["cross_confirmation"], f"연구·CAPEX·매출 교차확인 {phase['cross_confirmation']:.1f}"),
         (phase["transition_gap"], f"실적 대중화 전 선행격차 {phase['transition_gap']:.1f}"),
         (phase["commercial_realization"], f"상업화 실현점수 {phase['commercial_realization']:.1f}"),
@@ -406,7 +425,7 @@ def build_dart_theme_result(
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "V0.6.0은 연구주도·실물투자주도 두 선행경로와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
         "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
     ]
     if amount_coverage < 0.5:
@@ -447,6 +466,11 @@ def build_dart_theme_result(
             "independent_research_source": bool(independent_source),
             "primary_sources": ["OpenDART", "arXiv"] if independent_source else ["OpenDART"],
             "score_definition": "preboom_score",
+            "leading_pathways": {
+                "research_led_score": round(phase["research_led_early"], 2),
+                "capital_led_score": round(phase["capital_led_early"], 2),
+                "dominant_path": phase["dominant_path"],
+            },
         },
         warnings=sorted(set(warnings)),
     )

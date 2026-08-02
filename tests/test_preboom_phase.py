@@ -74,3 +74,35 @@ def test_research_only_signal_fails_cross_confirmation():
     })
     assert result.cross_confirmation_score < 52
     assert result.stage != "EARLY_ACCUMULATION"
+
+
+def test_capital_led_accumulation_detects_hard_asset_boom_before_research_accelerates():
+    result = build({
+        "capital_events": s("capital_count", 56, breadth=25, persistence=100),
+        "capital_amounts": s("capital", 54.5, breadth=25, persistence=100, amount_coverage=1.0),
+        "supply_contracts": s("contract_count", 55, breadth=25, persistence=100),
+        "contract_amounts": s("contracts", 55, breadth=25, persistence=100, amount_coverage=1.0),
+        "cashflow_capex": s("cashflow", 70, breadth=100, persistence=75),
+        "revenue": s("revenue", 59, breadth=100, persistence=75),
+        "operating_margin": s("margin", 43, breadth=25, persistence=50),
+        "research_momentum": s("research", 44, breadth=50, persistence=50),
+    })
+    assert result.stage == "CAPITAL_LED_ACCUMULATION"
+    assert result.coverage["leading_pathways"]["dominant_path"] == "CAPITAL_LED"
+    assert result.early_signal_score >= 56
+    assert result.cross_confirmation_score >= 54
+
+
+def test_revenue_hype_without_capex_cross_confirmation_does_not_become_capital_led():
+    result = build({
+        "capital_events": s("capital_count", 31, breadth=0, persistence=25),
+        "capital_amounts": s("capital", 30, breadth=0, persistence=25, amount_coverage=0.6),
+        "supply_contracts": s("contract_count", 62, breadth=50, persistence=50),
+        "contract_amounts": s("contracts", 63, breadth=50, persistence=50, amount_coverage=0.6),
+        "cashflow_capex": s("cashflow", 43, breadth=25, persistence=25),
+        "revenue": s("revenue", 77, breadth=50, persistence=75),
+        "operating_margin": s("margin", 26, breadth=25, persistence=25),
+        "research_momentum": s("research", 66, breadth=100, persistence=100),
+    })
+    assert result.cross_confirmation_score < 54
+    assert result.stage != "CAPITAL_LED_ACCUMULATION"
