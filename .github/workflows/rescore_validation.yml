@@ -1,0 +1,113 @@
+name: Industry Boom Validation Rescore
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: industry-boom-validation-rescore
+  cancel-in-progress: true
+
+jobs:
+  rescore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Download latest successful validation artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RUN_ID=$(gh run list \
+            --workflow "Industry Boom Validation" \
+            --status success \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId')
+          if [ -z "$RUN_ID" ] || [ "$RUN_ID" = "null" ]; then
+            echo "No successful Industry Boom Validation run found"
+            exit 1
+          fi
+          echo "Using validation run: $RUN_ID"
+          mkdir -p previous_validation
+          gh run download "$RUN_ID" \
+            --name industry-boom-validation-output \
+            --dir previous_validation
+          find previous_validation -maxdepth 3 -type f -print
+
+      - name: Rescore without API recollection
+        run: |
+          mkdir -p outputs/rescored_validation
+          INPUT_DIR="previous_validation/backtests"
+          if [ ! -d "$INPUT_DIR" ]; then
+            INPUT_DIR="previous_validation"
+          fi
+          python -m ible.rescore_validation \
+            --input-dir "$INPUT_DIR" \
+            --output-dir outputs/rescored_validation
+
+      - name: Validate rescored outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("outputs/rescored_validation")
+          required = [
+              root / "walkforward_backtest.json",
+              root / "backtest_summary.json",
+              root / "model_validation.json",
+          ]
+          for path in required:
+              if not path.exists() or path.stat().st_size == 0:
+                  raise SystemExit(f"missing output: {path}")
+              json.loads(path.read_text(encoding="utf-8"))
+          files = list((root / "backtests").glob("*.json"))
+          if len(files) != 7:
+              raise SystemExit(f"expected 7 rescored scenarios, got {len(files)}")
+          print("RESCORED_VALIDATION_OK")
+          PY
+
+      - name: Upload rescored validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: industry-boom-validation-rescored-v0.6.0
+          path: |
+            outputs/rescored_validation/backtests/*.json
+            outputs/rescored_validation/walkforward_backtest.json
+            outputs/rescored_validation/backtest_summary.json
+            outputs/rescored_validation/model_validation.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit rescored validation summary
+        run: |
+          mkdir -p outputs
+          cp outputs/rescored_validation/walkforward_backtest.json outputs/walkforward_backtest.json
+          cp outputs/rescored_validation/backtest_summary.json outputs/backtest_summary.json
+          cp outputs/rescored_validation/model_validation.json outputs/model_validation.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f outputs/walkforward_backtest.json outputs/backtest_summary.json outputs/model_validation.json
+          if git diff --cached --quiet; then
+            echo "No rescored validation summary changes"
+          else
+            git commit -m "chore: rescore validation with dual-path model v0.6.0"
+            git push
+          fi
