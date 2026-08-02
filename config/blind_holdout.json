@@ -1,0 +1,6 @@
+{
+  "engine_release": "1.1.0-github-blind-holdout",
+  "historical_bundle": "validation_seed/v1_locked_backtests.json.gz",
+  "blind_bundle": "validation_seed/v1_blind_theme_holdout.json.gz",
+  "output_dir": "outputs/v1_1_blind"
+}

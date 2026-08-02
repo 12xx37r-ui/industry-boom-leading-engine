@@ -1,10 +1,11 @@
 {
-  "release": "1.0.4-github-robust",
-  "file_count": 25,
+  "release": "1.1.0-github-blind-holdout",
+  "file_count": 30,
   "files": [
-    ".github/workflows/run_v1_github_only.yml",
+    ".github/workflows/run_v1_1_blind_holdout.yml",
     "README.md",
     "config/backtests.yml",
+    "config/blind_holdout.json",
     "config/github_validation.json",
     "config/model_lock.json",
     "config/release_manifest.json",
@@ -21,12 +22,15 @@
     "src/ible/analytics/sec_metrics.py",
     "src/ible/analytics/timeseries.py",
     "src/ible/backtest.py",
+    "src/ible/blind_holdout.py",
+    "src/ible/blind_holdout_cli.py",
+    "src/ible/config.py",
     "src/ible/github_validation.py",
     "src/ible/github_validation_cli.py",
     "src/ible/global_validation.py",
     "src/ible/model_lock.py",
-    "tests/test_release.py",
+    "tests/test_v1_1_release.py",
+    "validation_seed/v1_blind_theme_holdout.json.gz",
     "validation_seed/v1_locked_backtests.json.gz"
-  ],
-  "note": "Root .gitignore and outputs/.gitkeep are intentionally excluded because GitHub web folder upload can omit optional dotfiles."
+  ]
 }

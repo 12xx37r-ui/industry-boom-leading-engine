@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "industry-boom-leading-engine"
-version = "1.0.4"
-description = "GitHub-only locked validation runner isolated from legacy repository tests"
+version = "1.1.0"
+description = "GitHub-only frozen-model blind theme/date holdout"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = ["PyYAML>=6.0,<7"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
-testpaths = ["tests/test_release.py"]
+testpaths = ["tests/test_v1_1_release.py"]
