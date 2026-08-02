@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import datetime as dt
 import json
-import math
 import os
 import statistics
 from pathlib import Path
@@ -18,11 +17,13 @@ from ible.analytics.scoring import build_research_signal, clamp, probability
 from ible.analytics.sec_metrics import FLOW_TAGS, quarterly_flow
 from ible.backtest import evaluate_scenario
 from ible.collectors.arxiv import ArxivClient
+from ible.collectors.fmp import FmpClient
 from ible.collectors.sec_bulk import SecBulkClient
 from ible.config import load_yaml
 from ible.http import JsonHttpClient
 
 ALERT_STAGES = {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
+METRICS = ("capex", "rd", "revenue", "gross_profit", "operating_income")
 
 
 def _stage(score: float, confidence: float, cross: float, commercial: float) -> str:
@@ -43,23 +44,16 @@ def _stage(score: float, confidence: float, cross: float, commercial: float) -> 
 
 def _theme_result(
     theme: dict[str, Any],
-    facts: dict[str, dict[str, Any]],
+    all_series: dict[str, dict[str, list[tuple[str, float]]]],
     research_momentum: dict[str, Any] | None,
     as_of: str,
     minimum_exposure: float,
 ) -> dict[str, Any]:
     profiles = {str(row["ticker"]).upper(): row for row in theme.get("us_companies", [])}
     series: dict[str, dict[str, list[tuple[str, float]]]] = {
-        metric: {} for metric in ("capex", "rd", "revenue", "gross_profit", "operating_income")
+        metric: {ticker: all_series.get(metric, {}).get(ticker, []) for ticker in profiles}
+        for metric in METRICS
     }
-    for ticker in profiles:
-        payload = facts.get(ticker)
-        for metric in series:
-            if payload:
-                _, values = quarterly_flow(payload, FLOW_TAGS[metric], as_of)
-            else:
-                values = []
-            series[metric][ticker] = values
 
     capex = build_exposure_weighted_signal("us_exposure_capex", series["capex"], profiles, minimum_exposure)
     rd = build_exposure_weighted_signal("us_exposure_rd", series["rd"], profiles, minimum_exposure)
@@ -86,12 +80,34 @@ def _theme_result(
         for p in profiles.values()
         if float(p.get("exposure", 0)) >= minimum_exposure
     ]
-    exposure_quality = 100.0 * min(1.0, sum(eligible_weights) / max(1.5, len(eligible_weights) * 0.65)) if eligible_weights else 0.0
+    exposure_quality = (
+        100.0 * min(1.0, sum(eligible_weights) / max(1.5, len(eligible_weights) * 0.65))
+        if eligible_weights
+        else 0.0
+    )
     coverage_penalty = max(0.0, 0.60 - exposure_coverage) * 30.0
-    boom_score = clamp(0.62 * raw_early + 0.23 * cross + 0.15 * commercial - hype_penalty - coverage_penalty)
-    confidence = clamp(100.0 * (0.55 * exposure_coverage + 0.25 * min(1.0, len(eligible_weights) / 4.0) + 0.20 * exposure_quality / 100.0))
+    boom_score = clamp(
+        0.62 * raw_early
+        + 0.23 * cross
+        + 0.15 * commercial
+        - hype_penalty
+        - coverage_penalty
+    )
+    confidence = clamp(
+        100.0
+        * (
+            0.55 * exposure_coverage
+            + 0.25 * min(1.0, len(eligible_weights) / 4.0)
+            + 0.20 * exposure_quality / 100.0
+        )
+    )
     stage = _stage(boom_score, confidence, cross, commercial)
-    usable = sum(1 for t in profiles if len(series["revenue"].get(t, [])) >= 5 or len(series["capex"].get(t, [])) >= 5)
+    usable = sum(
+        1
+        for ticker in profiles
+        if len(series["revenue"].get(ticker, [])) >= 5
+        or len(series["capex"].get(ticker, [])) >= 5
+    )
     early = clamp(raw_early - hype_penalty - coverage_penalty)
 
     return {
@@ -139,8 +155,39 @@ def _theme_result(
             "coverage_penalty": round(coverage_penalty, 2),
             "evaluation_class": theme.get("evaluation_class", "structural"),
         },
-        "warnings": [w for s in (capex, rd, revenue, margin, research) for w in s.warnings],
+        "warnings": [w for signal in (capex, rd, revenue, margin, research) for w in signal.warnings],
     }
+
+
+def _load_sec_series(
+    root: Path,
+    tickers: list[str],
+    as_of: str,
+) -> tuple[dict[str, dict[str, list[tuple[str, float]]]], dict[str, Any], dict[str, str]]:
+    cik_map = json.loads((root / "config" / "sec_cik_map.json").read_text(encoding="utf-8"))
+    client = SecBulkClient(root / ".cache" / "sec_bulk", os.getenv("SEC_USER_AGENT", ""))
+    status = client.prepare_subset(cik_map, tickers)
+    facts, errors = client.load_subset(tickers)
+    series: dict[str, dict[str, list[tuple[str, float]]]] = {metric: {} for metric in METRICS}
+    for ticker in tickers:
+        payload = facts.get(ticker)
+        for metric in METRICS:
+            values: list[tuple[str, float]] = []
+            if payload:
+                _, values = quarterly_flow(payload, FLOW_TAGS[metric], as_of)
+            series[metric][ticker] = values
+    return series, status, errors
+
+
+def _load_fmp_series(
+    root: Path,
+    tickers: list[str],
+    as_of: str,
+) -> tuple[dict[str, dict[str, list[tuple[str, float]]]], dict[str, Any], dict[str, str]]:
+    client = FmpClient(root / ".cache" / "fmp", os.getenv("FMP_API_KEY", ""))
+    status = client.prepare_subset(tickers)
+    series, errors = client.load_series(tickers, as_of)
+    return series, status, errors
 
 
 def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
@@ -151,15 +198,25 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
     cohort_ids = list(config["cohort"]["theme_ids"])
     themes = [themes_by_id[theme_id] for theme_id in cohort_ids]
     as_of = str(config["cohort"]["as_of"])
+    tickers = sorted(
+        {
+            company["ticker"]
+            for theme in themes
+            for company in theme.get("us_companies", [])
+            if float(company.get("exposure", 0)) >= minimum_exposure
+        }
+    )
 
-    cik_map = json.loads((root / "config" / "sec_cik_map.json").read_text(encoding="utf-8"))
-    tickers = [company["ticker"] for theme in themes for company in theme.get("us_companies", []) if float(company.get("exposure", 0)) >= minimum_exposure]
-    bulk = SecBulkClient(root / ".cache" / "sec_bulk", os.getenv("SEC_USER_AGENT", ""))
-    subset_status = bulk.prepare_subset(cik_map, tickers)
-    facts, fact_errors = bulk.load_subset(tickers)
+    financial_source = os.getenv("FINANCIAL_SOURCE", "fmp").strip().lower()
+    if financial_source == "fmp":
+        all_series, financial_status, financial_errors = _load_fmp_series(root, tickers, as_of)
+    elif financial_source == "sec":
+        all_series, financial_status, financial_errors = _load_sec_series(root, tickers, as_of)
+    else:
+        raise ValueError("FINANCIAL_SOURCE must be 'fmp' or 'sec'")
 
     http = JsonHttpClient(
-        user_agent=os.getenv("SEC_USER_AGENT", ""),
+        user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.3"),
         timeout=20,
         min_interval=3.2,
         retries=1,
@@ -176,7 +233,10 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             research_errors[theme["id"]] = str(exc)
         print(f"[GLOBAL] arXiv {index}/{len(themes)} errors={len(research_errors)}", flush=True)
 
-    ranking = [_theme_result(theme, facts, research.get(theme["id"]), as_of, minimum_exposure) for theme in themes]
+    ranking = [
+        _theme_result(theme, all_series, research.get(theme["id"]), as_of, minimum_exposure)
+        for theme in themes
+    ]
     ranking.sort(key=lambda row: (row["boom_score"], row["data_confidence"]), reverse=True)
     scenarios = []
     for raw in config.get("scenarios", []):
@@ -184,39 +244,56 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         scenario["comparison_theme_ids"] = cohort_ids
         scenarios.append(evaluate_scenario(scenario, ranking))
 
-    eligible = [s for s in scenarios if s.get("status") != "INSUFFICIENT_DATA"]
-    core = [s for s in eligible if s.get("evaluation_class", "structural") == "structural"]
-    positives = [s for s in eligible if s.get("label") == "positive"]
-    negatives = [s for s in eligible if s.get("label") == "negative"]
+    eligible = [scenario for scenario in scenarios if scenario.get("status") != "INSUFFICIENT_DATA"]
+    positives = [scenario for scenario in eligible if scenario.get("label") == "positive"]
+    negatives = [scenario for scenario in eligible if scenario.get("label") == "negative"]
     recall = sum(bool(s.get("passed")) for s in positives) / len(positives) if positives else None
-    false_alarm = sum(bool(s.get("alert_triggered")) for s in negatives) / len(negatives) if negatives else None
+    false_alarm = (
+        sum(bool(s.get("alert_triggered")) for s in negatives) / len(negatives)
+        if negatives
+        else None
+    )
     pairwise = []
-    for p in positives:
-        for n in negatives:
-            ps = float((p.get("observed") or {}).get("boom_score") or 0)
-            ns = float((n.get("observed") or {}).get("boom_score") or 0)
-            pairwise.append(1.0 if ps > ns else 0.5 if ps == ns else 0.0)
+    for positive in positives:
+        for negative in negatives:
+            positive_score = float((positive.get("observed") or {}).get("boom_score") or 0)
+            negative_score = float((negative.get("observed") or {}).get("boom_score") or 0)
+            pairwise.append(
+                1.0 if positive_score > negative_score else 0.5 if positive_score == negative_score else 0.0
+            )
     auc = statistics.mean(pairwise) if pairwise else None
-    passed = bool(recall is not None and recall >= 0.75 and false_alarm is not None and false_alarm <= 0.25 and auc is not None and auc >= 0.70)
+    passed = bool(
+        recall is not None
+        and recall >= 0.75
+        and false_alarm is not None
+        and false_alarm <= 0.25
+        and auc is not None
+        and auc >= 0.70
+    )
 
     summary = {
-        "status": "PASSED_V080_GLOBAL_HOLDOUT" if passed else "FAILED_V080_GLOBAL_HOLDOUT",
+        "status": "PASSED_V083_GLOBAL_HOLDOUT" if passed else "FAILED_V083_GLOBAL_HOLDOUT",
         "investment_use_allowed": False,
+        "financial_source": financial_source,
         "metrics": {
             "eligible_scenarios": len(eligible),
             "positive_recall": round(recall, 4) if recall is not None else None,
             "false_alarm_rate": round(false_alarm, 4) if false_alarm is not None else None,
             "pairwise_auc": round(auc, 4) if auc is not None else None,
         },
-        "criteria": {"positive_recall_min": 0.75, "false_alarm_rate_max": 0.25, "pairwise_auc_min": 0.70},
-        "sec_bulk": subset_status,
-        "sec_fact_errors": fact_errors,
+        "criteria": {
+            "positive_recall_min": 0.75,
+            "false_alarm_rate_max": 0.25,
+            "pairwise_auc_min": 0.70,
+        },
+        "financial_data": financial_status,
+        "financial_data_errors": financial_errors,
         "research_errors": research_errors,
         "ranking": ranking,
         "scenarios": scenarios,
         "known_limitations": [
             "테마 노출도는 보수적 수동 프로필이며 사업부 매출 공시로 계속 갱신해야 합니다.",
-            "SEC Company Facts는 기업 전체 XBRL이므로 노출도 게이트가 사업부 재무를 완전히 대체하지 않습니다.",
+            "FMP 표준화 재무는 SEC 원공시를 재가공한 제3자 데이터이므로 출처 교차검증이 필요합니다.",
             "시장 미반영도와 실제 주가수익 백테스트는 아직 포함되지 않았습니다.",
         ],
     }
@@ -225,7 +302,10 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         "global_holdout_summary.json": summary,
         "global_holdout_ranking.json": ranking,
         "global_holdout_scenarios.json": scenarios,
-        "sec_bulk_status.json": subset_status,
+        "financial_data_status.json": financial_status,
     }.items():
-        (output_dir / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        (output_dir / name).write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
     return summary

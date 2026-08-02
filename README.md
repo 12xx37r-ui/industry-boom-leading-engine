@@ -204,3 +204,18 @@ GitHub 공유 러너에서 대용량 `companyfacts.zip` 요청이 403으로 차�
 - Repository Variable `SEC_USER_AGENT`는 조직/이름과 실제 연락 이메일을 포함해야 함
 - 대용량 ZIP은 기본 실행에서 호출하지 않음
 - 실패 시 `.cache/sec_bulk/sec_download_status.json` 진단 Artifact 생성
+
+## V0.8.3 — GitHub SEC 403 우회용 표준화 재무 경로
+
+GitHub-hosted runner에서 SEC `data.sec.gov`와 `companyfacts.zip`이 모두 403으로 차단되는 경우를 위해, 기본 글로벌 홀드아웃 재무원천을 Financial Modeling Prep(FMP) 표준화 분기 재무로 전환했다.
+
+- GitHub Actions에서 SEC를 호출하지 않음
+- 분기 매출, 매출총이익, 영업이익, R&D, CAPEX를 기업별로 수집
+- `filingDate <= as_of` 필터로 2021-12-31 이후 공시의 혼입 방지
+- CAPEX 음수 표기를 절댓값으로 정규화
+- 기업별 원자료를 `.cache/fmp/subset`에 저장하고 재실행 시 캐시 재사용
+- FMP stable endpoint 실패 시 legacy endpoint를 자동 재시도
+- 결과에는 `financial_source=fmp`와 공급자 오류를 명시
+
+Repository secret에 `FMP_API_KEY`를 등록한 뒤 `Industry Boom Global Holdout V0.8.3`을 실행한다.
+완료 Artifact: `industry-boom-global-holdout-v0.8.3`
