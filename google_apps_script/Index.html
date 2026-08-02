@@ -48,7 +48,7 @@
 <body>
   <main class="wrap">
     <h1>산업 붐 선행예측</h1>
-    <div class="subtitle">실물자금·CAPEX·R&D·수요·확산도를 GitHub 엔진에서 계산한 결과입니다.</div>
+    <div class="subtitle">실제 시설투자·공급계약 금액, 매출·이익, 기술연구 확산도를 GitHub 엔진에서 계산한 결과입니다.</div>
     <div id="app" class="loader">GitHub 결과를 불러오는 중입니다…</div>
   </main>
 
@@ -88,6 +88,14 @@
             <div class="metric">신뢰도<b>${n(row.data_confidence, 0)}</b></div>
           </div>
           <strong>상위 근거</strong><ul>${reasons || '<li>근거 부족</li>'}</ul>
+          <details><summary>금액·기술 신호</summary>
+            <ul>
+              <li>투자금액 점수: ${n(row.engines && row.engines.capital_amounts && row.engines.capital_amounts.score, 1)}</li>
+              <li>계약금액 점수: ${n(row.engines && row.engines.contract_amounts && row.engines.contract_amounts.score, 1)}</li>
+              <li>기술연구 확산: ${n(row.engines && row.engines.research_momentum && row.engines.research_momentum.score, 1)}</li>
+              <li>금액 추출률: ${n(Number(row.coverage && row.coverage.amount_coverage) * 100, 0)}%</li>
+            </ul>
+          </details>
           <details><summary>판정 무효화 조건</summary><ul>${invalidations}</ul></details>
         </article>`;
     }
@@ -96,6 +104,7 @@
       const health = data.health || {};
       const ranking = Array.isArray(data.ranking) ? data.ranking : [];
       const replay = data.replay || {};
+      const validation = data.validation || {};
       const sourceStatus = health.sources || {};
       const statusPills = Object.keys(sourceStatus).map(key => {
         const item = sourceStatus[key] || {};
@@ -111,6 +120,8 @@
           <span class="pill">기준일 ${esc(health.current_as_of || '-')}</span>
           <span class="pill">엔진 ${esc(health.engine_version || '-')}</span>
           <span class="pill">AI 재현순위 ${esc(replay.ai_theme_rank || '-')}위</span>
+          <span class="pill">검증 ${esc(validation.status || '-')}</span>
+          <span class="pill">투자사용 ${validation.investment_use_allowed ? '허용' : '금지'}</span>
           ${statusPills}
         </div>
         <div class="grid">${ranking.map(renderCard).join('')}</div>

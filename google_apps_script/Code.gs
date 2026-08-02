@@ -3,7 +3,10 @@ const OUTPUT_FILES = {
   replay: 'ai_replay_2022.json',
   health: 'engine_health.json',
   macro: 'macro_context.json',
-  korea: 'korea_corroboration.json'
+  korea: 'korea_corroboration.json',
+  validation: 'model_validation.json',
+  amounts: 'event_amount_quality.json',
+  technology: 'technology_momentum.json'
 };
 
 function doGet() {

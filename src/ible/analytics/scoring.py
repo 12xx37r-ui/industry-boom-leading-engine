@@ -222,42 +222,74 @@ def build_dart_theme_result(
     usable_companies: int,
     invalidations: list[str],
 ) -> ThemeResult:
-    capital = signals["capital_events"]
-    contracts = signals["supply_contracts"]
+    capital_count = signals["capital_events"]
+    contract_count = signals["supply_contracts"]
+    capital = signals.get("capital_amounts", capital_count)
+    contracts = signals.get("contract_amounts", contract_count)
     demand = signals["revenue"]
     margin = signals["operating_margin"]
-    breadth_engine = _mean([capital.breadth, contracts.breadth, demand.breadth])
-    persistence_engine = _mean([capital.persistence, contracts.persistence, demand.persistence])
+    research = signals.get("research_momentum")
+
+    breadth_parts = [capital.breadth, contracts.breadth, demand.breadth]
+    persistence_parts = [capital.persistence, contracts.persistence, demand.persistence]
+    if research:
+        breadth_parts.append(research.breadth)
+        persistence_parts.append(research.persistence)
+    breadth_engine = _mean(breadth_parts)
+    persistence_engine = _mean(persistence_parts)
+
+    research_score = research.score if research else 50.0
     boom_score = (
-        0.28 * capital.score
-        + 0.27 * contracts.score
-        + 0.25 * demand.score
-        + 0.10 * margin.score
-        + 0.06 * breadth_engine
-        + 0.04 * persistence_engine
+        0.22 * capital.score
+        + 0.22 * contracts.score
+        + 0.22 * demand.score
+        + 0.14 * research_score
+        + 0.08 * margin.score
+        + 0.07 * breadth_engine
+        + 0.05 * persistence_engine
     )
     coverage = usable_companies / max(1, requested_companies)
     metric_coverage = _mean(
         [capital.coverage, contracts.coverage, demand.coverage, margin.coverage],
         0.0,
     )
-    # This version uses one country, one primary source and four hand-picked companies per theme.
-    # Coverage is not predictive confidence. Cap confidence until independent sources and wider breadth are integrated.
-    raw_coverage_confidence = clamp(100.0 * (0.60 * coverage + 0.40 * metric_coverage))
-    confidence = min(55.0, raw_coverage_confidence)
+    amount_coverage = _mean(
+        [
+            float(capital.raw.get("amount_coverage", 0.0)),
+            float(contracts.raw.get("amount_coverage", 0.0)),
+        ],
+        0.0,
+    )
+    independent_source = 1.0 if research and research.coverage > 0 else 0.0
+    raw_coverage_confidence = clamp(
+        100.0
+        * (
+            0.42 * coverage
+            + 0.28 * metric_coverage
+            + 0.18 * amount_coverage
+            + 0.12 * independent_source
+        )
+    )
+    confidence_cap = 72.0 if independent_source else 58.0
+    confidence = min(confidence_cap, raw_coverage_confidence)
     stage = stage_for(boom_score, confidence, persistence_engine, breadth_engine)
     reasons = [
-        (capital.score, f"시설투자·자산취득 공시 가속 점수 {capital.score:.1f}"),
-        (contracts.score, f"공급계약·수주 공시 가속 점수 {contracts.score:.1f}"),
+        (capital.score, f"실제 투자금액·시설투자 가속 점수 {capital.score:.1f}"),
+        (contracts.score, f"실제 공급계약·수주금액 가속 점수 {contracts.score:.1f}"),
         (demand.score, f"매출 수요 가속 점수 {demand.score:.1f}"),
+        (research_score, f"기술연구 확산 가속 점수 {research_score:.1f}"),
         (margin.score, f"영업이익률 개선 점수 {margin.score:.1f}"),
-        (breadth_engine, f"참여기업 확산도 {breadth_engine:.1f}"),
+        (breadth_engine, f"참여기업·신호 확산도 {breadth_engine:.1f}"),
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
-        "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다."
+        "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+        "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
     ]
+    if amount_coverage < 0.5:
+        warnings.append("시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.")
+    if not independent_source:
+        warnings.append("arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.")
     for signal in signals.values():
         warnings.extend(signal.warnings)
     if confidence < 60:
@@ -273,14 +305,16 @@ def build_dart_theme_result(
         boom_probability_24m=probability(boom_score, 24, confidence),
         data_confidence=round(confidence, 2),
         engines=signals,
-        top_reasons=[text for _, text in sorted(reasons, reverse=True)[:3]],
+        top_reasons=[text for _, text in sorted(reasons, reverse=True)[:4]],
         invalidations=invalidations,
         coverage={
             "requested_companies": requested_companies,
             "usable_companies": usable_companies,
             "company_coverage": round(coverage, 4),
             "metric_coverage": round(metric_coverage, 4),
-            "primary_source": "OpenDART",
+            "amount_coverage": round(amount_coverage, 4),
+            "independent_research_source": bool(independent_source),
+            "primary_sources": ["OpenDART", "arXiv"] if independent_source else ["OpenDART"],
         },
         warnings=sorted(set(warnings)),
     )
@@ -337,4 +371,95 @@ def build_event_signal(name: str, company_series: dict[str, list[tuple[str, floa
             "company_count": len(company_series),
         },
         warnings=[] if recent > 0 else ["최근 6개월 관련 공시가 없어 신호가 약합니다."],
+    )
+
+
+def build_amount_event_signal(
+    name: str,
+    amount_ratio_series: dict[str, list[tuple[str, float]]],
+    count_signal: Signal,
+    amount_coverage: float,
+) -> Signal:
+    """Blend normalized disclosed amounts with event counts.
+
+    Amounts are transformed with log1p after scaling by 100 (percent of TTM
+    revenue). Extraction coverage determines how strongly the amount signal
+    replaces the count fallback.
+    """
+    transformed: dict[str, list[tuple[str, float]]] = {}
+    for code, series in amount_ratio_series.items():
+        transformed[code] = [
+            (date, math.log1p(max(0.0, value) * 100.0)) for date, value in series
+        ]
+    amount_signal = build_event_signal(name + "_amount_component", transformed)
+    coverage_weight = clamp(amount_coverage * 100.0, 0.0, 85.0) / 100.0
+    blended_score = coverage_weight * amount_signal.score + (1.0 - coverage_weight) * count_signal.score
+    warnings = list(amount_signal.warnings)
+    if amount_coverage < 0.5:
+        warnings.append("원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.")
+    return Signal(
+        name=name,
+        score=round(blended_score, 2),
+        level=round(coverage_weight * amount_signal.level + (1 - coverage_weight) * count_signal.level, 2),
+        velocity=round(coverage_weight * amount_signal.velocity + (1 - coverage_weight) * count_signal.velocity, 2),
+        acceleration=round(
+            coverage_weight * amount_signal.acceleration + (1 - coverage_weight) * count_signal.acceleration, 2
+        ),
+        persistence=round(
+            coverage_weight * amount_signal.persistence + (1 - coverage_weight) * count_signal.persistence, 2
+        ),
+        breadth=round(coverage_weight * amount_signal.breadth + (1 - coverage_weight) * count_signal.breadth, 2),
+        coverage=round(max(amount_signal.coverage * amount_coverage, count_signal.coverage * 0.5), 4),
+        raw={
+            "amount_coverage": round(amount_coverage, 4),
+            "amount_component": amount_signal.to_dict(),
+            "count_fallback": count_signal.to_dict(),
+            "amount_weight": round(coverage_weight, 4),
+        },
+        warnings=sorted(set(warnings)),
+    )
+
+
+def build_research_signal(name: str, momentum: dict[str, Any] | None) -> Signal:
+    if not momentum:
+        return Signal(
+            name=name,
+            score=50.0,
+            coverage=0.0,
+            raw={},
+            warnings=["기술연구 확산 데이터를 확보하지 못했습니다."],
+        )
+    counts = momentum.get("counts", {})
+    try:
+        recent = float(counts.get("recent", 0))
+        prior = float(counts.get("prior", 0))
+        older = float(counts.get("older", 0))
+    except (TypeError, ValueError):
+        recent = prior = older = 0.0
+    velocity = (recent - prior) / (prior + 10.0)
+    prior_velocity = (prior - older) / (older + 10.0)
+    acceleration = velocity - prior_velocity
+    level = math.log1p(recent) - math.log1p(max(1.0, (prior + older) / 2.0))
+    persistence = (float(recent > prior) + float(prior > older)) / 2.0
+    level_score = _feature_to_score(level, 24.0)
+    velocity_score = _feature_to_score(velocity, 32.0)
+    acceleration_score = _feature_to_score(acceleration, 28.0)
+    persistence_score = 100.0 * persistence
+    score = (
+        0.20 * level_score
+        + 0.35 * velocity_score
+        + 0.30 * acceleration_score
+        + 0.15 * persistence_score
+    )
+    return Signal(
+        name=name,
+        score=round(score, 2),
+        level=round(level_score, 2),
+        velocity=round(velocity_score, 2),
+        acceleration=round(acceleration_score, 2),
+        persistence=round(persistence_score, 2),
+        breadth=round(persistence_score, 2),
+        coverage=1.0,
+        raw=momentum,
+        warnings=[] if recent > 0 else ["최근 12개월 관련 arXiv 논문이 검색되지 않았습니다."],
     )

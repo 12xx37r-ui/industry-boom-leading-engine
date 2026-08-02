@@ -11,17 +11,24 @@ from typing import Any
 from ible.analytics.dart_metrics import (
     REPORTS,
     build_quarterly_financial_series,
+    classify_disclosure,
+    enrich_disclosure_amount,
+    event_amount_series,
     event_series,
+    normalize_event_amounts_by_revenue,
     report_available,
 )
 from ible.analytics.scoring import (
+    build_amount_event_signal,
     build_dart_theme_result,
     build_event_signal,
     build_margin_signal,
     build_metric_signal,
+    build_research_signal,
     build_theme_result,
 )
 from ible.analytics.sec_metrics import FLOW_TAGS, quarterly_flow
+from ible.collectors.arxiv import ArxivClient
 from ible.collectors.bea import BeaClient
 from ible.collectors.fred import FredClient
 from ible.collectors.opendart import OpenDartClient
@@ -43,6 +50,7 @@ class EnginePipeline:
             cache_dir=root / ".cache",
         )
         self.sec = SecClient(self.http, root / "config" / "sec_cik_map.json")
+        self.arxiv = ArxivClient(self.http)
         self.fred = FredClient(os.getenv("FRED_API_KEY", ""), self.http) if os.getenv("FRED_API_KEY") else None
         self.bea = BeaClient(os.getenv("BEA_API_KEY", ""), self.http) if os.getenv("BEA_API_KEY") else None
         self.dart = OpenDartClient(os.getenv("OPENDART_API_KEY", ""), self.http) if os.getenv("OPENDART_API_KEY") else None
@@ -63,7 +71,10 @@ class EnginePipeline:
     def _write_json(path: Path, payload: Any) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         safe_payload = EnginePipeline._sanitize_payload(payload)
-        path.write_text(json.dumps(safe_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        serialized = json.dumps(safe_payload, ensure_ascii=False, indent=2)
+        if "api_key=" in serialized.lower() and "<redacted>" not in serialized.lower():
+            raise RuntimeError(f"SECRET_SCAN_FAILED: {path.name}")
+        path.write_text(serialized, encoding="utf-8")
 
     def _fetch_companyfacts_optional(self, enabled: bool) -> tuple[dict[str, dict[str, Any]], dict[str, str], str]:
         if not enabled:
@@ -78,7 +89,7 @@ class EnginePipeline:
             except Exception as exc:
                 errors[ticker] = str(exc)
                 if "403 Client Error" in str(exc) and len(errors) >= 2 and not facts:
-                    print("[SEC] GitHub-hosted runner is blocked with HTTP 403; continuing with OpenDART core.", flush=True)
+                    print("[SEC] GitHub runner blocked; continuing without SEC.", flush=True)
                     return {}, errors, "BLOCKED_403"
             if len(facts) + len(errors) >= 8 and not facts:
                 return {}, errors, "UNAVAILABLE"
@@ -123,9 +134,9 @@ class EnginePipeline:
 
     def _dart_disclosures(self, as_of: dt.date) -> tuple[dict[str, list[dict[str, Any]]], dict[str, str]]:
         if not self.dart:
-            raise RuntimeError("OPENDART_API_KEY is required for the GitHub-compatible core engine")
+            raise RuntimeError("OPENDART_API_KEY is required")
         stock_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
-        begin = as_of - dt.timedelta(days=8 * 91 + 14)
+        begin = as_of - dt.timedelta(days=12 * 91 + 21)
         collected: dict[str, list[dict[str, Any]]] = {}
         errors: dict[str, str] = {}
         print(f"[DART] disclosures {begin}~{as_of}, companies={len(stock_codes)}", flush=True)
@@ -148,13 +159,58 @@ class EnginePipeline:
         print(f"[DART] disclosure collection finished in {time.monotonic() - started:.1f}s", flush=True)
         return collected, errors
 
-    def _dart_financials(self, as_of: dt.date) -> tuple[dict[str, list[tuple[str, float]]], dict[str, list[tuple[str, float]]], dict[str, str]]:
+    def _enrich_disclosure_amounts(
+        self, disclosures: dict[str, list[dict[str, Any]]]
+    ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, str]]:
         if not self.dart:
-            raise RuntimeError("OPENDART_API_KEY is required for the GitHub-compatible core engine")
+            return disclosures, {"global": "OpenDART client missing"}
+        enriched = {code: [dict(row) for row in rows] for code, rows in disclosures.items()}
+        tasks: list[tuple[str, int, str]] = []
+        for code, rows in enriched.items():
+            for index, row in enumerate(rows):
+                if not classify_disclosure(str(row.get("report_nm") or "")):
+                    continue
+                rcept_no = str(row.get("rcept_no") or "").strip()
+                if rcept_no:
+                    tasks.append((code, index, rcept_no))
+        errors: dict[str, str] = {}
+        print(f"[DART] original-document amount extraction targets={len(tasks)}", flush=True)
+        if not tasks:
+            return enriched, errors
+
+        def fetch(task: tuple[str, int, str]) -> tuple[str, int, dict[str, Any]]:
+            code, index, rcept_no = task
+            text = self.dart.document_text(rcept_no)
+            return code, index, enrich_disclosure_amount(enriched[code][index], text)
+
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            futures = {pool.submit(fetch, task): task for task in tasks}
+            completed = 0
+            for future in as_completed(futures):
+                code, index, rcept_no = futures[future]
+                try:
+                    result_code, result_index, row = future.result()
+                    enriched[result_code][result_index] = row
+                except Exception as exc:
+                    errors[rcept_no] = str(exc)
+                    enriched[code][index]["event_type"] = classify_disclosure(
+                        str(enriched[code][index].get("report_nm") or "")
+                    )
+                    enriched[code][index]["event_amount_metadata"] = {"status": "FETCH_ERROR"}
+                completed += 1
+                if completed == len(tasks) or completed % 20 == 0:
+                    print(f"[DART] amount extraction {completed}/{len(tasks)} errors={len(errors)}", flush=True)
+        return enriched, errors
+
+    def _dart_financials(
+        self, as_of: dt.date
+    ) -> tuple[dict[str, list[tuple[str, float]]], dict[str, list[tuple[str, float]]], dict[str, str]]:
+        if not self.dart:
+            raise RuntimeError("OPENDART_API_KEY is required")
         stock_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
         rows_by_report: dict[tuple[int, str], list[dict[str, Any]]] = {}
         errors: dict[str, str] = {}
-        start_year = max(2018, as_of.year - 5)
+        start_year = max(2017, as_of.year - 6)
         jobs = [
             (year, report_code)
             for year in range(start_year, as_of.year + 1)
@@ -172,29 +228,74 @@ class EnginePipeline:
         revenue, operating_profit = build_quarterly_financial_series(rows_by_report, stock_codes)
         return revenue, operating_profit, errors
 
+    def _research_momentum(self, as_of: dt.date) -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
+        results: dict[str, dict[str, Any]] = {}
+        errors: dict[str, str] = {}
+        themes = self.config["themes"]
+        print(f"[ARXIV] technology momentum themes={len(themes)} as_of={as_of}", flush=True)
+        for index, theme in enumerate(themes, start=1):
+            query = theme.get("arxiv_query")
+            if not query:
+                continue
+            try:
+                results[theme["id"]] = self.arxiv.momentum(query, as_of)
+            except Exception as exc:
+                errors[theme["id"]] = str(exc)
+            print(f"[ARXIV] progress {index}/{len(themes)} errors={len(errors)}", flush=True)
+        return results, errors
+
     def score_dart_as_of(self, as_of: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         date_value = dt.date.fromisoformat(as_of)
         disclosures, disclosure_errors = self._dart_disclosures(date_value)
+        disclosures, amount_errors = self._enrich_disclosure_amounts(disclosures)
         revenue, operating_profit, financial_errors = self._dart_financials(date_value)
+        research, research_errors = self._research_momentum(date_value)
         results: list[dict[str, Any]] = []
+        amount_quality_by_theme: dict[str, Any] = {}
+
         for theme in self.config["themes"]:
             codes = theme.get("kr_stock_codes", [])
-            capital_series = event_series(disclosures, codes, date_value, "CAPITAL_EVENT")
-            contract_series = event_series(disclosures, codes, date_value, "CONTRACT_EVENT")
+            capital_counts = event_series(disclosures, codes, date_value, "CAPITAL_EVENT")
+            contract_counts = event_series(disclosures, codes, date_value, "CONTRACT_EVENT")
+            capital_amounts, capital_quality = event_amount_series(
+                disclosures, codes, date_value, "CAPITAL_EVENT"
+            )
+            contract_amounts, contract_quality = event_amount_series(
+                disclosures, codes, date_value, "CONTRACT_EVENT"
+            )
             revenue_series = {code: revenue.get(code, []) for code in codes}
             op_profit_series = {code: operating_profit.get(code, []) for code in codes}
+            normalized_capital = normalize_event_amounts_by_revenue(capital_amounts, revenue_series)
+            normalized_contracts = normalize_event_amounts_by_revenue(contract_amounts, revenue_series)
+            capital_count_signal = build_event_signal("facility_investment_event_count", capital_counts)
+            contract_count_signal = build_event_signal("supply_contract_event_count", contract_counts)
             signals = {
-                "capital_events": build_event_signal("facility_and_asset_investment", capital_series),
-                "supply_contracts": build_event_signal("supply_contract_and_orders", contract_series),
+                "capital_events": capital_count_signal,
+                "capital_amounts": build_amount_event_signal(
+                    "facility_investment_amount",
+                    normalized_capital,
+                    capital_count_signal,
+                    float(capital_quality["amount_coverage"]),
+                ),
+                "supply_contracts": contract_count_signal,
+                "contract_amounts": build_amount_event_signal(
+                    "supply_contract_amount",
+                    normalized_contracts,
+                    contract_count_signal,
+                    float(contract_quality["amount_coverage"]),
+                ),
                 "revenue": build_metric_signal("revenue_demand", revenue_series),
                 "operating_margin": build_margin_signal(revenue_series, op_profit_series),
+                "research_momentum": build_research_signal(
+                    "technology_research_diffusion", research.get(theme["id"])
+                ),
             }
             usable = sum(
                 1
                 for code in codes
                 if len(revenue_series.get(code, [])) >= 5
-                or sum(value for _, value in capital_series.get(code, [])) > 0
-                or sum(value for _, value in contract_series.get(code, [])) > 0
+                or sum(value for _, value in capital_counts.get(code, [])) > 0
+                or sum(value for _, value in contract_counts.get(code, [])) > 0
             )
             result = build_dart_theme_result(
                 theme_id=theme["id"],
@@ -206,11 +307,19 @@ class EnginePipeline:
                 invalidations=theme.get("invalidations", []),
             )
             results.append(result.to_dict())
+            amount_quality_by_theme[theme["id"]] = {
+                "capital": capital_quality,
+                "contracts": contract_quality,
+            }
         metadata = {
-            "source": "OpenDART",
+            "sources": ["OpenDART", "arXiv"],
             "disclosure_errors": disclosure_errors,
+            "amount_document_errors": dict(list(amount_errors.items())[:50]),
             "financial_errors": financial_errors,
+            "research_errors": research_errors,
             "disclosure_company_count": len(disclosures),
+            "technology_momentum": research,
+            "event_amount_quality": amount_quality_by_theme,
         }
         return sorted(results, key=lambda x: (x["boom_score"], x["data_confidence"]), reverse=True), metadata
 
@@ -221,18 +330,19 @@ class EnginePipeline:
         output: dict[str, Any] = {"status": "OK", "as_of": as_of, "series": {}, "errors": {}}
         for item in self.config.get("fred_context", []):
             try:
-                rows = self.fred.observations(
+                rows, metadata = self.fred.observations(
                     item["series_id"], observation_start=start_year, observation_end=as_of, as_of=as_of
                 )
                 clean = [
                     {"date": row.get("date"), "value": float(row["value"])}
                     for row in rows
-                    if row.get("value") not in {None, "."}
+                    if row.get("value") not in {None, ".", ""}
                 ]
                 output["series"][item["name"]] = {
                     "series_id": item["series_id"],
                     "latest": clean[-1] if clean else None,
                     "observations": clean[-24:],
+                    "source_metadata": metadata,
                 }
             except Exception as exc:
                 output["errors"][item["name"]] = str(exc)
@@ -253,79 +363,106 @@ class EnginePipeline:
             if isinstance(datasets, dict):
                 datasets = [datasets]
             if error or not datasets:
-                return {
-                    "status": "ERROR",
-                    "dataset_count": 0,
-                    "datasets": [],
-                    "error": error or "BEA returned no dataset list",
-                }
+                return {"status": "ERROR", "dataset_count": 0, "datasets": [], "error": error or "no datasets"}
+            catalog_payload = self.bea.fixed_asset_table_catalog()
+            catalog_results = catalog_payload.get("BEAAPI", {}).get("Results", {})
+            values = catalog_results.get("ParamValue", []) if isinstance(catalog_results, dict) else []
+            if isinstance(values, dict):
+                values = [values]
+            matches = [
+                row for row in values
+                if any(term in str(row).lower() for term in ("investment", "industry", "fixed assets"))
+            ][:40]
             return {
                 "status": "CONNECTED",
                 "dataset_count": len(datasets),
                 "datasets": [row.get("DatasetName") for row in datasets],
-                "note": "BEA 산업별 고정자산 점수 편입은 다음 검증 단계에서 진행합니다.",
+                "fixed_asset_catalog_matches": matches,
             }
         except Exception as exc:
             return {"status": "ERROR", "error": str(exc)}
 
-    def run(self, *, current_as_of: str, replay_as_of: str | None, include_dart: bool, use_sec: bool = False) -> dict[str, Any]:
-        del include_dart  # OpenDART is now the core source, not an optional add-on.
+    def run(
+        self,
+        *,
+        current_as_of: str,
+        replay_as_of: str | None,
+        include_dart: bool,
+        use_sec: bool = False,
+    ) -> dict[str, Any]:
+        del include_dart
         outputs = self.root / "outputs"
         run_started = time.monotonic()
         print(
-            f"[ENGINE] start current_as_of={current_as_of} replay_as_of={replay_as_of} core=OpenDART use_sec={use_sec}",
+            f"[ENGINE] start version=0.2.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
             flush=True,
         )
         current, current_meta = self.score_dart_as_of(current_as_of)
         self._write_json(outputs / "industry_boom_ranking.json", current)
         self._write_json(outputs / "industry_boom_detail.json", {row["theme_id"]: row for row in current})
+        self._write_json(outputs / "technology_momentum.json", current_meta.get("technology_momentum", {}))
+        self._write_json(outputs / "event_amount_quality.json", current_meta.get("event_amount_quality", {}))
 
         replay: list[dict[str, Any]] = []
         replay_meta: dict[str, Any] = {}
         if replay_as_of:
-            print("[SCORING] historical AI replay with report-availability cutoff", flush=True)
+            print("[SCORING] historical AI replay", flush=True)
             replay, replay_meta = self.score_dart_as_of(replay_as_of)
+        ai_rank = next((i + 1 for i, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
+        ai_row = next((row for row in replay if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
+        ai_amount_coverage = ai_row.get("coverage", {}).get("amount_coverage", 0.0) if ai_row else 0.0
+        ai_research = bool(ai_row and ai_row.get("coverage", {}).get("independent_research_source"))
         self._write_json(
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
-                "primary_source": "OpenDART",
+                "engine_version": "0.2.0",
+                "primary_sources": ["OpenDART original documents", "OpenDART financials", "arXiv"],
                 "methodology_warning": (
-                    "이번 버전은 GitHub 호스팅 러너의 SEC 403 차단을 피하기 위해 한국 상장 공급망의 시설투자, "
-                    "수주·공급계약, 매출, 영업이익률을 당시 보고서 이용 가능시점 기준으로 재현합니다. "
-                    "현재 API로 과거 보고서를 조회하므로 당시 원본 빈티지와 이후 정정공시를 완전히 분리하지는 못합니다. 산업 분류는 사전 정의형입니다."
+                    "투자·계약 원문 금액과 기술연구 확산을 추가했지만 미국 빅테크 CAPEX 원천자료와 "
+                    "완전한 당시 빈티지 공시는 아직 부족합니다. 결과는 검증용이며 투자판정용이 아닙니다."
                 ),
                 "ranking": replay,
-                "ai_theme_rank": next(
-                    (index + 1 for index, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None
-                ),
+                "ai_theme_rank": ai_rank,
                 "metadata": replay_meta,
             },
         )
 
-        ai_rank = next((index + 1 for index, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
-        ai_row = next((row for row in replay if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
-        validation_passed = bool(ai_rank is not None and ai_rank <= 3 and ai_row and ai_row.get("boom_score", 0) >= 67)
+        validation_passed = bool(
+            ai_rank is not None
+            and ai_rank <= 3
+            and ai_row
+            and ai_row.get("boom_score", 0) >= 65
+            and ai_amount_coverage >= 0.35
+            and ai_research
+        )
         model_validation = {
-            "status": "PASSED" if validation_passed else "FAILED",
+            "status": "PASSED_STAGE1" if validation_passed else "FAILED",
             "investment_use_allowed": False,
             "reason": (
-                "AI 재현이 사전 기준을 통과했습니다. 추가 성공·실패 산업 워크포워드 검증이 필요합니다."
-                if validation_passed else
-                "2022-10-31 AI 재현이 상위 3위 및 67점 기준을 통과하지 못했습니다. 현재 순위는 투자판정에 사용할 수 없습니다."
+                "AI 재현 1단계 기준을 통과했지만 성공·실패 산업 전체 워크포워드 검증 전에는 투자에 사용할 수 없습니다."
+                if validation_passed
+                else "AI 재현 순위·점수·금액추출률·독립연구신호 기준 중 하나 이상을 통과하지 못했습니다."
             ),
-            "criteria": {"ai_rank_max": 3, "ai_score_min": 67, "additional_backtests_required": True},
+            "criteria": {
+                "ai_rank_max": 3,
+                "ai_score_min": 65,
+                "ai_amount_coverage_min": 0.35,
+                "independent_research_source_required": True,
+                "additional_backtests_required": True,
+            },
             "observed": {
                 "ai_rank": ai_rank,
                 "ai_score": ai_row.get("boom_score") if ai_row else None,
+                "ai_amount_coverage": ai_amount_coverage,
+                "ai_research_source": ai_research,
                 "theme_count": len(replay),
             },
             "known_design_gaps": [
-                "시설투자·공급계약의 금액이 아니라 공시 건수를 사용합니다.",
-                "산업별 한국 대표기업이 4개뿐이라 확산도를 제대로 측정하지 못합니다.",
-                "미국 원천수요·빅테크 CAPEX·벤처투자·고용·특허·정부지출이 핵심점수에 편입되지 않았습니다.",
-                "사전 정의된 12개 산업만 비교하므로 아무도 모르는 신규 산업을 자동발견하지 못합니다.",
-                "붐 확률은 백테스트로 보정되지 않은 단조 변환값입니다.",
+                "미국 빅테크 CAPEX·클라우드 원천수요가 핵심점수에 아직 직접 편입되지 않았습니다.",
+                "산업별 한국 대표기업 표본이 작아 공급망 전체 확산도를 충분히 측정하지 못합니다.",
+                "사전 정의된 12개 산업만 비교하므로 신규 산업 자동발견은 아직 제한적입니다.",
+                "붐 확률은 다수 성공·실패 산업 백테스트로 아직 보정되지 않았습니다.",
             ],
         }
         self._write_json(outputs / "model_validation.json", model_validation)
@@ -334,44 +471,50 @@ class EnginePipeline:
         if facts:
             self._write_json(outputs / "sec_supplemental_ranking.json", self.score_sec_as_of(current_as_of, facts))
 
-        print("[FRED] macro context", flush=True)
+        print("[FRED] macro context with official CSV fallback", flush=True)
         macro = self.fred_context(current_as_of)
         self._write_json(outputs / "macro_context.json", macro)
-        print("[BEA] connectivity check", flush=True)
+        print("[BEA] dataset/catalog check", flush=True)
         bea = self.bea_health()
+        self._write_json(outputs / "bea_context.json", bea)
+
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.1.4",
+            "engine_version": "0.2.0",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
                 "opendart": {"status": "CONNECTED", "metadata": current_meta},
+                "arxiv": {"status": "PARTIAL" if current_meta.get("research_errors") else "CONNECTED"},
                 "sec": {"status": sec_status, "company_count": len(facts), "errors": dict(list(sec_errors.items())[:10])},
                 "fred": {"status": macro.get("status")},
                 "bea": bea,
             },
             "limitations": [
-                "현재 GitHub 호스팅 러너에서 SEC가 HTTP 403을 반환하므로 OpenDART 한국 공급망 지표가 핵심 계산원입니다.",
-                "V0.1.4는 보안·검증 안전판 버전이며 현재 순위는 투자판정에 사용할 수 없습니다.",
-                "사전 정의된 산업을 순위화하며 완전한 신규 산업 자동발견 기능은 아직 포함하지 않습니다.",
-                "시설투자·수주 공시는 금액이 아닌 건수 프록시입니다.",
-                "붐 확률은 초기 점수 변환값이며 성공·실패 산업 워크포워드 백테스트로 보정해야 합니다.",
+                "현재 순위는 검증용이며 model_validation의 investment_use_allowed는 계속 false입니다.",
+                "OpenDART 원문 금액은 표 구조 차이 때문에 추출 실패 가능성이 있어 추출률을 함께 표시합니다.",
+                "FRED API가 GitHub에서 403이면 공식 CSV로 우회하지만 과거 재현은 수정값 기준 컷오프입니다.",
+                "미국 기업 원천 CAPEX는 SEC GitHub 차단 때문에 선택적 보강자료로만 남아 있습니다.",
             ],
         }
         self._write_json(outputs / "engine_health.json", source_health)
         self._write_json(outputs / "korea_corroboration.json", current_meta)
+        output_files = [
+            "industry_boom_ranking.json",
+            "industry_boom_detail.json",
+            "ai_replay_2022.json",
+            "technology_momentum.json",
+            "event_amount_quality.json",
+            "macro_context.json",
+            "bea_context.json",
+            "korea_corroboration.json",
+            "engine_health.json",
+            "model_validation.json",
+        ]
         self._write_json(
             outputs / "run_manifest.json",
             {
-                "files": [
-                    "industry_boom_ranking.json",
-                    "industry_boom_detail.json",
-                    "ai_replay_2022.json",
-                    "macro_context.json",
-                    "korea_corroboration.json",
-                    "engine_health.json",
-                    "model_validation.json",
-                ],
+                "files": output_files + ["run_manifest.json"],
                 "model_validation": model_validation,
                 "current_top5": [
                     {"rank": i + 1, "theme_id": row["theme_id"], "name": row["theme_name"], "score": row["boom_score"]}

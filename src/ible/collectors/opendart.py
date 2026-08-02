@@ -6,6 +6,7 @@ import zipfile
 from typing import Any
 
 import requests
+from bs4 import BeautifulSoup
 
 from ible.http import JsonHttpClient
 
@@ -64,11 +65,12 @@ class OpenDartClient:
                 "corp_code": corp_code,
                 "bgn_de": begin_date,
                 "end_de": end_date,
+                "last_reprt_at": "Y",
                 "page_count": page_count,
                 "sort": "date",
                 "sort_mth": "asc",
             },
-            cache_key=f"opendart_list_{stock_code}_{begin_date}_{end_date}",
+            cache_key=f"opendart_list_v2_{stock_code}_{begin_date}_{end_date}",
             cache_ttl_seconds=21600,
         )
         status = payload.get("status")
@@ -77,6 +79,43 @@ class OpenDartClient:
         if status != "000":
             raise RuntimeError(f"OpenDART error {status}: {payload.get('message')}")
         return payload.get("list", [])
+
+    def document_text(self, rcept_no: str) -> str:
+        raw = self.http.get_bytes(
+            f"{self.API_BASE}/document.xml",
+            params={"crtfc_key": self.api_key, "rcept_no": rcept_no},
+            headers={"Accept": "application/zip,application/octet-stream,*/*"},
+            cache_key=f"opendart_document_{rcept_no}",
+            cache_ttl_seconds=31536000,
+            timeout=25,
+        )
+        files: list[bytes] = []
+        if raw[:2] == b"PK":
+            with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+                for name in archive.namelist():
+                    if name.lower().endswith((".xml", ".html", ".htm", ".txt")):
+                        try:
+                            files.append(archive.read(name))
+                        except Exception:
+                            continue
+        else:
+            files.append(raw)
+        chunks: list[str] = []
+        for blob in files:
+            text = None
+            for encoding in ("utf-8", "cp949", "euc-kr"):
+                try:
+                    text = blob.decode(encoding)
+                    break
+                except UnicodeDecodeError:
+                    continue
+            if not text:
+                text = blob.decode("utf-8", errors="ignore")
+            soup = BeautifulSoup(text, "html.parser")
+            for tag in soup(["script", "style"]):
+                tag.decompose()
+            chunks.append(soup.get_text(" ", strip=True))
+        return "\n".join(chunks)
 
     def major_accounts_multi(self, stock_codes: list[str], business_year: int, report_code: str) -> list[dict[str, Any]]:
         mapping = self.stock_to_corp_map()
