@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "6.1.0-prospective-policy-ledger",
+  "engine_release": "6.1.1-prospective-policy-ledger-manifest-fix",
   "file_count": 88,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",

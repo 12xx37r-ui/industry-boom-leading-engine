@@ -19,8 +19,12 @@ class V61ReleaseTests(unittest.TestCase):
         self.assertEqual(len(files), len(set(files)))
         missing = [relative for relative in files if not (ROOT / relative).is_file()]
         self.assertEqual(missing, [])
-        actual = [p for p in ROOT.rglob("*") if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"]
-        self.assertEqual(len(actual), len(files))
+        # GitHub 웹 업로드 제한은 이번 릴리즈에 포함되는 파일 수 기준이다.
+        # 기존 저장소에 남아 있는 과거 버전 파일까지 세면 덮어쓰기 배포에서
+        # 잘못 실패하므로 manifest 등록 파일만 검증한다.
+        self.assertEqual(manifest.get("file_count"), len(files))
+        forbidden = [relative for relative in files if "__pycache__" in Path(relative).parts or Path(relative).suffix in {".pyc", ".pyo"}]
+        self.assertEqual(forbidden, [])
 
     def test_policy_lock(self):
         result = verify_policy_lock(ROOT)

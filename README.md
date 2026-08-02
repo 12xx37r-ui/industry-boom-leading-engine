@@ -14,7 +14,7 @@ V6.1은 새 점수를 다시 튜닝하는 버전이 아니라 운영 검증판�
 
 GitHub Actions에서 다음 워크플로 하나만 실행합니다.
 
-`00 - RUN THIS ONLY - Industry Boom V6.1 Prospective Ledger`
+`00 - RUN THIS ONLY - Industry Boom V6.1.1 Prospective Ledger`
 
 `run_date`는 일반 실행 시 비워둡니다. 최초 실행 이후 매주 월요일 자동 실행됩니다.
 
