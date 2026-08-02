@@ -103,3 +103,14 @@ def read_xlsx_rows(payload: bytes, sheet_name: str | None = None) -> list[list[A
                 values[index] = value
             output.append(values)
         return output
+
+
+def list_xlsx_sheets(payload: bytes) -> list[str]:
+    if not payload.startswith(b"PK"):
+        raise ValueError("payload is not an xlsx zip")
+    with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+        workbook = ET.fromstring(archive.read("xl/workbook.xml"))
+        sheets = workbook.find(f"{{{_MAIN}}}sheets")
+        if sheets is None:
+            return []
+        return [str(sheet.attrib.get("name") or "") for sheet in sheets.findall(f"{{{_MAIN}}}sheet")]

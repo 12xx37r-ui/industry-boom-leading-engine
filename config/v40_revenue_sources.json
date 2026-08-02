@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "engine_release": "4.0.0-direct-revenue-final-auto",
+  "timezone": "Asia/Seoul",
+  "minimum_theme_count": 50,
+  "sources": {
+    "qss": {
+      "name": "U.S. Census Quarterly Services Survey",
+      "url": "https://www.census.gov/services/qss/qss-all-current.xlsx",
+      "bundled_path": "data_seed/official/qss_all_current_2026q1.xlsx",
+      "measure": "quarterly_revenue",
+      "scope": "service industries",
+      "official": true
+    },
+    "m3_shipments": {
+      "name": "U.S. Census Manufacturers' Shipments",
+      "url": "https://www.census.gov/manufacturing/m3/prel/historical_data/histshts/naics/naicsvsp.xlsx",
+      "bundled_path": "data_seed/official/m3_shipments_current.xlsx",
+      "measure": "monthly_shipments",
+      "scope": "manufacturing industries",
+      "official": true
+    },
+    "m3_new_orders": {
+      "name": "U.S. Census Manufacturers' New Orders",
+      "url": "https://www.census.gov/manufacturing/m3/prel/historical_data/histshts/naics/naicsnop.xlsx",
+      "bundled_path": "data_seed/official/m3_new_orders_current.xlsx",
+      "measure": "monthly_new_orders",
+      "scope": "durable manufacturing industries",
+      "official": true
+    }
+  },
+  "weights": {
+    "direct_commercialization": {
+      "revenue_or_shipments_growth": 0.55,
+      "revenue_or_shipments_scale": 0.25,
+      "new_orders_growth": 0.20
+    },
+    "prevalidation_candidate": {
+      "phase4_readiness": 0.70,
+      "direct_commercialization": 0.30
+    }
+  },
+  "thresholds": {
+    "direct_confirmation": 60,
+    "candidate_high": 65,
+    "candidate_watch": 52
+  },
+  "m3_proxy_map": {
+    "3341": "CRP",
+    "3342": "34X",
+    "3344": "34S",
+    "3345": "34K",
+    "3331": "33S",
+    "3332": "33S",
+    "3334": "33H",
+    "3336": "TGP",
+    "3339": "33S",
+    "3359": "35S",
+    "3251": "25S",
+    "3252": "25S",
+    "3254": "25B",
+    "3259": "25S",
+    "3361": "MVP",
+    "3364": "ACP",
+    "3365": "36S",
+    "3366": "36Z",
+    "3391": "39S",
+    "3314": "ANM",
+    "311": "11S"
+  }
+}

@@ -1,0 +1,2585 @@
+{
+  "schema_version": 1,
+  "engine_release": "4.0.0-direct-revenue-final-auto",
+  "as_of": "2026-08-02",
+  "captured_at": "2026-08-02T21:14:45+09:00",
+  "theme_count": 50,
+  "direct_commercialization_observed_theme_count": 48,
+  "investment_use_allowed": false,
+  "themes": [
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
+      "phase4_readiness_signal_score": 68.9251,
+      "direct_commercialization_score": 75.0021,
+      "prevalidation_candidate_score": 70.7482,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "518",
+            "2211"
+          ],
+          "matched_industries": [
+            "Data processing, hosting, and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "Electric power generation, transmission and distribution. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 289685.0,
+          "prior_year_revenue_million_usd": 254461.0,
+          "revenue_yoy_percent": 13.8426
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 13.8426,
+        "primary_growth_score": 68.8047,
+        "source_specific_scale_percentile": 88.6364,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
+      "phase4_readiness_signal_score": 68.1778,
+      "direct_commercialization_score": 67.2565,
+      "prevalidation_candidate_score": 67.9014,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "2211"
+          ],
+          "matched_industries": [
+            "Electric power generation, transmission and distribution. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 172318.0,
+          "prior_year_revenue_million_usd": 154609.0,
+          "revenue_yoy_percent": 11.4541
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.4541,
+        "primary_growth_score": 65.8028,
+        "source_specific_scale_percentile": 70.4545,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
+      "phase4_readiness_signal_score": 67.8377,
+      "direct_commercialization_score": 67.2565,
+      "prevalidation_candidate_score": 67.6633,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "2211"
+          ],
+          "matched_industries": [
+            "Electric power generation, transmission and distribution. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 172318.0,
+          "prior_year_revenue_million_usd": 154609.0,
+          "revenue_yoy_percent": 11.4541
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.4541,
+        "primary_growth_score": 65.8028,
+        "source_specific_scale_percentile": 70.4545,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
+      "phase4_readiness_signal_score": 65.0933,
+      "direct_commercialization_score": 67.2565,
+      "prevalidation_candidate_score": 65.7423,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "2211"
+          ],
+          "matched_industries": [
+            "Electric power generation, transmission and distribution. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 172318.0,
+          "prior_year_revenue_million_usd": 154609.0,
+          "revenue_yoy_percent": 11.4541
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.4541,
+        "primary_growth_score": 65.8028,
+        "source_specific_scale_percentile": 70.4545,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
+      "phase4_readiness_signal_score": 67.6197,
+      "direct_commercialization_score": 60.1312,
+      "prevalidation_candidate_score": 65.3731,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 41567.0,
+          "prior_year_value_million_usd": 37932.0,
+          "yoy_percent": 9.5829
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 67.483,
+      "direct_commercialization_score": 59.0223,
+      "prevalidation_candidate_score": 64.9448,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 33745.0,
+          "prior_year_value_million_usd": 31541.0,
+          "yoy_percent": 6.9877
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 29883.0,
+          "prior_year_value_million_usd": 26397.0,
+          "yoy_percent": 13.206
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.9877,
+        "primary_growth_score": 59.8519,
+        "source_specific_scale_percentile": 50.0,
+        "new_orders_growth_score": 68.0186
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 60.5498,
+      "direct_commercialization_score": 74.0301,
+      "prevalidation_candidate_score": 64.5939,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5415",
+            "518"
+          ],
+          "matched_industries": [
+            "Computer systems design and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "Data processing, hosting, and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 310855.0,
+          "prior_year_revenue_million_usd": 281850.0,
+          "revenue_yoy_percent": 10.2909
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 10.2909,
+        "primary_growth_score": 64.2918,
+        "source_specific_scale_percentile": 95.4545,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 60.5038,
+      "direct_commercialization_score": 74.0301,
+      "prevalidation_candidate_score": 64.5617,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5415",
+            "518"
+          ],
+          "matched_industries": [
+            "Computer systems design and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "Data processing, hosting, and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 310855.0,
+          "prior_year_revenue_million_usd": 281850.0,
+          "revenue_yoy_percent": 10.2909
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 10.2909,
+        "primary_growth_score": 64.2918,
+        "source_specific_scale_percentile": 95.4545,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 62.2318,
+      "direct_commercialization_score": 66.3016,
+      "prevalidation_candidate_score": 63.4527,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "35S",
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 52136.0,
+          "prior_year_value_million_usd": 48810.0,
+          "yoy_percent": 6.8142
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "35S",
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 48271.0,
+          "prior_year_value_million_usd": 43793.0,
+          "yoy_percent": 10.2254
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.8142,
+        "primary_growth_score": 59.6134,
+        "source_specific_scale_percentile": 82.6923,
+        "new_orders_growth_score": 64.2058
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 56.7893,
+      "direct_commercialization_score": 68.7989,
+      "prevalidation_candidate_score": 60.3922,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "11S",
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 131926.0,
+          "prior_year_value_million_usd": 127182.0,
+          "yoy_percent": 3.7301
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 3.7301,
+        "primary_growth_score": 55.3086,
+        "source_specific_scale_percentile": 98.0769,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 68.2083,
+      "direct_commercialization_score": 41.8779,
+      "prevalidation_candidate_score": 60.3092,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "486"
+          ],
+          "matched_industries": [
+            "Pipeline transportation. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 19687.0,
+          "prior_year_revenue_million_usd": 18658.0,
+          "revenue_yoy_percent": 5.5151
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 5.5151,
+        "primary_growth_score": 57.8141,
+        "source_specific_scale_percentile": 6.8182,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 61.2903,
+      "direct_commercialization_score": 57.8391,
+      "prevalidation_candidate_score": 60.2549,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "25B"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 25951.0,
+          "prior_year_value_million_usd": 23445.0,
+          "yoy_percent": 10.6888
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 61.1505,
+      "direct_commercialization_score": 57.8391,
+      "prevalidation_candidate_score": 60.1571,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "25B"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 25951.0,
+          "prior_year_value_million_usd": 23445.0,
+          "yoy_percent": 10.6888
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 61.0802,
+      "direct_commercialization_score": 57.8391,
+      "prevalidation_candidate_score": 60.1079,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "25B"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 25951.0,
+          "prior_year_value_million_usd": 23445.0,
+          "yoy_percent": 10.6888
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 61.4135,
+      "direct_commercialization_score": 55.5665,
+      "prevalidation_candidate_score": 59.6594,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33H"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 6755.0,
+          "prior_year_value_million_usd": 5912.0,
+          "yoy_percent": 14.2591
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33H"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 7098.0,
+          "prior_year_value_million_usd": 5944.0,
+          "yoy_percent": 19.4145
+        }
+      },
+      "components": {
+        "primary_growth_percent": 14.2591,
+        "primary_growth_score": 69.3133,
+        "source_specific_scale_percentile": 9.6154,
+        "new_orders_growth_score": 75.2017
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 55.6645,
+      "direct_commercialization_score": 64.5721,
+      "prevalidation_candidate_score": 58.3368,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 41567.0,
+          "prior_year_value_million_usd": 37932.0,
+          "yoy_percent": 9.5829
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 9.5829,
+        "primary_growth_score": 63.3577,
+        "source_specific_scale_percentile": 63.4615,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 56.3358,
+      "direct_commercialization_score": 62.6305,
+      "prevalidation_candidate_score": 58.2242,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "34S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43603.0,
+          "prior_year_value_million_usd": 41405.0,
+          "yoy_percent": 5.3085
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "34S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 40263.0,
+          "prior_year_value_million_usd": 36072.0,
+          "yoy_percent": 11.6184
+        }
+      },
+      "components": {
+        "primary_growth_percent": 5.3085,
+        "primary_growth_score": 57.526,
+        "source_specific_scale_percentile": 71.1538,
+        "new_orders_growth_score": 66.0138
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 57.8931,
+      "direct_commercialization_score": 57.8391,
+      "prevalidation_candidate_score": 57.8769,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "25B"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 25951.0,
+          "prior_year_value_million_usd": 23445.0,
+          "yoy_percent": 10.6888
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 53.6227,
+      "direct_commercialization_score": 66.9505,
+      "prevalidation_candidate_score": 57.621,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 2,
+          "matched_naics": [
+            "5223",
+            "5415"
+          ],
+          "matched_industries": [
+            "Activities related to credit intermediation. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+            "Computer systems design and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 244603.0,
+          "prior_year_revenue_million_usd": 229707.0,
+          "revenue_yoy_percent": 6.4848
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.4848,
+        "primary_growth_score": 59.1594,
+        "source_specific_scale_percentile": 84.0909,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 56.5614,
+      "direct_commercialization_score": 59.6638,
+      "prevalidation_candidate_score": 57.4921,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "MVP"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 73271.0,
+          "prior_year_value_million_usd": 65342.0,
+          "yoy_percent": 12.1346
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "MVP"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 73396.0,
+          "prior_year_value_million_usd": 65320.0,
+          "yoy_percent": 12.3637
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": 66.9627
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 50.0504,
+      "direct_commercialization_score": 71.5208,
+      "prevalidation_candidate_score": 56.4915,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "25S",
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 128834.0,
+          "prior_year_value_million_usd": 118663.0,
+          "yoy_percent": 8.5713
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 8.5713,
+        "primary_growth_score": 62.0057,
+        "source_specific_scale_percentile": 94.2308,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 50.8732,
+      "direct_commercialization_score": 69.4681,
+      "prevalidation_candidate_score": 56.4517,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "518"
+          ],
+          "matched_industries": [
+            "Data processing, hosting, and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 117367.0,
+          "prior_year_revenue_million_usd": 99852.0,
+          "revenue_yoy_percent": 17.541
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 17.541,
+        "primary_growth_score": 73.1519,
+        "source_specific_scale_percentile": 61.3636,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 52.7512,
+      "direct_commercialization_score": 64.9984,
+      "prevalidation_candidate_score": 56.4254,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12179.0,
+          "prior_year_value_million_usd": 10001.0,
+          "yoy_percent": 21.7778
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12431.0,
+          "prior_year_value_million_usd": 9982.0,
+          "yoy_percent": 24.5342
+        }
+      },
+      "components": {
+        "primary_growth_percent": 21.7778,
+        "primary_growth_score": 77.6337,
+        "source_specific_scale_percentile": 25.0,
+        "new_orders_growth_score": 80.2494
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 61.069,
+      "direct_commercialization_score": 44.6108,
+      "prevalidation_candidate_score": 56.1315,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "562"
+          ],
+          "matched_industries": [
+            "Waste management and remediation services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 41114.0,
+          "prior_year_revenue_million_usd": 40915.0,
+          "revenue_yoy_percent": 0.4864
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "35S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 18391.0,
+          "prior_year_value_million_usd": 17269.0,
+          "yoy_percent": 6.4972
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "35S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 18388.0,
+          "prior_year_value_million_usd": 17396.0,
+          "yoy_percent": 5.7025
+        }
+      },
+      "components": {
+        "primary_growth_percent": 0.4864,
+        "primary_growth_score": 50.6948,
+        "source_specific_scale_percentile": 20.4545,
+        "new_orders_growth_score": 58.0751
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 52.2348,
+      "direct_commercialization_score": 64.9984,
+      "prevalidation_candidate_score": 56.0639,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12179.0,
+          "prior_year_value_million_usd": 10001.0,
+          "yoy_percent": 21.7778
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12431.0,
+          "prior_year_value_million_usd": 9982.0,
+          "yoy_percent": 24.5342
+        }
+      },
+      "components": {
+        "primary_growth_percent": 21.7778,
+        "primary_growth_score": 77.6337,
+        "source_specific_scale_percentile": 25.0,
+        "new_orders_growth_score": 80.2494
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 48.2581,
+      "direct_commercialization_score": 72.5467,
+      "prevalidation_candidate_score": 55.5447,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "25S",
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 99446.0,
+          "prior_year_value_million_usd": 90732.0,
+          "yoy_percent": 9.6041
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12431.0,
+          "prior_year_value_million_usd": 9982.0,
+          "yoy_percent": 24.5342
+        }
+      },
+      "components": {
+        "primary_growth_percent": 9.6041,
+        "primary_growth_score": 63.3858,
+        "source_specific_scale_percentile": 86.5385,
+        "new_orders_growth_score": 80.2494
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 53.9238,
+      "direct_commercialization_score": 58.3236,
+      "prevalidation_candidate_score": 55.2437,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 9858.0,
+          "prior_year_value_million_usd": 9864.0,
+          "yoy_percent": -0.0608
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 10380.0,
+          "prior_year_value_million_usd": 9675.0,
+          "yoy_percent": 7.2868
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": 60.2619
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 60.2906,
+      "direct_commercialization_score": 42.4936,
+      "prevalidation_candidate_score": 54.9515,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "2213"
+          ],
+          "matched_industries": [
+            "Water, sewage and other systems. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 5999.0,
+          "prior_year_revenue_million_usd": 5572.0,
+          "revenue_yoy_percent": 7.6633
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 7.6633,
+        "primary_growth_score": 60.7759,
+        "source_specific_scale_percentile": 2.2727,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 59.5515,
+      "direct_commercialization_score": 43.1674,
+      "prevalidation_candidate_score": 54.6363,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "6215"
+          ],
+          "matched_industries": [
+            "Medical and diagnostic laboratories - taxable. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 19889.0,
+          "prior_year_revenue_million_usd": 19007.0,
+          "revenue_yoy_percent": 4.6404
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "25B"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 25951.0,
+          "prior_year_value_million_usd": 23445.0,
+          "yoy_percent": 10.6888
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 4.6404,
+        "primary_growth_score": 56.5906,
+        "source_specific_scale_percentile": 13.6364,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 50.9479,
+      "direct_commercialization_score": 63.2123,
+      "prevalidation_candidate_score": 54.6272,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "36S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 109474.0,
+          "prior_year_value_million_usd": 98190.0,
+          "yoy_percent": 11.492
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "36S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 113390.0,
+          "prior_year_value_million_usd": 145671.0,
+          "yoy_percent": -22.1602
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.492,
+        "primary_growth_score": 65.8515,
+        "source_specific_scale_percentile": 90.3846,
+        "new_orders_growth_score": 21.9892
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 49.0953,
+      "direct_commercialization_score": 64.9984,
+      "prevalidation_candidate_score": 53.8662,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12179.0,
+          "prior_year_value_million_usd": 10001.0,
+          "yoy_percent": 21.7778
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "ANM"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 12431.0,
+          "prior_year_value_million_usd": 9982.0,
+          "yoy_percent": 24.5342
+        }
+      },
+      "components": {
+        "primary_growth_percent": 21.7778,
+        "primary_growth_score": 77.6337,
+        "source_specific_scale_percentile": 25.0,
+        "new_orders_growth_score": 80.2494
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 53.7924,
+      "direct_commercialization_score": 52.7404,
+      "prevalidation_candidate_score": 53.4768,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "TGP"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 5237.0,
+          "prior_year_value_million_usd": 4655.0,
+          "yoy_percent": 12.5027
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "TGP"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 5299.0,
+          "prior_year_value_million_usd": 4470.0,
+          "yoy_percent": 18.5459
+        }
+      },
+      "components": {
+        "primary_growth_percent": 12.5027,
+        "primary_growth_score": 67.1381,
+        "source_specific_scale_percentile": 3.8462,
+        "new_orders_growth_score": 74.2646
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 47.1189,
+      "direct_commercialization_score": 66.1159,
+      "prevalidation_candidate_score": 52.818,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "33S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 51425.0,
+          "prior_year_value_million_usd": 47796.0,
+          "yoy_percent": 7.5927
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "33S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 53808.0,
+          "prior_year_value_million_usd": 47687.0,
+          "yoy_percent": 12.8358
+        }
+      },
+      "components": {
+        "primary_growth_percent": 7.5927,
+        "primary_growth_score": 60.6797,
+        "source_specific_scale_percentile": 76.9231,
+        "new_orders_growth_score": 67.5567
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "phase4_readiness_signal_score": 50.3038,
+      "direct_commercialization_score": 57.1785,
+      "prevalidation_candidate_score": 52.3662,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "25B"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 25951.0,
+          "prior_year_value_million_usd": 23445.0,
+          "yoy_percent": 10.6888
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 10.6888,
+        "primary_growth_score": 64.8121,
+        "source_specific_scale_percentile": 40.3846,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 50.7861,
+      "direct_commercialization_score": 52.7404,
+      "prevalidation_candidate_score": 51.3724,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "TGP"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 5237.0,
+          "prior_year_value_million_usd": 4655.0,
+          "yoy_percent": 12.5027
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "TGP"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 5299.0,
+          "prior_year_value_million_usd": 4470.0,
+          "yoy_percent": 18.5459
+        }
+      },
+      "components": {
+        "primary_growth_percent": 12.5027,
+        "primary_growth_score": 67.1381,
+        "source_specific_scale_percentile": 3.8462,
+        "new_orders_growth_score": 74.2646
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 47.3567,
+      "direct_commercialization_score": 60.1312,
+      "prevalidation_candidate_score": 51.189,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5417"
+          ],
+          "matched_industries": [
+            "Scientific research and development services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 85637.0,
+          "prior_year_revenue_million_usd": 76980.0,
+          "revenue_yoy_percent": 11.2458
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 41567.0,
+          "prior_year_value_million_usd": 37932.0,
+          "yoy_percent": 9.5829
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 11.2458,
+        "primary_growth_score": 65.5345,
+        "source_specific_scale_percentile": 40.9091,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 44.6837,
+      "direct_commercialization_score": 66.1159,
+      "prevalidation_candidate_score": 51.1134,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "33S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 51425.0,
+          "prior_year_value_million_usd": 47796.0,
+          "yoy_percent": 7.5927
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "33S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 53808.0,
+          "prior_year_value_million_usd": 47687.0,
+          "yoy_percent": 12.8358
+        }
+      },
+      "components": {
+        "primary_growth_percent": 7.5927,
+        "primary_growth_score": 60.6797,
+        "source_specific_scale_percentile": 76.9231,
+        "new_orders_growth_score": 67.5567
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 44.653,
+      "direct_commercialization_score": 66.1537,
+      "prevalidation_candidate_score": 51.1032,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "5415"
+          ],
+          "matched_industries": [
+            "Computer systems design and related services. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 193488.0,
+          "prior_year_revenue_million_usd": 181998.0,
+          "revenue_yoy_percent": 6.3133
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 41567.0,
+          "prior_year_value_million_usd": 37932.0,
+          "yoy_percent": 9.5829
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.3133,
+        "primary_growth_score": 58.9224,
+        "source_specific_scale_percentile": 79.5455,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 47.2986,
+      "direct_commercialization_score": 59.0223,
+      "prevalidation_candidate_score": 50.8157,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 33745.0,
+          "prior_year_value_million_usd": 31541.0,
+          "yoy_percent": 6.9877
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 29883.0,
+          "prior_year_value_million_usd": 26397.0,
+          "yoy_percent": 13.206
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.9877,
+        "primary_growth_score": 59.8519,
+        "source_specific_scale_percentile": 50.0,
+        "new_orders_growth_score": 68.0186
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 47.1686,
+      "direct_commercialization_score": 59.0223,
+      "prevalidation_candidate_score": 50.7247,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 33745.0,
+          "prior_year_value_million_usd": 31541.0,
+          "yoy_percent": 6.9877
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 29883.0,
+          "prior_year_value_million_usd": 26397.0,
+          "yoy_percent": 13.206
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.9877,
+        "primary_growth_score": 59.8519,
+        "source_specific_scale_percentile": 50.0,
+        "new_orders_growth_score": 68.0186
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 42.4261,
+      "direct_commercialization_score": 64.5721,
+      "prevalidation_candidate_score": 49.0699,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 41567.0,
+          "prior_year_value_million_usd": 37932.0,
+          "yoy_percent": 9.5829
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 9.5829,
+        "primary_growth_score": 63.3577,
+        "source_specific_scale_percentile": 63.4615,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 44.4455,
+      "direct_commercialization_score": 59.0223,
+      "prevalidation_candidate_score": 48.8185,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 33745.0,
+          "prior_year_value_million_usd": 31541.0,
+          "yoy_percent": 6.9877
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 29883.0,
+          "prior_year_value_million_usd": 26397.0,
+          "yoy_percent": 13.206
+        }
+      },
+      "components": {
+        "primary_growth_percent": 6.9877,
+        "primary_growth_score": 59.8519,
+        "source_specific_scale_percentile": 50.0,
+        "new_orders_growth_score": 68.0186
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 42.3851,
+      "direct_commercialization_score": 63.2053,
+      "prevalidation_candidate_score": 48.6312,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "CRP",
+            "34X"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 7602.0,
+          "prior_year_value_million_usd": 6212.0,
+          "yoy_percent": 22.376
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "CRP",
+            "34X"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 7960.0,
+          "prior_year_value_million_usd": 6164.0,
+          "yoy_percent": 29.1369
+        }
+      },
+      "components": {
+        "primary_growth_percent": 22.376,
+        "primary_growth_score": 78.2216,
+        "source_specific_scale_percentile": 13.4615,
+        "new_orders_growth_score": 84.0903
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 49.0392,
+      "direct_commercialization_score": 43.8315,
+      "prevalidation_candidate_score": 47.4769,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 9858.0,
+          "prior_year_value_million_usd": 9864.0,
+          "yoy_percent": -0.0608
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 10380.0,
+          "prior_year_value_million_usd": 9675.0,
+          "yoy_percent": 7.2868
+        }
+      },
+      "components": {
+        "primary_growth_percent": -0.0608,
+        "primary_growth_score": 49.9131,
+        "source_specific_scale_percentile": 17.3077,
+        "new_orders_growth_score": 60.2619
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 44.2453,
+      "direct_commercialization_score": 50.939,
+      "prevalidation_candidate_score": 46.2534,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "39S",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 24388.0,
+          "prior_year_value_million_usd": 23707.0,
+          "yoy_percent": 2.8726
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 10380.0,
+          "prior_year_value_million_usd": 9675.0,
+          "yoy_percent": 7.2868
+        }
+      },
+      "components": {
+        "primary_growth_percent": 2.8726,
+        "primary_growth_score": 54.0945,
+        "source_specific_scale_percentile": 36.5385,
+        "new_orders_growth_score": 60.2619
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 37.5561,
+      "direct_commercialization_score": 64.5721,
+      "prevalidation_candidate_score": 45.6609,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 41567.0,
+          "prior_year_value_million_usd": 37932.0,
+          "yoy_percent": 9.5829
+        },
+        "m3_new_orders": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "33S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 43428.0,
+          "prior_year_value_million_usd": 38012.0,
+          "yoy_percent": 14.2481
+        }
+      },
+      "components": {
+        "primary_growth_percent": 9.5829,
+        "primary_growth_score": 63.3577,
+        "source_specific_scale_percentile": 63.4615,
+        "new_orders_growth_score": 69.2999
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 43.9652,
+      "direct_commercialization_score": 44.0397,
+      "prevalidation_candidate_score": 43.9875,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "36Z",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 14137.0,
+          "prior_year_value_million_usd": 14017.0,
+          "yoy_percent": 0.8561
+        },
+        "m3_new_orders": {
+          "matched_series": 2,
+          "matched_m3_codes": [
+            "36Z",
+            "34K"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 15780.0,
+          "prior_year_value_million_usd": 17193.0,
+          "yoy_percent": -8.2185
+        }
+      },
+      "components": {
+        "primary_growth_percent": 0.8561,
+        "primary_growth_score": 51.2228,
+        "source_specific_scale_percentile": 32.6923,
+        "new_orders_growth_score": 38.4704
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "status": "DIRECT_REVENUE_UNAVAILABLE",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 41.638,
+      "direct_commercialization_score": null,
+      "prevalidation_candidate_score": 41.638,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "NO_DIRECT_REVENUE_COVERAGE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": null,
+        "primary_growth_score": null,
+        "source_specific_scale_percentile": null,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "status": "DIRECT_REVENUE_UNAVAILABLE",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 41.4873,
+      "direct_commercialization_score": null,
+      "prevalidation_candidate_score": 41.4873,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "NO_DIRECT_REVENUE_COVERAGE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 0,
+          "current_revenue_million_usd": null,
+          "revenue_yoy_percent": null
+        },
+        "m3_shipments": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": null,
+        "primary_growth_score": null,
+        "source_specific_scale_percentile": null,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "status": "V4_DIRECT_COMMERCIALIZATION_OBSERVED",
+      "candidate_stage": "MONITOR_ONLY",
+      "phase4_readiness_signal_score": 40.4637,
+      "direct_commercialization_score": 43.1674,
+      "prevalidation_candidate_score": 41.2748,
+      "boom_score": null,
+      "investment_use_allowed": false,
+      "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "sources": {
+        "qss_revenue": {
+          "matched_rows": 1,
+          "matched_naics": [
+            "6215"
+          ],
+          "matched_industries": [
+            "Medical and diagnostic laboratories - taxable. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+          ],
+          "current_revenue_million_usd": 19889.0,
+          "prior_year_revenue_million_usd": 19007.0,
+          "revenue_yoy_percent": 4.6404
+        },
+        "m3_shipments": {
+          "matched_series": 1,
+          "matched_m3_codes": [
+            "39S"
+          ],
+          "latest_period": "2026-05",
+          "latest_value_million_usd": 14530.0,
+          "prior_year_value_million_usd": 13843.0,
+          "yoy_percent": 4.9628
+        },
+        "m3_new_orders": {
+          "matched_series": 0,
+          "latest_value_million_usd": null,
+          "yoy_percent": null
+        }
+      },
+      "components": {
+        "primary_growth_percent": 4.6404,
+        "primary_growth_score": 56.5906,
+        "source_specific_scale_percentile": 13.6364,
+        "new_orders_growth_score": null
+      },
+      "limitations": [
+        "QSS는 서비스 산업 직접 매출이며 M3는 제조업 출하·수주의 산업 프록시입니다.",
+        "테마별 상장기업 합산 매출이 아니므로 prevalidation_candidate_score는 최종 boom_score가 아닙니다.",
+        "6·12·24개월 미래 성과검증 전에는 투자판단에 사용할 수 없습니다."
+      ]
+    }
+  ],
+  "content_sha256": "317f47674b7d5aa23464d15737adade156cee9547fa18b196f04fae63a8d97e1"
+}

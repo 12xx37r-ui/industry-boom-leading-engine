@@ -1,14 +1,9 @@
 {
   "schema_version": 1,
-  "release": "3.3.0-github-final-auto",
+  "release": "4.0.0-final-auto",
   "file_count": 65,
-  "github_web_upload_limit": 100,
   "files": [
-    ".github/workflows/run_v2_shadow.yml",
-    ".github/workflows/run_v31_real_economy.yml",
-    ".github/workflows/run_v32_investment.yml",
-    ".github/workflows/run_v33_final_auto.yml",
-    ".github/workflows/run_v3_data.yml",
+    ".github/workflows/run_v40_final_auto.yml",
     "README.md",
     "config/backtests.yml",
     "config/indicator_contract.json",
@@ -24,12 +19,17 @@
     "config/v33_auto_engine.json",
     "config/v3_data_sources.json",
     "config/v3_theme_queries.json",
+    "config/v40_revenue_sources.json",
     "data_cache/latest/v31_real_economy_observations.json",
     "data_cache/latest/v32_corporate_investment_observations.json",
     "data_cache/latest/v33_phase4_observations.json",
     "data_cache/latest/v3_source_observations.json",
+    "data_cache/latest/v40_direct_commercialization_observations.json",
     "data_seed/official/aies_capex_2023.xlsx",
     "data_seed/official/berd_table58_2008_2023.xlsx",
+    "data_seed/official/m3_new_orders_current.xlsx",
+    "data_seed/official/m3_shipments_current.xlsx",
+    "data_seed/official/qss_all_current_2026q1.xlsx",
     "google_apps_script/Code.gs",
     "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
@@ -63,11 +63,16 @@
     "src/ible/v3_data_cli.py",
     "src/ible/v3_data_engine.py",
     "src/ible/v3_http.py",
+    "src/ible/v40_cli.py",
+    "src/ible/v40_engine.py",
+    "src/ible/v40_revenue.py",
     "tests/__init__.py",
-    "tests/test_v2_1_release.py",
-    "tests/test_v31_release.py",
-    "tests/test_v32_release.py",
-    "tests/test_v33_release.py",
-    "tests/test_v3_release.py"
-  ]
+    "tests/test_v40_release.py"
+  ],
+  "policy": {
+    "github_web_upload_below_100_files": true,
+    "bat_cmd_colab_used": false,
+    "sec_fmp_used": false,
+    "single_manual_bootstrap_workflow": true
+  }
 }
