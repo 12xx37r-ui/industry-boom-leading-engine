@@ -406,7 +406,7 @@ def build_dart_theme_result(
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "V0.4.0은 이미 붐이 난 산업과 붐 이전 자금축적 산업을 분리해 선행예측 점수를 계산합니다.",
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
         "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
     ]
     if amount_coverage < 0.5:

@@ -113,6 +113,8 @@
       const ranking = Array.isArray(data.ranking) ? data.ranking : [];
       const replay = data.replay || {};
       const validation = data.validation || {};
+      const backtest = data.backtest || {};
+      const btMetrics = backtest.metrics || {};
       const sourceStatus = health.sources || {};
       const statusPills = Object.keys(sourceStatus).map(key => {
         const item = sourceStatus[key] || {};
@@ -122,6 +124,12 @@
       const replayRows = ((replay.ranking || []).slice(0, 10)).map((row, index) => `
         <tr><td>${index + 1}</td><td>${esc(row.theme_name)}</td><td>${n(row.boom_score, 1)}</td><td>${esc(stageLabel(row.stage))}</td><td>${n(row.data_confidence, 0)}</td></tr>`).join('');
 
+      const backtestSection = backtest.scenario_table ? `
+        <h2 class="section-title">다중 산업 워크포워드 검증</h2>
+        <div class="card"><table><thead><tr><th>시나리오</th><th>구분</th><th>결과</th><th>순위</th><th>점수</th><th>단계</th></tr></thead><tbody>
+          ${backtest.scenario_table.map(row => `<tr><td>${esc(row.name || row.scenario_id)}</td><td>${esc(row.label)}</td><td>${esc(row.status)}</td><td>${esc(row.rank == null ? '-' : row.rank)}</td><td>${n(row.boom_score, 1)}</td><td>${esc(stageLabel(row.stage))}</td></tr>`).join('')}
+        </tbody></table></div>` : '';
+
       document.getElementById('app').className = '';
       document.getElementById('app').innerHTML = `
         <div class="status">
@@ -130,9 +138,12 @@
           <span class="pill">AI 재현순위 ${esc(replay.ai_theme_rank || '-')}위</span>
           <span class="pill">검증 ${esc(validation.status || '-')}</span>
           <span class="pill">투자사용 ${validation.investment_use_allowed ? '허용' : '금지'}</span>
+          <span class="pill">성공 재현율 ${btMetrics.positive_recall == null ? '-' : n(Number(btMetrics.positive_recall) * 100, 0) + '%'}</span>
+          <span class="pill">허위경보율 ${btMetrics.false_alarm_rate == null ? '-' : n(Number(btMetrics.false_alarm_rate) * 100, 0) + '%'}</span>
           ${statusPills}
         </div>
         <div class="grid">${ranking.map(renderCard).join('')}</div>
+        ${backtestSection}
         <h2 class="section-title">2022-10-31 AI 붐 재현시험</h2>
         <div class="card"><div class="muted">${esc(replay.methodology_warning || '')}</div>
           <table><thead><tr><th>순위</th><th>산업</th><th>점수</th><th>단계</th><th>신뢰도</th></tr></thead><tbody>${replayRows}</tbody></table>

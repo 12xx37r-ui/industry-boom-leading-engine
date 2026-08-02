@@ -6,7 +6,8 @@ const OUTPUT_FILES = {
   korea: 'korea_corroboration.json',
   validation: 'model_validation.json',
   amounts: 'event_amount_quality.json',
-  technology: 'technology_momentum.json'
+  technology: 'technology_momentum.json',
+  backtest: 'backtest_summary.json'
 };
 
 function doGet() {
@@ -36,10 +37,15 @@ function getDashboardData() {
       headers: { 'Cache-Control': 'no-cache' }
     });
     const status = response.getResponseCode();
-    if (status < 200 || status >= 300) {
-      throw new Error(OUTPUT_FILES[key] + ' 호출 실패 HTTP ' + status);
+    if (status >= 200 && status < 300) {
+      result[key] = JSON.parse(response.getContentText('UTF-8'));
+      return;
     }
-    result[key] = JSON.parse(response.getContentText('UTF-8'));
+    if (key === 'backtest' && status === 404) {
+      result[key] = null;
+      return;
+    }
+    throw new Error(OUTPUT_FILES[key] + ' 호출 실패 HTTP ' + status);
   });
   result.loadedAt = new Date().toISOString();
   return result;

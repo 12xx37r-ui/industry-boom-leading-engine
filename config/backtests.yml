@@ -1,0 +1,138 @@
+version: 1
+notes:
+- 이 벤치마크는 공개자료 기반 연구용 검증이며 역사적 성공·실패의 완전한 인과적 정답표가 아닙니다.
+- 각 시나리오는 목표 산업과 비교 산업군을 같은 기준일에 평가합니다.
+default_alert:
+  score_min: 58
+  early_signal_min: 57
+  allowed_stages:
+  - EARLY_ACCUMULATION
+  - TRANSITION
+  - COMMERCIAL_BOOM
+scenarios:
+- id: AI_2022
+  name: 생성형 AI·연산 인프라 전조
+  label: positive
+  as_of: '2022-10-31'
+  target_theme_id: AI_COMPUTE_INFRA
+  comparison_theme_ids:
+  - AI_COMPUTE_INFRA
+  - SEMICONDUCTOR_EQUIPMENT
+  - POWER_GRID_ELECTRIFICATION
+  - ROBOTICS_AUTOMATION
+  - QUANTUM_COMPUTING
+  - BIOTECH_PLATFORM
+  - ENERGY_STORAGE
+  - CLOUD_INFRA
+  criteria:
+    rank_max: 3
+    score_min: 60
+    early_signal_min: 60
+- id: CLOUD_2018
+  name: 기업 클라우드 확산 전조
+  label: positive
+  as_of: '2018-12-31'
+  target_theme_id: CLOUD_INFRA
+  comparison_theme_ids:
+  - CLOUD_INFRA
+  - AI_COMPUTE_INFRA
+  - CYBERSECURITY
+  - ROBOTICS_AUTOMATION
+  - BIOTECH_PLATFORM
+  - SOLAR_PHOTOVOLTAIC
+  - HYDROGEN_ECONOMY
+  - ADDITIVE_MANUFACTURING
+  criteria:
+    rank_max: 4
+    score_min: 55
+    early_signal_min: 55
+- id: EV_2019
+  name: 전기차·배터리 대중화 전조
+  label: positive
+  as_of: '2019-12-31'
+  target_theme_id: EV_BATTERY
+  comparison_theme_ids:
+  - EV_BATTERY
+  - ENERGY_STORAGE
+  - SOLAR_PHOTOVOLTAIC
+  - HYDROGEN_ECONOMY
+  - ROBOTICS_AUTOMATION
+  - SEMICONDUCTOR_EQUIPMENT
+  - BIOTECH_PLATFORM
+  - METAVERSE_XR
+  criteria:
+    rank_max: 4
+    score_min: 55
+    early_signal_min: 54
+- id: SOLAR_2019
+  name: 태양광 설치 붐 전조
+  label: positive
+  as_of: '2019-06-30'
+  target_theme_id: SOLAR_PHOTOVOLTAIC
+  comparison_theme_ids:
+  - SOLAR_PHOTOVOLTAIC
+  - EV_BATTERY
+  - ENERGY_STORAGE
+  - HYDROGEN_ECONOMY
+  - POWER_GRID_ELECTRIFICATION
+  - ROBOTICS_AUTOMATION
+  - BIOTECH_PLATFORM
+  - ADDITIVE_MANUFACTURING
+  criteria:
+    rank_max: 5
+    score_min: 52
+    early_signal_min: 52
+- id: METAVERSE_2020
+  name: 메타버스 과열 통제군
+  label: negative
+  as_of: '2020-12-31'
+  target_theme_id: METAVERSE_XR
+  comparison_theme_ids:
+  - METAVERSE_XR
+  - CLOUD_INFRA
+  - AI_COMPUTE_INFRA
+  - ROBOTICS_AUTOMATION
+  - CYBERSECURITY
+  - EV_BATTERY
+  - BIOTECH_PLATFORM
+  - ADDITIVE_MANUFACTURING
+  criteria:
+    strong_alert_rank_max: 3
+    strong_alert_score_min: 60
+    strong_alert_early_min: 58
+- id: HYDROGEN_2020
+  name: 수소 테마 과잉기대 통제군
+  label: negative
+  as_of: '2020-12-31'
+  target_theme_id: HYDROGEN_ECONOMY
+  comparison_theme_ids:
+  - HYDROGEN_ECONOMY
+  - EV_BATTERY
+  - ENERGY_STORAGE
+  - SOLAR_PHOTOVOLTAIC
+  - POWER_GRID_ELECTRIFICATION
+  - NUCLEAR_FIRM_POWER
+  - ROBOTICS_AUTOMATION
+  - BIOTECH_PLATFORM
+  criteria:
+    strong_alert_rank_max: 3
+    strong_alert_score_min: 60
+    strong_alert_early_min: 58
+- id: ADDITIVE_2019
+  name: 3D프린팅 장기정체 통제군
+  label: negative
+  as_of: '2019-12-31'
+  target_theme_id: ADDITIVE_MANUFACTURING
+  comparison_theme_ids:
+  - ADDITIVE_MANUFACTURING
+  - ROBOTICS_AUTOMATION
+  - CLOUD_INFRA
+  - EV_BATTERY
+  - SOLAR_PHOTOVOLTAIC
+  - BIOTECH_PLATFORM
+  - HYDROGEN_ECONOMY
+  - CYBERSECURITY
+  criteria:
+    strong_alert_rank_max: 3
+    strong_alert_score_min: 60
+    strong_alert_early_min: 58

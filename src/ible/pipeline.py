@@ -44,6 +44,7 @@ class EnginePipeline:
     def __init__(self, root: Path) -> None:
         self.root = root
         self.config = load_yaml(root / "config" / "themes.yml")
+        self.backtest_config = load_yaml(root / "config" / "backtests.yml")
         user_agent = os.getenv("SEC_USER_AGENT", "Industry Boom Leading Engine contact@example.com").strip()
         self.http = JsonHttpClient(
             user_agent=user_agent,
@@ -57,6 +58,18 @@ class EnginePipeline:
         self.fred = FredClient(os.getenv("FRED_API_KEY", ""), self.http) if os.getenv("FRED_API_KEY") else None
         self.bea = BeaClient(os.getenv("BEA_API_KEY", ""), self.http) if os.getenv("BEA_API_KEY") else None
         self.dart = OpenDartClient(os.getenv("OPENDART_API_KEY", ""), self.http) if os.getenv("OPENDART_API_KEY") else None
+
+
+    def theme_rows(self, theme_ids: list[str] | None = None) -> list[dict[str, Any]]:
+        themes = list(self.config.get("themes", []))
+        if theme_ids is None:
+            return themes
+        requested = set(theme_ids)
+        selected = [theme for theme in themes if theme.get("id") in requested]
+        missing = requested - {theme.get("id") for theme in selected}
+        if missing:
+            raise ValueError(f"Unknown theme ids: {sorted(missing)}")
+        return selected
 
     @staticmethod
     def _sanitize_payload(value: Any) -> Any:
@@ -82,7 +95,7 @@ class EnginePipeline:
     def _fetch_companyfacts_optional(self, enabled: bool) -> tuple[dict[str, dict[str, Any]], dict[str, str], str]:
         if not enabled:
             return {}, {}, "SKIPPED"
-        requested = sorted({ticker for theme in self.config["themes"] for ticker in theme.get("us_tickers", [])})
+        requested = sorted({ticker for theme in self.config["themes"] if theme.get("sec_enabled", True) for ticker in theme.get("us_tickers", [])})
         facts: dict[str, dict[str, Any]] = {}
         errors: dict[str, str] = {}
         print(f"[SEC] optional probe/collection for {len(requested)} companies", flush=True)
@@ -101,6 +114,8 @@ class EnginePipeline:
     def score_sec_as_of(self, as_of: str, facts: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
         results = []
         for theme in self.config["themes"]:
+            if not theme.get("sec_enabled", True):
+                continue
             ticker_list = theme.get("us_tickers", [])
             metric_series: dict[str, dict[str, list[tuple[str, float]]]] = {
                 metric: {} for metric in ("capex", "rd", "revenue", "gross_profit")
@@ -135,10 +150,13 @@ class EnginePipeline:
             results.append(result.to_dict())
         return sorted(results, key=lambda x: (x["boom_score"], x["data_confidence"]), reverse=True)
 
-    def _dart_disclosures(self, as_of: dt.date) -> tuple[dict[str, list[dict[str, Any]]], dict[str, str]]:
+    def _dart_disclosures(
+        self, as_of: dt.date, themes: list[dict[str, Any]] | None = None
+    ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, str]]:
         if not self.dart:
             raise RuntimeError("OPENDART_API_KEY is required")
-        stock_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
+        themes = themes or self.theme_rows()
+        stock_codes = sorted({code for theme in themes for code in theme.get("kr_stock_codes", [])})
         begin = as_of - dt.timedelta(days=12 * 91 + 21)
         collected: dict[str, list[dict[str, Any]]] = {}
         errors: dict[str, str] = {}
@@ -206,11 +224,12 @@ class EnginePipeline:
         return enriched, errors
 
     def _dart_financials(
-        self, as_of: dt.date
+        self, as_of: dt.date, themes: list[dict[str, Any]] | None = None
     ) -> tuple[dict[str, list[tuple[str, float]]], dict[str, list[tuple[str, float]]], dict[str, str]]:
         if not self.dart:
             raise RuntimeError("OPENDART_API_KEY is required")
-        stock_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
+        themes = themes or self.theme_rows()
+        stock_codes = sorted({code for theme in themes for code in theme.get("kr_stock_codes", [])})
         rows_by_report: dict[tuple[int, str], list[dict[str, Any]]] = {}
         errors: dict[str, str] = {}
         start_year = max(2017, as_of.year - 6)
@@ -263,10 +282,12 @@ class EnginePipeline:
         series, quality = build_annual_capex_series(rows_by_company_year, stock_codes)
         return series, quality, errors
 
-    def _research_momentum(self, as_of: dt.date) -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
+    def _research_momentum(
+        self, as_of: dt.date, themes: list[dict[str, Any]] | None = None
+    ) -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
         results: dict[str, dict[str, Any]] = {}
         errors: dict[str, str] = {}
-        themes = self.config["themes"]
+        themes = themes or self.theme_rows()
         print(f"[ARXIV] technology momentum themes={len(themes)} as_of={as_of}", flush=True)
         for index, theme in enumerate(themes, start=1):
             query = theme.get("arxiv_query")
@@ -279,19 +300,22 @@ class EnginePipeline:
             print(f"[ARXIV] progress {index}/{len(themes)} errors={len(errors)}", flush=True)
         return results, errors
 
-    def score_dart_as_of(self, as_of: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    def score_dart_as_of(
+        self, as_of: str, theme_ids: list[str] | None = None
+    ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
         date_value = dt.date.fromisoformat(as_of)
-        disclosures, disclosure_errors = self._dart_disclosures(date_value)
+        themes = self.theme_rows(theme_ids)
+        disclosures, disclosure_errors = self._dart_disclosures(date_value, themes)
         disclosures, amount_errors = self._enrich_disclosure_amounts(disclosures)
-        revenue, operating_profit, financial_errors = self._dart_financials(date_value)
-        all_codes = sorted({code for theme in self.config["themes"] for code in theme.get("kr_stock_codes", [])})
+        revenue, operating_profit, financial_errors = self._dart_financials(date_value, themes)
+        all_codes = sorted({code for theme in themes for code in theme.get("kr_stock_codes", [])})
         annual_capex, annual_capex_quality, annual_capex_errors = self._dart_annual_capex(date_value, all_codes)
         normalized_annual_capex = normalize_annual_capex_by_revenue(annual_capex, revenue)
-        research, research_errors = self._research_momentum(date_value)
+        research, research_errors = self._research_momentum(date_value, themes)
         results: list[dict[str, Any]] = []
         amount_quality_by_theme: dict[str, Any] = {}
 
-        for theme in self.config["themes"]:
+        for theme in themes:
             codes = theme.get("kr_stock_codes", [])
             capital_counts = event_series(disclosures, codes, date_value, "CAPITAL_EVENT")
             contract_counts = event_series(disclosures, codes, date_value, "CONTRACT_EVENT")
@@ -364,6 +388,7 @@ class EnginePipeline:
             "disclosure_company_count": len(disclosures),
             "technology_momentum": research,
             "event_amount_quality": amount_quality_by_theme,
+            "evaluated_theme_ids": [theme["id"] for theme in themes],
         }
         return sorted(results, key=lambda x: (x["boom_score"], x["data_confidence"]), reverse=True), metadata
 
@@ -445,7 +470,7 @@ class EnginePipeline:
         outputs = self.root / "outputs"
         run_started = time.monotonic()
         print(
-            f"[ENGINE] start version=0.4.1 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
+            f"[ENGINE] start version=0.5.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
             flush=True,
         )
         current, current_meta = self.score_dart_as_of(current_as_of)
@@ -485,7 +510,7 @@ class EnginePipeline:
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
-                "engine_version": "0.4.1",
+                "engine_version": "0.5.0",
                 "primary_sources": ["OpenDART original documents", "OpenDART financials", "arXiv"],
                 "methodology_warning": (
                     "투자·계약 원문 금액과 기술연구 확산을 추가했지만 미국 빅테크 CAPEX 원천자료와 "
@@ -564,7 +589,20 @@ class EnginePipeline:
                 "붐 확률은 다수 성공·실패 산업 백테스트로 아직 보정되지 않았습니다.",
             ],
         }
-        self._write_json(outputs / "model_validation.json", model_validation)
+        self._write_json(outputs / "ai_stage1_validation.json", model_validation)
+        validation_path = outputs / "model_validation.json"
+        preserve_stage2 = False
+        effective_validation = model_validation
+        if validation_path.exists():
+            try:
+                existing_validation = json.loads(validation_path.read_text(encoding="utf-8"))
+                preserve_stage2 = "STAGE2" in str(existing_validation.get("status") or "")
+                if preserve_stage2:
+                    effective_validation = existing_validation
+            except Exception:
+                preserve_stage2 = False
+        if not preserve_stage2:
+            self._write_json(validation_path, model_validation)
 
         facts, sec_errors, sec_status = self._fetch_companyfacts_optional(use_sec)
         if facts:
@@ -579,7 +617,7 @@ class EnginePipeline:
 
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.4.1",
+            "engine_version": "0.5.0",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
@@ -610,12 +648,13 @@ class EnginePipeline:
             "korea_corroboration.json",
             "engine_health.json",
             "model_validation.json",
+            "ai_stage1_validation.json",
         ]
         self._write_json(
             outputs / "run_manifest.json",
             {
                 "files": output_files + ["run_manifest.json"],
-                "model_validation": model_validation,
+                "model_validation": effective_validation,
                 "current_top5": [
                     {
                         "rank": i + 1,
