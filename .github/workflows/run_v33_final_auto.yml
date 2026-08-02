@@ -1,0 +1,108 @@
+name: 00 - FINAL Industry Boom Auto Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_date:
+        description: "최초 확인용 실행일 YYYY-MM-DD (일반 실행은 비워두기)"
+        required: false
+        type: string
+  schedule:
+    - cron: "10 3 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: industry-boom-final-auto-engine
+  cancel-in-progress: false
+
+jobs:
+  weekly-full-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONPATH: ${{ github.workspace }}/src
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Test final release only
+        run: python -m unittest -q tests.test_v33_release
+
+      - name: Resolve run date
+        id: vars
+        shell: bash
+        run: |
+          RUN_DATE="${{ inputs.run_date }}"
+          if [ -z "$RUN_DATE" ]; then RUN_DATE="$(TZ=Asia/Seoul date +%F)"; fi
+          echo "run_date=$RUN_DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Build final phase from latest committed source caches
+        run: |
+          rm -rf outputs/v33_auto
+          python -m ible.v33_cli --root . --output-dir outputs/v33_auto --run-date "${{ steps.vars.outputs.run_date }}"
+
+      - name: Verify final automatic output
+        run: |
+          test -s outputs/v33_auto/v33_run_summary.json
+          test -s outputs/v33_auto/v33_phase4_observations.json
+          test -s outputs/v33_auto/v33_phase4_readiness_ranking.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary = json.loads(Path('outputs/v33_auto/v33_run_summary.json').read_text(encoding='utf-8'))
+          observations = json.loads(Path('outputs/v33_auto/v33_phase4_observations.json').read_text(encoding='utf-8'))
+          if summary['theme_count'] != 50 or summary['phase4_observed_theme_count'] != 50:
+              raise SystemExit(f"coverage failure: {summary}")
+          if summary['model_lock']['status'] != 'LOCK_VERIFIED':
+              raise SystemExit('model lock failed')
+          if any(row.get('boom_score') is not None for row in observations['themes']):
+              raise SystemExit('fabricated boom score prohibited')
+          if summary['manual_run_required_after_bootstrap'] is not False:
+              raise SystemExit('automatic schedule flag failed')
+          print(json.dumps({
+              'status': summary['status'],
+              'themes': summary['theme_count'],
+              'engine_build_progress_percent': summary['engine_build_progress_percent'],
+              'total_project_progress_percent': summary['total_project_progress_percent'],
+              'automatic_weekly_run_enabled': summary['automatic_weekly_run_enabled'],
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Commit caches snapshots queue and results
+        shell: bash
+        run: |
+          set +e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v33_auto -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          if ! git diff --cached --quiet; then
+            git commit -m "data: final auto industry boom ${{ steps.vars.outputs.run_date }}"
+            git push || true
+          fi
+          exit 0
+
+      - name: Upload final automatic result
+        uses: actions/upload-artifact@v7
+        with:
+          name: industry-boom-v3.3-final-auto-result
+          path: |
+            outputs/v33_auto
+            data_cache/latest
+            prospective_history/prospective_evaluation_queue.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 9
