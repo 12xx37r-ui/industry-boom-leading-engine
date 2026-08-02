@@ -172,7 +172,7 @@ python -m ible.aggregate_backtests \
 
 ---
 
-# V0.8.0 — 노출도 기반 글로벌 SEC 엔진
+# V0.8.2 — 노출도 기반 글로벌 SEC 엔진
 
 V0.7 홀드아웃 실패 원인이었던 `관련 기업 전체 실적을 테마 실적으로 귀속`하는 구조를 제거했습니다.
 
@@ -192,4 +192,15 @@ Actions → `Industry Boom Global Holdout V0.8` → Run workflow
 
 첫 실행은 SEC 벌크 ZIP 다운로드 때문에 시간이 걸릴 수 있습니다. 이후 실행은 `.cache/sec_bulk/subset` 캐시를 사용합니다.
 
-완료 Artifact: `industry-boom-global-holdout-v0.8.0`
+완료 Artifact: `industry-boom-global-holdout-v0.8.2`
+
+
+## V0.8.2 SEC 403 근본 수정
+
+GitHub 공유 러너에서 대용량 `companyfacts.zip` 요청이 403으로 차단되는 문제를 피하기 위해, 기본 수집 경로를 SEC 공식 `data.sec.gov`의 기업별 Company Facts API로 변경했습니다.
+
+- 기본 모드: `SEC_SOURCE_MODE=api`
+- 요청 간격: 0.35초 이상
+- Repository Variable `SEC_USER_AGENT`는 조직/이름과 실제 연락 이메일을 포함해야 함
+- 대용량 ZIP은 기본 실행에서 호출하지 않음
+- 실패 시 `.cache/sec_bulk/sec_download_status.json` 진단 Artifact 생성

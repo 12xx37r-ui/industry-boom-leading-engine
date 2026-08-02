@@ -154,12 +154,12 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
 
     cik_map = json.loads((root / "config" / "sec_cik_map.json").read_text(encoding="utf-8"))
     tickers = [company["ticker"] for theme in themes for company in theme.get("us_companies", []) if float(company.get("exposure", 0)) >= minimum_exposure]
-    bulk = SecBulkClient(root / ".cache" / "sec_bulk", os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8 contact@example.com"))
+    bulk = SecBulkClient(root / ".cache" / "sec_bulk", os.getenv("SEC_USER_AGENT", ""))
     subset_status = bulk.prepare_subset(cik_map, tickers)
     facts, fact_errors = bulk.load_subset(tickers)
 
     http = JsonHttpClient(
-        user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8 contact@example.com"),
+        user_agent=os.getenv("SEC_USER_AGENT", ""),
         timeout=20,
         min_interval=3.2,
         retries=1,

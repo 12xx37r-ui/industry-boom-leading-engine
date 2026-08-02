@@ -13,6 +13,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Prepare exposure-gated SEC Company Facts subset")
     parser.add_argument("--root", default=".")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--source", choices=("auto", "api", "bulk"), default=None)
     args = parser.parse_args()
     root = Path(args.root).resolve()
     profiles = load_yaml(root / "config" / "theme_exposures.yml")
@@ -25,9 +26,14 @@ def main() -> None:
     ]
     client = SecBulkClient(
         root / ".cache" / "sec_bulk",
-        os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8 contact@example.com"),
+        os.getenv("SEC_USER_AGENT", ""),
     )
-    result = client.prepare_subset(cik_map, tickers, force_archive=args.force)
+    result = client.prepare_subset(
+        cik_map,
+        tickers,
+        force_archive=args.force,
+        source_mode=args.source,
+    )
     print(json.dumps(result, ensure_ascii=False, indent=2), flush=True)
 
 
