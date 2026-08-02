@@ -1,4 +1,4 @@
-name: Industry Boom Development Diagnostic V0.9.0
+name: Industry Boom Development Diagnostic V0.9.1
 
 on:
   workflow_dispatch:
@@ -59,15 +59,15 @@ jobs:
           assert p.get('investment_use_allowed') is False
           assert p.get('financial_source') == 'offline_sec_fsds_plus_arxiv_seed'
           assert p.get('dataset_gate_passed') is True
-          assert p.get('status') == 'DEVELOPMENT_DIAGNOSTIC_V090'
-          assert p.get('model_version') == '0.9.0'
+          assert p.get('status') == 'DEVELOPMENT_DIAGNOSTIC_V091'
+          assert p.get('model_version') == '0.9.1'
           assert p.get('seed_compatibility') == 'v0.8.10_schema5'
           PY
       - name: Upload result
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-global-diagnostic-v0.9.0
+          name: industry-boom-global-diagnostic-v0.9.1
           path: outputs/global_holdout
           if-no-files-found: warn
           retention-days: 30
