@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "2.0.0-github-shadow-ledger",
+  "engine_release": "2.1.0-github-50theme-expansion",
   "frozen_model_version": "0.9.1",
   "timezone": "Asia/Seoul",
   "input_file": "shadow_input/current_snapshot.json",
@@ -8,7 +8,11 @@
   "dashboard_dir": "outputs/shadow",
   "max_input_age_days": 14,
   "minimum_theme_count": 7,
-  "scorecard_horizons_months": [6, 12, 24],
+  "scorecard_horizons_months": [
+    6,
+    12,
+    24
+  ],
   "investment_use_allowed": false,
   "rules": {
     "overwrite_history": false,
@@ -16,5 +20,8 @@
     "require_model_lock": true,
     "require_previous_gate": true,
     "stale_input_is_nonfatal": true
-  }
+  },
+  "theme_universe_file": "config/theme_universe.json",
+  "indicator_contract_file": "config/indicator_contract.json",
+  "minimum_universe_count": 50
 }

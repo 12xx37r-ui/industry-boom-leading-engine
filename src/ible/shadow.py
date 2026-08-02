@@ -10,6 +10,12 @@ from zoneinfo import ZoneInfo
 from ible.gate_receipt import load_and_verify_gate_receipt
 from ible.integrity import canonical_sha256, load_json, write_json
 from ible.model_lock import load_and_verify_model_lock
+from ible.universe import (
+    UniverseError,
+    build_universe_status,
+    load_and_validate_indicator_contract,
+    load_and_validate_universe,
+)
 
 
 class ShadowError(RuntimeError):
@@ -111,6 +117,15 @@ def run_shadow(
     model_lock = load_and_verify_model_lock(root)
     gate = load_and_verify_gate_receipt(root / "config/v1_1_gate_receipt.json")
     snapshot = load_snapshot(root / str(config["input_file"]), int(config["minimum_theme_count"]))
+    try:
+        universe = load_and_validate_universe(
+            root / str(config["theme_universe_file"]),
+            int(config["minimum_universe_count"]),
+        )
+        indicator_contract = load_and_validate_indicator_contract(root / str(config["indicator_contract_file"]))
+        universe_status, data_backlog = build_universe_status(universe, list(snapshot["ranking"]))
+    except UniverseError as exc:
+        raise ShadowError(str(exc)) from exc
 
     timezone = ZoneInfo(str(config.get("timezone") or "Asia/Seoul"))
     now = datetime.now(timezone)
@@ -239,7 +254,13 @@ def run_shadow(
         "previous_gate": gate,
         "top_themes": top_themes,
         "reason": reason,
-        "next_required_gate": "ACCUMULATE_6_12_24_MONTH_OUTCOMES_FROM_NEW_EXTERNAL_POINT_IN_TIME_SNAPSHOTS",
+        "theme_universe": universe_status,
+        "indicator_contract": {
+            "contract_version": indicator_contract.get("contract_version"),
+            "required_dimension_count": len(indicator_contract.get("required_dimensions", [])),
+            "contract_sha256": indicator_contract.get("contract_sha256"),
+        },
+        "next_required_gate": "POPULATE_POINT_IN_TIME_DATA_FOR_PENDING_THEMES_THEN_ACCUMULATE_6_12_24_MONTH_OUTCOMES",
     }
 
     current = {
@@ -257,6 +278,10 @@ def run_shadow(
         "forecast_eligible_snapshot_count": sum(bool(row.get("forecast_eligible")) for row in history),
         "next_required_gate": summary["next_required_gate"],
         "investment_use_allowed": False,
+        "theme_universe_count": universe_status["theme_count"],
+        "scored_theme_count": universe_status["scored_theme_count"],
+        "pending_theme_count": universe_status["pending_theme_count"],
+        "score_coverage_percent": universe_status["score_coverage_percent"],
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -266,4 +291,7 @@ def run_shadow(
     write_json(output_dir / "v2_shadow_scorecard_queue.json", queue)
     write_json(output_dir / "v2_model_lock_verification.json", model_lock)
     write_json(output_dir / "v2_next_gate.json", next_gate)
+    write_json(output_dir / "v2_1_theme_universe_status.json", universe_status)
+    write_json(output_dir / "v2_1_data_backlog.json", data_backlog)
+    write_json(output_dir / "v2_1_indicator_contract.json", indicator_contract)
     return summary

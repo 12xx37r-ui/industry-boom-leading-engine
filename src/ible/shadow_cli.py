@@ -8,7 +8,7 @@ from ible.shadow import ShadowError, run_shadow
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="V2.0 immutable prospective shadow ledger")
+    parser = argparse.ArgumentParser(description="V2.1 immutable shadow ledger with 50-theme universe")
     parser.add_argument("--root", default=".")
     parser.add_argument("--output-dir", default="outputs/shadow")
     parser.add_argument("--run-date", default=None)
@@ -23,6 +23,9 @@ def main() -> int:
         "history_action": summary["history_action"],
         "history_count": summary["history_count"],
         "forecast_eligible": summary["current_snapshot_forecast_eligible"],
+        "universe_theme_count": summary["theme_universe"]["theme_count"],
+        "scored_theme_count": summary["theme_universe"]["scored_theme_count"],
+        "pending_theme_count": summary["theme_universe"]["pending_theme_count"],
     }, ensure_ascii=False, indent=2))
     return 0
 
