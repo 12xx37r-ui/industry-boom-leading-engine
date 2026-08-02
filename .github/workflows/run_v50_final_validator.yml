@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V6.1 Prospective Ledger
+name: 00 - RUN THIS ONLY - Industry Boom V6.1.1 Prospective Ledger
 
 on:
   workflow_dispatch:
@@ -37,7 +37,7 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Test V6.1 release only
+      - name: Test V6.1.1 release only
         run: python -m unittest -q tests.test_v61_release
 
       - name: Resolve run date
