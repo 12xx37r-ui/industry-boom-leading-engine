@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "engine_release": "5.1.0-historical-prospective-audit",
+  "benchmark_seed_dir": "validation_seed/backtests",
+  "blind_ranking_file": "validation_seed/v1_1_blind/v1_1_blind_holdout_ranking.json",
+  "seed_manifest": "config/v51_seed_manifest.json",
+  "minimum_benchmark_positive_scenarios": 3,
+  "minimum_benchmark_negative_scenarios": 2,
+  "minimum_positive_recall": 0.6667,
+  "maximum_false_alarm_rate": 0.3333,
+  "minimum_balanced_score": 0.67,
+  "require_external_independence_for_investment": true,
+  "external_independence": false,
+  "known_limitations": [
+    "기존 7개 역사 벤치마크는 모델 개발 과정에서 사용된 자료이므로 외부 독립검증이 아닙니다.",
+    "V1.1 블라인드 테마·날짜 조합은 봉인 검증이지만 동일 원천 스냅샷을 재사용해 외부 독립성이 없습니다.",
+    "저장된 결과만으로 arXiv 및 공시 원천의 당시 빈티지·사후수정 부재를 완전히 증명할 수 없습니다.",
+    "완전한 월별 과거 시점 데이터셋이 없어 7개 기준일 검증만 수행하며 월별 결과를 임의 보간하지 않습니다."
+  ]
+}

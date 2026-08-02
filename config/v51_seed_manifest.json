@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "engine_release": "5.1.0-historical-prospective-audit",
+  "sealed_seed_count": 10,
+  "files": {
+    "validation_seed/backtests/ADDITIVE_2019.json": "b7fad0e2b50c51870e725a4c0d41713b181a82e0c8ac38eb0f846e12b69627aa",
+    "validation_seed/backtests/AI_2022.json": "4128a166a9390db3aa687aed487e0ac709d84ba588b63defd32aa51dca4fcc6b",
+    "validation_seed/backtests/CLOUD_2018.json": "0ae54e6d9457e39d9005dae302d90bbfa43d7c1ac3b35704393817b1ac8aa162",
+    "validation_seed/backtests/EV_2019.json": "b5effc7c16a79134d94de722ca2000dc8d2bcab4b1adaac4762b6560d1801fc0",
+    "validation_seed/backtests/HYDROGEN_2020.json": "76cffeb9a716e0deaae5666a8d3b2af9ed31a41989dcda105a64751d153d31ad",
+    "validation_seed/backtests/METAVERSE_2020.json": "81d215dab13908c38ff70b5ae2424343832f3ec2430d48e50b8001b602e0d001",
+    "validation_seed/backtests/SOLAR_2019.json": "f22853f5e0dc751e98a953ad3b77ab5efcc941e92195a1d5942f5807fe4ff289",
+    "validation_seed/v1_1_blind/v1_1_blind_holdout_ranking.json": "733d0825e155761e3540b580011b375a0f6a4a8c11527e495b3782a64f3f963b",
+    "validation_seed/v1_1_blind/v1_1_blind_holdout_summary.json": "fa00376da87bdfb42931c1990dc05639a18c10aba26d9903dff68ac74f6a0452",
+    "validation_seed/v1_1_blind/v1_1_model_lock_verification.json": "02bb09a540500e19372b3296c10614223700771e265af5fec6989a97ab507e5d"
+  },
+  "rules": {
+    "seed_files_are_immutable": true,
+    "benchmark_role": "locked_historical_research_benchmark",
+    "blind_role": "sealed_theme_date_holdout_not_external",
+    "external_independence": false
+  }
+}

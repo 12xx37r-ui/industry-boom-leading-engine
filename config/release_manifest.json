@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "engine_release": "5.0.0-prospective-validation-final",
-  "file_count": 73,
+  "engine_release": "5.1.0-historical-prospective-audit",
+  "file_count": 89,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
     "README.md",
@@ -21,6 +21,8 @@
     "config/v3_theme_queries.json",
     "config/v40_revenue_sources.json",
     "config/v50_prospective_validation.json",
+    "config/v51_historical_validation.json",
+    "config/v51_seed_manifest.json",
     "data_cache/2026/08/2026-08-02/v40_direct_commercialization_observations.json",
     "data_cache/latest/v31_real_economy_observations.json",
     "data_cache/latest/v32_corporate_investment_observations.json",
@@ -35,6 +37,7 @@
     "google_apps_script/Code.gs",
     "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
+    "historical_history/v51_audits/v5.1.0-sealed-audit.json",
     "prospective_history/2026/08/2026-08-02-v40.json",
     "prospective_history/prospective_evaluation_queue.json",
     "prospective_history/v50_snapshot_registry.json",
@@ -74,13 +77,27 @@
     "src/ible/v50_cli.py",
     "src/ible/v50_engine.py",
     "src/ible/v50_outcomes.py",
+    "src/ible/v51_cli.py",
+    "src/ible/v51_walkforward.py",
     "tests/__init__.py",
-    "tests/test_v50_release.py"
+    "tests/test_v50_release.py",
+    "tests/test_v51_release.py",
+    "validation_seed/backtests/ADDITIVE_2019.json",
+    "validation_seed/backtests/AI_2022.json",
+    "validation_seed/backtests/CLOUD_2018.json",
+    "validation_seed/backtests/EV_2019.json",
+    "validation_seed/backtests/HYDROGEN_2020.json",
+    "validation_seed/backtests/METAVERSE_2020.json",
+    "validation_seed/backtests/SOLAR_2019.json",
+    "validation_seed/v1_1_blind/v1_1_blind_holdout_ranking.json",
+    "validation_seed/v1_1_blind/v1_1_blind_holdout_summary.json",
+    "validation_seed/v1_1_blind/v1_1_model_lock_verification.json"
   ],
   "rules": {
     "github_web_upload_file_limit": "strictly_below_100",
     "bat_cmd_colab_prohibited": true,
     "sec_fmp_collection_prohibited": true,
-    "workflow_count": 1
+    "workflow_count": 1,
+    "sealed_historical_seed_count": 10
   }
 }

@@ -1,0 +1,244 @@
+{
+  "status": "V1_1_BLIND_THEME_HOLDOUT_PASSED",
+  "engine_release": "1.1.0-github-blind-holdout",
+  "frozen_model_version": "0.9.1",
+  "execution_mode": "github_actions_only",
+  "network_collection_used": false,
+  "bat_cmd_colab_used": false,
+  "investment_use_allowed": false,
+  "validation_role": "sealed_blind_theme_date_holdout_not_external",
+  "external_independence": false,
+  "independent_external_holdout": {
+    "status": "NOT_RUN",
+    "reason": "이번 단계는 기존 점시점 스냅샷 안에서 개발 목표가 아니었던 산업·날짜 조합을 봉인한 블라인드 검증입니다. 신규 외부 데이터 검증은 아닙니다."
+  },
+  "model_lock": {
+    "status": "LOCK_VERIFIED",
+    "lock_schema_version": 3,
+    "frozen_model_version": "0.9.1",
+    "engine_release": "1.0.4-github-robust",
+    "sealed_at": "2026-08-02T18:29:00+09:00",
+    "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.4은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
+    "checks": [
+      {
+        "file": "config/backtests.yml",
+        "status": "MATCH",
+        "expected_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7",
+        "actual_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7"
+      },
+      {
+        "file": "config/theme_exposures.yml",
+        "status": "MATCH",
+        "expected_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037",
+        "actual_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037"
+      },
+      {
+        "file": "src/ible/analytics/exposure_scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
+        "actual_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4"
+      },
+      {
+        "file": "src/ible/analytics/scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
+        "actual_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6"
+      },
+      {
+        "file": "src/ible/analytics/sec_metrics.py",
+        "status": "MATCH",
+        "expected_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9",
+        "actual_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9"
+      },
+      {
+        "file": "src/ible/analytics/timeseries.py",
+        "status": "MATCH",
+        "expected_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551",
+        "actual_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551"
+      },
+      {
+        "file": "src/ible/backtest.py",
+        "status": "MATCH",
+        "expected_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+        "actual_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24"
+      },
+      {
+        "file": "src/ible/global_validation.py",
+        "status": "MATCH",
+        "expected_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
+        "actual_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60"
+      }
+    ],
+    "failures": []
+  },
+  "source_bundle": {
+    "file": "validation_seed/v1_locked_backtests.json.gz",
+    "content_sha256": "d9cb0cab1d161881a5f3f1d41cce7e1ef8a5103d48f2840417cb5de13686edf1",
+    "case_count": 7
+  },
+  "blind_pack": {
+    "file": "validation_seed/v1_blind_theme_holdout.json.gz",
+    "content_sha256": "84fd1fb37ff319eb82565ffbf212f6e35cb14ff4462560c6a0e4d5da817c643b",
+    "sealed_at": "2026-08-02T19:10:00+09:00",
+    "case_count": 8,
+    "eligible_case_count": 8
+  },
+  "metrics": {
+    "positive_cases": 4,
+    "negative_cases": 4,
+    "positive_recall": 0.75,
+    "false_alarm_rate": 0.0,
+    "alert_precision": 1.0,
+    "pairwise_auc": 0.9375,
+    "median_successful_lead_months": 9.0
+  },
+  "criteria": {
+    "false_alarm_rate_max": 0.3334,
+    "pairwise_auc_min": 0.7,
+    "positive_recall_min": 0.75
+  },
+  "ranking": [
+    {
+      "case_id": "BLIND_SEMIEQUIP_2019",
+      "case_name": "2019년 반도체 장비 투자확대 블라인드 검증",
+      "label": "positive",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": true,
+      "as_of": "2019-12-31",
+      "source_scenario_id": "EV_2019",
+      "target_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "boom_score": 61.79,
+      "early_signal_score": 60.9,
+      "rank": 1,
+      "stage": "EARLY_ACCUMULATION",
+      "data_confidence": 74.0,
+      "lead_time_months": 7
+    },
+    {
+      "case_id": "BLIND_AI_2018",
+      "case_name": "2018년 AI 연산 인프라 조기신호 블라인드 검증",
+      "label": "positive",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": true,
+      "as_of": "2018-12-31",
+      "source_scenario_id": "CLOUD_2018",
+      "target_theme_id": "AI_COMPUTE_INFRA",
+      "boom_score": 60.65,
+      "early_signal_score": 61.56,
+      "rank": 2,
+      "stage": "EARLY_ACCUMULATION",
+      "data_confidence": 74.0,
+      "lead_time_months": 47
+    },
+    {
+      "case_id": "BLIND_GRID_2020",
+      "case_name": "2020년 전력망·전기화 투자확대 블라인드 검증",
+      "label": "positive",
+      "status": "FAILED",
+      "passed": false,
+      "alert_triggered": false,
+      "as_of": "2020-12-31",
+      "source_scenario_id": "HYDROGEN_2020",
+      "target_theme_id": "POWER_GRID_ELECTRIFICATION",
+      "boom_score": 58.55,
+      "early_signal_score": 58.31,
+      "rank": 3,
+      "stage": "WATCH",
+      "data_confidence": 74.0,
+      "lead_time_months": 25
+    },
+    {
+      "case_id": "BLIND_QUANTUM_2022_CONTROL",
+      "case_name": "2022년 양자컴퓨팅 조기상용화 과열 통제군",
+      "label": "negative",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": false,
+      "as_of": "2022-10-31",
+      "source_scenario_id": "AI_2022",
+      "target_theme_id": "QUANTUM_COMPUTING",
+      "boom_score": 57.24,
+      "early_signal_score": 54.86,
+      "rank": 2,
+      "stage": "WATCH",
+      "data_confidence": 74.0,
+      "lead_time_months": null
+    },
+    {
+      "case_id": "BLIND_STORAGE_2022",
+      "case_name": "2022년 에너지저장 산업화 블라인드 검증",
+      "label": "positive",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": true,
+      "as_of": "2022-10-31",
+      "source_scenario_id": "AI_2022",
+      "target_theme_id": "ENERGY_STORAGE",
+      "boom_score": 56.05,
+      "early_signal_score": 59.64,
+      "rank": 4,
+      "stage": "TRANSITION",
+      "data_confidence": 74.0,
+      "lead_time_months": 9
+    },
+    {
+      "case_id": "BLIND_HYDROGEN_2018_CONTROL",
+      "case_name": "2018년 수소경제 과잉기대 통제군",
+      "label": "negative",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": false,
+      "as_of": "2018-12-31",
+      "source_scenario_id": "CLOUD_2018",
+      "target_theme_id": "HYDROGEN_ECONOMY",
+      "boom_score": 54.46,
+      "early_signal_score": 53.91,
+      "rank": 6,
+      "stage": "NO_SIGNAL",
+      "data_confidence": 71.31,
+      "lead_time_months": null
+    },
+    {
+      "case_id": "BLIND_ADDITIVE_2018_CONTROL",
+      "case_name": "2018년 3D프린팅 광범위 산업화 과열 통제군",
+      "label": "negative",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": false,
+      "as_of": "2018-12-31",
+      "source_scenario_id": "CLOUD_2018",
+      "target_theme_id": "ADDITIVE_MANUFACTURING",
+      "boom_score": 53.66,
+      "early_signal_score": 50.76,
+      "rank": 7,
+      "stage": "NO_SIGNAL",
+      "data_confidence": 74.0,
+      "lead_time_months": null
+    },
+    {
+      "case_id": "BLIND_ROBOTICS_2020_CONTROL",
+      "case_name": "2020년 로봇 자동화 광범위 붐 과열 통제군",
+      "label": "negative",
+      "status": "PASSED",
+      "passed": true,
+      "alert_triggered": false,
+      "as_of": "2020-12-31",
+      "source_scenario_id": "METAVERSE_2020",
+      "target_theme_id": "ROBOTICS_AUTOMATION",
+      "boom_score": 51.89,
+      "early_signal_score": 50.98,
+      "rank": 5,
+      "stage": "NO_SIGNAL",
+      "data_confidence": 53.67,
+      "lead_time_months": null
+    }
+  ],
+  "limitations": [
+    "V0.9.1 계산식과 판정식은 SHA-256 잠금 상태로 유지됩니다.",
+    "각 블라인드 사례는 해당 원본 시나리오의 개발 목표 산업과 다른 산업을 평가합니다.",
+    "그러나 재무·연구 원천 스냅샷은 기존 번들과 같으므로 외부 독립 홀드아웃으로 간주하지 않습니다.",
+    "신규 외부 점시점 데이터와 미래 실시간 섀도 검증 전까지 투자 사용을 금지합니다."
+  ]
+}
