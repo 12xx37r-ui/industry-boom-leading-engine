@@ -1,0 +1,89 @@
+version: 1
+method: conservative_exposure_gate
+minimum_exposure: 0.30
+notes:
+  - 기업 전체 재무를 테마에 100% 귀속하지 않고, 테마 노출도와 근거 신뢰도를 곱한 유효가중치만 사용합니다.
+  - 노출도 30% 미만 기업은 방향 참고용으로만 남기고 점수 계산에서는 제외합니다.
+  - 한 기업의 유효가중치 비중이 45%를 넘으면 집중도 감점을 적용합니다.
+themes:
+  - id: POWER_GRID_ELECTRIFICATION
+    name: 전력망·전기화 인프라
+    evaluation_class: structural
+    arxiv_query: '(all:"power grid" OR all:"grid modernization" OR all:"high voltage transformer")'
+    us_companies:
+      - {ticker: POWL, exposure: 0.95, confidence: 0.90, evidence: pure_play_power_distribution}
+      - {ticker: HUBB, exposure: 0.82, confidence: 0.88, evidence: grid_components_majority}
+      - {ticker: ETN, exposure: 0.58, confidence: 0.82, evidence: electrical_segment_large}
+      - {ticker: NVT, exposure: 0.62, confidence: 0.80, evidence: electrical_connection_protection}
+      - {ticker: GEV, exposure: 0.42, confidence: 0.72, evidence: grid_and_power_segments}
+      - {ticker: VRT, exposure: 0.38, confidence: 0.72, evidence: data_center_power_infrastructure}
+    invalidations: [전력기기 수주잔고 감소, 고객 CAPEX 감소, 재고 증가가 출하 증가를 초과]
+  - id: DEFENSE_AUTONOMY
+    name: 국방·무인체계
+    evaluation_class: shock_sensitive
+    arxiv_query: '(all:"unmanned aerial vehicle" OR all:"autonomous defense" OR all:"military robotics")'
+    us_companies:
+      - {ticker: LMT, exposure: 0.92, confidence: 0.95, evidence: defense_pure_play}
+      - {ticker: NOC, exposure: 0.92, confidence: 0.95, evidence: defense_pure_play}
+      - {ticker: LHX, exposure: 0.88, confidence: 0.92, evidence: defense_electronics}
+      - {ticker: HII, exposure: 0.94, confidence: 0.94, evidence: naval_defense_pure_play}
+      - {ticker: AVAV, exposure: 0.86, confidence: 0.88, evidence: unmanned_systems_majority}
+      - {ticker: KTOS, exposure: 0.78, confidence: 0.84, evidence: unmanned_and_defense_systems}
+      - {ticker: GD, exposure: 0.76, confidence: 0.90, evidence: defense_majority}
+      - {ticker: RTX, exposure: 0.66, confidence: 0.86, evidence: aerospace_defense_majority}
+    invalidations: [확정예산 감소, 수주잔고 감소, 납품지연 확대]
+  - id: NUCLEAR_FIRM_POWER
+    name: 원전·무탄소 기저전력
+    evaluation_class: structural
+    arxiv_query: '(all:"small modular reactor" OR all:"nuclear energy" OR all:"nuclear fuel")'
+    us_companies:
+      - {ticker: BWXT, exposure: 0.93, confidence: 0.94, evidence: nuclear_components_pure_play}
+      - {ticker: LEU, exposure: 0.92, confidence: 0.90, evidence: nuclear_fuel_pure_play}
+      - {ticker: CEG, exposure: 0.78, confidence: 0.88, evidence: nuclear_generation_majority}
+      - {ticker: VST, exposure: 0.36, confidence: 0.68, evidence: nuclear_generation_partial}
+      - {ticker: GEV, exposure: 0.22, confidence: 0.60, evidence: nuclear_partial_below_gate}
+    invalidations: [프로젝트 일정 후퇴, 인허가 지연, 핵연료 공급병목 악화]
+  - id: CYBERSECURITY
+    name: 사이버보안
+    evaluation_class: structural
+    arxiv_query: '(all:"cybersecurity" OR all:"zero trust" OR all:"ransomware detection")'
+    us_companies:
+      - {ticker: PANW, exposure: 0.96, confidence: 0.97, evidence: cybersecurity_pure_play}
+      - {ticker: CRWD, exposure: 0.97, confidence: 0.97, evidence: cybersecurity_pure_play}
+      - {ticker: FTNT, exposure: 0.96, confidence: 0.96, evidence: cybersecurity_pure_play}
+      - {ticker: ZS, exposure: 0.97, confidence: 0.96, evidence: cybersecurity_pure_play}
+      - {ticker: OKTA, exposure: 0.93, confidence: 0.94, evidence: identity_security_pure_play}
+      - {ticker: TENB, exposure: 0.95, confidence: 0.94, evidence: exposure_management_pure_play}
+      - {ticker: S, exposure: 0.92, confidence: 0.88, evidence: endpoint_security_pure_play}
+      - {ticker: NET, exposure: 0.46, confidence: 0.70, evidence: security_and_networking_mixed}
+    invalidations: [반복매출 성장 급락, 고객 유지율 악화, 영업비용이 매출보다 빠르게 증가]
+  - id: AUTONOMOUS_DRIVING
+    name: 자율주행·라이다 생태계
+    evaluation_class: negative_control
+    arxiv_query: '(all:"autonomous driving" OR all:"self driving vehicle" OR all:"lidar perception")'
+    us_companies:
+      - {ticker: MBLY, exposure: 0.92, confidence: 0.92, evidence: autonomous_driving_pure_play}
+      - {ticker: LAZR, exposure: 0.96, confidence: 0.92, evidence: lidar_pure_play}
+      - {ticker: INVZ, exposure: 0.96, confidence: 0.90, evidence: lidar_pure_play}
+      - {ticker: APTV, exposure: 0.36, confidence: 0.68, evidence: active_safety_and_adas_partial}
+      - {ticker: TSLA, exposure: 0.18, confidence: 0.55, evidence: autonomous_optional_below_gate}
+    invalidations: [상용화 일정 반복 연기, 유료서비스 매출 부재, 규제승인 지연]
+  - id: ADDITIVE_MANUFACTURING
+    name: 3D프린팅·적층제조
+    evaluation_class: negative_control
+    arxiv_query: '(all:"additive manufacturing" OR all:"3d printing" OR all:"metal printing")'
+    us_companies:
+      - {ticker: DDD, exposure: 0.96, confidence: 0.95, evidence: additive_manufacturing_pure_play}
+      - {ticker: SSYS, exposure: 0.96, confidence: 0.95, evidence: additive_manufacturing_pure_play}
+      - {ticker: DM, exposure: 0.96, confidence: 0.90, evidence: additive_manufacturing_pure_play}
+      - {ticker: VLD, exposure: 0.96, confidence: 0.88, evidence: additive_manufacturing_pure_play}
+    invalidations: [장비판매가 반복소재 매출로 전환되지 않음, 산업고객 정체, 현금소진 악화]
+  - id: HYDROGEN_ECONOMY
+    name: 수소·연료전지 산업
+    evaluation_class: negative_control
+    arxiv_query: '(all:"green hydrogen" OR all:"fuel cell" OR all:"hydrogen economy")'
+    us_companies:
+      - {ticker: PLUG, exposure: 0.94, confidence: 0.92, evidence: hydrogen_fuel_cell_pure_play}
+      - {ticker: BE, exposure: 0.78, confidence: 0.84, evidence: fuel_cell_and_hydrogen_majority}
+      - {ticker: FCEL, exposure: 0.95, confidence: 0.92, evidence: fuel_cell_pure_play}
+    invalidations: [보조금 제외 경제성 미달, 생산원가 개선 지연, 수주 없이 증설만 확대]
