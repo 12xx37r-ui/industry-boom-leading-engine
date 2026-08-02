@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V5.1 Historical + Prospective Validator
+name: 00 - RUN THIS ONLY - Industry Boom V6.0 Champion Challenger
 
 on:
   workflow_dispatch:
@@ -14,11 +14,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: industry-boom-v51-historical-prospective-validator
+  group: industry-boom-v60-champion-challenger
   cancel-in-progress: false
 
 jobs:
-  historical-prospective-validator:
+  champion-challenger-validator:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
@@ -37,8 +37,8 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Test V5.1 release only
-        run: python -m unittest -q tests.test_v50_release tests.test_v51_release
+      - name: Test V6.0 release only
+        run: python -m unittest -q tests.test_v50_release tests.test_v51_release tests.test_v60_release
 
       - name: Resolve run date
         id: vars
@@ -52,7 +52,7 @@ jobs:
         shell: bash
         run: |
           set -uo pipefail
-          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit
+          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger
           run_stage() {
             local seconds="$1"; shift
             local label="$1"; shift
@@ -127,6 +127,61 @@ jobs:
           }, ensure_ascii=False, indent=2))
           PY
 
+      - name: Run Champion-Challenger comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m ible.v60_cli \
+            --root . \
+            --output-dir outputs/v60_champion_challenger \
+            --v51-output-dir outputs/v51_historical_audit \
+            --run-date "${{ steps.vars.outputs.run_date }}"
+
+      - name: Verify V6.0 outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in \
+            v60_run_summary.json \
+            v60_champion_challenger_comparison.json \
+            v60_case_decisions.json \
+            v60_policy_lock_verification.json \
+            v60_model_lock_verification.json \
+            v60_dashboard_payload.json \
+            v60_next_gate.json; do
+            test -s "outputs/v60_champion_challenger/$file"
+          done
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary = json.loads(Path('outputs/v60_champion_challenger/v60_run_summary.json').read_text(encoding='utf-8'))
+          if summary['policy_lock']['status'] != 'POLICY_LOCK_VERIFIED':
+              raise SystemExit('challenger policy lock failed')
+          if summary['model_lock']['status'] != 'LOCK_VERIFIED':
+              raise SystemExit('champion model lock failed')
+          if summary['benchmark']['challenger']['positive_recall'] != 0.6667:
+              raise SystemExit(f"unexpected benchmark challenger recall: {summary}")
+          if summary['blind_holdout']['challenger']['positive_recall'] != 1.0:
+              raise SystemExit(f"unexpected blind challenger recall: {summary}")
+          if summary['blind_holdout']['challenger']['false_alarm_rate'] != 0.0:
+              raise SystemExit(f"unexpected challenger false alarm: {summary}")
+          if summary['challenger_promotion_allowed'] is not False:
+              raise SystemExit('challenger cannot auto-promote on reused evidence')
+          if summary['investment_use_allowed'] is not False:
+              raise SystemExit('investment use must remain false')
+          print(json.dumps({
+              'status': summary['status'],
+              'benchmark_champion_recall': summary['benchmark']['champion']['positive_recall'],
+              'benchmark_challenger_recall': summary['benchmark']['challenger']['positive_recall'],
+              'blind_champion_recall': summary['blind_holdout']['champion']['positive_recall'],
+              'blind_challenger_recall': summary['blind_holdout']['challenger']['positive_recall'],
+              'challenger_false_alarm_rate': summary['blind_holdout']['challenger']['false_alarm_rate'],
+              'champion_remains_active': summary['champion_remains_active'],
+              'challenger_mode': summary['challenger_mode'],
+              'next_required_gate': summary['next_required_gate'],
+          }, ensure_ascii=False, indent=2))
+          PY
+
       - name: Commit caches immutable histories and validator outputs
         shell: bash
         run: |
@@ -136,7 +191,7 @@ jobs:
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find historical_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
-          find outputs/v50_final_validator outputs/v51_historical_audit -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           for workflow in .github/workflows/*; do
             [ -e "$workflow" ] || continue
             if [ "$(basename "$workflow")" != "run_v50_final_validator.yml" ]; then
@@ -144,7 +199,7 @@ jobs:
             fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "validation: V5.1 historical and prospective audit ${{ steps.vars.outputs.run_date }}"
+            git commit -m "validation: V6.0 Champion Challenger ${{ steps.vars.outputs.run_date }}"
             git push || true
           fi
           exit 0
@@ -152,11 +207,13 @@ jobs:
       - name: Upload one combined result artifact
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-v5.1-historical-prospective-result
+          name: industry-boom-v6.0-champion-challenger-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
+            outputs/v60_champion_challenger
             historical_history/v51_audits
+            historical_history/v60_audits
             prospective_history/v50_snapshot_registry.json
             prospective_history/v50_snapshots
             prospective_history/v50_evaluations
