@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "contract_version": "2.1.0",
+  "rule": "점수가 없는 산업을 추정값으로 채우지 않습니다. 아래 8개 축의 점시점 자료가 충족된 산업만 신규 계산 후보가 됩니다.",
+  "required_dimensions": [
+    {
+      "dimension_id": "CAPITAL_INPUT",
+      "name": "기업 CAPEX·설비투자",
+      "required": true
+    },
+    {
+      "dimension_id": "RND_INPUT",
+      "name": "기업 R&D 지출",
+      "required": true
+    },
+    {
+      "dimension_id": "PUBLIC_INSTITUTIONAL_INPUT",
+      "name": "정부·기관 투자",
+      "required": true
+    },
+    {
+      "dimension_id": "SUPPLY_CHAIN_EXPANSION",
+      "name": "공급망 참여기업 확산",
+      "required": true
+    },
+    {
+      "dimension_id": "HIRING_EXPANSION",
+      "name": "관련 채용 증가",
+      "required": true
+    },
+    {
+      "dimension_id": "RESEARCH_MOMENTUM",
+      "name": "연구·특허 확산",
+      "required": true
+    },
+    {
+      "dimension_id": "COMMERCIALIZATION",
+      "name": "수주·매출 전환",
+      "required": true
+    },
+    {
+      "dimension_id": "OPERATING_SURVIVAL",
+      "name": "영업생존력·실제 규모",
+      "required": true
+    }
+  ],
+  "point_in_time_requirements": {
+    "as_of_required": true,
+    "captured_at_required": true,
+    "source_provenance_required": true,
+    "future_data_prohibited": true,
+    "missing_values_must_remain_missing": true
+  },
+  "contract_sha256": "df127dd036a1ddcd48c107f3247d358467f45c70a66440fc476527fbb54f4e14"
+}

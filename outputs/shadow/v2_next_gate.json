@@ -1,7 +1,11 @@
 {
-  "current_gate": "V2_SHADOW_BOOTSTRAP_REGISTERED",
+  "current_gate": "V2_SHADOW_DUPLICATE_CONFIRMED",
   "shadow_history_count": 1,
   "forecast_eligible_snapshot_count": 0,
-  "next_required_gate": "ACCUMULATE_6_12_24_MONTH_OUTCOMES_FROM_NEW_EXTERNAL_POINT_IN_TIME_SNAPSHOTS",
-  "investment_use_allowed": false
+  "next_required_gate": "POPULATE_POINT_IN_TIME_DATA_FOR_PENDING_THEMES_THEN_ACCUMULATE_6_12_24_MONTH_OUTCOMES",
+  "investment_use_allowed": false,
+  "theme_universe_count": 50,
+  "scored_theme_count": 7,
+  "pending_theme_count": 43,
+  "score_coverage_percent": 14.0
 }

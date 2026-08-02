@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "2.0.0-github-shadow-ledger",
+  "engine_release": "2.1.0-github-50theme-expansion",
   "history_count": 1,
   "latest_as_of": "2026-08-02",
   "records": [
@@ -45,5 +45,5 @@
       ]
     }
   ],
-  "ledger_sha256": "f603d94b22b4dc7c57796a75d5560234b4f14bc1c36d0a5caa272caf3e48fe35"
+  "ledger_sha256": "a06ebfa5181895270000b4210eb6b68ba83244d6a068ff73bfbd67b90159210d"
 }

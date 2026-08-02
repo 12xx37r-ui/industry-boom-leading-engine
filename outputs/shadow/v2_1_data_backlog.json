@@ -1,0 +1,354 @@
+{
+  "status": "V2_1_DATA_BACKLOG_CREATED",
+  "pending_theme_count": 43,
+  "priority_1_count": 16,
+  "priority_2_count": 19,
+  "priority_3_count": 8,
+  "rule": "자료가 없는 산업에는 점수를 만들지 않고 8개 필수 축이 채워질 때까지 대기시킵니다.",
+  "themes": [
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "theme_name": "데이터센터 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "theme_name": "전력반도체",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "theme_name": "우주산업",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "theme_name": "비만·대사질환 치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "theme_name": "산업용 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "theme_name": "휴머노이드 로봇",
+      "sector": "산업·자동화",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "theme_name": "구리 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "theme_name": "핵심광물",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "theme_name": "희토류 공급망",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "theme_name": "소형모듈원전(SMR)",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "data_build_priority": 1,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "theme_name": "광자·광인터커넥트",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "theme_name": "엣지 AI",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "theme_name": "클라우드 인프라",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "theme_name": "상업용 드론",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "theme_name": "자율운항·해양무인체계",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "theme_name": "수술로봇",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "theme_name": "첨단진단·액체생검",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "theme_name": "배터리 재활용",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "theme_name": "수자원 인프라",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "theme_name": "첨단소재",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "theme_name": "LNG 인프라",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "theme_name": "탄소포집·저장",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "theme_name": "태양광",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
+      "data_build_priority": 2,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "theme_name": "양자컴퓨팅",
+      "sector": "AI·컴퓨팅",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "theme_name": "핀테크 인프라",
+      "sector": "디지털 인프라",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "theme_name": "철도 현대화",
+      "sector": "모빌리티·우주·방산",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "theme_name": "노화·장수기술",
+      "sector": "바이오·헬스케어",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "theme_name": "건설 자동화",
+      "sector": "산업·자동화",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "theme_name": "히트펌프·에너지효율",
+      "sector": "소재·자원·인프라",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "theme_name": "지열에너지",
+      "sector": "에너지·전력",
+      "data_build_priority": 3,
+      "status": "POINT_IN_TIME_DATA_REQUIRED",
+      "missing_dimensions": 8
+    }
+  ]
+}

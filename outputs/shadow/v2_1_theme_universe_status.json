@@ -1,0 +1,66 @@
+{
+  "status": "V2_1_UNIVERSE_EXPANDED_DATA_PENDING",
+  "universe_version": "2026.08-50T",
+  "theme_count": 50,
+  "scored_theme_count": 7,
+  "pending_theme_count": 43,
+  "score_coverage_ratio": 0.14,
+  "score_coverage_percent": 14.0,
+  "fabricated_score_count": 0,
+  "sectors": {
+    "AI·컴퓨팅": 10,
+    "디지털 인프라": 2,
+    "모빌리티·우주·방산": 6,
+    "바이오·헬스케어": 8,
+    "산업·자동화": 6,
+    "소재·자원·인프라": 8,
+    "에너지·전력": 10
+  },
+  "pending_by_sector": {
+    "AI·컴퓨팅": 9,
+    "디지털 인프라": 2,
+    "모빌리티·우주·방산": 4,
+    "바이오·헬스케어": 8,
+    "산업·자동화": 5,
+    "소재·자원·인프라": 8,
+    "에너지·전력": 7
+  },
+  "active_themes": [
+    {
+      "theme_id": "CYBERSECURITY",
+      "theme_name": "사이버보안",
+      "sector": "AI·컴퓨팅"
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력"
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "theme_name": "원전",
+      "sector": "에너지·전력"
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소",
+      "sector": "에너지·전력"
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅",
+      "sector": "산업·자동화"
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "theme_name": "자율주행",
+      "sector": "모빌리티·우주·방산"
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "theme_name": "국방·무인체계",
+      "sector": "모빌리티·우주·방산"
+    }
+  ],
+  "universe_sha256": "87f6c49ff46aeea122355d1d679dc660e83d4438ceba0a43758514cb825f105f"
+}
