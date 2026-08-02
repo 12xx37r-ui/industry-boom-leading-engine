@@ -1,10 +1,10 @@
 {
   "lock_schema_version": 3,
   "frozen_model_version": "0.9.1",
-  "engine_release": "1.0.3-github-robust",
+  "engine_release": "1.0.4-github-robust",
   "sealed_at": "2026-08-02T18:29:00+09:00",
   "sealed_before_holdout_execution": true,
-  "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.3은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
+  "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.4은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
   "files": {
     "src/ible/analytics/scoring.py": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
     "src/ible/analytics/exposure_scoring.py": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",

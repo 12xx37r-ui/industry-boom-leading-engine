@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "industry-boom-leading-engine"
-version = "1.0.3"
+version = "1.0.4"
 description = "GitHub-only locked validation runner isolated from legacy repository tests"
 requires-python = ">=3.11"
 dependencies = []

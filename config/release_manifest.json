@@ -1,9 +1,8 @@
 {
-  "release": "1.0.3-github-robust",
-  "file_count": 27,
+  "release": "1.0.4-github-robust",
+  "file_count": 25,
   "files": [
     ".github/workflows/run_v1_github_only.yml",
-    ".gitignore",
     "README.md",
     "config/backtests.yml",
     "config/github_validation.json",
@@ -13,7 +12,6 @@
     "google_apps_script/Code.gs",
     "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
-    "outputs/.gitkeep",
     "pyproject.toml",
     "requirements.txt",
     "src/ible/__init__.py",
@@ -29,5 +27,6 @@
     "src/ible/model_lock.py",
     "tests/test_release.py",
     "validation_seed/v1_locked_backtests.json.gz"
-  ]
+  ],
+  "note": "Root .gitignore and outputs/.gitkeep are intentionally excluded because GitHub web folder upload can omit optional dotfiles."
 }

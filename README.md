@@ -1,4 +1,4 @@
-# 산업 붐 선행예측 엔진 V1.0.3 — GitHub 오류 방지본
+# 산업 붐 선행예측 엔진 V1.0.4 — GitHub 오류 방지본
 
 이번 버전은 기존 GitHub 저장소에 과거 `tests/test_fmp.py`, `tests/test_sec_fsds.py`, `tests/test_arxiv.py` 등이 남아 있어도 실행하지 않도록 수정했습니다.
 
@@ -20,8 +20,8 @@
 
 1. ZIP 압축을 풉니다.
 2. 내용물 전체를 기존 GitHub 저장소에 덮어씁니다.
-3. GitHub `Actions`에서 **Industry Boom V1.0.3 GitHub Robust Validation**을 실행합니다.
-4. 완료 후 `industry-boom-v1.0.3-github-result` Artifact를 받습니다.
+3. GitHub `Actions`에서 **Industry Boom V1.0.4 GitHub Robust Validation**을 실행합니다.
+4. 완료 후 `industry-boom-v1.0.4-github-result` Artifact를 받습니다.
 
 기존의 과거 테스트 파일을 일일이 삭제하지 않아도 됩니다. 새 설정이 해당 파일들을 실행 대상에서 제외합니다.
 
