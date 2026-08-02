@@ -14,6 +14,35 @@ def _weighted_mean(values: list[tuple[float, float]], default: float = 0.0) -> f
     return sum(v * w for v, w in clean) / total if total else default
 
 
+
+def _weighted_quantile(values: list[tuple[float, float]], quantile: float) -> float:
+    clean = sorted((float(v), float(w)) for v, w in values if math.isfinite(v) and math.isfinite(w) and w > 0)
+    if not clean:
+        return 0.0
+    quantile = max(0.0, min(1.0, float(quantile)))
+    total = sum(weight for _, weight in clean)
+    threshold = quantile * total
+    cumulative = 0.0
+    for value, weight in clean:
+        cumulative += weight
+        if cumulative >= threshold:
+            return value
+    return clean[-1][0]
+
+
+def _robust_weighted_location(values: list[tuple[float, float]], default: float = 0.0) -> float:
+    clean = [(float(v), float(w)) for v, w in values if math.isfinite(v) and math.isfinite(w) and w > 0]
+    if not clean:
+        return default
+    if len(clean) < 3:
+        return _weighted_mean(clean, default)
+    lower = _weighted_quantile(clean, 0.20)
+    upper = _weighted_quantile(clean, 0.80)
+    clipped = [(min(upper, max(lower, value)), weight) for value, weight in clean]
+    winsor_mean = _weighted_mean(clipped, default)
+    median = _weighted_quantile(clean, 0.50)
+    return 0.60 * median + 0.40 * winsor_mean
+
 def effective_weight(profile: dict[str, Any]) -> float:
     exposure = max(0.0, min(1.0, float(profile.get("exposure", 0.0))))
     confidence = max(0.0, min(1.0, float(profile.get("confidence", 0.0))))
@@ -51,10 +80,15 @@ def build_exposure_weighted_signal(
     coverage = total_usable_weight / total_requested_weight if total_requested_weight else 0.0
     concentration = max(weights.values()) / total_usable_weight if total_usable_weight else 1.0
 
-    yoy = _weighted_mean([(float(f["yoy"]), weights[t]) for t, f in features.items() if f["yoy"] is not None])
-    accel = _weighted_mean([(float(f["accel"]), weights[t]) for t, f in features.items() if f["accel"] is not None])
+    yoy_pairs = [(float(f["yoy"]), weights[t]) for t, f in features.items() if f["yoy"] is not None]
+    accel_pairs = [(float(f["accel"]), weights[t]) for t, f in features.items() if f["accel"] is not None]
+    level_pairs = [(float(f["level"]), weights[t]) for t, f in features.items() if f["level"] is not None]
+    raw_yoy_mean = _weighted_mean(yoy_pairs)
+    raw_accel_mean = _weighted_mean(accel_pairs)
+    yoy = _robust_weighted_location(yoy_pairs)
+    accel = _robust_weighted_location(accel_pairs)
     persistence = _weighted_mean([(float(f["persistence"]), weights[t]) for t, f in features.items() if f["persistence"] is not None], 0.5)
-    level = _weighted_mean([(float(f["level"]), weights[t]) for t, f in features.items() if f["level"] is not None])
+    level = _robust_weighted_location(level_pairs)
     positive_weight = sum(weights[t] for t, f in features.items() if float(f.get("yoy") or 0) > 0)
     breadth = positive_weight / total_usable_weight if total_usable_weight else 0.0
 
@@ -94,6 +128,9 @@ def build_exposure_weighted_signal(
             "largest_company_weight_share": concentration,
             "weighted_yoy": yoy,
             "weighted_acceleration": accel,
+            "raw_weighted_yoy_mean": raw_yoy_mean,
+            "raw_weighted_acceleration_mean": raw_accel_mean,
+            "aggregation_method": "60pct_weighted_median_plus_40pct_20pct_winsor_mean",
             "companies": {
                 ticker: {
                     "effective_weight": weights[ticker],
@@ -130,12 +167,13 @@ def build_exposure_weighted_margin_signal(
         rev = dict(revenue_series.get(ticker, []))
         profit = dict(profit_series.get(ticker, []))
         common = sorted(set(rev) & set(profit))
-        margins = [profit[d] / rev[d] for d in common if rev[d] != 0]
+        margins = [profit[d] / rev[d] for d in common if rev[d] > 0]
+        margins = [value for value in margins if math.isfinite(value) and -2.0 <= value <= 2.0]
         if len(margins) < 5:
             continue
         latest = statistics.mean(margins[-2:])
         prior = statistics.mean(margins[-4:-2])
-        delta = latest - prior
+        delta = max(-0.50, min(0.50, latest - prior))
         weight = effective_weight(profile)
         company_score = clamp(50.0 + 700.0 * delta)
         values.append((company_score, weight))
@@ -144,15 +182,20 @@ def build_exposure_weighted_margin_signal(
             positive_weight += weight
         raw[ticker] = {"latest_margin": latest, "prior_margin": prior, "delta": delta, "weight": weight}
     breadth = positive_weight / total_weight if total_weight else 0.0
-    score = 0.75 * _weighted_mean(values, 50.0) + 0.25 * 100.0 * breadth
+    raw_score = 0.75 * _weighted_mean(values, 50.0) + 0.25 * 100.0 * breadth
     coverage = total_weight / requested_weight if requested_weight else 0.0
+    score = 50.0 + min(1.0, coverage) * (raw_score - 50.0)
     return Signal(
         name="exposure_weighted_margin",
         score=round(clamp(score), 2),
         breadth=round(100.0 * breadth, 2),
         coverage=round(coverage, 4),
-        raw=raw,
-        warnings=[] if values else ["노출도 기준을 통과한 기업의 이익률 데이터가 부족합니다."],
+        raw={"companies": raw, "raw_score_before_coverage_shrinkage": raw_score},
+        warnings=(
+            ["노출도 기준을 통과한 기업의 이익률 데이터가 부족합니다."]
+            if not values
+            else (["이익률 데이터 확보율이 낮아 점수를 중립값 방향으로 축소했습니다."] if coverage < 0.55 else [])
+        ),
     )
 
 

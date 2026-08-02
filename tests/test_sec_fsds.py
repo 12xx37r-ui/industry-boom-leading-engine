@@ -198,5 +198,53 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
     )
     summary = run_global_holdout(tmp_path, tmp_path / "outputs")
     assert summary["dataset_gate_passed"] is True
-    assert summary["status"] in {"PASSED_V087_GLOBAL_HOLDOUT", "FAILED_V087_GLOBAL_HOLDOUT"}
+    assert summary["status"] in {"PASSED_V088_GLOBAL_HOLDOUT", "FAILED_V088_GLOBAL_HOLDOUT"}
     assert len(summary["ranking"]) == 7
+
+
+def test_quarterly_series_never_mixes_xbrl_tags() -> None:
+    rows = [
+        _record("2020-03-31", 1, 100, "Revenues"),
+        _record("2020-09-30", 1, 120, "Revenues"),
+        _record("2021-03-31", 1, 140, "Revenues"),
+        _record("2020-06-30", 1, 9999, "SalesRevenueNet"),
+        _record("2020-12-31", 1, 9999, "SalesRevenueNet"),
+        _record("2021-06-30", 1, 9999, "SalesRevenueNet"),
+    ]
+    tag, series = build_quarterly_series(rows, ["Revenues", "SalesRevenueNet"], "revenue")
+    assert tag == "Revenues"
+    assert len(series) == 3
+    assert {value for _, value in series} == {100.0, 120.0, 140.0}
+
+
+def test_quarterly_series_rejects_negative_nonnegative_flow() -> None:
+    rows = [
+        _record("2021-03-31", 1, 10, "PaymentsToAcquirePropertyPlantAndEquipment"),
+        _record("2021-06-30", 2, 5, "PaymentsToAcquirePropertyPlantAndEquipment"),
+        _record("2021-09-30", 3, 40, "PaymentsToAcquirePropertyPlantAndEquipment"),
+    ]
+    _, series = build_quarterly_series(
+        rows, ["PaymentsToAcquirePropertyPlantAndEquipment"], "capex"
+    )
+    assert ("2021-06-30", -5.0) not in series
+
+
+def test_prepare_seed_ignores_coreg_numbers(tmp_path: Path) -> None:
+    cache = tmp_path / "cache"
+    downloads = cache / "downloads"
+    downloads.mkdir(parents=True)
+    archive = downloads / "2022q1.zip"
+    sub_header = "adsh\tcik\tname\tform\tperiod\tfy\tfp\tfiled\n"
+    sub_rows = "0001\t1\tAAA Inc\t10-Q\t20220331\t2022\tQ1\t20220420\n"
+    num_header = "adsh\ttag\tversion\tcoreg\tddate\tqtrs\tuom\tvalue\tfootnote\n"
+    num_rows = (
+        "0001\tRevenues\tus-gaap/2022\t\t20220331\t1\tUSD\t100\t\n"
+        "0001\tRevenues\tus-gaap/2022\tSUBSIDIARY\t20220331\t1\tUSD\t9999\t\n"
+    )
+    with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr("sub.txt", sub_header + sub_rows)
+        zf.writestr("num.txt", num_header + num_rows)
+    client = SecFsdsClient(cache, "TestResearch test@example.com", periods=("2022q1",))
+    eligible, records = client._extract_records(archive, {"0000000001": "AAA"}, __import__("datetime").date(2022, 4, 30))
+    assert eligible == {"AAA"}
+    assert [row["value"] for row in records if row["tag"] == "Revenues"] == [100.0]

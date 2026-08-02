@@ -55,85 +55,202 @@ def _reader(zf: zipfile.ZipFile, filename: str) -> Iterable[dict[str, str]]:
     return csv.DictReader(text, delimiter="\t")
 
 
-def _best_records(records: list[dict[str, Any]], tags: list[str]) -> list[dict[str, Any]]:
-    priority = {tag: index for index, tag in enumerate(tags)}
+def _metric_from_tags(tags: list[str]) -> str | None:
+    requested = set(tags)
+    for metric, candidates in FLOW_TAGS.items():
+        if requested == set(candidates) or requested.intersection(candidates):
+            return metric
+    return None
+
+
+def _dedupe_single_tag(records: list[dict[str, Any]], tag: str) -> list[dict[str, Any]]:
+    """Keep one point-in-time fact per end-date/qtrs pair for one XBRL tag.
+
+    SEC FSDS contains the same comparative fact in later filings.  The latest filing
+    available by the configured cutoff is the correct point-in-time restatement, but
+    facts from different tags must never be differenced against each other.
+    """
     selected: dict[tuple[str, int], dict[str, Any]] = {}
     for record in records:
-        tag = str(record.get("tag") or "")
-        if tag not in priority:
+        if str(record.get("tag") or "") != tag:
             continue
-        key = (str(record["ddate"]), int(record["qtrs"]))
+        try:
+            key = (str(record["ddate"]), int(record["qtrs"]))
+        except (KeyError, TypeError, ValueError):
+            continue
         old = selected.get(key)
         if old is None:
             selected[key] = record
             continue
-        old_rank = priority.get(str(old.get("tag") or ""), 10_000)
-        new_rank = priority[tag]
-        if new_rank < old_rank or (
-            new_rank == old_rank and str(record.get("filed") or "") > str(old.get("filed") or "")
+        old_filed = str(old.get("filed") or "")
+        new_filed = str(record.get("filed") or "")
+        old_form = str(old.get("form") or "")
+        new_form = str(record.get("form") or "")
+        # Latest available restatement wins.  If filing dates tie, prefer the filing
+        # whose form naturally matches the duration (10-K for qtrs=4, 10-Q otherwise).
+        preferred_form = "10-K" if key[1] == 4 else "10-Q"
+        if new_filed > old_filed or (
+            new_filed == old_filed and new_form == preferred_form and old_form != preferred_form
         ):
             selected[key] = record
-    return sorted(selected.values(), key=lambda row: (row["ddate"], row["qtrs"], row["filed"]))
+    return sorted(selected.values(), key=lambda row: (str(row["ddate"]), int(row["qtrs"]), str(row.get("filed") or "")))
 
 
-def build_quarterly_series(records: list[dict[str, Any]], tags: list[str]) -> tuple[str | None, list[tuple[str, float]]]:
-    """Convert SEC FSDS qtrs=1/2/3/4 flow facts to point-in-time quarterly values.
-
-    Direct one-quarter facts win. Cumulative two-, three-, and four-quarter facts are
-    differenced only when the immediately preceding cumulative fact is near enough in
-    calendar time. This prevents unrelated fiscal years from being combined.
-    """
-
-    rows = _best_records(records, tags)
-    if not rows:
-        return None, []
-
-    direct: dict[str, tuple[float, str]] = {}
+def _series_for_tag(
+    records: list[dict[str, Any]],
+    tag: str,
+    metric: str | None,
+) -> tuple[list[tuple[str, float]], dict[str, Any]]:
+    rows = _dedupe_single_tag(records, tag)
+    direct: dict[str, tuple[float, str, str]] = {}
     cumulative: dict[int, list[dict[str, Any]]] = defaultdict(list)
+    rejected_negative = 0
+    derived_count = 0
+    nonnegative_metric = metric in {"revenue", "capex", "rd"}
+
+    def accept(value: float) -> bool:
+        nonlocal rejected_negative
+        if not math.isfinite(value):
+            return False
+        if nonnegative_metric and value < 0:
+            rejected_negative += 1
+            return False
+        return True
+
     for row in rows:
         qtrs = int(row["qtrs"])
         if qtrs == 1:
+            value = float(row["value"])
+            if not accept(value):
+                continue
             cumulative[1].append(row)
-            old = direct.get(row["ddate"])
-            if old is None or row["filed"] > old[1]:
-                direct[row["ddate"]] = (float(row["value"]), str(row["filed"]))
+            old = direct.get(str(row["ddate"]))
+            filed = str(row.get("filed") or "")
+            if old is None or filed > old[1]:
+                direct[str(row["ddate"])] = (value, filed, "direct")
         elif qtrs in {2, 3, 4}:
             cumulative[qtrs].append(row)
 
-    def nearest_previous(current: dict[str, Any], qtrs: int) -> dict[str, Any] | None:
-        current_date = _iso_date(current["ddate"])
-        choices: list[tuple[int, dict[str, Any]]] = []
-        for candidate in cumulative.get(qtrs, []):
-            candidate_date = _iso_date(candidate["ddate"])
+    def nearest_previous(current: dict[str, Any], expected_qtrs: int) -> dict[str, Any] | None:
+        current_date = _iso_date(str(current["ddate"]))
+        choices: list[tuple[int, str, dict[str, Any]]] = []
+        for candidate in cumulative.get(expected_qtrs, []):
+            candidate_date = _iso_date(str(candidate["ddate"]))
             gap = (current_date - candidate_date).days
-            if 45 <= gap <= 140:
-                choices.append((gap, candidate))
-        return min(choices, key=lambda item: item[0])[1] if choices else None
+            if 50 <= gap <= 140:
+                choices.append((gap, str(candidate.get("filed") or ""), candidate))
+        if not choices:
+            return None
+        # Closest fiscal quarter first; latest restatement breaks ties.
+        choices.sort(key=lambda item: (item[0], item[1]), reverse=False)
+        best_gap = choices[0][0]
+        tied = [item for item in choices if item[0] == best_gap]
+        return max(tied, key=lambda item: item[1])[2]
 
     for qtrs in (2, 3, 4):
-        for row in sorted(cumulative.get(qtrs, []), key=lambda item: item["ddate"]):
-            if row["ddate"] in direct:
+        for row in sorted(cumulative.get(qtrs, []), key=lambda item: (str(item["ddate"]), str(item.get("filed") or ""))):
+            end = str(row["ddate"])
+            if end in direct:
                 continue
             prior = nearest_previous(row, qtrs - 1)
             derived: float | None = None
             if prior is not None:
                 derived = float(row["value"]) - float(prior["value"])
             elif qtrs == 4:
-                annual_end = _iso_date(row["ddate"])
-                prior_direct = [
-                    value
-                    for ddate, (value, _) in direct.items()
-                    if 45 <= (annual_end - _iso_date(ddate)).days <= 330
+                annual_end = _iso_date(end)
+                prior_dates = [
+                    date
+                    for date in sorted(direct)
+                    if 45 <= (annual_end - _iso_date(date)).days <= 330
                 ]
-                if len(prior_direct) >= 3:
-                    derived = float(row["value"]) - sum(prior_direct[-3:])
-            if derived is not None and math.isfinite(derived):
-                direct[row["ddate"]] = (derived, str(row["filed"]))
+                # Use exactly the three immediately preceding, reasonably spaced quarters.
+                prior_dates = prior_dates[-3:]
+                if len(prior_dates) == 3:
+                    dates = [_iso_date(date) for date in prior_dates] + [annual_end]
+                    gaps = [(dates[index] - dates[index - 1]).days for index in range(1, len(dates))]
+                    if all(45 <= gap <= 140 for gap in gaps):
+                        derived = float(row["value"]) - sum(direct[date][0] for date in prior_dates)
+            if derived is not None and accept(derived):
+                direct[end] = (derived, str(row.get("filed") or ""), f"derived_qtrs_{qtrs}")
+                derived_count += 1
 
-    result = [(date, value) for date, (value, _) in sorted(direct.items())]
-    used_tags = [str(row["tag"]) for row in rows]
-    primary_tag = min(set(used_tags), key=lambda tag: tags.index(tag)) if used_tags else None
-    return primary_tag, result[-12:]
+    result = [(date, value) for date, (value, _, _) in sorted(direct.items())]
+    result = result[-16:]
+
+    continuity_gaps: list[int] = []
+    for index in range(1, len(result)):
+        continuity_gaps.append((_iso_date(result[index][0]) - _iso_date(result[index - 1][0])).days)
+    continuity = (
+        sum(1 for gap in continuity_gaps if 45 <= gap <= 140) / len(continuity_gaps)
+        if continuity_gaps else 0.0
+    )
+    yoy_values: list[float] = []
+    for index in range(4, len(result)):
+        previous = result[index - 4][1]
+        current = result[index][1]
+        if previous != 0:
+            yoy_values.append((current - previous) / abs(previous))
+    extreme_yoy = sum(1 for value in yoy_values if abs(value) > 5.0)
+    audit = {
+        "tag": tag,
+        "input_records": len(rows),
+        "quarter_count": len(result),
+        "direct_count": sum(1 for _, (_, _, source) in direct.items() if source == "direct"),
+        "derived_count": derived_count,
+        "rejected_negative": rejected_negative,
+        "continuity_ratio": round(continuity, 4),
+        "extreme_yoy_count": extreme_yoy,
+        "max_abs_yoy": round(max((abs(value) for value in yoy_values), default=0.0), 6),
+    }
+    return result, audit
+
+
+def build_quarterly_series_detailed(
+    records: list[dict[str, Any]],
+    tags: list[str],
+    metric: str | None = None,
+) -> tuple[str | None, list[tuple[str, float]], dict[str, Any]]:
+    """Build a consistent quarterly series without mixing XBRL concepts.
+
+    Each candidate tag is normalized independently.  The tag with the best usable
+    quarter coverage, continuity, and lowest anomaly count is selected.  This avoids
+    the V0.8.8 failure mode where one quarter used ``Revenues`` and another used a
+    different revenue concept before cumulative subtraction.
+    """
+    metric = metric or _metric_from_tags(tags)
+    candidates: dict[str, dict[str, Any]] = {}
+    best: tuple[tuple[float, ...], str, list[tuple[str, float]], dict[str, Any]] | None = None
+    for priority, tag in enumerate(tags):
+        values, audit = _series_for_tag(records, tag, metric)
+        candidates[tag] = audit
+        score = (
+            float(len(values)),
+            float(audit["continuity_ratio"]),
+            -float(audit["extreme_yoy_count"]),
+            -float(audit["rejected_negative"]),
+            -float(priority),
+        )
+        if best is None or score > best[0]:
+            best = (score, tag, values, audit)
+    if best is None or not best[2]:
+        return None, [], {"metric": metric, "selected_tag": None, "candidates": candidates}
+    _, tag, values, selected_audit = best
+    return tag, values[-12:], {
+        "metric": metric,
+        "selected_tag": tag,
+        "selected": selected_audit,
+        "candidates": candidates,
+        "mixed_tags": False,
+    }
+
+
+def build_quarterly_series(
+    records: list[dict[str, Any]],
+    tags: list[str],
+    metric: str | None = None,
+) -> tuple[str | None, list[tuple[str, float]]]:
+    tag, values, _ = build_quarterly_series_detailed(records, tags, metric)
+    return tag, values
 
 
 class SecFsdsClient:
@@ -261,6 +378,8 @@ class SecFsdsClient:
                 tag = str(row.get("tag") or "").strip()
                 if tag not in target_tags:
                     continue
+                if str(row.get("coreg") or "").strip():
+                    continue
                 if str(row.get("uom") or "").strip().upper() != "USD":
                     continue
                 try:
@@ -368,15 +487,19 @@ class SecFsdsClient:
 
         series: dict[str, dict[str, list[list[Any]]]] = {metric: {} for metric in METRICS}
         tags_used: dict[str, dict[str, str | None]] = {metric: {} for metric in METRICS}
+        series_audit: dict[str, dict[str, Any]] = {metric: {} for metric in METRICS}
         available_tickers: set[str] = set()
         company_status: dict[str, Any] = {}
         for ticker in requested:
             ticker_records = by_ticker.get(ticker, [])
             metric_lengths: dict[str, int] = {}
             for metric in METRICS:
-                tag, values = build_quarterly_series(ticker_records, FLOW_TAGS[metric])
+                tag, values, audit = build_quarterly_series_detailed(
+                    ticker_records, FLOW_TAGS[metric], metric
+                )
                 series[metric][ticker] = [[date, value] for date, value in values]
                 tags_used[metric][ticker] = tag
+                series_audit[metric][ticker] = audit
                 metric_lengths[metric] = len(values)
             usable = metric_lengths.get("revenue", 0) >= 5 or metric_lengths.get("capex", 0) >= 5
             if usable:
@@ -421,6 +544,7 @@ class SecFsdsClient:
             "status": status,
             "series": series,
             "tags_used": tags_used,
+            "series_audit": series_audit,
         }
         seed_path.parent.mkdir(parents=True, exist_ok=True)
         seed_path.write_text(json.dumps(seed, ensure_ascii=False, indent=2), encoding="utf-8")

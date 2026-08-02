@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from ible.analytics.sec_metrics import FLOW_TAGS
+from ible.collectors.sec_fsds import build_quarterly_series_detailed
 
 FORMS = {"10-K", "10-Q", "20-F", "40-F"}
 METRICS = ("capex", "rd", "revenue", "gross_profit", "operating_income")
@@ -63,78 +64,13 @@ def _reader(zf: zipfile.ZipFile, filename: str) -> Iterable[dict[str, str]]:
     return csv.DictReader(text, delimiter="\t")
 
 
-def _best_records(records: list[dict[str, Any]], tags: list[str]) -> list[dict[str, Any]]:
-    priority = {tag: index for index, tag in enumerate(tags)}
-    selected: dict[tuple[str, int], dict[str, Any]] = {}
-    for record in records:
-        tag = str(record.get("tag") or "")
-        if tag not in priority:
-            continue
-        key = (str(record["ddate"]), int(record["qtrs"]))
-        old = selected.get(key)
-        if old is None:
-            selected[key] = record
-            continue
-        old_rank = priority.get(str(old.get("tag") or ""), 10_000)
-        new_rank = priority[tag]
-        if new_rank < old_rank or (
-            new_rank == old_rank and str(record.get("filed") or "") > str(old.get("filed") or "")
-        ):
-            selected[key] = record
-    return sorted(selected.values(), key=lambda row: (row["ddate"], row["qtrs"], row["filed"]))
-
-
-def build_quarterly_series(records: list[dict[str, Any]], tags: list[str]) -> tuple[str | None, list[tuple[str, float]]]:
-    rows = _best_records(records, tags)
-    if not rows:
-        return None, []
-
-    direct: dict[str, tuple[float, str]] = {}
-    cumulative: dict[int, list[dict[str, Any]]] = defaultdict(list)
-    for row in rows:
-        qtrs = int(row["qtrs"])
-        if qtrs == 1:
-            cumulative[1].append(row)
-            old = direct.get(row["ddate"])
-            if old is None or row["filed"] > old[1]:
-                direct[row["ddate"]] = (float(row["value"]), str(row["filed"]))
-        elif qtrs in {2, 3, 4}:
-            cumulative[qtrs].append(row)
-
-    def nearest_previous(current: dict[str, Any], qtrs: int) -> dict[str, Any] | None:
-        current_date = _iso_date(current["ddate"])
-        choices: list[tuple[int, dict[str, Any]]] = []
-        for candidate in cumulative.get(qtrs, []):
-            candidate_date = _iso_date(candidate["ddate"])
-            gap = (current_date - candidate_date).days
-            if 45 <= gap <= 140:
-                choices.append((gap, candidate))
-        return min(choices, key=lambda item: item[0])[1] if choices else None
-
-    for qtrs in (2, 3, 4):
-        for row in sorted(cumulative.get(qtrs, []), key=lambda item: item["ddate"]):
-            if row["ddate"] in direct:
-                continue
-            prior = nearest_previous(row, qtrs - 1)
-            derived: float | None = None
-            if prior is not None:
-                derived = float(row["value"]) - float(prior["value"])
-            elif qtrs == 4:
-                annual_end = _iso_date(row["ddate"])
-                prior_direct = [
-                    value
-                    for ddate, (value, _) in direct.items()
-                    if 45 <= (annual_end - _iso_date(ddate)).days <= 330
-                ]
-                if len(prior_direct) >= 3:
-                    derived = float(row["value"]) - sum(prior_direct[-3:])
-            if derived is not None and math.isfinite(derived):
-                direct[row["ddate"]] = (derived, str(row["filed"]))
-
-    result = [(date, value) for date, (value, _) in sorted(direct.items())]
-    used_tags = [str(row["tag"]) for row in rows]
-    primary_tag = min(set(used_tags), key=lambda tag: tags.index(tag)) if used_tags else None
-    return primary_tag, result[-12:]
+def build_quarterly_series(
+    records: list[dict[str, Any]],
+    tags: list[str],
+    metric: str | None = None,
+) -> tuple[str | None, list[tuple[str, float]]]:
+    tag, values, _ = build_quarterly_series_detailed(records, tags, metric)
+    return tag, values
 
 
 def _valid_archive(path: Path) -> bool:
@@ -256,6 +192,8 @@ def extract_records(
             tag = str(row.get("tag") or "").strip()
             if tag not in target_tags:
                 continue
+            if str(row.get("coreg") or "").strip():
+                continue
             if str(row.get("uom") or "").strip().upper() != "USD":
                 continue
             try:
@@ -346,6 +284,7 @@ def _integrity_payload(seed: dict[str, Any]) -> dict[str, Any]:
     return {
         "series": seed.get("series") or {},
         "tags_used": seed.get("tags_used") or {},
+        "series_audit": seed.get("series_audit") or {},
         "research": seed.get("research") or {},
         "status": {
             key: (seed.get("status") or {}).get(key)
@@ -377,8 +316,8 @@ def load_request(root: Path) -> dict[str, Any]:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
         raise OfflineSeedError(f"cannot read {path}: {exc}") from exc
-    if payload.get("generator_version") != "0.8.7":
-        raise OfflineSeedError("offline_seed_request.json is not version 0.8.7")
+    if payload.get("generator_version") != "0.8.8":
+        raise OfflineSeedError("offline_seed_request.json is not version 0.8.8")
     return payload
 
 
@@ -421,15 +360,19 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
 
     series: dict[str, dict[str, list[list[Any]]]] = {metric: {} for metric in METRICS}
     tags_used: dict[str, dict[str, str | None]] = {metric: {} for metric in METRICS}
+    series_audit: dict[str, dict[str, Any]] = {metric: {} for metric in METRICS}
     available_tickers: set[str] = set()
     company_status: dict[str, Any] = {}
     for ticker in requested:
         ticker_records = by_ticker.get(ticker, [])
         metric_lengths: dict[str, int] = {}
         for metric in METRICS:
-            tag, values = build_quarterly_series(ticker_records, FLOW_TAGS[metric])
+            tag, values, audit = build_quarterly_series_detailed(
+                ticker_records, FLOW_TAGS[metric], metric
+            )
             series[metric][ticker] = [[date, value] for date, value in values]
             tags_used[metric][ticker] = tag
+            series_audit[metric][ticker] = audit
             metric_lengths[metric] = len(values)
         usable = metric_lengths.get("revenue", 0) >= 5 or metric_lengths.get("capex", 0) >= 5
         if usable:
@@ -463,6 +406,24 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
     research_ready = len(research) >= minimum_research if not skip_research else False
     status_value = "READY" if financial_ready and research_ready else "INSUFFICIENT_COVERAGE"
 
+    selected_audits = [
+        audit.get("selected") or {}
+        for metric_rows in series_audit.values()
+        for audit in metric_rows.values()
+        if isinstance(audit, dict) and audit.get("selected_tag")
+    ]
+    normalization_summary = {
+        "version": "fsds_quarter_v2_single_tag_robust",
+        "selected_series": len(selected_audits),
+        "mixed_tag_series": 0,
+        "series_with_extreme_yoy": sum(
+            1 for audit in selected_audits if int(audit.get("extreme_yoy_count") or 0) > 0
+        ),
+        "rejected_negative_values": sum(
+            int(audit.get("rejected_negative") or 0) for audit in selected_audits
+        ),
+    }
+
     status = {
         "status": status_value,
         "provider": "offline_sec_financial_statement_data_sets_plus_arxiv",
@@ -481,12 +442,14 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
         "research_required": len(research_rows),
         "research_available": len(research),
         "research_errors": research_errors,
+        "normalization": normalization_summary,
         "cache_hit": False,
     }
     seed: dict[str, Any] = {
         "metadata": {
-            "schema_version": 2,
-            "version": "0.8.7",
+            "schema_version": 3,
+            "version": "0.8.8",
+            "normalization_version": "fsds_quarter_v2_single_tag_robust",
             "source": "U.S. SEC Financial Statement Data Sets + arXiv Atom API",
             "source_url_template": source_template,
             "periods": periods,
@@ -499,6 +462,7 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
         "status": status,
         "series": series,
         "tags_used": tags_used,
+        "series_audit": series_audit,
         "research": research,
     }
     seed["metadata"]["content_sha256"] = compute_seed_sha256(seed)
@@ -540,8 +504,10 @@ def validate_seed(root: Path) -> dict[str, Any]:
     status = seed.get("status") or {}
     expected_tickers = sorted(str(row["ticker"]).upper() for row in request["tickers"])
     errors: list[str] = []
-    if metadata.get("version") != "0.8.7" or metadata.get("schema_version") != 2:
+    if metadata.get("version") != "0.8.8" or metadata.get("schema_version") != 3:
         errors.append("seed version/schema mismatch")
+    if metadata.get("normalization_version") != "fsds_quarter_v2_single_tag_robust":
+        errors.append("seed normalization version mismatch")
     if metadata.get("cutoff") != request.get("cutoff"):
         errors.append("cutoff mismatch")
     if sorted(metadata.get("requested_tickers") or []) != expected_tickers:
@@ -571,13 +537,14 @@ def validate_seed(root: Path) -> dict[str, Any]:
         "coverage": status.get("coverage_of_historically_eligible"),
         "research_available": status.get("research_available"),
         "research_required": status.get("research_required"),
+        "normalization": status.get("normalization"),
     }
     print(json.dumps(result, ensure_ascii=False, indent=2), flush=True)
     return result
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Build or validate the V0.8.7 offline SEC/arXiv seed")
+    parser = argparse.ArgumentParser(description="Build or validate the V0.8.8 offline SEC/arXiv seed")
     parser.add_argument("--root", default=".")
     parser.add_argument("--email", default="")
     parser.add_argument("--user-agent", default="")
@@ -590,7 +557,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.validate_only:
             validate_seed(root)
             return 0
-        user_agent = args.user_agent.strip() or f"IndustryBoomLeadingEngine/0.8.7 {args.email.strip()}"
+        user_agent = args.user_agent.strip() or f"IndustryBoomLeadingEngine/0.8.8 {args.email.strip()}"
         build_seed(root, user_agent, refresh=args.refresh, skip_research=args.skip_research)
         return 0
     except OfflineSeedError as exc:
