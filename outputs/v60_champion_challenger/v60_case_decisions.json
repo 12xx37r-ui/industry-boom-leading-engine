@@ -1,0 +1,381 @@
+{
+  "benchmark": [
+    {
+      "case_id": "ADDITIVE_2019",
+      "case_name": "3D프린팅 장기정체 통제군",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "negative",
+      "as_of": "2019-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 4,
+        "boom_score": 54.44,
+        "early_signal_score": 55.72,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "AI_2022",
+      "case_name": "생성형 AI·연산 인프라 전조",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "positive",
+      "as_of": "2022-10-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 1,
+        "boom_score": 63.14,
+        "early_signal_score": 61.16,
+        "stage": "EARLY_ACCUMULATION",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": true,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": true,
+        "passed": true,
+        "decision_reason": "CHAMPION_ALERT_PRESERVED"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "CLOUD_2018",
+      "case_name": "기업 클라우드 확산 전조",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "positive",
+      "as_of": "2018-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 3,
+        "boom_score": 60.16,
+        "early_signal_score": 57.58,
+        "stage": "WATCH",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": false
+      },
+      "challenger": {
+        "alert_triggered": true,
+        "passed": true,
+        "decision_reason": "WATCH_BRIDGE_STRONG_CONFIRMATION"
+      },
+      "changed_by_challenger": true
+    },
+    {
+      "case_id": "EV_2019",
+      "case_name": "전기차·배터리 대중화 전조",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "positive",
+      "as_of": "2019-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 5,
+        "boom_score": 54.09,
+        "early_signal_score": 54.68,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": false
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": false,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "HYDROGEN_2020",
+      "case_name": "수소 테마 과잉기대 통제군",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "negative",
+      "as_of": "2020-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 8,
+        "boom_score": 46.3,
+        "early_signal_score": 49.36,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "METAVERSE_2020",
+      "case_name": "메타버스 과열 통제군",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "negative",
+      "as_of": "2020-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 8,
+        "boom_score": 48.04,
+        "early_signal_score": 48.73,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "SOLAR_2019",
+      "case_name": "태양광 설치 붐 전조",
+      "source_role": "LOCKED_HISTORICAL_RESEARCH_BENCHMARK",
+      "label": "positive",
+      "as_of": "2019-06-30",
+      "data_eligible": false,
+      "observed": {
+        "rank": 6,
+        "boom_score": 40.91,
+        "early_signal_score": 43.42,
+        "stage": "INSUFFICIENT_DATA",
+        "data_confidence": 4.67
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": false
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": false,
+        "decision_reason": "INSUFFICIENT_DATA"
+      },
+      "changed_by_challenger": false
+    }
+  ],
+  "blind_holdout": [
+    {
+      "case_id": "BLIND_SEMIEQUIP_2019",
+      "case_name": "2019년 반도체 장비 투자확대 블라인드 검증",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "positive",
+      "as_of": "2019-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 1,
+        "boom_score": 61.79,
+        "early_signal_score": 60.9,
+        "stage": "EARLY_ACCUMULATION",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": true,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": true,
+        "passed": true,
+        "decision_reason": "CHAMPION_ALERT_PRESERVED"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "BLIND_AI_2018",
+      "case_name": "2018년 AI 연산 인프라 조기신호 블라인드 검증",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "positive",
+      "as_of": "2018-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 2,
+        "boom_score": 60.65,
+        "early_signal_score": 61.56,
+        "stage": "EARLY_ACCUMULATION",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": true,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": true,
+        "passed": true,
+        "decision_reason": "CHAMPION_ALERT_PRESERVED"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "BLIND_GRID_2020",
+      "case_name": "2020년 전력망·전기화 투자확대 블라인드 검증",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "positive",
+      "as_of": "2020-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 3,
+        "boom_score": 58.55,
+        "early_signal_score": 58.31,
+        "stage": "WATCH",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": false
+      },
+      "challenger": {
+        "alert_triggered": true,
+        "passed": true,
+        "decision_reason": "WATCH_BRIDGE_STRONG_CONFIRMATION"
+      },
+      "changed_by_challenger": true
+    },
+    {
+      "case_id": "BLIND_QUANTUM_2022_CONTROL",
+      "case_name": "2022년 양자컴퓨팅 조기상용화 과열 통제군",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "negative",
+      "as_of": "2022-10-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 2,
+        "boom_score": 57.24,
+        "early_signal_score": 54.86,
+        "stage": "WATCH",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "BLIND_STORAGE_2022",
+      "case_name": "2022년 에너지저장 산업화 블라인드 검증",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "positive",
+      "as_of": "2022-10-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 4,
+        "boom_score": 56.05,
+        "early_signal_score": 59.64,
+        "stage": "TRANSITION",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": true,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": true,
+        "passed": true,
+        "decision_reason": "CHAMPION_ALERT_PRESERVED"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "BLIND_HYDROGEN_2018_CONTROL",
+      "case_name": "2018년 수소경제 과잉기대 통제군",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "negative",
+      "as_of": "2018-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 6,
+        "boom_score": 54.46,
+        "early_signal_score": 53.91,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 71.31
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "BLIND_ADDITIVE_2018_CONTROL",
+      "case_name": "2018년 3D프린팅 광범위 산업화 과열 통제군",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "negative",
+      "as_of": "2018-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 7,
+        "boom_score": 53.66,
+        "early_signal_score": 50.76,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 74.0
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    },
+    {
+      "case_id": "BLIND_ROBOTICS_2020_CONTROL",
+      "case_name": "2020년 로봇 자동화 광범위 붐 과열 통제군",
+      "source_role": "SEALED_THEME_DATE_HOLDOUT_NOT_EXTERNAL",
+      "label": "negative",
+      "as_of": "2020-12-31",
+      "data_eligible": true,
+      "observed": {
+        "rank": 5,
+        "boom_score": 51.89,
+        "early_signal_score": 50.98,
+        "stage": "NO_SIGNAL",
+        "data_confidence": 53.67
+      },
+      "champion": {
+        "alert_triggered": false,
+        "passed": true
+      },
+      "challenger": {
+        "alert_triggered": false,
+        "passed": true,
+        "decision_reason": "NO_ALERT"
+      },
+      "changed_by_challenger": false
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "status": "V6_0_CHALLENGER_RESEARCH_GATE_PASSED_SHADOW_ONLY",
+  "engine_release": "6.0.0-champion-challenger-research",
+  "as_of": "2026-08-02",
+  "comparison_receipt_action": "CREATED_IMMUTABLE_COMPARISON_RECEIPT",
+  "policy_lock": {
+    "status": "POLICY_LOCK_VERIFIED",
+    "policy_id": "WATCH_BRIDGE_STRONG_CONFIRMATION_V1",
+    "policy_file": "config/v60_challenger_policy.json",
+    "expected_sha256": "26f5869f0bb8b436405dd75bde300c3044abf3a9248ea9fb00466fd9d5903ae7",
+    "actual_sha256": "26f5869f0bb8b436405dd75bde300c3044abf3a9248ea9fb00466fd9d5903ae7",
+    "sealed_at": "2026-08-02T22:00:00+09:00"
+  },
+  "model_lock": {
+    "status": "LOCK_VERIFIED",
+    "lock_schema_version": 3,
+    "frozen_model_version": "0.9.1",
+    "engine_release": "1.0.4-github-robust",
+    "sealed_at": "2026-08-02T18:29:00+09:00",
+    "rule": "V0.9.1 계산식 변경 시 잠금 검증 실패. V1.0.4은 저장소에 남은 레거시 테스트를 수집하지 않습니다.",
+    "checks": [
+      {
+        "file": "config/backtests.yml",
+        "status": "MATCH",
+        "expected_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7",
+        "actual_sha256": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7"
+      },
+      {
+        "file": "config/theme_exposures.yml",
+        "status": "MATCH",
+        "expected_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037",
+        "actual_sha256": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037"
+      },
+      {
+        "file": "src/ible/analytics/exposure_scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
+        "actual_sha256": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4"
+      },
+      {
+        "file": "src/ible/analytics/scoring.py",
+        "status": "MATCH",
+        "expected_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
+        "actual_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6"
+      },
+      {
+        "file": "src/ible/analytics/sec_metrics.py",
+        "status": "MATCH",
+        "expected_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9",
+        "actual_sha256": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9"
+      },
+      {
+        "file": "src/ible/analytics/timeseries.py",
+        "status": "MATCH",
+        "expected_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551",
+        "actual_sha256": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551"
+      },
+      {
+        "file": "src/ible/backtest.py",
+        "status": "MATCH",
+        "expected_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+        "actual_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24"
+      },
+      {
+        "file": "src/ible/global_validation.py",
+        "status": "MATCH",
+        "expected_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
+        "actual_sha256": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60"
+      }
+    ],
+    "failures": []
+  },
+  "benchmark": {
+    "champion": {
+      "scenario_count": 7,
+      "eligible_scenario_count": 6,
+      "positive_count": 3,
+      "negative_count": 3,
+      "positive_pass_count": 1,
+      "negative_pass_count": 3,
+      "positive_recall": 0.3333,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 0.6666,
+      "alert_precision": 1.0
+    },
+    "challenger": {
+      "scenario_count": 7,
+      "eligible_scenario_count": 6,
+      "positive_count": 3,
+      "negative_count": 3,
+      "positive_pass_count": 2,
+      "negative_pass_count": 3,
+      "positive_recall": 0.6667,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 0.8334,
+      "alert_precision": 1.0
+    },
+    "delta": {
+      "positive_recall": 0.3334,
+      "false_alarm_rate": 0.0,
+      "specificity": 0.0,
+      "balanced_score": 0.1668,
+      "alert_precision": 0.0
+    }
+  },
+  "blind_holdout": {
+    "champion": {
+      "scenario_count": 8,
+      "eligible_scenario_count": 8,
+      "positive_count": 4,
+      "negative_count": 4,
+      "positive_pass_count": 3,
+      "negative_pass_count": 4,
+      "positive_recall": 0.75,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 0.875,
+      "alert_precision": 1.0
+    },
+    "challenger": {
+      "scenario_count": 8,
+      "eligible_scenario_count": 8,
+      "positive_count": 4,
+      "negative_count": 4,
+      "positive_pass_count": 4,
+      "negative_pass_count": 4,
+      "positive_recall": 1.0,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 1.0,
+      "alert_precision": 1.0
+    },
+    "delta": {
+      "positive_recall": 0.25,
+      "false_alarm_rate": 0.0,
+      "specificity": 0.0,
+      "balanced_score": 0.125,
+      "alert_precision": 0.0
+    }
+  },
+  "research_gate_passed": true,
+  "champion_remains_active": true,
+  "challenger_mode": "PROSPECTIVE_SHADOW_ONLY",
+  "challenger_promotion_allowed": false,
+  "investment_use_allowed": false,
+  "v51_status": "V5_1_HISTORICAL_AUDIT_COMPLETED_RECALL_GAP",
+  "next_required_gate": "RUN_CHALLENGER_IN_PROSPECTIVE_SHADOW_AND_COMPARE_6_12_24_MONTH_OUTCOMES",
+  "manual_run_required_after_bootstrap": false
+}

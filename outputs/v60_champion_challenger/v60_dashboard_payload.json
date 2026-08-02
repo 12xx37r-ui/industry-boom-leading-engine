@@ -1,0 +1,70 @@
+{
+  "status": "V6_0_CHALLENGER_RESEARCH_GATE_PASSED_SHADOW_ONLY",
+  "as_of": "2026-08-02",
+  "champion": {
+    "model_version": "0.9.1",
+    "active": true,
+    "benchmark": {
+      "scenario_count": 7,
+      "eligible_scenario_count": 6,
+      "positive_count": 3,
+      "negative_count": 3,
+      "positive_pass_count": 1,
+      "negative_pass_count": 3,
+      "positive_recall": 0.3333,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 0.6666,
+      "alert_precision": 1.0
+    },
+    "blind": {
+      "scenario_count": 8,
+      "eligible_scenario_count": 8,
+      "positive_count": 4,
+      "negative_count": 4,
+      "positive_pass_count": 3,
+      "negative_pass_count": 4,
+      "positive_recall": 0.75,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 0.875,
+      "alert_precision": 1.0
+    }
+  },
+  "challenger": {
+    "policy_id": "WATCH_BRIDGE_STRONG_CONFIRMATION_V1",
+    "mode": "SHADOW_ONLY",
+    "benchmark": {
+      "scenario_count": 7,
+      "eligible_scenario_count": 6,
+      "positive_count": 3,
+      "negative_count": 3,
+      "positive_pass_count": 2,
+      "negative_pass_count": 3,
+      "positive_recall": 0.6667,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 0.8334,
+      "alert_precision": 1.0
+    },
+    "blind": {
+      "scenario_count": 8,
+      "eligible_scenario_count": 8,
+      "positive_count": 4,
+      "negative_count": 4,
+      "positive_pass_count": 4,
+      "negative_pass_count": 4,
+      "positive_recall": 1.0,
+      "false_alarm_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_score": 1.0,
+      "alert_precision": 1.0
+    }
+  },
+  "changed_cases": [
+    "CLOUD_2018",
+    "BLIND_GRID_2020"
+  ],
+  "warning": "Challenger는 V5.1 진단 후 같은 역사·봉인 자료를 참고해 정의됐으므로 연구 게이트 통과가 곧 외부검증 또는 실전 승격을 뜻하지 않습니다.",
+  "investment_use_allowed": false
+}

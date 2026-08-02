@@ -1,0 +1,8 @@
+{
+  "status": "POLICY_LOCK_VERIFIED",
+  "policy_id": "WATCH_BRIDGE_STRONG_CONFIRMATION_V1",
+  "policy_file": "config/v60_challenger_policy.json",
+  "expected_sha256": "26f5869f0bb8b436405dd75bde300c3044abf3a9248ea9fb00466fd9d5903ae7",
+  "actual_sha256": "26f5869f0bb8b436405dd75bde300c3044abf3a9248ea9fb00466fd9d5903ae7",
+  "sealed_at": "2026-08-02T22:00:00+09:00"
+}
