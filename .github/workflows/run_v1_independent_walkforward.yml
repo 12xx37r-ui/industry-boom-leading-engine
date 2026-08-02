@@ -1,0 +1,94 @@
+name: Industry Boom V1.0 Independent Walk-Forward
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONUNBUFFERED: '1'
+      PYTHONPATH: ${{ github.workspace }}/src
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install and test
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt
+          python -m pytest -q
+      - name: Verify frozen V0.9.1 model and sealed designs
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from ible.model_lock import load_and_verify_model_lock
+          result = load_and_verify_model_lock(Path('.').resolve())
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          PY
+      - name: Validate both PC-built point-in-time seeds
+        run: |
+          set -euo pipefail
+          python -m ible.offline_seed_cli \
+            --root . --validate-only \
+            --request-file config/v1_offline_seed_request.json \
+            --output-file validation_seed/sec_fsds_v1_ai_2022.json
+          python -m ible.offline_seed_cli \
+            --root . --validate-only \
+            --request-file config/v1_external_seed_request.json \
+            --output-file validation_seed/sec_fsds_v1_external_2023h1.json
+      - name: Run locked AI benchmark replay
+        run: |
+          set -euo pipefail
+          rm -rf outputs/v1_ai_replay
+          python -m ible.v1_walkforward_cli --root . --output-dir outputs/v1_ai_replay
+      - name: Run independent external walk-forward holdout
+        run: |
+          set -euo pipefail
+          rm -rf outputs/v1_external
+          python -m ible.v1_external_holdout_cli --root . --output-dir outputs/v1_external
+      - name: Validate V1 release outputs
+        run: |
+          set -euo pipefail
+          test -s outputs/v1_ai_replay/v1_walkforward_summary.json
+          test -s outputs/v1_external/v1_external_summary.json
+          test -s outputs/v1_external/v1_external_ranking.json
+          test -s outputs/v1_external/v1_external_scenarios.json
+          python - <<'PY'
+          import json
+          ai=json.load(open('outputs/v1_ai_replay/v1_walkforward_summary.json',encoding='utf-8'))
+          ext=json.load(open('outputs/v1_external/v1_external_summary.json',encoding='utf-8'))
+          print(json.dumps({
+            'ai_locked_replay': {'status':ai['status'],'metrics':ai['metrics']},
+            'external_holdout': {'status':ext['status'],'metrics':ext['metrics']},
+            'model_lock_status':ext['model_lock']['status'],
+          },ensure_ascii=False,indent=2))
+          assert ai.get('investment_use_allowed') is False
+          assert ai.get('validation_role') == 'locked_ai_replay_not_independent'
+          assert ai.get('status') in {'V1_AI_LOCKED_REPLAY_PASSED','V1_AI_LOCKED_REPLAY_FAILED'}
+          assert ext.get('investment_use_allowed') is False
+          assert ext.get('validation_role') == 'independent_external_holdout'
+          assert ext.get('frozen_model_version') == '0.9.1'
+          assert ext.get('model_lock',{}).get('status') == 'LOCK_VERIFIED'
+          assert ext.get('dataset_gate_passed') is True
+          assert ext.get('status') in {'V1_EXTERNAL_HOLDOUT_PASSED','V1_EXTERNAL_HOLDOUT_FAILED'}
+          PY
+      - name: Upload result
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: industry-boom-v1-independent-walkforward
+          path: |
+            outputs/v1_ai_replay
+            outputs/v1_external
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 9
