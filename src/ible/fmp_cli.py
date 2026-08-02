@@ -9,7 +9,7 @@ from ible.config import load_yaml
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Prepare FMP quarterly statement cache")
+    parser = argparse.ArgumentParser(description="Prepare free-plan-compatible FMP annual snapshot cache")
     parser.add_argument("--root", default=".")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
@@ -27,7 +27,12 @@ def main() -> None:
     ]
     client = FmpClient(root / ".cache" / "fmp", os.getenv("FMP_API_KEY", ""))
     result = client.prepare_subset(tickers, force=args.force)
-    print(result)
+    print(
+        f"[FMP] finished status={result['status']} requested={result['requested']} "
+        f"available={result['available']} downloaded={result['downloaded']} "
+        f"missing={len(result['missing'])}",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":

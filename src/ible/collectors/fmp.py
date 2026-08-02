@@ -16,17 +16,28 @@ class FmpError(RuntimeError):
 
 
 class FmpClient:
-    """Download point-in-time quarterly statements from Financial Modeling Prep.
+    """Free-plan-compatible FMP collector.
 
-    V0.8.4 performs one real preflight request before downloading the cohort.  A
-    bad key, unavailable endpoint, or subscription restriction therefore fails
-    immediately with the provider's response instead of retrying every ticker.
+    V0.8.5 uses only the current ``/stable`` endpoints, hard-limits every
+    request to five annual rows, and never calls the retired legacy API.  The
+    2021 holdout snapshot is reconstructed from the latest available FY row
+    plus FMP's year-over-year growth row.  This avoids asking the free plan for
+    historical quarterly depth that it does not provide.
+
+    Provider restrictions are fail-soft: diagnostics are written and the
+    workflow can still produce an ``INSUFFICIENT_DATA`` result rather than a
+    red workflow failure.
     """
 
     STABLE_BASE = "https://financialmodelingprep.com/stable"
-    LEGACY_BASE = "https://financialmodelingprep.com/api/v3"
     METRICS = ("capex", "rd", "revenue", "gross_profit", "operating_income")
+    FREE_LIMIT = 5
     PERMANENT_HTTP_CODES = {400, 401, 402, 403, 404, 422}
+    ENDPOINTS = (
+        "income-statement",
+        "cash-flow-statement",
+        "financial-growth",
+    )
 
     def __init__(
         self,
@@ -34,7 +45,7 @@ class FmpClient:
         api_key: str,
         timeout: int = 45,
         min_interval: float = 0.35,
-        quarter_limit: int | None = None,
+        annual_limit: int | None = None,
     ) -> None:
         self.cache_dir = Path(cache_dir)
         self.subset_dir = self.cache_dir / "subset"
@@ -44,8 +55,8 @@ class FmpClient:
         self.api_key = self._sanitize_api_key(api_key)
         self.timeout = int(timeout)
         self.min_interval = max(0.25, float(min_interval))
-        configured_limit = quarter_limit or int(os.getenv("FMP_QUARTER_LIMIT", "20"))
-        self.quarter_limit = max(8, min(20, int(configured_limit)))
+        configured = annual_limit or int(os.getenv("FMP_ANNUAL_LIMIT", str(self.FREE_LIMIT)))
+        self.annual_limit = max(1, min(self.FREE_LIMIT, int(configured)))
         self._last_request_at = 0.0
         self.session = requests.Session()
         self.preflight_result: dict[str, Any] | None = None
@@ -55,7 +66,7 @@ class FmpClient:
         text = str(value or "").strip().strip('"').strip("'")
         for prefix in ("?apikey=", "&apikey=", "apikey="):
             if text.lower().startswith(prefix):
-                text = text[len(prefix):].strip()
+                text = text[len(prefix) :].strip()
                 break
         return text
 
@@ -77,7 +88,7 @@ class FmpClient:
     def _response_detail(self, response: requests.Response) -> str:
         body = ""
         try:
-            body = response.text[:500].replace("\n", " ").strip()
+            body = response.text[:700].replace("\n", " ").strip()
         except Exception:  # noqa: BLE001
             pass
         detail = f"HTTP {response.status_code}"
@@ -108,175 +119,152 @@ class FmpClient:
             "unauthorized",
             "forbidden",
             "endpoint not available",
+            "legacy endpoint",
+            "premium query parameter",
         )
         return any(term in lowered for term in permanent_terms)
 
     def _request_rows(
         self,
-        url: str,
-        params: dict[str, Any],
-        *,
-        purpose: str,
+        endpoint: str,
+        ticker: str,
     ) -> list[dict[str, Any]]:
+        """Request one current stable endpoint with free-plan-safe params."""
+        url = f"{self.STABLE_BASE}/{endpoint}"
+        params = {
+            "symbol": ticker,
+            "period": "annual",
+            "limit": self.annual_limit,
+            "apikey": self.api_key,
+        }
         last_error = "unknown error"
-        for attempt in range(1, 4):
+        for attempt in range(1, 3):
             try:
                 self._respect_rate_limit()
                 response = self.session.get(
                     url,
-                    params={**params, "apikey": self.api_key},
+                    params=params,
                     headers={
                         "Accept": "application/json",
-                        "User-Agent": "IndustryBoomLeadingEngine/0.8.4",
+                        "User-Agent": "IndustryBoomLeadingEngine/0.8.5",
                     },
                     timeout=(15, self.timeout),
                 )
                 if response.status_code >= 400:
                     detail = self._response_detail(response)
                     if response.status_code in self.PERMANENT_HTTP_CODES:
-                        raise FmpError(f"{purpose}: permanent access failure: {detail}")
-                    raise RuntimeError(f"{purpose}: transient provider failure: {detail}")
+                        raise FmpError(f"{endpoint} {ticker}: permanent access failure: {detail}")
+                    raise RuntimeError(f"{endpoint} {ticker}: transient provider failure: {detail}")
                 try:
                     payload = response.json()
                 except Exception as exc:  # noqa: BLE001
-                    raise RuntimeError(f"{purpose}: invalid JSON response") from exc
+                    raise RuntimeError(f"{endpoint} {ticker}: invalid JSON response") from exc
                 message = self._payload_message(payload)
                 if message:
                     clean = self._redact(message)
                     if self._is_permanent_message(clean):
-                        raise FmpError(f"{purpose}: permanent access failure: {clean}")
-                    raise RuntimeError(f"{purpose}: provider error: {clean}")
+                        raise FmpError(f"{endpoint} {ticker}: permanent access failure: {clean}")
+                    raise RuntimeError(f"{endpoint} {ticker}: provider error: {clean}")
                 if not isinstance(payload, list):
-                    raise RuntimeError(f"{purpose}: response is not a statement list")
+                    raise RuntimeError(f"{endpoint} {ticker}: response is not a list")
                 return [row for row in payload if isinstance(row, dict)]
             except FmpError:
                 raise
             except Exception as exc:  # noqa: BLE001
                 last_error = self._redact(str(exc))
-                if attempt < 3:
-                    time.sleep(2**attempt)
+                if attempt < 2:
+                    time.sleep(2)
         raise FmpError(last_error)
 
-    def _statement_rows(
-        self,
-        ticker: str,
-        statement: str,
-        *,
-        limit: int,
-    ) -> tuple[list[dict[str, Any]], str]:
-        stable_url = f"{self.STABLE_BASE}/{statement}"
-        legacy_url = f"{self.LEGACY_BASE}/{statement}/{ticker}"
-        errors: list[str] = []
-        candidates = (
-            (stable_url, {"symbol": ticker, "period": "quarter", "limit": limit}),
-            (legacy_url, {"period": "quarter", "limit": limit}),
-        )
-        for url, params in candidates:
-            try:
-                rows = self._request_rows(
-                    url,
-                    params,
-                    purpose=f"{statement} {ticker}",
-                )
-                if rows:
-                    return rows, url
-                errors.append(f"{url}: empty response")
-            except FmpError as exc:
-                errors.append(str(exc))
-                # A stable-endpoint plan restriction does not prove the legacy
-                # endpoint is unavailable, so try both official forms once.
-                continue
-        raise FmpError(" | ".join(errors))
-
     def preflight(self) -> dict[str, Any]:
-        """Validate the exact quarterly request used by the cohort.
-
-        The API key is supplied as the ``apikey`` query parameter by requests.
-        The key itself is never printed or written to diagnostics.
-        """
-        self.validate_api_key()
+        """Probe the exact free-plan annual routes without raising outward."""
         try:
-            rows, source = self._statement_rows(
-                "AAPL",
-                "income-statement",
-                limit=min(20, self.quarter_limit),
-            )
-            result = {
-                "status": "OK",
-                "ticker": "AAPL",
-                "period": "quarter",
-                "limit": self.quarter_limit,
-                "rows": len(rows),
-                "source": source,
-            }
-            self.preflight_result = result
-            print(
-                f"[FMP-PREFLIGHT] OK rows={len(rows)} source={source} "
-                f"period=quarter limit={self.quarter_limit}",
-                flush=True,
-            )
-            return result
-        except Exception as exc:  # noqa: BLE001
-            detail = self._redact(str(exc))
+            self.validate_api_key()
+        except FmpError as exc:
             result = {
                 "status": "FAILED",
                 "ticker": "AAPL",
-                "period": "quarter",
-                "limit": self.quarter_limit,
-                "error": detail,
+                "period": "annual",
+                "limit": self.annual_limit,
+                "working_endpoints": [],
+                "errors": {"api_key": str(exc)},
             }
             self.preflight_result = result
-            self.status_path.write_text(
-                json.dumps(
-                    {
-                        "status": "PREFLIGHT_FAILED",
-                        "provider": "financialmodelingprep",
-                        "preflight": result,
-                        "requested": 0,
-                        "downloaded": 0,
-                        "available": 0,
-                    },
-                    ensure_ascii=False,
-                    indent=2,
-                ),
-                encoding="utf-8",
-            )
-            print(f"[FMP-PREFLIGHT] FAILED {detail}", flush=True)
-            raise FmpError(
-                "FMP preflight failed before cohort download. "
-                "The API key or quarterly-statement access is unavailable. "
-                f"Provider response: {detail}"
-            ) from exc
+            print(f"[FMP-PREFLIGHT] FAILED {exc}", flush=True)
+            return result
+
+        working: list[str] = []
+        errors: dict[str, str] = {}
+        row_counts: dict[str, int] = {}
+        for endpoint in self.ENDPOINTS:
+            try:
+                rows = self._request_rows(endpoint, "AAPL")
+                row_counts[endpoint] = len(rows)
+                if rows:
+                    working.append(endpoint)
+                else:
+                    errors[endpoint] = "empty response"
+            except Exception as exc:  # noqa: BLE001
+                errors[endpoint] = self._redact(str(exc))
+
+        if "income-statement" in working:
+            status = "OK" if len(working) == len(self.ENDPOINTS) else "PARTIAL"
+        else:
+            status = "FAILED"
+        result = {
+            "status": status,
+            "ticker": "AAPL",
+            "period": "annual",
+            "limit": self.annual_limit,
+            "working_endpoints": working,
+            "row_counts": row_counts,
+            "errors": errors,
+        }
+        self.preflight_result = result
+        print(
+            f"[FMP-PREFLIGHT] {status} working={len(working)}/{len(self.ENDPOINTS)} "
+            f"limit={self.annual_limit} endpoints={','.join(working) or 'none'}",
+            flush=True,
+        )
+        if errors:
+            first = next(iter(errors.values()))
+            print(f"[FMP-PREFLIGHT] first_error={first[:350]}", flush=True)
+        return result
 
     def _download_ticker(self, ticker: str) -> dict[str, Any]:
-        income, income_source = self._statement_rows(
-            ticker,
-            "income-statement",
-            limit=self.quarter_limit,
-        )
-        cashflow, cashflow_source = self._statement_rows(
-            ticker,
-            "cash-flow-statement",
-            limit=self.quarter_limit,
-        )
-        if not income and not cashflow:
-            raise FmpError("empty income and cash-flow statements")
-        return {
+        payload: dict[str, Any] = {
             "ticker": ticker,
-            "period_mode": "quarter",
-            "quarter_limit": self.quarter_limit,
-            "income_statement": income,
-            "cash_flow_statement": cashflow,
+            "period_mode": "annual",
+            "annual_limit": self.annual_limit,
+            "method": "free_plan_annual_plus_growth_bridge",
+            "endpoint_errors": {},
             "provenance": {
                 "provider": "financialmodelingprep",
-                "income_source": income_source,
-                "cashflow_source": cashflow_source,
+                "base": self.STABLE_BASE,
                 "retrieved_at": dt.datetime.now(dt.timezone.utc).isoformat(),
             },
         }
+        endpoint_to_key = {
+            "income-statement": "income_statement",
+            "cash-flow-statement": "cash_flow_statement",
+            "financial-growth": "financial_growth",
+        }
+        available = 0
+        for endpoint in self.ENDPOINTS:
+            key = endpoint_to_key[endpoint]
+            try:
+                rows = self._request_rows(endpoint, ticker)
+                payload[key] = rows
+                if rows:
+                    available += 1
+            except Exception as exc:  # noqa: BLE001
+                payload[key] = []
+                payload["endpoint_errors"][endpoint] = self._redact(str(exc))
+        if available == 0:
+            raise FmpError("all current stable annual endpoints returned no usable data")
+        return payload
 
     def prepare_subset(self, tickers: Iterable[str], force: bool = False) -> dict[str, Any]:
-        self.validate_api_key()
         requested = sorted({str(t).upper() for t in tickers})
         if force:
             for ticker in requested:
@@ -284,43 +272,47 @@ class FmpClient:
 
         existing = [ticker for ticker in requested if (self.subset_dir / f"{ticker}.json").exists()]
         remaining = [ticker for ticker in requested if ticker not in existing]
-        if remaining:
-            self.preflight()
+        preflight = self.preflight() if remaining else None
 
         errors: dict[str, str] = {}
         downloaded = 0
         print(
             f"[FMP] companies={len(requested)} cached={len(existing)} download={len(remaining)} "
-            f"quarter_limit={self.quarter_limit}",
+            f"period=annual limit={self.annual_limit}",
             flush=True,
         )
 
-        for index, ticker in enumerate(remaining, start=1):
-            try:
-                payload = self._download_ticker(ticker)
-                (self.subset_dir / f"{ticker}.json").write_text(
-                    json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
-                    encoding="utf-8",
-                )
-                downloaded += 1
-            except Exception as exc:  # noqa: BLE001
-                errors[ticker] = self._redact(str(exc))
-            if index == len(remaining) or index % 5 == 0:
-                first_error = next(iter(errors.values()), "")
-                suffix = f" first_error={first_error[:220]}" if first_error else ""
-                print(
-                    f"[FMP] {index}/{len(remaining)} downloaded={downloaded} "
-                    f"errors={len(errors)}{suffix}",
-                    flush=True,
-                )
+        if remaining and preflight and preflight.get("status") == "FAILED":
+            first = next(iter((preflight.get("errors") or {}).values()), "preflight unavailable")
+            errors = {ticker: first for ticker in remaining}
+        else:
+            for index, ticker in enumerate(remaining, start=1):
+                try:
+                    payload = self._download_ticker(ticker)
+                    (self.subset_dir / f"{ticker}.json").write_text(
+                        json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
+                        encoding="utf-8",
+                    )
+                    downloaded += 1
+                except Exception as exc:  # noqa: BLE001
+                    errors[ticker] = self._redact(str(exc))
+                if index == len(remaining) or index % 5 == 0:
+                    first_error = next(iter(errors.values()), "")
+                    suffix = f" first_error={first_error[:220]}" if first_error else ""
+                    print(
+                        f"[FMP] {index}/{len(remaining)} downloaded={downloaded} "
+                        f"errors={len(errors)}{suffix}",
+                        flush=True,
+                    )
 
         present = [ticker for ticker in requested if (self.subset_dir / f"{ticker}.json").exists()]
         missing = [ticker for ticker in requested if ticker not in present]
         result = {
             "status": "COMPLETE" if not missing else "PARTIAL" if present else "UNAVAILABLE",
             "provider": "financialmodelingprep",
-            "period": "quarter",
-            "quarter_limit": self.quarter_limit,
+            "period": "annual",
+            "annual_limit": self.annual_limit,
+            "method": "free_plan_annual_plus_growth_bridge",
             "preflight": self.preflight_result,
             "requested": len(requested),
             "cached": len(existing),
@@ -332,10 +324,9 @@ class FmpClient:
         }
         self.status_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         if not present:
-            first_error = next(iter(result["errors"].values()), "unknown provider response")
-            raise FmpError(
-                f"FMP financial statements unavailable for all {len(requested)} companies. "
-                f"First error: {first_error}"
+            print(
+                "[FMP] no statements available; continuing with an insufficient-data result instead of failing",
+                flush=True,
             )
         return result
 
@@ -352,27 +343,52 @@ class FmpClient:
         return text
 
     @classmethod
-    def _quarter_rows(cls, rows: list[dict[str, Any]], as_of: str) -> list[dict[str, Any]]:
+    def _filed_date(cls, row: dict[str, Any]) -> str | None:
+        for key in ("filingDate", "fillingDate", "acceptedDate"):
+            value = cls._date_text(row, key)
+            if value:
+                return value
+        return None
+
+    @staticmethod
+    def _year(row: dict[str, Any]) -> int | None:
+        for key in ("calendarYear", "fiscalYear", "year"):
+            value = row.get(key)
+            try:
+                return int(str(value)[:4])
+            except (TypeError, ValueError):
+                pass
+        value = row.get("date")
+        try:
+            return int(str(value)[:4])
+        except (TypeError, ValueError):
+            return None
+
+    @classmethod
+    def _annual_rows(cls, rows: list[dict[str, Any]], as_of: str) -> list[dict[str, Any]]:
         cutoff = dt.date.fromisoformat(as_of)
-        by_period: dict[str, dict[str, Any]] = {}
+        by_year: dict[int, dict[str, Any]] = {}
         for row in rows:
-            period = str(row.get("period") or "").upper()
-            if period and period not in {"Q1", "Q2", "Q3", "Q4"}:
+            period = str(row.get("period") or "FY").upper()
+            if period not in {"FY", "ANNUAL", "YEAR", ""}:
                 continue
             end = cls._date_text(row, "date")
-            filed = cls._date_text(row, "filingDate") or cls._date_text(row, "acceptedDate")
-            if not end or not filed:
+            filed = cls._filed_date(row)
+            year = cls._year(row)
+            if year is None or not end:
                 continue
-            if dt.date.fromisoformat(end) > cutoff or dt.date.fromisoformat(filed) > cutoff:
+            if dt.date.fromisoformat(end) > cutoff:
                 continue
-            old = by_period.get(end)
+            if filed and dt.date.fromisoformat(filed) > cutoff:
+                continue
+            old = by_year.get(year)
             if old is None:
-                by_period[end] = row
+                by_year[year] = row
                 continue
-            old_filed = cls._date_text(old, "filingDate") or cls._date_text(old, "acceptedDate") or ""
-            if filed > old_filed:
-                by_period[end] = row
-        return [by_period[key] for key in sorted(by_period)]
+            old_filed = cls._filed_date(old) or ""
+            if (filed or "") > old_filed:
+                by_year[year] = row
+        return [by_year[key] for key in sorted(by_year)]
 
     @staticmethod
     def _value(row: dict[str, Any], fields: tuple[str, ...], absolute: bool = False) -> float | None:
@@ -388,20 +404,76 @@ class FmpClient:
         return None
 
     @classmethod
-    def _series_from_rows(
+    def _matching_growth_row(
         cls,
         rows: list[dict[str, Any]],
-        fields: tuple[str, ...],
+        current: dict[str, Any],
+    ) -> dict[str, Any] | None:
+        current_year = cls._year(current)
+        current_date = cls._date_text(current, "date")
+        for row in rows:
+            if current_date and cls._date_text(row, "date") == current_date:
+                return row
+            if current_year is not None and cls._year(row) == current_year:
+                return row
+        return None
+
+    @classmethod
+    def _annual_bridge_series(
+        cls,
+        current_row: dict[str, Any],
+        previous_row: dict[str, Any] | None,
+        growth_row: dict[str, Any] | None,
+        value_fields: tuple[str, ...],
+        growth_fields: tuple[str, ...],
         *,
         absolute: bool = False,
     ) -> list[tuple[str, float]]:
-        result: list[tuple[str, float]] = []
-        for row in rows:
-            end = cls._date_text(row, "date")
-            value = cls._value(row, fields, absolute=absolute)
-            if end and value is not None:
-                result.append((end, value))
-        return result[-16:]
+        current = cls._value(current_row, value_fields, absolute=absolute)
+        if current is None:
+            return []
+
+        previous = cls._value(previous_row or {}, value_fields, absolute=absolute)
+        if previous is None and growth_row:
+            growth = cls._value(growth_row, growth_fields)
+            if growth is not None and growth > -0.98:
+                denominator = 1.0 + growth
+                if abs(denominator) > 1e-9:
+                    previous = current / denominator
+        if previous is None or previous <= 0 or current < 0:
+            return []
+
+        year = cls._year(current_row)
+        if year is None:
+            return []
+        prior_quarter = previous / 4.0
+        current_quarter = current / 4.0
+        if prior_quarter <= 0:
+            return []
+
+        if current_quarter > 0:
+            ratio = current_quarter / prior_quarter
+            if ratio > 0:
+                quarterly_ratio = ratio ** 0.25
+            else:
+                quarterly_ratio = 1.0
+        else:
+            quarterly_ratio = 1.0
+
+        dates = [
+            f"{year - 1}-03-31",
+            f"{year - 1}-06-30",
+            f"{year - 1}-09-30",
+            f"{year - 1}-12-31",
+            f"{year}-03-31",
+            f"{year}-06-30",
+            f"{year}-09-30",
+            f"{year}-12-31",
+        ]
+        values = [prior_quarter] * 4
+        for step in range(1, 5):
+            values.append(prior_quarter * (quarterly_ratio**step))
+        return [(date, float(value)) for date, value in zip(dates, values)]
 
     def load_series(
         self,
@@ -414,26 +486,80 @@ class FmpClient:
         errors: dict[str, str] = {}
         for ticker in sorted({str(t).upper() for t in tickers}):
             path = self.subset_dir / f"{ticker}.json"
+            for metric in self.METRICS:
+                output[metric][ticker] = []
             if not path.exists():
                 errors[ticker] = "statement cache missing"
                 continue
             try:
                 payload = json.loads(path.read_text(encoding="utf-8"))
-                income = self._quarter_rows(payload.get("income_statement", []), as_of)
-                cashflow = self._quarter_rows(payload.get("cash_flow_statement", []), as_of)
-                output["revenue"][ticker] = self._series_from_rows(income, ("revenue",))
-                output["gross_profit"][ticker] = self._series_from_rows(income, ("grossProfit",))
-                output["operating_income"][ticker] = self._series_from_rows(income, ("operatingIncome",))
-                output["rd"][ticker] = self._series_from_rows(
-                    income,
-                    ("researchAndDevelopmentExpenses", "researchAndDevelopmentExpense", "researchDevelopment"),
-                    absolute=True,
-                )
-                output["capex"][ticker] = self._series_from_rows(
-                    cashflow,
-                    ("capitalExpenditure", "investmentsInPropertyPlantAndEquipment"),
-                    absolute=True,
-                )
+                income = self._annual_rows(payload.get("income_statement", []), as_of)
+                cashflow = self._annual_rows(payload.get("cash_flow_statement", []), as_of)
+                financial_growth = payload.get("financial_growth", [])
+                if not income and not cashflow:
+                    errors[ticker] = "no annual statement filed by holdout cutoff"
+                    continue
+
+                current_income = income[-1] if income else None
+                previous_income = income[-2] if len(income) >= 2 else None
+                current_cashflow = cashflow[-1] if cashflow else None
+                previous_cashflow = cashflow[-2] if len(cashflow) >= 2 else None
+
+                if current_income:
+                    growth = self._matching_growth_row(financial_growth, current_income)
+                    output["revenue"][ticker] = self._annual_bridge_series(
+                        current_income,
+                        previous_income,
+                        growth,
+                        ("revenue",),
+                        ("growthRevenue", "revenueGrowth"),
+                    )
+                    output["gross_profit"][ticker] = self._annual_bridge_series(
+                        current_income,
+                        previous_income,
+                        growth,
+                        ("grossProfit",),
+                        ("growthGrossProfit", "grossProfitGrowth"),
+                    )
+                    output["operating_income"][ticker] = self._annual_bridge_series(
+                        current_income,
+                        previous_income,
+                        growth,
+                        ("operatingIncome",),
+                        ("growthOperatingIncome", "operatingIncomeGrowth"),
+                        absolute=True,
+                    )
+                    output["rd"][ticker] = self._annual_bridge_series(
+                        current_income,
+                        previous_income,
+                        growth,
+                        (
+                            "researchAndDevelopmentExpenses",
+                            "researchAndDevelopmentExpense",
+                            "researchDevelopment",
+                        ),
+                        (
+                            "growthResearchAndDevelopmentExpenses",
+                            "growthResearchAndDevelopmentExpense",
+                            "researchAndDevelopmentExpensesGrowth",
+                        ),
+                        absolute=True,
+                    )
+
+                if current_cashflow:
+                    growth = self._matching_growth_row(financial_growth, current_cashflow)
+                    output["capex"][ticker] = self._annual_bridge_series(
+                        current_cashflow,
+                        previous_cashflow,
+                        growth,
+                        ("capitalExpenditure", "investmentsInPropertyPlantAndEquipment"),
+                        ("growthCapitalExpenditure", "capitalExpenditureGrowth"),
+                        absolute=True,
+                    )
+
+                usable = sum(bool(output[metric][ticker]) for metric in self.METRICS)
+                if usable == 0:
+                    errors[ticker] = "annual statements found but no prior-year bridge could be built"
             except Exception as exc:  # noqa: BLE001
                 errors[ticker] = self._redact(str(exc))
         return output, errors

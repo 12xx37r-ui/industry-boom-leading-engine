@@ -7,7 +7,7 @@ from ible.global_validation import run_global_holdout
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run V0.8.4 exposure-gated global financial holdout")
+    parser = argparse.ArgumentParser(description="Run V0.8.5 exposure-gated global annual-snapshot holdout")
     parser.add_argument("--root", default=".")
     parser.add_argument("--output-dir", default="outputs/global_holdout")
     args = parser.parse_args()

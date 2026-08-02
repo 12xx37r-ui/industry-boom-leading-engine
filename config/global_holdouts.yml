@@ -1,7 +1,7 @@
 version: 1
-benchmark_name: V0.8.0 exposure-gated global SEC holdout
+benchmark_name: V0.8.5 free-plan annual snapshot global holdout
 cohort:
-  as_of: '2021-12-31'
+  as_of: '2022-04-30'
   theme_ids:
     - POWER_GRID_ELECTRIFICATION
     - DEFENSE_AUTONOMY
@@ -11,43 +11,43 @@ cohort:
     - ADDITIVE_MANUFACTURING
     - HYDROGEN_ECONOMY
 scenarios:
-  - id: GLOBAL_GRID_2021
+  - id: GLOBAL_GRID_FY2021
     name: 전력망 구조적 투자 전조
     label: positive
     evaluation_class: structural
     target_theme_id: POWER_GRID_ELECTRIFICATION
     criteria: {rank_max: 4, score_min: 56, early_signal_min: 54}
-  - id: GLOBAL_DEFENSE_2021
+  - id: GLOBAL_DEFENSE_FY2021
     name: 방산·무인체계 전조
     label: positive
     evaluation_class: shock_sensitive
     target_theme_id: DEFENSE_AUTONOMY
     criteria: {rank_max: 4, score_min: 55, early_signal_min: 53}
-  - id: GLOBAL_NUCLEAR_2021
+  - id: GLOBAL_NUCLEAR_FY2021
     name: 원전 공급망 전조
     label: positive
     evaluation_class: structural
     target_theme_id: NUCLEAR_FIRM_POWER
     criteria: {rank_max: 4, score_min: 54, early_signal_min: 52}
-  - id: GLOBAL_CYBER_2021
+  - id: GLOBAL_CYBER_FY2021
     name: 사이버보안 구조적 수요
     label: positive
     evaluation_class: structural
     target_theme_id: CYBERSECURITY
     criteria: {rank_max: 4, score_min: 56, early_signal_min: 54}
-  - id: GLOBAL_AUTONOMOUS_2021
+  - id: GLOBAL_AUTONOMOUS_FY2021
     name: 자율주행 과잉기대 통제군
     label: negative
     evaluation_class: negative_control
     target_theme_id: AUTONOMOUS_DRIVING
     criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 61, strong_alert_early_min: 59}
-  - id: GLOBAL_ADDITIVE_2021
+  - id: GLOBAL_ADDITIVE_FY2021
     name: 3D프린팅 과잉기대 통제군
     label: negative
     evaluation_class: negative_control
     target_theme_id: ADDITIVE_MANUFACTURING
     criteria: {strong_alert_rank_max: 3, strong_alert_score_min: 61, strong_alert_early_min: 59}
-  - id: GLOBAL_HYDROGEN_2021
+  - id: GLOBAL_HYDROGEN_FY2021
     name: 수소 과잉투자 통제군
     label: negative
     evaluation_class: negative_control

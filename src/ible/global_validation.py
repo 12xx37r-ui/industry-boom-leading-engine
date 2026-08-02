@@ -185,7 +185,13 @@ def _load_fmp_series(
     as_of: str,
 ) -> tuple[dict[str, dict[str, list[tuple[str, float]]]], dict[str, Any], dict[str, str]]:
     client = FmpClient(root / ".cache" / "fmp", os.getenv("FMP_API_KEY", ""))
-    status = client.prepare_subset(tickers)
+    if client.status_path.exists():
+        try:
+            status = json.loads(client.status_path.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            status = client.prepare_subset(tickers)
+    else:
+        status = client.prepare_subset(tickers)
     series, errors = client.load_series(tickers, as_of)
     return series, status, errors
 
@@ -215,23 +221,28 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
     else:
         raise ValueError("FINANCIAL_SOURCE must be 'fmp' or 'sec'")
 
-    http = JsonHttpClient(
-        user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.4"),
-        timeout=20,
-        min_interval=3.2,
-        retries=1,
-        cache_dir=root / ".cache" / "http",
-    )
-    arxiv = ArxivClient(http)
     research: dict[str, dict[str, Any]] = {}
     research_errors: dict[str, str] = {}
-    cutoff = dt.date.fromisoformat(as_of)
-    for index, theme in enumerate(themes, 1):
-        try:
-            research[theme["id"]] = arxiv.momentum(theme["arxiv_query"], cutoff)
-        except Exception as exc:  # noqa: BLE001
-            research_errors[theme["id"]] = str(exc)
-        print(f"[GLOBAL] arXiv {index}/{len(themes)} errors={len(research_errors)}", flush=True)
+    if int(financial_status.get("available", 0) or 0) <= 0:
+        for theme in themes:
+            research_errors[theme["id"]] = "skipped because financial data is unavailable"
+        print("[GLOBAL] financial data unavailable; skipping arXiv and producing insufficient-data outputs", flush=True)
+    else:
+        http = JsonHttpClient(
+            user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.5"),
+            timeout=20,
+            min_interval=3.2,
+            retries=1,
+            cache_dir=root / ".cache" / "http",
+        )
+        arxiv = ArxivClient(http)
+        cutoff = dt.date.fromisoformat(as_of)
+        for index, theme in enumerate(themes, 1):
+            try:
+                research[theme["id"]] = arxiv.momentum(theme["arxiv_query"], cutoff)
+            except Exception as exc:  # noqa: BLE001
+                research_errors[theme["id"]] = str(exc)
+            print(f"[GLOBAL] arXiv {index}/{len(themes)} errors={len(research_errors)}", flush=True)
 
     ranking = [
         _theme_result(theme, all_series, research.get(theme["id"]), as_of, minimum_exposure)
@@ -270,9 +281,13 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         and auc is not None
         and auc >= 0.70
     )
+    if not eligible:
+        run_status = "INSUFFICIENT_V085_GLOBAL_HOLDOUT"
+    else:
+        run_status = "PASSED_V085_GLOBAL_HOLDOUT" if passed else "FAILED_V085_GLOBAL_HOLDOUT"
 
     summary = {
-        "status": "PASSED_V084_GLOBAL_HOLDOUT" if passed else "FAILED_V084_GLOBAL_HOLDOUT",
+        "status": run_status,
         "investment_use_allowed": False,
         "financial_source": financial_source,
         "metrics": {
@@ -293,6 +308,8 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         "scenarios": scenarios,
         "known_limitations": [
             "테마 노출도는 보수적 수동 프로필이며 사업부 매출 공시로 계속 갱신해야 합니다.",
+            "FMP 무료요금제의 연간 5개 제한 때문에 FY2021 절대값과 성장률로 분기형 신호를 보간한 자료입니다.",
+            "연간 보간 자료는 데이터 접근성 검증용이며 정식 분기 시계열을 대체하지 않습니다.",
             "FMP 표준화 재무는 SEC 원공시를 재가공한 제3자 데이터이므로 출처 교차검증이 필요합니다.",
             "시장 미반영도와 실제 주가수익 백테스트는 아직 포함되지 않았습니다.",
         ],

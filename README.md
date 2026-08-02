@@ -1,224 +1,128 @@
-# Industry Boom Leading Engine v0.6.2
+# Industry Boom Leading Engine v0.8.5
 
-산업에 이미 돈이 몰린 뒤 따라가는 것이 아니라, **기술연구 확산 → 실제 CAPEX → 시설투자·공급계약 → 초기 매출 확산**의 순서를 분석해 향후 산업 붐 가능성을 선행 탐지하는 연구용 엔진입니다.
+산업에 돈이 이미 몰린 뒤 따라가는 것이 아니라, 기술연구·기업 R&D·CAPEX·매출 확산을 결합해 향후 산업 붐 가능성을 선행 탐지하는 연구용 엔진입니다.
 
-- 계산·수집·백테스트: GitHub Actions / Python
+- 수집·계산·검증: GitHub Actions / Python
 - 표시: Google Apps Script
-- 현재 상태: 연구검증 단계, 자동 매수 금지
+- 현재 상태: 연구검증 단계
+- `investment_use_allowed`: 항상 `false`
 
-## V0.6.2 핵심 변경
+## V0.8.5 핵심 수정
 
-V0.4.1의 AI 단일 재현시험을 다음과 같은 **다중 성공·음성 통제군 워크포워드 검증**으로 확장했습니다.
+V0.8.4는 FMP 무료계정으로 분기자료 20개를 요청해 `HTTP 402`가 발생했고, 이후 더 이상 지원되지 않는 legacy API까지 재시도했습니다. V0.8.5는 이 경로를 완전히 제거했습니다.
 
-### 성공사례 후보
+- 현재 `/stable` API만 사용
+- Secret에는 `FMP_API_KEY`의 키 문자열만 저장
+- 모든 요청은 `period=annual`, `limit=5`로 고정
+- legacy `/api/v3` 호출 없음
+- `income-statement`, `cash-flow-statement`, 통합 `financial-growth` API만 사용
+- FY2021 절대값과 전년 대비 성장률로 8개 분기형 보간 시계열 생성
+- 홀드아웃 기준일을 FY2021 공시가 대체로 이용 가능한 `2022-04-30`으로 변경
+- 공급자 제한이나 네트워크 실패 시 워크플로를 중단하지 않고 `INSUFFICIENT_DATA` 결과와 진단 Artifact를 생성
+- 재무 수집이 전부 실패하면 불필요한 arXiv 호출도 생략
 
-- AI 연산·데이터센터: 2022-10-31
-- 기업 클라우드: 2018-12-31
-- 전기차·배터리: 2019-12-31
-- 태양광·전력변환: 2019-06-30
+연간 보간 시계열은 무료요금제 접근성 검증을 위한 임시 구조입니다. 정식 분기 시계열을 대체하지 않으며 실전 투자판정에 사용하지 않습니다.
 
-### 음성 통제군
+## 필요한 GitHub 설정
 
-- 메타버스·XR: 2020-12-31
-- 수소·연료전지: 2020-12-31
-- 3D프린팅·적층제조: 2019-12-31
-
-각 시나리오는 목표 산업과 7개 비교산업을 동일 기준일에 평가합니다. 성공사례는 선행경보를 냈는지, 음성 통제군은 강한 허위경보를 내지 않았는지 검증합니다.
-
-## 새 출력
-
-- `walkforward_backtest.json`: 전체 시나리오와 세부 결과
-- `backtest_summary.json`: 성공 재현율·허위경보율·균형점수
-- `model_validation.json`: Stage 2 판정
-- `outputs/backtests/*.json`: 시나리오별 원자료·순위·근거
-
-## Stage 2 합격 기준
-
-- 유효 성공사례 3개 이상
-- 유효 음성 통제군 2개 이상
-- 성공사례 재현율 66.7% 이상
-- 음성 통제군 허위경보율 33.3% 이하
-- 균형점수 0.67 이상
-
-Stage 2를 통과해도 `investment_use_allowed`는 `false`입니다. 다음 항목이 남아 있기 때문입니다.
-
-- 미국 빅테크·산업 원천 CAPEX
-- 실물신호 대비 주가·뉴스 선반영도
-- 거래비용·보유기간·최대낙폭
-- 사전 정의되지 않은 신규 산업 자동발견
-
-## 필요한 GitHub Secrets
-
-저장소의 `Settings → Secrets and variables → Actions`에 등록합니다.
+Repository secret:
 
 ```text
-FRED_API_KEY
-BEA_API_KEY
-OPENDART_API_KEY
+FMP_API_KEY
 ```
 
-Repository Variable:
+값에는 아래처럼 키 문자열만 넣습니다.
+
+```text
+실제_API_키
+```
+
+`apikey=` 또는 `?apikey=`를 붙이지 않습니다. 코드가 URL 쿼리 파라미터로 자동 전달합니다.
+
+Repository variable:
 
 ```text
 SEC_USER_AGENT
 ```
 
-SEC는 선택 보강자료이며 GitHub 공용 IP에서 403이 발생할 수 있습니다.
+이번 V0.8.5 FMP 재무수집에는 직접 사용하지 않지만 기존 엔진 호환을 위해 유지합니다.
 
-## 1. 평소 현재 산업 순위 실행
-
-GitHub:
+## 실행
 
 ```text
-Actions → Industry Boom Engine → Run workflow
+Actions
+→ Industry Boom Global Holdout V0.8.5
+→ Run workflow
 ```
 
-권장 입력:
+첫 실행 입력:
 
 ```text
-as_of: 비움
-replay_as_of: 2022-10-31
-use_sec: false
-run_replay: false
+refresh_financial_data: false
 ```
 
-`run_replay=false`이면 과거 검증을 반복하지 않아 실행시간을 줄입니다.
-
-## 2. 다중 역사검증 실행
-
-GitHub:
+정상 로그 예시:
 
 ```text
-Actions → Industry Boom Validation → Run workflow
+IBLE_IMPORT_OK 0.8.5
+FMP_API_KEY_FORMAT_OK
+52 passed
+[FMP-PREFLIGHT] OK working=4/4 limit=5
+[FMP] companies=37 ... period=annual limit=5
 ```
 
-추가 입력은 없습니다. 7개 시나리오가 최대 2개씩 병렬 실행됩니다. 완료 후 다음 Artifact를 다운로드합니다.
+일부 growth API가 막혀도 기본 연간 재무가 있으면 `PARTIAL`로 계속 진행합니다. 전체 접근이 막혀도 워크플로는 실패하지 않고 다음 상태로 결과를 남깁니다.
 
 ```text
-industry-boom-validation-output
+INSUFFICIENT_V085_GLOBAL_HOLDOUT
 ```
 
-ZIP 전체를 검토용으로 사용하면 됩니다.
-
-## 워크플로 파일
+## 결과 Artifact
 
 ```text
-.github/workflows/run_engine.yml
-.github/workflows/run_validation.yml
+industry-boom-global-holdout-v0.8.5
+industry-boom-financial-diagnostics-v0.8.5
 ```
 
-웹 업로드에서 `.github` 숨김 폴더가 빠지면 GitHub의 `Add file → Create new file`에서 위 경로를 통째로 입력해 생성합니다.
+검토할 주요 파일:
 
-## 점수 구조
+```text
+outputs/global_holdout/global_holdout_summary.json
+outputs/global_holdout/global_holdout_ranking.json
+outputs/global_holdout/global_holdout_scenarios.json
+.cache/fmp/fmp_download_status.json
+```
 
-### 초기 선행점수
+## 검증 산업
 
-- 기술연구 확산
-- 현금흐름표 실제 CAPEX
-- 시설투자 공시금액
-- 초기 매출 증가
-- 참여기업 확산
+성공 후보:
 
-### 상업화 실현점수
+- 전력망·전기화
+- 방산·무인체계
+- 원전 공급망
+- 사이버보안
 
-- 공급계약·수주
-- 시설투자 집행
-- 매출 확장
-- 영업이익률 개선
+실패·과열 통제군:
 
-### 주요 단계
-
-- `EARLY_ACCUMULATION`: 연구·CAPEX가 강하지만 상업화 전
-- `TRANSITION`: 선행신호가 계약·매출로 전환
-- `COMMERCIAL_BOOM`: 상업화가 본격화
-- `WATCH`: 관찰
-- `NO_SIGNAL`: 의미 있는 신호 없음
-- `INSUFFICIENT_DATA`: 자료 부족
+- 자율주행·라이다
+- 3D프린팅
+- 수소·연료전지
 
 ## 로컬 테스트
 
 ```bash
 python -m pip install -r requirements.txt
-pip install -e .
-pytest -q
+python -m pytest -q
 ```
 
-## 개별 시나리오 실행
+현재 테스트 수:
 
-```bash
-python -m ible.backtest_cli --scenario-id AI_2022
-python -m ible.backtest_cli --scenario-id CLOUD_2018
-```
-
-## 검증결과 집계
-
-```bash
-python -m ible.aggregate_backtests \
-  --input-dir outputs/backtests \
-  --output-dir outputs
+```text
+52 passed
 ```
 
 ## 주의
 
-- 역사적 성공·실패 라벨은 연구용 벤치마크이며 완전한 인과적 정답표가 아닙니다.
-- OpenDART 정정공시와 arXiv 과거 집계는 완전한 point-in-time 빈티지를 보장하지 못할 수 있습니다.
-- 현재 출력은 산업 조사 우선순위를 정하는 용도이며 매수 명령이 아닙니다.
-
-## V0.6.2 재점수 입력 안정화
-
-`validation_seed/backtests`에 이미 수집된 7개 역사 시나리오 원자료를 포함한다. 따라서
-`Industry Boom Validation Rescore`는 이전 GitHub Artifact가 삭제되거나 API에서 보이지 않아도
-외부 API 재수집 없이 재점수 계산을 완료한다. 이 폴더는 실행에 필요한 검증 입력이며 임시 산출물이 아니다.
-
----
-
-# V0.8.2 — 노출도 기반 글로벌 SEC 엔진
-
-V0.7 홀드아웃 실패 원인이었던 `관련 기업 전체 실적을 테마 실적으로 귀속`하는 구조를 제거했습니다.
-
-## 핵심 변경
-
-- SEC 공식 nightly `companyfacts.zip` 벌크 아카이브를 1회 다운로드
-- 분석 대상 CIK JSON만 추출해 GitHub Cache에 저장
-- 기업별 테마 노출도 × 근거 신뢰도의 유효가중치 적용
-- 노출도 30% 미만 기업은 점수 계산 제외
-- 한 기업 의존도가 45%를 넘으면 집중도 감점
-- 기술연구만 급증하고 CAPEX·매출이 확인되지 않는 경우 hype penalty 적용
-- OpenDART 한국 기업은 이번 글로벌 홀드아웃에서 제외하고 미국 원천기업만 검증
-
-## 실행
-
-Actions → `Industry Boom Global Holdout V0.8` → Run workflow
-
-첫 실행은 SEC 벌크 ZIP 다운로드 때문에 시간이 걸릴 수 있습니다. 이후 실행은 `.cache/sec_bulk/subset` 캐시를 사용합니다.
-
-완료 Artifact: `industry-boom-global-holdout-v0.8.2`
-
-
-## V0.8.2 SEC 403 근본 수정
-
-GitHub 공유 러너에서 대용량 `companyfacts.zip` 요청이 403으로 차단되는 문제를 피하기 위해, 기본 수집 경로를 SEC 공식 `data.sec.gov`의 기업별 Company Facts API로 변경했습니다.
-
-- 기본 모드: `SEC_SOURCE_MODE=api`
-- 요청 간격: 0.35초 이상
-- Repository Variable `SEC_USER_AGENT`는 조직/이름과 실제 연락 이메일을 포함해야 함
-- 대용량 ZIP은 기본 실행에서 호출하지 않음
-- 실패 시 `.cache/sec_bulk/sec_download_status.json` 진단 Artifact 생성
-
-## V0.8.4 — FMP 사전검사 및 무료범위 요청 축소
-
-GitHub-hosted runner에서 SEC가 차단된 뒤 FMP까지 37개 기업을 모두 재시도하며 늦게 실패하던 구조를 제거했다.
-
-- 실제 수집 전 AAPL 분기 재무 1건으로 API 키·엔드포인트·요금제 접근을 사전검사
-- 사전검사 실패 시 37개 기업 반복 요청 없이 즉시 중단하고 실제 공급자 응답을 진단 JSON과 로그에 기록
-- API 키는 코드가 `apikey` 쿼리 파라미터로 자동 부착하며 GitHub Secret에는 키 값만 저장
-- 실수로 `apikey=` 또는 `?apikey=`까지 저장해도 키 본문을 자동 정리
-- 영구 오류(401·402·403·구독 제한)는 불필요한 3회 재시도를 하지 않음
-- 요청 범위를 80분기에서 최근 20분기로 축소
-- stable endpoint 실패 시 legacy endpoint를 1회 대체 확인
-- 진행 로그에 첫 번째 실제 오류를 표시하고 키 값은 자동 마스킹
-- 분기 매출, 매출총이익, 영업이익, R&D, CAPEX를 `filingDate <= as_of` 조건으로 사용
-
-Repository secret `FMP_API_KEY`에는 키 문자열만 등록한 뒤 `Industry Boom Global Holdout V0.8.4`를 실행한다.
-완료 Artifact: `industry-boom-global-holdout-v0.8.4`
-진단 Artifact: `industry-boom-financial-diagnostics-v0.8.4`
+- 연간 5개 제한을 우회하기 위해 실제 분기치를 조작하지 않고, FY 절대값과 공식 성장률을 분기형 경로로 보간합니다.
+- 보간 여부와 공급자 오류는 결과 진단에 기록됩니다.
+- 결과는 산업 연구 우선순위를 정하는 용도이며 매수·매도 명령이 아닙니다.
