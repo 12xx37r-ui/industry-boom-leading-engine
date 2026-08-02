@@ -4,6 +4,7 @@ import datetime as dt
 import json
 import os
 import statistics
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -14,16 +15,13 @@ from ible.analytics.exposure_scoring import (
     harmonic_mean,
 )
 from ible.analytics.scoring import build_research_signal, clamp, probability
-from ible.analytics.sec_metrics import FLOW_TAGS, quarterly_flow
 from ible.backtest import evaluate_scenario
 from ible.collectors.arxiv import ArxivClient
-from ible.collectors.fmp import FmpClient
-from ible.collectors.sec_bulk import SecBulkClient
+from ible.collectors.sec_fsds import METRICS, SecFsdsClient
 from ible.config import load_yaml
 from ible.http import JsonHttpClient
 
 ALERT_STAGES = {"EARLY_ACCUMULATION", "CAPITAL_LED_ACCUMULATION", "TRANSITION", "COMMERCIAL_BOOM"}
-METRICS = ("capex", "rd", "revenue", "gross_profit", "operating_income")
 
 
 def _stage(score: float, confidence: float, cross: float, commercial: float) -> str:
@@ -48,8 +46,14 @@ def _theme_result(
     research_momentum: dict[str, Any] | None,
     as_of: str,
     minimum_exposure: float,
+    historically_eligible: set[str],
 ) -> dict[str, Any]:
-    profiles = {str(row["ticker"]).upper(): row for row in theme.get("us_companies", [])}
+    original_profiles = {str(row["ticker"]).upper(): row for row in theme.get("us_companies", [])}
+    profiles = {
+        ticker: profile
+        for ticker, profile in original_profiles.items()
+        if ticker in historically_eligible
+    }
     series: dict[str, dict[str, list[tuple[str, float]]]] = {
         metric: {ticker: all_series.get(metric, {}).get(ticker, []) for ticker in profiles}
         for metric in METRICS
@@ -76,9 +80,9 @@ def _theme_result(
     hype_penalty = max(0.0, hype_gap - 12.0) * 0.32
     exposure_coverage = statistics.mean([capex.coverage, rd.coverage, revenue.coverage])
     eligible_weights = [
-        effective_weight(p)
-        for p in profiles.values()
-        if float(p.get("exposure", 0)) >= minimum_exposure
+        effective_weight(profile)
+        for profile in profiles.values()
+        if float(profile.get("exposure", 0)) >= minimum_exposure
     ]
     exposure_quality = (
         100.0 * min(1.0, sum(eligible_weights) / max(1.5, len(eligible_weights) * 0.65))
@@ -142,7 +146,9 @@ def _theme_result(
         ],
         "invalidations": theme.get("invalidations", []),
         "coverage": {
-            "requested_companies": len(profiles),
+            "configured_companies": len(original_profiles),
+            "historically_eligible_companies": len(profiles),
+            "historically_ineligible_companies": sorted(set(original_profiles) - set(profiles)),
             "eligible_companies": len(eligible_weights),
             "usable_companies": usable,
             "company_coverage": round(usable / max(1, len(profiles)), 4),
@@ -155,45 +161,25 @@ def _theme_result(
             "coverage_penalty": round(coverage_penalty, 2),
             "evaluation_class": theme.get("evaluation_class", "structural"),
         },
-        "warnings": [w for signal in (capex, rd, revenue, margin, research) for w in signal.warnings],
+        "warnings": [warning for signal in (capex, rd, revenue, margin, research) for warning in signal.warnings],
     }
 
 
-def _load_sec_series(
+def _load_sec_fsds_series(
     root: Path,
     tickers: list[str],
-    as_of: str,
 ) -> tuple[dict[str, dict[str, list[tuple[str, float]]]], dict[str, Any], dict[str, str]]:
-    cik_map = json.loads((root / "config" / "sec_cik_map.json").read_text(encoding="utf-8"))
-    client = SecBulkClient(root / ".cache" / "sec_bulk", os.getenv("SEC_USER_AGENT", ""))
-    status = client.prepare_subset(cik_map, tickers)
-    facts, errors = client.load_subset(tickers)
-    series: dict[str, dict[str, list[tuple[str, float]]]] = {metric: {} for metric in METRICS}
-    for ticker in tickers:
-        payload = facts.get(ticker)
-        for metric in METRICS:
-            values: list[tuple[str, float]] = []
-            if payload:
-                _, values = quarterly_flow(payload, FLOW_TAGS[metric], as_of)
-            series[metric][ticker] = values
-    return series, status, errors
+    client = SecFsdsClient(root / ".cache" / "sec_fsds", os.getenv("SEC_USER_AGENT", ""))
+    return client.load_seed(root / "validation_seed" / "sec_fsds_fy2021.json", tickers)
 
 
-def _load_fmp_series(
-    root: Path,
-    tickers: list[str],
-    as_of: str,
-) -> tuple[dict[str, dict[str, list[tuple[str, float]]]], dict[str, Any], dict[str, str]]:
-    client = FmpClient(root / ".cache" / "fmp", os.getenv("FMP_API_KEY", ""))
-    if client.status_path.exists():
-        try:
-            status = json.loads(client.status_path.read_text(encoding="utf-8"))
-        except Exception:  # noqa: BLE001
-            status = client.prepare_subset(tickers)
-    else:
-        status = client.prepare_subset(tickers)
-    series, errors = client.load_series(tickers, as_of)
-    return series, status, errors
+def _mark_insufficient(scenario: dict[str, Any], reason: str) -> dict[str, Any]:
+    result = deepcopy(scenario)
+    result["status"] = "INSUFFICIENT_DATA"
+    result["passed"] = False
+    result["alert_triggered"] = False
+    result["insufficient_reason"] = reason
+    return result
 
 
 def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
@@ -206,30 +192,35 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
     as_of = str(config["cohort"]["as_of"])
     tickers = sorted(
         {
-            company["ticker"]
+            str(company["ticker"]).upper()
             for theme in themes
             for company in theme.get("us_companies", [])
             if float(company.get("exposure", 0)) >= minimum_exposure
         }
     )
 
-    financial_source = os.getenv("FINANCIAL_SOURCE", "fmp").strip().lower()
-    if financial_source == "fmp":
-        all_series, financial_status, financial_errors = _load_fmp_series(root, tickers, as_of)
-    elif financial_source == "sec":
-        all_series, financial_status, financial_errors = _load_sec_series(root, tickers, as_of)
-    else:
-        raise ValueError("FINANCIAL_SOURCE must be 'fmp' or 'sec'")
+    all_series, financial_status, financial_errors = _load_sec_fsds_series(root, tickers)
+    historically_eligible = set(financial_status.get("historically_eligible") or [])
+    dataset_gate_passed = bool(
+        financial_status.get("status") == "READY"
+        and float(financial_status.get("coverage_of_historically_eligible") or 0) >= 0.75
+        and int(financial_status.get("available") or 0) >= 20
+        and len(financial_status.get("periods_downloaded") or []) == len(financial_status.get("periods_required") or [])
+    )
 
     research: dict[str, dict[str, Any]] = {}
     research_errors: dict[str, str] = {}
-    if int(financial_status.get("available", 0) or 0) <= 0:
+    if not dataset_gate_passed:
         for theme in themes:
-            research_errors[theme["id"]] = "skipped because financial data is unavailable"
-        print("[GLOBAL] financial data unavailable; skipping arXiv and producing insufficient-data outputs", flush=True)
+            research_errors[theme["id"]] = "skipped because SEC FSDS dataset gate did not pass"
+        print(
+            f"[GLOBAL] SEC FSDS gate failed status={financial_status.get('status')} "
+            f"available={financial_status.get('available', 0)}; producing insufficient-data output",
+            flush=True,
+        )
     else:
         http = JsonHttpClient(
-            user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.5"),
+            user_agent=os.getenv("SEC_USER_AGENT", "IndustryBoomLeadingEngine/0.8.6 contact@example.com"),
             timeout=20,
             min_interval=3.2,
             retries=1,
@@ -245,26 +236,37 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             print(f"[GLOBAL] arXiv {index}/{len(themes)} errors={len(research_errors)}", flush=True)
 
     ranking = [
-        _theme_result(theme, all_series, research.get(theme["id"]), as_of, minimum_exposure)
+        _theme_result(
+            theme,
+            all_series,
+            research.get(theme["id"]),
+            as_of,
+            minimum_exposure,
+            historically_eligible,
+        )
         for theme in themes
     ]
     ranking.sort(key=lambda row: (row["boom_score"], row["data_confidence"]), reverse=True)
-    scenarios = []
+
+    scenarios: list[dict[str, Any]] = []
     for raw in config.get("scenarios", []):
         scenario = dict(raw)
         scenario["comparison_theme_ids"] = cohort_ids
-        scenarios.append(evaluate_scenario(scenario, ranking))
+        evaluated = evaluate_scenario(scenario, ranking)
+        if not dataset_gate_passed:
+            evaluated = _mark_insufficient(evaluated, "SEC FSDS coverage gate failed")
+        scenarios.append(evaluated)
 
     eligible = [scenario for scenario in scenarios if scenario.get("status") != "INSUFFICIENT_DATA"]
     positives = [scenario for scenario in eligible if scenario.get("label") == "positive"]
     negatives = [scenario for scenario in eligible if scenario.get("label") == "negative"]
-    recall = sum(bool(s.get("passed")) for s in positives) / len(positives) if positives else None
+    recall = sum(bool(scenario.get("passed")) for scenario in positives) / len(positives) if positives else None
     false_alarm = (
-        sum(bool(s.get("alert_triggered")) for s in negatives) / len(negatives)
+        sum(bool(scenario.get("alert_triggered")) for scenario in negatives) / len(negatives)
         if negatives
         else None
     )
-    pairwise = []
+    pairwise: list[float] = []
     for positive in positives:
         for negative in negatives:
             positive_score = float((positive.get("observed") or {}).get("boom_score") or 0)
@@ -274,22 +276,24 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             )
     auc = statistics.mean(pairwise) if pairwise else None
     passed = bool(
-        recall is not None
+        dataset_gate_passed
+        and recall is not None
         and recall >= 0.75
         and false_alarm is not None
         and false_alarm <= 0.25
         and auc is not None
         and auc >= 0.70
     )
-    if not eligible:
-        run_status = "INSUFFICIENT_V085_GLOBAL_HOLDOUT"
+    if not dataset_gate_passed or not eligible:
+        run_status = "INSUFFICIENT_V086_GLOBAL_HOLDOUT"
     else:
-        run_status = "PASSED_V085_GLOBAL_HOLDOUT" if passed else "FAILED_V085_GLOBAL_HOLDOUT"
+        run_status = "PASSED_V086_GLOBAL_HOLDOUT" if passed else "FAILED_V086_GLOBAL_HOLDOUT"
 
     summary = {
         "status": run_status,
         "investment_use_allowed": False,
-        "financial_source": financial_source,
+        "financial_source": "sec_financial_statement_data_sets",
+        "dataset_gate_passed": dataset_gate_passed,
         "metrics": {
             "eligible_scenarios": len(eligible),
             "positive_recall": round(recall, 4) if recall is not None else None,
@@ -297,6 +301,8 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
             "pairwise_auc": round(auc, 4) if auc is not None else None,
         },
         "criteria": {
+            "financial_coverage_min": 0.75,
+            "available_company_min": 20,
             "positive_recall_min": 0.75,
             "false_alarm_rate_max": 0.25,
             "pairwise_auc_min": 0.70,
@@ -307,10 +313,10 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         "ranking": ranking,
         "scenarios": scenarios,
         "known_limitations": [
+            "SEC Financial Statement Data Sets의 원공시 숫자를 사용하지만 XBRL 태그 선택과 분기값 환산에는 모델링 판단이 포함됩니다.",
+            "2021Q1~2022Q2 제출자료만 사용하고 제출일과 재무기간이 2022-04-30을 넘는 숫자는 제외합니다.",
+            "당시 상장·공시 이력이 없는 현재 기업은 역사적 분모에서 제외합니다.",
             "테마 노출도는 보수적 수동 프로필이며 사업부 매출 공시로 계속 갱신해야 합니다.",
-            "FMP 무료요금제의 연간 5개 제한 때문에 FY2021 절대값과 성장률로 분기형 신호를 보간한 자료입니다.",
-            "연간 보간 자료는 데이터 접근성 검증용이며 정식 분기 시계열을 대체하지 않습니다.",
-            "FMP 표준화 재무는 SEC 원공시를 재가공한 제3자 데이터이므로 출처 교차검증이 필요합니다.",
             "시장 미반영도와 실제 주가수익 백테스트는 아직 포함되지 않았습니다.",
         ],
     }
@@ -321,8 +327,5 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         "global_holdout_scenarios.json": scenarios,
         "financial_data_status.json": financial_status,
     }.items():
-        (output_dir / name).write_text(
-            json.dumps(payload, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        (output_dir / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return summary
