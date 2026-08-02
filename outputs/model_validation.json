@@ -11,9 +11,11 @@
   },
   "observed": {
     "ai_rank": 5,
-    "ai_score": 46.77,
+    "ai_score": 52.04,
     "ai_amount_coverage": 0.4904,
     "ai_research_source": true,
+    "ai_value_chain_score": 52.75,
+    "ai_value_chain_rank_equivalent": 4,
     "theme_count": 12
   },
   "known_design_gaps": [

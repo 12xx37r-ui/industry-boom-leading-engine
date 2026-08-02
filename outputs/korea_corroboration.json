@@ -6,6 +6,1432 @@
   "disclosure_errors": {},
   "amount_document_errors": {},
   "financial_errors": {},
+  "annual_capex_errors": {},
+  "annual_capex_quality": {
+    "000660": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "000720": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "투자활동으로 분류된 유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "004980": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 5,
+          "accounts": [
+            "토지의 취득",
+            "건물의 취득",
+            "구축물의 취득",
+            "기계장치의 취득",
+            "리스기계장치의 취득"
+          ]
+        },
+        "2023": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 4,
+          "accounts": [
+            "건물의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "구축물의 취득"
+          ]
+        },
+        "2024": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 5,
+          "accounts": [
+            "건물의 취득",
+            "건설중인자산의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "구축물의 취득"
+          ]
+        },
+        "2025": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 5,
+          "accounts": [
+            "건물의 취득",
+            "건설중인자산의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "구축물의 취득"
+          ]
+        }
+      }
+    },
+    "005930": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "006260": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "006400": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "010120": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "010620": {
+      "requested_years": 4,
+      "years_with_capex": 3,
+      "coverage": 0.75,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "NOT_FOUND"
+        }
+      }
+    },
+    "012450": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "034020": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "036930": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 7,
+          "accounts": [
+            "토지의 취득",
+            "건물의 취득",
+            "구축물의 취득",
+            "기계장치의 취득",
+            "공구와기구의 취득",
+            "비품의 취득",
+            "건설중인자산의 취득"
+          ]
+        },
+        "2023": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 7,
+          "accounts": [
+            "건물의 취득",
+            "건설중인자산의 취득",
+            "공구와기구의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "비품의 취득",
+            "구축물의 취득"
+          ]
+        },
+        "2024": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 8,
+          "accounts": [
+            "토지 및 건물의 취득세 환입",
+            "건물의 취득",
+            "건설중인자산의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "사무용비품의 취득",
+            "구축물의 취득",
+            "공구와기구의 취득"
+          ]
+        },
+        "2025": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 7,
+          "accounts": [
+            "토지 및 건물의 취득세 환입",
+            "건설중인자산의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "사무용비품의 취득",
+            "구축물의 취득",
+            "공구와기구의 취득"
+          ]
+        }
+      }
+    },
+    "039030": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "042700": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "047810": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "052690": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "053800": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "054450": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 3,
+          "accounts": [
+            "기계장치의 취득",
+            "기구비품의 취득",
+            "건설중인자산의 취득"
+          ]
+        },
+        "2023": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 4,
+          "accounts": [
+            "건물의 취득",
+            "건설중인자산의 취득",
+            "기계장치의 취득",
+            "사무용비품의 취득"
+          ]
+        },
+        "2024": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 2,
+          "accounts": [
+            "기계장치의 취득",
+            "사무용비품의 취득"
+          ]
+        },
+        "2025": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 5,
+          "accounts": [
+            "건물의 취득",
+            "건설중인자산의 취득",
+            "토지의 취득",
+            "기계장치의 취득",
+            "기구비품의 취득"
+          ]
+        }
+      }
+    },
+    "060150": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "066970": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "068270": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "078350": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "079550": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "089230": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "090360": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 증가",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 증가",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        }
+      }
+    },
+    "099320": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "108490": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "112610": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "136540": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "145020": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "170920": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "207940": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "211270": {
+      "requested_years": 4,
+      "years_with_capex": 3,
+      "coverage": 0.75,
+      "details": {
+        "2022": {
+          "status": "NOT_FOUND"
+        },
+        "2023": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 3,
+          "accounts": [
+            "건설중인자산의 취득",
+            "토지의 취득",
+            "기계장치의 취득"
+          ]
+        },
+        "2024": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 2,
+          "accounts": [
+            "건설중인자산의 취득",
+            "토지의 취득"
+          ]
+        },
+        "2025": {
+          "status": "FOUND_COMPONENT_SUM",
+          "component_count": 1,
+          "accounts": [
+            "건설중인자산의 취득"
+          ]
+        }
+      }
+    },
+    "240810": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "247540": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "267260": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "272210": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "277810": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "298040": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "298690": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "326030": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "356680": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "373220": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "-표준계정코드 미사용-",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "388720": {
+      "requested_years": 4,
+      "years_with_capex": 4,
+      "coverage": 1.0,
+      "details": {
+        "2022": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    },
+    "454910": {
+      "requested_years": 4,
+      "years_with_capex": 3,
+      "coverage": 0.75,
+      "details": {
+        "2022": {
+          "status": "NOT_FOUND"
+        },
+        "2023": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2024": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        },
+        "2025": {
+          "status": "FOUND_PRIMARY",
+          "account_nm": "유형자산의 취득",
+          "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+          "candidate_count": 1
+        }
+      }
+    }
+  },
   "research_errors": {},
   "disclosure_company_count": 44,
   "technology_momentum": {
@@ -328,23 +1754,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 3,
         "events_with_amount": 3,
+        "events_with_schedule": 0,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "005930": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "000660": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "042700": {
             "total_events": 3,
-            "events_with_amount": 3
+            "events_with_amount": 3,
+            "events_with_schedule": 0
           },
           "240810": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -352,23 +1784,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 6,
         "events_with_amount": 6,
+        "events_with_schedule": 6,
         "amount_coverage": 1.0,
+        "schedule_coverage": 1.0,
         "per_company": {
           "005930": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "000660": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "042700": {
             "total_events": 6,
-            "events_with_amount": 6
+            "events_with_amount": 6,
+            "events_with_schedule": 6
           },
           "240810": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       }
@@ -378,23 +1816,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 10,
         "events_with_amount": 10,
+        "events_with_schedule": 6,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.6,
         "per_company": {
           "267260": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           },
           "010120": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 1
           },
           "298040": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 1
           },
           "006260": {
             "total_events": 5,
-            "events_with_amount": 5
+            "events_with_amount": 5,
+            "events_with_schedule": 3
           }
         }
       },
@@ -402,23 +1846,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 24,
         "events_with_amount": 23,
+        "events_with_schedule": 13,
         "amount_coverage": 0.9583,
+        "schedule_coverage": 0.5652,
         "per_company": {
           "267260": {
             "total_events": 4,
-            "events_with_amount": 4
+            "events_with_amount": 4,
+            "events_with_schedule": 4
           },
           "010120": {
             "total_events": 4,
-            "events_with_amount": 4
+            "events_with_amount": 4,
+            "events_with_schedule": 3
           },
           "298040": {
             "total_events": 9,
-            "events_with_amount": 9
+            "events_with_amount": 9,
+            "events_with_schedule": 0
           },
           "006260": {
             "total_events": 7,
-            "events_with_amount": 6
+            "events_with_amount": 6,
+            "events_with_schedule": 6
           }
         }
       }
@@ -428,23 +1878,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 4,
         "events_with_amount": 4,
+        "events_with_schedule": 1,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.25,
         "per_company": {
           "042700": {
             "total_events": 3,
-            "events_with_amount": 3
+            "events_with_amount": 3,
+            "events_with_schedule": 0
           },
           "036930": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           },
           "240810": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "039030": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -452,23 +1908,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 7,
         "events_with_amount": 7,
+        "events_with_schedule": 7,
         "amount_coverage": 1.0,
+        "schedule_coverage": 1.0,
         "per_company": {
           "042700": {
             "total_events": 6,
-            "events_with_amount": 6
+            "events_with_amount": 6,
+            "events_with_schedule": 6
           },
           "036930": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           },
           "240810": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "039030": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       }
@@ -478,23 +1940,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 7,
         "events_with_amount": 6,
+        "events_with_schedule": 1,
         "amount_coverage": 0.8571,
+        "schedule_coverage": 0.1667,
         "per_company": {
           "012450": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 0
           },
           "047810": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "079550": {
             "total_events": 4,
-            "events_with_amount": 3
+            "events_with_amount": 3,
+            "events_with_schedule": 1
           },
           "272210": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           }
         }
       },
@@ -502,23 +1970,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 51,
         "events_with_amount": 50,
+        "events_with_schedule": 46,
         "amount_coverage": 0.9804,
+        "schedule_coverage": 0.92,
         "per_company": {
           "012450": {
             "total_events": 9,
-            "events_with_amount": 9
+            "events_with_amount": 9,
+            "events_with_schedule": 8
           },
           "047810": {
             "total_events": 12,
-            "events_with_amount": 11
+            "events_with_amount": 11,
+            "events_with_schedule": 9
           },
           "079550": {
             "total_events": 15,
-            "events_with_amount": 15
+            "events_with_amount": 15,
+            "events_with_schedule": 14
           },
           "272210": {
             "total_events": 15,
-            "events_with_amount": 15
+            "events_with_amount": 15,
+            "events_with_schedule": 15
           }
         }
       }
@@ -528,23 +2002,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 1,
         "events_with_amount": 1,
+        "events_with_schedule": 0,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "053800": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           },
           "078350": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "136540": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "356680": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -552,23 +2032,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 0,
         "events_with_amount": 0,
+        "events_with_schedule": 0,
         "amount_coverage": 0.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "053800": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "078350": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "136540": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "356680": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       }
@@ -578,23 +2064,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 4,
         "events_with_amount": 4,
+        "events_with_schedule": 0,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "277810": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 0
           },
           "108490": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 0
           },
           "090360": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "454910": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -602,23 +2094,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 3,
         "events_with_amount": 3,
+        "events_with_schedule": 3,
         "amount_coverage": 1.0,
+        "schedule_coverage": 1.0,
         "per_company": {
           "277810": {
             "total_events": 3,
-            "events_with_amount": 3
+            "events_with_amount": 3,
+            "events_with_schedule": 3
           },
           "108490": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "090360": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "454910": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       }
@@ -628,23 +2126,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 0,
         "events_with_amount": 0,
+        "events_with_schedule": 0,
         "amount_coverage": 0.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "034020": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "052690": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "010620": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "000720": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -652,23 +2156,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 52,
         "events_with_amount": 50,
+        "events_with_schedule": 38,
         "amount_coverage": 0.9615,
+        "schedule_coverage": 0.76,
         "per_company": {
           "034020": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 2
           },
           "052690": {
             "total_events": 18,
-            "events_with_amount": 17
+            "events_with_amount": 17,
+            "events_with_schedule": 10
           },
           "010620": {
             "total_events": 23,
-            "events_with_amount": 22
+            "events_with_amount": 22,
+            "events_with_schedule": 21
           },
           "000720": {
             "total_events": 9,
-            "events_with_amount": 9
+            "events_with_amount": 9,
+            "events_with_schedule": 5
           }
         }
       }
@@ -678,23 +2188,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 5,
         "events_with_amount": 5,
+        "events_with_schedule": 0,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "373220": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           },
           "006400": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           },
           "247540": {
             "total_events": 3,
-            "events_with_amount": 3
+            "events_with_amount": 3,
+            "events_with_schedule": 0
           },
           "066970": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -702,23 +2218,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 8,
         "events_with_amount": 8,
+        "events_with_schedule": 7,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.875,
         "per_company": {
           "373220": {
             "total_events": 5,
-            "events_with_amount": 5
+            "events_with_amount": 5,
+            "events_with_schedule": 4
           },
           "006400": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "247540": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           },
           "066970": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 2
           }
         }
       }
@@ -728,23 +2250,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 2,
         "events_with_amount": 2,
+        "events_with_schedule": 0,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "207940": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "068270": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "326030": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 0
           },
           "145020": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -752,23 +2280,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 39,
         "events_with_amount": 39,
+        "events_with_schedule": 21,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.5385,
         "per_company": {
           "207940": {
             "total_events": 17,
-            "events_with_amount": 17
+            "events_with_amount": 17,
+            "events_with_schedule": 11
           },
           "068270": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 1
           },
           "326030": {
             "total_events": 20,
-            "events_with_amount": 20
+            "events_with_amount": 20,
+            "events_with_schedule": 9
           },
           "145020": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       }
@@ -778,23 +2312,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 3,
         "events_with_amount": 3,
+        "events_with_schedule": 1,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.3333,
         "per_company": {
           "099320": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           },
           "211270": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "047810": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "012450": {
             "total_events": 2,
-            "events_with_amount": 2
+            "events_with_amount": 2,
+            "events_with_schedule": 0
           }
         }
       },
@@ -802,23 +2342,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 61,
         "events_with_amount": 58,
+        "events_with_schedule": 52,
         "amount_coverage": 0.9508,
+        "schedule_coverage": 0.8966,
         "per_company": {
           "099320": {
             "total_events": 22,
-            "events_with_amount": 20
+            "events_with_amount": 20,
+            "events_with_schedule": 17
           },
           "211270": {
             "total_events": 18,
-            "events_with_amount": 18
+            "events_with_amount": 18,
+            "events_with_schedule": 18
           },
           "047810": {
             "total_events": 12,
-            "events_with_amount": 11
+            "events_with_amount": 11,
+            "events_with_schedule": 9
           },
           "012450": {
             "total_events": 9,
-            "events_with_amount": 9
+            "events_with_amount": 9,
+            "events_with_schedule": 8
           }
         }
       }
@@ -828,23 +2374,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 2,
         "events_with_amount": 2,
+        "events_with_schedule": 0,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.0,
         "per_company": {
           "060150": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           },
           "298690": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "004980": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "112610": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           }
         }
       },
@@ -852,23 +2404,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 14,
         "events_with_amount": 14,
+        "events_with_schedule": 14,
         "amount_coverage": 1.0,
+        "schedule_coverage": 1.0,
         "per_company": {
           "060150": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "298690": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "004980": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "112610": {
             "total_events": 14,
-            "events_with_amount": 14
+            "events_with_amount": 14,
+            "events_with_schedule": 14
           }
         }
       }
@@ -878,23 +2436,29 @@
         "event_type": "CAPITAL_EVENT",
         "total_events": 2,
         "events_with_amount": 2,
+        "events_with_schedule": 1,
         "amount_coverage": 1.0,
+        "schedule_coverage": 0.5,
         "per_company": {
           "170920": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 0
           },
           "388720": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           },
           "089230": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "054450": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           }
         }
       },
@@ -902,23 +2466,29 @@
         "event_type": "CONTRACT_EVENT",
         "total_events": 1,
         "events_with_amount": 1,
+        "events_with_schedule": 1,
         "amount_coverage": 1.0,
+        "schedule_coverage": 1.0,
         "per_company": {
           "170920": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "388720": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "089230": {
             "total_events": 0,
-            "events_with_amount": 0
+            "events_with_amount": 0,
+            "events_with_schedule": 0
           },
           "054450": {
             "total_events": 1,
-            "events_with_amount": 1
+            "events_with_amount": 1,
+            "events_with_schedule": 1
           }
         }
       }

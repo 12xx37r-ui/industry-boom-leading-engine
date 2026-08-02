@@ -5,6 +5,7 @@
     "ai_replay_2022.json",
     "technology_momentum.json",
     "event_amount_quality.json",
+    "cashflow_capex_quality.json",
     "macro_context.json",
     "bea_context.json",
     "korea_corroboration.json",
@@ -25,9 +26,11 @@
     },
     "observed": {
       "ai_rank": 5,
-      "ai_score": 46.77,
+      "ai_score": 52.04,
       "ai_amount_coverage": 0.4904,
       "ai_research_source": true,
+      "ai_value_chain_score": 52.75,
+      "ai_value_chain_rank_equivalent": 4,
       "theme_count": 12
     },
     "known_design_gaps": [
@@ -40,33 +43,33 @@
   "current_top5": [
     {
       "rank": 1,
-      "theme_id": "ROBOTICS_AUTOMATION",
-      "name": "로봇·산업자동화",
-      "score": 56.04
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "name": "전력망·전기화 인프라",
+      "score": 64.19
     },
     {
       "rank": 2,
-      "theme_id": "SPACE_INFRA",
-      "name": "우주·위성 인프라",
-      "score": 48.34
+      "theme_id": "ROBOTICS_AUTOMATION",
+      "name": "로봇·산업자동화",
+      "score": 58.99
     },
     {
       "rank": 3,
       "theme_id": "NUCLEAR_FIRM_POWER",
       "name": "원전·무탄소 기저전력",
-      "score": 47.77
+      "score": 56.12
     },
     {
       "rank": 4,
-      "theme_id": "POWER_GRID_ELECTRIFICATION",
-      "name": "전력망·전기화 인프라",
-      "score": 47.15
+      "theme_id": "SPACE_INFRA",
+      "name": "우주·위성 인프라",
+      "score": 53.65
     },
     {
       "rank": 5,
-      "theme_id": "CYBERSECURITY",
-      "name": "사이버보안",
-      "score": 46.56
+      "theme_id": "DEFENSE_AUTONOMY",
+      "name": "국방·무인체계",
+      "score": 53.49
     }
   ]
 }

@@ -1,0 +1,1425 @@
+{
+  "000660": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "000720": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "투자활동으로 분류된 유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "004980": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 5,
+        "accounts": [
+          "토지의 취득",
+          "건물의 취득",
+          "구축물의 취득",
+          "기계장치의 취득",
+          "리스기계장치의 취득"
+        ]
+      },
+      "2023": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 4,
+        "accounts": [
+          "건물의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "구축물의 취득"
+        ]
+      },
+      "2024": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 5,
+        "accounts": [
+          "건물의 취득",
+          "건설중인자산의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "구축물의 취득"
+        ]
+      },
+      "2025": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 5,
+        "accounts": [
+          "건물의 취득",
+          "건설중인자산의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "구축물의 취득"
+        ]
+      }
+    }
+  },
+  "005930": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "006260": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "006400": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "010120": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "010620": {
+    "requested_years": 4,
+    "years_with_capex": 3,
+    "coverage": 0.75,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "NOT_FOUND"
+      }
+    }
+  },
+  "012450": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "034020": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "036930": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 7,
+        "accounts": [
+          "토지의 취득",
+          "건물의 취득",
+          "구축물의 취득",
+          "기계장치의 취득",
+          "공구와기구의 취득",
+          "비품의 취득",
+          "건설중인자산의 취득"
+        ]
+      },
+      "2023": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 7,
+        "accounts": [
+          "건물의 취득",
+          "건설중인자산의 취득",
+          "공구와기구의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "비품의 취득",
+          "구축물의 취득"
+        ]
+      },
+      "2024": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 8,
+        "accounts": [
+          "토지 및 건물의 취득세 환입",
+          "건물의 취득",
+          "건설중인자산의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "사무용비품의 취득",
+          "구축물의 취득",
+          "공구와기구의 취득"
+        ]
+      },
+      "2025": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 7,
+        "accounts": [
+          "토지 및 건물의 취득세 환입",
+          "건설중인자산의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "사무용비품의 취득",
+          "구축물의 취득",
+          "공구와기구의 취득"
+        ]
+      }
+    }
+  },
+  "039030": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "042700": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "047810": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "052690": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "053800": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "054450": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 3,
+        "accounts": [
+          "기계장치의 취득",
+          "기구비품의 취득",
+          "건설중인자산의 취득"
+        ]
+      },
+      "2023": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 4,
+        "accounts": [
+          "건물의 취득",
+          "건설중인자산의 취득",
+          "기계장치의 취득",
+          "사무용비품의 취득"
+        ]
+      },
+      "2024": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 2,
+        "accounts": [
+          "기계장치의 취득",
+          "사무용비품의 취득"
+        ]
+      },
+      "2025": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 5,
+        "accounts": [
+          "건물의 취득",
+          "건설중인자산의 취득",
+          "토지의 취득",
+          "기계장치의 취득",
+          "기구비품의 취득"
+        ]
+      }
+    }
+  },
+  "060150": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "066970": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "068270": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "078350": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "079550": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "089230": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "090360": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 증가",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 증가",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      }
+    }
+  },
+  "099320": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "108490": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "112610": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "136540": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "145020": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "170920": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "207940": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "211270": {
+    "requested_years": 4,
+    "years_with_capex": 3,
+    "coverage": 0.75,
+    "details": {
+      "2022": {
+        "status": "NOT_FOUND"
+      },
+      "2023": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 3,
+        "accounts": [
+          "건설중인자산의 취득",
+          "토지의 취득",
+          "기계장치의 취득"
+        ]
+      },
+      "2024": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 2,
+        "accounts": [
+          "건설중인자산의 취득",
+          "토지의 취득"
+        ]
+      },
+      "2025": {
+        "status": "FOUND_COMPONENT_SUM",
+        "component_count": 1,
+        "accounts": [
+          "건설중인자산의 취득"
+        ]
+      }
+    }
+  },
+  "240810": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "247540": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "267260": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "272210": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "277810": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "298040": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "298690": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "326030": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "356680": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "373220": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "-표준계정코드 미사용-",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "388720": {
+    "requested_years": 4,
+    "years_with_capex": 4,
+    "coverage": 1.0,
+    "details": {
+      "2022": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  },
+  "454910": {
+    "requested_years": 4,
+    "years_with_capex": 3,
+    "coverage": 0.75,
+    "details": {
+      "2022": {
+        "status": "NOT_FOUND"
+      },
+      "2023": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2024": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      },
+      "2025": {
+        "status": "FOUND_PRIMARY",
+        "account_nm": "유형자산의 취득",
+        "account_id": "ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "candidate_count": 1
+      }
+    }
+  }
+}
