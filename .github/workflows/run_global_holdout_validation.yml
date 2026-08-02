@@ -1,10 +1,10 @@
-name: Industry Boom Global Holdout V0.8.1
+name: Industry Boom Global Holdout V0.8.2
 
 on:
   workflow_dispatch:
     inputs:
-      refresh_sec_bulk:
-        description: 'Ignore cached SEC subset and download the nightly bulk archive again'
+      refresh_sec_data:
+        description: 'Ignore cached SEC company subset and download again'
         required: false
         default: false
         type: boolean
@@ -18,6 +18,7 @@ jobs:
     timeout-minutes: 50
     env:
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+      SEC_SOURCE_MODE: api
       PYTHONUNBUFFERED: '1'
       PYTHONPATH: ${{ github.workspace }}/src
     steps:
@@ -33,19 +34,25 @@ jobs:
           set -euo pipefail
           python -c "import ible, ible.sec_bulk_cli, ible.global_holdout_cli; print('IBLE_IMPORT_OK')"
           test -n "${SEC_USER_AGENT:-}" || { echo 'SEC_USER_AGENT repository variable is required'; exit 1; }
+          python - <<'PY'
+          import os
+          from ible.collectors.sec_bulk import SecBulkClient
+          SecBulkClient.validate_user_agent(os.environ['SEC_USER_AGENT'])
+          print('SEC_USER_AGENT_FORMAT_OK')
+          PY
           python -m pytest -q
       - name: Restore SEC subset cache
-        if: ${{ !inputs.refresh_sec_bulk }}
+        if: ${{ !inputs.refresh_sec_data }}
         uses: actions/cache@v5
         with:
           path: .cache/sec_bulk/subset
-          key: sec-companyfacts-subset-v081-${{ hashFiles('config/sec_cik_map.json', 'config/theme_exposures.yml') }}
-      - name: Prepare SEC bulk subset
+          key: sec-companyfacts-subset-v082-${{ hashFiles('config/sec_cik_map.json', 'config/theme_exposures.yml') }}
+      - name: Prepare SEC company facts subset
         run: |
           set -euo pipefail
           FORCE=''
-          if [ "${{ inputs.refresh_sec_bulk }}" = 'true' ]; then FORCE='--force'; fi
-          python -m ible.sec_bulk_cli --root . ${FORCE}
+          if [ "${{ inputs.refresh_sec_data }}" = 'true' ]; then FORCE='--force'; fi
+          python -m ible.sec_bulk_cli --root . --source api ${FORCE}
       - name: Run global holdout
         run: |
           set -euo pipefail
@@ -62,10 +69,19 @@ jobs:
           print(json.dumps({'status':p['status'],'metrics':p['metrics'],'sec_bulk':p['sec_bulk']},ensure_ascii=False,indent=2))
           assert p.get('investment_use_allowed') is False
           PY
+      - name: Upload SEC diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: industry-boom-sec-diagnostics-v0.8.2
+          path: |
+            .cache/sec_bulk/sec_download_status.json
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Upload result
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-global-holdout-v0.8.1
+          name: industry-boom-global-holdout-v0.8.2
           path: outputs/global_holdout
           retention-days: 30
           compression-level: 9
