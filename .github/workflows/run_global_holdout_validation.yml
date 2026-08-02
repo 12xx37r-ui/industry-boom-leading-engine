@@ -1,4 +1,4 @@
-name: Industry Boom Global Holdout V0.8
+name: Industry Boom Global Holdout V0.8.1
 
 on:
   workflow_dispatch:
@@ -19,6 +19,7 @@ jobs:
     env:
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
       PYTHONUNBUFFERED: '1'
+      PYTHONPATH: ${{ github.workspace }}/src
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -26,10 +27,11 @@ jobs:
           python-version: '3.12'
           cache: pip
       - name: Install
-        run: pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt
       - name: Validate configuration
         run: |
           set -euo pipefail
+          python -c "import ible, ible.sec_bulk_cli, ible.global_holdout_cli; print('IBLE_IMPORT_OK')"
           test -n "${SEC_USER_AGENT:-}" || { echo 'SEC_USER_AGENT repository variable is required'; exit 1; }
           python -m pytest -q
       - name: Restore SEC subset cache
@@ -37,7 +39,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: .cache/sec_bulk/subset
-          key: sec-companyfacts-subset-v080-${{ hashFiles('config/sec_cik_map.json', 'config/theme_exposures.yml') }}
+          key: sec-companyfacts-subset-v081-${{ hashFiles('config/sec_cik_map.json', 'config/theme_exposures.yml') }}
       - name: Prepare SEC bulk subset
         run: |
           set -euo pipefail
@@ -63,7 +65,7 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-global-holdout-v0.8.0
+          name: industry-boom-global-holdout-v0.8.1
           path: outputs/global_holdout
           retention-days: 30
           compression-level: 9
