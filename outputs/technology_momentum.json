@@ -1,0 +1,314 @@
+{
+  "AI_COMPUTE_INFRA": {
+    "query": "(all:\"large language model\" OR all:\"generative artificial intelligence\" OR all:\"deep learning accelerator\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 31473
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 25073
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 14662
+      }
+    },
+    "counts": {
+      "recent": 31473,
+      "prior": 25073,
+      "older": 14662
+    }
+  },
+  "POWER_GRID_ELECTRIFICATION": {
+    "query": "(all:\"power grid\" OR all:\"grid modernization\" OR all:\"high voltage transformer\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 352
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 305
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 272
+      }
+    },
+    "counts": {
+      "recent": 352,
+      "prior": 305,
+      "older": 272
+    }
+  },
+  "SEMICONDUCTOR_EQUIPMENT": {
+    "query": "(all:\"advanced packaging\" OR all:\"semiconductor manufacturing\" OR all:\"chiplet\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 166
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 119
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 64
+      }
+    },
+    "counts": {
+      "recent": 166,
+      "prior": 119,
+      "older": 64
+    }
+  },
+  "DEFENSE_AUTONOMY": {
+    "query": "(all:\"unmanned aerial vehicle\" OR all:\"autonomous defense\" OR all:\"military robotics\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 888
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 769
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 592
+      }
+    },
+    "counts": {
+      "recent": 888,
+      "prior": 769,
+      "older": 592
+    }
+  },
+  "CYBERSECURITY": {
+    "query": "(all:\"cybersecurity\" OR all:\"zero trust\" OR all:\"ransomware detection\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 1018
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 894
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 561
+      }
+    },
+    "counts": {
+      "recent": 1018,
+      "prior": 894,
+      "older": 561
+    }
+  },
+  "ROBOTICS_AUTOMATION": {
+    "query": "(all:\"industrial robot\" OR all:\"robotic automation\" OR all:\"embodied artificial intelligence\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 136
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 131
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 90
+      }
+    },
+    "counts": {
+      "recent": 136,
+      "prior": 131,
+      "older": 90
+    }
+  },
+  "NUCLEAR_FIRM_POWER": {
+    "query": "(all:\"small modular reactor\" OR all:\"nuclear energy\" OR all:\"fusion reactor\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 140
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 107
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 91
+      }
+    },
+    "counts": {
+      "recent": 140,
+      "prior": 107,
+      "older": 91
+    }
+  },
+  "ENERGY_STORAGE": {
+    "query": "(all:\"energy storage\" OR all:\"battery management system\" OR all:\"power conversion system\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 526
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 457
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 356
+      }
+    },
+    "counts": {
+      "recent": 526,
+      "prior": 457,
+      "older": 356
+    }
+  },
+  "BIOTECH_PLATFORM": {
+    "query": "(all:\"precision medicine\" OR all:\"gene editing\" OR all:\"protein design\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 217
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 222
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 148
+      }
+    },
+    "counts": {
+      "recent": 217,
+      "prior": 222,
+      "older": 148
+    }
+  },
+  "SPACE_INFRA": {
+    "query": "(all:\"satellite constellation\" OR all:\"space infrastructure\" OR all:\"launch vehicle\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 146
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 108
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 75
+      }
+    },
+    "counts": {
+      "recent": 146,
+      "prior": 108,
+      "older": 75
+    }
+  },
+  "WATER_INFRA": {
+    "query": "(all:\"water treatment\" OR all:\"desalination\" OR all:\"water infrastructure\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 54
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 39
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 47
+      }
+    },
+    "counts": {
+      "recent": 54,
+      "prior": 39,
+      "older": 47
+    }
+  },
+  "QUANTUM_COMPUTING": {
+    "query": "(all:\"quantum computing\" OR all:\"quantum error correction\" OR all:\"quantum processor\")",
+    "as_of": "2026-08-02",
+    "windows": {
+      "recent": {
+        "start": "2025-08-03",
+        "end": "2026-08-02",
+        "count": 4243
+      },
+      "prior": {
+        "start": "2024-08-03",
+        "end": "2025-08-02",
+        "count": 3902
+      },
+      "older": {
+        "start": "2023-08-04",
+        "end": "2024-08-02",
+        "count": 3243
+      }
+    },
+    "counts": {
+      "recent": 4243,
+      "prior": 3902,
+      "older": 3243
+    }
+  }
+}

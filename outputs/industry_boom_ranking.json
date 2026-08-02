@@ -2,45 +2,126 @@
   {
     "theme_id": "ROBOTICS_AUTOMATION",
     "theme_name": "로봇·산업자동화",
-    "as_of": "2026-08-01",
-    "stage": "NO_SIGNAL",
-    "boom_score": 55.79,
-    "boom_probability_6m": 0.1905,
-    "boom_probability_12m": 0.3071,
-    "boom_probability_24m": 0.3834,
-    "data_confidence": 55.0,
+    "as_of": "2026-08-02",
+    "stage": "WATCH",
+    "boom_score": 56.04,
+    "boom_probability_6m": 0.2154,
+    "boom_probability_12m": 0.346,
+    "boom_probability_24m": 0.4309,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 60.2,
-        "level": 62.94,
-        "velocity": 57.72,
-        "acceleration": 56.43,
-        "persistence": 75.0,
+        "name": "facility_investment_event_count",
+        "score": 55.0,
+        "level": 66.32,
+        "velocity": 61.09,
+        "acceleration": 40.76,
+        "persistence": 50.0,
         "breadth": 50.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
             0.0,
-            0.0,
-            1.0,
             1.0,
             0.0,
-            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             1.0,
+            0.0,
             2.0
           ],
-          "recent_two_periods": 3.0,
-          "prior_two_periods": 2.0,
+          "recent_two_periods": 2.0,
+          "prior_two_periods": 1.0,
           "active_company_count": 2,
           "company_count": 4
         },
         "warnings": []
       },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 56.27,
+        "level": 75.42,
+        "velocity": 64.36,
+        "acceleration": 31.64,
+        "persistence": 50.0,
+        "breadth": 50.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 56.5,
+            "level": 77.03,
+            "velocity": 64.94,
+            "acceleration": 30.03,
+            "persistence": 50.0,
+            "breadth": 50.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                2.515314221255044,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                4.2959975963674095,
+                0.0,
+                8.158645071093442
+              ],
+              "recent_two_periods": 8.158645071093442,
+              "prior_two_periods": 4.2959975963674095,
+              "active_company_count": 2,
+              "company_count": 4
+            },
+            "warnings": []
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 55.0,
+            "level": 66.32,
+            "velocity": 61.09,
+            "acceleration": 40.76,
+            "persistence": 50.0,
+            "breadth": 50.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                2.0
+              ],
+              "recent_two_periods": 2.0,
+              "prior_two_periods": 1.0,
+              "active_company_count": 2,
+              "company_count": 4
+            },
+            "warnings": []
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": []
+      },
       "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 32.75,
-        "level": 41.0,
+        "name": "supply_contract_event_count",
+        "score": 33.41,
+        "level": 43.65,
         "velocity": 50.0,
         "acceleration": 50.0,
         "persistence": 0.0,
@@ -48,8 +129,12 @@
         "coverage": 1.0,
         "raw": {
           "period_totals": [
+            0.0,
+            0.0,
+            0.0,
             1.0,
-            2.0,
+            1.0,
+            1.0,
             0.0,
             0.0,
             0.0,
@@ -61,6 +146,89 @@
           "prior_two_periods": 0.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 32.42,
+        "level": 39.7,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 32.25,
+            "level": 39.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                1.5781691659743657,
+                3.0481581587362725,
+                2.47630310719065,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 33.41,
+            "level": 43.65,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                1.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -116,12 +284,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 55.87,
+        "level": 54.87,
+        "velocity": 51.13,
+        "acceleration": 39.98,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"industrial robot\" OR all:\"robotic automation\" OR all:\"embodied artificial intelligence\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 136
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 131
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 90
+            }
+          },
+          "counts": {
+            "recent": 136,
+            "prior": 131,
+            "older": 90
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
       "매출 수요 가속 점수 73.2",
       "영업이익률 개선 점수 69.1",
-      "시설투자·자산취득 공시 가속 점수 60.2"
+      "참여기업·신호 확산도 62.5",
+      "실제 투자금액·시설투자 가속 점수 56.3"
     ],
     "invalidations": [
       "제조업 자동화 CAPEX 감소",
@@ -133,310 +339,34 @@
       "usable_companies": 4,
       "company_coverage": 1.0,
       "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
-    "theme_id": "QUANTUM_COMPUTING",
-    "theme_name": "양자컴퓨팅",
-    "as_of": "2026-08-01",
+    "theme_id": "SPACE_INFRA",
+    "theme_name": "우주·위성 인프라",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 54.35,
-    "boom_probability_6m": 0.1706,
-    "boom_probability_12m": 0.2809,
-    "boom_probability_24m": 0.3557,
-    "data_confidence": 55.0,
+    "boom_score": 48.34,
+    "boom_probability_6m": 0.1152,
+    "boom_probability_12m": 0.2043,
+    "boom_probability_24m": 0.2729,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 46.84,
-        "level": 47.21,
-        "velocity": 50.0,
-        "acceleration": 56.43,
-        "persistence": 50.0,
-        "breadth": 25.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            0.0,
-            1.0,
-            1.0,
-            1.0,
-            0.0,
-            1.0,
-            1.0,
-            0.0
-          ],
-          "recent_two_periods": 1.0,
-          "prior_two_periods": 1.0,
-          "active_company_count": 1,
-          "company_count": 4
-        },
-        "warnings": []
-      },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 55.22,
-        "level": 67.17,
-        "velocity": 61.09,
-        "acceleration": 40.76,
-        "persistence": 75.0,
-        "breadth": 25.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            1.0,
-            0.0,
-            1.0,
-            1.0
-          ],
-          "recent_two_periods": 2.0,
-          "prior_two_periods": 1.0,
-          "active_company_count": 1,
-          "company_count": 4
-        },
-        "warnings": []
-      },
-      "revenue": {
-        "name": "revenue_demand",
-        "score": 58.22,
-        "level": 48.27,
-        "velocity": 55.46,
-        "acceleration": 66.64,
-        "persistence": 54.17,
-        "breadth": 75.0,
-        "coverage": 1.0,
-        "raw": {
-          "company_count": 4,
-          "usable_company_count": 4,
-          "median_yoy": 0.3359444593265404,
-          "median_acceleration": 0.25700861554993804,
-          "positive_breadth": 0.75
-        },
-        "warnings": []
-      },
-      "operating_margin": {
-        "name": "pricing_power_margin",
-        "score": 68.85,
-        "level": 50.0,
-        "velocity": 50.0,
-        "acceleration": 50.0,
-        "persistence": 50.0,
-        "breadth": 75.0,
-        "coverage": 1.0,
-        "raw": {
-          "170920": {
-            "latest_margin": 0.12513951653995545,
-            "prior_margin": 0.10057863237291505,
-            "delta": 0.0245608841670404
-          },
-          "388720": {
-            "latest_margin": -0.6640522195114217,
-            "prior_margin": -0.2697182748607329,
-            "delta": -0.3943339446506888
-          },
-          "089230": {
-            "latest_margin": 1.2681243678729126,
-            "prior_margin": -0.4443861061941049,
-            "delta": 1.7125104740670176
-          },
-          "054450": {
-            "latest_margin": 0.0716109797980072,
-            "prior_margin": -0.067171897898479,
-            "delta": 0.13878287769648617
-          }
-        },
-        "warnings": []
-      }
-    },
-    "top_reasons": [
-      "영업이익률 개선 점수 68.8",
-      "긍정 흐름 지속성 59.7",
-      "매출 수요 가속 점수 58.2"
-    ],
-    "invalidations": [
-      "기술성능 개선이 상용계약 증가로 연결되지 않음",
-      "연구개발비 대비 고객매출 정체",
-      "자금조달 의존도가 과도하게 상승"
-    ],
-    "coverage": {
-      "requested_companies": 4,
-      "usable_companies": 4,
-      "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
-    },
-    "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다."
-    ]
-  },
-  {
-    "theme_id": "BIOTECH_PLATFORM",
-    "theme_name": "바이오 플랫폼·정밀의료",
-    "as_of": "2026-08-01",
-    "stage": "NO_SIGNAL",
-    "boom_score": 54.16,
-    "boom_probability_6m": 0.168,
-    "boom_probability_12m": 0.2774,
-    "boom_probability_24m": 0.3519,
-    "data_confidence": 55.0,
-    "engines": {
-      "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 50.12,
-        "level": 50.0,
-        "velocity": 68.28,
-        "acceleration": 65.23,
-        "persistence": 25.0,
-        "breadth": 25.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            0.0,
-            3.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            1.0,
-            0.0
-          ],
-          "recent_two_periods": 1.0,
-          "prior_two_periods": 0.0,
-          "active_company_count": 1,
-          "company_count": 4
-        },
-        "warnings": []
-      },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 52.36,
-        "level": 36.49,
-        "velocity": 50.0,
-        "acceleration": 59.94,
-        "persistence": 100.0,
-        "breadth": 25.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            6.0,
-            12.0,
-            5.0,
-            5.0,
-            2.0,
-            2.0,
-            2.0,
-            2.0
-          ],
-          "recent_two_periods": 4.0,
-          "prior_two_periods": 4.0,
-          "active_company_count": 1,
-          "company_count": 4
-        },
-        "warnings": []
-      },
-      "revenue": {
-        "name": "revenue_demand",
-        "score": 61.75,
-        "level": 56.32,
-        "velocity": 59.95,
-        "acceleration": 63.23,
-        "persistence": 62.5,
-        "breadth": 75.0,
-        "coverage": 1.0,
-        "raw": {
-          "company_count": 4,
-          "usable_company_count": 4,
-          "median_yoy": 0.3292820944782011,
-          "median_acceleration": 0.24780839952177144,
-          "positive_breadth": 0.75
-        },
-        "warnings": []
-      },
-      "operating_margin": {
-        "name": "pricing_power_margin",
-        "score": 55.48,
-        "level": 50.0,
-        "velocity": 50.0,
-        "acceleration": 50.0,
-        "persistence": 50.0,
-        "breadth": 50.0,
-        "coverage": 1.0,
-        "raw": {
-          "207940": {
-            "latest_margin": 0.8436206538326982,
-            "prior_margin": 0.40385784744732245,
-            "delta": 0.4397628063853758
-          },
-          "068270": {
-            "latest_margin": 0.31917106036172815,
-            "prior_margin": 0.2725564731024011,
-            "delta": 0.046614587259327045
-          },
-          "326030": {
-            "latest_margin": 0.3160113233315256,
-            "prior_margin": 0.3583541754550811,
-            "delta": -0.042342852123555486
-          },
-          "145020": {
-            "latest_margin": 0.4468523806710977,
-            "prior_margin": 0.4807931387066835,
-            "delta": -0.03394075803558577
-          }
-        },
-        "warnings": []
-      }
-    },
-    "top_reasons": [
-      "긍정 흐름 지속성 62.5",
-      "매출 수요 가속 점수 61.8",
-      "영업이익률 개선 점수 55.5"
-    ],
-    "invalidations": [
-      "임상 실패율 상승 또는 핵심 파이프라인 중단",
-      "연구개발비 증가가 임상 진척으로 연결되지 않음",
-      "자금조달 환경 악화로 현금소진 위험 상승"
-    ],
-    "coverage": {
-      "requested_companies": 4,
-      "usable_companies": 4,
-      "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
-    },
-    "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다."
-    ]
-  },
-  {
-    "theme_id": "NUCLEAR_FIRM_POWER",
-    "theme_name": "원전·무탄소 기저전력",
-    "as_of": "2026-08-01",
-    "stage": "NO_SIGNAL",
-    "boom_score": 47.13,
-    "boom_probability_6m": 0.0934,
-    "boom_probability_12m": 0.1677,
-    "boom_probability_24m": 0.2261,
-    "data_confidence": 55.0,
-    "engines": {
-      "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 35.0,
-        "level": 50.0,
+        "name": "facility_investment_event_count",
+        "score": 33.84,
+        "level": 45.38,
         "velocity": 50.0,
         "acceleration": 50.0,
         "persistence": 0.0,
@@ -444,6 +374,10 @@
         "coverage": 1.0,
         "raw": {
           "period_totals": [
+            0.0,
+            1.0,
+            1.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -462,32 +396,558 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 34.16,
+        "level": 46.66,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 34.22,
+            "level": 46.88,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.7696096648432502,
+                0.48878644669383325,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 33.84,
+            "level": 45.38,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                1.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
       "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 42.26,
-        "level": 31.26,
-        "velocity": 36.69,
-        "acceleration": 51.34,
-        "persistence": 75.0,
-        "breadth": 25.0,
+        "name": "supply_contract_event_count",
+        "score": 53.67,
+        "level": 46.85,
+        "velocity": 50.0,
+        "acceleration": 34.77,
+        "persistence": 100.0,
+        "breadth": 50.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            13.0,
+            7.0,
             12.0,
-            19.0,
+            8.0,
             6.0,
-            2.0,
-            5.0,
-            2.0,
-            0.0
+            3.0,
+            3.0,
+            1.0,
+            3.0,
+            3.0,
+            6.0,
+            3.0,
+            6.0
           ],
-          "recent_two_periods": 2.0,
-          "prior_two_periods": 7.0,
-          "active_company_count": 1,
+          "recent_two_periods": 9.0,
+          "prior_two_periods": 9.0,
+          "active_company_count": 2,
           "company_count": 4
         },
         "warnings": []
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 56.73,
+        "level": 48.58,
+        "velocity": 54.14,
+        "acceleration": 42.75,
+        "persistence": 100.0,
+        "breadth": 50.0,
+        "coverage": 0.9508,
+        "raw": {
+          "amount_coverage": 0.9508,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 57.27,
+            "level": 48.89,
+            "velocity": 54.87,
+            "acceleration": 44.16,
+            "persistence": 100.0,
+            "breadth": 50.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                9.887797588073477,
+                12.491382187164442,
+                12.87945788378234,
+                10.023275932672588,
+                7.277847236322859,
+                3.7358706108988446,
+                1.8368821064207368,
+                5.661297549634195,
+                4.098525789054452,
+                7.705220411295318,
+                5.205273634726175,
+                9.232492023613158
+              ],
+              "recent_two_periods": 14.437765658339334,
+              "prior_two_periods": 11.80374620034977,
+              "active_company_count": 2,
+              "company_count": 4
+            },
+            "warnings": []
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 53.67,
+            "level": 46.85,
+            "velocity": 50.0,
+            "acceleration": 34.77,
+            "persistence": 100.0,
+            "breadth": 50.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                7.0,
+                12.0,
+                8.0,
+                6.0,
+                3.0,
+                3.0,
+                1.0,
+                3.0,
+                3.0,
+                6.0,
+                3.0,
+                6.0
+              ],
+              "recent_two_periods": 9.0,
+              "prior_two_periods": 9.0,
+              "active_company_count": 2,
+              "company_count": 4
+            },
+            "warnings": []
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": []
+      },
+      "revenue": {
+        "name": "revenue_demand",
+        "score": 50.61,
+        "level": 57.95,
+        "velocity": 49.47,
+        "acceleration": 37.5,
+        "persistence": 62.5,
+        "breadth": 50.0,
+        "coverage": 1.0,
+        "raw": {
+          "company_count": 4,
+          "usable_company_count": 4,
+          "median_yoy": -0.011333818121806612,
+          "median_acceleration": -0.3770290481894023,
+          "positive_breadth": 0.5
+        },
+        "warnings": []
+      },
+      "operating_margin": {
+        "name": "pricing_power_margin",
+        "score": 20.94,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "099320": {
+            "latest_margin": 0.0005407182461628669,
+            "prior_margin": 0.04711252565760092,
+            "delta": -0.04657180741143806
+          },
+          "211270": {
+            "latest_margin": -0.2908146965636001,
+            "prior_margin": -0.27953964133562137,
+            "delta": -0.011275055227978725
+          },
+          "047810": {
+            "latest_margin": 0.056963497046526944,
+            "prior_margin": 0.0943024776360481,
+            "delta": -0.037338980589521155
+          },
+          "012450": {
+            "latest_margin": 0.1034977718063726,
+            "prior_margin": 0.1345097882844734,
+            "delta": -0.031012016478100812
+          }
+        },
+        "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 62.51,
+        "level": 60.38,
+        "velocity": 59.96,
+        "acceleration": 48.15,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"satellite constellation\" OR all:\"space infrastructure\" OR all:\"launch vehicle\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 146
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 108
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 75
+            }
+          },
+          "counts": {
+            "recent": 146,
+            "prior": 108,
+            "older": 75
+          }
+        },
+        "warnings": []
+      }
+    },
+    "top_reasons": [
+      "긍정 흐름 지속성 65.6",
+      "기술연구 확산 가속 점수 62.5",
+      "실제 공급계약·수주금액 가속 점수 56.7",
+      "매출 수요 가속 점수 50.6"
+    ],
+    "invalidations": [
+      "발사·위성 배치 일정 지연 반복",
+      "정부계약 외 상업매출 전환 실패",
+      "현금소진 속도 악화"
+    ],
+    "coverage": {
+      "requested_companies": 4,
+      "usable_companies": 4,
+      "company_coverage": 1.0,
+      "metric_coverage": 0.9877,
+      "amount_coverage": 0.9754,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
+    },
+    "warnings": [
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
+      "최근 6개월 관련 공시가 없어 신호가 약합니다."
+    ]
+  },
+  {
+    "theme_id": "NUCLEAR_FIRM_POWER",
+    "theme_name": "원전·무탄소 기저전력",
+    "as_of": "2026-08-02",
+    "stage": "NO_SIGNAL",
+    "boom_score": 47.77,
+    "boom_probability_6m": 0.1097,
+    "boom_probability_12m": 0.1956,
+    "boom_probability_24m": 0.2625,
+    "data_confidence": 72.0,
+    "engines": {
+      "capital_events": {
+        "name": "facility_investment_event_count",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.5,
+        "raw": {
+          "amount_coverage": 0.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.0
+        },
+        "warnings": [
+          "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 31.09,
+        "level": 30.94,
+        "velocity": 34.06,
+        "acceleration": 36.72,
+        "persistence": 50.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            5.0,
+            13.0,
+            11.0,
+            5.0,
+            3.0,
+            4.0,
+            3.0,
+            1.0,
+            1.0,
+            3.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 4.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 30.55,
+        "level": 30.68,
+        "velocity": 33.16,
+        "acceleration": 35.43,
+        "persistence": 50.0,
+        "breadth": 0.0,
+        "coverage": 0.9615,
+        "raw": {
+          "amount_coverage": 0.9615,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 30.45,
+            "level": 30.63,
+            "velocity": 33.0,
+            "acceleration": 35.2,
+            "persistence": 50.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                6.57388036953626,
+                14.05740579287454,
+                9.611492656785575,
+                3.7602140826101245,
+                4.823682072742228,
+                3.8406116583831285,
+                4.770612964073287,
+                2.304994944109392,
+                1.858021476668175,
+                5.751570200549495,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 7.60959167721767,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 31.09,
+            "level": 30.94,
+            "velocity": 34.06,
+            "acceleration": 36.72,
+            "persistence": 50.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                5.0,
+                13.0,
+                11.0,
+                5.0,
+                3.0,
+                4.0,
+                3.0,
+                1.0,
+                1.0,
+                3.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 4.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
       },
       "revenue": {
         "name": "revenue_demand",
@@ -539,12 +999,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 63.2,
+        "level": 57.94,
+        "velocity": 58.79,
+        "acceleration": 53.44,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"small modular reactor\" OR all:\"nuclear energy\" OR all:\"fusion reactor\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 140
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 107
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 91
+            }
+          },
+          "counts": {
+            "recent": 140,
+            "prior": 107,
+            "older": 91
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
       "영업이익률 개선 점수 81.2",
+      "기술연구 확산 가속 점수 63.2",
       "매출 수요 가속 점수 55.9",
-      "긍정 흐름 지속성 45.8"
+      "긍정 흐름 지속성 53.1"
     ],
     "invalidations": [
       "신규 원전·SMR 프로젝트 일정 지연 확대",
@@ -555,42 +1053,52 @@
       "requested_companies": 4,
       "usable_companies": 4,
       "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "metric_coverage": 0.8654,
+      "amount_coverage": 0.4808,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
+      "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+      "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
     "theme_id": "POWER_GRID_ELECTRIFICATION",
     "theme_name": "전력망·전기화 인프라",
-    "as_of": "2026-08-01",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 43.6,
-    "boom_probability_6m": 0.0681,
-    "boom_probability_12m": 0.1259,
-    "boom_probability_24m": 0.1739,
-    "data_confidence": 55.0,
+    "boom_score": 47.15,
+    "boom_probability_6m": 0.1038,
+    "boom_probability_12m": 0.1863,
+    "boom_probability_24m": 0.2512,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 32.86,
-        "level": 34.05,
+        "name": "facility_investment_event_count",
+        "score": 31.77,
+        "level": 37.06,
         "velocity": 50.0,
-        "acceleration": 59.24,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            7.0,
-            3.0,
-            0.0,
+            2.0,
             1.0,
+            0.0,
+            3.0,
+            4.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -605,30 +1113,200 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 32.51,
+        "level": 40.03,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 32.64,
+            "level": 40.55,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.141897363627262,
+                1.3506795458606886,
+                0.0,
+                1.2127672097706599,
+                1.7094963158168706,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 31.77,
+            "level": 37.06,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                2.0,
+                1.0,
+                0.0,
+                3.0,
+                4.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
       "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 32.45,
-        "level": 30.41,
-        "velocity": 38.91,
-        "acceleration": 56.85,
-        "persistence": 25.0,
+        "name": "supply_contract_event_count",
+        "score": 30.74,
+        "level": 32.97,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
             7.0,
-            18.0,
-            7.0,
-            6.0,
+            10.0,
             1.0,
+            6.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0
           ],
           "recent_two_periods": 0.0,
-          "prior_two_periods": 1.0,
+          "prior_two_periods": 0.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 30.81,
+        "level": 33.24,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.9583,
+        "raw": {
+          "amount_coverage": 0.9583,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 30.82,
+            "level": 33.29,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                7.268680400612577,
+                6.88673239885661,
+                2.4129286875422586,
+                5.504228247350155,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 30.74,
+            "level": 32.97,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                7.0,
+                10.0,
+                1.0,
+                6.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -684,12 +1362,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 60.37,
+        "level": 54.7,
+        "velocity": 54.74,
+        "acceleration": 50.9,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"power grid\" OR all:\"grid modernization\" OR all:\"high voltage transformer\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 352
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 305
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 272
+            }
+          },
+          "counts": {
+            "recent": 352,
+            "prior": 305,
+            "older": 272
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
       "영업이익률 개선 점수 68.0",
       "매출 수요 가속 점수 62.2",
-      "참여기업 확산도 33.3"
+      "기술연구 확산 가속 점수 60.4",
+      "참여기업·신호 확산도 50.0"
     ],
     "invalidations": [
       "전력기기 수주잔고 증가율 0% 이하",
@@ -700,33 +1416,37 @@
       "requested_companies": 4,
       "usable_companies": 4,
       "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "metric_coverage": 0.9896,
+      "amount_coverage": 0.9791,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
-    "theme_id": "AI_COMPUTE_INFRA",
-    "theme_name": "AI 연산·데이터센터 인프라",
-    "as_of": "2026-08-01",
+    "theme_id": "CYBERSECURITY",
+    "theme_name": "사이버보안",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 43.31,
-    "boom_probability_6m": 0.0663,
-    "boom_probability_12m": 0.1228,
-    "boom_probability_24m": 0.17,
-    "data_confidence": 55.0,
+    "boom_score": 46.56,
+    "boom_probability_6m": 0.0986,
+    "boom_probability_12m": 0.1778,
+    "boom_probability_24m": 0.2408,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 35.86,
-        "level": 46.03,
+        "name": "facility_investment_event_count",
+        "score": 34.37,
+        "level": 47.46,
         "velocity": 50.0,
-        "acceleration": 59.24,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
@@ -734,8 +1454,12 @@
           "period_totals": [
             0.0,
             0.0,
-            0.0,
             1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -750,21 +1474,108 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 35.08,
-        "level": 41.0,
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 33.97,
+        "level": 45.88,
         "velocity": 50.0,
-        "acceleration": 61.66,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 33.9,
+            "level": 45.6,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                1.881781786490859,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 34.37,
+            "level": 47.46,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
             0.0,
-            1.0,
             0.0,
-            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -774,6 +1585,452 @@
           "prior_two_periods": 0.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.5,
+        "raw": {
+          "amount_coverage": 0.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.0
+        },
+        "warnings": [
+          "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "revenue": {
+        "name": "revenue_demand",
+        "score": 56.98,
+        "level": 53.81,
+        "velocity": 54.98,
+        "acceleration": 51.61,
+        "persistence": 62.5,
+        "breadth": 75.0,
+        "coverage": 1.0,
+        "raw": {
+          "company_count": 4,
+          "usable_company_count": 4,
+          "median_yoy": 0.15871874104779216,
+          "median_acceleration": 0.06476722933232318,
+          "positive_breadth": 0.75
+        },
+        "warnings": []
+      },
+      "operating_margin": {
+        "name": "pricing_power_margin",
+        "score": 72.05,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 75.0,
+        "coverage": 1.0,
+        "raw": {
+          "053800": {
+            "latest_margin": 0.1411949633160406,
+            "prior_margin": 0.08882082014094406,
+            "delta": 0.05237414317509653
+          },
+          "078350": {
+            "latest_margin": 0.045792881092024354,
+            "prior_margin": 0.027083360717994824,
+            "delta": 0.01870952037402953
+          },
+          "136540": {
+            "latest_margin": 0.18058605878989417,
+            "prior_margin": 0.20270075388972544,
+            "delta": -0.022114695099831272
+          },
+          "356680": {
+            "latest_margin": 0.17496808184166987,
+            "prior_margin": -0.12113682975812905,
+            "delta": 0.2961049115997989
+          }
+        },
+        "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 57.06,
+        "level": 57.76,
+        "velocity": 54.36,
+        "acceleration": 38.28,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"cybersecurity\" OR all:\"zero trust\" OR all:\"ransomware detection\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 1018
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 894
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 561
+            }
+          },
+          "counts": {
+            "recent": 1018,
+            "prior": 894,
+            "older": 561
+          }
+        },
+        "warnings": []
+      }
+    },
+    "top_reasons": [
+      "영업이익률 개선 점수 72.0",
+      "기술연구 확산 가속 점수 57.1",
+      "매출 수요 가속 점수 57.0",
+      "참여기업·신호 확산도 43.8"
+    ],
+    "invalidations": [
+      "잔여계약가치·반복매출 성장 급락",
+      "고객 유지율 악화",
+      "영업비용 증가가 매출 증가를 지속 초과"
+    ],
+    "coverage": {
+      "requested_companies": 4,
+      "usable_companies": 4,
+      "company_coverage": 1.0,
+      "metric_coverage": 0.875,
+      "amount_coverage": 0.5,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
+    },
+    "warnings": [
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
+      "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+      "최근 6개월 관련 공시가 없어 신호가 약합니다."
+    ]
+  },
+  {
+    "theme_id": "AI_COMPUTE_INFRA",
+    "theme_name": "AI 연산·데이터센터 인프라",
+    "as_of": "2026-08-02",
+    "stage": "NO_SIGNAL",
+    "boom_score": 46.06,
+    "boom_probability_6m": 0.0943,
+    "boom_probability_12m": 0.171,
+    "boom_probability_24m": 0.2323,
+    "data_confidence": 72.0,
+    "engines": {
+      "capital_events": {
+        "name": "facility_investment_event_count",
+        "score": 33.41,
+        "level": 43.65,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            1.0,
+            0.0,
+            0.0,
+            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 33.16,
+        "level": 42.67,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 33.12,
+            "level": 42.5,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.5708950932355925,
+                0.0,
+                0.0,
+                2.215757315078845,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 33.41,
+            "level": 43.65,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.0,
+                0.0,
+                0.0,
+                2.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 32.49,
+        "level": 39.97,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            2.0,
+            1.0,
+            2.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 31.68,
+        "level": 36.73,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 31.54,
+            "level": 36.16,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                3.094279914822447,
+                2.9401212922005846,
+                2.320271560047352,
+                3.4726012687794174,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 32.49,
+            "level": 39.97,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                2.0,
+                1.0,
+                2.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -829,12 +2086,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 58.79,
+        "level": 60.32,
+        "velocity": 57.99,
+        "acceleration": 38.09,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"large language model\" OR all:\"generative artificial intelligence\" OR all:\"deep learning accelerator\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 31473
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 25073
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 14662
+            }
+          },
+          "counts": {
+            "recent": 31473,
+            "prior": 25073,
+            "older": 14662
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
       "매출 수요 가속 점수 65.6",
+      "기술연구 확산 가속 점수 58.8",
       "영업이익률 개선 점수 51.1",
-      "시설투자·자산취득 공시 가속 점수 35.9"
+      "참여기업·신호 확산도 43.8"
     ],
     "invalidations": [
       "빅테크 CAPEX가 2개 분기 연속 감소",
@@ -846,175 +2141,34 @@
       "usable_companies": 4,
       "company_coverage": 1.0,
       "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
-    "theme_id": "CYBERSECURITY",
-    "theme_name": "사이버보안",
-    "as_of": "2026-08-01",
+    "theme_id": "QUANTUM_COMPUTING",
+    "theme_name": "양자컴퓨팅",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 43.03,
-    "boom_probability_6m": 0.0647,
-    "boom_probability_12m": 0.12,
-    "boom_probability_24m": 0.1664,
-    "data_confidence": 55.0,
+    "boom_score": 46.05,
+    "boom_probability_6m": 0.0942,
+    "boom_probability_12m": 0.1708,
+    "boom_probability_24m": 0.2321,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 35.0,
-        "level": 50.0,
-        "velocity": 50.0,
-        "acceleration": 50.0,
-        "persistence": 0.0,
-        "breadth": 0.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "recent_two_periods": 0.0,
-          "prior_two_periods": 0.0,
-          "active_company_count": 0,
-          "company_count": 4
-        },
-        "warnings": [
-          "최근 6개월 관련 공시가 없어 신호가 약합니다."
-        ]
-      },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 35.0,
-        "level": 50.0,
-        "velocity": 50.0,
-        "acceleration": 50.0,
-        "persistence": 0.0,
-        "breadth": 0.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "recent_two_periods": 0.0,
-          "prior_two_periods": 0.0,
-          "active_company_count": 0,
-          "company_count": 4
-        },
-        "warnings": [
-          "최근 6개월 관련 공시가 없어 신호가 약합니다."
-        ]
-      },
-      "revenue": {
-        "name": "revenue_demand",
-        "score": 56.98,
-        "level": 53.81,
-        "velocity": 54.98,
-        "acceleration": 51.61,
-        "persistence": 62.5,
-        "breadth": 75.0,
-        "coverage": 1.0,
-        "raw": {
-          "company_count": 4,
-          "usable_company_count": 4,
-          "median_yoy": 0.15871874104779216,
-          "median_acceleration": 0.06476722933232318,
-          "positive_breadth": 0.75
-        },
-        "warnings": []
-      },
-      "operating_margin": {
-        "name": "pricing_power_margin",
-        "score": 72.05,
-        "level": 50.0,
-        "velocity": 50.0,
-        "acceleration": 50.0,
-        "persistence": 50.0,
-        "breadth": 75.0,
-        "coverage": 1.0,
-        "raw": {
-          "053800": {
-            "latest_margin": 0.1411949633160406,
-            "prior_margin": 0.08882082014094406,
-            "delta": 0.05237414317509653
-          },
-          "078350": {
-            "latest_margin": 0.045792881092024354,
-            "prior_margin": 0.027083360717994824,
-            "delta": 0.01870952037402953
-          },
-          "136540": {
-            "latest_margin": 0.18058605878989417,
-            "prior_margin": 0.20270075388972544,
-            "delta": -0.022114695099831272
-          },
-          "356680": {
-            "latest_margin": 0.17496808184166987,
-            "prior_margin": -0.12113682975812905,
-            "delta": 0.2961049115997989
-          }
-        },
-        "warnings": []
-      }
-    },
-    "top_reasons": [
-      "영업이익률 개선 점수 72.0",
-      "매출 수요 가속 점수 57.0",
-      "시설투자·자산취득 공시 가속 점수 35.0"
-    ],
-    "invalidations": [
-      "잔여계약가치·반복매출 성장 급락",
-      "고객 유지율 악화",
-      "영업비용 증가가 매출 증가를 지속 초과"
-    ],
-    "coverage": {
-      "requested_companies": 4,
-      "usable_companies": 4,
-      "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
-    },
-    "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
-      "최근 6개월 관련 공시가 없어 신호가 약합니다."
-    ]
-  },
-  {
-    "theme_id": "SPACE_INFRA",
-    "theme_name": "우주·위성 인프라",
-    "as_of": "2026-08-01",
-    "stage": "NO_SIGNAL",
-    "boom_score": 42.51,
-    "boom_probability_6m": 0.0616,
-    "boom_probability_12m": 0.1148,
-    "boom_probability_24m": 0.1596,
-    "data_confidence": 55.0,
-    "engines": {
-      "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 32.69,
-        "level": 33.36,
+        "name": "facility_investment_event_count",
+        "score": 35.69,
+        "level": 45.38,
         "velocity": 50.0,
         "acceleration": 59.24,
         "persistence": 0.0,
@@ -1022,8 +2176,12 @@
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            4.0,
-            8.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
             1.0,
             0.0,
             0.0,
@@ -1040,164 +2198,108 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 53.48,
-        "level": 38.63,
-        "velocity": 44.56,
-        "acceleration": 50.94,
-        "persistence": 100.0,
-        "breadth": 50.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            6.0,
-            17.0,
-            7.0,
-            10.0,
-            4.0,
-            8.0,
-            3.0,
-            6.0
-          ],
-          "recent_two_periods": 9.0,
-          "prior_two_periods": 12.0,
-          "active_company_count": 2,
-          "company_count": 4
-        },
-        "warnings": []
-      },
-      "revenue": {
-        "name": "revenue_demand",
-        "score": 50.61,
-        "level": 57.95,
-        "velocity": 49.47,
-        "acceleration": 37.5,
-        "persistence": 62.5,
-        "breadth": 50.0,
-        "coverage": 1.0,
-        "raw": {
-          "company_count": 4,
-          "usable_company_count": 4,
-          "median_yoy": -0.011333818121806612,
-          "median_acceleration": -0.3770290481894023,
-          "positive_breadth": 0.5
-        },
-        "warnings": []
-      },
-      "operating_margin": {
-        "name": "pricing_power_margin",
-        "score": 20.94,
-        "level": 50.0,
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 35.42,
+        "level": 41.48,
         "velocity": 50.0,
-        "acceleration": 50.0,
-        "persistence": 50.0,
+        "acceleration": 62.74,
+        "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
-          "099320": {
-            "latest_margin": 0.0005407182461628669,
-            "prior_margin": 0.04711252565760092,
-            "delta": -0.04657180741143806
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 35.37,
+            "level": 40.79,
+            "velocity": 50.0,
+            "acceleration": 63.36,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0079224697536189,
+                4.1817880044796185,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
           },
-          "211270": {
-            "latest_margin": -0.2908146965636001,
-            "prior_margin": -0.27953964133562137,
-            "delta": -0.011275055227978725
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 35.69,
+            "level": 45.38,
+            "velocity": 50.0,
+            "acceleration": 59.24,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
           },
-          "047810": {
-            "latest_margin": 0.056963497046526944,
-            "prior_margin": 0.0943024776360481,
-            "delta": -0.037338980589521155
-          },
-          "012450": {
-            "latest_margin": 0.1034977718063726,
-            "prior_margin": 0.1345097882844734,
-            "delta": -0.031012016478100812
-          }
-        },
-        "warnings": []
-      }
-    },
-    "top_reasons": [
-      "긍정 흐름 지속성 54.2",
-      "공급계약·수주 공시 가속 점수 53.5",
-      "매출 수요 가속 점수 50.6"
-    ],
-    "invalidations": [
-      "발사·위성 배치 일정 지연 반복",
-      "정부계약 외 상업매출 전환 실패",
-      "현금소진 속도 악화"
-    ],
-    "coverage": {
-      "requested_companies": 4,
-      "usable_companies": 4,
-      "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
-    },
-    "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
-      "최근 6개월 관련 공시가 없어 신호가 약합니다."
-    ]
-  },
-  {
-    "theme_id": "ENERGY_STORAGE",
-    "theme_name": "에너지저장·전력변환",
-    "as_of": "2026-08-01",
-    "stage": "NO_SIGNAL",
-    "boom_score": 40.68,
-    "boom_probability_6m": 0.052,
-    "boom_probability_12m": 0.098,
-    "boom_probability_24m": 0.1377,
-    "data_confidence": 55.0,
-    "engines": {
-      "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 31.27,
-        "level": 34.05,
-        "velocity": 36.01,
-        "acceleration": 50.0,
-        "persistence": 25.0,
-        "breadth": 0.0,
-        "coverage": 1.0,
-        "raw": {
-          "period_totals": [
-            1.0,
-            0.0,
-            5.0,
-            3.0,
-            2.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "recent_two_periods": 0.0,
-          "prior_two_periods": 2.0,
-          "active_company_count": 0,
-          "company_count": 4
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
       "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 32.76,
-        "level": 35.54,
+        "name": "supply_contract_event_count",
+        "score": 31.72,
+        "level": 47.46,
         "velocity": 38.91,
-        "acceleration": 51.99,
+        "acceleration": 31.9,
         "persistence": 25.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            3.0,
             0.0,
-            2.0,
-            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             1.0,
             0.0,
             0.0,
@@ -1207,6 +2309,450 @@
           "prior_two_periods": 1.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 29.42,
+        "level": 43.45,
+        "velocity": 34.98,
+        "acceleration": 30.29,
+        "persistence": 25.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 29.01,
+            "level": 42.74,
+            "velocity": 34.29,
+            "acceleration": 30.01,
+            "persistence": 25.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                3.6140895158631863,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 3.6140895158631863,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 31.72,
+            "level": 47.46,
+            "velocity": 38.91,
+            "acceleration": 31.9,
+            "persistence": 25.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 1.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "revenue": {
+        "name": "revenue_demand",
+        "score": 58.22,
+        "level": 48.27,
+        "velocity": 55.46,
+        "acceleration": 66.64,
+        "persistence": 54.17,
+        "breadth": 75.0,
+        "coverage": 1.0,
+        "raw": {
+          "company_count": 4,
+          "usable_company_count": 4,
+          "median_yoy": 0.3359444593265404,
+          "median_acceleration": 0.25700861554993804,
+          "positive_breadth": 0.75
+        },
+        "warnings": []
+      },
+      "operating_margin": {
+        "name": "pricing_power_margin",
+        "score": 68.85,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 75.0,
+        "coverage": 1.0,
+        "raw": {
+          "170920": {
+            "latest_margin": 0.12513951653995545,
+            "prior_margin": 0.10057863237291505,
+            "delta": 0.0245608841670404
+          },
+          "388720": {
+            "latest_margin": -0.6640522195114217,
+            "prior_margin": -0.2697182748607329,
+            "delta": -0.3943339446506888
+          },
+          "089230": {
+            "latest_margin": 1.2681243678729126,
+            "prior_margin": -0.4443861061941049,
+            "delta": 1.7125104740670176
+          },
+          "054450": {
+            "latest_margin": 0.0716109797980072,
+            "prior_margin": -0.067171897898479,
+            "delta": 0.13878287769648617
+          }
+        },
+        "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 58.33,
+        "level": 54.09,
+        "velocity": 52.78,
+        "acceleration": 46.78,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"quantum computing\" OR all:\"quantum error correction\" OR all:\"quantum processor\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 4243
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 3902
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 3243
+            }
+          },
+          "counts": {
+            "recent": 4243,
+            "prior": 3902,
+            "older": 3243
+          }
+        },
+        "warnings": []
+      }
+    },
+    "top_reasons": [
+      "영업이익률 개선 점수 68.8",
+      "기술연구 확산 가속 점수 58.3",
+      "매출 수요 가속 점수 58.2",
+      "긍정 흐름 지속성 44.8"
+    ],
+    "invalidations": [
+      "기술성능 개선이 상용계약 증가로 연결되지 않음",
+      "연구개발비 대비 고객매출 정체",
+      "자금조달 의존도가 과도하게 상승"
+    ],
+    "coverage": {
+      "requested_companies": 4,
+      "usable_companies": 4,
+      "company_coverage": 1.0,
+      "metric_coverage": 1.0,
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
+    },
+    "warnings": [
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
+      "최근 6개월 관련 공시가 없어 신호가 약합니다."
+    ]
+  },
+  {
+    "theme_id": "ENERGY_STORAGE",
+    "theme_name": "에너지저장·전력변환",
+    "as_of": "2026-08-02",
+    "stage": "NO_SIGNAL",
+    "boom_score": 44.45,
+    "boom_probability_6m": 0.0816,
+    "boom_probability_12m": 0.1499,
+    "boom_probability_24m": 0.206,
+    "data_confidence": 72.0,
+    "engines": {
+      "capital_events": {
+        "name": "facility_investment_event_count",
+        "score": 33.05,
+        "level": 42.21,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            3.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 32.2,
+        "level": 38.8,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 32.05,
+            "level": 38.2,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                6.4178502538046445,
+                0.0,
+                1.7398389295372216,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 33.05,
+            "level": 42.21,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                3.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 32.08,
+        "level": 38.31,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            0.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 30.78,
+        "level": 33.11,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 30.55,
+            "level": 32.19,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                12.14833878771416,
+                6.7885323508295095,
+                5.644249603877462,
+                5.644249603877462,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 32.08,
+            "level": 38.31,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                2.0,
+                2.0,
+                2.0,
+                2.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -1262,12 +2808,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 59.28,
+        "level": 56.04,
+        "velocity": 54.69,
+        "acceleration": 46.43,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"energy storage\" OR all:\"battery management system\" OR all:\"power conversion system\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 526
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 457
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 356
+            }
+          },
+          "counts": {
+            "recent": 526,
+            "prior": 457,
+            "older": 356
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
+      "기술연구 확산 가속 점수 59.3",
       "영업이익률 개선 점수 57.7",
       "매출 수요 가속 점수 57.7",
-      "긍정 흐름 지속성 34.7"
+      "참여기업·신호 확산도 43.8"
     ],
     "invalidations": [
       "설치량 둔화와 재고 증가 동시 발생",
@@ -1279,40 +2863,48 @@
       "usable_companies": 4,
       "company_coverage": 1.0,
       "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
     "theme_id": "DEFENSE_AUTONOMY",
     "theme_name": "국방·무인체계",
-    "as_of": "2026-08-01",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 39.78,
-    "boom_probability_6m": 0.0478,
-    "boom_probability_12m": 0.0906,
-    "boom_probability_24m": 0.1278,
-    "data_confidence": 55.0,
+    "boom_score": 43.87,
+    "boom_probability_6m": 0.0774,
+    "boom_probability_12m": 0.1429,
+    "boom_probability_24m": 0.197,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 33.14,
-        "level": 32.4,
+        "name": "facility_investment_event_count",
+        "score": 32.27,
+        "level": 39.08,
         "velocity": 50.0,
-        "acceleration": 62.7,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            4.0,
-            10.0,
+            0.0,
             3.0,
+            2.0,
+            2.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -1328,21 +2920,108 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 32.97,
-        "level": 29.97,
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 32.42,
+        "level": 39.7,
         "velocity": 50.0,
-        "acceleration": 64.87,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.8571,
+        "raw": {
+          "amount_coverage": 0.8571,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 32.45,
+            "level": 39.81,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                3.1370783795562254,
+                0.48878644669383325,
+                2.53470606594414,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 32.27,
+            "level": 39.08,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                3.0,
+                2.0,
+                2.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 30.21,
+        "level": 30.86,
+        "velocity": 50.0,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            6.0,
-            24.0,
-            12.0,
-            11.0,
+            13.0,
+            20.0,
+            9.0,
+            8.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -1352,6 +3031,89 @@
           "prior_two_periods": 0.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 30.27,
+        "level": 31.06,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.9804,
+        "raw": {
+          "amount_coverage": 0.9804,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 30.28,
+            "level": 31.1,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                8.060486380168921,
+                12.828794019889573,
+                12.452695408044864,
+                10.90909000311239,
+                1.1696235510188608,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 30.21,
+            "level": 30.86,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                13.0,
+                20.0,
+                9.0,
+                8.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -1407,12 +3169,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 59.27,
+        "level": 56.23,
+        "velocity": 54.85,
+        "acceleration": 46.07,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"unmanned aerial vehicle\" OR all:\"autonomous defense\" OR all:\"military robotics\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 888
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 769
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 592
+            }
+          },
+          "counts": {
+            "recent": 888,
+            "prior": 769,
+            "older": 592
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
       "매출 수요 가속 점수 61.4",
-      "영업이익률 개선 점수 33.6",
-      "참여기업 확산도 33.3"
+      "기술연구 확산 가속 점수 59.3",
+      "참여기업·신호 확산도 50.0",
+      "긍정 흐름 지속성 41.7"
     ],
     "invalidations": [
       "정부 확정예산·계약액 감소",
@@ -1423,31 +3223,396 @@
       "requested_companies": 4,
       "usable_companies": 4,
       "company_coverage": 1.0,
-      "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "metric_coverage": 0.9594,
+      "amount_coverage": 0.9187,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
+      "최근 6개월 관련 공시가 없어 신호가 약합니다."
+    ]
+  },
+  {
+    "theme_id": "BIOTECH_PLATFORM",
+    "theme_name": "바이오 플랫폼·정밀의료",
+    "as_of": "2026-08-02",
+    "stage": "NO_SIGNAL",
+    "boom_score": 42.48,
+    "boom_probability_6m": 0.0682,
+    "boom_probability_12m": 0.1271,
+    "boom_probability_24m": 0.1768,
+    "data_confidence": 72.0,
+    "engines": {
+      "capital_events": {
+        "name": "facility_investment_event_count",
+        "score": 33.84,
+        "level": 45.38,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 33.27,
+        "level": 43.09,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 33.17,
+            "level": 42.69,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                2.179267844876767,
+                1.470485135097383,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 33.84,
+            "level": 45.38,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 32.02,
+        "level": 31.54,
+        "velocity": 38.91,
+        "acceleration": 53.3,
+        "persistence": 25.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            7.0,
+            5.0,
+            3.0,
+            6.0,
+            5.0,
+            6.0,
+            3.0,
+            2.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 1.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 30.43,
+        "level": 31.12,
+        "velocity": 36.69,
+        "acceleration": 48.67,
+        "persistence": 25.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 30.15,
+            "level": 31.04,
+            "velocity": 36.3,
+            "acceleration": 47.85,
+            "persistence": 25.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                8.310698121104549,
+                5.15892227205683,
+                5.158096641160439,
+                7.080507751408247,
+                7.094952299551897,
+                6.9168190087423085,
+                2.7085678349091165,
+                2.4974773612461183,
+                1.8488619639550108,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 1.8488619639550108,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 32.02,
+            "level": 31.54,
+            "velocity": 38.91,
+            "acceleration": 53.3,
+            "persistence": 25.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                7.0,
+                5.0,
+                3.0,
+                6.0,
+                5.0,
+                6.0,
+                3.0,
+                2.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 1.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "revenue": {
+        "name": "revenue_demand",
+        "score": 61.75,
+        "level": 56.32,
+        "velocity": 59.95,
+        "acceleration": 63.23,
+        "persistence": 62.5,
+        "breadth": 75.0,
+        "coverage": 1.0,
+        "raw": {
+          "company_count": 4,
+          "usable_company_count": 4,
+          "median_yoy": 0.3292820944782011,
+          "median_acceleration": 0.24780839952177144,
+          "positive_breadth": 0.75
+        },
+        "warnings": []
+      },
+      "operating_margin": {
+        "name": "pricing_power_margin",
+        "score": 55.48,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 50.0,
+        "coverage": 1.0,
+        "raw": {
+          "207940": {
+            "latest_margin": 0.8436206538326982,
+            "prior_margin": 0.40385784744732245,
+            "delta": 0.4397628063853758
+          },
+          "068270": {
+            "latest_margin": 0.31917106036172815,
+            "prior_margin": 0.2725564731024011,
+            "delta": 0.046614587259327045
+          },
+          "326030": {
+            "latest_margin": 0.3160113233315256,
+            "prior_margin": 0.3583541754550811,
+            "delta": -0.042342852123555486
+          },
+          "145020": {
+            "latest_margin": 0.4468523806710977,
+            "prior_margin": 0.4807931387066835,
+            "delta": -0.03394075803558577
+          }
+        },
+        "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 46.7,
+        "level": 53.78,
+        "velocity": 49.31,
+        "acceleration": 37.28,
+        "persistence": 50.0,
+        "breadth": 50.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"precision medicine\" OR all:\"gene editing\" OR all:\"protein design\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 217
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 222
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 148
+            }
+          },
+          "counts": {
+            "recent": 217,
+            "prior": 222,
+            "older": 148
+          }
+        },
+        "warnings": []
+      }
+    },
+    "top_reasons": [
+      "매출 수요 가속 점수 61.8",
+      "영업이익률 개선 점수 55.5",
+      "기술연구 확산 가속 점수 46.7",
+      "긍정 흐름 지속성 34.4"
+    ],
+    "invalidations": [
+      "임상 실패율 상승 또는 핵심 파이프라인 중단",
+      "연구개발비 증가가 임상 진척으로 연결되지 않음",
+      "자금조달 환경 악화로 현금소진 위험 상승"
+    ],
+    "coverage": {
+      "requested_companies": 4,
+      "usable_companies": 4,
+      "company_coverage": 1.0,
+      "metric_coverage": 1.0,
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
+    },
+    "warnings": [
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
     "theme_id": "WATER_INFRA",
     "theme_name": "물·환경 인프라",
-    "as_of": "2026-08-01",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 37.96,
-    "boom_probability_6m": 0.0403,
-    "boom_probability_12m": 0.077,
-    "boom_probability_24m": 0.1095,
-    "data_confidence": 55.0,
+    "boom_score": 40.62,
+    "boom_probability_6m": 0.0574,
+    "boom_probability_12m": 0.1083,
+    "boom_probability_24m": 0.1521,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 35.86,
-        "level": 46.03,
+        "name": "facility_investment_event_count",
+        "score": 35.69,
+        "level": 45.38,
         "velocity": 50.0,
         "acceleration": 59.24,
         "persistence": 0.0,
@@ -1455,6 +3620,10 @@
         "coverage": 1.0,
         "raw": {
           "period_totals": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -1473,21 +3642,108 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 33.38,
-        "level": 33.36,
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 35.14,
+        "level": 41.11,
         "velocity": 50.0,
-        "acceleration": 62.7,
+        "acceleration": 61.81,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 35.04,
+            "level": 40.36,
+            "velocity": 50.0,
+            "acceleration": 62.26,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                3.1032927462904087,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                2.494929638104037,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 35.69,
+            "level": 45.38,
+            "velocity": 50.0,
+            "acceleration": 59.24,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 31.42,
+        "level": 35.67,
+        "velocity": 50.0,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
+            5.0,
             2.0,
-            8.0,
-            2.0,
+            5.0,
             1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -1497,6 +3753,89 @@
           "prior_two_periods": 0.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 31.86,
+        "level": 37.46,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 31.94,
+            "level": 37.78,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                2.838597880710801,
+                1.9880932107288984,
+                2.8032182481829757,
+                1.1610031334561555,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 31.42,
+            "level": 35.67,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                5.0,
+                2.0,
+                5.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -1552,12 +3891,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 57.9,
+        "level": 55.27,
+        "velocity": 59.5,
+        "acceleration": 61.73,
+        "persistence": 50.0,
+        "breadth": 50.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"water treatment\" OR all:\"desalination\" OR all:\"water infrastructure\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 54
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 39
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 47
+            }
+          },
+          "counts": {
+            "recent": 54,
+            "prior": 39,
+            "older": 47
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
+      "기술연구 확산 가속 점수 57.9",
       "매출 수요 가속 점수 49.4",
       "영업이익률 개선 점수 48.8",
-      "시설투자·자산취득 공시 가속 점수 35.9"
+      "실제 투자금액·시설투자 가속 점수 35.1"
     ],
     "invalidations": [
       "공공·산업 프로젝트 수주 감소",
@@ -1569,41 +3946,49 @@
       "usable_companies": 4,
       "company_coverage": 1.0,
       "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   },
   {
     "theme_id": "SEMICONDUCTOR_EQUIPMENT",
     "theme_name": "반도체 장비·첨단패키징",
-    "as_of": "2026-08-01",
+    "as_of": "2026-08-02",
     "stage": "NO_SIGNAL",
-    "boom_score": 33.54,
-    "boom_probability_6m": 0.0264,
-    "boom_probability_12m": 0.0513,
-    "boom_probability_24m": 0.0742,
-    "data_confidence": 55.0,
+    "boom_score": 38.63,
+    "boom_probability_6m": 0.0476,
+    "boom_probability_12m": 0.0908,
+    "boom_probability_24m": 0.1287,
+    "data_confidence": 72.0,
     "engines": {
       "capital_events": {
-        "name": "facility_and_asset_investment",
-        "score": 35.62,
-        "level": 43.14,
+        "name": "facility_investment_event_count",
+        "score": 34.9,
+        "level": 42.21,
         "velocity": 50.0,
-        "acceleration": 61.66,
+        "acceleration": 59.24,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
-            0.0,
+            1.0,
             0.0,
             0.0,
             2.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
             0.0,
             0.0,
             0.0,
@@ -1618,21 +4003,108 @@
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
         ]
       },
-      "supply_contracts": {
-        "name": "supply_contract_and_orders",
-        "score": 34.67,
-        "level": 39.36,
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 34.81,
+        "level": 39.17,
         "velocity": 50.0,
-        "acceleration": 61.66,
+        "acceleration": 62.59,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 34.79,
+            "level": 38.63,
+            "velocity": 50.0,
+            "acceleration": 63.18,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.5708950932355925,
+                0.0,
+                0.0,
+                2.215757315078845,
+                0.0,
+                0.0,
+                0.0,
+                3.780171158755868,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "facility_investment_event_count",
+            "score": 34.9,
+            "level": 42.21,
+            "velocity": 50.0,
+            "acceleration": 59.24,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                1.0,
+                0.0,
+                0.0,
+                2.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "supply_contract_event_count",
+        "score": 32.27,
+        "level": 39.08,
+        "velocity": 50.0,
+        "acceleration": 50.0,
         "persistence": 0.0,
         "breadth": 0.0,
         "coverage": 1.0,
         "raw": {
           "period_totals": [
+            2.0,
+            1.0,
+            2.0,
             1.0,
             1.0,
             0.0,
-            2.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -1642,6 +4114,89 @@
           "prior_two_periods": 0.0,
           "active_company_count": 0,
           "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 31.46,
+        "level": 35.86,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "amount_coverage": 1.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 31.32,
+            "level": 35.29,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                3.094279914822447,
+                2.9401212922005846,
+                2.320271560047352,
+                3.4726012687794174,
+                2.1903439500972417,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "supply_contract_event_count",
+            "score": 32.27,
+            "level": 39.08,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                2.0,
+                1.0,
+                2.0,
+                1.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.85
         },
         "warnings": [
           "최근 6개월 관련 공시가 없어 신호가 약합니다."
@@ -1697,12 +4252,50 @@
           }
         },
         "warnings": []
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 60.92,
+        "level": 62.73,
+        "velocity": 61.17,
+        "acceleration": 39.87,
+        "persistence": 100.0,
+        "breadth": 100.0,
+        "coverage": 1.0,
+        "raw": {
+          "query": "(all:\"advanced packaging\" OR all:\"semiconductor manufacturing\" OR all:\"chiplet\")",
+          "as_of": "2026-08-02",
+          "windows": {
+            "recent": {
+              "start": "2025-08-03",
+              "end": "2026-08-02",
+              "count": 166
+            },
+            "prior": {
+              "start": "2024-08-03",
+              "end": "2025-08-02",
+              "count": 119
+            },
+            "older": {
+              "start": "2023-08-04",
+              "end": "2024-08-02",
+              "count": 64
+            }
+          },
+          "counts": {
+            "recent": 166,
+            "prior": 119,
+            "older": 64
+          }
+        },
+        "warnings": []
       }
     },
     "top_reasons": [
+      "기술연구 확산 가속 점수 60.9",
       "매출 수요 가속 점수 49.4",
-      "시설투자·자산취득 공시 가속 점수 35.6",
-      "공급계약·수주 공시 가속 점수 34.7"
+      "참여기업·신호 확산도 37.5",
+      "긍정 흐름 지속성 37.5"
     ],
     "invalidations": [
       "주요 고객사 WFE 투자가 2개 분기 연속 감소",
@@ -1714,12 +4307,16 @@
       "usable_companies": 4,
       "company_coverage": 1.0,
       "metric_coverage": 1.0,
-      "primary_source": "OpenDART"
+      "amount_coverage": 1.0,
+      "independent_research_source": true,
+      "primary_sources": [
+        "OpenDART",
+        "arXiv"
+      ]
     },
     "warnings": [
-      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
-      "데이터 신뢰도는 독립 데이터원·기업수 부족 때문에 최대 55점으로 제한됩니다.",
-      "이번 판정은 OpenDART 한국 공급망 4개 기업 표본 중심의 연구용 점수이며 투자판정용이 아닙니다.",
+      "V0.2.0은 OpenDART 금액·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
+      "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
       "최근 6개월 관련 공시가 없어 신호가 약합니다."
     ]
   }

@@ -1,0 +1,27 @@
+{
+  "status": "ERROR",
+  "dataset_count": 0,
+  "datasets": [],
+  "error": {
+    "APIErrorCode": "CLIENT_FALLBACK_EXHAUSTED",
+    "APIErrorDescription": "All canonical BEA request variants failed.",
+    "attempt_errors": [
+      {
+        "APIErrorCode": "1",
+        "APIErrorDescription": "Invalid Request - Invalid Parameters."
+      },
+      {
+        "APIErrorCode": "1",
+        "APIErrorDescription": "Invalid Request - Invalid Parameters."
+      },
+      {
+        "APIErrorCode": "1",
+        "APIErrorDescription": "Invalid Request - Invalid Parameters."
+      },
+      {
+        "APIErrorCode": "1",
+        "APIErrorDescription": "Invalid Request - Invalid Parameters."
+      }
+    ]
+  }
+}

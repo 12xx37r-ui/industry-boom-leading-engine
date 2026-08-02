@@ -3,31 +3,38 @@
     "industry_boom_ranking.json",
     "industry_boom_detail.json",
     "ai_replay_2022.json",
+    "technology_momentum.json",
+    "event_amount_quality.json",
     "macro_context.json",
+    "bea_context.json",
     "korea_corroboration.json",
     "engine_health.json",
-    "model_validation.json"
+    "model_validation.json",
+    "run_manifest.json"
   ],
   "model_validation": {
     "status": "FAILED",
     "investment_use_allowed": false,
-    "reason": "2022-10-31 AI 재현이 상위 3위 및 67점 기준을 통과하지 못했습니다. 현재 순위는 투자판정에 사용할 수 없습니다.",
+    "reason": "AI 재현 순위·점수·금액추출률·독립연구신호 기준 중 하나 이상을 통과하지 못했습니다.",
     "criteria": {
       "ai_rank_max": 3,
-      "ai_score_min": 67,
+      "ai_score_min": 65,
+      "ai_amount_coverage_min": 0.35,
+      "independent_research_source_required": true,
       "additional_backtests_required": true
     },
     "observed": {
-      "ai_rank": 10,
-      "ai_score": 39.41,
+      "ai_rank": 5,
+      "ai_score": 46.77,
+      "ai_amount_coverage": 0.4904,
+      "ai_research_source": true,
       "theme_count": 12
     },
     "known_design_gaps": [
-      "시설투자·공급계약의 금액이 아니라 공시 건수를 사용합니다.",
-      "산업별 한국 대표기업이 4개뿐이라 확산도를 제대로 측정하지 못합니다.",
-      "미국 원천수요·빅테크 CAPEX·벤처투자·고용·특허·정부지출이 핵심점수에 편입되지 않았습니다.",
-      "사전 정의된 12개 산업만 비교하므로 아무도 모르는 신규 산업을 자동발견하지 못합니다.",
-      "붐 확률은 백테스트로 보정되지 않은 단조 변환값입니다."
+      "미국 빅테크 CAPEX·클라우드 원천수요가 핵심점수에 아직 직접 편입되지 않았습니다.",
+      "산업별 한국 대표기업 표본이 작아 공급망 전체 확산도를 충분히 측정하지 못합니다.",
+      "사전 정의된 12개 산업만 비교하므로 신규 산업 자동발견은 아직 제한적입니다.",
+      "붐 확률은 다수 성공·실패 산업 백테스트로 아직 보정되지 않았습니다."
     ]
   },
   "current_top5": [
@@ -35,31 +42,31 @@
       "rank": 1,
       "theme_id": "ROBOTICS_AUTOMATION",
       "name": "로봇·산업자동화",
-      "score": 55.79
+      "score": 56.04
     },
     {
       "rank": 2,
-      "theme_id": "QUANTUM_COMPUTING",
-      "name": "양자컴퓨팅",
-      "score": 54.35
+      "theme_id": "SPACE_INFRA",
+      "name": "우주·위성 인프라",
+      "score": 48.34
     },
     {
       "rank": 3,
-      "theme_id": "BIOTECH_PLATFORM",
-      "name": "바이오 플랫폼·정밀의료",
-      "score": 54.16
+      "theme_id": "NUCLEAR_FIRM_POWER",
+      "name": "원전·무탄소 기저전력",
+      "score": 47.77
     },
     {
       "rank": 4,
-      "theme_id": "NUCLEAR_FIRM_POWER",
-      "name": "원전·무탄소 기저전력",
-      "score": 47.13
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "name": "전력망·전기화 인프라",
+      "score": 47.15
     },
     {
       "rank": 5,
-      "theme_id": "POWER_GRID_ELECTRIFICATION",
-      "name": "전력망·전기화 인프라",
-      "score": 43.6
+      "theme_id": "CYBERSECURITY",
+      "name": "사이버보안",
+      "score": 46.56
     }
   ]
 }
