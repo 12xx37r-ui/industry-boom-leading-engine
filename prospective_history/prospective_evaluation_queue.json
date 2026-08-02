@@ -1,4 +1,15 @@
 {
   "schema_version": 1,
-  "snapshots": []
+  "snapshots": [
+    {
+      "as_of": "2026-08-02",
+      "observation_sha256": "a2b2a5d446cd2bcbd80f0320e481ddd0c6368553ac7f1cc422b5f79d2c2fac0f",
+      "evaluation_horizons_months": [
+        6,
+        12,
+        24
+      ],
+      "status": "AWAITING_FUTURE_OUTCOMES"
+    }
+  ]
 }

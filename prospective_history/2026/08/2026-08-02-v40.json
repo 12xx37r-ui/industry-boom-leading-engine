@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "4.0.0-direct-revenue-final-auto",
   "as_of": "2026-08-02",
-  "captured_at": "2026-08-02T21:23:30+09:00",
+  "captured_at": "2026-08-02T21:23:13+09:00",
   "theme_count": 50,
   "direct_commercialization_observed_theme_count": 48,
   "investment_use_allowed": false,
@@ -2581,5 +2581,5 @@
       ]
     }
   ],
-  "content_sha256": "43048151d6da581dde11504770bc93c1b9b239ee3e25b1af4207819ca533301c"
+  "content_sha256": "696624fb888d1010a19b8882f43dd84c9effdd7ccb5f84561c804e5ce96c493b"
 }

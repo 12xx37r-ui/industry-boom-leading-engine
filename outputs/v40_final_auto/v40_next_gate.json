@@ -1,0 +1,6 @@
+{
+  "status": "ENGINE_BUILD_COMPLETE_PROSPECTIVE_VALIDATION_REQUIRED",
+  "next_required_gate": "ACCUMULATE_AND_SCORE_6_12_24_MONTH_PROSPECTIVE_OUTCOMES",
+  "manual_run_required_after_bootstrap": false,
+  "investment_use_allowed": false
+}
