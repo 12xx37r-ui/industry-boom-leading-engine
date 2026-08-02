@@ -316,8 +316,8 @@ def load_request(root: Path) -> dict[str, Any]:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
         raise OfflineSeedError(f"cannot read {path}: {exc}") from exc
-    if payload.get("generator_version") != "0.8.8":
-        raise OfflineSeedError("offline_seed_request.json is not version 0.8.8")
+    if payload.get("generator_version") != "0.8.10":
+        raise OfflineSeedError("offline_seed_request.json is not version 0.8.10")
     return payload
 
 
@@ -370,6 +370,8 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
             tag, values, audit = build_quarterly_series_detailed(
                 ticker_records, FLOW_TAGS[metric], metric
             )
+            if not bool(audit.get("quality_passed")):
+                values = []
             series[metric][ticker] = [[date, value] for date, value in values]
             tags_used[metric][ticker] = tag
             series_audit[metric][ticker] = audit
@@ -386,12 +388,35 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
     research: dict[str, Any] = {}
     research_errors: dict[str, str] = {}
     research_rows = list(request.get("research") or [])
+    existing_seed_path = root / "validation_seed" / "sec_fsds_fy2021.json"
+    existing_research: dict[str, Any] = {}
+    try:
+        existing_payload = json.loads(existing_seed_path.read_text(encoding="utf-8"))
+        existing_research = {
+            str(key): value
+            for key, value in (existing_payload.get("research") or {}).items()
+            if isinstance(value, dict)
+        }
+    except (OSError, ValueError):
+        existing_research = {}
+
     if not skip_research:
         for index, row in enumerate(research_rows, 1):
             theme_id = str(row["theme_id"])
+            query = str(row["query"])
+            cached = existing_research.get(theme_id)
+            if (
+                isinstance(cached, dict)
+                and str(cached.get("query") or "") == query
+                and str(cached.get("as_of") or "") == cutoff.isoformat()
+                and isinstance(cached.get("counts"), dict)
+            ):
+                research[theme_id] = cached
+                print(f"[LOCAL-ARXIV] cache hit {index}/{len(research_rows)} theme={theme_id}", flush=True)
+                continue
             print(f"[LOCAL-ARXIV] {index}/{len(research_rows)} theme={theme_id}", flush=True)
             try:
-                research[theme_id] = collect_research(str(row["query"]), cutoff, user_agent)
+                research[theme_id] = collect_research(query, cutoff, user_agent)
             except Exception as exc:  # noqa: BLE001
                 research_errors[theme_id] = str(exc)
                 print(f"[LOCAL-ARXIV] failed theme={theme_id}: {exc}", flush=True)
@@ -406,18 +431,28 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
     research_ready = len(research) >= minimum_research if not skip_research else False
     status_value = "READY" if financial_ready and research_ready else "INSUFFICIENT_COVERAGE"
 
-    selected_audits = [
-        audit.get("selected") or {}
+    selected_rows = [
+        audit
         for metric_rows in series_audit.values()
         for audit in metric_rows.values()
         if isinstance(audit, dict) and audit.get("selected_tag")
     ]
+    selected_audits = [audit.get("selected") or {} for audit in selected_rows]
     normalization_summary = {
-        "version": "fsds_quarter_v2_single_tag_robust",
+        "version": "fsds_hybrid_v4_strict_quarter_or_annual_proxy",
         "selected_series": len(selected_audits),
         "mixed_tag_series": 0,
+        "annual_proxy_fallback_series": sum(1 for audit in selected_rows if audit.get("fallback_used")),
+        "strict_quarter_series": sum(1 for audit in selected_rows if not audit.get("fallback_used") and audit.get("quality_passed")),
+        "quality_rejected_series": sum(1 for audit in selected_rows if not audit.get("quality_passed")),
+        "series_without_aligned_yoy": sum(
+            1 for audit in selected_audits if int(audit.get("aligned_yoy_count") or 0) == 0
+        ),
         "series_with_extreme_yoy": sum(
             1 for audit in selected_audits if int(audit.get("extreme_yoy_count") or 0) > 0
+        ),
+        "rejected_cross_fiscal_derivations": sum(
+            int(audit.get("rejected_cross_fiscal") or 0) for audit in selected_audits
         ),
         "rejected_negative_values": sum(
             int(audit.get("rejected_negative") or 0) for audit in selected_audits
@@ -447,9 +482,9 @@ def build_seed(root: Path, user_agent: str, *, refresh: bool = False, skip_resea
     }
     seed: dict[str, Any] = {
         "metadata": {
-            "schema_version": 3,
-            "version": "0.8.8",
-            "normalization_version": "fsds_quarter_v2_single_tag_robust",
+            "schema_version": 5,
+            "version": "0.8.10",
+            "normalization_version": "fsds_hybrid_v4_strict_quarter_or_annual_proxy",
             "source": "U.S. SEC Financial Statement Data Sets + arXiv Atom API",
             "source_url_template": source_template,
             "periods": periods,
@@ -504,9 +539,9 @@ def validate_seed(root: Path) -> dict[str, Any]:
     status = seed.get("status") or {}
     expected_tickers = sorted(str(row["ticker"]).upper() for row in request["tickers"])
     errors: list[str] = []
-    if metadata.get("version") != "0.8.8" or metadata.get("schema_version") != 3:
+    if metadata.get("version") != "0.8.10" or metadata.get("schema_version") != 5:
         errors.append("seed version/schema mismatch")
-    if metadata.get("normalization_version") != "fsds_quarter_v2_single_tag_robust":
+    if metadata.get("normalization_version") != "fsds_hybrid_v4_strict_quarter_or_annual_proxy":
         errors.append("seed normalization version mismatch")
     if metadata.get("cutoff") != request.get("cutoff"):
         errors.append("cutoff mismatch")
@@ -544,7 +579,7 @@ def validate_seed(root: Path) -> dict[str, Any]:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Build or validate the V0.8.8 offline SEC/arXiv seed")
+    parser = argparse.ArgumentParser(description="Build or validate the V0.8.10 offline SEC/arXiv seed")
     parser.add_argument("--root", default=".")
     parser.add_argument("--email", default="")
     parser.add_argument("--user-agent", default="")
@@ -557,7 +592,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.validate_only:
             validate_seed(root)
             return 0
-        user_agent = args.user_agent.strip() or f"IndustryBoomLeadingEngine/0.8.8 {args.email.strip()}"
+        user_agent = args.user_agent.strip() or f"IndustryBoomLeadingEngine/0.8.10 {args.email.strip()}"
         build_seed(root, user_agent, refresh=args.refresh, skip_research=args.skip_research)
         return 0
     except OfflineSeedError as exc:

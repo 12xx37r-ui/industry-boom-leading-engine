@@ -7,7 +7,7 @@ from ible.global_validation import run_global_holdout
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run V0.8.8 zero-network offline-seed point-in-time holdout")
+    parser = argparse.ArgumentParser(description="Run V0.8.10 zero-network offline-seed point-in-time holdout")
     parser.add_argument("--root", default=".")
     parser.add_argument("--output-dir", default="outputs/global_holdout")
     args = parser.parse_args()

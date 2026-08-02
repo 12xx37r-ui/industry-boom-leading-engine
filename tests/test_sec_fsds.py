@@ -198,7 +198,7 @@ def test_global_holdout_runs_from_ready_offline_seed(tmp_path: Path, monkeypatch
     )
     summary = run_global_holdout(tmp_path, tmp_path / "outputs")
     assert summary["dataset_gate_passed"] is True
-    assert summary["status"] in {"PASSED_V088_GLOBAL_HOLDOUT", "FAILED_V088_GLOBAL_HOLDOUT"}
+    assert summary["status"] in {"PASSED_V0810_GLOBAL_HOLDOUT", "FAILED_V0810_GLOBAL_HOLDOUT"}
     assert len(summary["ranking"]) == 7
 
 
@@ -248,3 +248,65 @@ def test_prepare_seed_ignores_coreg_numbers(tmp_path: Path) -> None:
     eligible, records = client._extract_records(archive, {"0000000001": "AAA"}, __import__("datetime").date(2022, 4, 30))
     assert eligible == {"AAA"}
     assert [row["value"] for row in records if row["tag"] == "Revenues"] == [100.0]
+
+
+def test_cumulative_derivation_never_crosses_fiscal_year() -> None:
+    rows = [
+        _record("2021-12-31", 1, 100, "Revenues"),
+        {**_record("2022-03-31", 2, 250, "Revenues"), "fy": "2022", "fp": "Q2"},
+    ]
+    # The 2022 YTD fact must not subtract a 2021 fiscal-year quarter merely because
+    # the dates are approximately 90 days apart.
+    _, series = build_quarterly_series(rows, ["Revenues"], "revenue")
+    assert ("2022-03-31", 150.0) not in series
+
+
+def test_quality_audit_rejects_short_trailing_run_after_gap() -> None:
+    from ible.collectors.sec_fsds import build_quarterly_series_detailed
+
+    dates = [
+        "2019-03-31", "2019-06-30", "2019-09-30", "2019-12-31",
+        "2021-03-31", "2021-06-30", "2021-09-30",
+    ]
+    rows = [_record(date, 1, 100 + index * 10, "Revenues") for index, date in enumerate(dates)]
+    _, series, audit = build_quarterly_series_detailed(rows, ["Revenues"], "revenue")
+    assert len(series) == 3
+    assert audit["quality_passed"] is False
+
+
+def test_tag_selection_prefers_stable_series_over_longer_anomalous_series() -> None:
+    from ible.collectors.sec_fsds import build_quarterly_series_detailed
+
+    stable_dates = [
+        "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-31",
+        "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-31",
+    ]
+    noisy_dates = stable_dates + ["2022-03-31", "2022-06-30"]
+    rows = [_record(date, 1, 100 + index * 5, "Revenues") for index, date in enumerate(stable_dates)]
+    rows += [
+        _record(date, 1, 1 if index < 4 else 1000 + index, "SalesRevenueNet")
+        for index, date in enumerate(noisy_dates)
+    ]
+    tag, series, audit = build_quarterly_series_detailed(
+        rows, ["Revenues", "SalesRevenueNet"], "revenue"
+    )
+    assert tag == "Revenues"
+    assert len(series) == 8
+    assert audit["quality_passed"] is True
+
+
+def test_annual_proxy_fallback_recovers_safe_growth_when_quarters_are_sparse() -> None:
+    from ible.collectors.sec_fsds import build_quarterly_series_detailed
+
+    rows = [
+        {**_record("2019-12-31", 4, 400, "Revenues", "2020-02-20"), "fy": "2019", "fp": "FY", "form": "10-K"},
+        {**_record("2020-12-31", 4, 440, "Revenues", "2021-02-20"), "fy": "2020", "fp": "FY", "form": "10-K"},
+        {**_record("2021-12-31", 4, 484, "Revenues", "2022-02-20"), "fy": "2021", "fp": "FY", "form": "10-K"},
+    ]
+    tag, series, audit = build_quarterly_series_detailed(rows, ["Revenues"], "revenue")
+    assert tag == "Revenues"
+    assert len(series) == 12
+    assert audit["quality_passed"] is True
+    assert audit["fallback_used"] is True
+    assert audit["selection_method"] == "annual_flow_proxy_fallback"
+    assert series[-1][1] == 121.0

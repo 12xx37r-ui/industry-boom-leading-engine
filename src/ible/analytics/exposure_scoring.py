@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime as dt
 import math
 import statistics
 from typing import Any
@@ -156,48 +157,85 @@ def build_exposure_weighted_margin_signal(
     positive_weight = 0.0
     total_weight = 0.0
     raw: dict[str, Any] = {}
+    rejected_implausible = 0
     requested_weight = sum(
-        effective_weight(p)
-        for p in profiles.values()
-        if float(p.get("exposure", 0)) >= minimum_exposure
+        effective_weight(profile)
+        for profile in profiles.values()
+        if float(profile.get("exposure", 0)) >= minimum_exposure
     )
     for ticker, profile in profiles.items():
         if float(profile.get("exposure", 0)) < minimum_exposure:
             continue
-        rev = dict(revenue_series.get(ticker, []))
-        profit = dict(profit_series.get(ticker, []))
-        common = sorted(set(rev) & set(profit))
-        margins = [profit[d] / rev[d] for d in common if rev[d] > 0]
-        margins = [value for value in margins if math.isfinite(value) and -2.0 <= value <= 2.0]
-        if len(margins) < 5:
+        revenue = {str(date): float(value) for date, value in revenue_series.get(ticker, [])}
+        profit = {str(date): float(value) for date, value in profit_series.get(ticker, [])}
+        common = sorted(set(revenue) & set(profit))
+        dated_margins: list[tuple[str, float]] = []
+        for date in common:
+            rev = revenue[date]
+            gp = profit[date]
+            if not math.isfinite(rev) or not math.isfinite(gp) or rev <= 0:
+                continue
+            margin = gp / rev
+            # Consolidated quarterly gross profit cannot economically exceed revenue.
+            # A small tolerance handles rounding; larger values indicate tag/period mismatch.
+            if not -1.0 <= margin <= 1.02:
+                rejected_implausible += 1
+                continue
+            dated_margins.append((date, margin))
+        if len(dated_margins) < 5:
             continue
+        # Require at least four quarter-like transitions so sparse unmatched periods
+        # cannot masquerade as a margin trend.
+        quarter_like = 0
+        for index in range(1, len(dated_margins)):
+            try:
+                current = dt.date.fromisoformat(dated_margins[index][0])
+                prior = dt.date.fromisoformat(dated_margins[index - 1][0])
+            except ValueError:
+                continue
+            if 45 <= (current - prior).days <= 140:
+                quarter_like += 1
+        if quarter_like < 4:
+            continue
+        margins = [margin for _, margin in dated_margins]
         latest = statistics.mean(margins[-2:])
         prior = statistics.mean(margins[-4:-2])
-        delta = max(-0.50, min(0.50, latest - prior))
+        delta = max(-0.20, min(0.20, latest - prior))
         weight = effective_weight(profile)
-        company_score = clamp(50.0 + 700.0 * delta)
+        company_score = clamp(50.0 + 250.0 * delta)
         values.append((company_score, weight))
         total_weight += weight
         if delta > 0:
             positive_weight += weight
-        raw[ticker] = {"latest_margin": latest, "prior_margin": prior, "delta": delta, "weight": weight}
+        raw[ticker] = {
+            "latest_margin": latest,
+            "prior_margin": prior,
+            "delta": delta,
+            "weight": weight,
+        }
     breadth = positive_weight / total_weight if total_weight else 0.0
     raw_score = 0.75 * _weighted_mean(values, 50.0) + 0.25 * 100.0 * breadth
     coverage = total_weight / requested_weight if requested_weight else 0.0
     score = 50.0 + min(1.0, coverage) * (raw_score - 50.0)
+    warnings: list[str] = []
+    if not values:
+        warnings.append("노출도 기준을 통과한 기업의 정상 범위 이익률 데이터가 부족합니다.")
+    elif coverage < 0.55:
+        warnings.append("이익률 데이터 확보율이 낮아 점수를 중립값 방향으로 축소했습니다.")
+    if rejected_implausible:
+        warnings.append("매출과 불일치하는 비정상 이익률 관측치를 제외했습니다.")
     return Signal(
         name="exposure_weighted_margin",
         score=round(clamp(score), 2),
         breadth=round(100.0 * breadth, 2),
         coverage=round(coverage, 4),
-        raw={"companies": raw, "raw_score_before_coverage_shrinkage": raw_score},
-        warnings=(
-            ["노출도 기준을 통과한 기업의 이익률 데이터가 부족합니다."]
-            if not values
-            else (["이익률 데이터 확보율이 낮아 점수를 중립값 방향으로 축소했습니다."] if coverage < 0.55 else [])
-        ),
+        raw={
+            "companies": raw,
+            "raw_score_before_coverage_shrinkage": raw_score,
+            "rejected_implausible_margin_points": rejected_implausible,
+        },
+        warnings=warnings,
     )
-
 
 def harmonic_mean(values: list[float]) -> float:
     clean = [max(1e-6, float(v)) for v in values if math.isfinite(v)]

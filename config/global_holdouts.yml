@@ -1,5 +1,5 @@
 version: 1
-benchmark_name: V0.8.8 official SEC FSDS point-in-time global holdout
+benchmark_name: V0.8.10 official SEC FSDS point-in-time global holdout
 cohort:
   as_of: '2022-04-30'
   theme_ids:

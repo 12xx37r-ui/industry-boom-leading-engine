@@ -63,3 +63,16 @@ def test_margin_signal_shrinks_low_coverage_extreme() -> None:
     signal = build_exposure_weighted_margin_signal(revenue, profit, profiles)
     assert signal.coverage == 0.25
     assert 50 < signal.score < 70
+
+
+def test_margin_signal_rejects_profit_above_revenue() -> None:
+    from ible.analytics.exposure_scoring import build_exposure_weighted_margin_signal
+
+    dates = ["2020-03-31", "2020-06-30", "2020-09-30", "2020-12-31", "2021-03-31", "2021-06-30"]
+    revenue = {"A": [(date, 100.0) for date in dates]}
+    profit = {"A": [(date, 150.0) for date in dates]}
+    profiles = {"A": {"exposure": 1.0, "confidence": 1.0}}
+    signal = build_exposure_weighted_margin_signal(revenue, profit, profiles)
+    assert signal.coverage == 0.0
+    assert signal.score == 50.0
+    assert signal.raw["rejected_implausible_margin_points"] == len(dates)

@@ -11,7 +11,7 @@ from ible.offline_seed_builder import OfflineSeedError, compute_seed_sha256, val
 def _request() -> dict:
     return {
         "schema_version": 1,
-        "generator_version": "0.8.8",
+        "generator_version": "0.8.10",
         "cutoff": "2022-04-30",
         "periods": ["2021q1"],
         "source_url_template": "https://example.test/{period}.zip",
@@ -26,9 +26,9 @@ def _request() -> dict:
 def _seed() -> dict:
     seed = {
         "metadata": {
-            "schema_version": 3,
-            "version": "0.8.8",
-            "normalization_version": "fsds_quarter_v2_single_tag_robust",
+            "schema_version": 5,
+            "version": "0.8.10",
+            "normalization_version": "fsds_hybrid_v4_strict_quarter_or_annual_proxy",
             "cutoff": "2022-04-30",
             "requested_tickers": ["AAA"],
         },

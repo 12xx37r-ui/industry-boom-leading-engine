@@ -1,10 +1,10 @@
 @echo off
 setlocal EnableExtensions DisableDelayedExpansion
 cd /d "%~dp0"
-title Industry Boom V0.8.8 Offline Seed Builder
+title Industry Boom V0.8.10 Offline Seed Builder
 
 echo ================================================================
-echo  Industry Boom V0.8.8 - Offline Seed Builder
+echo  Industry Boom V0.8.10 - Offline Seed Builder
 echo  This runs on your PC. GitHub will not call SEC or FMP.
 echo ================================================================
 echo.

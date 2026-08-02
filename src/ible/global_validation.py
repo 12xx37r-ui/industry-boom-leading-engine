@@ -292,9 +292,9 @@ def run_global_holdout(root: Path, output_dir: Path) -> dict[str, Any]:
         and auc >= 0.70
     )
     if not dataset_gate_passed or not eligible:
-        run_status = "INSUFFICIENT_V088_GLOBAL_HOLDOUT"
+        run_status = "INSUFFICIENT_V0810_GLOBAL_HOLDOUT"
     else:
-        run_status = "PASSED_V088_GLOBAL_HOLDOUT" if passed else "FAILED_V088_GLOBAL_HOLDOUT"
+        run_status = "PASSED_V0810_GLOBAL_HOLDOUT" if passed else "FAILED_V0810_GLOBAL_HOLDOUT"
 
     summary = {
         "status": run_status,

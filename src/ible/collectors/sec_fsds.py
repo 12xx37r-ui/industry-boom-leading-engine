@@ -64,11 +64,12 @@ def _metric_from_tags(tags: list[str]) -> str | None:
 
 
 def _dedupe_single_tag(records: list[dict[str, Any]], tag: str) -> list[dict[str, Any]]:
-    """Keep one point-in-time fact per end-date/qtrs pair for one XBRL tag.
+    """Keep one consolidated fact per economic end-date and duration.
 
-    SEC FSDS contains the same comparative fact in later filings.  The latest filing
-    available by the configured cutoff is the correct point-in-time restatement, but
-    facts from different tags must never be differenced against each other.
+    SEC FSDS repeats comparative facts in later filings.  We use the latest filing
+    available by the point-in-time cutoff, but keep fiscal-year metadata so a YTD
+    value can only be differenced against a prior cumulative value from the same
+    fiscal year.
     """
     selected: dict[tuple[str, int], dict[str, Any]] = {}
     for record in records:
@@ -86,14 +87,48 @@ def _dedupe_single_tag(records: list[dict[str, Any]], tag: str) -> list[dict[str
         new_filed = str(record.get("filed") or "")
         old_form = str(old.get("form") or "")
         new_form = str(record.get("form") or "")
-        # Latest available restatement wins.  If filing dates tie, prefer the filing
-        # whose form naturally matches the duration (10-K for qtrs=4, 10-Q otherwise).
         preferred_form = "10-K" if key[1] == 4 else "10-Q"
         if new_filed > old_filed or (
             new_filed == old_filed and new_form == preferred_form and old_form != preferred_form
         ):
             selected[key] = record
-    return sorted(selected.values(), key=lambda row: (str(row["ddate"]), int(row["qtrs"]), str(row.get("filed") or "")))
+    return sorted(
+        selected.values(),
+        key=lambda row: (str(row["ddate"]), int(row["qtrs"]), str(row.get("filed") or "")),
+    )
+
+
+def _fiscal_match(current: dict[str, Any], prior: dict[str, Any]) -> bool:
+    current_fy = str(current.get("fy") or "").strip()
+    prior_fy = str(prior.get("fy") or "").strip()
+    if current_fy and prior_fy:
+        return current_fy == prior_fy
+    # Some foreign/private issuers omit FY.  In that case only allow a very local
+    # predecessor whose end dates fall in the same calendar year.
+    try:
+        return _iso_date(str(current["ddate"])).year == _iso_date(str(prior["ddate"])).year
+    except (KeyError, TypeError, ValueError):
+        return False
+
+
+def _aligned_yoy(values: list[tuple[str, float]]) -> list[tuple[str, float]]:
+    """Return date-aligned year-over-year changes.
+
+    Index-minus-four is unsafe when a quarter is missing or duplicate.  Match each
+    point to the closest observation 300-430 days earlier instead.
+    """
+    parsed = [(_iso_date(date), float(value)) for date, value in values]
+    result: list[tuple[str, float]] = []
+    for index, (current_date, current_value) in enumerate(parsed):
+        choices: list[tuple[int, float]] = []
+        for prior_date, prior_value in parsed[:index]:
+            gap = (current_date - prior_date).days
+            if 300 <= gap <= 430 and prior_value != 0:
+                choices.append((abs(gap - 365), (current_value - prior_value) / abs(prior_value)))
+        if choices:
+            choices.sort(key=lambda item: item[0])
+            result.append((current_date.isoformat(), choices[0][1]))
+    return result
 
 
 def _series_for_tag(
@@ -102,11 +137,12 @@ def _series_for_tag(
     metric: str | None,
 ) -> tuple[list[tuple[str, float]], dict[str, Any]]:
     rows = _dedupe_single_tag(records, tag)
-    direct: dict[str, tuple[float, str, str]] = {}
+    direct: dict[str, tuple[float, str, str, dict[str, Any]]] = {}
     cumulative: dict[int, list[dict[str, Any]]] = defaultdict(list)
     rejected_negative = 0
+    rejected_cross_fiscal = 0
     derived_count = 0
-    nonnegative_metric = metric in {"revenue", "capex", "rd"}
+    nonnegative_metric = metric in {"revenue", "capex", "rd", "gross_profit"}
 
     def accept(value: float) -> bool:
         nonlocal rejected_negative
@@ -124,31 +160,42 @@ def _series_for_tag(
             if not accept(value):
                 continue
             cumulative[1].append(row)
-            old = direct.get(str(row["ddate"]))
+            end = str(row["ddate"])
+            old = direct.get(end)
             filed = str(row.get("filed") or "")
             if old is None or filed > old[1]:
-                direct[str(row["ddate"])] = (value, filed, "direct")
+                direct[end] = (value, filed, "direct", row)
         elif qtrs in {2, 3, 4}:
             cumulative[qtrs].append(row)
 
     def nearest_previous(current: dict[str, Any], expected_qtrs: int) -> dict[str, Any] | None:
+        nonlocal rejected_cross_fiscal
         current_date = _iso_date(str(current["ddate"]))
         choices: list[tuple[int, str, dict[str, Any]]] = []
+        had_local_nonmatch = False
         for candidate in cumulative.get(expected_qtrs, []):
             candidate_date = _iso_date(str(candidate["ddate"]))
             gap = (current_date - candidate_date).days
-            if 50 <= gap <= 140:
-                choices.append((gap, str(candidate.get("filed") or ""), candidate))
+            if not 45 <= gap <= 140:
+                continue
+            if not _fiscal_match(current, candidate):
+                had_local_nonmatch = True
+                continue
+            choices.append((abs(gap - 91), str(candidate.get("filed") or ""), candidate))
         if not choices:
+            if had_local_nonmatch:
+                rejected_cross_fiscal += 1
             return None
-        # Closest fiscal quarter first; latest restatement breaks ties.
-        choices.sort(key=lambda item: (item[0], item[1]), reverse=False)
-        best_gap = choices[0][0]
-        tied = [item for item in choices if item[0] == best_gap]
+        choices.sort(key=lambda item: (item[0], item[1]))
+        best_distance = choices[0][0]
+        tied = [item for item in choices if item[0] == best_distance]
         return max(tied, key=lambda item: item[1])[2]
 
     for qtrs in (2, 3, 4):
-        for row in sorted(cumulative.get(qtrs, []), key=lambda item: (str(item["ddate"]), str(item.get("filed") or ""))):
+        for row in sorted(
+            cumulative.get(qtrs, []),
+            key=lambda item: (str(item["ddate"]), str(item.get("filed") or "")),
+        ):
             end = str(row["ddate"])
             if end in direct:
                 continue
@@ -158,91 +205,267 @@ def _series_for_tag(
                 derived = float(row["value"]) - float(prior["value"])
             elif qtrs == 4:
                 annual_end = _iso_date(end)
-                prior_dates = [
-                    date
-                    for date in sorted(direct)
-                    if 45 <= (annual_end - _iso_date(date)).days <= 330
-                ]
-                # Use exactly the three immediately preceding, reasonably spaced quarters.
-                prior_dates = prior_dates[-3:]
-                if len(prior_dates) == 3:
-                    dates = [_iso_date(date) for date in prior_dates] + [annual_end]
-                    gaps = [(dates[index] - dates[index - 1]).days for index in range(1, len(dates))]
+                current_fy = str(row.get("fy") or "").strip()
+                candidates: list[tuple[dt.date, float]] = []
+                for date, (value, _, _, source_row) in direct.items():
+                    qdate = _iso_date(date)
+                    gap = (annual_end - qdate).days
+                    if not 45 <= gap <= 330:
+                        continue
+                    source_fy = str(source_row.get("fy") or "").strip()
+                    if current_fy and source_fy and current_fy != source_fy:
+                        continue
+                    candidates.append((qdate, value))
+                candidates.sort(key=lambda item: item[0])
+                prior_three = candidates[-3:]
+                if len(prior_three) == 3:
+                    dates = [item[0] for item in prior_three] + [annual_end]
+                    gaps = [(dates[i] - dates[i - 1]).days for i in range(1, len(dates))]
                     if all(45 <= gap <= 140 for gap in gaps):
-                        derived = float(row["value"]) - sum(direct[date][0] for date in prior_dates)
+                        derived = float(row["value"]) - sum(value for _, value in prior_three)
             if derived is not None and accept(derived):
-                direct[end] = (derived, str(row.get("filed") or ""), f"derived_qtrs_{qtrs}")
+                direct[end] = (derived, str(row.get("filed") or ""), f"derived_qtrs_{qtrs}", row)
                 derived_count += 1
 
-    result = [(date, value) for date, (value, _, _) in sorted(direct.items())]
-    result = result[-16:]
+    result = [(date, value) for date, (value, _, _, _) in sorted(direct.items())]
+    # Keep only the trailing uninterrupted fiscal-quarter run.  A missing quarter
+    # makes index-minus-four comparisons invalid, so stale points before the gap
+    # must not remain in the scored series.
+    if len(result) >= 5:
+        contiguous: list[tuple[str, float]] = [result[0]]
+        for item in result[1:]:
+            gap = (_iso_date(item[0]) - _iso_date(contiguous[-1][0])).days
+            if 45 <= gap <= 140:
+                contiguous.append(item)
+            else:
+                contiguous = [item]
+        result = contiguous[-16:]
 
-    continuity_gaps: list[int] = []
-    for index in range(1, len(result)):
-        continuity_gaps.append((_iso_date(result[index][0]) - _iso_date(result[index - 1][0])).days)
+    continuity_gaps = [
+        (_iso_date(result[index][0]) - _iso_date(result[index - 1][0])).days
+        for index in range(1, len(result))
+    ]
     continuity = (
         sum(1 for gap in continuity_gaps if 45 <= gap <= 140) / len(continuity_gaps)
-        if continuity_gaps else 0.0
+        if continuity_gaps
+        else 0.0
     )
-    yoy_values: list[float] = []
-    for index in range(4, len(result)):
-        previous = result[index - 4][1]
-        current = result[index][1]
-        if previous != 0:
-            yoy_values.append((current - previous) / abs(previous))
-    extreme_yoy = sum(1 for value in yoy_values if abs(value) > 5.0)
+    yoy_rows = _aligned_yoy(result)
+    limit = {"revenue": 5.0, "gross_profit": 5.0, "operating_income": 10.0, "rd": 10.0, "capex": 25.0}.get(metric, 10.0)
+    extreme_yoy = sum(1 for _, value in yoy_rows if abs(value) > limit)
     audit = {
         "tag": tag,
         "input_records": len(rows),
         "quarter_count": len(result),
-        "direct_count": sum(1 for _, (_, _, source) in direct.items() if source == "direct"),
+        "direct_count": sum(1 for _, (_, _, source, _) in direct.items() if source == "direct"),
         "derived_count": derived_count,
         "rejected_negative": rejected_negative,
+        "rejected_cross_fiscal": rejected_cross_fiscal,
         "continuity_ratio": round(continuity, 4),
+        "aligned_yoy_count": len(yoy_rows),
         "extreme_yoy_count": extreme_yoy,
-        "max_abs_yoy": round(max((abs(value) for value in yoy_values), default=0.0), 6),
+        "max_abs_yoy": round(max((abs(value) for _, value in yoy_rows), default=0.0), 6),
+        "trailing_contiguous": True,
     }
     return result, audit
 
+
+
+def _annual_proxy_for_tag(
+    records: list[dict[str, Any]],
+    tag: str,
+    metric: str | None,
+) -> tuple[list[tuple[str, float]], dict[str, Any]]:
+    """Build a conservative quarterly proxy from annual consolidated flow facts.
+
+    This is used only when a reliable quarter-by-quarter series cannot be formed.
+    Each annual flow is divided equally across four synthetic quarter points.  The
+    proxy preserves annual year-over-year growth while avoiding unsafe subtraction
+    across missing or misaligned fiscal quarters.
+    """
+    rows = _dedupe_single_tag(records, tag)
+    nonnegative_metric = metric in {"revenue", "capex", "rd", "gross_profit"}
+    annual: dict[str, tuple[float, str]] = {}
+    rejected_negative = 0
+    rejected_nonannual = 0
+    for row in rows:
+        try:
+            qtrs = int(row.get("qtrs") or 0)
+            value = float(row.get("value"))
+            end = str(row.get("ddate") or "")
+        except (TypeError, ValueError):
+            continue
+        form = str(row.get("form") or "").strip()
+        fp = str(row.get("fp") or "").strip().upper()
+        if qtrs != 4 or not (form in {"10-K", "20-F", "40-F"} or fp == "FY"):
+            rejected_nonannual += 1
+            continue
+        if not math.isfinite(value):
+            continue
+        if nonnegative_metric and value < 0:
+            rejected_negative += 1
+            continue
+        filed = str(row.get("filed") or "")
+        old = annual.get(end)
+        if old is None or filed > old[1]:
+            annual[end] = (value, filed)
+
+    annual_values = [(date, value) for date, (value, _) in sorted(annual.items())]
+    annual_growth: list[float] = []
+    for index in range(1, len(annual_values)):
+        prior = annual_values[index - 1][1]
+        current = annual_values[index][1]
+        if prior != 0:
+            annual_growth.append((current - prior) / abs(prior))
+    limit = {
+        "revenue": 5.0,
+        "gross_profit": 5.0,
+        "operating_income": 10.0,
+        "rd": 10.0,
+        "capex": 25.0,
+    }.get(metric, 10.0)
+    extreme_yoy = sum(1 for value in annual_growth if abs(value) > limit)
+
+    proxy: list[tuple[str, float]] = []
+    for end_text, annual_value in annual_values[-3:]:
+        end = _iso_date(end_text)
+        quarterly_value = annual_value / 4.0
+        for days in (273, 182, 91, 0):
+            proxy.append(((end - dt.timedelta(days=days)).isoformat(), quarterly_value))
+    # Dedupe rare overlaps from 52/53-week fiscal calendars.
+    proxy = sorted({date: value for date, value in proxy}.items())[-12:]
+    continuity_gaps = [
+        (_iso_date(proxy[index][0]) - _iso_date(proxy[index - 1][0])).days
+        for index in range(1, len(proxy))
+    ]
+    continuity = (
+        sum(1 for gap in continuity_gaps if 45 <= gap <= 140) / len(continuity_gaps)
+        if continuity_gaps
+        else 0.0
+    )
+    audit = {
+        "tag": tag,
+        "frequency": "annual_proxy",
+        "input_records": len(rows),
+        "annual_count": len(annual_values),
+        "quarter_count": len(proxy),
+        "direct_count": 0,
+        "derived_count": len(proxy),
+        "rejected_negative": rejected_negative,
+        "rejected_nonannual": rejected_nonannual,
+        "rejected_cross_fiscal": 0,
+        "continuity_ratio": round(continuity, 4),
+        "aligned_yoy_count": max(0, 4 * (len(annual_values[-3:]) - 1)),
+        "extreme_yoy_count": extreme_yoy,
+        "max_abs_yoy": round(max((abs(value) for value in annual_growth), default=0.0), 6),
+        "trailing_contiguous": True,
+        "proxy_method": "annual_flow_divided_equally_into_four_quarters",
+    }
+    return proxy, audit
 
 def build_quarterly_series_detailed(
     records: list[dict[str, Any]],
     tags: list[str],
     metric: str | None = None,
 ) -> tuple[str | None, list[tuple[str, float]], dict[str, Any]]:
-    """Build a consistent quarterly series without mixing XBRL concepts.
-
-    Each candidate tag is normalized independently.  The tag with the best usable
-    quarter coverage, continuity, and lowest anomaly count is selected.  This avoids
-    the V0.8.8 failure mode where one quarter used ``Revenues`` and another used a
-    different revenue concept before cumulative subtraction.
-    """
+    """Build a fiscal-safe series, using annual facts only as a conservative fallback."""
     metric = metric or _metric_from_tags(tags)
-    candidates: dict[str, dict[str, Any]] = {}
-    best: tuple[tuple[float, ...], str, list[tuple[str, float]], dict[str, Any]] | None = None
+    quarterly_candidates: dict[str, dict[str, Any]] = {}
+    best_quarterly: tuple[float, int, str, list[tuple[str, float]], dict[str, Any]] | None = None
     for priority, tag in enumerate(tags):
         values, audit = _series_for_tag(records, tag, metric)
-        candidates[tag] = audit
-        score = (
-            float(len(values)),
-            float(audit["continuity_ratio"]),
-            -float(audit["extreme_yoy_count"]),
-            -float(audit["rejected_negative"]),
-            -float(priority),
+        audit = {**audit, "frequency": "quarterly"}
+        quarterly_candidates[tag] = audit
+        quality = (
+            4.0 * float(audit["aligned_yoy_count"])
+            + 3.0 * float(audit["continuity_ratio"])
+            + 0.5 * min(12.0, float(len(values)))
+            - 8.0 * float(audit["extreme_yoy_count"])
+            - 0.20 * float(audit["rejected_negative"])
+            - 0.75 * float(audit["rejected_cross_fiscal"])
         )
-        if best is None or score > best[0]:
-            best = (score, tag, values, audit)
-    if best is None or not best[2]:
-        return None, [], {"metric": metric, "selected_tag": None, "candidates": candidates}
-    _, tag, values, selected_audit = best
+        candidate = (quality, -priority, tag, values, audit)
+        if best_quarterly is None or candidate[:2] > best_quarterly[:2]:
+            best_quarterly = candidate
+
+    if best_quarterly is not None and best_quarterly[3]:
+        _, _, tag, values, selected_audit = best_quarterly
+        quarterly_passed = bool(
+            len(values) >= 5
+            and int(selected_audit.get("aligned_yoy_count") or 0) >= 1
+            and float(selected_audit.get("continuity_ratio") or 0) >= 0.75
+            and not (metric == "revenue" and int(selected_audit.get("extreme_yoy_count") or 0) > 0)
+        )
+        if quarterly_passed:
+            return tag, values[-12:], {
+                "metric": metric,
+                "selected_tag": tag,
+                "selected": selected_audit,
+                "candidates": quarterly_candidates,
+                "annual_candidates": {},
+                "mixed_tags": False,
+                "selection_method": "strict_fiscal_quarter_series",
+                "quality_passed": True,
+                "fallback_used": False,
+            }
+
+    annual_candidates: dict[str, dict[str, Any]] = {}
+    best_annual: tuple[float, int, str, list[tuple[str, float]], dict[str, Any]] | None = None
+    for priority, tag in enumerate(tags):
+        values, audit = _annual_proxy_for_tag(records, tag, metric)
+        annual_candidates[tag] = audit
+        quality = (
+            6.0 * min(3.0, float(audit.get("annual_count") or 0))
+            + 2.0 * float(audit.get("continuity_ratio") or 0)
+            - 8.0 * float(audit.get("extreme_yoy_count") or 0)
+            - 0.25 * float(audit.get("rejected_negative") or 0)
+        )
+        candidate = (quality, -priority, tag, values, audit)
+        if best_annual is None or candidate[:2] > best_annual[:2]:
+            best_annual = candidate
+
+    if best_annual is not None and best_annual[3]:
+        _, _, tag, values, selected_audit = best_annual
+        annual_passed = bool(
+            int(selected_audit.get("annual_count") or 0) >= 2
+            and len(values) >= 8
+            and float(selected_audit.get("continuity_ratio") or 0) >= 0.75
+            and not (metric == "revenue" and int(selected_audit.get("extreme_yoy_count") or 0) > 0)
+        )
+        if annual_passed:
+            return tag, values[-12:], {
+                "metric": metric,
+                "selected_tag": tag,
+                "selected": selected_audit,
+                "candidates": quarterly_candidates,
+                "annual_candidates": annual_candidates,
+                "mixed_tags": False,
+                "selection_method": "annual_flow_proxy_fallback",
+                "quality_passed": True,
+                "fallback_used": True,
+            }
+
+    if best_quarterly is None or not best_quarterly[3]:
+        return None, [], {
+            "metric": metric,
+            "selected_tag": None,
+            "candidates": quarterly_candidates,
+            "annual_candidates": annual_candidates,
+            "quality_passed": False,
+            "fallback_used": False,
+        }
+    _, _, tag, values, selected_audit = best_quarterly
     return tag, values[-12:], {
         "metric": metric,
         "selected_tag": tag,
         "selected": selected_audit,
-        "candidates": candidates,
+        "candidates": quarterly_candidates,
+        "annual_candidates": annual_candidates,
         "mixed_tags": False,
+        "selection_method": "rejected_quarterly_no_safe_fallback",
+        "quality_passed": False,
+        "fallback_used": False,
     }
-
 
 def build_quarterly_series(
     records: list[dict[str, Any]],
