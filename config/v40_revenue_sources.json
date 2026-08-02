@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "4.0.0-direct-revenue-final-auto",
+  "engine_release": "4.1.0-direct-revenue-coverage-fix",
   "timezone": "Asia/Seoul",
   "minimum_theme_count": 50,
   "sources": {
@@ -33,11 +33,11 @@
     "direct_commercialization": {
       "revenue_or_shipments_growth": 0.55,
       "revenue_or_shipments_scale": 0.25,
-      "new_orders_growth": 0.20
+      "new_orders_growth": 0.2
     },
     "prevalidation_candidate": {
-      "phase4_readiness": 0.70,
-      "direct_commercialization": 0.30
+      "phase4_readiness": 0.7,
+      "direct_commercialization": 0.3
     }
   },
   "thresholds": {
@@ -67,5 +67,21 @@
     "3391": "39S",
     "3314": "ANM",
     "311": "11S"
+  },
+  "theme_m3_overrides": {
+    "COMMERCIAL_DRONES": {
+      "codes": [
+        "36S"
+      ],
+      "mapping_quality": "M3_BROAD_TRANSPORTATION_EQUIPMENT_PROXY",
+      "note": "상업용 드론은 M3에 독립 세부계열이 없어 운송장비 광의 프록시를 사용합니다."
+    },
+    "SPACE_ECONOMY": {
+      "codes": [
+        "36Z"
+      ],
+      "mapping_quality": "M3_GUIDED_MISSILE_SPACE_VEHICLE_PROXY",
+      "note": "우주산업은 M3 유도미사일·우주비행체 관련 계열 프록시를 사용합니다."
+    }
   }
 }

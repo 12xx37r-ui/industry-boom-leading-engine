@@ -71,7 +71,10 @@ def run_v40(root: Path, output_dir: Path, run_date: str | None = None) -> dict[s
     for theme_id in theme_ids:
         target_codes = [str(code) for code in (mapping.get(theme_id) or {}).get("qcew_naics") or []]
         qss = aggregate_qss(select_naics_rows(qss_rows, target_codes))
-        m3_codes = m3_codes_for_naics(target_codes, proxy_map)
+        theme_override = (config.get("theme_m3_overrides") or {}).get(theme_id) or {}
+        m3_codes = [str(code) for code in theme_override.get("codes") or []]
+        if not m3_codes:
+            m3_codes = m3_codes_for_naics(target_codes, proxy_map)
         shipments = aggregate_m3(shipments_series, m3_codes, "VS")
         orders = aggregate_m3(orders_series, m3_codes, "NO")
         if qss.get("matched_rows", 0) > 0:
@@ -79,16 +82,19 @@ def run_v40(root: Path, output_dir: Path, run_date: str | None = None) -> dict[s
             primary_value = qss.get("current_revenue_million_usd")
             primary_growth = qss.get("revenue_yoy_percent")
             mapping_quality = "DIRECT_QSS_NAICS_REVENUE"
+            mapping_note = None
         elif shipments.get("matched_series", 0) > 0:
             primary_family = "M3_SHIPMENTS"
             primary_value = shipments.get("latest_value_million_usd")
             primary_growth = shipments.get("yoy_percent")
-            mapping_quality = "M3_INDUSTRY_SHIPMENTS_PROXY"
+            mapping_quality = str(theme_override.get("mapping_quality") or "M3_INDUSTRY_SHIPMENTS_PROXY")
+            mapping_note = theme_override.get("note")
         else:
             primary_family = "NO_DIRECT_COVERAGE"
             primary_value = None
             primary_growth = None
             mapping_quality = "NO_DIRECT_REVENUE_COVERAGE"
+            mapping_note = None
         raw[theme_id] = {
             "target_naics": target_codes,
             "qss": qss,
@@ -98,6 +104,7 @@ def run_v40(root: Path, output_dir: Path, run_date: str | None = None) -> dict[s
             "primary_value": primary_value,
             "primary_growth": primary_growth,
             "mapping_quality": mapping_quality,
+            "mapping_note": mapping_note,
         }
         scale_inputs[theme_id] = (primary_family, None if primary_value is None else float(primary_value))
 
@@ -133,6 +140,7 @@ def run_v40(root: Path, output_dir: Path, run_date: str | None = None) -> dict[s
             "boom_score": None,
             "investment_use_allowed": False,
             "mapping_quality": item["mapping_quality"],
+            "mapping_note": item.get("mapping_note"),
             "sources": {
                 "qss_revenue": item["qss"],
                 "m3_shipments": item["m3_shipments"],

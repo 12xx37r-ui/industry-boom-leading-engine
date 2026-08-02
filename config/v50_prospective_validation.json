@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "engine_release": "5.0.0-prospective-validation-final",
+  "timezone": "Asia/Seoul",
+  "minimum_theme_count": 50,
+  "snapshot_cadence": "MONTHLY_IMMUTABLE",
+  "evaluation_horizons_months": [6, 12, 24],
+  "maturity_grace_days": 45,
+  "candidate_cohort_sizes": [5, 10],
+  "outcome_weights": {
+    "commercial_level_growth": 0.30,
+    "direct_commercialization_score_change": 0.20,
+    "phase4_readiness_score_change": 0.15,
+    "employment_level_growth": 0.12,
+    "establishment_level_growth": 0.08,
+    "wage_level_growth": 0.08,
+    "source_diffusion_change": 0.07
+  },
+  "score_transforms": {
+    "growth_zero_score": 50.0,
+    "growth_points_per_percent": 1.5,
+    "delta_zero_score": 50.0,
+    "delta_points_per_score_point": 2.0
+  },
+  "success_thresholds": {
+    "realized_outcome_score": 60.0,
+    "minimum_commercial_level_growth_percent": 0.0
+  },
+  "investment_gate": {
+    "minimum_matured_snapshots": {
+      "6": 6,
+      "12": 4,
+      "24": 2
+    },
+    "minimum_top10_success_rate": 0.60,
+    "minimum_top_bottom_outcome_spread": 5.0,
+    "minimum_rank_correlation": 0.20,
+    "require_all_horizons": true
+  },
+  "progress": {
+    "engine_build_percent_after_release": 100,
+    "total_project_percent_before_outcomes": 88,
+    "remaining": [
+      "월별 신규 시점 스냅샷 누적",
+      "6·12·24개월 만기 성과 자동 채점",
+      "예측 순위와 실현 산업성과의 분리도 검증"
+    ]
+  }
+}
