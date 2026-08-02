@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V6.0 Champion Challenger
+name: 00 - RUN THIS ONLY - Industry Boom V6.1 Prospective Ledger
 
 on:
   workflow_dispatch:
@@ -14,11 +14,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: industry-boom-v60-champion-challenger
+  group: industry-boom-v61-prospective-ledger
   cancel-in-progress: false
 
 jobs:
-  champion-challenger-validator:
+  prospective-ledger:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
@@ -37,8 +37,8 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Test V6.0 release only
-        run: python -m unittest -q tests.test_v50_release tests.test_v51_release tests.test_v60_release
+      - name: Test V6.1 release only
+        run: python -m unittest -q tests.test_v61_release
 
       - name: Resolve run date
         id: vars
@@ -52,7 +52,7 @@ jobs:
         shell: bash
         run: |
           set -uo pipefail
-          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger
+          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v61_prospective_policy
           run_stage() {
             local seconds="$1"; shift
             local label="$1"; shift
@@ -66,7 +66,7 @@ jobs:
           run_stage 720 "V3 research and government sources" python -m ible.v3_data_cli --root . --output-dir outputs/v3_data --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 480 "V3.1 real economy" python -m ible.v31_cli --root . --output-dir outputs/v31_real_economy --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 300 "V3.2 corporate investment" python -m ible.v32_cli --root . --output-dir outputs/v32_investment --run-date "${{ steps.vars.outputs.run_date }}"
-          run_stage 180 "V3.3 phase four integration" python -m ible.v33_cli --root . --output-dir outputs/v33_auto --run-date "${{ steps.vars.outputs.run_date }}"
+          run_stage 180 "V3.3 integration" python -m ible.v33_cli --root . --output-dir outputs/v33_auto --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 480 "V4 direct commercialization" python -m ible.v40_cli --root . --output-dir outputs/v40_final_auto --run-date "${{ steps.vars.outputs.run_date }}"
           for required in \
             data_cache/latest/v31_real_economy_observations.json \
@@ -78,7 +78,7 @@ jobs:
           set -euo pipefail
           python -m ible.v50_cli --root . --output-dir outputs/v50_final_validator --run-date "${{ steps.vars.outputs.run_date }}"
 
-      - name: Run sealed historical walk-forward audit
+      - name: Run sealed historical audit
         shell: bash
         run: |
           set -euo pipefail
@@ -88,46 +88,7 @@ jobs:
             --v50-output-dir outputs/v50_final_validator \
             --run-date "${{ steps.vars.outputs.run_date }}"
 
-      - name: Verify V5.1 outputs
-        shell: bash
-        run: |
-          set -euo pipefail
-          for file in \
-            v51_run_summary.json \
-            v51_historical_audit.json \
-            v51_benchmark_scenarios.json \
-            v51_blind_holdout_cases.json \
-            v51_dashboard_payload.json \
-            v51_model_lock_verification.json \
-            v51_next_gate.json; do
-            test -s "outputs/v51_historical_audit/$file"
-          done
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          base = Path('outputs/v51_historical_audit')
-          summary = json.loads((base / 'v51_run_summary.json').read_text(encoding='utf-8'))
-          if summary['model_lock']['status'] != 'LOCK_VERIFIED':
-              raise SystemExit('model lock failed')
-          if summary['benchmark_metrics']['scenario_count'] != 7:
-              raise SystemExit(f"benchmark count mismatch: {summary}")
-          if summary['blind_metrics']['scenario_count'] != 8:
-              raise SystemExit(f"blind count mismatch: {summary}")
-          if summary['investment_use_allowed'] is not False:
-              raise SystemExit('investment gate must remain false without external prospective proof')
-          print(json.dumps({
-              'status': summary['status'],
-              'benchmark_positive_recall': summary['benchmark_metrics']['positive_recall'],
-              'benchmark_false_alarm_rate': summary['benchmark_metrics']['false_alarm_rate'],
-              'blind_positive_recall': summary['blind_metrics']['positive_recall'],
-              'blind_false_alarm_rate': summary['blind_metrics']['false_alarm_rate'],
-              'historical_research_gate_passed': summary['historical_research_gate_passed'],
-              'investment_use_allowed': summary['investment_use_allowed'],
-              'next_required_gate': summary['next_required_gate'],
-          }, ensure_ascii=False, indent=2))
-          PY
-
-      - name: Run Champion-Challenger comparison
+      - name: Run V6.0 research comparison
         shell: bash
         run: |
           set -euo pipefail
@@ -137,52 +98,58 @@ jobs:
             --v51-output-dir outputs/v51_historical_audit \
             --run-date "${{ steps.vars.outputs.run_date }}"
 
-      - name: Verify V6.0 outputs
+      - name: Lock monthly Champion Challenger prospective decisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m ible.v61_cli \
+            --root . \
+            --output-dir outputs/v61_prospective_policy \
+            --v50-output-dir outputs/v50_final_validator \
+            --v60-output-dir outputs/v60_champion_challenger \
+            --run-date "${{ steps.vars.outputs.run_date }}"
+
+      - name: Verify V6.1 outputs
         shell: bash
         run: |
           set -euo pipefail
           for file in \
-            v60_run_summary.json \
-            v60_champion_challenger_comparison.json \
-            v60_case_decisions.json \
-            v60_policy_lock_verification.json \
-            v60_model_lock_verification.json \
-            v60_dashboard_payload.json \
-            v60_next_gate.json; do
-            test -s "outputs/v60_champion_challenger/$file"
+            v61_run_summary.json \
+            v61_current_policy_snapshot.json \
+            v61_policy_registry.json \
+            v61_prospective_scorecard.json \
+            v61_policy_lock_verification.json \
+            v61_dashboard_payload.json \
+            v61_next_gate.json; do
+            test -s "outputs/v61_prospective_policy/$file"
           done
           python - <<'PY'
           import json
           from pathlib import Path
-          summary = json.loads(Path('outputs/v60_champion_challenger/v60_run_summary.json').read_text(encoding='utf-8'))
+          summary = json.loads(Path('outputs/v61_prospective_policy/v61_run_summary.json').read_text(encoding='utf-8'))
           if summary['policy_lock']['status'] != 'POLICY_LOCK_VERIFIED':
-              raise SystemExit('challenger policy lock failed')
-          if summary['model_lock']['status'] != 'LOCK_VERIFIED':
-              raise SystemExit('champion model lock failed')
-          if summary['benchmark']['challenger']['positive_recall'] != 0.6667:
-              raise SystemExit(f"unexpected benchmark challenger recall: {summary}")
-          if summary['blind_holdout']['challenger']['positive_recall'] != 1.0:
-              raise SystemExit(f"unexpected blind challenger recall: {summary}")
-          if summary['blind_holdout']['challenger']['false_alarm_rate'] != 0.0:
-              raise SystemExit(f"unexpected challenger false alarm: {summary}")
+              raise SystemExit('V6.1 policy lock failed')
+          if summary['theme_count'] != 50:
+              raise SystemExit(f"theme count mismatch: {summary['theme_count']}")
+          if summary['challenger_live_alert_count'] < summary['champion_live_alert_count']:
+              raise SystemExit('challenger cannot remove champion alerts')
           if summary['challenger_promotion_allowed'] is not False:
-              raise SystemExit('challenger cannot auto-promote on reused evidence')
+              raise SystemExit('prospective challenger cannot auto-promote')
           if summary['investment_use_allowed'] is not False:
-              raise SystemExit('investment use must remain false')
+              raise SystemExit('investment gate must remain false before matured outcomes')
           print(json.dumps({
               'status': summary['status'],
-              'benchmark_champion_recall': summary['benchmark']['champion']['positive_recall'],
-              'benchmark_challenger_recall': summary['benchmark']['challenger']['positive_recall'],
-              'blind_champion_recall': summary['blind_holdout']['champion']['positive_recall'],
-              'blind_challenger_recall': summary['blind_holdout']['challenger']['positive_recall'],
-              'challenger_false_alarm_rate': summary['blind_holdout']['challenger']['false_alarm_rate'],
-              'champion_remains_active': summary['champion_remains_active'],
-              'challenger_mode': summary['challenger_mode'],
+              'snapshot_action': summary['snapshot_action'],
+              'snapshot_count': summary['snapshot_count'],
+              'champion_live_alert_count': summary['champion_live_alert_count'],
+              'challenger_live_alert_count': summary['challenger_live_alert_count'],
+              'added_theme_ids': summary['added_theme_ids'],
+              'next_evaluation_due': summary['next_evaluation_due'],
               'next_required_gate': summary['next_required_gate'],
           }, ensure_ascii=False, indent=2))
           PY
 
-      - name: Commit caches immutable histories and validator outputs
+      - name: Commit immutable histories and outputs
         shell: bash
         run: |
           set +e
@@ -191,7 +158,7 @@ jobs:
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find historical_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
-          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v61_prospective_policy -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           for workflow in .github/workflows/*; do
             [ -e "$workflow" ] || continue
             if [ "$(basename "$workflow")" != "run_v50_final_validator.yml" ]; then
@@ -199,24 +166,27 @@ jobs:
             fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "validation: V6.0 Champion Challenger ${{ steps.vars.outputs.run_date }}"
+            git commit -m "validation: V6.1 prospective ledger ${{ steps.vars.outputs.run_date }}"
             git push || true
           fi
           exit 0
 
-      - name: Upload one combined result artifact
+      - name: Upload combined result artifact
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-v6.0-champion-challenger-result
+          name: industry-boom-v6.1-prospective-ledger-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
             outputs/v60_champion_challenger
+            outputs/v61_prospective_policy
             historical_history/v51_audits
             historical_history/v60_audits
             prospective_history/v50_snapshot_registry.json
             prospective_history/v50_snapshots
             prospective_history/v50_evaluations
+            prospective_history/v61_policy_registry.json
+            prospective_history/v61_policy_snapshots
           if-no-files-found: error
           retention-days: 90
           compression-level: 9
