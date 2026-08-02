@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V6.1.1 Prospective Ledger
+name: 00 - RUN THIS ONLY - Industry Boom V6.2 Dashboard + Ledger
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: industry-boom-v61-prospective-ledger
+  group: industry-boom-v62-dashboard-ledger
   cancel-in-progress: false
 
 jobs:
@@ -37,8 +37,8 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Test V6.1.1 release only
-        run: python -m unittest -q tests.test_v61_release
+      - name: Test V6.2 dashboard release only
+        run: python -m unittest -q tests.test_v62_release
 
       - name: Resolve run date
         id: vars
@@ -166,7 +166,7 @@ jobs:
             fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "validation: V6.1 prospective ledger ${{ steps.vars.outputs.run_date }}"
+            git commit -m "validation: V6.2 dashboard ledger ${{ steps.vars.outputs.run_date }}"
             git push || true
           fi
           exit 0
@@ -174,7 +174,7 @@ jobs:
       - name: Upload combined result artifact
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-v6.1-prospective-ledger-result
+          name: industry-boom-v6.2-dashboard-ledger-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
