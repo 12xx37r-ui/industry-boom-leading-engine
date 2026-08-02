@@ -1,4 +1,4 @@
-name: Industry Boom V1.0.3 GitHub Robust Validation
+name: Industry Boom V1.0.4 GitHub Robust Validation
 
 on:
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
       - name: Install release test dependency
         run: python -m pip install --disable-pip-version-check -r requirements.txt
 
-      - name: Test only V1.0.3 release files
+      - name: Test only V1.0.4 release files
         run: python -m pytest -q -p no:cacheprovider tests/test_release.py
 
       - name: Run GitHub-only locked validation
@@ -61,10 +61,9 @@ jobs:
           PY
 
       - name: Upload validation result
-        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: industry-boom-v1.0.3-github-result
+          name: industry-boom-v1.0.4-github-result
           path: outputs/v1_github
           if-no-files-found: error
           retention-days: 30
