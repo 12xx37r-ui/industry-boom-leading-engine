@@ -59,7 +59,7 @@ def rescore_directory(root: Path, input_dir: Path, output_dir: Path) -> list[dic
         result["metadata"] = {
             **dict(old.get("metadata") or {}),
             "rescored_from_existing_signals": True,
-            "rescoring_engine_version": "0.6.0",
+            "rescoring_engine_version": "0.6.2",
         }
         EnginePipeline._write_json(output_backtests / f"{scenario_id}.json", result)
         results.append(result)

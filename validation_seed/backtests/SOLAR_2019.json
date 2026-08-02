@@ -1,0 +1,4115 @@
+{
+  "scenario_id": "SOLAR_2019",
+  "scenario_name": "태양광 설치 붐 전조",
+  "label": "positive",
+  "as_of": "2019-06-30",
+  "target_theme_id": "SOLAR_PHOTOVOLTAIC",
+  "comparison_theme_ids": [
+    "SOLAR_PHOTOVOLTAIC",
+    "EV_BATTERY",
+    "ENERGY_STORAGE",
+    "HYDROGEN_ECONOMY",
+    "POWER_GRID_ELECTRIFICATION",
+    "ROBOTICS_AUTOMATION",
+    "BIOTECH_PLATFORM",
+    "ADDITIVE_MANUFACTURING"
+  ],
+  "status": "INSUFFICIENT_DATA",
+  "passed": false,
+  "data_eligible": false,
+  "alert_triggered": false,
+  "reason": "기업·재무 데이터 확보가 부족해 합격·실패 판정에서 제외해야 합니다.",
+  "observed": {
+    "rank": 6,
+    "cohort_size": 8,
+    "boom_score": 40.91,
+    "early_signal_score": 43.42,
+    "commercial_realization_score": 40.25,
+    "cross_confirmation_score": 24.31,
+    "stage": "INSUFFICIENT_DATA",
+    "data_confidence": 4.67,
+    "company_coverage": 0.0,
+    "usable_companies": 0
+  },
+  "criteria": {
+    "rank_max": 5,
+    "score_min": 52,
+    "early_signal_min": 52
+  },
+  "target_result": {
+    "theme_id": "SOLAR_PHOTOVOLTAIC",
+    "theme_name": "태양광·전력변환",
+    "as_of": "2019-06-30",
+    "stage": "INSUFFICIENT_DATA",
+    "boom_score": 40.91,
+    "boom_probability_6m": 0.0345,
+    "boom_probability_12m": 0.0664,
+    "boom_probability_24m": 0.0878,
+    "data_confidence": 4.67,
+    "early_signal_score": 43.42,
+    "commercial_realization_score": 40.25,
+    "cross_confirmation_score": 24.31,
+    "transition_gap_score": 54.76,
+    "prediction_score_6m": 40.48,
+    "prediction_score_12m": 40.71,
+    "prediction_score_24m": 39.98,
+    "engines": {
+      "capital_events": {
+        "name": "active_facility_investment_count",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "capital_amounts": {
+        "name": "facility_investment_amount",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.5,
+        "raw": {
+          "amount_coverage": 0.0,
+          "amount_component": {
+            "name": "facility_investment_amount_amount_component",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "active_facility_investment_count",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.0
+        },
+        "warnings": [
+          "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "supply_contracts": {
+        "name": "active_supply_contract_count",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 1.0,
+        "raw": {
+          "period_totals": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "recent_two_periods": 0.0,
+          "prior_two_periods": 0.0,
+          "active_company_count": 0,
+          "company_count": 4
+        },
+        "warnings": [
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "cashflow_capex": {
+        "name": "cashflow_capex_intensity",
+        "score": 50.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.0,
+        "raw": {},
+        "warnings": [
+          "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+        ]
+      },
+      "contract_amounts": {
+        "name": "supply_contract_amount",
+        "score": 35.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 0.0,
+        "breadth": 0.0,
+        "coverage": 0.5,
+        "raw": {
+          "amount_coverage": 0.0,
+          "amount_component": {
+            "name": "supply_contract_amount_amount_component",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "count_fallback": {
+            "name": "active_supply_contract_count",
+            "score": 35.0,
+            "level": 50.0,
+            "velocity": 50.0,
+            "acceleration": 50.0,
+            "persistence": 0.0,
+            "breadth": 0.0,
+            "coverage": 1.0,
+            "raw": {
+              "period_totals": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "recent_two_periods": 0.0,
+              "prior_two_periods": 0.0,
+              "active_company_count": 0,
+              "company_count": 4
+            },
+            "warnings": [
+              "최근 6개월 관련 공시가 없어 신호가 약합니다."
+            ]
+          },
+          "amount_weight": 0.0
+        },
+        "warnings": [
+          "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+          "최근 6개월 관련 공시가 없어 신호가 약합니다."
+        ]
+      },
+      "revenue": {
+        "name": "revenue_demand",
+        "score": 45.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 0.0,
+        "coverage": 0.0,
+        "raw": {
+          "company_count": 4,
+          "usable_company_count": 0,
+          "median_yoy": null,
+          "median_acceleration": null,
+          "positive_breadth": null
+        },
+        "warnings": [
+          "기업 데이터 확보율이 50% 미만입니다."
+        ]
+      },
+      "operating_margin": {
+        "name": "pricing_power_margin",
+        "score": 50.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 0.0,
+        "coverage": 0.0,
+        "raw": {},
+        "warnings": [
+          "매출·매출총이익 공통 분기 데이터가 부족합니다."
+        ]
+      },
+      "research_momentum": {
+        "name": "technology_research_diffusion",
+        "score": 50.0,
+        "level": 50.0,
+        "velocity": 50.0,
+        "acceleration": 50.0,
+        "persistence": 50.0,
+        "breadth": 50.0,
+        "coverage": 0.0,
+        "raw": {},
+        "warnings": [
+          "기술연구 확산 데이터를 확보하지 못했습니다."
+        ]
+      }
+    },
+    "top_reasons": [
+      "실적 대중화 전 선행격차 54.8",
+      "현금흐름표 실집행 CAPEX 50.0",
+      "기술연구 확산 가속 50.0",
+      "매출 수요 가속 45.0",
+      "초기 자금·기술 선행점수 43.4"
+    ],
+    "invalidations": [
+      "설치량 증가 없이 모듈가격만 하락",
+      "재고와 운전자본 부담이 급증",
+      "보조금 축소 후 민간 수요가 유지되지 않음"
+    ],
+    "coverage": {
+      "requested_companies": 4,
+      "usable_companies": 0,
+      "company_coverage": 0.0,
+      "metric_coverage": 0.1667,
+      "amount_coverage": 0.0,
+      "independent_research_source": false,
+      "primary_sources": [
+        "OpenDART"
+      ],
+      "score_definition": "preboom_score"
+    },
+    "warnings": [
+      "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+      "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+      "기술연구 확산 데이터를 확보하지 못했습니다.",
+      "기업 데이터 확보율이 50% 미만입니다.",
+      "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+      "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+      "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+      "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+      "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+      "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+      "최근 6개월 관련 공시가 없어 신호가 약합니다."
+    ]
+  },
+  "ranking": [
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화 인프라",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "전력기기 수주잔고 증가율 0% 이하",
+        "데이터센터·전력망 프로젝트 연기 증가",
+        "가격 상승 없이 재고만 증가"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "ROBOTICS_AUTOMATION",
+      "theme_name": "로봇·산업자동화",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "제조업 자동화 CAPEX 감소",
+        "수주 대비 재고 증가",
+        "로봇 설치 증가가 서비스·소프트웨어 매출로 연결되지 않음"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장·전력변환",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "설치량 둔화와 재고 증가 동시 발생",
+        "제품가격 하락이 원가 하락보다 빠름",
+        "프로젝트 금융비용 상승으로 취소율 증가"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "BIOTECH_PLATFORM",
+      "theme_name": "바이오 플랫폼·정밀의료",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "임상 실패율 상승 또는 핵심 파이프라인 중단",
+        "연구개발비 증가가 임상 진척으로 연결되지 않음",
+        "자금조달 환경 악화로 현금소진 위험 상승"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "EV_BATTERY",
+      "theme_name": "전기차·배터리 공급망",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "전기차 판매와 배터리 출하량이 동반 둔화",
+        "배터리 재고가 출하보다 빠르게 증가",
+        "판가 하락이 원가 개선을 지속 초과"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "SOLAR_PHOTOVOLTAIC",
+      "theme_name": "태양광·전력변환",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "설치량 증가 없이 모듈가격만 하락",
+        "재고와 운전자본 부담이 급증",
+        "보조금 축소 후 민간 수요가 유지되지 않음"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "theme_name": "3D프린팅·적층제조",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "장비 판매가 반복소재·서비스 매출로 전환되지 않음",
+        "산업용 고객 확대가 정체",
+        "기술연구 증가 대비 상용 매출이 감소"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "theme_name": "수소·연료전지 산업",
+      "as_of": "2019-06-30",
+      "stage": "INSUFFICIENT_DATA",
+      "boom_score": 40.91,
+      "boom_probability_6m": 0.0345,
+      "boom_probability_12m": 0.0664,
+      "boom_probability_24m": 0.0878,
+      "data_confidence": 4.67,
+      "early_signal_score": 43.42,
+      "commercial_realization_score": 40.25,
+      "cross_confirmation_score": 24.31,
+      "transition_gap_score": 54.76,
+      "prediction_score_6m": 40.48,
+      "prediction_score_12m": 40.71,
+      "prediction_score_24m": 39.98,
+      "engines": {
+        "capital_events": {
+          "name": "active_facility_investment_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "capital_amounts": {
+          "name": "facility_investment_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "facility_investment_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_facility_investment_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "supply_contracts": {
+          "name": "active_supply_contract_count",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 1.0,
+          "raw": {
+            "period_totals": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "recent_two_periods": 0.0,
+            "prior_two_periods": 0.0,
+            "active_company_count": 0,
+            "company_count": 4
+          },
+          "warnings": [
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "cashflow_capex": {
+          "name": "cashflow_capex_intensity",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "연간 현금흐름표 CAPEX 데이터가 부족합니다."
+          ]
+        },
+        "contract_amounts": {
+          "name": "supply_contract_amount",
+          "score": 35.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 0.0,
+          "breadth": 0.0,
+          "coverage": 0.5,
+          "raw": {
+            "amount_coverage": 0.0,
+            "amount_component": {
+              "name": "supply_contract_amount_amount_component",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "count_fallback": {
+              "name": "active_supply_contract_count",
+              "score": 35.0,
+              "level": 50.0,
+              "velocity": 50.0,
+              "acceleration": 50.0,
+              "persistence": 0.0,
+              "breadth": 0.0,
+              "coverage": 1.0,
+              "raw": {
+                "period_totals": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "recent_two_periods": 0.0,
+                "prior_two_periods": 0.0,
+                "active_company_count": 0,
+                "company_count": 4
+              },
+              "warnings": [
+                "최근 6개월 관련 공시가 없어 신호가 약합니다."
+              ]
+            },
+            "amount_weight": 0.0
+          },
+          "warnings": [
+            "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+            "최근 6개월 관련 공시가 없어 신호가 약합니다."
+          ]
+        },
+        "revenue": {
+          "name": "revenue_demand",
+          "score": 45.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {
+            "company_count": 4,
+            "usable_company_count": 0,
+            "median_yoy": null,
+            "median_acceleration": null,
+            "positive_breadth": null
+          },
+          "warnings": [
+            "기업 데이터 확보율이 50% 미만입니다."
+          ]
+        },
+        "operating_margin": {
+          "name": "pricing_power_margin",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 0.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "매출·매출총이익 공통 분기 데이터가 부족합니다."
+          ]
+        },
+        "research_momentum": {
+          "name": "technology_research_diffusion",
+          "score": 50.0,
+          "level": 50.0,
+          "velocity": 50.0,
+          "acceleration": 50.0,
+          "persistence": 50.0,
+          "breadth": 50.0,
+          "coverage": 0.0,
+          "raw": {},
+          "warnings": [
+            "기술연구 확산 데이터를 확보하지 못했습니다."
+          ]
+        }
+      },
+      "top_reasons": [
+        "실적 대중화 전 선행격차 54.8",
+        "현금흐름표 실집행 CAPEX 50.0",
+        "기술연구 확산 가속 50.0",
+        "매출 수요 가속 45.0",
+        "초기 자금·기술 선행점수 43.4"
+      ],
+      "invalidations": [
+        "정부지원 제외 프로젝트 경제성이 개선되지 않음",
+        "수소 생산원가 하락이 지연",
+        "수주 증가 없이 증설과 자금조달만 확대"
+      ],
+      "coverage": {
+        "requested_companies": 4,
+        "usable_companies": 0,
+        "company_coverage": 0.0,
+        "metric_coverage": 0.1667,
+        "amount_coverage": 0.0,
+        "independent_research_source": false,
+        "primary_sources": [
+          "OpenDART"
+        ],
+        "score_definition": "preboom_score"
+      },
+      "warnings": [
+        "V0.5.0은 선행축적 점수와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "arXiv 기술연구 확산 데이터가 없어 독립 데이터원 교차검증이 부족합니다.",
+        "기술연구 확산 데이터를 확보하지 못했습니다.",
+        "기업 데이터 확보율이 50% 미만입니다.",
+        "데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.",
+        "매출·매출총이익 공통 분기 데이터가 부족합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
+        "시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.",
+        "연간 현금흐름표 CAPEX 데이터가 부족합니다.",
+        "원문 금액 추출률이 낮아 공시 건수 신호를 보조적으로 사용했습니다.",
+        "최근 6개월 관련 공시가 없어 신호가 약합니다."
+      ]
+    }
+  ],
+  "metadata": {
+    "sources": [
+      "OpenDART",
+      "arXiv"
+    ],
+    "disclosure_errors": {
+      "006400": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00126362&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "006260": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00105952&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "009830": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00162461&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "003670": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00155276&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "010060": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00148896&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "010120": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00105855&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "011930": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00136271&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "018880": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00161125&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "039310": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00264671&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "048770": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00108649&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "051910": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00356361&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "064350": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00302926&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "066970": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00398701&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "068270": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00413046&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "090360": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00536523&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "108490": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00946030&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "112610": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00670340&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "126700": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00825959&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "145020": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00888347&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "207940": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00877059&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "247540": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01160363&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "267260": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01205851&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "277810": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01261644&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "298040": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01316245&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "326030": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=00878696&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "336260": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01412725&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "373220": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01515323&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout",
+      "454910": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/list.json?crtfc_key=<redacted>&corp_code=01105153&bgn_de=20160612&end_de=20190630&last_reprt_at=Y&page_count=100&sort=date&sort_mth=asc: ConnectTimeout"
+    },
+    "amount_document_errors": {},
+    "financial_errors": {
+      "2017:11013": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2017&reprt_code=11013: ConnectTimeout",
+      "2017:11012": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2017&reprt_code=11012: ConnectTimeout",
+      "2017:11014": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2017&reprt_code=11014: ConnectTimeout",
+      "2017:11011": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2017&reprt_code=11011: ConnectTimeout",
+      "2018:11013": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2018&reprt_code=11013: ConnectTimeout",
+      "2018:11012": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2018&reprt_code=11012: ConnectTimeout",
+      "2018:11014": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2018&reprt_code=11014: ConnectTimeout",
+      "2018:11011": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2018&reprt_code=11011: ConnectTimeout",
+      "2019:11013": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttMultiAcnt.json?crtfc_key=<redacted>&corp_code=00155276%2C00105952%2C00126362%2C00162461%2C00148896%2C00105855%2C00136271%2C00161125%2C00264671%2C00108649%2C00356361%2C00302926%2C00398701%2C00413046%2C00536523%2C00946030%2C00670340%2C00825959%2C00888347%2C00877059%2C01160363%2C01205851%2C01261644%2C01316245%2C00878696%2C01412725%2C01515323%2C01105153&bsns_year=2019&reprt_code=11013: ConnectTimeout"
+    },
+    "annual_capex_errors": {
+      "003670:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00155276&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "003670:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00155276&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "003670:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00155276&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "006260:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00105952&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "003670:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00155276&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "006260:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00105952&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "006260:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00105952&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "006400:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00126362&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "006400:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00126362&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "006400:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00126362&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "009830:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00162461&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "009830:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00162461&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "009830:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00162461&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "009830:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00162461&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010060:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00148896&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010060:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00148896&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010060:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00148896&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010060:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00148896&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010120:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00105855&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010120:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00105855&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "010120:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00105855&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "011930:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00136271&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "011930:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00136271&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "011930:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00136271&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "011930:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00136271&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "018880:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00161125&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "018880:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00161125&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "018880:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00161125&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "039310:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00264671&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "018880:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00161125&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "039310:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00264671&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "039310:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00264671&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "039310:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00264671&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "048770:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00108649&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "048770:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00108649&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "048770:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00108649&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "048770:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00108649&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "051910:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00356361&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "051910:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00356361&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "051910:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00356361&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "051910:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00356361&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "064350:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00302926&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "064350:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00302926&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "064350:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00302926&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "064350:2018": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00302926&bsns_year=2018&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "066970:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00398701&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "066970:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00398701&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "066970:2017": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00398701&bsns_year=2017&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "068270:2015": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00413046&bsns_year=2015&reprt_code=11011&fs_div=OFS: ConnectTimeout",
+      "068270:2016": "GET failed after 2 attempts: https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=<redacted>&corp_code=00413046&bsns_year=2016&reprt_code=11011&fs_div=OFS: ConnectTimeout"
+    },
+    "annual_capex_quality": {
+      "003670": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "006260": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "006400": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "009830": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "010060": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "010120": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "-표준계정코드 미사용-",
+            "candidate_count": 1
+          }
+        }
+      },
+      "011930": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "018880": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "039310": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "048770": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "051910": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "064350": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "066970": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "068270": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "-표준계정코드 미사용-",
+            "candidate_count": 1
+          }
+        }
+      },
+      "090360": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 증가",
+            "account_id": "-표준계정코드 미사용-",
+            "candidate_count": 1
+          }
+        }
+      },
+      "108490": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "112610": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "126700": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "145020": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "207940": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "247540": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "267260": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "277810": {
+        "requested_years": 1,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {
+          "2018": {
+            "status": "NOT_FOUND"
+          }
+        }
+      },
+      "298040": {
+        "requested_years": 1,
+        "years_with_capex": 1,
+        "coverage": 1.0,
+        "details": {
+          "2018": {
+            "status": "FOUND_PRIMARY",
+            "account_nm": "유형자산의 취득",
+            "account_id": "ifrs_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+            "candidate_count": 1
+          }
+        }
+      },
+      "326030": {
+        "requested_years": 1,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {
+          "2018": {
+            "status": "NOT_FOUND"
+          }
+        }
+      },
+      "336260": {
+        "requested_years": 0,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {}
+      },
+      "373220": {
+        "requested_years": 1,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {
+          "2018": {
+            "status": "NOT_FOUND"
+          }
+        }
+      },
+      "454910": {
+        "requested_years": 1,
+        "years_with_capex": 0,
+        "coverage": 0.0,
+        "details": {
+          "2018": {
+            "status": "NOT_FOUND"
+          }
+        }
+      }
+    },
+    "research_errors": {
+      "POWER_GRID_ELECTRIFICATION": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22power+grid%22+OR+all%3A%22grid+modernization%22+OR+all%3A%22high+voltage+transformer%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: ReadTimeout",
+      "ROBOTICS_AUTOMATION": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22industrial+robot%22+OR+all%3A%22robotic+automation%22+OR+all%3A%22embodied+artificial+intelligence%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: ReadTimeout",
+      "ENERGY_STORAGE": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22energy+storage%22+OR+all%3A%22battery+management+system%22+OR+all%3A%22power+conversion+system%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: ReadTimeout",
+      "BIOTECH_PLATFORM": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22precision+medicine%22+OR+all%3A%22gene+editing%22+OR+all%3A%22protein+design%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: HTTPError status=429",
+      "EV_BATTERY": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22electric+vehicle+battery%22+OR+all%3A%22lithium+ion+battery%22+OR+all%3A%22battery+cathode%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: ReadTimeout",
+      "SOLAR_PHOTOVOLTAIC": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22photovoltaic%22+OR+all%3A%22solar+cell%22+OR+all%3A%22solar+inverter%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: HTTPError status=429",
+      "ADDITIVE_MANUFACTURING": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22additive+manufacturing%22+OR+all%3A%223d+printing%22+OR+all%3A%22metal+printing%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: HTTPError status=429",
+      "HYDROGEN_ECONOMY": "GET failed after 2 attempts: https://export.arxiv.org/api/query?search_query=%28%28all%3A%22green+hydrogen%22+OR+all%3A%22fuel+cell%22+OR+all%3A%22hydrogen+economy%22%29%29+AND+submittedDate%3A%5B201807010000+TO+201906302359%5D&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending: HTTPError status=429"
+    },
+    "disclosure_company_count": 0,
+    "technology_momentum": {},
+    "event_amount_quality": {
+      "POWER_GRID_ELECTRIFICATION": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "267260": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "010120": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "298040": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "006260": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "267260": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "010120": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "298040": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "006260": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "ROBOTICS_AUTOMATION": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "277810": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "108490": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "090360": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "454910": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "277810": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "108490": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "090360": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "454910": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "ENERGY_STORAGE": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "373220": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "006400": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "247540": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "066970": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "373220": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "006400": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "247540": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "066970": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "BIOTECH_PLATFORM": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "207940": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "068270": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "326030": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "145020": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "207940": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "068270": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "326030": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "145020": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "EV_BATTERY": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "006400": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "051910": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "247540": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "003670": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "006400": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "051910": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "247540": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "003670": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "SOLAR_PHOTOVOLTAIC": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "009830": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "112610": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "010060": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "011930": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "009830": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "112610": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "010060": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "011930": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "ADDITIVE_MANUFACTURING": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "048770": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "126700": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "090360": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "039310": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "048770": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "126700": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "090360": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "039310": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      },
+      "HYDROGEN_ECONOMY": {
+        "capital": {
+          "event_type": "CAPITAL_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "336260": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "298040": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "064350": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "018880": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        },
+        "contracts": {
+          "event_type": "CONTRACT_EVENT",
+          "total_events": 0,
+          "events_with_amount": 0,
+          "events_with_schedule": 0,
+          "amount_coverage": 0.0,
+          "schedule_coverage": 0.0,
+          "per_company": {
+            "336260": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "298040": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "064350": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            },
+            "018880": {
+              "total_events": 0,
+              "events_with_amount": 0,
+              "events_with_schedule": 0
+            }
+          }
+        }
+      }
+    },
+    "evaluated_theme_ids": [
+      "POWER_GRID_ELECTRIFICATION",
+      "ROBOTICS_AUTOMATION",
+      "ENERGY_STORAGE",
+      "BIOTECH_PLATFORM",
+      "EV_BATTERY",
+      "SOLAR_PHOTOVOLTAIC",
+      "ADDITIVE_MANUFACTURING",
+      "HYDROGEN_ECONOMY"
+    ]
+  }
+}

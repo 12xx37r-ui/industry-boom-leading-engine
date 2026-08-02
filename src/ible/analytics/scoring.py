@@ -425,7 +425,7 @@ def build_dart_theme_result(
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "V0.6.0은 연구주도·실물투자주도 두 선행경로와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
+        "V0.6.1은 연구주도·실물투자주도 두 선행경로와 다중 성공·실패 산업 검증을 분리해 계산합니다.",
         "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
     ]
     if amount_coverage < 0.5:
