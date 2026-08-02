@@ -1,36 +1,28 @@
 {
-  "status": "PASSED_STAGE1",
+  "status": "FAILED_STAGE2",
   "investment_use_allowed": false,
-  "reason": "AI 붐 이전 선행축적 재현은 통과했지만 성공·실패 산업 전체 워크포워드 검증 전에는 투자에 사용할 수 없습니다.",
-  "criteria": {
-    "ai_preboom_rank_max": 3,
-    "ai_preboom_score_min": 60,
-    "ai_early_signal_score_min": 60,
-    "ai_phase_allowed": [
-      "EARLY_ACCUMULATION",
-      "TRANSITION"
-    ],
-    "ai_amount_coverage_min": 0.35,
-    "independent_research_source_required": true,
-    "additional_backtests_required": true
+  "reason": "성공사례 재현율 또는 음성 통제군 허위경보율 기준을 통과하지 못했습니다.",
+  "stage2_metrics": {
+    "scenario_count": 7,
+    "eligible_scenario_count": 6,
+    "positive_count": 3,
+    "negative_count": 3,
+    "positive_recall": 0.3333,
+    "false_alarm_rate": 0.0,
+    "specificity": 1.0,
+    "balanced_score": 0.6667
   },
-  "observed": {
-    "ai_preboom_rank": 1,
-    "ai_preboom_score": 63.14,
-    "ai_early_signal_score": 61.16,
-    "ai_commercial_realization_score": 43.21,
-    "ai_cross_confirmation_score": 56.44,
-    "ai_phase": "EARLY_ACCUMULATION",
-    "ai_amount_coverage": 0.4904,
-    "ai_research_source": true,
-    "ai_value_chain_score": 58.85,
-    "ai_value_chain_rank_equivalent": 2,
-    "theme_count": 12
+  "stage2_criteria": {
+    "minimum_positive_scenarios": 3,
+    "minimum_negative_scenarios": 2,
+    "positive_recall_min": 0.6667,
+    "false_alarm_rate_max": 0.3333,
+    "balanced_score_min": 0.67
   },
-  "known_design_gaps": [
-    "미국 빅테크 CAPEX·클라우드 원천수요가 핵심점수에 아직 직접 편입되지 않았습니다.",
-    "산업별 한국 대표기업 표본이 작아 공급망 전체 확산도를 충분히 측정하지 못합니다.",
-    "사전 정의된 12개 산업만 비교하므로 신규 산업 자동발견은 아직 제한적입니다.",
-    "붐 확률은 다수 성공·실패 산업 백테스트로 아직 보정되지 않았습니다."
+  "next_requirements": [
+    "미국 빅테크·산업 원천 CAPEX 직접 편입",
+    "실물신호 대비 주가·뉴스 선반영도 검증",
+    "보유기간·거래비용·최대낙폭을 포함한 포트폴리오 백테스트",
+    "사전 정의되지 않은 신규 산업 자동발견"
   ]
 }
