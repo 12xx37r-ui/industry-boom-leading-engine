@@ -1,10 +1,10 @@
-name: Industry Boom Global Holdout V0.8.2
+name: Industry Boom Global Holdout V0.8.3
 
 on:
   workflow_dispatch:
     inputs:
-      refresh_sec_data:
-        description: 'Ignore cached SEC company subset and download again'
+      refresh_financial_data:
+        description: 'Ignore cached FMP statements and download again'
         required: false
         default: false
         type: boolean
@@ -15,10 +15,11 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 35
     env:
+      FINANCIAL_SOURCE: fmp
+      FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
-      SEC_SOURCE_MODE: api
       PYTHONUNBUFFERED: '1'
       PYTHONPATH: ${{ github.workspace }}/src
     steps:
@@ -27,32 +28,31 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
-      - name: Install
-        run: python -m pip install -r requirements.txt
-      - name: Validate configuration
+      - name: Install and test
         run: |
           set -euo pipefail
-          python -c "import ible, ible.sec_bulk_cli, ible.global_holdout_cli; print('IBLE_IMPORT_OK')"
-          test -n "${SEC_USER_AGENT:-}" || { echo 'SEC_USER_AGENT repository variable is required'; exit 1; }
+          python -m pip install -r requirements.txt
+          python -c "import ible, ible.fmp_cli, ible.global_holdout_cli; print('IBLE_IMPORT_OK', ible.__version__)"
+          test -n "${FMP_API_KEY:-}" || { echo 'FMP_API_KEY repository secret is required'; exit 1; }
           python - <<'PY'
           import os
-          from ible.collectors.sec_bulk import SecBulkClient
-          SecBulkClient.validate_user_agent(os.environ['SEC_USER_AGENT'])
-          print('SEC_USER_AGENT_FORMAT_OK')
+          from ible.collectors.fmp import FmpClient
+          FmpClient('.cache/fmp', os.environ['FMP_API_KEY']).validate_api_key()
+          print('FMP_API_KEY_FORMAT_OK')
           PY
           python -m pytest -q
-      - name: Restore SEC subset cache
-        if: ${{ !inputs.refresh_sec_data }}
+      - name: Restore FMP statement cache
+        if: ${{ !inputs.refresh_financial_data }}
         uses: actions/cache@v5
         with:
-          path: .cache/sec_bulk/subset
-          key: sec-companyfacts-subset-v082-${{ hashFiles('config/sec_cik_map.json', 'config/theme_exposures.yml') }}
-      - name: Prepare SEC company facts subset
+          path: .cache/fmp/subset
+          key: fmp-quarterly-v083-${{ hashFiles('config/global_holdouts.yml', 'config/theme_exposures.yml') }}
+      - name: Prepare standardized quarterly statements
         run: |
           set -euo pipefail
           FORCE=''
-          if [ "${{ inputs.refresh_sec_data }}" = 'true' ]; then FORCE='--force'; fi
-          python -m ible.sec_bulk_cli --root . --source api ${FORCE}
+          if [ "${{ inputs.refresh_financial_data }}" = 'true' ]; then FORCE='--force'; fi
+          python -m ible.fmp_cli --root . ${FORCE}
       - name: Run global holdout
         run: |
           set -euo pipefail
@@ -66,22 +66,27 @@ jobs:
           python - <<'PY'
           import json
           p=json.load(open('outputs/global_holdout/global_holdout_summary.json',encoding='utf-8'))
-          print(json.dumps({'status':p['status'],'metrics':p['metrics'],'sec_bulk':p['sec_bulk']},ensure_ascii=False,indent=2))
+          print(json.dumps({
+            'status':p['status'],
+            'financial_source':p['financial_source'],
+            'metrics':p['metrics'],
+            'financial_data':p['financial_data'],
+          },ensure_ascii=False,indent=2))
           assert p.get('investment_use_allowed') is False
+          assert p.get('financial_source') == 'fmp'
           PY
-      - name: Upload SEC diagnostics
+      - name: Upload financial diagnostics
         if: ${{ always() }}
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-sec-diagnostics-v0.8.2
-          path: |
-            .cache/sec_bulk/sec_download_status.json
+          name: industry-boom-financial-diagnostics-v0.8.3
+          path: .cache/fmp/fmp_download_status.json
           if-no-files-found: ignore
           retention-days: 7
       - name: Upload result
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-global-holdout-v0.8.2
+          name: industry-boom-global-holdout-v0.8.3
           path: outputs/global_holdout
           retention-days: 30
           compression-level: 9
