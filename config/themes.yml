@@ -1,4 +1,4 @@
-version: 1
+version: 2
 
 fred_context:
   - name: industrial_production

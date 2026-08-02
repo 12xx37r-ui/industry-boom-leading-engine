@@ -143,6 +143,89 @@ def probability(score: float, horizon: int, confidence: float) -> float:
     return round(max(0.02, min(0.98, raw * reliability)), 4)
 
 
+def _harmonic_mean(values: list[float], default: float = 50.0) -> float:
+    clean = [max(1e-6, float(value)) for value in values if math.isfinite(value)]
+    if not clean:
+        return default
+    return len(clean) / sum(1.0 / value for value in clean)
+
+
+def phase_for(
+    early_signal: float,
+    commercial_realization: float,
+    preboom_score: float,
+    confidence: float,
+    cross_confirmation: float,
+) -> str:
+    """Classify where the industry sits in the capital-to-boom sequence."""
+    if confidence < 50:
+        return "INSUFFICIENT_DATA"
+    if early_signal >= 60 and commercial_realization < 55 and cross_confirmation >= 52:
+        return "EARLY_ACCUMULATION"
+    if early_signal >= 58 and commercial_realization >= 55:
+        return "TRANSITION"
+    if commercial_realization >= 64:
+        return "COMMERCIAL_BOOM"
+    if preboom_score >= 55:
+        return "WATCH"
+    return "NO_SIGNAL"
+
+
+def _phase_scores(
+    *,
+    capital: Signal,
+    contracts: Signal,
+    cashflow_capex: Signal,
+    demand: Signal,
+    margin: Signal,
+    research: Signal,
+    breadth_engine: float,
+) -> dict[str, float]:
+    """Separate early capital formation from already-realized commercial strength.
+
+    The old single score overweighted contracts and current revenue. That is useful
+    for detecting an industry already in a boom, but it can miss the user's target:
+    research acceleration -> real CAPEX -> early demand before broad commercialization.
+    """
+    capital_formation = 0.65 * cashflow_capex.score + 0.35 * capital.score
+    early_signal = (
+        0.35 * research.score
+        + 0.30 * capital_formation
+        + 0.20 * demand.score
+        + 0.05 * margin.score
+        + 0.10 * breadth_engine
+    )
+    commercial_realization = (
+        0.25 * capital.score
+        + 0.30 * contracts.score
+        + 0.30 * demand.score
+        + 0.15 * margin.score
+    )
+    cross_confirmation = _harmonic_mean(
+        [research.score, capital_formation, demand.score, breadth_engine]
+    )
+    transition_gap = clamp(50.0 + 1.5 * (early_signal - commercial_realization))
+    preboom_score = (
+        0.55 * early_signal
+        + 0.25 * cross_confirmation
+        + 0.20 * transition_gap
+    )
+    prediction_6m = 0.35 * preboom_score + 0.65 * commercial_realization
+    prediction_12m = 0.70 * preboom_score + 0.30 * commercial_realization
+    prediction_24m = 0.82 * early_signal + 0.18 * cross_confirmation
+    return {
+        "capital_formation": clamp(capital_formation),
+        "early_signal": clamp(early_signal),
+        "commercial_realization": clamp(commercial_realization),
+        "cross_confirmation": clamp(cross_confirmation),
+        "transition_gap": clamp(transition_gap),
+        "preboom_score": clamp(preboom_score),
+        "prediction_6m": clamp(prediction_6m),
+        "prediction_12m": clamp(prediction_12m),
+        "prediction_24m": clamp(prediction_24m),
+    }
+
+
 def build_theme_result(
     *,
     theme_id: str,
@@ -157,32 +240,35 @@ def build_theme_result(
     rd = signals["rd"]
     demand = signals["revenue"]
     margin = signals["margin"]
-    capital_engine = 0.65 * capital.score + 0.35 * rd.score
     breadth_engine = _mean([capital.breadth, rd.breadth, demand.breadth])
     persistence_engine = _mean([capital.persistence, rd.persistence, demand.persistence])
-    bottleneck_engine = 0.45 * margin.score + 0.35 * demand.acceleration + 0.20 * capital.score
-    technology_engine = 0.65 * rd.score + 0.35 * margin.score
-    boom_score = (
-        0.27 * capital_engine
-        + 0.27 * demand.score
-        + 0.15 * breadth_engine
-        + 0.13 * bottleneck_engine
-        + 0.10 * technology_engine
-        + 0.08 * persistence_engine
+    phase = _phase_scores(
+        capital=capital,
+        contracts=demand,
+        cashflow_capex=capital,
+        demand=demand,
+        margin=margin,
+        research=rd,
+        breadth_engine=breadth_engine,
     )
     coverage = usable_companies / max(1, requested_companies)
     metric_coverage = _mean([capital.coverage, rd.coverage, demand.coverage, margin.coverage], 0.0)
     confidence = clamp(100.0 * (0.65 * coverage + 0.35 * metric_coverage))
-    stage = stage_for(boom_score, confidence, persistence_engine, breadth_engine)
+    stage = phase_for(
+        phase["early_signal"],
+        phase["commercial_realization"],
+        phase["preboom_score"],
+        confidence,
+        phase["cross_confirmation"],
+    )
 
     reasons = [
-        (capital_engine, f"기업 CAPEX·R&D 자금투입 점수 {capital_engine:.1f}"),
-        (demand.score, f"매출 수요 가속 점수 {demand.score:.1f}"),
+        (phase["early_signal"], f"초기 자금·기술 선행점수 {phase['early_signal']:.1f}"),
+        (phase["commercial_realization"], f"상업화 실현점수 {phase['commercial_realization']:.1f}"),
+        (phase["cross_confirmation"], f"독립 신호 교차확인 {phase['cross_confirmation']:.1f}"),
         (breadth_engine, f"참여기업 확산도 {breadth_engine:.1f}"),
-        (bottleneck_engine, f"마진·수요·증설 기반 병목 점수 {bottleneck_engine:.1f}"),
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
-    top_reasons = [text for _, text in sorted(reasons, reverse=True)[:3]]
     warnings: list[str] = []
     for signal in signals.values():
         warnings.extend(signal.warnings)
@@ -194,13 +280,20 @@ def build_theme_result(
         theme_name=theme_name,
         as_of=as_of,
         stage=stage,
-        boom_score=round(boom_score, 2),
-        boom_probability_6m=probability(boom_score, 6, confidence),
-        boom_probability_12m=probability(boom_score, 12, confidence),
-        boom_probability_24m=probability(boom_score, 24, confidence),
+        boom_score=round(phase["preboom_score"], 2),
+        boom_probability_6m=probability(phase["prediction_6m"], 6, confidence),
+        boom_probability_12m=probability(phase["prediction_12m"], 12, confidence),
+        boom_probability_24m=probability(phase["prediction_24m"], 24, confidence),
         data_confidence=round(confidence, 2),
+        early_signal_score=round(phase["early_signal"], 2),
+        commercial_realization_score=round(phase["commercial_realization"], 2),
+        cross_confirmation_score=round(phase["cross_confirmation"], 2),
+        transition_gap_score=round(phase["transition_gap"], 2),
+        prediction_score_6m=round(phase["prediction_6m"], 2),
+        prediction_score_12m=round(phase["prediction_12m"], 2),
+        prediction_score_24m=round(phase["prediction_24m"], 2),
         engines=signals,
-        top_reasons=top_reasons,
+        top_reasons=[text for _, text in sorted(reasons, reverse=True)[:4]],
         invalidations=invalidations,
         coverage={
             "requested_companies": requested_companies,
@@ -226,37 +319,52 @@ def build_dart_theme_result(
     contract_count = signals["supply_contracts"]
     capital = signals.get("capital_amounts", capital_count)
     contracts = signals.get("contract_amounts", contract_count)
-    cashflow_capex = signals.get("cashflow_capex")
+    cashflow_capex = signals.get("cashflow_capex") or capital
     demand = signals["revenue"]
     margin = signals["operating_margin"]
-    research = signals.get("research_momentum")
+    research = signals.get("research_momentum") or Signal(
+        name="technology_research_diffusion",
+        score=50.0,
+        coverage=0.0,
+        warnings=["기술연구 확산 데이터가 없습니다."],
+    )
 
-    breadth_parts = [capital.breadth, contracts.breadth, demand.breadth]
-    persistence_parts = [capital.persistence, contracts.persistence, demand.persistence]
-    if cashflow_capex:
-        breadth_parts.append(cashflow_capex.breadth)
-        persistence_parts.append(cashflow_capex.persistence)
-    if research:
-        breadth_parts.append(research.breadth)
-        persistence_parts.append(research.persistence)
+    breadth_parts = [
+        capital.breadth,
+        contracts.breadth,
+        cashflow_capex.breadth,
+        demand.breadth,
+        research.breadth,
+    ]
+    persistence_parts = [
+        capital.persistence,
+        contracts.persistence,
+        cashflow_capex.persistence,
+        demand.persistence,
+        research.persistence,
+    ]
     breadth_engine = _mean(breadth_parts)
     persistence_engine = _mean(persistence_parts)
-
-    research_score = research.score if research else 50.0
-    cashflow_capex_score = cashflow_capex.score if cashflow_capex else 50.0
-    boom_score = (
-        0.13 * capital.score
-        + 0.17 * contracts.score
-        + 0.16 * cashflow_capex_score
-        + 0.20 * demand.score
-        + 0.16 * research_score
-        + 0.06 * margin.score
-        + 0.07 * breadth_engine
-        + 0.05 * persistence_engine
+    phase = _phase_scores(
+        capital=capital,
+        contracts=contracts,
+        cashflow_capex=cashflow_capex,
+        demand=demand,
+        margin=margin,
+        research=research,
+        breadth_engine=breadth_engine,
     )
+
     coverage = usable_companies / max(1, requested_companies)
     metric_coverage = _mean(
-        [capital.coverage, contracts.coverage, cashflow_capex.coverage if cashflow_capex else 0.0, demand.coverage, margin.coverage],
+        [
+            capital.coverage,
+            contracts.coverage,
+            cashflow_capex.coverage,
+            demand.coverage,
+            margin.coverage,
+            research.coverage,
+        ],
         0.0,
     )
     amount_coverage = _mean(
@@ -266,32 +374,40 @@ def build_dart_theme_result(
         ],
         0.0,
     )
-    independent_source = 1.0 if research and research.coverage > 0 else 0.0
+    independent_source = 1.0 if research.coverage > 0 else 0.0
     raw_coverage_confidence = clamp(
         100.0
         * (
-            0.42 * coverage
+            0.40 * coverage
             + 0.28 * metric_coverage
             + 0.18 * amount_coverage
-            + 0.12 * independent_source
+            + 0.14 * independent_source
         )
     )
-    confidence_cap = 72.0 if independent_source else 58.0
+    confidence_cap = 74.0 if independent_source else 58.0
     confidence = min(confidence_cap, raw_coverage_confidence)
-    stage = stage_for(boom_score, confidence, persistence_engine, breadth_engine)
+    stage = phase_for(
+        phase["early_signal"],
+        phase["commercial_realization"],
+        phase["preboom_score"],
+        confidence,
+        phase["cross_confirmation"],
+    )
+
     reasons = [
-        (capital.score, f"실제 투자금액·시설투자 가속 점수 {capital.score:.1f}"),
-        (contracts.score, f"실제 공급계약·수주금액 가속 점수 {contracts.score:.1f}"),
-        (cashflow_capex_score, f"현금흐름표 실집행 CAPEX 가속 점수 {cashflow_capex_score:.1f}"),
-        (demand.score, f"매출 수요 가속 점수 {demand.score:.1f}"),
-        (research_score, f"기술연구 확산 가속 점수 {research_score:.1f}"),
-        (margin.score, f"영업이익률 개선 점수 {margin.score:.1f}"),
+        (phase["early_signal"], f"초기 자금·기술 선행점수 {phase['early_signal']:.1f}"),
+        (phase["cross_confirmation"], f"연구·CAPEX·매출 교차확인 {phase['cross_confirmation']:.1f}"),
+        (phase["transition_gap"], f"실적 대중화 전 선행격차 {phase['transition_gap']:.1f}"),
+        (phase["commercial_realization"], f"상업화 실현점수 {phase['commercial_realization']:.1f}"),
+        (cashflow_capex.score, f"현금흐름표 실집행 CAPEX {cashflow_capex.score:.1f}"),
+        (research.score, f"기술연구 확산 가속 {research.score:.1f}"),
+        (demand.score, f"매출 수요 가속 {demand.score:.1f}"),
         (breadth_engine, f"참여기업·신호 확산도 {breadth_engine:.1f}"),
         (persistence_engine, f"긍정 흐름 지속성 {persistence_engine:.1f}"),
     ]
     warnings: list[str] = [
-        "V0.3.0은 OpenDART 계약기간 배분·현금흐름표 CAPEX·실적과 arXiv 연구확산을 결합한 연구용 선행점수이며 아직 투자판정용이 아닙니다.",
-        "붐 확률은 성공·실패 산업 워크포워드 백테스트로 보정되기 전의 순위 비교용 값입니다.",
+        "V0.4.0은 이미 붐이 난 산업과 붐 이전 자금축적 산업을 분리해 선행예측 점수를 계산합니다.",
+        "붐 확률은 성공·실패 산업 전체 워크포워드 백테스트 전의 상대비교용 값입니다.",
     ]
     if amount_coverage < 0.5:
         warnings.append("시설투자·계약 공시의 금액 추출률이 50% 미만이라 공시 건수 신호를 함께 사용했습니다.")
@@ -301,18 +417,26 @@ def build_dart_theme_result(
         warnings.extend(signal.warnings)
     if confidence < 60:
         warnings.append("데이터 신뢰도가 낮아 투자판정이 아니라 관찰용으로만 사용해야 합니다.")
+
     return ThemeResult(
         theme_id=theme_id,
         theme_name=theme_name,
         as_of=as_of,
         stage=stage,
-        boom_score=round(boom_score, 2),
-        boom_probability_6m=probability(boom_score, 6, confidence),
-        boom_probability_12m=probability(boom_score, 12, confidence),
-        boom_probability_24m=probability(boom_score, 24, confidence),
+        boom_score=round(phase["preboom_score"], 2),
+        boom_probability_6m=probability(phase["prediction_6m"], 6, confidence),
+        boom_probability_12m=probability(phase["prediction_12m"], 12, confidence),
+        boom_probability_24m=probability(phase["prediction_24m"], 24, confidence),
         data_confidence=round(confidence, 2),
+        early_signal_score=round(phase["early_signal"], 2),
+        commercial_realization_score=round(phase["commercial_realization"], 2),
+        cross_confirmation_score=round(phase["cross_confirmation"], 2),
+        transition_gap_score=round(phase["transition_gap"], 2),
+        prediction_score_6m=round(phase["prediction_6m"], 2),
+        prediction_score_12m=round(phase["prediction_12m"], 2),
+        prediction_score_24m=round(phase["prediction_24m"], 2),
         engines=signals,
-        top_reasons=[text for _, text in sorted(reasons, reverse=True)[:4]],
+        top_reasons=[reason for _, reason in sorted(reasons, reverse=True)[:5]],
         invalidations=invalidations,
         coverage={
             "requested_companies": requested_companies,
@@ -322,6 +446,7 @@ def build_dart_theme_result(
             "amount_coverage": round(amount_coverage, 4),
             "independent_research_source": bool(independent_source),
             "primary_sources": ["OpenDART", "arXiv"] if independent_source else ["OpenDART"],
+            "score_definition": "preboom_score",
         },
         warnings=sorted(set(warnings)),
     )

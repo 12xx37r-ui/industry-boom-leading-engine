@@ -1,16 +1,51 @@
-# Industry Boom Leading Engine v0.3.0
+# Industry Boom Leading Engine v0.4.0
 
 GitHub Actions에서 데이터 수집·계산·과거 재현·JSON 생성을 수행하고, Google Apps Script는 결과만 표시합니다.
 
-## V0.3.0 핵심 변경
+## V0.4.0 핵심 변경
 
-- 장기 공급계약과 시설투자를 공시일 하루짜리 이벤트로 보지 않고 **실제 계약·투자기간 전체에 금액을 배분**합니다.
-- OpenDART 전체 재무제표의 현금흐름표에서 **유형자산 취득액(CAPEX)** 을 직접 추출합니다.
-- 기업별 CAPEX를 연매출로 나누고 4개년 수준·증가속도·가속도·확산도를 계산합니다.
-- 공시 XML은 XML 파서로 처리해 기존 `XMLParsedAsHTMLWarning`을 제거합니다.
-- BEA 메타데이터 요청의 `GetDatasetList` 표기를 공식 규격에 맞게 수정했습니다.
-- AI 단일 산업 순위와 별도로 AI 연산 + 반도체 장비·첨단패키징 결합 진단값을 출력합니다. 결합값은 검증 합격판정에는 사용하지 않습니다.
-- 비밀키 자동 마스킹과 `investment_use_allowed=false` 안전장치를 유지합니다.
+기존 버전은 계약·매출이 이미 커진 산업을 높게 평가해, **이미 붐이 진행 중인 산업**과 **붐 이전에 자금이 축적되는 산업**을 한 점수로 섞었습니다.  
+V0.4.0은 이를 분리합니다.
+
+### 1. 초기 선행점수
+
+다음을 중심으로 계산합니다.
+
+- 기술연구 확산 가속도
+- 현금흐름표 실제 CAPEX
+- 시설투자 금액
+- 초기 매출 수요
+- 참여기업 확산도
+
+### 2. 상업화 실현점수
+
+다음을 별도로 계산합니다.
+
+- 공급계약·수주금액
+- 시설투자 공시금액
+- 매출 성장
+- 영업이익률 개선
+
+### 3. 실적 대중화 전 선행격차
+
+초기 선행점수는 강하지만 상업화 실현점수가 아직 낮을 때, 본격적인 붐 이전의 `EARLY_ACCUMULATION` 단계로 판정합니다.  
+기술연구만 높고 CAPEX·매출·확산이 따라오지 않으면 교차확인 점수에서 감점합니다.
+
+### 4. 새 단계
+
+- `EARLY_ACCUMULATION`: 초기 자금축적
+- `TRANSITION`: 상업화 전환
+- `COMMERCIAL_BOOM`: 본격 상업화
+- `WATCH`: 관찰
+- `NO_SIGNAL`: 신호 없음
+- `INSUFFICIENT_DATA`: 자료 부족
+
+### 5. 실행시간 개선
+
+- 수동 검증 실행에서는 `run_replay=true`로 2022년 AI 재현시험까지 수행합니다.
+- 평일 자동 실행은 과거 재현을 생략하고, 저장소에 커밋된 기존 재현결과를 재사용합니다.
+- 첫 전체 실행은 OpenDART 원문·현재 재무·과거 재현을 모두 수집하므로 오래 걸릴 수 있습니다.
+- 이후 실행은 `.cache`를 복원해 더 빨라집니다.
 
 ## 필요한 Secrets
 
@@ -20,19 +55,21 @@ GitHub Actions에서 데이터 수집·계산·과거 재현·JSON 생성을 수
 
 `SEC_USER_AGENT`는 `use_sec=true`일 때만 사용합니다.
 
-## 실행
+## 첫 검증 실행
 
 Actions → **Industry Boom Engine** → **Run workflow**
 
 - `as_of`: 비움
 - `replay_as_of`: `2022-10-31`
 - `use_sec`: `false`
+- `run_replay`: `true`
 
-첫 실행은 OpenDART 전체 재무제표를 추가 수집하므로 이전 버전보다 호출 수가 많습니다. 이후 실행부터 GitHub 캐시를 재사용합니다.
+AI 재현이 끝난 뒤 일상적인 현재 순위 갱신만 할 때는 `run_replay=false`를 사용하면 됩니다.
 
 ## 주요 출력
 
 - `industry_boom_ranking.json`
+- `industry_boom_detail.json`
 - `ai_replay_2022.json`
 - `model_validation.json`
 - `event_amount_quality.json`
@@ -42,6 +79,26 @@ Actions → **Industry Boom Engine** → **Run workflow**
 - `bea_context.json`
 - `engine_health.json`
 
-## 판정 원칙
+## V0.4 점수 필드
 
-AI 과거 재현시험이 3위 이내·65점 이상 등 1단계 기준을 통과하더라도, 성공·실패 산업 전체 워크포워드 백테스트가 끝나기 전에는 투자판정에 사용하지 않습니다.
+- `boom_score`: 붐 이전 선행기회 점수
+- `early_signal_score`: 기술·CAPEX·초기수요 선행점수
+- `commercial_realization_score`: 계약·매출·마진 상업화 점수
+- `cross_confirmation_score`: 연구·CAPEX·매출·확산 교차확인
+- `transition_gap_score`: 상업화가 대중화되기 전의 선행격차
+- `prediction_score_6m`
+- `prediction_score_12m`
+- `prediction_score_24m`
+
+## 검증 원칙
+
+2022년 AI 재현시험은 다음을 확인합니다.
+
+- 선행기회 순위 3위 이내
+- 선행기회 점수 60점 이상
+- 초기 선행점수 60점 이상
+- 단계가 `EARLY_ACCUMULATION` 또는 `TRANSITION`
+- 투자·계약금액 추출률 35% 이상
+- 독립 기술연구 데이터 존재
+
+이 기준을 통과해도 성공·실패 산업 전체 워크포워드 백테스트가 끝나기 전에는 `investment_use_allowed=false`를 유지합니다.

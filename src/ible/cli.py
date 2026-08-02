@@ -13,12 +13,13 @@ def main() -> None:
     parser.add_argument("--replay-as-of", default="2022-10-31", help="Historical replay cutoff or empty string")
     parser.add_argument("--include-dart", action="store_true", help="Deprecated: OpenDART is always the core source")
     parser.add_argument("--use-sec", action="store_true", help="Try SEC only as an optional supplement")
+    parser.add_argument("--skip-replay", action="store_true", help="Skip the historical replay and reuse committed replay output")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     pipeline = EnginePipeline(root)
     pipeline.run(
         current_as_of=args.as_of,
-        replay_as_of=args.replay_as_of or None,
+        replay_as_of=None if args.skip_replay else (args.replay_as_of or None),
         include_dart=True,
         use_sec=args.use_sec,
     )

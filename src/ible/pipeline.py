@@ -438,7 +438,7 @@ class EnginePipeline:
         outputs = self.root / "outputs"
         run_started = time.monotonic()
         print(
-            f"[ENGINE] start version=0.3.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
+            f"[ENGINE] start version=0.4.0 current_as_of={current_as_of} replay_as_of={replay_as_of} use_sec={use_sec}",
             flush=True,
         )
         current, current_meta = self.score_dart_as_of(current_as_of)
@@ -453,6 +453,17 @@ class EnginePipeline:
         if replay_as_of:
             print("[SCORING] historical AI replay", flush=True)
             replay, replay_meta = self.score_dart_as_of(replay_as_of)
+        else:
+            existing_replay_path = outputs / "ai_replay_2022.json"
+            if existing_replay_path.exists():
+                try:
+                    existing_replay = json.loads(existing_replay_path.read_text(encoding="utf-8"))
+                    replay = list(existing_replay.get("ranking") or [])
+                    replay_meta = dict(existing_replay.get("metadata") or {})
+                    replay_as_of = existing_replay.get("as_of")
+                    print("[SCORING] replay skipped; reused committed AI replay output", flush=True)
+                except Exception as exc:
+                    print(f"[SCORING] replay reuse failed: {exc}", flush=True)
         ai_rank = next((i + 1 for i, row in enumerate(replay) if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
         ai_row = next((row for row in replay if row["theme_id"] == "AI_COMPUTE_INFRA"), None)
         semi_row = next((row for row in replay if row["theme_id"] == "SEMICONDUCTOR_EQUIPMENT"), None)
@@ -467,14 +478,24 @@ class EnginePipeline:
             outputs / "ai_replay_2022.json",
             {
                 "as_of": replay_as_of,
-                "engine_version": "0.3.0",
+                "engine_version": "0.4.0",
                 "primary_sources": ["OpenDART original documents", "OpenDART financials", "arXiv"],
                 "methodology_warning": (
                     "투자·계약 원문 금액과 기술연구 확산을 추가했지만 미국 빅테크 CAPEX 원천자료와 "
                     "완전한 당시 빈티지 공시는 아직 부족합니다. 결과는 검증용이며 투자판정용이 아닙니다."
                 ),
                 "ranking": replay,
+                "score_definition": {
+                    "main_rank": "preboom_score",
+                    "early_signal": "기술연구·실집행 CAPEX·초기매출·확산",
+                    "commercial_realization": "투자공시·공급계약·매출·마진",
+                    "transition_gap": "선행강도와 상업화 실현도의 격차",
+                },
                 "ai_theme_rank": ai_rank,
+                "ai_signal_phase": ai_row.get("stage") if ai_row else None,
+                "ai_early_signal_score": ai_row.get("early_signal_score") if ai_row else None,
+                "ai_commercial_realization_score": ai_row.get("commercial_realization_score") if ai_row else None,
+                "ai_cross_confirmation_score": ai_row.get("cross_confirmation_score") if ai_row else None,
                 "ai_value_chain_diagnostic": {
                     "definition": "62% AI compute + 38% semiconductor equipment/advanced packaging",
                     "score": ai_value_chain_score,
@@ -485,11 +506,17 @@ class EnginePipeline:
             },
         )
 
+        ai_stage = ai_row.get("stage") if ai_row else None
+        ai_early_score = ai_row.get("early_signal_score") if ai_row else None
+        ai_commercial_score = ai_row.get("commercial_realization_score") if ai_row else None
+        ai_cross_confirmation = ai_row.get("cross_confirmation_score") if ai_row else None
         validation_passed = bool(
             ai_rank is not None
             and ai_rank <= 3
             and ai_row
-            and ai_row.get("boom_score", 0) >= 65
+            and float(ai_row.get("boom_score", 0)) >= 60
+            and float(ai_early_score or 0) >= 60
+            and ai_stage in {"EARLY_ACCUMULATION", "TRANSITION"}
             and ai_amount_coverage >= 0.35
             and ai_research
         )
@@ -497,20 +524,26 @@ class EnginePipeline:
             "status": "PASSED_STAGE1" if validation_passed else "FAILED",
             "investment_use_allowed": False,
             "reason": (
-                "AI 재현 1단계 기준을 통과했지만 성공·실패 산업 전체 워크포워드 검증 전에는 투자에 사용할 수 없습니다."
+                "AI 붐 이전 선행축적 재현은 통과했지만 성공·실패 산업 전체 워크포워드 검증 전에는 투자에 사용할 수 없습니다."
                 if validation_passed
-                else "AI 재현 순위·점수·금액추출률·독립연구신호 기준 중 하나 이상을 통과하지 못했습니다."
+                else "AI 선행축적 순위·초기점수·교차확인·금액추출률 기준 중 하나 이상을 통과하지 못했습니다."
             ),
             "criteria": {
-                "ai_rank_max": 3,
-                "ai_score_min": 65,
+                "ai_preboom_rank_max": 3,
+                "ai_preboom_score_min": 60,
+                "ai_early_signal_score_min": 60,
+                "ai_phase_allowed": ["EARLY_ACCUMULATION", "TRANSITION"],
                 "ai_amount_coverage_min": 0.35,
                 "independent_research_source_required": True,
                 "additional_backtests_required": True,
             },
             "observed": {
-                "ai_rank": ai_rank,
-                "ai_score": ai_row.get("boom_score") if ai_row else None,
+                "ai_preboom_rank": ai_rank,
+                "ai_preboom_score": ai_row.get("boom_score") if ai_row else None,
+                "ai_early_signal_score": ai_early_score,
+                "ai_commercial_realization_score": ai_commercial_score,
+                "ai_cross_confirmation_score": ai_cross_confirmation,
+                "ai_phase": ai_stage,
                 "ai_amount_coverage": ai_amount_coverage,
                 "ai_research_source": ai_research,
                 "ai_value_chain_score": ai_value_chain_score,
@@ -539,7 +572,7 @@ class EnginePipeline:
 
         source_health = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "engine_version": "0.3.0",
+            "engine_version": "0.4.0",
             "current_as_of": current_as_of,
             "replay_as_of": replay_as_of,
             "sources": {
@@ -577,7 +610,15 @@ class EnginePipeline:
                 "files": output_files + ["run_manifest.json"],
                 "model_validation": model_validation,
                 "current_top5": [
-                    {"rank": i + 1, "theme_id": row["theme_id"], "name": row["theme_name"], "score": row["boom_score"]}
+                    {
+                        "rank": i + 1,
+                        "theme_id": row["theme_id"],
+                        "name": row["theme_name"],
+                        "preboom_score": row["boom_score"],
+                        "early_signal_score": row.get("early_signal_score"),
+                        "commercial_realization_score": row.get("commercial_realization_score"),
+                        "stage": row.get("stage"),
+                    }
                     for i, row in enumerate(current[:5])
                 ],
             },

@@ -15,6 +15,10 @@ class BeaClient:
         if not api_key:
             raise ValueError("BEA_API_KEY is required")
         self.api_key = api_key.strip()
+        if len(self.api_key) != 36:
+            raise ValueError(
+                f"BEA_API_KEY format invalid: expected 36 characters, got {len(self.api_key)}"
+            )
         self.http = http
 
     @staticmethod

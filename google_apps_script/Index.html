@@ -48,7 +48,7 @@
 <body>
   <main class="wrap">
     <h1>산업 붐 선행예측</h1>
-    <div class="subtitle">실제 시설투자·공급계약 금액, 매출·이익, 기술연구 확산도를 GitHub 엔진에서 계산한 결과입니다.</div>
+    <div class="subtitle">기술연구 확산 → 실집행 CAPEX → 초기 매출 → 상업화의 순서를 분리해, 붐 이전 자금축적 산업을 계산한 결과입니다.</div>
     <div id="app" class="loader">GitHub 결과를 불러오는 중입니다…</div>
   </main>
 
@@ -66,7 +66,9 @@
 
     function stageLabel(stage) {
       const labels = {
-        PRE_BOOM: '붐 전단계', ACCUMULATION: '자금 축적', WATCH: '관찰',
+        EARLY_ACCUMULATION: '초기 자금축적', TRANSITION: '상업화 전환',
+        COMMERCIAL_BOOM: '본격 상업화', PRE_BOOM: '붐 전단계',
+        ACCUMULATION: '자금 축적', WATCH: '관찰',
         NO_SIGNAL: '신호 없음', INSUFFICIENT_DATA: '자료 부족'
       };
       return labels[stage] || stage;
@@ -83,6 +85,11 @@
           </div>
           <span class="stage">${esc(stageLabel(row.stage))}</span>
           <div class="metrics">
+            <div class="metric">선행점수<b>${n(row.early_signal_score, 1)}</b></div>
+            <div class="metric">상업화<b>${n(row.commercial_realization_score, 1)}</b></div>
+            <div class="metric">교차확인<b>${n(row.cross_confirmation_score, 1)}</b></div>
+          </div>
+          <div class="metrics">
             <div class="metric">6개월<b>${n(Number(row.boom_probability_6m) * 100, 0)}%</b></div>
             <div class="metric">12개월<b>${n(Number(row.boom_probability_12m) * 100, 0)}%</b></div>
             <div class="metric">신뢰도<b>${n(row.data_confidence, 0)}</b></div>
@@ -93,6 +100,7 @@
               <li>투자금액 점수: ${n(row.engines && row.engines.capital_amounts && row.engines.capital_amounts.score, 1)}</li>
               <li>계약금액 점수: ${n(row.engines && row.engines.contract_amounts && row.engines.contract_amounts.score, 1)}</li>
               <li>기술연구 확산: ${n(row.engines && row.engines.research_momentum && row.engines.research_momentum.score, 1)}</li>
+              <li>실적 대중화 전 선행격차: ${n(row.transition_gap_score, 1)}</li>
               <li>금액 추출률: ${n(Number(row.coverage && row.coverage.amount_coverage) * 100, 0)}%</li>
             </ul>
           </details>

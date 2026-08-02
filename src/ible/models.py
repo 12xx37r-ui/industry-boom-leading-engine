@@ -39,6 +39,13 @@ class ThemeResult:
     boom_probability_12m: float
     boom_probability_24m: float
     data_confidence: float
+    early_signal_score: float
+    commercial_realization_score: float
+    cross_confirmation_score: float
+    transition_gap_score: float
+    prediction_score_6m: float
+    prediction_score_12m: float
+    prediction_score_24m: float
     engines: dict[str, Signal]
     top_reasons: list[str]
     invalidations: list[str]
