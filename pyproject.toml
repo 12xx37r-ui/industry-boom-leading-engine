@@ -4,14 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "industry-boom-leading-engine"
-version = "1.0.0"
-description = "Frozen-model independent walk-forward industry boom leading indicator engine"
+version = "1.0.2"
+description = "GitHub-only locked historical validation runner for the frozen V0.9.1 model"
 requires-python = ">=3.11"
-dependencies = [
-  "requests>=2.32.3,<3",
-  "PyYAML>=6.0.2,<7",
-  "beautifulsoup4>=4.12,<5",
-]
+dependencies = []
 
 [tool.setuptools.packages.find]
 where = ["src"]

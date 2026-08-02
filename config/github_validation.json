@@ -1,0 +1,9 @@
+{
+  "engine_release": "1.0.2-github-only",
+  "bundle_file": "validation_seed/v1_locked_backtests.json.gz",
+  "gates": {
+    "positive_recall_min": 0.75,
+    "false_alarm_rate_max": 0.3334,
+    "pairwise_auc_min": 0.70
+  }
+}

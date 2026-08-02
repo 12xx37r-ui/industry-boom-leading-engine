@@ -1,28 +1,18 @@
 {
-  "lock_schema_version": 2,
+  "lock_schema_version": 3,
   "frozen_model_version": "0.9.1",
-  "engine_release": "1.0.0",
+  "engine_release": "1.0.2-github-only",
   "sealed_at": "2026-08-02T18:29:00+09:00",
   "sealed_before_holdout_execution": true,
-  "rule": "V1 결과를 확인한 뒤 보호 파일·가중치·노출도·판정 기준을 수정하면 독립검증은 무효입니다.",
-  "scoring_sha256": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
-  "backtest_sha256": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
+  "rule": "V0.9.1 계산식과 역사 벤치마크 설계 파일을 변경하면 잠금 검증은 실패합니다.",
   "files": {
     "src/ible/analytics/scoring.py": "f1af18bf868c24a7b5335c09a13833470accbd8c6dd08fa22898c65e0608ccb6",
     "src/ible/analytics/exposure_scoring.py": "df0c0001a4fd47f16f63089f084210c43a9828add79de2623b1e4ea1b89e00d4",
     "src/ible/analytics/sec_metrics.py": "e24834f592b9986cc6ac7617211a7da9ace6df2d46f01d6705f4982fd1ec75c9",
-    "src/ible/collectors/sec_fsds.py": "3f9262da75f6dfd5490efd48c4e17e75f2d73b95172d037e77b19f6456dcd642",
+    "src/ible/analytics/timeseries.py": "9c838cf207ddf90bbf54c2a9a0987d72e9ecaf323c6c9c038f8446eaaa3fc551",
     "src/ible/global_validation.py": "df76e1aa36d76217db2a22e4c98b1c07ede8b3a447981c6d578c553481fd5c60",
     "src/ible/backtest.py": "b0718a26ce5177c0ee978477f8763a7bb3d3794812ed5e5f1d9af109f1f8ae24",
-    "src/ible/offline_seed_builder.py": "5e5c0ed3b1168b8570beef3c7ca1996cdfaf5cc2e76c3bc8e131cf2edb6a0a63",
-    "src/ible/v1_walkforward.py": "29c66c2f188d2d50a5f3fd2ce05046b4f0fa5eeddcd2570fe93c4bc10c618724",
-    "src/ible/v1_external_holdout.py": "1a3928d41e326a7aa38457bb5af8612265ac8c05f9a7f703c34abe6a83bee132",
     "config/theme_exposures.yml": "a584e305134a863ce8a4059c03cb1e0f9ed9654dd9d5011c947fecf27d9e7037",
-    "config/v1_theme_exposures.yml": "6479e92e9a6a1dbdc6056294112455b678e10be579a1be6bc0cac69e2740b1ac",
-    "config/v1_walkforward.yml": "474cc449fb44579d2a513c07d5b5a8d3c554754b7cbfd4ae06466df6fabc88cb",
-    "config/v1_offline_seed_request.json": "14ac20914d0a7fc8fee05bcc7e8182c52c7ec739991ac6da71e4448f8bc93835",
-    "config/v1_external_theme_exposures.yml": "0facf46abf637962ac67a1f682fcf49c1bf8339d5b85e7d3f30d5af8e2c0d707",
-    "config/v1_external_holdout.yml": "27695cdd3ee4df02cfcdd29cb894a3aa2ee2d1fea541dc7a4a0c8e92acfad98b",
-    "config/v1_external_seed_request.json": "219b8964e721eee57ab7b9c16e7a2eafb7a65d73da07891881d2cd16a3608ca0"
+    "config/backtests.yml": "3c83aed09aa940a3f70e7ca51a720ae1758b67d9b9a0c195595a9e8dd7aa55a7"
   }
 }
