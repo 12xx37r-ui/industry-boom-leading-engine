@@ -1,0 +1,69 @@
+name: Industry Boom Global Holdout V0.8
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh_sec_bulk:
+        description: 'Ignore cached SEC subset and download the nightly bulk archive again'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Validate configuration
+        run: |
+          set -euo pipefail
+          test -n "${SEC_USER_AGENT:-}" || { echo 'SEC_USER_AGENT repository variable is required'; exit 1; }
+          python -m pytest -q
+      - name: Restore SEC subset cache
+        if: ${{ !inputs.refresh_sec_bulk }}
+        uses: actions/cache@v5
+        with:
+          path: .cache/sec_bulk/subset
+          key: sec-companyfacts-subset-v080-${{ hashFiles('config/sec_cik_map.json', 'config/theme_exposures.yml') }}
+      - name: Prepare SEC bulk subset
+        run: |
+          set -euo pipefail
+          FORCE=''
+          if [ "${{ inputs.refresh_sec_bulk }}" = 'true' ]; then FORCE='--force'; fi
+          python -m ible.sec_bulk_cli --root . ${FORCE}
+      - name: Run global holdout
+        run: |
+          set -euo pipefail
+          rm -rf outputs/global_holdout
+          python -m ible.global_holdout_cli --root . --output-dir outputs/global_holdout
+      - name: Validate outputs
+        run: |
+          set -euo pipefail
+          test -s outputs/global_holdout/global_holdout_summary.json
+          test -s outputs/global_holdout/global_holdout_ranking.json
+          python - <<'PY'
+          import json
+          p=json.load(open('outputs/global_holdout/global_holdout_summary.json',encoding='utf-8'))
+          print(json.dumps({'status':p['status'],'metrics':p['metrics'],'sec_bulk':p['sec_bulk']},ensure_ascii=False,indent=2))
+          assert p.get('investment_use_allowed') is False
+          PY
+      - name: Upload result
+        uses: actions/upload-artifact@v7
+        with:
+          name: industry-boom-global-holdout-v0.8.0
+          path: outputs/global_holdout
+          retention-days: 30
+          compression-level: 9
