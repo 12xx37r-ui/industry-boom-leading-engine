@@ -1,7 +1,7 @@
 {
   "schema_version": 7,
-  "release": "7.0.4-engine-only",
-  "file_count": 86,
+  "release": "7.0.5-engine-only",
+  "file_count": 87,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
     "README.md",
@@ -38,6 +38,7 @@
     "data_seed/official/qss_all_current_2026q1.xlsx",
     "fixture/v61_upstream_fixture.json",
     "historical_history/v51_audits/v5.1.0-sealed-audit.json",
+    "historical_history/v60_audits/v6.0.0-champion-challenger.json",
     "prospective_history/prospective_evaluation_queue.json",
     "prospective_history/v50_snapshot_registry.json",
     "prospective_history/v50_snapshots/2026-08.json",

@@ -217,10 +217,24 @@ def run_v60(root: Path, output_dir: Path, run_date: str | None = None, v51_outpu
     gate = _research_gate(bc, bx, hc, hx, policy)
 
     changed_cases = [row["case_id"] for row in benchmark_decisions + blind_decisions if row["changed_by_challenger"]]
+
+    # The V6.0 receipt seals a comparison of immutable V5.1 evidence.
+    # v51_run_summary.as_of is the workflow execution date, not a change in the
+    # sealed evidence. Re-hashing that volatile date made every later run fail.
+    # When a receipt already exists, preserve its evidence_as_of and verify all
+    # substantive fields against the newly recomputed comparison.
+    receipt_path = root / "historical_history/v60_audits/v6.0.0-champion-challenger.json"
+    existing_receipt = load_json(receipt_path) if receipt_path.is_file() else None
+    evidence_as_of = (
+        str(existing_receipt.get("evidence_as_of") or "")
+        if existing_receipt is not None
+        else str(v51_summary.get("as_of") or "")
+    )
+
     comparison_core = {
         "schema_version": 1,
         "engine_release": policy["engine_release"],
-        "evidence_as_of": str(v51_summary.get("as_of") or ""),
+        "evidence_as_of": evidence_as_of,
         "policy": policy,
         "policy_lock": policy_lock,
         "model_lock": model_lock,
@@ -252,11 +266,14 @@ def run_v60(root: Path, output_dir: Path, run_date: str | None = None, v51_outpu
     comparison_hash = canonical_sha256(comparison_core)
     comparison = {**comparison_core, "comparison_sha256": comparison_hash}
 
-    receipt_path = root / "historical_history/v60_audits/v6.0.0-champion-challenger.json"
-    if receipt_path.is_file():
-        existing = load_json(receipt_path)
-        if existing.get("comparison_sha256") != comparison_hash:
-            raise V60Error("immutable V6.0 comparison receipt mismatch")
+    if existing_receipt is not None:
+        if existing_receipt.get("comparison_sha256") != comparison_hash:
+            raise V60Error(
+                "immutable V6.0 comparison receipt mismatch: "
+                "sealed evidence or locked policy/model content changed"
+            )
+        # Return the byte-for-byte sealed receipt rather than rewriting it.
+        comparison = existing_receipt
         receipt_action = "REUSED_IMMUTABLE_COMPARISON_RECEIPT"
     else:
         write_json(receipt_path, comparison)

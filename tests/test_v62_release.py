@@ -6,6 +6,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from ible.v50_engine import run_v50
+from ible.v51_walkforward import run_v51
+from ible.v60_challenger import run_v60
 from ible.v61_shadow import run_v61, verify_policy_lock
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -97,6 +100,39 @@ class V7ReleaseTests(unittest.TestCase):
                 )
             )
 
+    def test_v60_immutable_receipt_survives_later_run_date(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            work = Path(tmp) / "repo"
+            shutil.copytree(
+                ROOT,
+                work,
+                ignore=shutil.ignore_patterns("outputs", "__pycache__", "*.pyc"),
+            )
+            v50 = work / "outputs/v50_final_validator"
+            v51 = work / "outputs/v51_historical_audit"
+            v60 = work / "outputs/v60_champion_challenger"
+
+            run_v50(work, v50, "2026-08-04")
+            run_v51(work, v51, "2026-08-04", v50)
+            summary = run_v60(work, v60, "2026-08-04", v51)
+
+            self.assertEqual(
+                summary["comparison_receipt_action"],
+                "REUSED_IMMUTABLE_COMPARISON_RECEIPT",
+            )
+            sealed = json.loads(
+                (work / "historical_history/v60_audits/v6.0.0-champion-challenger.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            emitted = json.loads(
+                (v60 / "v60_champion_challenger_comparison.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(sealed["comparison_sha256"], emitted["comparison_sha256"])
+            self.assertEqual("2026-08-02", emitted["evidence_as_of"])
+
     def test_queries_cover_interest_sources(self):
         queries = json.loads(
             (ROOT / "config/v3_theme_queries.json").read_text(encoding="utf-8")
@@ -115,7 +151,7 @@ class V7ReleaseTests(unittest.TestCase):
         ).read_text(encoding="utf-8")
         engine = (ROOT / "src/ible/v61_shadow.py").read_text(encoding="utf-8")
 
-        self.assertIn("Industry Boom V7.0.4 Engine Only", workflow)
+        self.assertIn("Industry Boom V7.0.5 Engine Only", workflow)
         self.assertIn("outputs/v70_final_engine", workflow)
         self.assertNotIn("google_apps_script", workflow)
         self.assertNotIn("sec.gov", workflow.lower())

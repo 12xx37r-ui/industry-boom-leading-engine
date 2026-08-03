@@ -14,6 +14,10 @@ V0.9.1 Champion은 변경하지 않습니다. V7 점수는 미래 6·12·24개�
 Actions에서 `00 - RUN THIS ONLY - Industry Boom V7.0 Complete Engine`만 실행합니다.
 
 
-## V7.0.4 패키지 분리
+## V7.0.5 패키지 분리
 
 이 ZIP은 **Python/GitHub Actions 엔진 전용**입니다. Google Apps Script 파일은 별도 `industry-boom-gas-v7.0.4.zip`으로 배포합니다. 엔진 저장소에는 `google_apps_script` 폴더를 넣지 않습니다.
+
+## V7.0.5 receipt rollover fix
+
+V6.0 비교 영수증은 봉인된 V5.1 증거와 정책을 검증합니다. 워크플로 실행일은 봉인 증거의 변경이 아니므로, 기존 영수증의 `evidence_as_of`를 보존해 날짜가 바뀌어도 재사용합니다. 정책·모델·판정 내용이 달라지면 기존처럼 즉시 중단합니다.
