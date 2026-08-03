@@ -48,7 +48,7 @@ class V7ReleaseTests(unittest.TestCase):
         self.assertNotIn('sec.gov',w.lower())
         self.assertNotIn('fmp',w.lower())
         c=(ROOT/'google_apps_script/Code.gs').read_text(encoding='utf-8')
-        h=(ROOT/'google_apps_script/index.html').read_text(encoding='utf-8')
+        h=(ROOT/'google_apps_script/Index.html').read_text(encoding='utf-8')
         self.assertIn('v70_dashboard_payload.json',c)
         self.assertIn('public_interest_score',c)
         self.assertIn('Hidden Opportunity',h)

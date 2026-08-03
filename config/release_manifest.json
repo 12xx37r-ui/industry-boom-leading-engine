@@ -39,7 +39,7 @@
     "fixture/v61_upstream_fixture.json",
     "google_apps_script/Code.gs",
     "google_apps_script/appsscript.json",
-    "google_apps_script/index.html",
+    "google_apps_script/Index.html",
     "historical_history/v51_audits/v5.1.0-sealed-audit.json",
     "prospective_history/prospective_evaluation_queue.json",
     "prospective_history/v50_snapshot_registry.json",
