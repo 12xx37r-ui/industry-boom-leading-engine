@@ -47,7 +47,7 @@ class V7ReleaseTests(unittest.TestCase):
         self.assertIn('outputs/v70_final_engine',w)
         self.assertNotIn('sec.gov',w.lower())
         self.assertNotIn('fmp',w.lower())
-        c=(ROOT/'google_apps_script/Code.gs').read_text(encoding='utf-8')
+        c=(ROOT/'google_apps_script/V7Code.gs').read_text(encoding='utf-8')
         h=(ROOT/'google_apps_script/Index.html').read_text(encoding='utf-8')
         self.assertIn('v70_dashboard_payload.json',c)
         self.assertIn('public_interest_score',c)
