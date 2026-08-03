@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V7.0 Complete Engine
+name: 00 - RUN THIS ONLY - Industry Boom V7.0.3 Complete Engine
 
 on:
   workflow_dispatch:
@@ -128,7 +128,7 @@ jobs:
           from pathlib import Path
           summary = json.loads(Path('outputs/v70_final_engine/v70_run_summary.json').read_text(encoding='utf-8'))
           if summary['policy_lock']['status'] != 'POLICY_LOCK_VERIFIED':
-              raise SystemExit('V6.1 policy lock failed')
+              raise SystemExit('V7 policy lock failed')
           if summary['theme_count'] != 50:
               raise SystemExit(f"theme count mismatch: {summary['theme_count']}")
           if summary['challenger_live_alert_count'] < summary['champion_live_alert_count']:
@@ -169,15 +169,15 @@ jobs:
             fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "validation: V6.2 dashboard ledger ${{ steps.vars.outputs.run_date }}"
+            git commit -m "validation: V7.0.3 complete engine ${{ steps.vars.outputs.run_date }}"
             git push || true
           fi
           exit 0
 
       - name: Upload combined result artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
-          name: industry-boom-v7.0-complete-engine-result
+          name: industry-boom-v7.0.3-complete-engine-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
