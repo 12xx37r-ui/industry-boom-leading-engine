@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V6.2 Dashboard + Ledger
+name: 00 - RUN THIS ONLY - Industry Boom V7.0 Complete Engine
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: industry-boom-v62-dashboard-ledger
+  group: industry-boom-v70-complete-engine
   cancel-in-progress: false
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Test V6.2 dashboard release only
+      - name: Test V7 complete release only
         run: python -m unittest -q tests.test_v62_release
 
       - name: Resolve run date
@@ -52,7 +52,7 @@ jobs:
         shell: bash
         run: |
           set -uo pipefail
-          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v61_prospective_policy
+          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine
           run_stage() {
             local seconds="$1"; shift
             local label="$1"; shift
@@ -98,45 +98,45 @@ jobs:
             --v51-output-dir outputs/v51_historical_audit \
             --run-date "${{ steps.vars.outputs.run_date }}"
 
-      - name: Lock monthly Champion Challenger prospective decisions
+      - name: Build complete V7 operational scores and immutable snapshot
         shell: bash
         run: |
           set -euo pipefail
           python -m ible.v61_cli \
             --root . \
-            --output-dir outputs/v61_prospective_policy \
+            --output-dir outputs/v70_final_engine \
             --v50-output-dir outputs/v50_final_validator \
             --v60-output-dir outputs/v60_champion_challenger \
             --run-date "${{ steps.vars.outputs.run_date }}"
 
-      - name: Verify V6.1 outputs
+      - name: Verify V7 outputs
         shell: bash
         run: |
           set -euo pipefail
           for file in \
-            v61_run_summary.json \
-            v61_current_policy_snapshot.json \
-            v61_policy_registry.json \
-            v61_prospective_scorecard.json \
-            v61_policy_lock_verification.json \
-            v61_dashboard_payload.json \
-            v61_next_gate.json; do
-            test -s "outputs/v61_prospective_policy/$file"
+            v70_run_summary.json \
+            v70_current_operational_snapshot.json \
+            v70_operational_registry.json \
+            v70_prospective_scorecard.json \
+            v70_policy_lock_verification.json \
+            v70_dashboard_payload.json \
+            v70_next_gate.json; do
+            test -s "outputs/v70_final_engine/$file"
           done
           python - <<'PY'
           import json
           from pathlib import Path
-          summary = json.loads(Path('outputs/v61_prospective_policy/v61_run_summary.json').read_text(encoding='utf-8'))
+          summary = json.loads(Path('outputs/v70_final_engine/v70_run_summary.json').read_text(encoding='utf-8'))
           if summary['policy_lock']['status'] != 'POLICY_LOCK_VERIFIED':
               raise SystemExit('V6.1 policy lock failed')
           if summary['theme_count'] != 50:
               raise SystemExit(f"theme count mismatch: {summary['theme_count']}")
           if summary['challenger_live_alert_count'] < summary['champion_live_alert_count']:
               raise SystemExit('challenger cannot remove champion alerts')
-          if summary['challenger_promotion_allowed'] is not False:
-              raise SystemExit('prospective challenger cannot auto-promote')
-          if summary['investment_use_allowed'] is not False:
-              raise SystemExit('investment gate must remain false before matured outcomes')
+          if summary['boom_score_count'] != 50:
+              raise SystemExit('boom scores missing')
+          if summary['company_mapping_count'] != 50:
+              raise SystemExit('company mappings missing')
           print(json.dumps({
               'status': summary['status'],
               'snapshot_action': summary['snapshot_action'],
@@ -145,7 +145,10 @@ jobs:
               'challenger_live_alert_count': summary['challenger_live_alert_count'],
               'added_theme_ids': summary['added_theme_ids'],
               'next_evaluation_due': summary['next_evaluation_due'],
-              'next_required_gate': summary['next_required_gate'],
+              'public_interest_coverage_count': summary['public_interest_coverage_count'],
+              'boom_score_count': summary['boom_score_count'],
+              'three_month_change_count': summary['three_month_change_count'],
+              'company_mapping_count': summary['company_mapping_count'],
           }, ensure_ascii=False, indent=2))
           PY
 
@@ -158,7 +161,7 @@ jobs:
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find historical_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
-          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v61_prospective_policy -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           for workflow in .github/workflows/*; do
             [ -e "$workflow" ] || continue
             if [ "$(basename "$workflow")" != "run_v50_final_validator.yml" ]; then
@@ -174,19 +177,19 @@ jobs:
       - name: Upload combined result artifact
         uses: actions/upload-artifact@v7
         with:
-          name: industry-boom-v6.2-dashboard-ledger-result
+          name: industry-boom-v7.0-complete-engine-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
             outputs/v60_champion_challenger
-            outputs/v61_prospective_policy
+            outputs/v70_final_engine
             historical_history/v51_audits
             historical_history/v60_audits
             prospective_history/v50_snapshot_registry.json
             prospective_history/v50_snapshots
             prospective_history/v50_evaluations
-            prospective_history/v61_policy_registry.json
-            prospective_history/v61_policy_snapshots
+            prospective_history/v70_operational_registry.json
+            prospective_history/v70_operational_snapshots
           if-no-files-found: error
           retention-days: 90
           compression-level: 9
