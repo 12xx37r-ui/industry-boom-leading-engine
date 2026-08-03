@@ -8,9 +8,9 @@ from ible.v61_shadow import run_v61
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Industry Boom V6.1 prospective policy ledger")
+    parser = argparse.ArgumentParser(description="Industry Boom V7 complete operational engine")
     parser.add_argument("--root", default=".")
-    parser.add_argument("--output-dir", default="outputs/v61_prospective_policy")
+    parser.add_argument("--output-dir", default="outputs/v70_final_engine")
     parser.add_argument("--v50-output-dir", default="outputs/v50_final_validator")
     parser.add_argument("--v60-output-dir", default="outputs/v60_champion_challenger")
     parser.add_argument("--run-date", default=None)

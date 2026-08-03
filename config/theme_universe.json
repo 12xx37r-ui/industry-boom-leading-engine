@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "universe_version": "2026.08-50T",
-  "engine_release": "2.1.0-github-50theme-expansion",
-  "purpose": "산업 붐 선행예측 후보군을 7개에서 50개로 확장합니다. 기존 점수가 없는 산업에는 임의 점수를 부여하지 않습니다.",
+  "engine_release": "7.0.0-complete-operational-engine",
+  "purpose": "50개 산업의 실물 신호, 대중 관심도, 운영 붐 점수, 3개월 변화, 대표기업 브리지를 함께 제공합니다.",
   "minimum_required_themes": 50,
   "themes": [
     {
@@ -10,350 +10,2700 @@
       "theme_name": "AI 반도체",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "NVIDIA",
+            "ticker": "NVDA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "AMD",
+            "ticker": "AMD",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Broadcom",
+            "ticker": "AVGO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "TSMC",
+            "ticker": "TSM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Micron",
+            "ticker": "MU",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "theme_name": "첨단 패키징·HBM",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "SK하이닉스",
+            "ticker": "000660.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "삼성전자",
+            "ticker": "005930.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Micron",
+            "ticker": "MU",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "TSMC",
+            "ticker": "TSM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Amkor Technology",
+            "ticker": "AMKR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "DATA_CENTER_INFRASTRUCTURE",
       "theme_name": "데이터센터 인프라",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Vertiv",
+            "ticker": "VRT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Eaton",
+            "ticker": "ETN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Arista Networks",
+            "ticker": "ANET",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Equinix",
+            "ticker": "EQIX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Digital Realty",
+            "ticker": "DLR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SEMICONDUCTOR_EQUIPMENT",
       "theme_name": "반도체 장비",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "ASML",
+            "ticker": "ASML",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Applied Materials",
+            "ticker": "AMAT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Lam Research",
+            "ticker": "LRCX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "KLA",
+            "ticker": "KLAC",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Tokyo Electron",
+            "ticker": "8035.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "POWER_SEMICONDUCTORS",
       "theme_name": "전력반도체",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Infineon",
+            "ticker": "IFX.DE",
+            "market": "DE",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "ON Semiconductor",
+            "ticker": "ON",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "STMicroelectronics",
+            "ticker": "STM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "NXP Semiconductors",
+            "ticker": "NXPI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Monolithic Power Systems",
+            "ticker": "MPWR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "EDGE_AI",
       "theme_name": "엣지 AI",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Qualcomm",
+            "ticker": "QCOM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Arm Holdings",
+            "ticker": "ARM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "NXP Semiconductors",
+            "ticker": "NXPI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "NVIDIA",
+            "ticker": "NVDA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "삼성전자",
+            "ticker": "005930.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
       "theme_name": "광자·광인터커넥트",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Coherent",
+            "ticker": "COHR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Lumentum",
+            "ticker": "LITE",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Broadcom",
+            "ticker": "AVGO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Marvell",
+            "ticker": "MRVL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Arista Networks",
+            "ticker": "ANET",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "QUANTUM_COMPUTING",
       "theme_name": "양자컴퓨팅",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "IBM",
+            "ticker": "IBM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "IonQ",
+            "ticker": "IONQ",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Rigetti Computing",
+            "ticker": "RGTI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "D-Wave Quantum",
+            "ticker": "QBTS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Honeywell",
+            "ticker": "HON",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "CLOUD_INFRASTRUCTURE",
       "theme_name": "클라우드 인프라",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Microsoft",
+            "ticker": "MSFT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Amazon",
+            "ticker": "AMZN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Alphabet",
+            "ticker": "GOOGL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Oracle",
+            "ticker": "ORCL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Cloudflare",
+            "ticker": "NET",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "CYBERSECURITY",
       "theme_name": "사이버보안",
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Palo Alto Networks",
+            "ticker": "PANW",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "CrowdStrike",
+            "ticker": "CRWD",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Fortinet",
+            "ticker": "FTNT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Zscaler",
+            "ticker": "ZS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Okta",
+            "ticker": "OKTA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "POWER_GRID_ELECTRIFICATION",
       "theme_name": "전력망·전기화",
       "sector": "에너지·전력",
       "data_build_priority": 1,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Powell Industries",
+            "ticker": "POWL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Hubbell",
+            "ticker": "HUBB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Eaton",
+            "ticker": "ETN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "nVent Electric",
+            "ticker": "NVT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "GE Vernova",
+            "ticker": "GEV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "ENERGY_STORAGE",
       "theme_name": "에너지저장장치",
       "sector": "에너지·전력",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Fluence Energy",
+            "ticker": "FLNC",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Tesla",
+            "ticker": "TSLA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "CATL",
+            "ticker": "300750.SZ",
+            "market": "CN",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "삼성SDI",
+            "ticker": "006400.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "LG에너지솔루션",
+            "ticker": "373220.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "NUCLEAR_ENERGY",
       "theme_name": "원전",
       "sector": "에너지·전력",
       "data_build_priority": 1,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "BWX Technologies",
+            "ticker": "BWXT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Centrus Energy",
+            "ticker": "LEU",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Constellation Energy",
+            "ticker": "CEG",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Vistra",
+            "ticker": "VST",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "GE Vernova",
+            "ticker": "GEV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SMALL_MODULAR_REACTORS",
       "theme_name": "소형모듈원전(SMR)",
       "sector": "에너지·전력",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "NuScale Power",
+            "ticker": "SMR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Oklo",
+            "ticker": "OKLO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "BWX Technologies",
+            "ticker": "BWXT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Centrus Energy",
+            "ticker": "LEU",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "GE Vernova",
+            "ticker": "GEV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "HYDROGEN_ECONOMY",
       "theme_name": "수소",
       "sector": "에너지·전력",
       "data_build_priority": 2,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Plug Power",
+            "ticker": "PLUG",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Bloom Energy",
+            "ticker": "BE",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "FuelCell Energy",
+            "ticker": "FCEL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Linde",
+            "ticker": "LIN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Air Products",
+            "ticker": "APD",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "CARBON_CAPTURE",
       "theme_name": "탄소포집·저장",
       "sector": "에너지·전력",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Occidental Petroleum",
+            "ticker": "OXY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Exxon Mobil",
+            "ticker": "XOM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "SLB",
+            "ticker": "SLB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Linde",
+            "ticker": "LIN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Shell",
+            "ticker": "SHEL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SOLAR_ENERGY",
       "theme_name": "태양광",
       "sector": "에너지·전력",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "First Solar",
+            "ticker": "FSLR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Enphase Energy",
+            "ticker": "ENPH",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Nextracker",
+            "ticker": "NXT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Canadian Solar",
+            "ticker": "CSIQ",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "JinkoSolar",
+            "ticker": "JKS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "OFFSHORE_WIND",
       "theme_name": "해상풍력",
       "sector": "에너지·전력",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Orsted",
+            "ticker": "ORSTED.CO",
+            "market": "DK",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Vestas Wind Systems",
+            "ticker": "VWS.CO",
+            "market": "DK",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "GE Vernova",
+            "ticker": "GEV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Siemens Energy",
+            "ticker": "ENR.DE",
+            "market": "DE",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Equinor",
+            "ticker": "EQNR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "GEOTHERMAL_ENERGY",
       "theme_name": "지열에너지",
       "sector": "에너지·전력",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Ormat Technologies",
+            "ticker": "ORA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "SLB",
+            "ticker": "SLB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Baker Hughes",
+            "ticker": "BKR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Chevron",
+            "ticker": "CVX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Exxon Mobil",
+            "ticker": "XOM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "LNG_INFRASTRUCTURE",
       "theme_name": "LNG 인프라",
       "sector": "에너지·전력",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Cheniere Energy",
+            "ticker": "LNG",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Sempra",
+            "ticker": "SRE",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Energy Transfer",
+            "ticker": "ET",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Kinder Morgan",
+            "ticker": "KMI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Shell",
+            "ticker": "SHEL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "INDUSTRIAL_ROBOTICS",
       "theme_name": "산업용 로봇",
       "sector": "산업·자동화",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "ABB",
+            "ticker": "ABB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Rockwell Automation",
+            "ticker": "ROK",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Teradyne",
+            "ticker": "TER",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Fanuc",
+            "ticker": "6954.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Yaskawa Electric",
+            "ticker": "6506.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "HUMANOID_ROBOTS",
       "theme_name": "휴머노이드 로봇",
       "sector": "산업·자동화",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Tesla",
+            "ticker": "TSLA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "NVIDIA",
+            "ticker": "NVDA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Hyundai Motor",
+            "ticker": "005380.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "SoftBank Group",
+            "ticker": "9984.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Xiaomi",
+            "ticker": "1810.HK",
+            "market": "HK",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SMART_FACTORY",
       "theme_name": "스마트팩토리",
       "sector": "산업·자동화",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Rockwell Automation",
+            "ticker": "ROK",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Honeywell",
+            "ticker": "HON",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Siemens",
+            "ticker": "SIE.DE",
+            "market": "DE",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "ABB",
+            "ticker": "ABB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Emerson Electric",
+            "ticker": "EMR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "LOGISTICS_AUTOMATION",
       "theme_name": "물류 자동화",
       "sector": "산업·자동화",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Symbotic",
+            "ticker": "SYM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Honeywell",
+            "ticker": "HON",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Amazon",
+            "ticker": "AMZN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Teradyne",
+            "ticker": "TER",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "ABB",
+            "ticker": "ABB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "CONSTRUCTION_AUTOMATION",
       "theme_name": "건설 자동화",
       "sector": "산업·자동화",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Caterpillar",
+            "ticker": "CAT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Deere",
+            "ticker": "DE",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Trimble",
+            "ticker": "TRMB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Autodesk",
+            "ticker": "ADSK",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Procore Technologies",
+            "ticker": "PCOR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "ADDITIVE_MANUFACTURING",
       "theme_name": "3D프린팅",
       "sector": "산업·자동화",
       "data_build_priority": 2,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "3D Systems",
+            "ticker": "DDD",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Stratasys",
+            "ticker": "SSYS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Materialise",
+            "ticker": "MTLS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Proto Labs",
+            "ticker": "PRLB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Nikon",
+            "ticker": "7731.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "AUTONOMOUS_DRIVING",
       "theme_name": "자율주행",
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Mobileye",
+            "ticker": "MBLY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Aptiv",
+            "ticker": "APTV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Tesla",
+            "ticker": "TSLA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "NVIDIA",
+            "ticker": "NVDA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Qualcomm",
+            "ticker": "QCOM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
       "theme_name": "국방·무인체계",
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
-      "release_status": "SCORING_ACTIVE"
+      "release_status": "SCORING_ACTIVE",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Lockheed Martin",
+            "ticker": "LMT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Northrop Grumman",
+            "ticker": "NOC",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "L3Harris",
+            "ticker": "LHX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "AeroVironment",
+            "ticker": "AVAV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Kratos Defense",
+            "ticker": "KTOS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "COMMERCIAL_DRONES",
       "theme_name": "상업용 드론",
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "AeroVironment",
+            "ticker": "AVAV",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Kratos Defense",
+            "ticker": "KTOS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "EHang",
+            "ticker": "EH",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Red Cat Holdings",
+            "ticker": "RCAT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "AgEagle Aerial Systems",
+            "ticker": "UAVS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SPACE_ECONOMY",
       "theme_name": "우주산업",
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Rocket Lab",
+            "ticker": "RKLB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Intuitive Machines",
+            "ticker": "LUNR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "AST SpaceMobile",
+            "ticker": "ASTS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Iridium Communications",
+            "ticker": "IRDM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Planet Labs",
+            "ticker": "PL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "MARITIME_AUTONOMY",
       "theme_name": "자율운항·해양무인체계",
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Huntington Ingalls",
+            "ticker": "HII",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Kongsberg Gruppen",
+            "ticker": "KOG.OL",
+            "market": "NO",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "L3Harris",
+            "ticker": "LHX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "General Dynamics",
+            "ticker": "GD",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "RTX",
+            "ticker": "RTX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "RAIL_MODERNIZATION",
       "theme_name": "철도 현대화",
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Westinghouse Air Brake",
+            "ticker": "WAB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Alstom",
+            "ticker": "ALO.PA",
+            "market": "FR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Siemens",
+            "ticker": "SIE.DE",
+            "market": "DE",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Union Pacific",
+            "ticker": "UNP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Canadian National Railway",
+            "ticker": "CNI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "AI_DRUG_DISCOVERY",
       "theme_name": "AI 신약개발",
       "sector": "바이오·헬스케어",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Recursion Pharmaceuticals",
+            "ticker": "RXRX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Schrodinger",
+            "ticker": "SDGR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Exscientia",
+            "ticker": "EXAI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "AbCellera",
+            "ticker": "ABCL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Tempus AI",
+            "ticker": "TEM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "GENE_CELL_THERAPY",
       "theme_name": "유전자·세포치료",
       "sector": "바이오·헬스케어",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "CRISPR Therapeutics",
+            "ticker": "CRSP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Intellia Therapeutics",
+            "ticker": "NTLA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Beam Therapeutics",
+            "ticker": "BEAM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Editas Medicine",
+            "ticker": "EDIT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Cellectis",
+            "ticker": "CLLS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "PRECISION_ONCOLOGY",
       "theme_name": "정밀종양학",
       "sector": "바이오·헬스케어",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Guardant Health",
+            "ticker": "GH",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Natera",
+            "ticker": "NTRA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Illumina",
+            "ticker": "ILMN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Thermo Fisher Scientific",
+            "ticker": "TMO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Roche",
+            "ticker": "RHHBY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "OBESITY_METABOLIC",
       "theme_name": "비만·대사질환 치료",
       "sector": "바이오·헬스케어",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Eli Lilly",
+            "ticker": "LLY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Novo Nordisk",
+            "ticker": "NVO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Amgen",
+            "ticker": "AMGN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Viking Therapeutics",
+            "ticker": "VKTX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Structure Therapeutics",
+            "ticker": "GPCR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SURGICAL_ROBOTICS",
       "theme_name": "수술로봇",
       "sector": "바이오·헬스케어",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Intuitive Surgical",
+            "ticker": "ISRG",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Stryker",
+            "ticker": "SYK",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Medtronic",
+            "ticker": "MDT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Johnson & Johnson",
+            "ticker": "JNJ",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Zimmer Biomet",
+            "ticker": "ZBH",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "ADVANCED_DIAGNOSTICS",
       "theme_name": "첨단진단·액체생검",
       "sector": "바이오·헬스케어",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Guardant Health",
+            "ticker": "GH",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Natera",
+            "ticker": "NTRA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Illumina",
+            "ticker": "ILMN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Exact Sciences",
+            "ticker": "EXAS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Thermo Fisher Scientific",
+            "ticker": "TMO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "SYNTHETIC_BIOLOGY",
       "theme_name": "합성생물학",
       "sector": "바이오·헬스케어",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Twist Bioscience",
+            "ticker": "TWST",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Ginkgo Bioworks",
+            "ticker": "DNA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Codexis",
+            "ticker": "CDXS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Thermo Fisher Scientific",
+            "ticker": "TMO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Danaher",
+            "ticker": "DHR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "LONGEVITY_TECH",
       "theme_name": "노화·장수기술",
       "sector": "바이오·헬스케어",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Recursion Pharmaceuticals",
+            "ticker": "RXRX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Schrodinger",
+            "ticker": "SDGR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Regeneron",
+            "ticker": "REGN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Vertex Pharmaceuticals",
+            "ticker": "VRTX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "CRISPR Therapeutics",
+            "ticker": "CRSP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "CRITICAL_MINERALS",
       "theme_name": "핵심광물",
       "sector": "소재·자원·인프라",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Albemarle",
+            "ticker": "ALB",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Sociedad Quimica y Minera",
+            "ticker": "SQM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "MP Materials",
+            "ticker": "MP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Rio Tinto",
+            "ticker": "RIO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "BHP",
+            "ticker": "BHP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "COPPER_INFRASTRUCTURE",
       "theme_name": "구리 공급망",
       "sector": "소재·자원·인프라",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Freeport-McMoRan",
+            "ticker": "FCX",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Southern Copper",
+            "ticker": "SCCO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Rio Tinto",
+            "ticker": "RIO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "BHP",
+            "ticker": "BHP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Teck Resources",
+            "ticker": "TECK",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "RARE_EARTHS",
       "theme_name": "희토류 공급망",
       "sector": "소재·자원·인프라",
       "data_build_priority": 1,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "MP Materials",
+            "ticker": "MP",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Lynas Rare Earths",
+            "ticker": "LYC.AX",
+            "market": "AU",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Energy Fuels",
+            "ticker": "UUUU",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Iluka Resources",
+            "ticker": "ILU.AX",
+            "market": "AU",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Arafura Rare Earths",
+            "ticker": "ARU.AX",
+            "market": "AU",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "BATTERY_RECYCLING",
       "theme_name": "배터리 재활용",
       "sector": "소재·자원·인프라",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "American Battery Technology",
+            "ticker": "ABAT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Li-Cycle",
+            "ticker": "LICY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "GEM",
+            "ticker": "002340.SZ",
+            "market": "CN",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "성일하이텍",
+            "ticker": "365340.KQ",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "POSCO Future M",
+            "ticker": "003670.KS",
+            "market": "KR",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "ADVANCED_MATERIALS",
       "theme_name": "첨단소재",
       "sector": "소재·자원·인프라",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "DuPont",
+            "ticker": "DD",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "BASF",
+            "ticker": "BASFY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Shin-Etsu Chemical",
+            "ticker": "4063.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Asahi Kasei",
+            "ticker": "3407.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Linde",
+            "ticker": "LIN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "WATER_INFRASTRUCTURE",
       "theme_name": "수자원 인프라",
       "sector": "소재·자원·인프라",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Xylem",
+            "ticker": "XYL",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Watts Water Technologies",
+            "ticker": "WTS",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Veolia",
+            "ticker": "VEOEY",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "American Water Works",
+            "ticker": "AWK",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Pentair",
+            "ticker": "PNR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "AGRITECH_FOODTECH",
       "theme_name": "애그테크·푸드테크",
       "sector": "소재·자원·인프라",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Deere",
+            "ticker": "DE",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "AGCO",
+            "ticker": "AGCO",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "CNH Industrial",
+            "ticker": "CNH",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Corteva",
+            "ticker": "CTVA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Archer-Daniels-Midland",
+            "ticker": "ADM",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "HEAT_PUMPS_EFFICIENCY",
       "theme_name": "히트펌프·에너지효율",
       "sector": "소재·자원·인프라",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Carrier Global",
+            "ticker": "CARR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Trane Technologies",
+            "ticker": "TT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Johnson Controls",
+            "ticker": "JCI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Daikin Industries",
+            "ticker": "6367.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Mitsubishi Electric",
+            "ticker": "6503.T",
+            "market": "JP",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "DIGITAL_IDENTITY",
       "theme_name": "디지털 신원·보안인증",
       "sector": "디지털 인프라",
       "data_build_priority": 2,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Okta",
+            "ticker": "OKTA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "CyberArk",
+            "ticker": "CYBR",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Microsoft",
+            "ticker": "MSFT",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Cloudflare",
+            "ticker": "NET",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Palo Alto Networks",
+            "ticker": "PANW",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     },
     {
       "theme_id": "FINTECH_INFRASTRUCTURE",
       "theme_name": "핀테크 인프라",
       "sector": "디지털 인프라",
       "data_build_priority": 3,
-      "release_status": "DATA_PIPELINE_PENDING"
+      "release_status": "DATA_PIPELINE_PENDING",
+      "company_bridge": {
+        "mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+        "mapping_method": "theme_relevance_candidates_not_revenue_attribution",
+        "companies": [
+          {
+            "name": "Visa",
+            "ticker": "V",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Mastercard",
+            "ticker": "MA",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Fiserv",
+            "ticker": "FI",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Global Payments",
+            "ticker": "GPN",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          },
+          {
+            "name": "Nu Holdings",
+            "ticker": "NU",
+            "market": "US",
+            "relation_strength": "CORE_OR_MAJOR",
+            "confidence": 0.7,
+            "exposure": null
+          }
+        ],
+        "warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다."
+      }
     }
   ]
 }

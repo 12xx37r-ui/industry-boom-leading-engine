@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "engine_release": "6.2.0-gas-dashboard-prospective-ledger",
+  "schema_version": 7,
+  "release": "7.0.0-complete-operational-engine",
   "file_count": 88,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
@@ -38,8 +38,8 @@
     "data_seed/official/qss_all_current_2026q1.xlsx",
     "fixture/v61_upstream_fixture.json",
     "google_apps_script/Code.gs",
-    "google_apps_script/Index.html",
     "google_apps_script/appsscript.json",
+    "google_apps_script/index.html",
     "historical_history/v51_audits/v5.1.0-sealed-audit.json",
     "prospective_history/prospective_evaluation_queue.json",
     "prospective_history/v50_snapshot_registry.json",
@@ -91,15 +91,5 @@
     "validation_seed/v1_1_blind/v1_1_blind_holdout_ranking.json",
     "validation_seed/v1_1_blind/v1_1_blind_holdout_summary.json",
     "validation_seed/v1_1_blind/v1_1_model_lock_verification.json"
-  ],
-  "rules": {
-    "github_web_upload_file_limit": "strictly_below_100",
-    "internal_release_target": "strictly_below_90",
-    "bat_cmd_colab_prohibited": true,
-    "sec_fmp_collection_prohibited": true,
-    "workflow_count": 1,
-    "boom_score_must_remain_null": true,
-    "gas_dashboard_included": true,
-    "dashboard_reads_committed_outputs": true
-  }
+  ]
 }

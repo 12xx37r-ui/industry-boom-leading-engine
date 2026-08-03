@@ -1,10 +1,9 @@
 {
-  "schema_version": 1,
-  "engine_release": "6.1.0-prospective-policy-ledger",
-  "policy_id": "LIVE_PREVALIDATION_BRIDGE_V1",
+  "schema_version": 2,
+  "engine_release": "7.0.0-complete-operational-engine",
+  "policy_id": "V7_COMPLETE_OPERATIONAL_POLICY_V1",
   "policy_status": "PROSPECTIVE_SHADOW_ONLY",
-  "created_after": "V6.0 champion-challenger research comparison",
-  "scope_warning": "이 정책은 V5의 50개 산업 prevalidation score에 적용하는 별도 미래검증 정책이며 V0.9.1 boom_score 계산식이 아닙니다.",
+  "scope_warning": "V0.9.1 Champion은 동결 유지합니다. boom_score는 연결된 실물·사업화 신호와 대중 관심도를 결합한 V7 운영점수이며 미래 독립검증 전 투자등급 점수가 아닙니다.",
   "champion_live_policy": {
     "rule": "candidate_stage가 PREVALIDATION_HIGH_CANDIDATE인 산업만 경보"
   },
@@ -19,9 +18,35 @@
       "source_diffusion_percent_min": 60.0
     }
   },
-  "evaluation_horizons_months": [6, 12, 24],
+  "operational_scores": {
+    "boom_score": {
+      "industrial_signal_weight": 0.8,
+      "public_interest_weight": 0.2
+    },
+    "hidden_opportunity_score": {
+      "industrial_signal_weight": 0.75,
+      "low_public_interest_weight": 0.25
+    },
+    "neutral_public_interest_fallback": 50.0,
+    "score_change_proxy_cap": 15.0
+  },
+  "stage_rules": {
+    "hidden_interest_max": 35.0,
+    "early_interest_max": 55.0,
+    "industrial_min": 60.0,
+    "public_boom_min": 65.0
+  },
+  "evaluation_horizons_months": [
+    6,
+    12,
+    24
+  ],
   "promotion_gate": {
-    "minimum_matured_snapshots": {"6": 3, "12": 2, "24": 1},
+    "minimum_matured_snapshots": {
+      "6": 3,
+      "12": 2,
+      "24": 1
+    },
     "minimum_challenger_recall_improvement": 0.1,
     "maximum_precision_deterioration": 0.05,
     "automatic_promotion_allowed": false

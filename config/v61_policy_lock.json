@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
-  "policy_id": "LIVE_PREVALIDATION_BRIDGE_V1",
+  "schema_version": 2,
+  "policy_id": "V7_COMPLETE_OPERATIONAL_POLICY_V1",
   "policy_file": "config/v61_live_shadow_policy.json",
-  "expected_sha256": "26725f35687d0663a0fa10202d51f00c6ed5ac26aa559f870a21266b7f60f562",
-  "sealed_at": "2026-08-02T22:20:00+09:00",
-  "rule": "첫 prospective snapshot 생성 후 정책 파일 변경 시 잠금 검증 실패"
+  "expected_sha256": "6ef6ccd6821ebb0f67d5c7ebbd7b807a5b583f01c3ed206f0a41e2eebfcfabae",
+  "sealed_at": "2026-08-04T02:00:00+09:00",
+  "rule": "V7 운영점수·대중관심·히든기회 공식 변경 시 잠금 검증 실패"
 }
