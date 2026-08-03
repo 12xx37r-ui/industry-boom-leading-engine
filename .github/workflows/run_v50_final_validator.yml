@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V7.0.4 Engine Only
+name: 00 - RUN THIS ONLY - Industry Boom V7.0.5 Engine Only
 
 on:
   workflow_dispatch:
@@ -172,7 +172,7 @@ jobs:
             fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "validation: V7.0.4 engine-only ledger ${{ steps.vars.outputs.run_date }}"
+            git commit -m "validation: V7.0.5 engine-only ledger ${{ steps.vars.outputs.run_date }}"
             git push || true
           fi
           exit 0
@@ -180,7 +180,7 @@ jobs:
       - name: Upload combined result artifact
         uses: actions/upload-artifact@v4
         with:
-          name: industry-boom-v7.0.4-engine-only-result
+          name: industry-boom-v7.0.5-engine-only-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
