@@ -43,11 +43,11 @@ class V7ReleaseTests(unittest.TestCase):
 
     def test_workflow_and_gas(self):
         w=(ROOT/'.github/workflows/run_v50_final_validator.yml').read_text(encoding='utf-8')
-        self.assertIn('Industry Boom V7.0 Complete Engine',w)
+        self.assertIn('Industry Boom V7.0.3 Complete Engine',w)
         self.assertIn('outputs/v70_final_engine',w)
         self.assertNotIn('sec.gov',w.lower())
         self.assertNotIn('fmp',w.lower())
-        c=(ROOT/'google_apps_script/V7Code.gs').read_text(encoding='utf-8')
+        c=(ROOT/'google_apps_script/Code.gs').read_text(encoding='utf-8')
         h=(ROOT/'google_apps_script/Index.html').read_text(encoding='utf-8')
         self.assertIn('v70_dashboard_payload.json',c)
         self.assertIn('public_interest_score',c)

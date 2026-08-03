@@ -1,4 +1,4 @@
-# 산업 붐 선행예측 엔진 V7.0 완성 운영판
+# 산업 붐 선행예측 엔진 V7.0.3 완성 운영판
 
 이 릴리즈는 다음 네 가지 미연결 항목을 실제 엔진 필드로 채웁니다.
 
@@ -11,4 +11,4 @@
 V0.9.1 Champion은 변경하지 않습니다. V7 점수는 미래 6·12·24개월 검증 전 투자등급 점수가 아닙니다.
 
 ## 실행
-Actions에서 `00 - RUN THIS ONLY - Industry Boom V7.0 Complete Engine`만 실행합니다.
+Actions에서 `00 - RUN THIS ONLY - Industry Boom V7.0.3 Complete Engine`만 실행합니다.
