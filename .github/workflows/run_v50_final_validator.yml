@@ -1,4 +1,4 @@
-name: 00 - RUN THIS ONLY - Industry Boom V7.0.3 Complete Engine
+name: 00 - RUN THIS ONLY - Industry Boom V7.0.4 Engine Only
 
 on:
   workflow_dispatch:
@@ -28,16 +28,19 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
-      - name: Test V7 complete release only
+      - name: Install runtime requirements
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+
+      - name: Test V7 engine release only
         run: python -m unittest -q tests.test_v62_release
 
       - name: Resolve run date
@@ -128,7 +131,7 @@ jobs:
           from pathlib import Path
           summary = json.loads(Path('outputs/v70_final_engine/v70_run_summary.json').read_text(encoding='utf-8'))
           if summary['policy_lock']['status'] != 'POLICY_LOCK_VERIFIED':
-              raise SystemExit('V7 policy lock failed')
+              raise SystemExit('V6.1 policy lock failed')
           if summary['theme_count'] != 50:
               raise SystemExit(f"theme count mismatch: {summary['theme_count']}")
           if summary['challenger_live_alert_count'] < summary['champion_live_alert_count']:
@@ -169,7 +172,7 @@ jobs:
             fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "validation: V7.0.3 complete engine ${{ steps.vars.outputs.run_date }}"
+            git commit -m "validation: V7.0.4 engine-only ledger ${{ steps.vars.outputs.run_date }}"
             git push || true
           fi
           exit 0
@@ -177,7 +180,7 @@ jobs:
       - name: Upload combined result artifact
         uses: actions/upload-artifact@v4
         with:
-          name: industry-boom-v7.0.3-complete-engine-result
+          name: industry-boom-v7.0.4-engine-only-result
           path: |
             outputs/v50_final_validator
             outputs/v51_historical_audit
