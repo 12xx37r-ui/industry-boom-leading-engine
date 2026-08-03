@@ -1,0 +1,8 @@
+{
+  "status": "POLICY_LOCK_VERIFIED",
+  "policy_id": "V7_COMPLETE_OPERATIONAL_POLICY_V1",
+  "policy_file": "config/v61_live_shadow_policy.json",
+  "expected_sha256": "6ef6ccd6821ebb0f67d5c7ebbd7b807a5b583f01c3ed206f0a41e2eebfcfabae",
+  "actual_sha256": "6ef6ccd6821ebb0f67d5c7ebbd7b807a5b583f01c3ed206f0a41e2eebfcfabae",
+  "sealed_at": "2026-08-04T02:00:00+09:00"
+}

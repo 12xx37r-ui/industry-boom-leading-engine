@@ -1,0 +1,39 @@
+{
+  "status": "PROSPECTIVE_POLICY_COMPARISON_ACCUMULATING",
+  "horizons": {
+    "6": {
+      "matured_snapshot_count": 0,
+      "evaluations": []
+    },
+    "12": {
+      "matured_snapshot_count": 0,
+      "evaluations": []
+    },
+    "24": {
+      "matured_snapshot_count": 0,
+      "evaluations": []
+    }
+  },
+  "minimum_maturity_checks": [
+    {
+      "horizon_months": 6,
+      "actual": 0,
+      "required": 3,
+      "passed": false
+    },
+    {
+      "horizon_months": 12,
+      "actual": 0,
+      "required": 2,
+      "passed": false
+    },
+    {
+      "horizon_months": 24,
+      "actual": 0,
+      "required": 1,
+      "passed": false
+    }
+  ],
+  "promotion_evaluable": false,
+  "automatic_promotion_allowed": false
+}

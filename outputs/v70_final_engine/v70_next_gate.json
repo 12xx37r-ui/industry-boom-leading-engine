@@ -1,0 +1,9 @@
+{
+  "current_status": "V7_COMPLETE_OPERATIONAL_ENGINE_ACTIVE",
+  "next_evaluation_due": {
+    "snapshot_id": "2026-08",
+    "horizon_months": 6,
+    "due_date": "2027-02-02"
+  },
+  "investment_use_allowed": false
+}

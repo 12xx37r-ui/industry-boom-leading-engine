@@ -1,0 +1,78 @@
+{
+  "status": "V7_COMPLETE_OPERATIONAL_ENGINE_ACTIVE",
+  "engine_release": "7.0.0-complete-operational-engine",
+  "as_of": "2026-08-02",
+  "snapshot_action": "CREATED_IMMUTABLE_V7_SNAPSHOT",
+  "snapshot_count": 1,
+  "theme_count": 50,
+  "public_interest_coverage_count": 50,
+  "public_interest_live_source_count": 46,
+  "company_mapping_count": 50,
+  "boom_score_count": 50,
+  "three_month_change_count": 50,
+  "champion_live_alert_count": 5,
+  "challenger_live_alert_count": 8,
+  "added_theme_ids": [
+    "DIGITAL_IDENTITY",
+    "ENERGY_STORAGE",
+    "CYBERSECURITY"
+  ],
+  "policy_lock": {
+    "status": "POLICY_LOCK_VERIFIED",
+    "policy_id": "V7_COMPLETE_OPERATIONAL_POLICY_V1",
+    "policy_file": "config/v61_live_shadow_policy.json",
+    "expected_sha256": "6ef6ccd6821ebb0f67d5c7ebbd7b807a5b583f01c3ed206f0a41e2eebfcfabae",
+    "actual_sha256": "6ef6ccd6821ebb0f67d5c7ebbd7b807a5b583f01c3ed206f0a41e2eebfcfabae",
+    "sealed_at": "2026-08-04T02:00:00+09:00"
+  },
+  "historical_reference": {
+    "champion_benchmark_recall": 0.3333,
+    "challenger_benchmark_recall": 0.6667
+  },
+  "prospective_scorecard": {
+    "status": "PROSPECTIVE_POLICY_COMPARISON_ACCUMULATING",
+    "horizons": {
+      "6": {
+        "matured_snapshot_count": 0,
+        "evaluations": []
+      },
+      "12": {
+        "matured_snapshot_count": 0,
+        "evaluations": []
+      },
+      "24": {
+        "matured_snapshot_count": 0,
+        "evaluations": []
+      }
+    },
+    "minimum_maturity_checks": [
+      {
+        "horizon_months": 6,
+        "actual": 0,
+        "required": 3,
+        "passed": false
+      },
+      {
+        "horizon_months": 12,
+        "actual": 0,
+        "required": 2,
+        "passed": false
+      },
+      {
+        "horizon_months": 24,
+        "actual": 0,
+        "required": 1,
+        "passed": false
+      }
+    ],
+    "promotion_evaluable": false,
+    "automatic_promotion_allowed": false
+  },
+  "next_evaluation_due": {
+    "snapshot_id": "2026-08",
+    "horizon_months": 6,
+    "due_date": "2027-02-02"
+  },
+  "investment_use_allowed": false,
+  "manual_run_required_after_bootstrap": false
+}
