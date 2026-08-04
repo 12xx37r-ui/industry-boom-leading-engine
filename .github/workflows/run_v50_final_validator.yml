@@ -151,6 +151,8 @@ jobs:
               raise SystemExit('observed public-interest coverage below 80%')
           if summary['hidden_opportunity_eligible_count'] <= 0:
               raise SystemExit('no evidence-qualified hidden opportunities')
+          if summary.get('preboom_eligible_count', 0) <= 0:
+              raise SystemExit('no strict low-attention, independently confirmed pre-boom candidates')
           if summary['company_mapping_count'] != 50:
               raise SystemExit('company mappings missing')
           if summary['capital_radar_mapped_theme_count'] < 25:
@@ -167,6 +169,7 @@ jobs:
               'public_interest_missing_count': summary['public_interest_missing_count'],
               'capital_accumulation_score_count': summary['capital_accumulation_score_count'],
               'hidden_opportunity_eligible_count': summary['hidden_opportunity_eligible_count'],
+              'preboom_eligible_count': summary['preboom_eligible_count'],
               'boom_score_count': summary['boom_score_count'],
               'three_month_change_count': summary['three_month_change_count'],
               'company_mapping_count': summary['company_mapping_count'],
