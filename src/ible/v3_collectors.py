@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Any
 import urllib.parse
+import threading
+import time
 
 from ible.v3_http import JsonHttpClient
 
@@ -52,21 +54,52 @@ class UsaSpendingCollector:
     def __init__(self, client: JsonHttpClient, base_url: str) -> None:
         self.client = client
         self.base_url = base_url
-    def count(self, keywords: list[str], period: Period) -> int:
+    def count(self, keywords: list[str] | None, period: Period, naics_codes: list[str] | None = None) -> int:
+        filters = {
+            "time_period": [period.as_dict()],
+            "award_type_codes": self.AWARD_TYPE_CODES,
+        }
+        clean_keywords = [str(x).strip() for x in (keywords or []) if str(x).strip()]
+        clean_naics = [str(x).strip() for x in (naics_codes or []) if str(x).strip()]
+        if clean_keywords:
+            filters["keywords"] = clean_keywords
+        if clean_naics:
+            # USAspending accepts hierarchical NAICS prefixes such as 33 or 3333.
+            # This is used only as a lower-specificity fallback when the theme text query
+            # returns 0/0 for both comparison windows.
+            filters["naics_codes"] = {"require": clean_naics}
         payload = self.client.request_json(self.base_url, method="POST", payload={
-            "filters":{"keywords":keywords,"time_period":[period.as_dict()],"award_type_codes":self.AWARD_TYPE_CODES},
-            "spending_level":"awards","subawards":False,
+            "filters": filters,
+            "spending_level": "awards",
+            "subawards": False,
         })
         results = payload.get("results") or {}
         return sum(max(0,int(results.get(field) or 0)) for field in ("grants","loans","contracts","direct_payments","other","idvs"))
 
 
 class GdeltCollector:
+    # GDELT DOC API explicitly rate-limits high-frequency callers. The data
+    # engine runs themes concurrently, so serialize only GDELT request starts.
+    # 5.25s leaves a small safety margin over the service's 5-second guidance.
+    _rate_lock = threading.Lock()
+    _last_request_started = 0.0
+    MIN_REQUEST_INTERVAL_SECONDS = 5.25
+
     def __init__(self, client: JsonHttpClient, base_url: str) -> None:
         self.client = client
         self.base_url = base_url
 
+    def _wait_for_request_slot(self) -> None:
+        cls = type(self)
+        with cls._rate_lock:
+            now = time.monotonic()
+            delay = cls.MIN_REQUEST_INTERVAL_SECONDS - (now - cls._last_request_started)
+            if delay > 0:
+                time.sleep(delay)
+            cls._last_request_started = time.monotonic()
+
     def timeline(self, query: str, period: Period) -> list[float]:
+        self._wait_for_request_slot()
         payload = self.client.request_json(self.base_url, params={
             "query": query,
             "mode": "timelinevolraw",
