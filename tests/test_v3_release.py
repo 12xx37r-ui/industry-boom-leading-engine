@@ -11,6 +11,7 @@ from ible.v3_data_engine import _cached_source, source_signal
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 from ible.v3_dynamic_terms import discover_candidates
 from ible.v3_lag_bridge import build_lag_bridge
+from ible.v3_sec_nowcast import build_sec_nowcast
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -166,6 +167,21 @@ class V3ReleaseTests(unittest.TestCase):
         assert theme["available_proxy_source_count"] == 1
         assert theme["status"] == "PROXY_NOWCAST_PARTIAL"
         assert theme["source_status"]["usaspending"]["score_used"] is False
+
+    def test_sec_nowcast_uses_local_cache_and_rejects_future_filing(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            tmp_path = Path(temp_dir)
+            cache = tmp_path / "data_cache/latest"
+            cache.mkdir(parents=True)
+            (cache / "sec_filing_observations.json").write_text(json.dumps({"filings": [
+            {"theme_id": "AI", "filing_date": "2026-08-12", "mdna_text": "capital expenditure expansion plans", "capex": 120, "prior_capex": 100},
+            {"theme_id": "AI", "filing_date": "2026-08-13", "mdna_text": "capital expenditure"},
+            ]}), encoding="utf-8")
+            result = build_sec_nowcast(tmp_path, [{"theme_id": "AI"}], "2026-08-12")
+        assert result["status"] == "SEC_MDNA_CAPEX_OBSERVED"
+        assert result["observed_theme_count"] == 1
+        assert result["future_filing_rejected_count"] == 1
+        assert result["external_api_calls"] == 0
 
 
 if __name__ == "__main__":
