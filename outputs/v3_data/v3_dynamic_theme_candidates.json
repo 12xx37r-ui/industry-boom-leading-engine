@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "as_of": "2026-08-12",
-  "status": "CANDIDATES_FOUND",
-  "candidate_count": 10,
+  "status": "NO_QUALIFIED_CANDIDATES",
+  "candidate_count": 0,
   "auto_add_allowed": false,
   "promotion_rule": {
     "min_distinct_document_count": 2,
@@ -11,114 +11,13 @@
     "min_similarity": 0.15,
     "requires_human_review": true
   },
-  "candidates": [
-    {
-      "term": "ai drug",
-      "suggested_theme_id": "AI_DRUG_DISCOVERY",
-      "semantic_similarity_proxy": 0.3333,
-      "confidence": 100.0,
-      "distinct_document_count": 5,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "REVIEW_REQUIRED"
-    },
-    {
-      "term": "ai drug discovery",
-      "suggested_theme_id": "AI_DRUG_DISCOVERY",
-      "semantic_similarity_proxy": 0.5,
-      "confidence": 100.0,
-      "distinct_document_count": 5,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "REVIEW_REQUIRED"
-    },
-    {
-      "term": "among",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "billion",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 4,
-      "source_family_count": 2,
-      "period_count": 3,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "drug discovery",
-      "suggested_theme_id": "AI_DRUG_DISCOVERY",
-      "semantic_similarity_proxy": 0.3333,
-      "confidence": 100.0,
-      "distinct_document_count": 8,
-      "source_family_count": 2,
-      "period_count": 3,
-      "promotion_status": "REVIEW_REQUIRED"
-    },
-    {
-      "term": "drugs",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "funds",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "report",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "this",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 22,
-      "source_family_count": 2,
-      "period_count": 3,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "why",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 100.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "promotion_status": "NEW_THEME_REVIEW"
-    }
-  ],
+  "candidates": [],
   "input_path": "generated_from_openalex_gdelt_cached_documents",
-  "input_document_count": 30,
+  "input_document_count": 20,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
-    "selected_theme_count": 5,
-    "document_count": 30,
+    "selected_theme_count": 3,
+    "document_count": 20,
     "errors": [
       {
         "theme_id": "ADVANCED_PACKAGING_HBM",
@@ -129,19 +28,9 @@
         "theme_id": "AI_SEMICONDUCTORS",
         "source": "gdelt",
         "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-      },
-      {
-        "theme_id": "AUTONOMOUS_DRIVING",
-        "source": "gdelt",
-        "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
-      },
-      {
-        "theme_id": "COPPER_INFRASTRUCTURE",
-        "source": "gdelt",
-        "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
       }
     ],
     "lookback_days": 90
   },
-  "content_sha256": "061628d7e3a9af4d370542d5cfd13fe8b70b1f7737a624e0e92a406190e09a2f"
+  "content_sha256": "cad225c234293981bab7cef157389089126dee361324dce4b73c95e5e8f11a67"
 }

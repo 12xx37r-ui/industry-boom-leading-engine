@@ -36,7 +36,13 @@
       "as_of": "2026-08-02",
       "snapshot_sha256": "1a5a72dd7dbfdda1726023f97262a8310c0bb0e4408e598ad78d039780d1af14",
       "status": "AWAITING_FUTURE_OUTCOMES"
+    },
+    {
+      "snapshot_id": "2026-08-2026-08-02-6",
+      "as_of": "2026-08-02",
+      "snapshot_sha256": "802cbb1feafd26a4028ccf2d52aed9a1e5877afe29f7b95ec28daba6de4abf0a",
+      "status": "AWAITING_FUTURE_OUTCOMES"
     }
   ],
-  "content_sha256": "49fea0b8fc76d831ec5d506d531d17bd6b481926845a079111286f4a3d211e07"
+  "content_sha256": "04e6f0c04524e7cf337dd114f3c239d63e8e0fb1dc75f38e7c38df1708128255"
 }

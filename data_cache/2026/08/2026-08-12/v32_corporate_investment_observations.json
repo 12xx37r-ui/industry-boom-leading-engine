@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.2.0-github-corporate-investment",
   "as_of": "2026-08-12",
-  "captured_at": "2026-08-13T00:38:29+09:00",
+  "captured_at": "2026-08-13T00:43:28+09:00",
   "theme_count": 50,
   "source_provenance": {
     "aies_capex": {
@@ -3000,5 +3000,5 @@
       ]
     }
   ],
-  "content_sha256": "0de0a3fd53923aaf842783da093215904fc48b15a03c25c48301a5f38f02034f"
+  "content_sha256": "8830366d10d6711cc99cc296d8c17306f4dab348d2ff50d98d6462c0d5ce981e"
 }
