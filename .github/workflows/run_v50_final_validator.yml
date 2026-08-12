@@ -189,6 +189,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v3_data -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find historical_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine -type f -name '*.json' -print0 | xargs -0 -r git add -f --
