@@ -7,7 +7,7 @@
   "public_interest_coverage_percent": 98.0,
   "collection_metrics": {
     "network_requests": 1,
-    "cache_hits": 384,
+    "cache_hits": 385,
     "stale_cache_hits": 0,
     "cache_writes": 1,
     "enabled_sources": [
@@ -19,8 +19,8 @@
     "disabled_sources": []
   },
   "dynamic_discovery": {
-    "status": "NO_QUALIFIED_CANDIDATES",
-    "candidate_count": 0,
+    "status": "CANDIDATES_FOUND",
+    "candidate_count": 51,
     "auto_add_allowed": false
   },
   "model_lock": {

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "as_of": "2026-08-12",
-  "status": "NO_QUALIFIED_CANDIDATES",
-  "candidate_count": 0,
+  "status": "CANDIDATES_FOUND",
+  "candidate_count": 51,
   "auto_add_allowed": false,
   "promotion_rule": {
     "min_distinct_document_count": 2,
@@ -11,26 +11,526 @@
     "min_similarity": 0.15,
     "requires_human_review": true
   },
-  "candidates": [],
-  "input_path": "generated_from_openalex_gdelt_cached_documents",
-  "input_document_count": 20,
+  "candidates": [
+    {
+      "term": "both",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "challenge",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "framework",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 12,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "however",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "learning",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 7,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "model",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "performance",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "potential",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 5,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "structural",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "structure",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "study",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 6,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "such",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 100.0,
+      "distinct_document_count": 7,
+      "source_family_count": 2,
+      "period_count": 4,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "between",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "leading",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "leverage",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "limitation",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "propose",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "scale",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "within",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 98.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "large",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 90.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "multimodal",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 90.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "network",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 90.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "neural",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 90.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "property",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 90.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "response",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 86.0,
+      "distinct_document_count": 4,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "approach",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 78.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "array",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 78.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "image",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 78.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "molecule",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 78.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "novel",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 78.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "allow",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "benchmark",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "downstream",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "exhibit",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "fundamental",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "level",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "meaningful",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "neural network",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "pose",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "pre",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "predicting",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "prediction",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "reliance",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "representation",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "semantic",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "task",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "technique",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "training",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "tuning",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "upon",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    },
+    {
+      "term": "we propose",
+      "suggested_theme_id": null,
+      "semantic_similarity_proxy": 0.0,
+      "confidence": 70.0,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "promotion_status": "NEW_THEME_REVIEW"
+    }
+  ],
+  "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
+  "input_document_count": 16,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
     "selected_theme_count": 3,
-    "document_count": 20,
-    "errors": [
-      {
-        "theme_id": "ADVANCED_PACKAGING_HBM",
-        "source": "gdelt",
-        "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-      },
-      {
-        "theme_id": "AI_SEMICONDUCTORS",
-        "source": "gdelt",
-        "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-      }
-    ],
+    "document_count": 16,
+    "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "cad225c234293981bab7cef157389089126dee361324dce4b73c95e5e8f11a67"
+  "content_sha256": "96e0fe7a272e431c7c4e8b9ffa4cf6c49d82d06cf1e7a0a46f9552a2b26ae5ec"
 }
