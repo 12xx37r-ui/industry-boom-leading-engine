@@ -18,7 +18,16 @@ _STOPWORDS = {
     "among", "billion", "fund", "funds", "report", "this", "why", "also", "can",
     "could", "would", "should", "their", "there", "these", "those", "than",
     "more", "most", "less", "well", "using", "based", "new",
+    "both", "challenge", "framework", "however", "learning", "model", "performance",
+    "potential", "structural", "structure", "study", "such", "between", "leading",
+    "leverage", "limitation", "propose", "scale", "within", "large", "network",
+    "property", "response", "approach", "array", "image", "molecule", "novel",
+    "allow", "benchmark", "downstream", "exhibit", "fundamental", "level", "meaningful",
+    "pose", "predicting", "prediction", "reliance", "representation", "semantic", "task",
+    "technique", "training", "tuning", "upon", "pre", "we", "proposed", "show", "shows",
+    "result", "results", "method", "methods", "data", "paper", "article", "first", "two",
 }
+_SHORT_TECH_TERMS = {"ai", "hbm", "llm", "gpu", "cpu", "eda", "ev", "3d"}
 
 
 def _tokens(value: Any) -> list[str]:
@@ -29,7 +38,7 @@ def _tokens(value: Any) -> list[str]:
             token = token[:-3] + "y"
         elif token.endswith("s") and len(token) > 4 and not token.endswith("ss"):
             token = token[:-1]
-        if len(token) >= 2 and token not in _STOPWORDS:
+        if (len(token) >= 4 or token in _SHORT_TECH_TERMS) and token not in _STOPWORDS:
             result.append(token)
     return result
 
@@ -100,7 +109,10 @@ def discover_candidates(
             continue
         matches = sorted(((score, theme_id) for theme_id, words in vocabulary.items() if (score := _similarity(term, words)) >= min_similarity), reverse=True)
         best_similarity, best_theme_id = matches[0] if matches else (0.0, None)
-        confidence = min(100.0, 8.0 * document_count + 15.0 * source_count + 12.0 * period_count + 30.0 * best_similarity)
+        evidence_confidence = 10.0 * min(document_count, 10) + 10.0 * source_count + 8.0 * period_count
+        confidence = min(100.0, evidence_confidence + 30.0 * best_similarity)
+        if best_theme_id is None:
+            confidence = min(75.0, evidence_confidence)
         candidates.append({
             "term": term, "suggested_theme_id": best_theme_id,
             "semantic_similarity_proxy": round(best_similarity, 4), "confidence": round(confidence, 4),

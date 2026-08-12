@@ -11,7 +11,7 @@
     "min_source_families": 2,
     "min_periods": 2,
     "min_similarity": 0.15,
-    "max_candidates": 100
+    "max_candidates": 20
   },
   "auto_add_allowed": false,
   "note": "Candidates are review-only until independently confirmed; no automatic theme or NAICS mutation."
