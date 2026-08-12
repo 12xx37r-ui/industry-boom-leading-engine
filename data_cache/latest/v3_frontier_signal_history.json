@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-12",
+  "observations": {
+    "github:AI_DRUG_DISCOVERY:gfzhou/OpenVS": {
+      "stargazers_count": 70,
+      "observation_date": "2026-08-12"
+    },
+    "github:AI_DRUG_DISCOVERY:AstraZeneca/kgem-in-drug-discovery": {
+      "stargazers_count": 34,
+      "observation_date": "2026-08-12"
+    },
+    "github:AI_SEMICONDUCTORS:Alexzoofficial/T1C": {
+      "stargazers_count": 3,
+      "observation_date": "2026-08-12"
+    },
+    "github:AI_SEMICONDUCTORS:roboco-io/semiconductor-design": {
+      "stargazers_count": 1,
+      "observation_date": "2026-08-12"
+    }
+  },
+  "patent_counts": {}
+}
