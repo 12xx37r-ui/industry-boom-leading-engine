@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
 
 from ible.v3_collectors import OpenAlexCollector, Period, UsaSpendingCollector, comparison_periods
-from ible.v3_data_engine import source_signal
+from ible.v3_data_engine import _cached_source, source_signal
+from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +23,19 @@ class FakeClient:
     def request_json(self, url, **kwargs):
         self.calls.append((url, kwargs))
         return self.responses.pop(0)
+
+
+class CountingJsonClient(JsonHttpClient):
+    def __init__(self, settings, cache_dir):
+        super().__init__(settings, cache_dir=cache_dir)
+        self.network_calls = 0
+        self.fail = False
+
+    def _request_bytes(self, url, *, method, headers):
+        self.network_calls += 1
+        if self.fail:
+            raise HttpError("simulated outage")
+        return b'{"meta":{"count":7}}'
 
 
 def release_files() -> list[str]:
@@ -86,6 +101,32 @@ class V3ReleaseTests(unittest.TestCase):
         config = json.loads((ROOT / "config/v3_data_sources.json").read_text(encoding="utf-8"))
         self.assertTrue(config["rules"]["never_convert_phase1_signal_to_frozen_boom_score"])
         self.assertFalse(config["rules"]["investment_use_allowed"])
+
+    def test_http_cache_deduplicates_identical_requests(self):
+        with tempfile.TemporaryDirectory() as cache_dir:
+            client = CountingJsonClient(HttpSettings(max_attempts=1), cache_dir)
+            first = client.request_json("https://example.test/works", params={"q": "robotics"})
+            second = client.request_json("https://example.test/works", params={"q": "robotics"})
+            self.assertEqual(first, second)
+            self.assertEqual(client.network_calls, 1)
+            self.assertEqual(client.stats()["cache_hits"], 1)
+
+    def test_http_cache_returns_bounded_stale_value_on_outage(self):
+        with tempfile.TemporaryDirectory() as cache_dir:
+            settings = HttpSettings(max_attempts=1, cache_ttl_seconds=0, stale_if_error_seconds=3600)
+            client = CountingJsonClient(settings, cache_dir)
+            expected = client.request_json("https://example.test/works", params={"q": "robotics"})
+            client.fail = True
+            self.assertEqual(client.request_json("https://example.test/works", params={"q": "robotics"}), expected)
+            self.assertEqual(client.stats()["stale_cache_hits"], 1)
+
+    def test_historical_run_rejects_future_cache_fallback(self):
+        cache = {
+            "as_of": "2026-08-11",
+            "themes": [{"theme_id": "AI", "sources": {"openalex": {"as_of": "2026-08-11", "source_signal_score": 80}}}],
+        }
+        self.assertIsNone(_cached_source(cache, "AI", "openalex", "2026-08-01"))
+        self.assertIsNotNone(_cached_source(cache, "AI", "openalex", "2026-08-12"))
 
 
 if __name__ == "__main__":

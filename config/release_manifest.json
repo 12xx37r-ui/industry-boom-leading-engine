@@ -1,7 +1,8 @@
 {
   "schema_version": 7,
-  "release": "7.0.5-engine-only",
+  "release": "7.1.0-cached-nowcast-guarded",
   "file_count": 87,
+  "github_web_upload_limit_guard": 100,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
     "README.md",

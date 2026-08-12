@@ -99,15 +99,18 @@ class GdeltCollector:
             cls._last_request_started = time.monotonic()
 
     def timeline(self, query: str, period: Period) -> list[float]:
-        self._wait_for_request_slot()
-        payload = self.client.request_json(self.base_url, params={
+        params = {
             "query": query,
             "mode": "timelinevolraw",
             "format": "json",
             "startdatetime": period.start.strftime("%Y%m%d000000"),
             "enddatetime": (period.end + timedelta(days=1)).strftime("%Y%m%d000000"),
             "timelinesmooth": 0,
-        })
+        }
+        has_cache = getattr(self.client, "has_cached_json", lambda **kwargs: False)
+        if not has_cache(url=self.base_url, params=params):
+            self._wait_for_request_slot()
+        payload = self.client.request_json(self.base_url, params=params)
         points: list[float] = []
         def walk(value: Any) -> None:
             if isinstance(value, dict):
@@ -138,8 +141,13 @@ class WikimediaCollector:
     def timeline(self, titles: list[str], period: Period) -> list[float]:
         total_by_day: dict[str,float] = {}
         successful = 0
+        seen_titles: set[str] = set()
         for title in titles:
-            article = urllib.parse.quote(str(title).replace(" ","_"), safe="")
+            normalized_title = str(title).strip()
+            if not normalized_title or normalized_title in seen_titles:
+                continue
+            seen_titles.add(normalized_title)
+            article = urllib.parse.quote(normalized_title.replace(" ","_"), safe="")
             url = f"{self.base_url}/{article}/daily/{period.start.strftime('%Y%m%d')}00/{period.end.strftime('%Y%m%d')}00"
             try:
                 payload = self.client.request_json(url)

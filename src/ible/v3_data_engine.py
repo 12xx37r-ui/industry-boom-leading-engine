@@ -104,55 +104,87 @@ def _load_cache(root:Path)->dict[str,Any]|None:
     try: return load_json(p) if p.is_file() else None
     except Exception: return None
 
-def _cached_source(cache,theme_id,source):
+def _cached_source(cache,theme_id,source,as_of=None):
     for row in (cache or {}).get('themes') or []:
         if row.get('theme_id')==theme_id:
-            c=(row.get('sources') or {}).get(source); return c if isinstance(c,dict) else None
+            c=(row.get('sources') or {}).get(source)
+            if not isinstance(c,dict): return None
+            cached_as_of=str(c.get('as_of') or (cache or {}).get('as_of') or '')[:10]
+            if as_of and cached_as_of and cached_as_of > str(as_of)[:10]:
+                return None
+            return c
     return None
 
-def _collect_one(row, openalex, usaspending, gdelt, wikimedia, recent_period, prior_period, interest_period, cache, captured_at):
+def _cache_age_days(cached, as_of):
+    cached_as_of=str((cached or {}).get('as_of') or '')[:10]
+    if not cached_as_of or not as_of: return None
+    try:
+        return max(0, (date.fromisoformat(str(as_of)[:10]) - date.fromisoformat(cached_as_of)).days)
+    except ValueError:
+        return None
+
+def _unavailable_source(query, captured_at, as_of, reason, status='SOURCE_UNAVAILABLE'):
+    return {
+        'status': status,
+        'query': query,
+        'captured_at': captured_at,
+        'as_of': str(as_of),
+        'availability_reason': reason,
+        'source_signal_score': None,
+        'growth_score': None,
+        'growth_percent': None,
+        'recent_count': None,
+        'prior_count': None,
+    }
+
+def _collect_one(row, openalex, usaspending, gdelt, wikimedia, recent_period, prior_period, interest_period, cache, captured_at, as_of, enabled_sources):
     tid=str(row['theme_id']); sources={}; errors=[]
-    tasks=[
-      ('openalex',lambda:(openalex.count(str(row['openalex_search']),recent_period),openalex.count(str(row['openalex_search']),prior_period)),str(row['openalex_search']),'count'),
-      ('gdelt',lambda:gdelt.timeline(str(row['gdelt_query']),interest_period),str(row['gdelt_query']),'series'),
-      ('wikimedia',lambda:wikimedia.timeline(list(row['wikipedia_titles']),interest_period),list(row['wikipedia_titles']),'series'),
-    ]
+    tasks=[]
+    if enabled_sources.get('openalex') and openalex:
+        tasks.append(('openalex',lambda:(openalex.count(str(row['openalex_search']),recent_period),openalex.count(str(row['openalex_search']),prior_period)),str(row['openalex_search']),'count'))
+    if enabled_sources.get('gdelt') and gdelt:
+        tasks.append(('gdelt',lambda:gdelt.timeline(str(row['gdelt_query']),interest_period),str(row['gdelt_query']),'series'))
+    if enabled_sources.get('wikimedia') and wikimedia:
+        tasks.append(('wikimedia',lambda:wikimedia.timeline(list(row['wikipedia_titles']),interest_period),list(row['wikipedia_titles']),'series'))
+    task_names={item[0] for item in tasks}
+    for name in ('openalex','gdelt','wikimedia'):
+        if name not in task_names:
+            sources[name]=_unavailable_source(
+                str(row.get(name + '_search') or row.get(name + '_query') or row.get('wikipedia_titles') or []),
+                captured_at, as_of, 'SOURCE_DISABLED_BY_CONFIG', 'SOURCE_DISABLED'
+            )
     for name,call,query,kind in tasks:
         try:
             result=call(); metric=source_signal(*result) if kind=='count' else attention_signal(result)
-            sources[name]={"status":"LIVE_COLLECTED","query":query,"captured_at":captured_at,**metric}
+            sources[name]={"status":"LIVE_COLLECTED","query":query,"captured_at":captured_at,"as_of":str(as_of),**metric}
         except (HttpError,ValueError,TypeError) as exc:
-            cached=_cached_source(cache,tid,name)
+            cached=_cached_source(cache,tid,name,as_of)
             cached_usable = bool(cached) and (
                 cached.get('attention_score') is not None or
                 cached.get('source_signal_score') is not None or
                 cached.get('recent_30d_level') is not None
             )
             if cached_usable:
-                sources[name]={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500]}
+                sources[name]={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500],"cache_age_days":_cache_age_days(cached,as_of)}
             else:
-                sources[name]={"status":"SOURCE_UNAVAILABLE","query":query,"captured_at":captured_at,"source_signal_score":None,"growth_score":None,"growth_percent":None,"recent_count":None,"prior_count":None,"three_month_change_percent":None}
+                sources[name]=_unavailable_source(query,captured_at,as_of,str(exc)[:500])
+                sources[name]['three_month_change_percent']=None
             errors.append({"source":name,"error":str(exc)[:500]})
 
-    try:
+    if not enabled_sources.get('usaspending') or not usaspending:
+        sources['usaspending'] = _unavailable_source(list(row.get('usaspending_keywords') or []),captured_at,as_of,'SOURCE_DISABLED_BY_CONFIG','SOURCE_DISABLED')
+    else:
+      try:
         sources['usaspending'] = _collect_usaspending(row, usaspending, recent_period, prior_period, captured_at)
-    except (HttpError,ValueError,TypeError) as exc:
-        cached=_cached_source(cache,tid,'usaspending')
+        sources['usaspending']['as_of']=str(as_of)
+      except (HttpError,ValueError,TypeError) as exc:
+        cached=_cached_source(cache,tid,'usaspending',as_of)
         cached_usable = bool(cached) and cached.get('source_signal_score') is not None
         if cached_usable:
-            sources['usaspending']={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500]}
+            sources['usaspending']={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500],"cache_age_days":_cache_age_days(cached,as_of)}
         else:
-            sources['usaspending']={
-                "status":"SOURCE_UNAVAILABLE",
-                "query":list(row.get('usaspending_keywords') or []),
-                "query_mode":"SOURCE_UNAVAILABLE",
-                "captured_at":captured_at,
-                "source_signal_score":None,
-                "growth_score":None,
-                "growth_percent":None,
-                "recent_count":None,
-                "prior_count":None,
-            }
+            sources['usaspending'] = _unavailable_source(list(row.get('usaspending_keywords') or []),captured_at,as_of,str(exc)[:500])
+            sources['usaspending'].update({'query_mode':'SOURCE_UNAVAILABLE','proxy_naics_codes':list(row.get('usaspending_naics') or [])})
         errors.append({"source":'usaspending',"error":str(exc)[:500]})
     core=[sources[n] for n in ('openalex','usaspending') if sources[n].get('source_signal_score') is not None]
     return {"theme_id":tid,"theme_name":row['theme_name'],"sector":row['sector'],"data_build_priority":row['data_build_priority'],"status":"PHASE1_OBSERVED" if len(core)>=2 else ('PARTIAL_SOURCE' if core else 'NO_SOURCE_DATA'),"source_family_count":len(core),"phase1_data_signal_score":round(sum(float(x['source_signal_score']) for x in core)/len(core),4) if core else None,"public_interest_score":None,"public_interest_status":"PENDING_CROSS_SECTIONAL_NORMALIZATION","boom_score":None,"frozen_model_score_eligible":False,"sources":sources,"errors":errors,"limitations":["대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.","V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."]}
@@ -182,11 +214,31 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         enriched_themes.append(row)
     tz=ZoneInfo(str(cfg.get('timezone') or 'Asia/Seoul')); now=datetime.now(tz); today=date.fromisoformat(run_date) if run_date else now.date(); as_of=today-timedelta(days=1); captured_at=now.isoformat(timespec='seconds')
     recent,prior=comparison_periods(as_of,int(cfg['lookback_days'])); interest=three_attention_periods(as_of,int(cfg.get('public_interest_window_days',30))); interest_period=type(recent)(interest[2].start,interest[0].end)
-    net=cfg['network']; client=JsonHttpClient(HttpSettings(timeout_seconds=int(net['timeout_seconds']),max_attempts=int(net['max_attempts']),base_backoff_seconds=float(net['base_backoff_seconds']),user_agent=str(net['user_agent'])))
-    collectors=(OpenAlexCollector(client,cfg['sources']['openalex']['base_url']),UsaSpendingCollector(client,cfg['sources']['usaspending']['base_url']),GdeltCollector(client,cfg['sources']['gdelt']['base_url']),WikimediaCollector(client,cfg['sources']['wikimedia']['base_url']))
+    net=cfg['network']
+    cache_cfg=cfg.get('cache') or {}
+    client=JsonHttpClient(
+        HttpSettings(
+            timeout_seconds=int(net['timeout_seconds']),
+            max_attempts=int(net['max_attempts']),
+            base_backoff_seconds=float(net['base_backoff_seconds']),
+            user_agent=str(net['user_agent']),
+            min_interval_seconds=float(net.get('min_interval_seconds',0.20)),
+            cache_ttl_seconds=int(cache_cfg.get('ttl_seconds',21600)),
+            stale_if_error_seconds=int(cache_cfg.get('stale_if_error_seconds',604800)),
+        ),
+        cache_dir=root / str(cache_cfg.get('directory','data_cache/http/v3')),
+    )
+    enabled_sources={name:bool((item or {}).get('enabled',True)) for name,item in (cfg.get('sources') or {}).items()}
+    def collector(name, factory):
+        source=cfg['sources'][name]
+        return factory(source['base_url']) if enabled_sources.get(name) else None
+    openalex=collector('openalex',lambda url:OpenAlexCollector(client,url))
+    usaspending=collector('usaspending',lambda url:UsaSpendingCollector(client,url))
+    gdelt=collector('gdelt',lambda url:GdeltCollector(client,url))
+    wikimedia=collector('wikimedia',lambda url:WikimediaCollector(client,url))
     cache=_load_cache(root); rows=[]
     with ThreadPoolExecutor(max_workers=int(net['max_workers'])) as ex:
-        futs=[ex.submit(_collect_one,row,*collectors,recent,prior,interest_period,cache,captured_at) for row in enriched_themes]
+        futs=[ex.submit(_collect_one,row,openalex,usaspending,gdelt,wikimedia,recent,prior,interest_period,cache,captured_at,as_of,enabled_sources) for row in enriched_themes]
         for f in as_completed(futs): rows.append(f.result())
     rows.sort(key=lambda x:(int(x['data_build_priority']),str(x['theme_id'])))
     for source in ('gdelt','wikimedia'):
@@ -203,9 +255,13 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
             row['public_interest_status']='LIVE_OR_CACHED_OBSERVED'
         else:
             row['public_interest_score']=50.0; row['public_interest_momentum_3m']=0.0; row['public_interest_status']='NEUTRAL_FALLBACK_SOURCE_UNAVAILABLE'
-    obs={"schema_version":2,"engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"captured_at":captured_at,"theme_count":len(rows),"source_provenance":cfg['sources'],"investment_use_allowed":False,"themes":rows}; obs['content_sha256']=canonical_sha256(obs)
+    collection_metrics=client.stats()
+    collection_metrics['enabled_sources']=[name for name,enabled in enabled_sources.items() if enabled]
+    collection_metrics['disabled_sources']=[name for name,enabled in enabled_sources.items() if not enabled]
+    obs={"schema_version":3,"engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"captured_at":captured_at,"theme_count":len(rows),"source_provenance":cfg['sources'],"collection_metrics":collection_metrics,"investment_use_allowed":False,"themes":rows}; obs['content_sha256']=canonical_sha256(obs)
     public_count=sum(1 for r in rows if r['public_interest_status']=='LIVE_OR_CACHED_OBSERVED')
-    summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"model_lock":model_lock,"investment_use_allowed":False}
-    output_dir.mkdir(parents=True,exist_ok=True); write_json(output_dir/'v3_run_summary.json',summary); write_json(output_dir/'v3_source_observations.json',obs); write_json(output_dir/'v3_data_source_health.json',{"status":"SOURCE_HEALTH_RECORDED","as_of":as_of.isoformat(),"public_interest_observed":public_count}); write_json(output_dir/'v3_model_lock_verification.json',model_lock); write_json(output_dir/'v3_next_gate.json',{"status":"V7_CORE_DATA_READY","investment_use_allowed":False})
+    summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"collection_metrics":collection_metrics,"model_lock":model_lock,"investment_use_allowed":False}
+    source_health={"status":"SOURCE_HEALTH_RECORDED","as_of":as_of.isoformat(),"public_interest_observed":public_count,"collection_metrics":collection_metrics,"sources":{name:{"enabled":enabled_sources.get(name,False),"live_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='LIVE_COLLECTED'),"cache_fallback_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='CACHE_FALLBACK'),"unavailable_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status') in {'SOURCE_UNAVAILABLE','SOURCE_DISABLED'})} for name in ('openalex','usaspending','gdelt','wikimedia')}}
+    output_dir.mkdir(parents=True,exist_ok=True); write_json(output_dir/'v3_run_summary.json',summary); write_json(output_dir/'v3_source_observations.json',obs); write_json(output_dir/'v3_data_source_health.json',source_health); write_json(output_dir/'v3_model_lock_verification.json',model_lock); write_json(output_dir/'v3_next_gate.json',{"status":"V7_CORE_DATA_READY","investment_use_allowed":False})
     write_json(root/'data_cache/latest/v3_source_observations.json',obs); write_json(root/'data_cache'/f'{as_of.year:04d}'/f'{as_of.month:02d}'/as_of.isoformat()/'v3_source_observations.json',obs)
     return summary
