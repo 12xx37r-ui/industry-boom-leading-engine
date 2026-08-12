@@ -35,7 +35,7 @@
             "open_issues_count": 12,
             "pushed_at": "2024-12-16",
             "updated_at": "2026-06-12",
-            "star_delta_percent": null,
+            "star_delta_percent": 0.0,
             "observation_date": "2026-08-12"
           },
           {
@@ -47,7 +47,7 @@
             "open_issues_count": 2,
             "pushed_at": "2026-01-08",
             "updated_at": "2025-07-11",
-            "star_delta_percent": null,
+            "star_delta_percent": 0.0,
             "observation_date": "2026-08-12"
           }
         ]
@@ -69,7 +69,7 @@
             "open_issues_count": 0,
             "pushed_at": "2026-04-07",
             "updated_at": "2026-06-04",
-            "star_delta_percent": null,
+            "star_delta_percent": 0.0,
             "observation_date": "2026-08-12"
           },
           {
@@ -81,7 +81,7 @@
             "open_issues_count": 3,
             "pushed_at": "2026-07-14",
             "updated_at": "2026-07-14",
-            "star_delta_percent": null,
+            "star_delta_percent": 0.0,
             "observation_date": "2026-08-12"
           }
         ]
@@ -93,33 +93,54 @@
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "theme_name": "첨단 패키징·HBM",
       "patentsview": {
-        "status": "WAITING_FOR_PATENTSVIEW_API_KEY",
+        "status": "OPENALEX_PROXY_OBSERVED",
         "query": "high bandwidth memory advanced semiconductor packaging",
         "patent_count": null,
-        "external_call_allowed": false,
-        "reason": "PATENTSVIEW_API_KEY or USPTO_API_KEY is not configured"
+        "related_work_count": 803,
+        "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS",
+        "observation_date": "2026-08-12",
+        "external_call_allowed": true,
+        "provider_chain": [
+          "google_patents",
+          "uspto_bulk_cache",
+          "openalex_proxy"
+        ]
       }
     },
     {
       "theme_id": "AI_DRUG_DISCOVERY",
       "theme_name": "AI 신약개발",
       "patentsview": {
-        "status": "WAITING_FOR_PATENTSVIEW_API_KEY",
+        "status": "OPENALEX_PROXY_OBSERVED",
         "query": "artificial intelligence drug discovery",
         "patent_count": null,
-        "external_call_allowed": false,
-        "reason": "PATENTSVIEW_API_KEY or USPTO_API_KEY is not configured"
+        "related_work_count": 37494,
+        "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS",
+        "observation_date": "2026-08-12",
+        "external_call_allowed": true,
+        "provider_chain": [
+          "google_patents",
+          "uspto_bulk_cache",
+          "openalex_proxy"
+        ]
       }
     },
     {
       "theme_id": "AI_SEMICONDUCTORS",
       "theme_name": "AI 반도체",
       "patentsview": {
-        "status": "WAITING_FOR_PATENTSVIEW_API_KEY",
+        "status": "OPENALEX_PROXY_OBSERVED",
         "query": "AI semiconductor accelerators",
         "patent_count": null,
-        "external_call_allowed": false,
-        "reason": "PATENTSVIEW_API_KEY or USPTO_API_KEY is not configured"
+        "related_work_count": 1845,
+        "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS",
+        "observation_date": "2026-08-12",
+        "external_call_allowed": true,
+        "provider_chain": [
+          "google_patents",
+          "uspto_bulk_cache",
+          "openalex_proxy"
+        ]
       }
     }
   ],
@@ -147,5 +168,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "15a9b11a3259aeb2a675f8f83409f3cd00a84497038ddd7f860f217bc554347f"
+  "content_sha256": "6f3b8ea85bece5fa67e33101b3c883686ea87b3100991215992c52797c729782"
 }
