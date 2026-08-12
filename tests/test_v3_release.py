@@ -9,6 +9,7 @@ from pathlib import Path
 from ible.v3_collectors import OpenAlexCollector, Period, UsaSpendingCollector, comparison_periods
 from ible.v3_data_engine import _cached_source, source_signal
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
+from ible.v3_dynamic_terms import discover_candidates
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -127,6 +128,17 @@ class V3ReleaseTests(unittest.TestCase):
         }
         self.assertIsNone(_cached_source(cache, "AI", "openalex", "2026-08-01"))
         self.assertIsNotNone(_cached_source(cache, "AI", "openalex", "2026-08-12"))
+
+    def test_dynamic_candidates_require_independent_repeated_evidence(self):
+        themes = [{"theme_id": "AI", "theme_name": "artificial intelligence", "openalex_search": "artificial intelligence", "gdelt_query": "AI"}]
+        documents = [
+            {"document_id": "a", "source": "openalex", "captured_at": "2026-07-01", "text": "artificial intelligence hbm accelerator"},
+            {"document_id": "b", "source": "gdelt", "captured_at": "2026-08-01", "text": "artificial intelligence hbm accelerator"},
+        ]
+        report = discover_candidates(documents, themes, "2026-08-12", min_similarity=0.01)
+        self.assertEqual(report["status"], "CANDIDATES_FOUND")
+        self.assertFalse(report["auto_add_allowed"])
+        self.assertIn("hbm", [row["term"] for row in report["candidates"]])
 
 
 if __name__ == "__main__":
