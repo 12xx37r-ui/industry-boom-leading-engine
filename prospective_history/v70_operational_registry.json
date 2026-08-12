@@ -6,7 +6,13 @@
       "as_of": "2026-08-02",
       "snapshot_sha256": "82b5831b9ab11dadfaebcc4d53adea17f9eb1bcbde070d5bf89b8236137a7d76",
       "status": "AWAITING_FUTURE_OUTCOMES"
+    },
+    {
+      "snapshot_id": "2026-08-2026-08-02",
+      "as_of": "2026-08-02",
+      "snapshot_sha256": "d7f7aee6a5ec65ccb5605089b28dde38fef517844ada8f7d70b4fe59770aab5e",
+      "status": "AWAITING_FUTURE_OUTCOMES"
     }
   ],
-  "content_sha256": "0ac6c889261732ecbc21693aba34f45b8fb2516ee8aed7f0145734fb7924a9fc"
+  "content_sha256": "918cdede1ad64666a278d272f0cfc22b1ed0a7d7f8a6e01b4e740a7f842ba412"
 }
