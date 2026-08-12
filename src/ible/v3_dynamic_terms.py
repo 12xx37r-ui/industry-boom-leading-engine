@@ -26,6 +26,8 @@ _STOPWORDS = {
     "pose", "predicting", "prediction", "reliance", "representation", "semantic", "task",
     "technique", "training", "tuning", "upon", "pre", "we", "proposed", "show", "shows",
     "result", "results", "method", "methods", "data", "paper", "article", "first", "two",
+    "multimodal", "neural", "transformer", "embedding", "algorithm", "architecture",
+    "optimization", "inference", "dataset", "latent", "vision", "language", "text",
 }
 _SHORT_TECH_TERMS = {"ai", "hbm", "llm", "gpu", "cpu", "eda", "ev", "3d"}
 
