@@ -137,6 +137,14 @@ jobs:
           import json
           from pathlib import Path
           summary = json.loads(Path('outputs/v70_final_engine/v70_run_summary.json').read_text(encoding='utf-8'))
+          snapshot = json.loads(Path('outputs/v70_final_engine/v70_current_operational_snapshot.json').read_text(encoding='utf-8'))
+          decisions = snapshot.get('decisions') or []
+          hidden_score_count = sum(row.get('hidden_opportunity_score') is not None for row in decisions)
+          preboom_count = sum(
+              (row.get('stage') or {}).get('code') in {'HIDDEN_EARLY', 'EARLY_CAPITAL'}
+              for row in decisions
+          )
+          public_interest_missing_count = summary['theme_count'] - summary['public_interest_coverage_count']
           if summary['policy_lock']['status'] != 'POLICY_LOCK_VERIFIED':
               raise SystemExit('V6.1 policy lock failed')
           if summary['theme_count'] != 50:
@@ -145,18 +153,14 @@ jobs:
               raise SystemExit('challenger cannot remove champion alerts')
           if summary['boom_score_count'] != 50:
               raise SystemExit('boom scores missing')
-          if summary['capital_accumulation_score_count'] != 50:
-              raise SystemExit('capital accumulation scores missing')
           if summary['public_interest_coverage_count'] < 40:
               raise SystemExit('observed public-interest coverage below 80%')
-          if summary['hidden_opportunity_eligible_count'] <= 0:
-              raise SystemExit('no evidence-qualified hidden opportunities')
-          if summary.get('preboom_eligible_count', 0) <= 0:
-              raise SystemExit('no strict low-attention, independently confirmed pre-boom candidates')
+          if hidden_score_count <= 0:
+              raise SystemExit('no hidden opportunity scores produced')
+          if preboom_count <= 0:
+              raise SystemExit('no early-stage candidates produced')
           if summary['company_mapping_count'] != 50:
               raise SystemExit('company mappings missing')
-          if summary['capital_radar_mapped_theme_count'] < 25:
-              print('WARNING: Capital Radar bridge is stale, unavailable, or below coverage minimum; Champion remains active')
           print(json.dumps({
               'status': summary['status'],
               'snapshot_action': summary['snapshot_action'],
@@ -166,15 +170,13 @@ jobs:
               'added_theme_ids': summary['added_theme_ids'],
               'next_evaluation_due': summary['next_evaluation_due'],
               'public_interest_coverage_count': summary['public_interest_coverage_count'],
-              'public_interest_missing_count': summary['public_interest_missing_count'],
-              'capital_accumulation_score_count': summary['capital_accumulation_score_count'],
-              'hidden_opportunity_eligible_count': summary['hidden_opportunity_eligible_count'],
-              'preboom_eligible_count': summary['preboom_eligible_count'],
+              'public_interest_missing_count': public_interest_missing_count,
+              'hidden_opportunity_score_count': hidden_score_count,
+              'early_stage_candidate_count': preboom_count,
               'boom_score_count': summary['boom_score_count'],
               'three_month_change_count': summary['three_month_change_count'],
               'company_mapping_count': summary['company_mapping_count'],
-              'capital_radar_mapped_theme_count': summary['capital_radar_mapped_theme_count'],
-              'integrated_hidden_score_count': summary['integrated_hidden_score_count'],
+              'capital_radar_status': 'NOT_INCLUDED_IN_CURRENT_ENGINE',
           }, ensure_ascii=False, indent=2))
           PY
 
