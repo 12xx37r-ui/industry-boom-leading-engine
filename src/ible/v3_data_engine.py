@@ -12,6 +12,7 @@ from ible.model_lock import load_and_verify_model_lock
 from ible.v3_collectors import ArxivCollector, OpenAlexCollector, UsaSpendingCollector, GdeltCollector, WikimediaCollector, comparison_periods, three_attention_periods
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 from ible.v3_dynamic_terms import build_dynamic_discovery_report, collect_dynamic_documents, discover_candidates, write_dynamic_discovery_report
+from ible.v3_lag_bridge import build_lag_bridge, write_lag_bridge
 
 class V3DataError(RuntimeError): pass
 
@@ -283,8 +284,17 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
     write_dynamic_discovery_report(root, output_dir, dynamic_report)
     obs["dynamic_discovery"] = {"status": dynamic_report["status"], "candidate_count": dynamic_report["candidate_count"], "auto_add_allowed": False}
     obs['content_sha256']=canonical_sha256(obs)
+    lag_bridge = build_lag_bridge(obs, as_of.isoformat())
+    write_lag_bridge(root, output_dir, lag_bridge)
+    obs["lag_bridge"] = {
+        "status": lag_bridge["status"],
+        "nowcast_active_theme_count": lag_bridge["nowcast_active_theme_count"],
+        "future_data_rejected_count": lag_bridge["future_data_rejected_count"],
+        "official_statistics_replaced": False,
+    }
+    obs['content_sha256']=canonical_sha256(obs)
     public_count=sum(1 for r in rows if r['public_interest_status']=='LIVE_OR_CACHED_OBSERVED')
-    summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"collection_metrics":collection_metrics,"dynamic_discovery":{"status":dynamic_report["status"],"candidate_count":dynamic_report["candidate_count"],"auto_add_allowed":False},"model_lock":model_lock,"investment_use_allowed":False}
+    summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"collection_metrics":collection_metrics,"dynamic_discovery":{"status":dynamic_report["status"],"candidate_count":dynamic_report["candidate_count"],"auto_add_allowed":False},"lag_bridge":{"status":lag_bridge["status"],"nowcast_active_theme_count":lag_bridge["nowcast_active_theme_count"],"future_data_rejected_count":lag_bridge["future_data_rejected_count"],"official_statistics_replaced":False},"model_lock":model_lock,"investment_use_allowed":False}
     source_health={"status":"SOURCE_HEALTH_RECORDED","as_of":as_of.isoformat(),"public_interest_observed":public_count,"collection_metrics":collection_metrics,"sources":{name:{"enabled":enabled_sources.get(name,False),"live_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='LIVE_COLLECTED'),"cache_fallback_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='CACHE_FALLBACK'),"unavailable_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status') in {'SOURCE_UNAVAILABLE','SOURCE_DISABLED'})} for name in ('openalex','usaspending','gdelt','wikimedia')}}
     output_dir.mkdir(parents=True,exist_ok=True); write_json(output_dir/'v3_run_summary.json',summary); write_json(output_dir/'v3_source_observations.json',obs); write_json(output_dir/'v3_data_source_health.json',source_health); write_json(output_dir/'v3_model_lock_verification.json',model_lock); write_json(output_dir/'v3_next_gate.json',{"status":"V7_CORE_DATA_READY","investment_use_allowed":False})
     write_json(root/'data_cache/latest/v3_source_observations.json',obs); write_json(root/'data_cache'/f'{as_of.year:04d}'/f'{as_of.month:02d}'/as_of.isoformat()/'v3_source_observations.json',obs)

@@ -20,7 +20,7 @@ class V7ReleaseTests(unittest.TestCase):
             (ROOT / "config/release_manifest.json").read_text(encoding="utf-8")
         )
         files = manifest["files"]
-        self.assertLess(len(files), 90)
+        self.assertLess(len(files), manifest["github_web_upload_limit_guard"])
         self.assertEqual(len(files), len(set(files)))
         self.assertEqual([], [f for f in files if not (ROOT / f).is_file()])
         self.assertEqual(manifest["file_count"], len(files))

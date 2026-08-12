@@ -10,6 +10,7 @@ from ible.v3_collectors import OpenAlexCollector, Period, UsaSpendingCollector, 
 from ible.v3_data_engine import _cached_source, source_signal
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 from ible.v3_dynamic_terms import discover_candidates
+from ible.v3_lag_bridge import build_lag_bridge
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -139,6 +140,22 @@ class V3ReleaseTests(unittest.TestCase):
         self.assertEqual(report["status"], "CANDIDATES_FOUND")
         self.assertFalse(report["auto_add_allowed"])
         self.assertIn("hbm", [row["term"] for row in report["candidates"]])
+        self.assertNotIn("this", [row["term"] for row in report["candidates"]])
+        self.assertNotIn("neural", [row["term"] for row in report["candidates"]])
+        self.assertNotIn("multimodal", [row["term"] for row in report["candidates"]])
+        self.assertNotIn("artificial intelligence", [row["term"] for row in report["candidates"]])
+        self.assertTrue(all(row["confidence"] < 100 for row in report["candidates"]))
+
+    def test_lag_bridge_rejects_future_proxy_and_keeps_official_data_locked(self):
+        observations = {"themes": [{"theme_id": "AI", "sources": {
+            "openalex": {"as_of": "2026-08-12", "source_signal_score": 70},
+            "usaspending": {"as_of": "2026-08-12", "source_signal_score": 60},
+            "gdelt": {"as_of": "2026-08-13", "attention_score": 90},
+        }}]}
+        bridge = build_lag_bridge(observations, "2026-08-12")
+        assert bridge["future_data_rejected_count"] == 1
+        assert bridge["official_statistics_replaced"] is False
+        assert bridge["lookahead_guard"] == "FUTURE_DATA_REJECTED"
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 {
   "schema_version": 7,
   "release": "7.1.0-cached-nowcast-guarded",
-  "file_count": 89,
+  "file_count": 90,
   "github_web_upload_limit_guard": 100,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
@@ -67,6 +67,7 @@
     "src/ible/v3_collectors.py",
     "src/ible/v3_data_cli.py",
     "src/ible/v3_data_engine.py",
+    "src/ible/v3_lag_bridge.py",
     "src/ible/v3_dynamic_terms.py",
     "src/ible/v3_http.py",
     "src/ible/v40_cli.py",
