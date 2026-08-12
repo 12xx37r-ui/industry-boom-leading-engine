@@ -42,6 +42,12 @@
     "patent_query_count": 3,
     "investment_use_allowed": false
   },
+  "hiring_nowcast": {
+    "status": "WAITING_FOR_LOCAL_HIRING_CACHE",
+    "observed_theme_count": 0,
+    "future_observation_rejected_count": 0,
+    "investment_use_allowed": false
+  },
   "model_lock": {
     "status": "LOCK_VERIFIED",
     "lock_schema_version": 3,
