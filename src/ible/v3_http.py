@@ -218,9 +218,29 @@ class JsonHttpClient:
         method: str = "GET",
         params: dict[str, Any] | None = None,
         accept: str = "text/csv,text/plain,*/*",
+        cache_ttl_seconds: int | None = None,
     ) -> str:
         if params:
             encoded = urllib.parse.urlencode(params, doseq=True)
             url = f"{url}{'&' if '?' in url else '?'}{encoded}"
-        raw = self.request_bytes(url, method=method, accept=accept)
-        return raw.decode("utf-8-sig", errors="replace")
+        cache_path = self._cache_path(url, method=method, payload=None)
+        with self._cache_lock_for(cache_path):
+            fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
+            stale_ttl = max(fresh_ttl, self.settings.stale_if_error_seconds)
+            fresh_raw, _ = self._read_cache(cache_path, fresh_ttl)
+            if fresh_raw is not None:
+                self._increment("cache_hits")
+                return fresh_raw.decode("utf-8-sig", errors="replace")
+            try:
+                raw = self._request_bytes(url, method=method, headers={
+                    "Accept": accept,
+                    "User-Agent": self.settings.user_agent,
+                })
+            except HttpError:
+                stale_raw, is_stale = self._read_cache(cache_path, stale_ttl)
+                if stale_raw is None or not is_stale:
+                    raise
+                self._increment("stale_cache_hits")
+                return stale_raw.decode("utf-8-sig", errors="replace")
+            self._write_cache(cache_path, raw)
+            return raw.decode("utf-8-sig", errors="replace")

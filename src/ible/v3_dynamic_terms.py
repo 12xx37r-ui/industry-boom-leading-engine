@@ -135,7 +135,7 @@ def build_dynamic_discovery_report(root: Path, themes: list[dict[str, Any]], as_
 
 
 def collect_dynamic_documents(
-    openalex: Any, gdelt: Any, themes: list[dict[str, Any]], as_of: str,
+    openalex: Any, gdelt: Any, themes: list[dict[str, Any]], as_of: str, arxiv: Any = None,
     *, max_theme_queries: int = 5, documents_per_source: int = 5, lookback_days: int = 90,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Collect a small, cached text sample for frontier-term discovery."""
@@ -151,7 +151,14 @@ def collect_dynamic_documents(
                 documents.extend(openalex.documents(str(row.get("openalex_search") or ""), period, documents_per_source))
             except Exception as exc:
                 errors.append({"theme_id": theme_id, "source": "openalex", "error": str(exc)[:300]})
-        if gdelt:
+        if arxiv:
+            try:
+                documents.extend(arxiv.documents(str(row.get("openalex_search") or ""), period, documents_per_source))
+            except Exception as exc:
+                errors.append({"theme_id": theme_id, "source": "arxiv", "error": str(exc)[:300]})
+    if len({str(document.get("source")) for document in documents}) < 2 and gdelt:
+        for row in selected:
+            theme_id = str(row.get("theme_id") or "")
             try:
                 documents.extend(gdelt.documents(str(row.get("gdelt_query") or ""), period, documents_per_source))
             except Exception as exc:

@@ -6,6 +6,7 @@ from typing import Any
 import urllib.parse
 import threading
 import time
+import xml.etree.ElementTree as ET
 
 from ible.v3_http import JsonHttpClient
 
@@ -67,6 +68,41 @@ class OpenAlexCollector:
                     "source": "openalex",
                     "captured_at": str(row.get("publication_date") or period.end.isoformat()),
                     "text": text,
+                })
+        return documents
+
+
+class ArxivCollector:
+    BASE_URL = "https://export.arxiv.org/api/query"
+    NS = {"atom": "http://www.w3.org/2005/Atom"}
+
+    def __init__(self, client: JsonHttpClient, base_url: str = BASE_URL) -> None:
+        self.client = client
+        self.base_url = base_url
+
+    def documents(self, query: str, period: Period, limit: int = 5) -> list[dict[str, Any]]:
+        clean_query = str(query).replace('"', "")
+        text = self.client.request_text(self.base_url, params={
+            "search_query": f'all:"{clean_query}"',
+            "start": 0,
+            "max_results": max(1, min(25, int(limit))),
+            "sortBy": "submittedDate",
+            "sortOrder": "descending",
+        }, accept="application/atom+xml,application/xml,text/xml,*/*", cache_ttl_seconds=86400)
+        root = ET.fromstring(text)
+        documents = []
+        for entry in root.findall("atom:entry", self.NS):
+            title = " ".join((entry.findtext("atom:title", "", self.NS) or "").split())
+            abstract = " ".join((entry.findtext("atom:summary", "", self.NS) or "").split())
+            published = (entry.findtext("atom:published", "", self.NS) or "")[:10]
+            identifier = entry.findtext("atom:id", "", self.NS) or title
+            text_value = " ".join(value for value in (title, abstract) if value)
+            if text_value:
+                documents.append({
+                    "document_id": identifier,
+                    "source": "arxiv",
+                    "captured_at": published or period.end.isoformat(),
+                    "text": text_value,
                 })
         return documents
 
