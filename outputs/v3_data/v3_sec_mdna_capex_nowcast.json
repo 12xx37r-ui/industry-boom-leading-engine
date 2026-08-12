@@ -1,0 +1,514 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-12",
+  "status": "WAITING_FOR_SEC_FILING_CACHE",
+  "theme_count": 50,
+  "observed_theme_count": 0,
+  "future_filing_rejected_count": 0,
+  "input_path": null,
+  "external_api_calls": 0,
+  "investment_use_allowed": false,
+  "themes": [
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "status": "NO_SEC_FILING_CACHE",
+      "filing_date": null,
+      "sec_nowcast_score": null,
+      "evidence": {},
+      "filing_count": 0,
+      "lookahead_guard": "PASSED",
+      "investment_use_allowed": false
+    }
+  ],
+  "content_sha256": "5c2266e0825ce56aa65b3654a793ff13a13161b26b4e1b30e25a4c20b4e43de7"
+}

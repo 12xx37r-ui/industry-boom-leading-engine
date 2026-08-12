@@ -29,6 +29,12 @@
     "future_data_rejected_count": 0,
     "official_statistics_replaced": false
   },
+  "sec_mdna_capex_nowcast": {
+    "status": "WAITING_FOR_SEC_FILING_CACHE",
+    "observed_theme_count": 0,
+    "future_filing_rejected_count": 0,
+    "external_api_calls": 0
+  },
   "model_lock": {
     "status": "LOCK_VERIFIED",
     "lock_schema_version": 3,
