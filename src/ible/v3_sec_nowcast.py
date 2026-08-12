@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 SEC_USER_AGENT = "IndustryBoomLeadingEngine p783004@naver.com"
 
 
-def process_sec_mdna_capex(
+def ingest_sec_companyfacts(
     as_of: str,
     cache_dir: Path,
     sec_cik_map: Optional[Dict[str, str]] = None
@@ -78,3 +78,25 @@ def process_sec_mdna_capex(
             "user_agent_used": SEC_USER_AGENT,
             "filings": []
         }
+
+
+def build_sec_nowcast(
+    as_of: str,
+    cache_dir: Path,
+    sec_cik_map: Optional[Dict[str, str]] = None
+) -> Dict[str, Any]:
+    return ingest_sec_companyfacts(as_of=as_of, cache_dir=cache_dir, sec_cik_map=sec_cik_map)
+
+
+def write_sec_nowcast(data: Dict[str, Any], output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def process_sec_mdna_capex(
+    as_of: str,
+    cache_dir: Path,
+    sec_cik_map: Optional[Dict[str, str]] = None
+) -> Dict[str, Any]:
+    return build_sec_nowcast(as_of=as_of, cache_dir=cache_dir, sec_cik_map=sec_cik_map)
