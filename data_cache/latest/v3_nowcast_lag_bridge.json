@@ -1,0 +1,1664 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-12",
+  "status": "PROXY_NOWCAST_ACTIVE",
+  "theme_count": 50,
+  "nowcast_active_theme_count": 50,
+  "future_data_rejected_count": 0,
+  "official_statistics_replaced": false,
+  "investment_use_allowed": false,
+  "lookahead_guard": "PASSED",
+  "themes": [
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.6268,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 57.0038,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.557,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 45.7996,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 52.9232,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 50.6192,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 56.1932,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 52.1625,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 52.7732,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 49.3645,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 59.128,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 50.4875,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.2174,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 54.0823,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 54.8466,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 50.2392,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 49.1586,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 49.6911,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 54.0251,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 42.8496,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 50.8319,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 42.1656,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 41.1187,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 54.557,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 51.223,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 44.98,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 51.343,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 54.7311,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.8899,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 55.3004,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.6937,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 51.2914,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 52.3091,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 52.823,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 47.9834,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.3061,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 51.4322,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 52.1064,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 49.3847,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 46.1412,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 48.0725,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 53.2104,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 48.2691,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "CACHE_FALLBACK",
+          "freshness": "UNKNOWN_VINTAGE",
+          "lag_days": null,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 58.7693,
+      "available_proxy_source_count": 2,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 57.0118,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 46.6595,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 54.2241,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 51.9319,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 56.225,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 49.1761,
+      "available_proxy_source_count": 3,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
+          "status": "SOURCE_UNAVAILABLE",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": false
+        },
+        "wikimedia": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    }
+  ],
+  "content_sha256": "d1a7b5d939bcd5f780b81ec8578a2674c1d93fb70e445f8073462336d2243586"
+}

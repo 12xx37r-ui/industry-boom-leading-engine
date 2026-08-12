@@ -23,6 +23,12 @@
     "candidate_count": 0,
     "auto_add_allowed": false
   },
+  "lag_bridge": {
+    "status": "PROXY_NOWCAST_ACTIVE",
+    "nowcast_active_theme_count": 50,
+    "future_data_rejected_count": 0,
+    "official_statistics_replaced": false
+  },
   "model_lock": {
     "status": "LOCK_VERIFIED",
     "lock_schema_version": 3,
