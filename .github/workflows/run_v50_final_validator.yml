@@ -81,6 +81,7 @@ jobs:
           test -s outputs/v3_data/v3_dynamic_theme_candidates.json || { echo "::error::Updated V3 engine was not applied; v3_dynamic_theme_candidates.json is missing"; exit 1; }
           test -s outputs/v3_data/v3_sec_mdna_capex_nowcast.json || { echo "::error::SEC MD&A/CAPEX nowcast output is missing"; exit 1; }
           test -s outputs/v3_data/v3_frontier_signal_observations.json || { echo "::error::GitHub/USPTO frontier signal output is missing"; exit 1; }
+          test -s outputs/v3_data/v3_hiring_nowcast.json || { echo "::error::Hiring nowcast output is missing"; exit 1; }
           run_stage 480 "V3.1 real economy" python -m ible.v31_cli --root . --output-dir outputs/v31_real_economy --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 300 "V3.2 corporate investment" python -m ible.v32_cli --root . --output-dir outputs/v32_investment --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 180 "V3.3 integration" python -m ible.v33_cli --root . --output-dir outputs/v33_auto --run-date "${{ steps.vars.outputs.run_date }}"
