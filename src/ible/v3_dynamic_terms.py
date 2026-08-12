@@ -15,12 +15,23 @@ _STOPWORDS = {
     "into", "is", "of", "on", "or", "the", "to", "with", "all", "new",
     "based", "using", "technology", "technologies", "system", "systems",
     "industry", "industries", "research", "development", "market", "global",
+    "among", "billion", "fund", "funds", "report", "this", "why", "also", "can",
+    "could", "would", "should", "their", "there", "these", "those", "than",
+    "more", "most", "less", "well", "using", "based", "new",
 }
 
 
 def _tokens(value: Any) -> list[str]:
     text = str(value or "").lower().replace("-", " ").replace("_", " ")
-    return [token for token in _TOKEN_RE.findall(text) if len(token) >= 2 and token not in _STOPWORDS]
+    result = []
+    for token in _TOKEN_RE.findall(text):
+        if token.endswith("ies") and len(token) > 5:
+            token = token[:-3] + "y"
+        elif token.endswith("s") and len(token) > 4 and not token.endswith("ss"):
+            token = token[:-1]
+        if len(token) >= 2 and token not in _STOPWORDS:
+            result.append(token)
+    return result
 
 
 def _ngrams(tokens: list[str], maximum: int = 3) -> Counter[str]:
@@ -83,9 +94,13 @@ def discover_candidates(
         document_count, source_count, period_count = (len(evidence[key]) for key in ("documents", "sources", "periods"))
         if document_count < min_documents or source_count < min_source_families or period_count < min_periods:
             continue
+        term_tokens = term.split()
+        known_flags = [token in known_terms for token in term_tokens]
+        if any(known_flags):
+            continue
         matches = sorted(((score, theme_id) for theme_id, words in vocabulary.items() if (score := _similarity(term, words)) >= min_similarity), reverse=True)
         best_similarity, best_theme_id = matches[0] if matches else (0.0, None)
-        confidence = min(100.0, 25.0 * document_count + 20.0 * source_count + 15.0 * period_count + 40.0 * best_similarity)
+        confidence = min(100.0, 8.0 * document_count + 15.0 * source_count + 12.0 * period_count + 30.0 * best_similarity)
         candidates.append({
             "term": term, "suggested_theme_id": best_theme_id,
             "semantic_similarity_proxy": round(best_similarity, 4), "confidence": round(confidence, 4),
