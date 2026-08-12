@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import os
 from datetime import date
 from pathlib import Path
 from typing import Any
 
+from ible.analytics.sec_metrics import FLOW_TAGS, find_fact, quarterly_flow
+from ible.collectors.sec_bulk import SecBulkClient, SecBulkError
+from ible.config import load_yaml
 from ible.integrity import canonical_sha256, load_json, write_json
 
 
@@ -74,6 +78,82 @@ def _load_filings(root: Path) -> tuple[list[dict[str, Any]], str | None]:
         if isinstance(rows, list):
             return [row for row in rows if isinstance(row, dict)], str(path.relative_to(root))
     return [], None
+
+
+def _selected_tickers(root: Path, limit: int = 20) -> tuple[dict[str, list[str]], list[str]]:
+    payload = load_yaml(root / "config/theme_exposures.yml")
+    by_theme: dict[str, list[str]] = {}
+    scores: dict[str, float] = {}
+    for theme in payload.get("themes") or []:
+        theme_id = str(theme.get("id") or "")
+        tickers = []
+        for company in theme.get("us_companies") or []:
+            ticker = str(company.get("ticker") or "").upper()
+            exposure = float(company.get("exposure") or 0)
+            if ticker and exposure >= float(payload.get("minimum_exposure") or 0.30):
+                tickers.append(ticker)
+                scores[ticker] = max(scores.get(ticker, 0.0), exposure)
+        if theme_id:
+            by_theme[theme_id] = tickers
+    selected = [ticker for ticker, _ in sorted(scores.items(), key=lambda item: (-item[1], item[0]))[:max(0, limit)]]
+    return by_theme, selected
+
+
+def ingest_sec_companyfacts(root: Path, requested_as_of: str, max_tickers: int = 20) -> dict[str, Any]:
+    """Build the local SEC filing inbox from cached/limited Company Facts data.
+
+    Company Facts provides filing facts, not MD&A prose. This stage therefore emits
+    CAPEX-only evidence and records MD&A as unavailable instead of inferring it.
+    """
+    user_agent = os.getenv("SEC_USER_AGENT", "").strip()
+    if not user_agent:
+        return {"status": "WAITING_FOR_SEC_USER_AGENT", "external_api_calls": 0, "company_count": 0, "filing_count": 0}
+    by_theme, tickers = _selected_tickers(root, max_tickers)
+    client = SecBulkClient(root / ".cache/sec_bulk", user_agent, timeout=120, min_interval=0.35)
+    try:
+        preparation = client.prepare_subset(json_safe_map(root), tickers, source_mode=os.getenv("SEC_SOURCE_MODE", "auto"))
+        facts, errors = client.load_subset(tickers)
+    except (SecBulkError, OSError, ValueError) as exc:
+        return {"status": "SEC_INGEST_FAILED_CACHE_PRESERVED", "external_api_calls": 0, "company_count": 0, "filing_count": 0, "error": str(exc)[:500]}
+    filings: list[dict[str, Any]] = []
+    for theme_id, theme_tickers in by_theme.items():
+        for ticker in theme_tickers:
+            if ticker not in facts:
+                continue
+            _, series = quarterly_flow(facts[ticker], FLOW_TAGS["capex"], requested_as_of)
+            if not series:
+                continue
+            latest_end, latest_value = series[-1]
+            prior_value = series[-2][1] if len(series) > 1 else None
+            tag, fact = find_fact(facts[ticker], FLOW_TAGS["capex"])
+            filed_dates = []
+            if fact:
+                for unit_values in (fact.get("units") or {}).values():
+                    for item in unit_values or []:
+                        filed = str(item.get("filed") or "")[:10]
+                        if filed and filed <= str(requested_as_of)[:10]:
+                            filed_dates.append(filed)
+            filings.append({
+                "theme_id": theme_id,
+                "ticker": ticker,
+                "filing_date": max(filed_dates) if filed_dates else latest_end,
+                "period_end": latest_end,
+                "capex": latest_value,
+                "prior_capex": prior_value,
+                "mdna_status": "NOT_AVAILABLE_FROM_COMPANYFACTS",
+                "mdna_text": "",
+                "fact_tag": tag,
+            })
+    input_path = root / "data_cache/latest/sec_mdna_capex_observations.json"
+    write_json(input_path, {"schema_version": 1, "as_of": requested_as_of, "source": "SEC_COMPANYFACTS_CACHE", "filings": filings})
+    external_calls = int(preparation.get("api_downloaded") or 0) + (1 if preparation.get("bulk_extracted") else 0)
+    return {"status": "SEC_COMPANYFACTS_CAPEX_INGESTED" if filings else "SEC_COMPANYFACTS_NO_CAPEX_FACTS", "external_api_calls": external_calls, "company_count": len(facts), "filing_count": len(filings), "errors": errors, "preparation": preparation}
+
+
+def json_safe_map(root: Path) -> dict[str, str]:
+    path = root / "config/sec_cik_map.json"
+    payload = load_json(path)
+    return {str(key).upper(): str(value) for key, value in payload.items()}
 
 
 def build_sec_nowcast(root: Path, themes: list[dict[str, Any]], requested_as_of: str) -> dict[str, Any]:

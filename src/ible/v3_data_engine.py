@@ -13,7 +13,7 @@ from ible.v3_collectors import ArxivCollector, OpenAlexCollector, UsaSpendingCol
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 from ible.v3_dynamic_terms import build_dynamic_discovery_report, collect_dynamic_documents, discover_candidates, write_dynamic_discovery_report
 from ible.v3_lag_bridge import build_lag_bridge, write_lag_bridge
-from ible.v3_sec_nowcast import build_sec_nowcast, write_sec_nowcast
+from ible.v3_sec_nowcast import build_sec_nowcast, ingest_sec_companyfacts, write_sec_nowcast
 
 class V3DataError(RuntimeError): pass
 
@@ -287,7 +287,10 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
     obs['content_sha256']=canonical_sha256(obs)
     lag_bridge = build_lag_bridge(obs, as_of.isoformat())
     write_lag_bridge(root, output_dir, lag_bridge)
+    sec_ingest = ingest_sec_companyfacts(root, as_of.isoformat(), max_tickers=20)
     sec_nowcast = build_sec_nowcast(root, enriched_themes, as_of.isoformat())
+    sec_nowcast["ingest"] = sec_ingest
+    sec_nowcast["content_sha256"] = canonical_sha256({key: value for key, value in sec_nowcast.items() if key != "content_sha256"})
     write_sec_nowcast(root, output_dir, sec_nowcast)
     obs["lag_bridge"] = {
         "status": lag_bridge["status"],
@@ -300,6 +303,7 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         "observed_theme_count": sec_nowcast["observed_theme_count"],
         "future_filing_rejected_count": sec_nowcast["future_filing_rejected_count"],
         "external_api_calls": 0,
+        "ingest_status": sec_ingest["status"],
     }
     obs['content_sha256']=canonical_sha256(obs)
     public_count=sum(1 for r in rows if r['public_interest_status']=='LIVE_OR_CACHED_OBSERVED')
