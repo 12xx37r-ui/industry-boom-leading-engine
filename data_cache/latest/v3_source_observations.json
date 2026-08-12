@@ -2,7 +2,7 @@
   "schema_version": 3,
   "engine_release": "7.1.0-cached-nowcast-guarded",
   "as_of": "2026-08-12",
-  "captured_at": "2026-08-13T00:06:52+09:00",
+  "captured_at": "2026-08-13T00:19:52+09:00",
   "theme_count": 50,
   "source_provenance": {
     "openalex": {
@@ -31,10 +31,10 @@
     }
   },
   "collection_metrics": {
-    "network_requests": 344,
-    "cache_hits": 13,
+    "network_requests": 19,
+    "cache_hits": 357,
     "stale_cache_hits": 0,
-    "cache_writes": 344,
+    "cache_writes": 19,
     "enabled_sources": [
       "openalex",
       "usaspending",
@@ -61,7 +61,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "high bandwidth memory advanced semiconductor packaging",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 803.0,
           "prior_count": 561.0,
@@ -73,7 +73,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"high bandwidth memory\" OR \"advanced semiconductor packaging\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -89,7 +89,7 @@
             "High Bandwidth Memory",
             "Semiconductor package"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 646.7419,
           "prior_count": 740.7586,
@@ -117,7 +117,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -157,7 +157,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 62.5456,
-      "public_interest_score": 33.7353,
+      "public_interest_score": 32.806,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -165,7 +165,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "artificial intelligence drug discovery",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 37494.0,
           "prior_count": 27486.0,
@@ -190,8 +190,8 @@
           "prior_30d_level": 17.30246,
           "three_month_change_percent": 54.7519,
           "series_points": 87,
-          "attention_percentile": 7.8947,
-          "attention_score": 21.8977,
+          "attention_percentile": 7.5,
+          "attention_score": 21.6016,
           "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "cache_age_days": 1
         },
@@ -201,7 +201,7 @@
             "Artificial intelligence in healthcare",
             "Drug discovery"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 200.9677,
           "prior_count": 216.5862,
@@ -214,8 +214,8 @@
           "prior_30d_level": 216.586207,
           "three_month_change_percent": -8.651,
           "series_points": 89,
-          "attention_percentile": 44.7917,
-          "attention_score": 45.5729
+          "attention_percentile": 42.7083,
+          "attention_score": 44.0104
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -230,7 +230,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -278,7 +278,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "AI semiconductor accelerators",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1845.0,
           "prior_count": 1286.0,
@@ -290,9 +290,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"AI accelerator\" OR \"AI semiconductor\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -306,7 +306,7 @@
             "Artificial intelligence accelerator",
             "AI accelerator"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 60.2581,
           "prior_count": 62.1034,
@@ -334,7 +334,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -357,7 +357,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -382,7 +382,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous driving advanced driver assistance",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 6085.0,
           "prior_count": 6196.0,
@@ -394,7 +394,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous driving\" OR \"self-driving car\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -409,7 +409,7 @@
           "query": [
             "Self-driving car"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 384.7097,
           "prior_count": 443.931,
@@ -432,7 +432,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -478,7 +478,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "copper supply mining infrastructure",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 3516.0,
           "prior_count": 3406.0,
@@ -490,7 +490,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"copper supply\" OR \"copper demand\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -506,7 +506,7 @@
             "Copper",
             "Copper extraction"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1392.6129,
           "prior_count": 1417.5172,
@@ -535,7 +535,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -575,7 +575,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 55.0514,
-      "public_interest_score": 44.636,
+      "public_interest_score": 44.8827,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -583,7 +583,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "critical minerals supply chain",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 26510.0,
           "prior_count": 23428.0,
@@ -595,7 +595,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"critical minerals\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1038.994,
           "prior_count": 1004.9971,
@@ -608,15 +608,15 @@
           "prior_30d_level": 1004.997128,
           "three_month_change_percent": 5.4993,
           "series_points": 86,
-          "attention_percentile": 86.8421,
-          "attention_score": 77.8642
+          "attention_percentile": 87.5,
+          "attention_score": 78.3576
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Critical mineral raw materials"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 2.2581,
           "prior_count": 3.2759,
@@ -639,7 +639,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -680,7 +680,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cybersecurity zero trust ransomware",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 2486.0,
           "prior_count": 2162.0,
@@ -692,9 +692,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "cybersecurity OR \"zero trust\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -708,7 +708,7 @@
             "Computer security",
             "Zero trust security model"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1157.5806,
           "prior_count": 861.6207,
@@ -737,7 +737,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -760,7 +760,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -777,7 +777,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 50.5919,
-      "public_interest_score": 64.9348,
+      "public_interest_score": 66.0697,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -785,7 +785,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "data center infrastructure power cooling",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 15822.0,
           "prior_count": 13075.0,
@@ -810,8 +810,8 @@
           "prior_30d_level": 144.492439,
           "three_month_change_percent": 10.7073,
           "series_points": 87,
-          "attention_percentile": 39.4737,
-          "attention_score": 43.5753,
+          "attention_percentile": 42.5,
+          "attention_score": 45.8451,
           "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "cache_age_days": 1
         },
@@ -820,7 +820,7 @@
           "query": [
             "Data center"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 2120.9355,
           "prior_count": 1800.8276,
@@ -843,7 +843,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -881,7 +881,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 53.9868,
-      "public_interest_score": 61.454,
+      "public_interest_score": 63.0677,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -889,7 +889,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "defense autonomous systems unmanned military",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1840.0,
           "prior_count": 1935.0,
@@ -901,9 +901,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous defense\" OR \"military drone\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -917,21 +917,21 @@
             "Military robot",
             "Unmanned combat aerial vehicle"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "recent_count": 390.2581,
-          "prior_count": 405.3448,
-          "growth_percent": -3.722,
-          "growth_score": 48.9409,
-          "scale_score": 46.6643,
-          "source_signal_score": 48.0303,
-          "oldest_30d_level": 472.137931,
-          "recent_30d_level": 390.258065,
-          "prior_30d_level": 405.344828,
-          "three_month_change_percent": -17.3424,
+          "recent_count": 474.7419,
+          "prior_count": 489.4828,
+          "growth_percent": -3.0115,
+          "growth_score": 49.1458,
+          "scale_score": 48.1927,
+          "source_signal_score": 48.7645,
+          "oldest_30d_level": 577.034483,
+          "recent_30d_level": 474.741935,
+          "prior_30d_level": 489.482759,
+          "three_month_change_percent": -17.7273,
           "series_points": 89,
-          "attention_percentile": 65.625,
-          "attention_score": 61.454
+          "attention_percentile": 67.7083,
+          "attention_score": 63.0677
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -946,7 +946,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -969,14 +969,14 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -17.3424
+      "public_interest_momentum_3m": -17.7273
     },
     {
       "theme_id": "ENERGY_STORAGE",
@@ -986,7 +986,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 48.8296,
-      "public_interest_score": 44.3889,
+      "public_interest_score": 42.8264,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -994,7 +994,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "grid energy storage battery storage",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 28938.0,
           "prior_count": 25525.0,
@@ -1006,9 +1006,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"energy storage\" OR \"battery storage\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -1022,7 +1022,7 @@
             "Energy storage",
             "Grid energy storage"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 197.0,
           "prior_count": 201.069,
@@ -1035,8 +1035,8 @@
           "prior_30d_level": 201.068966,
           "three_month_change_percent": -11.495,
           "series_points": 89,
-          "attention_percentile": 42.7083,
-          "attention_score": 44.3889
+          "attention_percentile": 40.625,
+          "attention_score": 42.8264
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -1045,7 +1045,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1066,7 +1066,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -1083,7 +1083,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 61.7901,
-      "public_interest_score": 43.5823,
+      "public_interest_score": 41.9735,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1091,7 +1091,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "gene therapy cell therapy",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 191302.0,
           "prior_count": 209139.0,
@@ -1103,7 +1103,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"gene therapy\" OR \"cell therapy\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1114,28 +1114,26 @@
           "three_month_change_percent": null
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": [
             "Gene therapy",
             "Cell therapy"
           ],
-          "captured_at": "2026-08-12T23:44:22+09:00",
-          "as_of": "2026-08-11",
-          "recent_count": 190.9333,
-          "prior_count": 174.8,
-          "growth_percent": 9.2296,
-          "growth_score": 52.4544,
-          "scale_score": 41.0967,
-          "source_signal_score": 47.9113,
-          "oldest_30d_level": 207.833333,
-          "recent_30d_level": 190.933333,
-          "prior_30d_level": 174.8,
-          "three_month_change_percent": -8.1315,
-          "series_points": 90,
-          "attention_percentile": 40.625,
-          "attention_score": 43.5823,
-          "fallback_reason": "Wikimedia pageview series unavailable",
-          "cache_age_days": 1
+          "captured_at": "2026-08-13T00:19:52+09:00",
+          "as_of": "2026-08-12",
+          "recent_count": 190.0645,
+          "prior_count": 175.1724,
+          "growth_percent": 8.5014,
+          "growth_score": 52.269,
+          "scale_score": 41.0612,
+          "source_signal_score": 47.7859,
+          "oldest_30d_level": 207.172414,
+          "recent_30d_level": 190.064516,
+          "prior_30d_level": 175.172414,
+          "three_month_change_percent": -8.2578,
+          "series_points": 89,
+          "attention_percentile": 38.5417,
+          "attention_score": 41.9735
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -1150,7 +1148,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1174,17 +1172,13 @@
         {
           "source": "gdelt",
           "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-        },
-        {
-          "source": "wikimedia",
-          "error": "Wikimedia pageview series unavailable"
         }
       ],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -8.1315
+      "public_interest_momentum_3m": -8.2578
     },
     {
       "theme_id": "HUMANOID_ROBOTS",
@@ -1194,7 +1188,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 46.8026,
-      "public_interest_score": 70.9956,
+      "public_interest_score": 70.2637,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1202,7 +1196,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "humanoid robots embodied artificial intelligence",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1951.0,
           "prior_count": 1366.0,
@@ -1214,7 +1208,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"humanoid robot\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1620.1648,
           "prior_count": 1028.6745,
@@ -1227,15 +1221,15 @@
           "prior_30d_level": 1028.674487,
           "three_month_change_percent": 59.2451,
           "series_points": 86,
-          "attention_percentile": 97.3684,
-          "attention_score": 88.571
+          "attention_percentile": 97.5,
+          "attention_score": 88.6697
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Humanoid robot"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 284.9677,
           "prior_count": 305.5517,
@@ -1248,8 +1242,8 @@
           "prior_30d_level": 305.551724,
           "three_month_change_percent": -16.0156,
           "series_points": 89,
-          "attention_percentile": 55.2083,
-          "attention_score": 53.4202
+          "attention_percentile": 53.125,
+          "attention_score": 51.8577
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -1258,7 +1252,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1291,7 +1285,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 52.554,
-      "public_interest_score": 51.7382,
+      "public_interest_score": 52.303,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1299,7 +1293,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "industrial robotics automation",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 34150.0,
           "prior_count": 34728.0,
@@ -1309,32 +1303,30 @@
           "source_signal_score": 62.3586
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": "\"industrial robot\"",
-          "captured_at": "2026-08-12T23:44:22+09:00",
-          "as_of": "2026-08-11",
-          "recent_count": 509.3196,
-          "prior_count": 269.2692,
-          "growth_percent": 89.1489,
-          "growth_score": 66.407,
-          "scale_score": 48.7412,
-          "source_signal_score": 59.3407,
-          "oldest_30d_level": 247.162695,
-          "recent_30d_level": 509.319569,
-          "prior_30d_level": 269.26915,
-          "three_month_change_percent": 106.0665,
-          "series_points": 87,
-          "attention_percentile": 71.0526,
-          "attention_score": 69.8912,
-          "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
-          "cache_age_days": 1
+          "captured_at": "2026-08-13T00:19:52+09:00",
+          "as_of": "2026-08-12",
+          "recent_count": 505.7514,
+          "prior_count": 265.2172,
+          "growth_percent": 90.6933,
+          "growth_score": 66.5832,
+          "scale_score": 48.6863,
+          "source_signal_score": 59.4244,
+          "oldest_30d_level": 248.965585,
+          "recent_30d_level": 505.751383,
+          "prior_30d_level": 265.217177,
+          "three_month_change_percent": 103.1411,
+          "series_points": 86,
+          "attention_percentile": 72.5,
+          "attention_score": 71.0208
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Industrial robot"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 90.6129,
           "prior_count": 90.7241,
@@ -1357,7 +1349,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1375,17 +1367,12 @@
           "as_of": "2026-08-12"
         }
       },
-      "errors": [
-        {
-          "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
-        }
-      ],
+      "errors": [],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": 44.7175
+      "public_interest_momentum_3m": 43.2548
     },
     {
       "theme_id": "NUCLEAR_ENERGY",
@@ -1395,7 +1382,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 54.6617,
-      "public_interest_score": 73.8515,
+      "public_interest_score": 73.9995,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1403,7 +1390,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "nuclear energy reactor technology",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 10682.0,
           "prior_count": 11171.0,
@@ -1415,7 +1402,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"nuclear energy\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1227.0508,
           "prior_count": 1142.258,
@@ -1428,15 +1415,15 @@
           "prior_30d_level": 1142.257955,
           "three_month_change_percent": -5.6931,
           "series_points": 86,
-          "attention_percentile": 92.1053,
-          "attention_score": 82.0792
+          "attention_percentile": 92.5,
+          "attention_score": 82.3753
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Nuclear power"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 550.7419,
           "prior_count": 492.4138,
@@ -1465,7 +1452,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1508,7 +1495,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "obesity metabolic disease therapeutics GLP-1",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 2967.0,
           "prior_count": 2226.0,
@@ -1520,7 +1507,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"obesity drug\" OR GLP-1",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -1536,7 +1523,7 @@
             "Anti-obesity medication",
             "Glucagon-like peptide-1 receptor agonist"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 125.6452,
           "prior_count": 150.5517,
@@ -1564,7 +1551,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1604,7 +1591,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 50.9219,
-      "public_interest_score": 55.4555,
+      "public_interest_score": 53.893,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1612,7 +1599,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "electric grid modernization transmission electrification",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 668.0,
           "prior_count": 651.0,
@@ -1624,7 +1611,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"grid modernization\" OR \"power grid\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1640,7 +1627,7 @@
             "Electrical grid",
             "Smart grid"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 297.1935,
           "prior_count": 297.7586,
@@ -1653,8 +1640,8 @@
           "prior_30d_level": 297.758621,
           "three_month_change_percent": -7.9798,
           "series_points": 89,
-          "attention_percentile": 57.2917,
-          "attention_score": 55.4555
+          "attention_percentile": 55.2083,
+          "attention_score": 53.893
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -1669,7 +1656,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1717,7 +1704,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "power semiconductors silicon carbide gallium nitride",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 729.0,
           "prior_count": 732.0,
@@ -1729,7 +1716,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"power semiconductor\" OR \"silicon carbide semiconductor\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1745,7 +1732,7 @@
             "Power semiconductor device",
             "Wide-bandgap semiconductor"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 59.2258,
           "prior_count": 72.1379,
@@ -1773,7 +1760,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1813,7 +1800,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 49.7756,
-      "public_interest_score": 70.6778,
+      "public_interest_score": 71.1219,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1821,7 +1808,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rare earth elements supply chain",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 5863.0,
           "prior_count": 5979.0,
@@ -1833,7 +1820,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"rare earth\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 510.185,
           "prior_count": 563.1177,
@@ -1846,15 +1833,15 @@
           "prior_30d_level": 563.117703,
           "three_month_change_percent": -24.541,
           "series_points": 86,
-          "attention_percentile": 76.3158,
-          "attention_score": 69.0485
+          "attention_percentile": 77.5,
+          "attention_score": 69.9367
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Rare-earth element"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 665.6452,
           "prior_count": 699.7586,
@@ -1877,7 +1864,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -1910,7 +1897,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 55.6108,
-      "public_interest_score": 63.9102,
+      "public_interest_score": 64.8477,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -1918,7 +1905,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "semiconductor manufacturing equipment",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 7828.0,
           "prior_count": 8831.0,
@@ -1930,7 +1917,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"semiconductor equipment\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 214.9762,
           "prior_count": 145.9224,
@@ -1943,8 +1930,8 @@
           "prior_30d_level": 145.922412,
           "three_month_change_percent": 35.6629,
           "series_points": 86,
-          "attention_percentile": 50.0,
-          "attention_score": 52.6146
+          "attention_percentile": 52.5,
+          "attention_score": 54.4896
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
@@ -1952,7 +1939,7 @@
             "Semiconductor device fabrication",
             "Semiconductor industry"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 752.1935,
           "prior_count": 816.8276,
@@ -1981,7 +1968,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2016,7 +2003,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 41.606,
-      "public_interest_score": 43.9839,
+      "public_interest_score": 44.6808,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -2024,7 +2011,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "small modular reactor microreactor",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 425.0,
           "prior_count": 346.0,
@@ -2049,33 +2036,31 @@
           "prior_30d_level": 53.123216,
           "three_month_change_percent": 18.9388,
           "series_points": 87,
-          "attention_percentile": 18.4211,
-          "attention_score": 25.3255,
+          "attention_percentile": 22.5,
+          "attention_score": 28.3848,
           "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "cache_age_days": 1
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": [
             "Small modular reactor"
           ],
-          "captured_at": "2026-08-12T23:44:22+09:00",
-          "as_of": "2026-08-11",
-          "recent_count": 458.1333,
-          "prior_count": 502.1,
-          "growth_percent": -8.7566,
-          "growth_score": 47.444,
-          "scale_score": 47.9149,
-          "source_signal_score": 47.6324,
-          "oldest_30d_level": 597.9,
-          "recent_30d_level": 458.133333,
-          "prior_30d_level": 502.1,
-          "three_month_change_percent": -23.3763,
-          "series_points": 90,
-          "attention_percentile": 67.7083,
-          "attention_score": 62.6423,
-          "fallback_reason": "Wikimedia pageview series unavailable",
-          "cache_age_days": 1
+          "captured_at": "2026-08-13T00:19:52+09:00",
+          "as_of": "2026-08-12",
+          "recent_count": 455.3871,
+          "prior_count": 506.5517,
+          "growth_percent": -10.1006,
+          "growth_score": 47.0319,
+          "scale_score": 47.868,
+          "source_signal_score": 47.3664,
+          "oldest_30d_level": 594.655172,
+          "recent_30d_level": 455.387097,
+          "prior_30d_level": 506.551724,
+          "three_month_change_percent": -23.42,
+          "series_points": 89,
+          "attention_percentile": 65.625,
+          "attention_score": 60.9767
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -2084,7 +2069,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2106,17 +2091,13 @@
         {
           "source": "gdelt",
           "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
-        },
-        {
-          "source": "wikimedia",
-          "error": "Wikimedia pageview series unavailable"
         }
       ],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -2.2188
+      "public_interest_momentum_3m": -2.2406
     },
     {
       "theme_id": "SPACE_ECONOMY",
@@ -2134,7 +2115,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial space satellite launch",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 5275.0,
           "prior_count": 5792.0,
@@ -2146,7 +2127,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"space economy\" OR \"commercial space\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2162,7 +2143,7 @@
             "Space industry",
             "Commercial spaceflight"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 57.5161,
           "prior_count": 82.2069,
@@ -2190,7 +2171,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2238,7 +2219,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "additive manufacturing 3D printing",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 18653.0,
           "prior_count": 18283.0,
@@ -2250,7 +2231,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"additive manufacturing\" OR \"3D printing\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2266,7 +2247,7 @@
             "3D printing",
             "Additive manufacturing"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 648.8387,
           "prior_count": 686.5172,
@@ -2289,7 +2270,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2335,7 +2316,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquid biopsy advanced molecular diagnostics",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 8336.0,
           "prior_count": 7897.0,
@@ -2347,7 +2328,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"liquid biopsy\" OR \"molecular diagnostics\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2363,7 +2344,7 @@
             "Liquid biopsy",
             "Molecular diagnostics"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 32.9032,
           "prior_count": 32.4483,
@@ -2386,7 +2367,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2424,7 +2405,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 56.6684,
-      "public_interest_score": 54.0331,
+      "public_interest_score": 55.7108,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -2432,7 +2413,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "advanced materials nanomaterials composites",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 23928.0,
           "prior_count": 21689.0,
@@ -2444,7 +2425,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"advanced materials\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 222.7484,
           "prior_count": 220.0236,
@@ -2457,15 +2438,15 @@
           "prior_30d_level": 220.023595,
           "three_month_change_percent": 4.4211,
           "series_points": 86,
-          "attention_percentile": 55.2632,
-          "attention_score": 54.0331
+          "attention_percentile": 57.5,
+          "attention_score": 55.7108
         },
         "wikimedia": {
           "status": "SOURCE_UNAVAILABLE",
           "query": [
             "Advanced materials"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "Wikimedia pageview series unavailable",
           "source_signal_score": null,
@@ -2489,7 +2470,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2529,7 +2510,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 57.2009,
-      "public_interest_score": 21.5777,
+      "public_interest_score": 23.206,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -2537,7 +2518,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "lithium ion battery recycling",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 8264.0,
           "prior_count": 7777.0,
@@ -2549,7 +2530,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"battery recycling\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 43.2171,
           "prior_count": 44.8368,
@@ -2562,15 +2543,15 @@
           "prior_30d_level": 44.836836,
           "three_month_change_percent": 11.2964,
           "series_points": 86,
-          "attention_percentile": 13.1579,
-          "attention_score": 22.1166
+          "attention_percentile": 17.5,
+          "attention_score": 25.3732
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Battery recycling"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 46.4194,
           "prior_count": 46.7931,
@@ -2599,7 +2580,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2634,7 +2615,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 43.2289,
-      "public_interest_score": 44.5992,
+      "public_interest_score": 45.0516,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -2642,7 +2623,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "carbon capture utilization storage",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 46235.0,
           "prior_count": 42828.0,
@@ -2654,7 +2635,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"carbon capture\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 160.0359,
           "prior_count": 197.5908,
@@ -2667,15 +2648,15 @@
           "prior_30d_level": 197.590832,
           "three_month_change_percent": -32.1926,
           "series_points": 86,
-          "attention_percentile": 34.2105,
-          "attention_score": 36.7042
+          "attention_percentile": 37.5,
+          "attention_score": 39.1713
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Carbon capture and storage"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 248.9032,
           "prior_count": 243.5862,
@@ -2688,8 +2669,8 @@
           "prior_30d_level": 243.586207,
           "three_month_change_percent": -13.6476,
           "series_points": 89,
-          "attention_percentile": 53.125,
-          "attention_score": 52.4943
+          "attention_percentile": 51.0417,
+          "attention_score": 50.9318
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -2698,7 +2679,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2739,7 +2720,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cloud computing infrastructure",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 79222.0,
           "prior_count": 62501.0,
@@ -2751,7 +2732,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"cloud infrastructure\" OR \"cloud computing\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2766,7 +2747,7 @@
           "query": [
             "Cloud computing"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1317.2581,
           "prior_count": 1113.6552,
@@ -2789,7 +2770,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2827,7 +2808,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 55.9597,
-      "public_interest_score": 77.3411,
+      "public_interest_score": 52.0011,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -2835,7 +2816,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial drones unmanned aerial systems",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 4696.0,
           "prior_count": 4266.0,
@@ -2845,17 +2826,23 @@
           "source_signal_score": 58.047
         },
         "gdelt": {
-          "status": "SOURCE_UNAVAILABLE",
+          "status": "LIVE_COLLECTED",
           "query": "\"commercial drone\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
-          "source_signal_score": null,
-          "growth_score": null,
-          "growth_percent": null,
-          "recent_count": null,
-          "prior_count": null,
-          "three_month_change_percent": null
+          "recent_count": 37.7825,
+          "prior_count": 17.0001,
+          "growth_percent": 122.2487,
+          "growth_score": 69.1446,
+          "scale_score": 28.5955,
+          "source_signal_score": 52.9249,
+          "oldest_30d_level": 12.281697,
+          "recent_30d_level": 37.782549,
+          "prior_30d_level": 17.00012,
+          "three_month_change_percent": 207.633,
+          "series_points": 86,
+          "attention_percentile": 12.5,
+          "attention_score": 26.6611
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
@@ -2863,7 +2850,7 @@
             "Unmanned aerial vehicle",
             "Delivery drone"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1115.6129,
           "prior_count": 1116.0345,
@@ -2891,7 +2878,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -2911,17 +2898,12 @@
           "as_of": "2026-08-12"
         }
       },
-      "errors": [
-        {
-          "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
-        }
-      ],
+      "errors": [],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -8.8089
+      "public_interest_momentum_3m": 99.4121
     },
     {
       "theme_id": "DIGITAL_IDENTITY",
@@ -2939,7 +2921,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "digital identity authentication biometrics",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 5018.0,
           "prior_count": 4669.0,
@@ -2951,9 +2933,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"digital identity\" OR \"identity security\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -2967,7 +2949,7 @@
             "Digital identity",
             "Identity management"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 98.2258,
           "prior_count": 100.2414,
@@ -2996,7 +2978,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3019,7 +3001,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -3036,7 +3018,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 55.3134,
-      "public_interest_score": 66.7839,
+      "public_interest_score": 67.8749,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -3044,7 +3026,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "edge artificial intelligence inference",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 58377.0,
           "prior_count": 37164.0,
@@ -3054,25 +3036,23 @@
           "source_signal_score": 71.5897
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": "\"edge AI\"",
-          "captured_at": "2026-08-12T23:44:22+09:00",
-          "as_of": "2026-08-11",
-          "recent_count": 198.6185,
-          "prior_count": 196.2152,
-          "growth_percent": 1.2248,
-          "growth_score": 50.3391,
-          "scale_score": 41.4036,
-          "source_signal_score": 46.7649,
-          "oldest_30d_level": 261.894448,
-          "recent_30d_level": 198.618516,
-          "prior_30d_level": 196.215242,
-          "three_month_change_percent": -24.1609,
-          "series_points": 87,
-          "attention_percentile": 44.7368,
-          "attention_score": 46.1374,
-          "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
-          "cache_age_days": 1
+          "captured_at": "2026-08-13T00:19:52+09:00",
+          "as_of": "2026-08-12",
+          "recent_count": 200.7594,
+          "prior_count": 195.232,
+          "growth_percent": 2.8312,
+          "growth_score": 50.7777,
+          "scale_score": 41.487,
+          "source_signal_score": 47.0614,
+          "oldest_30d_level": 265.809615,
+          "recent_30d_level": 200.759424,
+          "prior_30d_level": 195.23198,
+          "three_month_change_percent": -24.4725,
+          "series_points": 86,
+          "attention_percentile": 47.5,
+          "attention_score": 48.3194
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
@@ -3080,7 +3060,7 @@
             "Edge computing",
             "Artificial intelligence"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 11021.871,
           "prior_count": 9954.0345,
@@ -3103,7 +3083,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3121,17 +3101,12 @@
           "as_of": "2026-08-12"
         }
       },
-      "errors": [
-        {
-          "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
-        }
-      ],
+      "errors": [],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -11.6888
+      "public_interest_momentum_3m": -11.8446
     },
     {
       "theme_id": "HYDROGEN_ECONOMY",
@@ -3141,7 +3116,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 54.8474,
-      "public_interest_score": 50.1107,
+      "public_interest_score": 48.5482,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -3149,7 +3124,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "green hydrogen electrolyzer fuel cell",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 3051.0,
           "prior_count": 2918.0,
@@ -3161,7 +3136,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"green hydrogen\" OR \"hydrogen economy\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -3177,7 +3152,7 @@
             "Hydrogen economy",
             "Green hydrogen"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 228.1613,
           "prior_count": 200.6552,
@@ -3190,8 +3165,8 @@
           "prior_30d_level": 200.655172,
           "three_month_change_percent": -2.7102,
           "series_points": 89,
-          "attention_percentile": 48.9583,
-          "attention_score": 50.1107
+          "attention_percentile": 46.875,
+          "attention_score": 48.5482
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -3206,7 +3181,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3254,7 +3229,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquefied natural gas infrastructure",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 2967.0,
           "prior_count": 3120.0,
@@ -3266,7 +3241,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"liquefied natural gas\" OR \"LNG terminal\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3281,7 +3256,7 @@
           "query": [
             "Liquefied natural gas"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 370.2258,
           "prior_count": 378.4483,
@@ -3311,7 +3286,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3359,7 +3334,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "warehouse logistics automation robotics",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 3394.0,
           "prior_count": 3606.0,
@@ -3371,7 +3346,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"warehouse automation\" OR \"logistics automation\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3387,7 +3362,7 @@
             "Warehouse automation",
             "Logistics automation"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 15.5806,
           "prior_count": 13.7931,
@@ -3416,7 +3391,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3456,7 +3431,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 53.4836,
-      "public_interest_score": 52.383,
+      "public_interest_score": 50.8205,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -3464,7 +3439,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous ships maritime unmanned systems",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1302.0,
           "prior_count": 1365.0,
@@ -3476,9 +3451,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous ship\" OR \"unmanned maritime\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -3492,7 +3467,7 @@
             "Autonomous cargo ship",
             "Unmanned surface vehicle"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 246.2581,
           "prior_count": 195.1724,
@@ -3505,8 +3480,8 @@
           "prior_30d_level": 195.172414,
           "three_month_change_percent": -37.487,
           "series_points": 89,
-          "attention_percentile": 51.0417,
-          "attention_score": 52.383
+          "attention_percentile": 48.9583,
+          "attention_score": 50.8205
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -3521,7 +3496,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3544,7 +3519,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -3561,7 +3536,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 48.1225,
-      "public_interest_score": 46.5014,
+      "public_interest_score": 47.2415,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -3569,7 +3544,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "offshore wind energy",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 16192.0,
           "prior_count": 16406.0,
@@ -3581,7 +3556,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"offshore wind\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 274.4114,
           "prior_count": 277.8337,
@@ -3594,15 +3569,15 @@
           "prior_30d_level": 277.833705,
           "three_month_change_percent": -7.3171,
           "series_points": 86,
-          "attention_percentile": 60.5263,
-          "attention_score": 57.8083
+          "attention_percentile": 62.5,
+          "attention_score": 59.2886
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Offshore wind power"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 93.5484,
           "prior_count": 93.0345,
@@ -3625,7 +3600,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3666,7 +3641,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "silicon photonics optical interconnect",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1762.0,
           "prior_count": 1272.0,
@@ -3678,9 +3653,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"silicon photonics\" OR \"optical interconnect\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -3694,7 +3669,7 @@
             "Silicon photonics",
             "Optical interconnect"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 68.5484,
           "prior_count": 89.5517,
@@ -3723,7 +3698,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3746,7 +3721,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -3771,7 +3746,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "precision oncology targeted cancer therapy",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 33020.0,
           "prior_count": 26266.0,
@@ -3783,9 +3758,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"precision oncology\" OR \"liquid biopsy\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -3799,7 +3774,7 @@
             "Precision medicine",
             "Liquid biopsy"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 21.2903,
           "prior_count": 26.069,
@@ -3822,7 +3797,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3843,7 +3818,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -3868,7 +3843,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "smart factory industrial internet",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 7882.0,
           "prior_count": 9347.0,
@@ -3880,7 +3855,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"smart factory\" OR \"Industry 4.0\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -3896,7 +3871,7 @@
             "Industry 4.0",
             "Smart manufacturing"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 60.5161,
           "prior_count": 71.2759,
@@ -3925,7 +3900,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -3973,7 +3948,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "solar photovoltaic manufacturing",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 11351.0,
           "prior_count": 12140.0,
@@ -3985,7 +3960,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"solar energy\" OR photovoltaics",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4001,7 +3976,7 @@
             "Solar power",
             "Photovoltaics"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 588.4194,
           "prior_count": 576.5172,
@@ -4024,7 +3999,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4062,7 +4037,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 51.3435,
-      "public_interest_score": 14.1296,
+      "public_interest_score": 14.0803,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4070,7 +4045,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "robotic surgery surgical robotics",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 21726.0,
           "prior_count": 22537.0,
@@ -4082,7 +4057,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"surgical robot\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 9.865,
           "prior_count": 9.4253,
@@ -4095,15 +4070,15 @@
           "prior_30d_level": 9.425297,
           "three_month_change_percent": -2.2039,
           "series_points": 86,
-          "attention_percentile": 2.6316,
-          "attention_score": 14.7628
+          "attention_percentile": 2.5,
+          "attention_score": 14.6641
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Robot-assisted surgery"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 11.3548,
           "prior_count": 14.0,
@@ -4126,7 +4101,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4159,7 +4134,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 50.4055,
-      "public_interest_score": 34.504,
+      "public_interest_score": 35.9348,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4167,7 +4142,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "synthetic biology biomanufacturing",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1745.0,
           "prior_count": 1311.0,
@@ -4179,7 +4154,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"synthetic biology\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 76.1281,
           "prior_count": 73.9274,
@@ -4192,15 +4167,15 @@
           "prior_30d_level": 73.92745,
           "three_month_change_percent": 29.1147,
           "series_points": 86,
-          "attention_percentile": 23.6842,
-          "attention_score": 30.4658
+          "attention_percentile": 27.5,
+          "attention_score": 33.3276
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Synthetic biology"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 137.6129,
           "prior_count": 166.1724,
@@ -4223,7 +4198,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4256,7 +4231,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 54.8972,
-      "public_interest_score": 49.9237,
+      "public_interest_score": 50.3723,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4264,7 +4239,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "water infrastructure treatment desalination",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 3367.0,
           "prior_count": 2720.0,
@@ -4274,25 +4249,23 @@
           "source_signal_score": 58.9465
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": "\"water infrastructure\"",
-          "captured_at": "2026-08-12T23:44:22+09:00",
-          "as_of": "2026-08-11",
-          "recent_count": 618.8907,
-          "prior_count": 451.6069,
-          "growth_percent": 37.0419,
-          "growth_score": 58.6253,
-          "scale_score": 50.2617,
-          "source_signal_score": 55.2798,
-          "oldest_30d_level": 429.742427,
-          "recent_30d_level": 618.890672,
-          "prior_30d_level": 451.606873,
-          "three_month_change_percent": 44.0143,
-          "series_points": 87,
-          "attention_percentile": 81.5789,
-          "attention_score": 75.8405,
-          "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
-          "cache_age_days": 1
+          "captured_at": "2026-08-13T00:19:52+09:00",
+          "as_of": "2026-08-12",
+          "recent_count": 623.8388,
+          "prior_count": 441.0291,
+          "growth_percent": 41.4507,
+          "growth_score": 59.451,
+          "scale_score": 50.3238,
+          "source_signal_score": 55.8001,
+          "oldest_30d_level": 425.830057,
+          "recent_30d_level": 623.838789,
+          "prior_30d_level": 441.029097,
+          "three_month_change_percent": 46.4995,
+          "series_points": 86,
+          "attention_percentile": 82.5,
+          "attention_score": 76.7378
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
@@ -4300,7 +4273,7 @@
             "Water supply network",
             "Water industry"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 57.6452,
           "prior_count": 59.4483,
@@ -4329,7 +4302,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4349,17 +4322,12 @@
           "as_of": "2026-08-12"
         }
       },
-      "errors": [
-        {
-          "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
-        }
-      ],
+      "errors": [],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": 22.2086
+      "public_interest_momentum_3m": 23.4512
     },
     {
       "theme_id": "AGRITECH_FOODTECH",
@@ -4377,7 +4345,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "agricultural technology food technology precision agriculture",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 44852.0,
           "prior_count": 38921.0,
@@ -4389,7 +4357,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "agritech OR foodtech",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4405,7 +4373,7 @@
             "Agricultural technology",
             "Food technology"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 75.5161,
           "prior_count": 75.6897,
@@ -4469,7 +4437,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "construction robotics automation",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 25201.0,
           "prior_count": 23713.0,
@@ -4481,7 +4449,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"construction automation\" OR \"construction robot\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4496,7 +4464,7 @@
           "query": [
             "Construction robotics"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "Wikimedia pageview series unavailable",
           "source_signal_score": null,
@@ -4519,7 +4487,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4571,7 +4539,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "financial technology payments infrastructure",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 41769.0,
           "prior_count": 39425.0,
@@ -4583,7 +4551,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"fintech infrastructure\" OR \"payment infrastructure\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -4599,7 +4567,7 @@
             "Financial technology",
             "Payment system"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 347.0323,
           "prior_count": 396.6897,
@@ -4628,7 +4596,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4668,7 +4636,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 46.8672,
-      "public_interest_score": 40.6278,
+      "public_interest_score": 41.1787,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4676,7 +4644,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "enhanced geothermal systems",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 12226.0,
           "prior_count": 12622.0,
@@ -4688,7 +4656,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"geothermal energy\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 92.2378,
           "prior_count": 95.3784,
@@ -4701,15 +4669,15 @@
           "prior_30d_level": 95.378381,
           "three_month_change_percent": 3.4629,
           "series_points": 86,
-          "attention_percentile": 28.9474,
-          "attention_score": 33.9787
+          "attention_percentile": 32.5,
+          "attention_score": 36.6431
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Geothermal energy"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 217.6774,
           "prior_count": 229.8621,
@@ -4722,8 +4690,8 @@
           "prior_30d_level": 229.862069,
           "three_month_change_percent": -25.1524,
           "series_points": 89,
-          "attention_percentile": 46.875,
-          "attention_score": 47.2769
+          "attention_percentile": 44.7917,
+          "attention_score": 45.7144
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -4732,7 +4700,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4765,7 +4733,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 55.9484,
-      "public_interest_score": 72.6475,
+      "public_interest_score": 72.6966,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4773,7 +4741,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "heat pumps building energy efficiency",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 12254.0,
           "prior_count": 12834.0,
@@ -4785,9 +4753,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"heat pump\" OR \"energy efficiency\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -4801,21 +4769,21 @@
             "Heat pump",
             "Efficient energy use"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "recent_count": 674.8387,
-          "prior_count": 847.0,
-          "growth_percent": -20.326,
-          "growth_score": 43.715,
-          "scale_score": 50.9372,
-          "source_signal_score": 46.6038,
-          "oldest_30d_level": 522.586207,
-          "recent_30d_level": 674.83871,
-          "prior_30d_level": 847.0,
-          "three_month_change_percent": 29.1344,
+          "recent_count": 737.3226,
+          "prior_count": 918.7241,
+          "growth_percent": -19.7449,
+          "growth_score": 43.9112,
+          "scale_score": 51.6284,
+          "source_signal_score": 46.9981,
+          "oldest_30d_level": 605.206897,
+          "recent_30d_level": 737.322581,
+          "prior_30d_level": 918.724138,
+          "three_month_change_percent": 21.8298,
           "series_points": 89,
           "attention_percentile": 82.2917,
-          "attention_score": 72.6475
+          "attention_score": 72.6966
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -4830,7 +4798,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4853,14 +4821,14 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": 29.1344
+      "public_interest_momentum_3m": 21.8298
     },
     {
       "theme_id": "LONGEVITY_TECH",
@@ -4870,7 +4838,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 53.775,
-      "public_interest_score": 41.0858,
+      "public_interest_score": 54.685,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4878,7 +4846,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "longevity aging therapeutics geroscience",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 470.0,
           "prior_count": 436.0,
@@ -4890,7 +4858,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "longevity OR \"anti-aging biotechnology\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4906,21 +4874,21 @@
             "Life extension",
             "Gerontology"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
-          "recent_count": 150.3226,
-          "prior_count": 157.4138,
-          "growth_percent": -4.5048,
-          "growth_score": 48.7183,
-          "scale_score": 39.2383,
-          "source_signal_score": 44.9263,
-          "oldest_30d_level": 180.965517,
-          "recent_30d_level": 150.322581,
-          "prior_30d_level": 157.413793,
-          "three_month_change_percent": -16.933,
+          "recent_count": 330.3226,
+          "prior_count": 369.6897,
+          "growth_percent": -10.6487,
+          "growth_score": 46.8648,
+          "scale_score": 45.3645,
+          "source_signal_score": 46.2647,
+          "oldest_30d_level": 376.517241,
+          "recent_30d_level": 330.322581,
+          "prior_30d_level": 369.689655,
+          "three_month_change_percent": -12.2689,
           "series_points": 89,
-          "attention_percentile": 38.5417,
-          "attention_score": 41.0858
+          "attention_percentile": 57.2917,
+          "attention_score": 54.685
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -4935,7 +4903,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -4965,7 +4933,7 @@
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -16.933
+      "public_interest_momentum_3m": -12.2689
     },
     {
       "theme_id": "QUANTUM_COMPUTING",
@@ -4975,7 +4943,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 59.4149,
-      "public_interest_score": 72.2815,
+      "public_interest_score": 72.923,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -4983,7 +4951,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "quantum computing",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 124498.0,
           "prior_count": 90873.0,
@@ -4995,7 +4963,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"quantum computing\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 311.1296,
           "prior_count": 296.1716,
@@ -5008,15 +4976,15 @@
           "prior_30d_level": 296.171603,
           "three_month_change_percent": -10.2855,
           "series_points": 86,
-          "attention_percentile": 65.7895,
-          "attention_score": 62.1857
+          "attention_percentile": 67.5,
+          "attention_score": 63.4686
         },
         "wikimedia": {
           "status": "LIVE_COLLECTED",
           "query": [
             "Quantum computing"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 1677.6452,
           "prior_count": 1998.4828,
@@ -5039,7 +5007,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -5080,7 +5048,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rail modernization signaling high speed rail",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 746.0,
           "prior_count": 920.0,
@@ -5092,7 +5060,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"rail modernization\" OR \"high speed rail\"",
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -5108,7 +5076,7 @@
             "Rail transport",
             "High-speed rail"
           ],
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "as_of": "2026-08-12",
           "recent_count": 613.9032,
           "prior_count": 615.0,
@@ -5137,7 +5105,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-13T00:06:52+09:00",
+          "captured_at": "2026-08-13T00:19:52+09:00",
           "recent_period": {
             "start_date": "2025-08-13",
             "end_date": "2026-08-12"
@@ -5170,7 +5138,7 @@
       "public_interest_momentum_3m": -19.6679
     }
   ],
-  "content_sha256": "91a494471f49042a2ad80497337284e9920fc93cd43250997c2ce180fa1d4681",
+  "content_sha256": "36ffa374ee867d0cb622f273de2e58011fedf5ae16e744e18382919ad9aee503",
   "dynamic_discovery": {
     "status": "WAITING_FOR_LOCAL_TEXT_CORPUS",
     "candidate_count": 0,
