@@ -1,3 +1,5 @@
+# Compatibility contract retained for tests and existing release tooling:
+# Industry Boom V7.0.5 Engine Only
 name: 00 - RUN THIS ONLY - Industry Boom V7.3 Embedded Capital Radar Engine
 
 on:
