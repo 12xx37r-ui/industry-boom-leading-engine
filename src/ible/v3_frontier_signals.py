@@ -8,6 +8,8 @@ after the requested ``as_of`` date.
 """
 
 import os
+import json
+import re
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -197,6 +199,53 @@ def _patentsview_observation(
     }
 
 
+def _google_patents_observation(client: JsonHttpClient, term: str, as_of: date, config: dict[str, Any]) -> dict[str, Any]:
+    """Best-effort, no-key Google Patents search; HTML parsing is deliberately conservative."""
+    base = str(config.get("google_patents_url") or "https://patents.google.com/xhr/query")
+    try:
+        payload = client.request_json(base, params={"url": f"q={term}", "exp": "", "download": "false"}, cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)))
+        raw = json.dumps(payload, ensure_ascii=False)
+        matches = re.findall(r'"(?:total_num_results|total_results|result_count)"\s*:\s*(\d+)', raw)
+        if matches:
+            return {"status": "GOOGLE_PATENTS_OBSERVED", "query": term, "patent_count": int(matches[0]), "observation_date": as_of.isoformat(), "external_call_allowed": True}
+    except (HttpError, OSError, ValueError, TypeError):
+        pass
+    return {"status": "GOOGLE_PATENTS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False}
+
+
+def _uspto_bulk_cache_observation(root: Path, theme_id: str, term: str, as_of: date) -> dict[str, Any]:
+    """Read an optional locally downloaded USPTO bulk summary; never downloads bulk files in the live run."""
+    candidates = [root / "data_cache/latest/uspto_patent_observations.json", root / "data_cache/latest/uspto_bulk_patent_observations.json"]
+    for path in candidates:
+        try:
+            payload = load_json(path)
+        except (OSError, ValueError, TypeError):
+            continue
+        for row in payload.get("themes") or payload.get("observations") or []:
+            if str(row.get("theme_id") or "") == theme_id and _as_date(row.get("as_of")) and _as_date(row.get("as_of")) <= as_of:
+                return {"status": "USPTO_BULK_CACHE_OBSERVED", "query": term, "patent_count": int(row.get("patent_count") or 0), "observation_date": str(row.get("as_of"))[:10], "external_call_allowed": False, "input_path": str(path.relative_to(root))}
+    return {"status": "WAITING_FOR_USPTO_BULK_CACHE", "query": term, "patent_count": None, "external_call_allowed": False, "reason": "download USPTO bulk data locally and place a summary in data_cache/latest/uspto_patent_observations.json"}
+
+
+def _patent_fallback_observation(root: Path, client: JsonHttpClient, theme: dict[str, Any], as_of: date, history: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
+    term = _normalise_term(str(theme.get("openalex_search") or theme.get("theme_name") or theme.get("theme_id")))
+    google = _google_patents_observation(client, term, as_of, config)
+    if google.get("patent_count") is not None:
+        google["provider_chain"] = ["google_patents"]
+        return google
+    bulk = _uspto_bulk_cache_observation(root, str(theme.get("theme_id") or ""), term, as_of)
+    if bulk.get("patent_count") is not None:
+        bulk["provider_chain"] = ["google_patents", "uspto_bulk_cache"]
+        return bulk
+    openalex_url = str(config.get("openalex_url") or "https://api.openalex.org/works")
+    try:
+        response = client.request_json(openalex_url, params={"search": term, "filter": f"from_publication_date:{(as_of - timedelta(days=364)).isoformat()},to_publication_date:{as_of.isoformat()}", "per-page": 1, "select": "id"}, cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)))
+        count = int((response.get("meta") or {}).get("count") or 0)
+        return {"status": "OPENALEX_PROXY_OBSERVED", "query": term, "patent_count": None, "related_work_count": count, "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS", "observation_date": as_of.isoformat(), "external_call_allowed": True, "provider_chain": ["google_patents", "uspto_bulk_cache", "openalex_proxy"]}
+    except (HttpError, OSError, ValueError, TypeError) as exc:
+        return {"status": "ALL_PATENT_FALLBACKS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False, "provider_chain": ["google_patents", "uspto_bulk_cache", "openalex_proxy"], "error": str(exc)[:500]}
+
+
 def build_frontier_signals(
     root: Path,
     themes: list[dict[str, Any]],
@@ -219,10 +268,11 @@ def build_frontier_signals(
         })
     patent_rows = []
     for theme in selected[: max(0, int(config.get("max_patent_queries_per_run", 3)))]:
+        patent_fallback = _patent_fallback_observation(root, client, theme, observed_date, history, config)
         patent_rows.append({
             "theme_id": str(theme.get("theme_id") or ""),
             "theme_name": theme.get("theme_name"),
-            "patentsview": _patentsview_observation(client, theme, observed_date, history, config),
+            "patentsview": _patentsview_observation(client, theme, observed_date, history, config) if (os.getenv("PATENTSVIEW_API_KEY") or os.getenv("USPTO_API_KEY")) else patent_fallback,
         })
     next_observations = dict(history.get("observations") or {})
     patent_counts = dict(history.get("patent_counts") or {})
@@ -253,7 +303,7 @@ def build_frontier_signals(
         "selected_theme_count": len(selected),
         "github_query_count": len(selected),
         "github_repository_limit_per_theme": int(config.get("max_repositories_per_theme", 2)),
-        "patent_query_count": len(patent_rows),
+            "patent_query_count": len(patent_rows),
         "patent_query_limit": int(config.get("max_patent_queries_per_run", 3)),
         "github": github_rows,
         "patentsview": patent_rows,

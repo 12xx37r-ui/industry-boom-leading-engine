@@ -15,6 +15,8 @@ class FakeFrontierClient:
 
     def request_json(self, url, **kwargs):
         self.calls.append((url, kwargs))
+        if "patents.google.com" in url:
+            return {"results": {"total_num_results": 42}}
         return {
             "items": [{
                 "full_name": "example/frontier",
@@ -45,8 +47,8 @@ class FrontierSignalTests(unittest.TestCase):
             )
         self.assertEqual(report["github_query_count"], 1)
         self.assertEqual(report["patent_query_count"], 1)
-        self.assertEqual(len(client.calls), 1)
-        self.assertEqual(report["patentsview"][0]["patentsview"]["status"], "WAITING_FOR_PATENTSVIEW_API_KEY")
+        self.assertLessEqual(len(client.calls), 2)
+        self.assertIn(report["patentsview"][0]["patentsview"]["status"], {"GOOGLE_PATENTS_OBSERVED", "WAITING_FOR_USPTO_BULK_CACHE", "OPENALEX_PROXY_OBSERVED"})
         self.assertEqual(report["github"][0]["github"]["repositories"][0]["star_delta_percent"], None)
 
     def test_future_github_observation_is_rejected(self):
@@ -56,6 +58,8 @@ class FrontierSignalTests(unittest.TestCase):
 
         def future_response(url, **kwargs):
             payload = original(url, **kwargs)
+            if "patents.google.com" in url:
+                return {"results": {"total_num_results": 42}}
             payload["items"][0]["pushed_at"] = "2026-08-13T00:00:00Z"
             payload["items"][0]["updated_at"] = "2026-08-13T00:00:00Z"
             return payload
@@ -67,6 +71,18 @@ class FrontierSignalTests(unittest.TestCase):
             report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1})
         self.assertEqual(report["lookahead_guard"], "FUTURE_DATA_REJECTED")
         self.assertEqual(report["github"][0]["github"]["repositories"], [])
+
+    def test_google_patents_is_first_fallback_without_api_key(self):
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+        client = FakeFrontierClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
+        patent = report["patentsview"][0]["patentsview"]
+        self.assertEqual(patent["status"], "GOOGLE_PATENTS_OBSERVED")
+        self.assertEqual(patent["patent_count"], 42)
+        self.assertEqual(patent["provider_chain"], ["google_patents"])
 
 
 if __name__ == "__main__":
