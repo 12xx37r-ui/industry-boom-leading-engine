@@ -49,7 +49,6 @@ jobs:
       - name: Test V7 engine release only
         run: |
           python -m unittest -q tests.test_v62_release
-          python -m ible.v73_embedded_radar --root . --test-only --timeout-seconds 60
 
       - name: Resolve run date
         id: vars
@@ -74,7 +73,6 @@ jobs:
               echo "::warning::$label live refresh failed or timed out; sealed latest cache will be used"
             fi
           }
-          run_stage 900 "Embedded Capital Radar" python -m ible.v73_embedded_radar --root . --mode weekly --timeout-seconds 840
           run_stage 720 "V3 research and government sources" python -m ible.v3_data_cli --root . --output-dir outputs/v3_data --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 480 "V3.1 real economy" python -m ible.v31_cli --root . --output-dir outputs/v31_real_economy --run-date "${{ steps.vars.outputs.run_date }}"
           run_stage 300 "V3.2 corporate investment" python -m ible.v32_cli --root . --output-dir outputs/v32_investment --run-date "${{ steps.vars.outputs.run_date }}"
