@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "as_of": "2026-08-12",
-  "status": "CANDIDATES_FOUND",
-  "candidate_count": 2,
+  "status": "NO_QUALIFIED_CANDIDATES",
+  "candidate_count": 0,
   "auto_add_allowed": false,
   "promotion_rule": {
     "min_distinct_document_count": 2,
@@ -11,28 +11,7 @@
     "min_similarity": 0.15,
     "requires_human_review": true
   },
-  "candidates": [
-    {
-      "term": "multimodal",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 74.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 3,
-      "promotion_status": "NEW_THEME_REVIEW"
-    },
-    {
-      "term": "neural",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 74.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 3,
-      "promotion_status": "NEW_THEME_REVIEW"
-    }
-  ],
+  "candidates": [],
   "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
   "input_document_count": 16,
   "collection": {
@@ -42,5 +21,5 @@
     "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "2e8eb7f5e11d5a2c75c6f0a616df61dae77026470607c48f9265a9bf1b231045"
+  "content_sha256": "4de92de1d56ce6092763a48ef189a6f39601bbc548b70793ad9d2c9dd29f130e"
 }

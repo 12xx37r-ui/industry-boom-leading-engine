@@ -19,8 +19,8 @@
     "disabled_sources": []
   },
   "dynamic_discovery": {
-    "status": "CANDIDATES_FOUND",
-    "candidate_count": 2,
+    "status": "NO_QUALIFIED_CANDIDATES",
+    "candidate_count": 0,
     "auto_add_allowed": false
   },
   "model_lock": {
