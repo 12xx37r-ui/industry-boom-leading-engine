@@ -510,12 +510,36 @@
       "investment_use_allowed": false
     }
   ],
-  "content_sha256": "4daf588304135fadefeb3e066897d415fabbee4faf05164aec1b80e3a89f009a",
+  "content_sha256": "915f6ad5620cd2c3c893e83046fcc7a8b2c587b7190b0e71ca238e6d78fe4b82",
   "ingest": {
     "status": "SEC_INGEST_FAILED_CACHE_PRESERVED",
-    "external_api_calls": 0,
+    "external_api_calls": 5,
     "company_count": 0,
     "filing_count": 0,
-    "error": "SEC data unavailable from both official routes. API errors=20; bulk_error=SEC bulk download failed after 3 attempts: HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\". This is a network/IP access failure, not a deleted workflow-run problem."
+    "error": "SEC data unavailable from both official routes. API errors=5; bulk_error=not attempted. This is a network/IP access failure, not a deleted workflow-run problem.",
+    "download_status": {
+      "status": "SEC_UNAVAILABLE",
+      "source_mode": "api",
+      "requested": 5,
+      "extracted": 0,
+      "api_downloaded": 0,
+      "bulk_extracted": 0,
+      "missing": [
+        "CRWD",
+        "DDD",
+        "DM",
+        "FTNT",
+        "ZS"
+      ],
+      "api_errors": {
+        "CRWD": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"",
+        "DDD": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"",
+        "DM": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"",
+        "FTNT": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"",
+        "ZS": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\""
+      },
+      "bulk_error": null,
+      "subset_dir": "/home/runner/work/industry-boom-leading-engine/industry-boom-leading-engine/.cache/sec_bulk/subset"
+    }
   }
 }
