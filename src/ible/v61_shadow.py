@@ -67,12 +67,35 @@ def _decision_rows(root,snapshot,policy,reference):
     return rows
 
 def _register(root,snapshot,registry):
-    sid=str(snapshot['snapshot_id']); p=root/'prospective_history/v70_operational_snapshots'/f'{sid}.json'; existing=next((x for x in registry['snapshots'] if x.get('snapshot_id')==sid),None)
+    sid=str(snapshot['snapshot_id']); base=root/'prospective_history/v70_operational_snapshots'; p=base/f'{sid}.json'; existing=next((x for x in registry['snapshots'] if x.get('snapshot_id')==sid),None)
     if p.is_file():
         stored=load_json(p)
-        if stored.get('content_sha256')!=snapshot.get('content_sha256'): raise V61Error(f'immutable V7 snapshot mismatch: {sid}')
-        if existing is None: registry['snapshots'].append({'snapshot_id':sid,'as_of':stored['as_of'],'snapshot_sha256':stored['content_sha256'],'status':'AWAITING_FUTURE_OUTCOMES'})
-        return 'REUSED_IMMUTABLE_V7_SNAPSHOT',stored
+        if stored.get('content_sha256')==snapshot.get('content_sha256'):
+            if existing is None: registry['snapshots'].append({'snapshot_id':sid,'as_of':stored['as_of'],'snapshot_sha256':stored['content_sha256'],'status':'AWAITING_FUTURE_OUTCOMES'})
+            return 'REUSED_IMMUTABLE_V7_SNAPSHOT',stored
+
+        # A monthly source snapshot can be refreshed later in the same month.
+        # Never overwrite the sealed monthly file; create a deterministic
+        # as-of version and keep the original available for audit/replay.
+        suffix=str(snapshot.get('as_of') or 'rerun')
+        candidate=f'{sid}-{suffix}'
+        index=1
+        while True:
+            candidate_path=base/f'{candidate}.json'
+            if not candidate_path.is_file():
+                break
+            candidate_stored=load_json(candidate_path)
+            if candidate_stored.get('content_sha256')==snapshot.get('content_sha256'):
+                return 'REUSED_IMMUTABLE_V7_VERSIONED_SNAPSHOT',candidate_stored
+            index += 1
+            candidate=f'{sid}-{suffix}-{index}'
+        core={key:value for key,value in snapshot.items() if key!='content_sha256'}
+        core['snapshot_id']=candidate
+        versioned={**core,'content_sha256':canonical_sha256(core)}
+        write_json(candidate_path,versioned)
+        registry['snapshots'].append({'snapshot_id':candidate,'as_of':versioned['as_of'],'snapshot_sha256':versioned['content_sha256'],'status':'AWAITING_FUTURE_OUTCOMES'})
+        registry['snapshots'].sort(key=lambda x:str(x['snapshot_id']))
+        return 'CREATED_IMMUTABLE_V7_VERSIONED_SNAPSHOT',versioned
     write_json(p,snapshot); registry['snapshots'].append({'snapshot_id':sid,'as_of':snapshot['as_of'],'snapshot_sha256':snapshot['content_sha256'],'status':'AWAITING_FUTURE_OUTCOMES'}); registry['snapshots'].sort(key=lambda x:str(x['snapshot_id'])); return 'CREATED_IMMUTABLE_V7_SNAPSHOT',snapshot
 
 def _policy_metrics(rows,key):
