@@ -1,71 +1,80 @@
-from __future__ import annotations
-
-from datetime import date
+import json
+import logging
 from pathlib import Path
-from typing import Any
+from datetime import datetime
+from typing import Dict, Any, List
 
-from ible.integrity import canonical_sha256, load_json, write_json
-
-
-def _day(value: Any) -> date | None:
-    try:
-        return date.fromisoformat(str(value or "")[:10])
-    except ValueError:
-        return None
+logger = logging.getLogger(__name__)
 
 
-def build_hiring_nowcast(root: Path, themes: list[dict[str, Any]], as_of: str) -> dict[str, Any]:
-    observed = _day(as_of)
-    if observed is None:
-        raise ValueError(f"invalid as_of: {as_of}")
-    path = root / "data_cache/inbox/hiring_signal_observations.json"
-    if not path.is_file():
+def load_hiring_signal_observations(as_of: str, cache_dir: Path) -> Dict[str, Any]:
+    as_of_date = datetime.strptime(as_of, "%Y-%m-%d")
+    inbox_path = cache_dir / "inbox" / "hiring_signal_observations.json"
+
+    if not inbox_path.exists():
         return {
-            "schema_version": 1, "as_of": observed.isoformat(),
-            "status": "WAITING_FOR_LOCAL_HIRING_CACHE", "observed_theme_count": 0,
-            "future_observation_rejected_count": 0, "duplicate_observation_count": 0,
-            "investment_use_allowed": False, "input_path": str(path.relative_to(root)), "themes": [],
+            "status": "WAITING_FOR_LOCAL_HIRING_CACHE",
+            "as_of": as_of,
+            "observed_theme_count": 0,
+            "future_observation_rejected_count": 0,
+            "observations": [],
+            "investment_use_allowed": False
         }
+
     try:
-        payload = load_json(path)
-    except (OSError, ValueError, TypeError) as exc:
-        return {"schema_version": 1, "as_of": observed.isoformat(), "status": "HIRING_CACHE_INVALID", "error": str(exc)[:500], "observed_theme_count": 0, "investment_use_allowed": False, "themes": []}
-    rows = payload.get("observations") if isinstance(payload, dict) else payload
-    if not isinstance(rows, list):
-        rows = []
-    unique: dict[tuple[str, str, str, str], dict[str, Any]] = {}
-    future = 0
-    duplicates = 0
-    for row in rows:
-        if not isinstance(row, dict):
-            continue
-        item_day = _day(row.get("observed_date"))
-        if item_day is None or item_day > observed:
-            future += 1
-            continue
-        theme_id = str(row.get("theme_id") or "")
-        source = str(row.get("source") or "local")
-        query = str(row.get("query") or "")
-        key = (theme_id, source, query, item_day.isoformat())
-        if key in unique:
-            duplicates += 1
-            continue
-        try:
-            recent = max(0.0, float(row.get("posting_count") or 0))
-            prior = max(0.0, float(row.get("prior_posting_count") or 0))
-        except (TypeError, ValueError):
-            continue
-        unique[key] = {"theme_id": theme_id, "source": source, "query": query, "observed_date": item_day.isoformat(), "posting_count": recent, "prior_posting_count": prior, "growth_percent": round(100.0 * (recent - prior) / max(1.0, prior), 4), "source_timestamp": row.get("source_timestamp")}
-    by_theme: dict[str, list[dict[str, Any]]] = {}
-    for row in unique.values():
-        by_theme.setdefault(row["theme_id"], []).append(row)
-    result = [{"theme_id": str(theme.get("theme_id") or ""), "observations": by_theme.get(str(theme.get("theme_id") or ""), [])} for theme in themes]
-    observed_count = sum(bool(row["observations"]) for row in result)
-    return {"schema_version": 1, "as_of": observed.isoformat(), "status": "HIRING_NOWCAST_OBSERVED" if observed_count else "NO_VALID_HIRING_OBSERVATIONS", "observed_theme_count": observed_count, "future_observation_rejected_count": future, "duplicate_observation_count": duplicates, "investment_use_allowed": False, "input_path": str(path.relative_to(root)), "themes": result}
+        with open(inbox_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
 
+        raw_observations = data.get("observations", [])
+        valid_observations = []
+        seen_keys = set()
+        rejected_future_count = 0
 
-def write_hiring_nowcast(root: Path, output_dir: Path, report: dict[str, Any]) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    report = dict(report)
-    report["content_sha256"] = canonical_sha256({key: value for key, value in report.items() if key != "content_sha256"})
-    write_json(output_dir / "v3_hiring_nowcast.json", report)
+        required_fields = [
+            "theme_id", "source", "query", "observed_date",
+            "posting_count", "prior_posting_count", "source_timestamp"
+        ]
+
+        for obs in raw_observations:
+            # 필수 필드 검증
+            if not all(field in obs for field in required_fields):
+                continue
+
+            obs_date_str = obs["observed_date"]
+            try:
+                obs_date = datetime.strptime(obs_date_str, "%Y-%m-%d")
+            except ValueError:
+                continue
+
+            # 미래 날짜 차단
+            if obs_date > as_of_date:
+                rejected_future_count += 1
+                continue
+
+            # 중복 제거 키: (source, query, observed_date)
+            dedup_key = (obs["source"], obs["query"], obs_date_str)
+            if dedup_key in seen_keys:
+                continue
+            seen_keys.add(dedup_key)
+
+            valid_observations.append(obs)
+
+        observed_theme_count = len(set(o["theme_id"] for o in valid_observations))
+        return {
+            "status": "HIRING_LOCAL_CACHE_OBSERVED" if valid_observations else "WAITING_FOR_LOCAL_HIRING_CACHE",
+            "as_of": as_of,
+            "observed_theme_count": observed_theme_count,
+            "future_observation_rejected_count": rejected_future_count,
+            "observations": valid_observations,
+            "investment_use_allowed": False
+        }
+    except Exception as e:
+        logger.error(f"Failed to process hiring observations: {e}")
+        return {
+            "status": "WAITING_FOR_LOCAL_HIRING_CACHE",
+            "as_of": as_of,
+            "observed_theme_count": 0,
+            "future_observation_rejected_count": 0,
+            "observations": [],
+            "investment_use_allowed": False
+        }
