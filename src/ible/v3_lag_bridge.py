@@ -45,12 +45,12 @@ def build_lag_bridge(observations: dict[str, Any], requested_as_of: str) -> dict
                 "status": source.get("status"),
                 "freshness": freshness,
                 "lag_days": lag_days,
-                "score_used": score is not None,
+                "score_used": freshness != "UNKNOWN_VINTAGE" and score is not None,
             }
             if freshness == "FUTURE_DATA_REJECTED":
                 invalid_future_count += 1
                 continue
-            if score is not None:
+            if freshness != "UNKNOWN_VINTAGE" and score is not None:
                 values.append((float(score), weight))
         denominator = sum(weight for _, weight in values)
         score = sum(value * weight for value, weight in values) / denominator if denominator else None

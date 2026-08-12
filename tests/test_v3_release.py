@@ -157,6 +157,16 @@ class V3ReleaseTests(unittest.TestCase):
         assert bridge["official_statistics_replaced"] is False
         assert bridge["lookahead_guard"] == "FUTURE_DATA_REJECTED"
 
+    def test_lag_bridge_excludes_unknown_vintage_cache_from_score(self):
+        bridge = build_lag_bridge({"themes": [{"theme_id": "AI", "sources": {
+            "openalex": {"as_of": "2026-08-12", "source_signal_score": 70},
+            "usaspending": {"status": "CACHE_FALLBACK", "source_signal_score": 90},
+        }}]}, "2026-08-12")
+        theme = bridge["themes"][0]
+        assert theme["available_proxy_source_count"] == 1
+        assert theme["status"] == "PROXY_NOWCAST_PARTIAL"
+        assert theme["source_status"]["usaspending"]["score_used"] is False
+
 
 if __name__ == "__main__":
     unittest.main()
