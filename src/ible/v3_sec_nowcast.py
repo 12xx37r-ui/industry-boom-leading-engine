@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Any
 
 from ible.analytics.sec_metrics import FLOW_TAGS, find_fact, quarterly_flow
-from ible.collectors.sec_bulk import SecBulkClient, SecBulkError
 from ible.config import load_yaml
 from ible.integrity import canonical_sha256, load_json, write_json
 
@@ -108,6 +107,10 @@ def ingest_sec_companyfacts(root: Path, requested_as_of: str, max_tickers: int =
     user_agent = os.getenv("SEC_USER_AGENT", "").strip()
     if not user_agent:
         return {"status": "WAITING_FOR_SEC_USER_AGENT", "external_api_calls": 0, "company_count": 0, "filing_count": 0}
+    try:
+        from ible.collectors.sec_bulk import SecBulkClient, SecBulkError
+    except ImportError as exc:
+        return {"status": "SEC_INGEST_DEPENDENCY_MISSING", "external_api_calls": 0, "company_count": 0, "filing_count": 0, "error": str(exc)}
     by_theme, tickers = _selected_tickers(root, max_tickers)
     client = SecBulkClient(root / ".cache/sec_bulk", user_agent, timeout=120, min_interval=0.35)
     try:
