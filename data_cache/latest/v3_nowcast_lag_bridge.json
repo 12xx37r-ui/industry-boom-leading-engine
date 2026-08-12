@@ -1398,8 +1398,8 @@
     {
       "theme_id": "AGRITECH_FOODTECH",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.2691,
-      "available_proxy_source_count": 3,
+      "nowcast_score": 58.4187,
+      "available_proxy_source_count": 2,
       "source_status": {
         "openalex": {
           "status": "LIVE_COLLECTED",
@@ -1411,7 +1411,7 @@
           "status": "CACHE_FALLBACK",
           "freshness": "UNKNOWN_VINTAGE",
           "lag_days": null,
-          "score_used": true
+          "score_used": false
         },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "d1a7b5d939bcd5f780b81ec8578a2674c1d93fb70e445f8073462336d2243586"
+  "content_sha256": "b6c427874a317bd71f50409b16f8cd78f45403a79431136efb78ce44b5a5a110"
 }
