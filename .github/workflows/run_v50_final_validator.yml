@@ -201,7 +201,10 @@ jobs:
           done
           if ! git diff --cached --quiet; then
             git commit -m "validation: V7.3 embedded-capital-radar ledger ${{ steps.vars.outputs.run_date }}"
-            git push || true
+            if ! git push; then
+              echo "::error::GitHub Actions write permission denied. Enable repository Actions workflow read/write permissions." 
+              exit 1
+            fi
           fi
           exit 0
 
