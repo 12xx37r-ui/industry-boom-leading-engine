@@ -1,11 +1,44 @@
 {
   "status": "SOURCE_HEALTH_RECORDED",
-  "as_of": "2026-08-01",
-  "source_cells": {
-    "live": 100,
-    "cache_fallback": 0,
-    "unavailable": 0
+  "as_of": "2026-08-12",
+  "public_interest_observed": 49,
+  "collection_metrics": {
+    "network_requests": 6,
+    "cache_hits": 376,
+    "stale_cache_hits": 0,
+    "cache_writes": 6,
+    "enabled_sources": [
+      "openalex",
+      "usaspending",
+      "gdelt",
+      "wikimedia"
+    ],
+    "disabled_sources": []
   },
-  "themes_with_errors": 0,
-  "errors": []
+  "sources": {
+    "openalex": {
+      "enabled": true,
+      "live_count": 50,
+      "cache_fallback_count": 0,
+      "unavailable_count": 0
+    },
+    "usaspending": {
+      "enabled": true,
+      "live_count": 49,
+      "cache_fallback_count": 1,
+      "unavailable_count": 0
+    },
+    "gdelt": {
+      "enabled": true,
+      "live_count": 19,
+      "cache_fallback_count": 1,
+      "unavailable_count": 30
+    },
+    "wikimedia": {
+      "enabled": true,
+      "live_count": 48,
+      "cache_fallback_count": 0,
+      "unavailable_count": 2
+    }
+  }
 }

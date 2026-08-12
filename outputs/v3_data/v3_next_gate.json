@@ -1,5 +1,4 @@
 {
-  "status": "V3_PHASE1_COMPLETE_OR_RETRYABLE",
-  "next_required_gate": "ADD_CORPORATE_CAPEX_RD_HIRING_REVENUE_VIABILITY_SOURCES_BEFORE_FROZEN_BOOM_SCORING",
+  "status": "V7_CORE_DATA_READY",
   "investment_use_allowed": false
 }
