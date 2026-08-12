@@ -78,3 +78,13 @@ def load_hiring_signal_observations(as_of: str, cache_dir: Path) -> Dict[str, An
             "observations": [],
             "investment_use_allowed": False
         }
+
+
+def build_hiring_nowcast(as_of: str, cache_dir: Path) -> Dict[str, Any]:
+    return load_hiring_signal_observations(as_of=as_of, cache_dir=cache_dir)
+
+
+def write_hiring_nowcast(data: Dict[str, Any], output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
