@@ -146,6 +146,7 @@ class JsonHttpClient:
         method: str = "GET",
         params: dict[str, Any] | None = None,
         payload: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
         cache_ttl_seconds: int | None = None,
     ) -> dict[str, Any]:
         if params:
@@ -160,15 +161,17 @@ class JsonHttpClient:
                 self._increment("cache_hits")
                 return self._decode_json(fresh_raw)
             data = None
-            headers = {"Accept": "application/json", "User-Agent": self.settings.user_agent}
+            request_headers = {"Accept": "application/json", "User-Agent": self.settings.user_agent}
+            if headers:
+                request_headers.update({str(key): str(value) for key, value in headers.items()})
             if payload is not None:
                 data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-                headers["Content-Type"] = "application/json"
+                request_headers["Content-Type"] = "application/json"
             try:
                 if data is None:
-                    raw = self._request_bytes(url, method=method, headers=headers)
+                    raw = self._request_bytes(url, method=method, headers=request_headers)
                 else:
-                    raw = self._request_payload(url, method=method, headers=headers, data=data)
+                    raw = self._request_payload(url, method=method, headers=request_headers, data=data)
             except HttpError:
                 stale_raw, is_stale = self._read_cache(cache_path, stale_ttl)
                 if stale_raw is None or not is_stale:

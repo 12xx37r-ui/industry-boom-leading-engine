@@ -14,6 +14,7 @@ from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 from ible.v3_dynamic_terms import build_dynamic_discovery_report, collect_dynamic_documents, discover_candidates, write_dynamic_discovery_report
 from ible.v3_lag_bridge import build_lag_bridge, write_lag_bridge
 from ible.v3_sec_nowcast import build_sec_nowcast, ingest_sec_companyfacts, write_sec_nowcast
+from ible.v3_frontier_signals import build_frontier_signals, write_frontier_signals
 
 class V3DataError(RuntimeError): pass
 
@@ -292,6 +293,25 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
     sec_nowcast["ingest"] = sec_ingest
     sec_nowcast["content_sha256"] = canonical_sha256({key: value for key, value in sec_nowcast.items() if key != "content_sha256"})
     write_sec_nowcast(root, output_dir, sec_nowcast)
+    frontier_cfg = load_json(root / 'config/v3_frontier_signals.json')
+    if bool(frontier_cfg.get('enabled', True)):
+        frontier_signals = build_frontier_signals(root, enriched_themes, as_of.isoformat(), client, frontier_cfg)
+    else:
+        frontier_signals = {
+            'schema_version': 1,
+            'as_of': as_of.isoformat(),
+            'status': 'DISABLED_BY_CONFIG',
+            'investment_use_allowed': False,
+            'official_statistics_replaced': False,
+            'selected_theme_count': 0,
+            'github_query_count': 0,
+            'patent_query_count': 0,
+            'github': [],
+            'patentsview': [],
+            'history': {'schema_version': 1, 'as_of': as_of.isoformat(), 'observations': {}, 'patent_counts': {}},
+            'lookahead_guard': 'FUTURE_DATA_REJECTED',
+        }
+    write_frontier_signals(root, output_dir, frontier_signals)
     obs["lag_bridge"] = {
         "status": lag_bridge["status"],
         "nowcast_active_theme_count": lag_bridge["nowcast_active_theme_count"],
@@ -305,9 +325,19 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         "external_api_calls": 0,
         "ingest_status": sec_ingest["status"],
     }
+    obs["frontier_signals"] = {
+        "status": frontier_signals["status"],
+        "selected_theme_count": frontier_signals["selected_theme_count"],
+        "github_query_count": frontier_signals["github_query_count"],
+        "patent_query_count": frontier_signals["patent_query_count"],
+        "investment_use_allowed": False,
+    }
     obs['content_sha256']=canonical_sha256(obs)
     public_count=sum(1 for r in rows if r['public_interest_status']=='LIVE_OR_CACHED_OBSERVED')
-    summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"collection_metrics":collection_metrics,"dynamic_discovery":{"status":dynamic_report["status"],"candidate_count":dynamic_report["candidate_count"],"auto_add_allowed":False},"lag_bridge":{"status":lag_bridge["status"],"nowcast_active_theme_count":lag_bridge["nowcast_active_theme_count"],"future_data_rejected_count":lag_bridge["future_data_rejected_count"],"official_statistics_replaced":False},"sec_mdna_capex_nowcast":{"status":sec_nowcast["status"],"observed_theme_count":sec_nowcast["observed_theme_count"],"future_filing_rejected_count":sec_nowcast["future_filing_rejected_count"],"external_api_calls":0},"model_lock":model_lock,"investment_use_allowed":False}
+    collection_metrics = client.stats()
+    collection_metrics['enabled_sources']=[name for name,enabled in enabled_sources.items() if enabled]
+    collection_metrics['disabled_sources']=[name for name,enabled in enabled_sources.items() if not enabled]
+    summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"collection_metrics":collection_metrics,"dynamic_discovery":{"status":dynamic_report["status"],"candidate_count":dynamic_report["candidate_count"],"auto_add_allowed":False},"lag_bridge":{"status":lag_bridge["status"],"nowcast_active_theme_count":lag_bridge["nowcast_active_theme_count"],"future_data_rejected_count":lag_bridge["future_data_rejected_count"],"official_statistics_replaced":False},"sec_mdna_capex_nowcast":{"status":sec_nowcast["status"],"observed_theme_count":sec_nowcast["observed_theme_count"],"future_filing_rejected_count":sec_nowcast["future_filing_rejected_count"],"external_api_calls":0},"frontier_signals":{"status":frontier_signals["status"],"selected_theme_count":frontier_signals["selected_theme_count"],"github_query_count":frontier_signals["github_query_count"],"patent_query_count":frontier_signals["patent_query_count"],"investment_use_allowed":False},"model_lock":model_lock,"investment_use_allowed":False}
     source_health={"status":"SOURCE_HEALTH_RECORDED","as_of":as_of.isoformat(),"public_interest_observed":public_count,"collection_metrics":collection_metrics,"sources":{name:{"enabled":enabled_sources.get(name,False),"live_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='LIVE_COLLECTED'),"cache_fallback_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='CACHE_FALLBACK'),"unavailable_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status') in {'SOURCE_UNAVAILABLE','SOURCE_DISABLED'})} for name in ('openalex','usaspending','gdelt','wikimedia')}}
     output_dir.mkdir(parents=True,exist_ok=True); write_json(output_dir/'v3_run_summary.json',summary); write_json(output_dir/'v3_source_observations.json',obs); write_json(output_dir/'v3_data_source_health.json',source_health); write_json(output_dir/'v3_model_lock_verification.json',model_lock); write_json(output_dir/'v3_next_gate.json',{"status":"V7_CORE_DATA_READY","investment_use_allowed":False})
     write_json(root/'data_cache/latest/v3_source_observations.json',obs); write_json(root/'data_cache'/f'{as_of.year:04d}'/f'{as_of.month:02d}'/as_of.isoformat()/'v3_source_observations.json',obs)

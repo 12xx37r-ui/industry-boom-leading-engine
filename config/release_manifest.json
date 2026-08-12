@@ -1,7 +1,7 @@
 {
   "schema_version": 7,
   "release": "7.1.0-cached-nowcast-guarded",
-  "file_count": 91,
+  "file_count": 94,
   "github_web_upload_limit_guard": 100,
   "files": [
     ".github/workflows/run_v50_final_validator.yml",
@@ -19,6 +19,7 @@
     "config/v33_auto_engine.json",
     "config/v3_data_sources.json",
     "config/v3_dynamic_discovery.json",
+    "config/v3_frontier_signals.json",
     "config/v3_theme_queries.json",
     "config/v40_revenue_sources.json",
     "config/v50_prospective_validation.json",
@@ -70,6 +71,7 @@
     "src/ible/v3_lag_bridge.py",
     "src/ible/v3_sec_nowcast.py",
     "src/ible/v3_dynamic_terms.py",
+    "src/ible/v3_frontier_signals.py",
     "src/ible/v3_http.py",
     "src/ible/v40_cli.py",
     "src/ible/v40_engine.py",
@@ -85,6 +87,7 @@
     "src/ible/v61_shadow.py",
     "tests/__init__.py",
     "tests/test_v62_release.py",
+    "tests/test_v3_frontier_signals.py",
     "validation_seed/backtests/ADDITIVE_2019.json",
     "validation_seed/backtests/AI_2022.json",
     "validation_seed/backtests/CLOUD_2018.json",

@@ -1,0 +1,73 @@
+from __future__ import annotations
+
+import os
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+from ible.v3_frontier_signals import build_frontier_signals
+
+
+class FakeFrontierClient:
+    def __init__(self) -> None:
+        self.calls: list[tuple[str, dict]] = []
+
+    def request_json(self, url, **kwargs):
+        self.calls.append((url, kwargs))
+        return {
+            "items": [{
+                "full_name": "example/frontier",
+                "html_url": "https://github.com/example/frontier",
+                "description": "frontier technology",
+                "stargazers_count": 12,
+                "forks_count": 3,
+                "open_issues_count": 1,
+                "pushed_at": "2026-08-10T00:00:00Z",
+                "updated_at": "2026-08-10T00:00:00Z",
+            }]
+        }
+
+
+class FrontierSignalTests(unittest.TestCase):
+    def test_missing_patent_key_is_cache_only_and_github_is_bounded(self):
+        themes = [
+            {"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"},
+            {"theme_id": "B", "theme_name": "B", "data_build_priority": 2, "openalex_search": "quantum computing"},
+        ]
+        client = FakeFrontierClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": ""}
+        ):
+            report = build_frontier_signals(
+                Path(temp_dir), themes, "2026-08-12", client,
+                {"max_theme_queries_per_run": 1, "max_repositories_per_theme": 2, "max_patent_queries_per_run": 1},
+            )
+        self.assertEqual(report["github_query_count"], 1)
+        self.assertEqual(report["patent_query_count"], 1)
+        self.assertEqual(len(client.calls), 1)
+        self.assertEqual(report["patentsview"][0]["patentsview"]["status"], "WAITING_FOR_PATENTSVIEW_API_KEY")
+        self.assertEqual(report["github"][0]["github"]["repositories"][0]["star_delta_percent"], None)
+
+    def test_future_github_observation_is_rejected(self):
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+        client = FakeFrontierClient()
+        original = client.request_json
+
+        def future_response(url, **kwargs):
+            payload = original(url, **kwargs)
+            payload["items"][0]["pushed_at"] = "2026-08-13T00:00:00Z"
+            payload["items"][0]["updated_at"] = "2026-08-13T00:00:00Z"
+            return payload
+
+        client.request_json = future_response
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1})
+        self.assertEqual(report["lookahead_guard"], "FUTURE_DATA_REJECTED")
+        self.assertEqual(report["github"][0]["github"]["repositories"], [])
+
+
+if __name__ == "__main__":
+    unittest.main()
