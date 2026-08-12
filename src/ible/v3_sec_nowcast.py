@@ -112,12 +112,20 @@ def ingest_sec_companyfacts(root: Path, requested_as_of: str, max_tickers: int =
     except ImportError as exc:
         return {"status": "SEC_INGEST_DEPENDENCY_MISSING", "external_api_calls": 0, "company_count": 0, "filing_count": 0, "error": str(exc)}
     by_theme, tickers = _selected_tickers(root, max_tickers)
-    client = SecBulkClient(root / ".cache/sec_bulk", user_agent, timeout=120, min_interval=0.35)
+    cache_dir = root / ".cache/sec_bulk"
+    client = SecBulkClient(cache_dir, user_agent, timeout=120, min_interval=0.35)
     try:
-        preparation = client.prepare_subset(json_safe_map(root), tickers, source_mode=os.getenv("SEC_SOURCE_MODE", "auto"))
-        facts, errors = client.load_subset(tickers)
+        # A blocked GitHub runner should not spend the whole stage retrying every
+        # ticker and then downloading the large archive. Live SEC refresh is capped;
+        # previously downloaded subsets remain usable.
+        live_limit = max(1, min(max_tickers, int(os.getenv("SEC_LIVE_MAX_TICKERS", "5"))))
+        preparation = client.prepare_subset(json_safe_map(root), tickers[:live_limit], source_mode=os.getenv("SEC_SOURCE_MODE", "api"))
+        facts, errors = client.load_subset(tickers[:live_limit])
     except (SecBulkError, OSError, ValueError) as exc:
-        return {"status": "SEC_INGEST_FAILED_CACHE_PRESERVED", "external_api_calls": 0, "company_count": 0, "filing_count": 0, "error": str(exc)[:500]}
+        status_path = cache_dir / "sec_download_status.json"
+        status = load_json(status_path) if status_path.is_file() else {}
+        attempted = int(status.get("api_downloaded") or 0) + len(status.get("api_errors") or {}) + (1 if status.get("bulk_error") else 0)
+        return {"status": "SEC_INGEST_FAILED_CACHE_PRESERVED", "external_api_calls": attempted, "company_count": 0, "filing_count": 0, "error": str(exc)[:500], "download_status": status}
     filings: list[dict[str, Any]] = []
     for theme_id, theme_tickers in by_theme.items():
         for ticker in theme_tickers:
