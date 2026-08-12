@@ -47,7 +47,7 @@ def _uspto_bulk_cache_observation(theme_id: str, as_of: str, cache_dir: Path) ->
     return None
 
 
-def observe_frontier_signals(
+def build_frontier_signals(
     themes: List[Dict[str, Any]],
     as_of: str,
     cache_dir: Path,
@@ -146,3 +146,12 @@ def observe_frontier_signals(
         },
         "lookahead_guard": "FUTURE_DATA_REJECTED"
     }
+
+
+observe_frontier_signals = build_frontier_signals
+
+
+def write_frontier_signals(data: Dict[str, Any], output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
