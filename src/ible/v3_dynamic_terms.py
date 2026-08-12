@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import re
 from collections import Counter, defaultdict
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
 from ible.integrity import canonical_sha256, load_json, write_json
+from ible.v3_collectors import Period
 
 _TOKEN_RE = re.compile(r"[^\W_]+", re.UNICODE)
 _STOPWORDS = {
@@ -116,6 +117,41 @@ def build_dynamic_discovery_report(root: Path, themes: list[dict[str, Any]], as_
     report["input_path"] = str(inbox.relative_to(root))
     report["input_document_count"] = len(documents)
     return report
+
+
+def collect_dynamic_documents(
+    openalex: Any, gdelt: Any, themes: list[dict[str, Any]], as_of: str,
+    *, max_theme_queries: int = 5, documents_per_source: int = 5, lookback_days: int = 90,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Collect a small, cached text sample for frontier-term discovery."""
+    end = date.fromisoformat(str(as_of)[:10])
+    period = Period(end - timedelta(days=max(1, lookback_days) - 1), end)
+    selected = sorted(themes, key=lambda row: (int(row.get("data_build_priority", 99)), str(row.get("theme_id"))))[:max(0, int(max_theme_queries))]
+    documents: list[dict[str, Any]] = []
+    errors: list[dict[str, str]] = []
+    for row in selected:
+        theme_id = str(row.get("theme_id") or "")
+        if openalex:
+            try:
+                documents.extend(openalex.documents(str(row.get("openalex_search") or ""), period, documents_per_source))
+            except Exception as exc:
+                errors.append({"theme_id": theme_id, "source": "openalex", "error": str(exc)[:300]})
+        if gdelt:
+            try:
+                documents.extend(gdelt.documents(str(row.get("gdelt_query") or ""), period, documents_per_source))
+            except Exception as exc:
+                errors.append({"theme_id": theme_id, "source": "gdelt", "error": str(exc)[:300]})
+    deduped = {}
+    for document in documents:
+        key = (str(document.get("source")), str(document.get("document_id")))
+        deduped[key] = document
+    return list(deduped.values()), {
+        "status": "LIVE_OR_CACHED_TEXT_SAMPLE" if deduped else "TEXT_SAMPLE_UNAVAILABLE",
+        "selected_theme_count": len(selected),
+        "document_count": len(deduped),
+        "errors": errors,
+        "lookback_days": lookback_days,
+    }
 
 
 def write_dynamic_discovery_report(root: Path, output_dir: Path, report: dict[str, Any]) -> None:

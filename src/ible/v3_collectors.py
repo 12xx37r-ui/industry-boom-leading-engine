@@ -48,6 +48,28 @@ class OpenAlexCollector:
         })
         return max(0, int((payload.get("meta") or {}).get("count") or 0))
 
+    def documents(self, query: str, period: Period, limit: int = 5) -> list[dict[str, Any]]:
+        payload = self.client.request_json(self.base_url, params={
+            "search": query,
+            "filter": f"from_publication_date:{period.start.isoformat()},to_publication_date:{period.end.isoformat()}",
+            "per-page": max(1, min(25, int(limit))),
+            "select": "id,title,publication_date,abstract_inverted_index",
+        })
+        documents = []
+        for row in payload.get("results") or []:
+            abstract_index = row.get("abstract_inverted_index") or {}
+            words = [(position, word) for word, positions in abstract_index.items() for position in (positions or [])]
+            abstract = " ".join(word for _, word in sorted(words))
+            text = " ".join(value for value in (row.get("title"), abstract) if value)
+            if text.strip():
+                documents.append({
+                    "document_id": str(row.get("id") or ""),
+                    "source": "openalex",
+                    "captured_at": str(row.get("publication_date") or period.end.isoformat()),
+                    "text": text,
+                })
+        return documents
+
 
 class UsaSpendingCollector:
     AWARD_TYPE_CODES = ["02","03","04","05","06","07","08","09","10","11","A","B","C","D","IDV_A","IDV_B","IDV_B_A","IDV_B_B","IDV_B_C","IDV_C","IDV_D","IDV_E"]
@@ -131,6 +153,32 @@ class GdeltCollector:
         if not points:
             raise ValueError("GDELT timeline has no numeric points")
         return points
+
+    def documents(self, query: str, period: Period, limit: int = 5) -> list[dict[str, Any]]:
+        params = {
+            "query": query,
+            "mode": "artlist",
+            "format": "json",
+            "maxrecords": max(1, min(25, int(limit))),
+            "sort": "HybridRel",
+            "startdatetime": period.start.strftime("%Y%m%d000000"),
+            "enddatetime": (period.end + timedelta(days=1)).strftime("%Y%m%d000000"),
+        }
+        has_cache = getattr(self.client, "has_cached_json", lambda **kwargs: False)
+        if not has_cache(url=self.base_url, params=params):
+            self._wait_for_request_slot()
+        payload = self.client.request_json(self.base_url, params=params)
+        documents = []
+        for row in payload.get("articles") or []:
+            text = " ".join(value for value in (row.get("title"), row.get("snippet"), row.get("seendate")) if value)
+            if text.strip():
+                documents.append({
+                    "document_id": str(row.get("url") or row.get("title") or ""),
+                    "source": "gdelt",
+                    "captured_at": str(row.get("seendate") or period.end.isoformat())[:10],
+                    "text": text,
+                })
+        return documents
 
 
 class WikimediaCollector:

@@ -2,6 +2,9 @@
   "schema_version": 1,
   "engine_release": "7.2.0-local-dynamic-candidate-guarded",
   "enabled": true,
+  "max_theme_queries_per_run": 5,
+  "documents_per_source": 5,
+  "lookback_days": 90,
   "local_text_corpus": "data_cache/inbox/v3_text_documents.json",
   "promotion_rule": {
     "min_documents": 2,

@@ -11,7 +11,7 @@ from ible.integrity import canonical_sha256, load_json, write_json
 from ible.model_lock import load_and_verify_model_lock
 from ible.v3_collectors import OpenAlexCollector, UsaSpendingCollector, GdeltCollector, WikimediaCollector, comparison_periods, three_attention_periods
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
-from ible.v3_dynamic_terms import build_dynamic_discovery_report, write_dynamic_discovery_report
+from ible.v3_dynamic_terms import build_dynamic_discovery_report, collect_dynamic_documents, discover_candidates, write_dynamic_discovery_report
 
 class V3DataError(RuntimeError): pass
 
@@ -260,7 +260,25 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
     collection_metrics['enabled_sources']=[name for name,enabled in enabled_sources.items() if enabled]
     collection_metrics['disabled_sources']=[name for name,enabled in enabled_sources.items() if not enabled]
     obs={"schema_version":3,"engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"captured_at":captured_at,"theme_count":len(rows),"source_provenance":cfg['sources'],"collection_metrics":collection_metrics,"investment_use_allowed":False,"themes":rows}; obs['content_sha256']=canonical_sha256(obs)
-    dynamic_report = build_dynamic_discovery_report(root, enriched_themes, as_of.isoformat())
+    dynamic_cfg = load_json(root / 'config/v3_dynamic_discovery.json')
+    dynamic_documents, dynamic_collection = ([], {'status': 'DISABLED', 'document_count': 0, 'selected_theme_count': 0, 'errors': []})
+    if bool(dynamic_cfg.get('enabled', True)):
+        dynamic_documents, dynamic_collection = collect_dynamic_documents(
+            openalex, gdelt, enriched_themes, as_of.isoformat(),
+            max_theme_queries=int(dynamic_cfg.get('max_theme_queries_per_run', 5)),
+            documents_per_source=int(dynamic_cfg.get('documents_per_source', 5)),
+            lookback_days=int(dynamic_cfg.get('lookback_days', 90)),
+        )
+    if dynamic_documents:
+        dynamic_report = discover_candidates(
+            dynamic_documents, enriched_themes, as_of.isoformat(),
+            **(dynamic_cfg.get('promotion_rule') or {}),
+        )
+        dynamic_report['input_path'] = 'generated_from_openalex_gdelt_cached_documents'
+        dynamic_report['input_document_count'] = len(dynamic_documents)
+    else:
+        dynamic_report = build_dynamic_discovery_report(root, enriched_themes, as_of.isoformat())
+    dynamic_report['collection'] = dynamic_collection
     write_dynamic_discovery_report(root, output_dir, dynamic_report)
     obs["dynamic_discovery"] = {"status": dynamic_report["status"], "candidate_count": dynamic_report["candidate_count"], "auto_add_allowed": False}
     obs['content_sha256']=canonical_sha256(obs)
