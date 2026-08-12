@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-13",
+  "observations": [
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "source": "indeed_local_sample",
+      "query": "AI semiconductor engineer",
+      "observed_date": "2026-08-12",
+      "posting_count": 450,
+      "prior_posting_count": 380,
+      "source_timestamp": "2026-08-12T10:00:00Z"
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "source": "linkedin_local_sample",
+      "query": "AI drug discovery scientist",
+      "observed_date": "2026-08-12",
+      "posting_count": 210,
+      "prior_posting_count": 195,
+      "source_timestamp": "2026-08-12T10:00:00Z"
+    }
+  ]
+}
