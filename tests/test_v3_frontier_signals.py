@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import tempfile
 import unittest
@@ -88,33 +89,36 @@ class FrontierSignalTests(unittest.TestCase):
         self.assertEqual(patent["patent_count"], 42)
         self.assertEqual(patent["provider_chain"], ["google_patents"])
 
-    def test_lens_org_is_second_fallback_when_google_patents_unavailable(self):
-        """Lens.org used when Google Patents unavailable and LENS_API_KEY is set."""
+    def test_bigquery_is_second_fallback_when_google_patents_unavailable(self):
+        """BigQuery used when Google Patents unavailable and GCP_CREDENTIALS_JSON is set."""
+        from unittest import mock
+
         themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
 
-        class LensClient(FakeFrontierClient):
+        class NoGoogleClient(FakeFrontierClient):
             def request_text(self, url, **kwargs):
                 self.calls.append((url, kwargs))
                 raise OSError("google patents unavailable")
 
-            def request_json(self, url, **kwargs):
-                self.calls.append((url, kwargs))
-                if "lens.org" in url:
-                    return {"total": {"value": 77, "relation": "eq"}, "data": []}
-                return super().request_json(url, **kwargs)
+        fake_creds = json.dumps({"type": "service_account", "project_id": "test-proj", "private_key_id": "k1", "private_key": "pk", "client_email": "sa@test.iam.gserviceaccount.com", "client_id": "1", "token_uri": "https://oauth2.googleapis.com/token"})
 
-        client = LensClient()
-        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
-            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "LENS_API_KEY": "test-lens-key"}
-        ):
+        mock_row = {"cnt": 88}
+        mock_bq_client = mock.MagicMock()
+        mock_bq_client.query.return_value.result.return_value = [mock_row]
+
+        client = NoGoogleClient()
+        with tempfile.TemporaryDirectory() as temp_dir, \
+             patch.dict(os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "GCP_CREDENTIALS_JSON": fake_creds}), \
+             mock.patch("google.cloud.bigquery.Client", return_value=mock_bq_client), \
+             mock.patch("google.oauth2.service_account.Credentials.from_service_account_info", return_value=mock.MagicMock()):
             report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
         patent = report["patentsview"][0]["patentsview"]
-        self.assertEqual(patent["status"], "LENS_OBSERVED")
-        self.assertEqual(patent["patent_count"], 77)
-        self.assertEqual(patent["provider_chain"], ["google_patents", "lens_org"])
+        self.assertEqual(patent["status"], "BIGQUERY_OBSERVED")
+        self.assertEqual(patent["patent_count"], 88)
+        self.assertEqual(patent["provider_chain"], ["google_patents", "bigquery"])
 
-    def test_lens_org_skipped_without_key(self):
-        """Without LENS_API_KEY, Lens.org is skipped silently and falls through to bulk cache."""
+    def test_bigquery_skipped_without_credentials(self):
+        """Without GCP_CREDENTIALS_JSON, BigQuery is skipped and falls through to OpenAlex."""
         themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
 
         class NoGoogleClient(FakeFrontierClient):
@@ -130,12 +134,12 @@ class FrontierSignalTests(unittest.TestCase):
 
         client = NoGoogleClient()
         with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
-            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "LENS_API_KEY": ""}
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "GCP_CREDENTIALS_JSON": ""}
         ):
             report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
         patent = report["patentsview"][0]["patentsview"]
         self.assertIn(patent["status"], {"WAITING_FOR_USPTO_BULK_CACHE", "OPENALEX_PROXY_OBSERVED"})
-        self.assertNotEqual(patent["status"], "LENS_OBSERVED")
+        self.assertNotEqual(patent["status"], "BIGQUERY_OBSERVED")
 
     def test_github_repo_has_activity_fields(self):
         themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
@@ -168,6 +172,40 @@ class FrontierSignalTests(unittest.TestCase):
         self.assertIn(key, obs)
         self.assertIn("forks_count", obs[key])
         self.assertEqual(obs[key]["forks_count"], 3)
+
+    def test_kipris_observed_when_key_set(self):
+        """KIPRIS returns korean_patent_count when KIPRIS_API_KEY is configured."""
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+
+        class KiprisClient(FakeFrontierClient):
+            def request_json(self, url, **kwargs):
+                self.calls.append((url, kwargs))
+                if "kipris" in url:
+                    return {"response": {"body": {"totalCount": 320}}}
+                return super().request_json(url, **kwargs)
+
+        client = KiprisClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "KIPRIS_API_KEY": "test-kipris-key", "GCP_CREDENTIALS_JSON": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
+        self.assertIn("kipris", report)
+        k = report["kipris"][0]["kipris"]
+        self.assertEqual(k["status"], "KIPRIS_OBSERVED")
+        self.assertEqual(k["korean_patent_count"], 320)
+
+    def test_kipris_skipped_without_key(self):
+        """Without KIPRIS_API_KEY, kipris field shows WAITING status."""
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+        client = FakeFrontierClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "KIPRIS_API_KEY": "", "GCP_CREDENTIALS_JSON": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
+        self.assertIn("kipris", report)
+        k = report["kipris"][0]["kipris"]
+        self.assertEqual(k["status"], "WAITING_FOR_KIPRIS_API_KEY")
+        self.assertIsNone(k["korean_patent_count"])
 
 
 if __name__ == "__main__":

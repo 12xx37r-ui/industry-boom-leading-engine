@@ -347,68 +347,87 @@ def _uspto_bulk_cache_observation(root: Path, theme_id: str, term: str, as_of: d
     return {"status": "WAITING_FOR_USPTO_BULK_CACHE", "query": term, "patent_count": None, "external_call_allowed": False, "reason": "download USPTO bulk data locally and place a summary in data_cache/latest/uspto_patent_observations.json"}
 
 
-def _lens_org_observation(
-    client: JsonHttpClient,
+def _bigquery_patents_observation(
     term: str,
     as_of: date,
     config: dict[str, Any],
 ) -> dict[str, Any]:
-    """Query Lens.org patent API (free, no ID.me required — email registration only).
+    """Query Google Patents Public Data via BigQuery (free 1TB/month, no IP block, no ID.me).
 
-    Registration: https://www.lens.org/lens/user/subscriptions#developer
-    Set LENS_API_KEY in GitHub Secrets.
+    Setup (one-time, ~10 min):
+      1. https://console.cloud.google.com → Create project → Enable BigQuery API
+      2. IAM → Service Accounts → Create → grant "BigQuery Job User" + "BigQuery Data Viewer"
+      3. Keys → Add Key → JSON → download
+      4. GitHub Secrets: GCP_CREDENTIALS_JSON = paste entire JSON content
+    Dataset: patents-public-data.patents.publications (USPTO+EPO+JPO+KIPO all included)
     """
-    key = str(os.getenv("LENS_API_KEY") or "").strip()
-    if not key:
+    creds_json = str(os.getenv("GCP_CREDENTIALS_JSON") or "").strip()
+    if not creds_json:
         return {
-            "status": "WAITING_FOR_LENS_API_KEY",
+            "status": "WAITING_FOR_GCP_CREDENTIALS",
             "query": term,
             "patent_count": None,
             "external_call_allowed": False,
-            "reason": "LENS_API_KEY not configured — register free at https://www.lens.org/lens/user/subscriptions#developer",
+            "reason": "GCP_CREDENTIALS_JSON not configured — see https://console.cloud.google.com",
         }
-    start = (as_of - timedelta(days=int(config.get("patent_lookback_days", 365)))).isoformat()
-    # OR operator: broader match, prevents AND-strict 0-result false negatives
-    payload: dict[str, Any] = {
-        "query": {
-            "bool": {
-                "must": [
-                    {"query_string": {"query": term, "fields": ["title", "abstract"], "default_operator": "OR", "minimum_should_match": "50%"}}
-                ],
-                "filter": [
-                    {"range": {"date_published": {"gte": start, "lte": as_of.isoformat()}}}
-                ],
-            }
-        },
-        "size": 0,
-        "include": ["lens_id"],
-    }
-    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
-    exc_msg: str | None = None
     try:
-        response = client.request_json(
-            str(config.get("lens_url") or "https://api.lens.org/patent/search"),
-            method="POST",
-            payload=payload,
-            headers=headers,
-            cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
+        from google.cloud import bigquery  # type: ignore[import-untyped]
+        from google.oauth2 import service_account  # type: ignore[import-untyped]
+        creds_info = json.loads(creds_json)
+        credentials = service_account.Credentials.from_service_account_info(
+            creds_info,
+            scopes=["https://www.googleapis.com/auth/bigquery"],
         )
-    except (HttpError, OSError, ValueError, TypeError) as exc:
-        exc_msg = str(exc)[:500]
+        bq = bigquery.Client(credentials=credentials, project=creds_info["project_id"])
+    except Exception as exc:  # noqa: BLE001
         return {
-            "status": "LENS_UNAVAILABLE",
+            "status": "BIGQUERY_AUTH_FAILED",
             "query": term,
             "patent_count": None,
             "external_call_allowed": True,
-            "lens_error": exc_msg,
+            "bq_error": str(exc)[:500],
         }
-    total = response.get("total") or {}
-    if isinstance(total, dict):
-        count = int(total.get("value") or 0)
-    else:
-        count = int(total or 0)
+    lookback = int(config.get("patent_lookback_days", 365))
+    start_int = int((as_of - timedelta(days=lookback)).strftime("%Y%m%d"))
+    end_int = int(as_of.strftime("%Y%m%d"))
+    # Build simple regex from top keywords (avoid full-table UNNEST explosion)
+    words = [w for w in re.split(r"\s+", term) if len(w) > 3][:4]
+    pattern = "|".join(re.escape(w.lower()) for w in words) if words else re.escape(term.lower())
+    sql = """
+SELECT COUNT(*) AS cnt
+FROM `patents-public-data.patents.publications`
+WHERE publication_date BETWEEN @start_date AND @end_date
+  AND REGEXP_CONTAINS(
+        LOWER(COALESCE(title[SAFE_OFFSET(0)].text, '')),
+        @pattern
+      )
+  AND country_code IN ('US', 'EP', 'WO', 'KR', 'JP')
+"""
+    job_config = bigquery.QueryJobConfig(
+        query_parameters=[
+            bigquery.ScalarQueryParameter("start_date", "INT64", start_int),
+            bigquery.ScalarQueryParameter("end_date", "INT64", end_int),
+            bigquery.ScalarQueryParameter("pattern", "STRING", pattern),
+        ]
+    )
+    try:
+        rows = list(bq.query(sql, job_config=job_config).result(timeout=30))
+        count = int((rows[0]["cnt"] if rows else 0) or 0)
+    except Exception as exc:  # noqa: BLE001
+        return {
+            "status": "BIGQUERY_QUERY_FAILED",
+            "query": term,
+            "patent_count": None,
+            "external_call_allowed": True,
+            "bq_error": str(exc)[:500],
+        }
+    finally:
+        try:
+            bq.close()
+        except Exception:  # noqa: BLE001
+            pass
     return {
-        "status": "LENS_OBSERVED",
+        "status": "BIGQUERY_OBSERVED",
         "query": term,
         "patent_count": count,
         "observation_date": as_of.isoformat(),
@@ -424,25 +443,90 @@ def _patent_fallback_observation(root: Path, client: JsonHttpClient, theme: dict
         google["provider_chain"] = ["google_patents"]
         return google
     skipped["google_patents"] = google.get("status", "UNAVAILABLE")
-    lens = _lens_org_observation(client, term, as_of, config)
-    if lens.get("patent_count") is not None:
-        lens["provider_chain"] = ["google_patents", "lens_org"]
-        return lens
-    skipped["lens_org"] = lens.get("status", "UNAVAILABLE")
-    if lens.get("lens_error"):
-        skipped["lens_org_error"] = lens["lens_error"]
+    bq = _bigquery_patents_observation(term, as_of, config)
+    if bq.get("patent_count") is not None:
+        bq["provider_chain"] = ["google_patents", "bigquery"]
+        return bq
+    skipped["bigquery"] = bq.get("status", "UNAVAILABLE")
+    if bq.get("bq_error"):
+        skipped["bigquery_error"] = bq["bq_error"]
     bulk = _uspto_bulk_cache_observation(root, str(theme.get("theme_id") or ""), term, as_of)
     if bulk.get("patent_count") is not None:
-        bulk["provider_chain"] = ["google_patents", "lens_org", "uspto_bulk_cache"]
+        bulk["provider_chain"] = ["google_patents", "bigquery", "uspto_bulk_cache"]
         return bulk
     skipped["uspto_bulk_cache"] = bulk.get("status", "UNAVAILABLE")
     openalex_url = str(config.get("openalex_url") or "https://api.openalex.org/works")
     try:
         response = client.request_json(openalex_url, params={"search": term, "filter": f"from_publication_date:{(as_of - timedelta(days=364)).isoformat()},to_publication_date:{as_of.isoformat()}", "per-page": 1, "select": "id"}, cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)))
         count = int((response.get("meta") or {}).get("count") or 0)
-        return {"status": "OPENALEX_PROXY_OBSERVED", "query": term, "patent_count": None, "related_work_count": count, "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS", "observation_date": as_of.isoformat(), "external_call_allowed": True, "provider_chain": ["google_patents", "lens_org", "uspto_bulk_cache", "openalex_proxy"], "skipped_providers": skipped}
+        return {"status": "OPENALEX_PROXY_OBSERVED", "query": term, "patent_count": None, "related_work_count": count, "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS", "observation_date": as_of.isoformat(), "external_call_allowed": True, "provider_chain": ["google_patents", "bigquery", "uspto_bulk_cache", "openalex_proxy"], "skipped_providers": skipped}
     except (HttpError, OSError, ValueError, TypeError) as exc:
-        return {"status": "ALL_PATENT_FALLBACKS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False, "provider_chain": ["google_patents", "lens_org", "uspto_bulk_cache", "openalex_proxy"], "skipped_providers": skipped, "error": str(exc)[:500]}
+        return {"status": "ALL_PATENT_FALLBACKS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False, "provider_chain": ["google_patents", "bigquery", "uspto_bulk_cache", "openalex_proxy"], "skipped_providers": skipped, "error": str(exc)[:500]}
+
+
+def _kipris_observation(
+    client: JsonHttpClient,
+    term: str,
+    as_of: date,
+    config: dict[str, Any],
+) -> dict[str, Any]:
+    """Query KIPRIS Plus (Korean Intellectual Property Rights Information Service).
+
+    Covers domestic KR patents filed by Samsung, SK Hynix, LG, Hyundai, etc.
+    Registration: https://plus.kipris.or.kr → 회원가입 → API 활용신청 (무료)
+    Set KIPRIS_API_KEY in GitHub Secrets.
+    """
+    key = str(os.getenv("KIPRIS_API_KEY") or "").strip()
+    if not key:
+        return {
+            "status": "WAITING_FOR_KIPRIS_API_KEY",
+            "query": term,
+            "korean_patent_count": None,
+            "external_call_allowed": False,
+            "reason": "KIPRIS_API_KEY not configured — register free at https://plus.kipris.or.kr",
+        }
+    lookback = int(config.get("patent_lookback_days", 365))
+    start_dt = (as_of - timedelta(days=lookback)).strftime("%Y%m%d")
+    end_dt = as_of.strftime("%Y%m%d")
+    # Use top 3 keywords for search; KIPRIS full-text search has limited query length
+    words = [w for w in re.split(r"\s+", term) if len(w) > 2][:3]
+    search_word = " ".join(words) if words else term
+    base_url = str(config.get("kipris_url") or "https://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/articleSearch")
+    try:
+        response = client.request_json(
+            base_url,
+            params={
+                "word": search_word,
+                "docsStart": "1",
+                "docsCount": "1",
+                "applicationStartDate": start_dt,
+                "applicationEndDate": end_dt,
+                "ServiceKey": key,
+                "type": "json",
+            },
+            cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
+        )
+    except (HttpError, OSError, ValueError, TypeError) as exc:
+        return {
+            "status": "KIPRIS_UNAVAILABLE",
+            "query": search_word,
+            "korean_patent_count": None,
+            "external_call_allowed": True,
+            "kipris_error": str(exc)[:500],
+        }
+    try:
+        body = response.get("response", response).get("body", {})
+        count = int(body.get("totalCount") or body.get("numOfRows") or 0)
+    except (TypeError, ValueError, AttributeError):
+        count = 0
+    return {
+        "status": "KIPRIS_OBSERVED",
+        "query": search_word,
+        "korean_patent_count": count,
+        "observation_date": as_of.isoformat(),
+        "external_call_allowed": True,
+        "note": "KR domestic patents only (KIPRIS Plus)",
+    }
 
 
 def build_frontier_signals(
@@ -466,12 +550,19 @@ def build_frontier_signals(
             "github": _github_observation(client, theme, observed_date, int(config.get("max_repositories_per_theme", 2)), history, config),
         })
     patent_rows = []
+    kipris_rows = []
     for theme in selected[: max(0, int(config.get("max_patent_queries_per_run", 3)))]:
         patent_fallback = _patent_fallback_observation(root, client, theme, observed_date, history, config)
         patent_rows.append({
             "theme_id": str(theme.get("theme_id") or ""),
             "theme_name": theme.get("theme_name"),
             "patentsview": _patentsview_observation(client, theme, observed_date, history, config) if (os.getenv("PATENTSVIEW_API_KEY") or os.getenv("USPTO_API_KEY")) else patent_fallback,
+        })
+        term = _normalise_term(str(theme.get("openalex_search") or theme.get("theme_name") or theme.get("theme_id")))
+        kipris_rows.append({
+            "theme_id": str(theme.get("theme_id") or ""),
+            "theme_name": theme.get("theme_name"),
+            "kipris": _kipris_observation(client, term, observed_date, config),
         })
     next_observations = dict(history.get("observations") or {})
     patent_counts = dict(history.get("patent_counts") or {})
@@ -507,6 +598,7 @@ def build_frontier_signals(
         "patent_query_limit": int(config.get("max_patent_queries_per_run", 3)),
         "github": github_rows,
         "patentsview": patent_rows,
+        "kipris": kipris_rows,
         "history": history_out,
         "lookahead_guard": "FUTURE_DATA_REJECTED",
     }
