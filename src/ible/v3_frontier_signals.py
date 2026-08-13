@@ -86,7 +86,8 @@ def _github_observation(
     config: dict[str, Any],
 ) -> dict[str, Any]:
     theme_id = str(theme.get("theme_id") or "")
-    query = _normalise_term(str(theme.get("openalex_search") or theme.get("theme_name") or theme_id))
+    # github_search overrides openalex_search when the academic phrasing differs from GitHub conventions
+    query = _normalise_term(str(theme.get("github_search") or theme.get("openalex_search") or theme.get("theme_name") or theme_id))
     params = {
         "q": query,
         "sort": "stars",
@@ -146,11 +147,59 @@ def _github_observation(
             "activity_score": _activity_score(stars, forks, days_push),
             "observation_date": as_of.isoformat(),
         })
-    return {
-        "status": "GITHUB_OBSERVED" if repositories else "GITHUB_NO_MATCH",
-        "query": query,
-        "repositories": repositories,
-    }
+    if repositories:
+        return {"status": "GITHUB_OBSERVED", "query": query, "repositories": repositories}
+
+    # If no results and query is long, retry with first 3 words (cached on next run)
+    words = query.split()
+    if len(words) > 3:
+        short_query = " ".join(words[:3])
+        params2 = dict(params)
+        params2["q"] = short_query
+        try:
+            payload2 = client.request_json(
+                str(config.get("github_search_url") or "https://api.github.com/search/repositories"),
+                params=params2,
+                headers=headers,
+                cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
+            )
+            for item in payload2.get("items") or []:
+                if not isinstance(item, dict):
+                    continue
+                pushed = _as_date(item.get("pushed_at"))
+                updated = _as_date(item.get("updated_at"))
+                observed = pushed or updated
+                if observed and observed > as_of:
+                    continue
+                full_name = str(item.get("full_name") or item.get("html_url") or "").strip()
+                if not full_name:
+                    continue
+                stars = max(0, int(item.get("stargazers_count") or 0))
+                forks = max(0, int(item.get("forks_count") or 0))
+                days_push = _days_since(pushed, as_of)
+                key = _history_key("github", theme_id, full_name)
+                previous = prev_obs.get(key)
+                repositories.append({
+                    "full_name": full_name,
+                    "html_url": item.get("html_url"),
+                    "description": str(item.get("description") or "")[:300],
+                    "stargazers_count": stars,
+                    "forks_count": forks,
+                    "open_issues_count": max(0, int(item.get("open_issues_count") or 0)),
+                    "pushed_at": pushed.isoformat() if pushed else None,
+                    "updated_at": updated.isoformat() if updated else None,
+                    "days_since_push": days_push,
+                    "star_delta_percent": _safe_growth(stars, previous.get("stargazers_count") if isinstance(previous, dict) else None),
+                    "fork_delta_percent": _safe_growth(forks, previous.get("forks_count") if isinstance(previous, dict) else None),
+                    "activity_score": _activity_score(stars, forks, days_push),
+                    "observation_date": as_of.isoformat(),
+                })
+        except (HttpError, OSError, ValueError, TypeError):
+            pass
+        if repositories:
+            return {"status": "GITHUB_OBSERVED", "query": short_query, "original_query": query, "repositories": repositories}
+
+    return {"status": "GITHUB_NO_MATCH", "query": query, "repositories": []}
 
 
 def _patent_query(term: str, as_of: date, lookback_days: int) -> dict[str, Any]:
@@ -222,6 +271,39 @@ def _patentsview_observation(
     }
 
 
+_PATENT_COUNT_KEYS = frozenset({
+    "total_num_results", "total_results", "result_count", "num_results",
+    "total", "count", "numResults", "resultsCount", "patentCount",
+    "results_count", "patent_count", "totalCount", "total_count",
+})
+_PATENT_COUNT_RE = re.compile(
+    r'"(?:total_num_results|total_results|result_count|num_results|total|count'
+    r'|numResults|resultsCount|patentCount|results_count|totalCount|total_count)'
+    r'"\s*:\s*(\d+)'
+)
+
+
+def _extract_patent_count(data: Any, depth: int = 0) -> int | None:
+    """Traverse a parsed JSON structure looking for a patent-count-like integer."""
+    if depth > 6:
+        return None
+    if isinstance(data, dict):
+        for key in _PATENT_COUNT_KEYS:
+            val = data.get(key)
+            if isinstance(val, int) and val >= 0:
+                return val
+        for val in data.values():
+            result = _extract_patent_count(val, depth + 1)
+            if result is not None:
+                return result
+    elif isinstance(data, list):
+        for item in data:
+            result = _extract_patent_count(item, depth + 1)
+            if result is not None:
+                return result
+    return None
+
+
 def _google_patents_observation(client: JsonHttpClient, term: str, as_of: date, config: dict[str, Any]) -> dict[str, Any]:
     """Best-effort, no-key Google Patents search; handles JSON or HTML response conservatively."""
     base = str(config.get("google_patents_url") or "https://patents.google.com/xhr/query")
@@ -233,9 +315,21 @@ def _google_patents_observation(client: JsonHttpClient, term: str, as_of: date, 
     except (HttpError, OSError, ValueError, TypeError):
         pass
     if raw_text:
-        matches = re.findall(r'"(?:total_num_results|total_results|result_count)"\s*:\s*(\d+)', raw_text)
+        # Try JSON structure traversal first (exact field match)
+        try:
+            parsed = json.loads(raw_text)
+            count = _extract_patent_count(parsed)
+            if count is not None:
+                return {"status": "GOOGLE_PATENTS_OBSERVED", "query": term, "patent_count": count, "observation_date": as_of.isoformat(), "external_call_allowed": True}
+        except (ValueError, TypeError):
+            pass
+        # Regex fallback for embedded JSON fragments in HTML
+        matches = _PATENT_COUNT_RE.findall(raw_text)
         if matches:
-            return {"status": "GOOGLE_PATENTS_OBSERVED", "query": term, "patent_count": int(matches[0]), "observation_date": as_of.isoformat(), "external_call_allowed": True}
+            # Pick the largest value to avoid matching internal sub-counts
+            best = max(int(m) for m in matches)
+            if best > 0:
+                return {"status": "GOOGLE_PATENTS_OBSERVED", "query": term, "patent_count": best, "observation_date": as_of.isoformat(), "external_call_allowed": True}
     return {"status": "GOOGLE_PATENTS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False}
 
 

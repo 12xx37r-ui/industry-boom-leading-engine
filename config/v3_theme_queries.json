@@ -26,6 +26,7 @@
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
       "openalex_search": "high bandwidth memory advanced semiconductor packaging",
+      "github_search": "HBM chiplet packaging",
       "usaspending_keywords": [
         "high bandwidth memory semiconductor packaging"
       ],
