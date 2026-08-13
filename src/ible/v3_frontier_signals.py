@@ -491,6 +491,7 @@ def _kipris_observation(
     # Use top 3 keywords for search; KIPRIS full-text search has limited query length
     words = [w for w in re.split(r"\s+", term) if len(w) > 2][:3]
     search_word = " ".join(words) if words else term
+    import xml.etree.ElementTree as ET  # noqa: N817
     base_url = str(config.get("kipris_url") or "https://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/getWordSearch")
     try:
         raw = client.request_text(
@@ -502,11 +503,9 @@ def _kipris_observation(
                 "applicationStartDate": start_dt,
                 "applicationEndDate": end_dt,
                 "ServiceKey": key,
-                "type": "json",
             },
             cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
         )
-        response = json.loads(raw)
     except (HttpError, OSError, ValueError, TypeError) as exc:
         return {
             "status": "KIPRIS_UNAVAILABLE",
@@ -515,11 +514,19 @@ def _kipris_observation(
             "external_call_allowed": True,
             "kipris_error": str(exc)[:500],
         }
+    # KIPRIS always returns XML; parse totalCount from response/body/totalCount
     try:
-        body = (response.get("response") or response).get("body") or {}
-        count = int(body.get("totalCount") or body.get("numOfRows") or 0)
-    except (TypeError, ValueError, AttributeError):
-        count = 0
+        root = ET.fromstring(raw.strip())
+        tc = root.findtext(".//totalCount") or root.findtext(".//numOfRows") or "0"
+        count = int(tc.strip() or 0)
+    except (ET.ParseError, TypeError, ValueError) as exc:
+        return {
+            "status": "KIPRIS_PARSE_ERROR",
+            "query": search_word,
+            "korean_patent_count": None,
+            "external_call_allowed": True,
+            "kipris_error": f"{exc} | raw[:200]={raw[:200]}",
+        }
     return {
         "status": "KIPRIS_OBSERVED",
         "query": search_word,

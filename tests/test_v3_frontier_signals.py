@@ -181,7 +181,7 @@ class FrontierSignalTests(unittest.TestCase):
             def request_text(self, url, **kwargs):
                 self.calls.append((url, kwargs))
                 if "kipris" in url:
-                    return json.dumps({"response": {"body": {"totalCount": 320}}})
+                    return '<?xml version="1.0" encoding="UTF-8"?><response><body><totalCount>320</totalCount></body></response>'
                 return super().request_text(url, **kwargs)
 
         client = KiprisClient()
