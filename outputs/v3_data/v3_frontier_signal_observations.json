@@ -121,75 +121,45 @@
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "theme_name": "첨단 패키징·HBM",
       "patentsview": {
-        "status": "OPENALEX_PROXY_OBSERVED",
+        "status": "BIGQUERY_OBSERVED",
         "query": "high bandwidth memory advanced semiconductor packaging",
-        "patent_count": null,
-        "related_work_count": 799,
-        "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS",
+        "patent_count": 30429,
         "observation_date": "2026-08-13",
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
-          "bigquery",
-          "uspto_bulk_cache",
-          "openalex_proxy"
-        ],
-        "skipped_providers": {
-          "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "BIGQUERY_QUERY_FAILED",
-          "bigquery_error": "400 Unrecognized name: title at [6:24]; reason: invalidQuery, location: query, message: Unrecognized name: title at [6:24]\n\nLocation: US\nJob ID: e108ecf3-60b5-402f-bfcc-0cc021482dfe\n",
-          "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
-        }
+          "bigquery"
+        ]
       }
     },
     {
       "theme_id": "AI_DRUG_DISCOVERY",
       "theme_name": "AI 신약개발",
       "patentsview": {
-        "status": "OPENALEX_PROXY_OBSERVED",
+        "status": "BIGQUERY_OBSERVED",
         "query": "artificial intelligence drug discovery",
-        "patent_count": null,
-        "related_work_count": 37417,
-        "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS",
+        "patent_count": 13047,
         "observation_date": "2026-08-13",
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
-          "bigquery",
-          "uspto_bulk_cache",
-          "openalex_proxy"
-        ],
-        "skipped_providers": {
-          "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "BIGQUERY_QUERY_FAILED",
-          "bigquery_error": "400 Unrecognized name: title at [6:24]; reason: invalidQuery, location: query, message: Unrecognized name: title at [6:24]\n\nLocation: US\nJob ID: 9d37d9e3-dfd6-49d0-98a7-d34424540ba5\n",
-          "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
-        }
+          "bigquery"
+        ]
       }
     },
     {
       "theme_id": "AI_SEMICONDUCTORS",
       "theme_name": "AI 반도체",
       "patentsview": {
-        "status": "OPENALEX_PROXY_OBSERVED",
+        "status": "BIGQUERY_OBSERVED",
         "query": "AI semiconductor accelerators",
-        "patent_count": null,
-        "related_work_count": 1840,
-        "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS",
+        "patent_count": 23581,
         "observation_date": "2026-08-13",
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
-          "bigquery",
-          "uspto_bulk_cache",
-          "openalex_proxy"
-        ],
-        "skipped_providers": {
-          "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "BIGQUERY_QUERY_FAILED",
-          "bigquery_error": "400 Unrecognized name: title at [6:24]; reason: invalidQuery, location: query, message: Unrecognized name: title at [6:24]\n\nLocation: US\nJob ID: 8953e8d8-7a38-4055-86c8-a1a620b75dc8\n",
-          "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
-        }
+          "bigquery"
+        ]
       }
     }
   ],
@@ -220,11 +190,11 @@
       "theme_id": "AI_SEMICONDUCTORS",
       "theme_name": "AI 반도체",
       "kipris": {
-        "status": "KIPRIS_PARSE_ERROR",
+        "status": "KIPRIS_UNAVAILABLE",
         "query": "semiconductor accelerators",
         "korean_patent_count": null,
         "external_call_allowed": true,
-        "kipris_error": "mismatched tag: line 16, column 4 | raw[:200]=\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"ko\">\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n\t<title>페이지를 찾을 수 없습니다.</title>\r\n    <meta name=\"description"
+        "kipris_error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n<p>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.</p>\n</body></html>\n"
       }
     }
   ],
@@ -261,5 +231,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "ec44a575278e2fd986a3ec879484f47179aaa325bbf42c65a1ba29746f14361f"
+  "content_sha256": "f6171d6d571b7639b80f499a87852395cd8bb55d5da594d019624c0d5d0c0ef0"
 }

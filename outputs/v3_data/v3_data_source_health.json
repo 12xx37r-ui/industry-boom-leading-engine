@@ -3,10 +3,10 @@
   "as_of": "2026-08-13",
   "public_interest_observed": 49,
   "collection_metrics": {
-    "network_requests": 2,
-    "cache_hits": 398,
+    "network_requests": 1,
+    "cache_hits": 395,
     "stale_cache_hits": 0,
-    "cache_writes": 2,
+    "cache_writes": 1,
     "enabled_sources": [
       "openalex",
       "usaspending",

@@ -1,0 +1,32 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>페이지를 찾을 수 없습니다.</title>
+    <meta name="description" content="KIPRIS PLUS는 특허청에서 제공하는 지적재산권 정보와 개인 및 민간단체의 지식재산정보의 유통을 지원하는 활용 서비스입니다.">
+    <meta name="keywords" content="특허청,KIPRIS PLUS,키프리스 플러스,IP DATA, IP STORE">
+    <link rel="shortcut icon" href="/portal/assets/images/favicon.ico">    
+    <link rel="stylesheet" type="text/css" href="/portal/assets/css/kipris.css">  
+	<script language="javascript">
+	function fncGoAfterErrorPage(){
+	    history.back(-2);
+	}
+</script>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <!-- 404 error 페이지 : 시작 -->
+   	<div class="container container-error-wrap">
+   		<section class="container-error">
+   			<h3 class="content-Tit" itemprop="name">요청하신 페이지를 찾을 수 없습니다.</h3>
+   			<p>찾으시려는 페이지 주소가 잘못 입력되었거나, 기존 페이지의 주소(URL) 변경 혹은 삭제 등으로 인하여 페이지가 유실되었을 수 있습니다.<br>본 화면이 계속 보이실 경우 <strong class="txt-blue">특허정보원(6915-1553)</strong>로 문의하세요</p>
+   			<p class="btn-group"><a href="#" class="btn btn-blue btn-wide" onclick="javascript:fncGoAfterErrorPage();">이전페이지</a> 	
+   		</section>  
+   	</div>
+    <!-- 404 error 페이지 : 끝 -->
+   </body>
+  </html>
