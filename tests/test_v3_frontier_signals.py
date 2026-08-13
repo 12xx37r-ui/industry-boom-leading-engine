@@ -88,6 +88,55 @@ class FrontierSignalTests(unittest.TestCase):
         self.assertEqual(patent["patent_count"], 42)
         self.assertEqual(patent["provider_chain"], ["google_patents"])
 
+    def test_lens_org_is_second_fallback_when_google_patents_unavailable(self):
+        """Lens.org used when Google Patents unavailable and LENS_API_KEY is set."""
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+
+        class LensClient(FakeFrontierClient):
+            def request_text(self, url, **kwargs):
+                self.calls.append((url, kwargs))
+                raise OSError("google patents unavailable")
+
+            def request_json(self, url, **kwargs):
+                self.calls.append((url, kwargs))
+                if "lens.org" in url:
+                    return {"total": {"value": 77, "relation": "eq"}, "data": []}
+                return super().request_json(url, **kwargs)
+
+        client = LensClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "LENS_API_KEY": "test-lens-key"}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
+        patent = report["patentsview"][0]["patentsview"]
+        self.assertEqual(patent["status"], "LENS_OBSERVED")
+        self.assertEqual(patent["patent_count"], 77)
+        self.assertEqual(patent["provider_chain"], ["google_patents", "lens_org"])
+
+    def test_lens_org_skipped_without_key(self):
+        """Without LENS_API_KEY, Lens.org is skipped silently and falls through to bulk cache."""
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+
+        class NoGoogleClient(FakeFrontierClient):
+            def request_text(self, url, **kwargs):
+                self.calls.append((url, kwargs))
+                raise OSError("google patents unavailable")
+
+            def request_json(self, url, **kwargs):
+                self.calls.append((url, kwargs))
+                if "openalex" in url:
+                    return {"meta": {"count": 15}}
+                return super().request_json(url, **kwargs)
+
+        client = NoGoogleClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "LENS_API_KEY": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
+        patent = report["patentsview"][0]["patentsview"]
+        self.assertIn(patent["status"], {"WAITING_FOR_USPTO_BULK_CACHE", "OPENALEX_PROXY_OBSERVED"})
+        self.assertNotEqual(patent["status"], "LENS_OBSERVED")
+
     def test_github_repo_has_activity_fields(self):
         themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
         client = FakeFrontierClient()
