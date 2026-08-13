@@ -62,6 +62,21 @@ def _safe_growth(current: float, previous: Any) -> float | None:
     return round(100.0 * (float(current) - old) / max(1.0, old), 4)
 
 
+def _days_since(observed_date: date | None, as_of: date) -> int | None:
+    if observed_date is None:
+        return None
+    return max(0, (as_of - observed_date).days)
+
+
+def _activity_score(stars: int, forks: int, days_since_push: int | None) -> float:
+    """Local heuristic; no extra API call. 0–100 scale."""
+    base = min(100.0, 15.0 * (stars + forks * 2 + 1) ** 0.35)
+    if days_since_push is not None:
+        recency = max(0.0, 1.0 - days_since_push / 365.0)
+        return round(_clamp(base * (0.6 + 0.4 * recency)), 4)
+    return round(_clamp(base * 0.7), 4)
+
+
 def _github_observation(
     client: JsonHttpClient,
     theme: dict[str, Any],
@@ -97,6 +112,7 @@ def _github_observation(
             "error": str(exc)[:500],
         }
     repositories: list[dict[str, Any]] = []
+    prev_obs: dict[str, Any] = history.get("observations") or {}
     for item in payload.get("items") or []:
         if not isinstance(item, dict):
             continue
@@ -109,18 +125,25 @@ def _github_observation(
         if not full_name:
             continue
         stars = max(0, int(item.get("stargazers_count") or 0))
+        forks = max(0, int(item.get("forks_count") or 0))
+        days_push = _days_since(pushed, as_of)
         key = _history_key("github", theme_id, full_name)
-        previous = (history.get("observations") or {}).get(key)
+        previous = prev_obs.get(key)
+        prev_stars = previous.get("stargazers_count") if isinstance(previous, dict) else None
+        prev_forks = previous.get("forks_count") if isinstance(previous, dict) else None
         repositories.append({
             "full_name": full_name,
             "html_url": item.get("html_url"),
             "description": str(item.get("description") or "")[:300],
             "stargazers_count": stars,
-            "forks_count": max(0, int(item.get("forks_count") or 0)),
+            "forks_count": forks,
             "open_issues_count": max(0, int(item.get("open_issues_count") or 0)),
             "pushed_at": pushed.isoformat() if pushed else None,
             "updated_at": updated.isoformat() if updated else None,
-            "star_delta_percent": _safe_growth(stars, previous.get("stargazers_count") if isinstance(previous, dict) else None),
+            "days_since_push": days_push,
+            "star_delta_percent": _safe_growth(stars, prev_stars),
+            "fork_delta_percent": _safe_growth(forks, prev_forks),
+            "activity_score": _activity_score(stars, forks, days_push),
             "observation_date": as_of.isoformat(),
         })
     return {
@@ -200,16 +223,19 @@ def _patentsview_observation(
 
 
 def _google_patents_observation(client: JsonHttpClient, term: str, as_of: date, config: dict[str, Any]) -> dict[str, Any]:
-    """Best-effort, no-key Google Patents search; HTML parsing is deliberately conservative."""
+    """Best-effort, no-key Google Patents search; handles JSON or HTML response conservatively."""
     base = str(config.get("google_patents_url") or "https://patents.google.com/xhr/query")
+    ttl = int(config.get("cache_ttl_seconds", 86400))
+    params = {"url": f"q={term}", "exp": "", "download": "false"}
+    raw_text: str | None = None
     try:
-        payload = client.request_json(base, params={"url": f"q={term}", "exp": "", "download": "false"}, cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)))
-        raw = json.dumps(payload, ensure_ascii=False)
-        matches = re.findall(r'"(?:total_num_results|total_results|result_count)"\s*:\s*(\d+)', raw)
-        if matches:
-            return {"status": "GOOGLE_PATENTS_OBSERVED", "query": term, "patent_count": int(matches[0]), "observation_date": as_of.isoformat(), "external_call_allowed": True}
+        raw_text = client.request_text(base, params=params, accept="application/json,text/html,*/*", cache_ttl_seconds=ttl)
     except (HttpError, OSError, ValueError, TypeError):
         pass
+    if raw_text:
+        matches = re.findall(r'"(?:total_num_results|total_results|result_count)"\s*:\s*(\d+)', raw_text)
+        if matches:
+            return {"status": "GOOGLE_PATENTS_OBSERVED", "query": term, "patent_count": int(matches[0]), "observation_date": as_of.isoformat(), "external_call_allowed": True}
     return {"status": "GOOGLE_PATENTS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False}
 
 
@@ -280,6 +306,7 @@ def build_frontier_signals(
         for repo in row["github"].get("repositories") or []:
             next_observations[_history_key("github", row["theme_id"], repo["full_name"])] = {
                 "stargazers_count": repo["stargazers_count"],
+                "forks_count": repo["forks_count"],
                 "observation_date": observed_date.isoformat(),
             }
     for row in patent_rows:

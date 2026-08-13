@@ -15,8 +15,6 @@ class FakeFrontierClient:
 
     def request_json(self, url, **kwargs):
         self.calls.append((url, kwargs))
-        if "patents.google.com" in url:
-            return {"results": {"total_num_results": 42}}
         return {
             "items": [{
                 "full_name": "example/frontier",
@@ -29,6 +27,12 @@ class FakeFrontierClient:
                 "updated_at": "2026-08-10T00:00:00Z",
             }]
         }
+
+    def request_text(self, url, **kwargs):
+        self.calls.append((url, kwargs))
+        if "patents.google.com" in url:
+            return '{"results": {"total_num_results": 42}}'
+        raise RuntimeError("unexpected request_text call")
 
 
 class FrontierSignalTests(unittest.TestCase):
@@ -83,6 +87,38 @@ class FrontierSignalTests(unittest.TestCase):
         self.assertEqual(patent["status"], "GOOGLE_PATENTS_OBSERVED")
         self.assertEqual(patent["patent_count"], 42)
         self.assertEqual(patent["provider_chain"], ["google_patents"])
+
+    def test_github_repo_has_activity_fields(self):
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+        client = FakeFrontierClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_repositories_per_theme": 2, "max_patent_queries_per_run": 1})
+        repos = report["github"][0]["github"]["repositories"]
+        self.assertEqual(len(repos), 1)
+        repo = repos[0]
+        self.assertIn("activity_score", repo)
+        self.assertIn("days_since_push", repo)
+        self.assertIn("fork_delta_percent", repo)
+        self.assertIsNone(repo["star_delta_percent"])
+        self.assertIsNone(repo["fork_delta_percent"])
+        self.assertIsNotNone(repo["activity_score"])
+        self.assertGreater(repo["activity_score"], 0)
+        self.assertEqual(repo["days_since_push"], 2)
+
+    def test_github_history_stores_forks(self):
+        themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+        client = FakeFrontierClient()
+        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
+            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": ""}
+        ):
+            report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_repositories_per_theme": 2, "max_patent_queries_per_run": 1})
+        obs = report["history"]["observations"]
+        key = "github:A:example/frontier"
+        self.assertIn(key, obs)
+        self.assertIn("forks_count", obs[key])
+        self.assertEqual(obs[key]["forks_count"], 3)
 
 
 if __name__ == "__main__":
