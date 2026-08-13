@@ -35,6 +35,7 @@ jobs:
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PATENTSVIEW_API_KEY: ${{ secrets.PATENTSVIEW_API_KEY }}
+      LENS_API_KEY: ${{ secrets.LENS_API_KEY }}
       SEC_API_TIMEOUT: "20"
 
     steps:
