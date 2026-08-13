@@ -18,7 +18,11 @@
         "Artificial intelligence accelerator",
         "AI accelerator"
       ],
-      "public_interest_query_version": "2026.08.04-v1"
+      "public_interest_query_version": "2026.08.04-v1",
+      "bigquery_require_patterns": [
+        "semiconductor|chip|wafer",
+        "accelerator|neural|inference|npu|tpu|ai.chip|deep.learning"
+      ]
     },
     {
       "theme_id": "ADVANCED_PACKAGING_HBM",
@@ -36,7 +40,11 @@
         "High Bandwidth Memory",
         "Semiconductor package"
       ],
-      "public_interest_query_version": "2026.08.04-v1"
+      "public_interest_query_version": "2026.08.04-v1",
+      "bigquery_require_patterns": [
+        "hbm|high.bandwidth.memory",
+        "tsv|chiplet|cowos|2\\.5d|3d.ic|advanced.packaging|heterogeneous.integration"
+      ]
     },
     {
       "theme_id": "DATA_CENTER_INFRASTRUCTURE",
