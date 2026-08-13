@@ -136,7 +136,8 @@
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "WAITING_FOR_GCP_CREDENTIALS",
+          "bigquery": "BIGQUERY_AUTH_FAILED",
+          "bigquery_error": "No module named 'google'",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -160,7 +161,8 @@
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "WAITING_FOR_GCP_CREDENTIALS",
+          "bigquery": "BIGQUERY_AUTH_FAILED",
+          "bigquery_error": "No module named 'google'",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -184,7 +186,8 @@
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "WAITING_FOR_GCP_CREDENTIALS",
+          "bigquery": "BIGQUERY_AUTH_FAILED",
+          "bigquery_error": "No module named 'google'",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -199,7 +202,7 @@
         "query": "high bandwidth memory",
         "korean_patent_count": null,
         "external_call_allowed": true,
-        "kipris_error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n<p>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.</p>\n</body></html>\n"
+        "kipris_error": "Expecting value: line 5 column 1 (char 8)"
       }
     },
     {
@@ -210,7 +213,7 @@
         "query": "artificial intelligence drug",
         "korean_patent_count": null,
         "external_call_allowed": true,
-        "kipris_error": "invalid JSON: Expecting value: line 5 column 1 (char 8)"
+        "kipris_error": "Expecting value: line 5 column 1 (char 8)"
       }
     },
     {
@@ -258,5 +261,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "a27942d5aa99ce3b1ab00ad68c09e994ab065e1f2ae80685cf8642289e15ffba"
+  "content_sha256": "8b8ab65af642ea272baaf91639ac10e84344c23d6f1df12d91319776da2bbfca"
 }
