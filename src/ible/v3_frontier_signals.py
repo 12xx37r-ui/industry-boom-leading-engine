@@ -368,11 +368,12 @@ def _lens_org_observation(
             "reason": "LENS_API_KEY not configured — register free at https://www.lens.org/lens/user/subscriptions#developer",
         }
     start = (as_of - timedelta(days=int(config.get("patent_lookback_days", 365)))).isoformat()
+    # OR operator: broader match, prevents AND-strict 0-result false negatives
     payload: dict[str, Any] = {
         "query": {
             "bool": {
                 "must": [
-                    {"query_string": {"query": term, "fields": ["title", "abstract"], "default_operator": "AND"}}
+                    {"query_string": {"query": term, "fields": ["title", "abstract"], "default_operator": "OR", "minimum_should_match": "50%"}}
                 ],
                 "filter": [
                     {"range": {"date_published": {"gte": start, "lte": as_of.isoformat()}}}
@@ -383,6 +384,7 @@ def _lens_org_observation(
         "include": ["lens_id"],
     }
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+    exc_msg: str | None = None
     try:
         response = client.request_json(
             str(config.get("lens_url") or "https://api.lens.org/patent/search"),
@@ -392,12 +394,13 @@ def _lens_org_observation(
             cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
         )
     except (HttpError, OSError, ValueError, TypeError) as exc:
+        exc_msg = str(exc)[:500]
         return {
             "status": "LENS_UNAVAILABLE",
             "query": term,
             "patent_count": None,
             "external_call_allowed": True,
-            "error": str(exc)[:500],
+            "lens_error": exc_msg,
         }
     total = response.get("total") or {}
     if isinstance(total, dict):
@@ -415,25 +418,31 @@ def _lens_org_observation(
 
 def _patent_fallback_observation(root: Path, client: JsonHttpClient, theme: dict[str, Any], as_of: date, history: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
     term = _normalise_term(str(theme.get("openalex_search") or theme.get("theme_name") or theme.get("theme_id")))
+    skipped: dict[str, str] = {}
     google = _google_patents_observation(client, term, as_of, config)
     if google.get("patent_count") is not None:
         google["provider_chain"] = ["google_patents"]
         return google
+    skipped["google_patents"] = google.get("status", "UNAVAILABLE")
     lens = _lens_org_observation(client, term, as_of, config)
     if lens.get("patent_count") is not None:
         lens["provider_chain"] = ["google_patents", "lens_org"]
         return lens
+    skipped["lens_org"] = lens.get("status", "UNAVAILABLE")
+    if lens.get("lens_error"):
+        skipped["lens_org_error"] = lens["lens_error"]
     bulk = _uspto_bulk_cache_observation(root, str(theme.get("theme_id") or ""), term, as_of)
     if bulk.get("patent_count") is not None:
         bulk["provider_chain"] = ["google_patents", "lens_org", "uspto_bulk_cache"]
         return bulk
+    skipped["uspto_bulk_cache"] = bulk.get("status", "UNAVAILABLE")
     openalex_url = str(config.get("openalex_url") or "https://api.openalex.org/works")
     try:
         response = client.request_json(openalex_url, params={"search": term, "filter": f"from_publication_date:{(as_of - timedelta(days=364)).isoformat()},to_publication_date:{as_of.isoformat()}", "per-page": 1, "select": "id"}, cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)))
         count = int((response.get("meta") or {}).get("count") or 0)
-        return {"status": "OPENALEX_PROXY_OBSERVED", "query": term, "patent_count": None, "related_work_count": count, "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS", "observation_date": as_of.isoformat(), "external_call_allowed": True, "provider_chain": ["google_patents", "lens_org", "uspto_bulk_cache", "openalex_proxy"]}
+        return {"status": "OPENALEX_PROXY_OBSERVED", "query": term, "patent_count": None, "related_work_count": count, "proxy_type": "RELATED_SCHOLARLY_WORKS_NOT_PATENTS", "observation_date": as_of.isoformat(), "external_call_allowed": True, "provider_chain": ["google_patents", "lens_org", "uspto_bulk_cache", "openalex_proxy"], "skipped_providers": skipped}
     except (HttpError, OSError, ValueError, TypeError) as exc:
-        return {"status": "ALL_PATENT_FALLBACKS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False, "provider_chain": ["google_patents", "lens_org", "uspto_bulk_cache", "openalex_proxy"], "error": str(exc)[:500]}
+        return {"status": "ALL_PATENT_FALLBACKS_UNAVAILABLE", "query": term, "patent_count": None, "external_call_allowed": False, "provider_chain": ["google_patents", "lens_org", "uspto_bulk_cache", "openalex_proxy"], "skipped_providers": skipped, "error": str(exc)[:500]}
 
 
 def build_frontier_signals(
