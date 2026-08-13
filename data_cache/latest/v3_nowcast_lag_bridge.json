@@ -12,7 +12,7 @@
     {
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.449,
+      "nowcast_score": 53.5303,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "423df5442c79e8b9df8eff5ea5bc1989b4a4ec2043ab6e47d702f7dcee57604e"
+  "content_sha256": "f10b0c6738a5403df4dfca1a9dd73b89a48002e14905d3830f31b67adc9e6d26"
 }

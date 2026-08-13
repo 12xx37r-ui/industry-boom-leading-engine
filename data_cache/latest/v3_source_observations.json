@@ -2,7 +2,7 @@
   "schema_version": 3,
   "engine_release": "7.1.0-cached-nowcast-guarded",
   "as_of": "2026-08-13",
-  "captured_at": "2026-08-14T04:32:28+09:00",
+  "captured_at": "2026-08-14T05:05:32+09:00",
   "theme_count": 50,
   "source_provenance": {
     "openalex": {
@@ -31,10 +31,10 @@
     }
   },
   "collection_metrics": {
-    "network_requests": 10,
-    "cache_hits": 377,
+    "network_requests": 2,
+    "cache_hits": 387,
     "stale_cache_hits": 0,
-    "cache_writes": 10,
+    "cache_writes": 2,
     "enabled_sources": [
       "openalex",
       "usaspending",
@@ -53,7 +53,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 54.8942,
-      "public_interest_score": 66.9234,
+      "public_interest_score": 68.5792,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -61,7 +61,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "high bandwidth memory advanced semiconductor packaging",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 799.0,
           "prior_count": 565.0,
@@ -73,7 +73,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"high bandwidth memory\" OR \"advanced semiconductor packaging\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -89,21 +89,21 @@
             "High Bandwidth Memory",
             "Semiconductor package"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
-          "recent_count": 617.9032,
-          "prior_count": 718.1034,
-          "growth_percent": -13.9535,
-          "growth_score": 45.8185,
-          "scale_score": 50.2492,
-          "source_signal_score": 47.5908,
-          "oldest_30d_level": 626.482759,
-          "recent_30d_level": 617.903226,
-          "prior_30d_level": 718.103448,
-          "three_month_change_percent": -1.3695,
+          "recent_count": 649.4516,
+          "prior_count": 744.6207,
+          "growth_percent": -12.7809,
+          "growth_score": 46.1917,
+          "scale_score": 50.6379,
+          "source_signal_score": 47.9702,
+          "oldest_30d_level": 655.0,
+          "recent_30d_level": 649.451613,
+          "prior_30d_level": 744.62069,
+          "three_month_change_percent": -0.8471,
           "series_points": 89,
-          "attention_percentile": 73.9583,
-          "attention_score": 66.9234
+          "attention_percentile": 76.0417,
+          "attention_score": 68.5792
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -117,7 +117,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -147,7 +147,7 @@
         "대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.",
         "V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."
       ],
-      "public_interest_momentum_3m": -1.3695
+      "public_interest_momentum_3m": -0.8471
     },
     {
       "theme_id": "AI_DRUG_DISCOVERY",
@@ -165,7 +165,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "artificial intelligence drug discovery",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 37417.0,
           "prior_count": 27516.0,
@@ -177,7 +177,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"AI drug discovery\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 28.1815,
           "prior_count": 17.9204,
@@ -199,7 +199,7 @@
             "Artificial intelligence in healthcare",
             "Drug discovery"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 202.871,
           "prior_count": 214.5517,
@@ -228,7 +228,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -271,7 +271,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "AI semiconductor accelerators",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1840.0,
           "prior_count": 1291.0,
@@ -283,7 +283,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"AI accelerator\" OR \"AI semiconductor\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -299,7 +299,7 @@
             "Artificial intelligence accelerator",
             "AI accelerator"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 60.5161,
           "prior_count": 62.0,
@@ -327,7 +327,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -375,7 +375,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous driving advanced driver assistance",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 6076.0,
           "prior_count": 6198.0,
@@ -387,7 +387,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous driving\" OR \"self-driving car\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -402,7 +402,7 @@
           "query": [
             "Self-driving car"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 387.4839,
           "prior_count": 442.1379,
@@ -425,7 +425,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -471,7 +471,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "copper supply mining infrastructure",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 3512.0,
           "prior_count": 3402.0,
@@ -483,7 +483,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"copper supply\" OR \"copper demand\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -499,7 +499,7 @@
             "Copper",
             "Copper extraction"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1398.0,
           "prior_count": 1414.9655,
@@ -528,7 +528,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -576,7 +576,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "critical minerals supply chain",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 26447.0,
           "prior_count": 23441.0,
@@ -588,7 +588,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"critical minerals\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1009.2513,
           "prior_count": 1031.5655,
@@ -609,7 +609,7 @@
           "query": [
             "Critical mineral raw materials"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 2.3548,
           "prior_count": 3.2414,
@@ -632,7 +632,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -673,7 +673,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cybersecurity zero trust ransomware",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 2481.0,
           "prior_count": 2166.0,
@@ -685,7 +685,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "cybersecurity OR \"zero trust\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -701,7 +701,7 @@
             "Computer security",
             "Zero trust security model"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1157.129,
           "prior_count": 863.1724,
@@ -730,7 +730,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -778,7 +778,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "data center infrastructure power cooling",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 15792.0,
           "prior_count": 13090.0,
@@ -790,7 +790,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"data center infrastructure\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 176.2908,
           "prior_count": 144.9711,
@@ -811,7 +811,7 @@
           "query": [
             "Data center"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 2134.9355,
           "prior_count": 1777.4483,
@@ -834,7 +834,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -875,7 +875,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "defense autonomous systems unmanned military",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1835.0,
           "prior_count": 1936.0,
@@ -887,7 +887,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous defense\" OR \"military drone\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -903,7 +903,7 @@
             "Military robot",
             "Unmanned combat aerial vehicle"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 474.2258,
           "prior_count": 488.4483,
@@ -932,7 +932,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -980,7 +980,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "grid energy storage battery storage",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 28887.0,
           "prior_count": 25528.0,
@@ -992,7 +992,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"energy storage\" OR \"battery storage\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1008,7 +1008,7 @@
             "Energy storage",
             "Grid energy storage"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 195.7097,
           "prior_count": 203.9655,
@@ -1031,7 +1031,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1077,7 +1077,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "gene therapy cell therapy",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 190679.0,
           "prior_count": 209227.0,
@@ -1089,7 +1089,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"gene therapy\" OR \"cell therapy\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1105,7 +1105,7 @@
             "Gene therapy",
             "Cell therapy"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 191.6774,
           "prior_count": 175.8621,
@@ -1134,7 +1134,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1182,7 +1182,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "humanoid robots embodied artificial intelligence",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1948.0,
           "prior_count": 1368.0,
@@ -1194,7 +1194,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"humanoid robot\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1595.0669,
           "prior_count": 1035.2587,
@@ -1215,7 +1215,7 @@
           "query": [
             "Humanoid robot"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 285.6452,
           "prior_count": 305.8276,
@@ -1238,7 +1238,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1279,7 +1279,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "industrial robotics automation",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 34074.0,
           "prior_count": 34747.0,
@@ -1291,7 +1291,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"industrial robot\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 492.0737,
           "prior_count": 269.7452,
@@ -1312,7 +1312,7 @@
           "query": [
             "Industrial robot"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 90.6774,
           "prior_count": 91.4828,
@@ -1335,7 +1335,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1376,7 +1376,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "nuclear energy reactor technology",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 10652.0,
           "prior_count": 11179.0,
@@ -1388,7 +1388,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"nuclear energy\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1229.5425,
           "prior_count": 1148.8441,
@@ -1409,7 +1409,7 @@
           "query": [
             "Nuclear power"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 557.1613,
           "prior_count": 491.5862,
@@ -1438,7 +1438,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1481,7 +1481,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "obesity metabolic disease therapeutics GLP-1",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 2959.0,
           "prior_count": 2231.0,
@@ -1493,7 +1493,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"obesity drug\" OR GLP-1",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1509,7 +1509,7 @@
             "Anti-obesity medication",
             "Glucagon-like peptide-1 receptor agonist"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 126.2581,
           "prior_count": 151.069,
@@ -1537,7 +1537,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1585,7 +1585,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "electric grid modernization transmission electrification",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 667.0,
           "prior_count": 652.0,
@@ -1597,7 +1597,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"grid modernization\" OR \"power grid\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1613,7 +1613,7 @@
             "Electrical grid",
             "Smart grid"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 299.2903,
           "prior_count": 297.1379,
@@ -1642,7 +1642,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1690,7 +1690,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "power semiconductors silicon carbide gallium nitride",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 727.0,
           "prior_count": 733.0,
@@ -1702,7 +1702,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"power semiconductor\" OR \"silicon carbide semiconductor\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -1718,7 +1718,7 @@
             "Power semiconductor device",
             "Wide-bandgap semiconductor"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 59.9032,
           "prior_count": 72.3103,
@@ -1746,7 +1746,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1794,7 +1794,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rare earth elements supply chain",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 5849.0,
           "prior_count": 5982.0,
@@ -1806,7 +1806,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"rare earth\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 498.0251,
           "prior_count": 561.3098,
@@ -1827,7 +1827,7 @@
           "query": [
             "Rare-earth element"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 673.0645,
           "prior_count": 699.6897,
@@ -1850,7 +1850,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1891,7 +1891,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "semiconductor manufacturing equipment",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 7812.0,
           "prior_count": 8830.0,
@@ -1903,7 +1903,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"semiconductor equipment\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 204.3175,
           "prior_count": 146.0091,
@@ -1925,7 +1925,7 @@
             "Semiconductor device fabrication",
             "Semiconductor industry"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 749.7742,
           "prior_count": 821.5862,
@@ -1954,7 +1954,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -1997,7 +1997,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "small modular reactor microreactor",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 424.0,
           "prior_count": 347.0,
@@ -2009,7 +2009,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"small modular reactor\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 48.0049,
           "prior_count": 54.1287,
@@ -2030,7 +2030,7 @@
           "query": [
             "Small modular reactor"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 458.2258,
           "prior_count": 506.8621,
@@ -2053,7 +2053,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2094,7 +2094,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial space satellite launch",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 5262.0,
           "prior_count": 5800.0,
@@ -2106,7 +2106,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"space economy\" OR \"commercial space\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2122,7 +2122,7 @@
             "Space industry",
             "Commercial spaceflight"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 57.0968,
           "prior_count": 76.7241,
@@ -2150,7 +2150,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2190,7 +2190,7 @@
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
       "phase1_data_signal_score": 38.0974,
-      "public_interest_score": 69.1531,
+      "public_interest_score": 67.5906,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
       "frozen_model_score_eligible": false,
@@ -2198,7 +2198,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "additive manufacturing 3D printing",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 18603.0,
           "prior_count": 18299.0,
@@ -2210,7 +2210,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"additive manufacturing\" OR \"3D printing\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2226,7 +2226,7 @@
             "3D printing",
             "Additive manufacturing"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 648.871,
           "prior_count": 684.9655,
@@ -2239,8 +2239,8 @@
           "prior_30d_level": 684.965517,
           "three_month_change_percent": -14.0097,
           "series_points": 89,
-          "attention_percentile": 76.0417,
-          "attention_score": 69.1531
+          "attention_percentile": 73.9583,
+          "attention_score": 67.5906
         },
         "usaspending": {
           "status": "LIVE_COLLECTED",
@@ -2249,7 +2249,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2295,7 +2295,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquid biopsy advanced molecular diagnostics",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 8306.0,
           "prior_count": 7909.0,
@@ -2307,7 +2307,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"liquid biopsy\" OR \"molecular diagnostics\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2323,7 +2323,7 @@
             "Liquid biopsy",
             "Molecular diagnostics"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 33.4194,
           "prior_count": 32.3448,
@@ -2346,7 +2346,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2392,7 +2392,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "advanced materials nanomaterials composites",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 23852.0,
           "prior_count": 21730.0,
@@ -2404,7 +2404,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"advanced materials\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 222.3202,
           "prior_count": 218.3569,
@@ -2425,7 +2425,7 @@
           "query": [
             "Advanced materials"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "Wikimedia pageview series unavailable",
           "source_signal_score": null,
@@ -2449,7 +2449,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2497,7 +2497,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "lithium ion battery recycling",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 8242.0,
           "prior_count": 7785.0,
@@ -2509,7 +2509,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"battery recycling\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 44.7248,
           "prior_count": 45.2574,
@@ -2530,7 +2530,7 @@
           "query": [
             "Battery recycling"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 46.4516,
           "prior_count": 47.2069,
@@ -2559,7 +2559,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2602,7 +2602,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "carbon capture utilization storage",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 46113.0,
           "prior_count": 42863.0,
@@ -2614,7 +2614,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"carbon capture\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 153.2301,
           "prior_count": 203.3475,
@@ -2635,7 +2635,7 @@
           "query": [
             "Carbon capture and storage"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 249.6774,
           "prior_count": 243.8276,
@@ -2658,7 +2658,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2699,7 +2699,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cloud computing infrastructure",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 79065.0,
           "prior_count": 62578.0,
@@ -2711,7 +2711,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"cloud infrastructure\" OR \"cloud computing\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2726,7 +2726,7 @@
           "query": [
             "Cloud computing"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1323.2903,
           "prior_count": 1119.0345,
@@ -2749,7 +2749,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2795,7 +2795,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial drones unmanned aerial systems",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 4687.0,
           "prior_count": 4270.0,
@@ -2807,7 +2807,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"commercial drone\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 38.5607,
           "prior_count": 16.9748,
@@ -2829,7 +2829,7 @@
             "Unmanned aerial vehicle",
             "Delivery drone"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1119.871,
           "prior_count": 1117.2759,
@@ -2857,7 +2857,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -2900,7 +2900,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "digital identity authentication biometrics",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 5008.0,
           "prior_count": 4672.0,
@@ -2912,7 +2912,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"digital identity\" OR \"identity security\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -2928,7 +2928,7 @@
             "Digital identity",
             "Identity management"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 98.8065,
           "prior_count": 99.7241,
@@ -2957,7 +2957,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3005,7 +3005,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "edge artificial intelligence inference",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 58274.0,
           "prior_count": 37200.0,
@@ -3017,7 +3017,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"edge AI\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 197.0989,
           "prior_count": 196.7576,
@@ -3039,7 +3039,7 @@
             "Edge computing",
             "Artificial intelligence"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 11162.129,
           "prior_count": 9915.069,
@@ -3062,7 +3062,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3103,7 +3103,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "green hydrogen electrolyzer fuel cell",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 3038.0,
           "prior_count": 2920.0,
@@ -3115,7 +3115,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"green hydrogen\" OR \"hydrogen economy\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3131,7 +3131,7 @@
             "Hydrogen economy",
             "Green hydrogen"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 230.4516,
           "prior_count": 201.069,
@@ -3160,7 +3160,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3208,7 +3208,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquefied natural gas infrastructure",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 2959.0,
           "prior_count": 3125.0,
@@ -3220,7 +3220,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"liquefied natural gas\" OR \"LNG terminal\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3235,7 +3235,7 @@
           "query": [
             "Liquefied natural gas"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 368.5484,
           "prior_count": 377.5172,
@@ -3265,7 +3265,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3313,7 +3313,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "warehouse logistics automation robotics",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 3386.0,
           "prior_count": 3610.0,
@@ -3325,7 +3325,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"warehouse automation\" OR \"logistics automation\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3341,7 +3341,7 @@
             "Warehouse automation",
             "Logistics automation"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 15.8387,
           "prior_count": 13.7931,
@@ -3370,7 +3370,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3418,7 +3418,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous ships maritime unmanned systems",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1297.0,
           "prior_count": 1369.0,
@@ -3430,7 +3430,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous ship\" OR \"unmanned maritime\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3446,7 +3446,7 @@
             "Autonomous cargo ship",
             "Unmanned surface vehicle"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 261.7419,
           "prior_count": 208.2414,
@@ -3475,7 +3475,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3523,7 +3523,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "offshore wind energy",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 16159.0,
           "prior_count": 16416.0,
@@ -3535,7 +3535,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"offshore wind\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 300.7498,
           "prior_count": 271.4345,
@@ -3556,7 +3556,7 @@
           "query": [
             "Offshore wind power"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 94.7097,
           "prior_count": 91.7586,
@@ -3579,7 +3579,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3620,7 +3620,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "silicon photonics optical interconnect",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1755.0,
           "prior_count": 1277.0,
@@ -3632,7 +3632,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"silicon photonics\" OR \"optical interconnect\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
@@ -3648,7 +3648,7 @@
             "Silicon photonics",
             "Optical interconnect"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 69.2581,
           "prior_count": 89.2414,
@@ -3677,7 +3677,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3725,7 +3725,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "precision oncology targeted cancer therapy",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 32933.0,
           "prior_count": 26298.0,
@@ -3737,7 +3737,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"precision oncology\" OR \"liquid biopsy\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3753,7 +3753,7 @@
             "Precision medicine",
             "Liquid biopsy"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 21.3226,
           "prior_count": 26.2759,
@@ -3776,7 +3776,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3822,7 +3822,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "smart factory industrial internet",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 7867.0,
           "prior_count": 9348.0,
@@ -3834,7 +3834,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"smart factory\" OR \"Industry 4.0\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3850,7 +3850,7 @@
             "Industry 4.0",
             "Smart manufacturing"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 60.9032,
           "prior_count": 70.7931,
@@ -3879,7 +3879,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -3927,7 +3927,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "solar photovoltaic manufacturing",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 11321.0,
           "prior_count": 12150.0,
@@ -3939,7 +3939,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"solar energy\" OR photovoltaics",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -3955,7 +3955,7 @@
             "Solar power",
             "Photovoltaics"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 597.9032,
           "prior_count": 576.931,
@@ -3978,7 +3978,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4024,7 +4024,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "robotic surgery surgical robotics",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 21660.0,
           "prior_count": 22557.0,
@@ -4036,7 +4036,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"surgical robot\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 8.4936,
           "prior_count": 8.9541,
@@ -4057,7 +4057,7 @@
           "query": [
             "Robot-assisted surgery"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 11.2258,
           "prior_count": 13.9655,
@@ -4080,7 +4080,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4121,7 +4121,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "synthetic biology biomanufacturing",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1743.0,
           "prior_count": 1310.0,
@@ -4133,7 +4133,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"synthetic biology\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 75.9515,
           "prior_count": 74.6547,
@@ -4154,7 +4154,7 @@
           "query": [
             "Synthetic biology"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 138.3548,
           "prior_count": 166.9655,
@@ -4177,7 +4177,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4218,7 +4218,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "water infrastructure treatment desalination",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 3363.0,
           "prior_count": 2718.0,
@@ -4230,7 +4230,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"water infrastructure\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 603.9177,
           "prior_count": 442.3201,
@@ -4252,7 +4252,7 @@
             "Water supply network",
             "Water industry"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 57.8387,
           "prior_count": 59.8621,
@@ -4281,7 +4281,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4324,7 +4324,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "agricultural technology food technology precision agriculture",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 44734.0,
           "prior_count": 38986.0,
@@ -4336,7 +4336,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "agritech OR foodtech",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4352,7 +4352,7 @@
             "Agricultural technology",
             "Food technology"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 76.4516,
           "prior_count": 76.0,
@@ -4416,7 +4416,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "construction robotics automation",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 25155.0,
           "prior_count": 23718.0,
@@ -4428,7 +4428,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"construction automation\" OR \"construction robot\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4443,7 +4443,7 @@
           "query": [
             "Construction robotics"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "Wikimedia pageview series unavailable",
           "source_signal_score": null,
@@ -4466,7 +4466,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4518,7 +4518,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "financial technology payments infrastructure",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 41656.0,
           "prior_count": 39482.0,
@@ -4530,7 +4530,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"fintech infrastructure\" OR \"payment infrastructure\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4546,7 +4546,7 @@
             "Financial technology",
             "Payment system"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 346.2581,
           "prior_count": 399.9655,
@@ -4575,7 +4575,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4623,7 +4623,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "enhanced geothermal systems",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 12210.0,
           "prior_count": 12615.0,
@@ -4635,7 +4635,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"geothermal energy\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 84.9789,
           "prior_count": 95.4115,
@@ -4656,7 +4656,7 @@
           "query": [
             "Geothermal energy"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 219.7419,
           "prior_count": 229.931,
@@ -4679,7 +4679,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4720,7 +4720,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "heat pumps building energy efficiency",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 12230.0,
           "prior_count": 12833.0,
@@ -4732,7 +4732,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"heat pump\" OR \"energy efficiency\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4748,7 +4748,7 @@
             "Heat pump",
             "Efficient energy use"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 737.1613,
           "prior_count": 930.2759,
@@ -4777,7 +4777,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4825,7 +4825,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "longevity aging therapeutics geroscience",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 467.0,
           "prior_count": 437.0,
@@ -4837,7 +4837,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "longevity OR \"anti-aging biotechnology\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
@@ -4853,7 +4853,7 @@
             "Life extension",
             "Gerontology"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 328.6129,
           "prior_count": 370.4828,
@@ -4882,7 +4882,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -4930,7 +4930,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "quantum computing",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 124297.0,
           "prior_count": 90850.0,
@@ -4942,7 +4942,7 @@
         "gdelt": {
           "status": "LIVE_COLLECTED",
           "query": "\"quantum computing\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 299.8252,
           "prior_count": 307.2439,
@@ -4963,7 +4963,7 @@
           "query": [
             "Quantum computing"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 1689.3226,
           "prior_count": 1986.6897,
@@ -4986,7 +4986,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -5027,7 +5027,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rail modernization signaling high speed rail",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 745.0,
           "prior_count": 920.0,
@@ -5039,9 +5039,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"rail modernization\" OR \"high speed rail\"",
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -5055,7 +5055,7 @@
             "Rail transport",
             "High-speed rail"
           ],
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "as_of": "2026-08-13",
           "recent_count": 997.871,
           "prior_count": 977.3103,
@@ -5084,7 +5084,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-14T04:32:28+09:00",
+          "captured_at": "2026-08-14T05:05:32+09:00",
           "recent_period": {
             "start_date": "2025-08-14",
             "end_date": "2026-08-13"
@@ -5107,7 +5107,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -5117,7 +5117,7 @@
       "public_interest_momentum_3m": -13.9818
     }
   ],
-  "content_sha256": "f5946506ee425e25baa950de5300e16e5843a3a0b534040004c12fc5392aa0bc",
+  "content_sha256": "c13d17436c4f189f3a8b536434c5480e5d42b0dd2c492a404734ff27ea139054",
   "dynamic_discovery": {
     "status": "NO_QUALIFIED_CANDIDATES",
     "candidate_count": 0,

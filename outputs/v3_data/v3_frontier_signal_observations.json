@@ -27,8 +27,8 @@
             "pushed_at": "2026-07-03",
             "updated_at": "2026-07-03",
             "days_since_push": 41,
-            "star_delta_percent": null,
-            "fork_delta_percent": null,
+            "star_delta_percent": 0.0,
+            "fork_delta_percent": 0.0,
             "activity_score": 14.326,
             "observation_date": "2026-08-13"
           }
@@ -130,6 +130,7 @@
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
+          "lens_org",
           "uspto_bulk_cache",
           "openalex_proxy"
         ]
@@ -148,6 +149,7 @@
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
+          "lens_org",
           "uspto_bulk_cache",
           "openalex_proxy"
         ]
@@ -166,6 +168,7 @@
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
+          "lens_org",
           "uspto_bulk_cache",
           "openalex_proxy"
         ]
@@ -205,5 +208,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "e670de6ae48aceb33bc5541ba9ff261c205158c543525794fb0d6cf800024dc4"
+  "content_sha256": "cbe645b2e54d2e45d24e70c301850c1d5d2a41dfd56847b2e779729c59b22ada"
 }
