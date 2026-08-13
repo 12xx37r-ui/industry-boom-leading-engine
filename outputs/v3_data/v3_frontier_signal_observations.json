@@ -130,14 +130,13 @@
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
-          "lens_org",
+          "bigquery",
           "uspto_bulk_cache",
           "openalex_proxy"
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "lens_org": "LENS_UNAVAILABLE",
-          "lens_org_error": "HTTP 401: {\"reference\":\"4520dacd-d311-45f9-98d8-4c350cca71c4\",\"message\":\"Unable to authorize user to this resource.\",\"code\":401}",
+          "bigquery": "WAITING_FOR_GCP_CREDENTIALS",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -155,14 +154,13 @@
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
-          "lens_org",
+          "bigquery",
           "uspto_bulk_cache",
           "openalex_proxy"
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "lens_org": "LENS_UNAVAILABLE",
-          "lens_org_error": "HTTP 401: {\"reference\":\"e2c68d74-c459-471f-bd06-cebbc89b173b\",\"message\":\"Unable to authorize user to this resource.\",\"code\":401}",
+          "bigquery": "WAITING_FOR_GCP_CREDENTIALS",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -180,16 +178,50 @@
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
-          "lens_org",
+          "bigquery",
           "uspto_bulk_cache",
           "openalex_proxy"
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "lens_org": "LENS_UNAVAILABLE",
-          "lens_org_error": "HTTP 401: {\"reference\":\"c3d4e4e9-85b5-4c56-ade5-065aa7fdfc15\",\"message\":\"Unable to authorize user to this resource.\",\"code\":401}",
+          "bigquery": "WAITING_FOR_GCP_CREDENTIALS",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
+      }
+    }
+  ],
+  "kipris": [
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "theme_name": "첨단 패키징·HBM",
+      "kipris": {
+        "status": "KIPRIS_UNAVAILABLE",
+        "query": "high bandwidth memory",
+        "korean_patent_count": null,
+        "external_call_allowed": true,
+        "kipris_error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n<p>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.</p>\n</body></html>\n"
+      }
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "theme_name": "AI 신약개발",
+      "kipris": {
+        "status": "KIPRIS_UNAVAILABLE",
+        "query": "artificial intelligence drug",
+        "korean_patent_count": null,
+        "external_call_allowed": true,
+        "kipris_error": "invalid JSON: Expecting value: line 5 column 1 (char 8)"
+      }
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "theme_name": "AI 반도체",
+      "kipris": {
+        "status": "KIPRIS_UNAVAILABLE",
+        "query": "semiconductor accelerators",
+        "korean_patent_count": null,
+        "external_call_allowed": true,
+        "kipris_error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n<p>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.</p>\n</body></html>\n"
       }
     }
   ],
@@ -226,5 +258,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "56693102faa514b3edc681d43f216b41e662bb5a064761b15845a84f97e517d9"
+  "content_sha256": "a27942d5aa99ce3b1ab00ad68c09e994ab065e1f2ae80685cf8642289e15ffba"
 }
