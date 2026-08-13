@@ -136,8 +136,8 @@
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "BIGQUERY_AUTH_FAILED",
-          "bigquery_error": "No module named 'google'",
+          "bigquery": "BIGQUERY_QUERY_FAILED",
+          "bigquery_error": "400 Unrecognized name: title at [6:24]; reason: invalidQuery, location: query, message: Unrecognized name: title at [6:24]\n\nLocation: US\nJob ID: e108ecf3-60b5-402f-bfcc-0cc021482dfe\n",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -161,8 +161,8 @@
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "BIGQUERY_AUTH_FAILED",
-          "bigquery_error": "No module named 'google'",
+          "bigquery": "BIGQUERY_QUERY_FAILED",
+          "bigquery_error": "400 Unrecognized name: title at [6:24]; reason: invalidQuery, location: query, message: Unrecognized name: title at [6:24]\n\nLocation: US\nJob ID: 9d37d9e3-dfd6-49d0-98a7-d34424540ba5\n",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -186,8 +186,8 @@
         ],
         "skipped_providers": {
           "google_patents": "GOOGLE_PATENTS_UNAVAILABLE",
-          "bigquery": "BIGQUERY_AUTH_FAILED",
-          "bigquery_error": "No module named 'google'",
+          "bigquery": "BIGQUERY_QUERY_FAILED",
+          "bigquery_error": "400 Unrecognized name: title at [6:24]; reason: invalidQuery, location: query, message: Unrecognized name: title at [6:24]\n\nLocation: US\nJob ID: 8953e8d8-7a38-4055-86c8-a1a620b75dc8\n",
           "uspto_bulk_cache": "WAITING_FOR_USPTO_BULK_CACHE"
         }
       }
@@ -198,11 +198,11 @@
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "theme_name": "첨단 패키징·HBM",
       "kipris": {
-        "status": "KIPRIS_UNAVAILABLE",
+        "status": "KIPRIS_PARSE_ERROR",
         "query": "high bandwidth memory",
         "korean_patent_count": null,
         "external_call_allowed": true,
-        "kipris_error": "Expecting value: line 5 column 1 (char 8)"
+        "kipris_error": "mismatched tag: line 16, column 4 | raw[:200]=\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"ko\">\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n\t<title>페이지를 찾을 수 없습니다.</title>\r\n    <meta name=\"description"
       }
     },
     {
@@ -213,18 +213,18 @@
         "query": "artificial intelligence drug",
         "korean_patent_count": null,
         "external_call_allowed": true,
-        "kipris_error": "Expecting value: line 5 column 1 (char 8)"
+        "kipris_error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n<p>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.</p>\n</body></html>\n"
       }
     },
     {
       "theme_id": "AI_SEMICONDUCTORS",
       "theme_name": "AI 반도체",
       "kipris": {
-        "status": "KIPRIS_UNAVAILABLE",
+        "status": "KIPRIS_PARSE_ERROR",
         "query": "semiconductor accelerators",
         "korean_patent_count": null,
         "external_call_allowed": true,
-        "kipris_error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n<p>Additionally, a 404 Not Found\nerror was encountered while trying to use an ErrorDocument to handle the request.</p>\n</body></html>\n"
+        "kipris_error": "mismatched tag: line 16, column 4 | raw[:200]=\r\n\r\n\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"ko\">\r\n  <head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n\t<title>페이지를 찾을 수 없습니다.</title>\r\n    <meta name=\"description"
       }
     }
   ],
@@ -261,5 +261,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "8b8ab65af642ea272baaf91639ac10e84344c23d6f1df12d91319776da2bbfca"
+  "content_sha256": "ec44a575278e2fd986a3ec879484f47179aaa325bbf42c65a1ba29746f14361f"
 }
