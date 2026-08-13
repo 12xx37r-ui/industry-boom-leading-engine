@@ -14,9 +14,25 @@
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "theme_name": "첨단 패키징·HBM",
       "github": {
-        "status": "GITHUB_NO_MATCH",
-        "query": "high bandwidth memory advanced semiconductor packaging",
-        "repositories": []
+        "status": "GITHUB_OBSERVED",
+        "query": "HBM chiplet packaging",
+        "repositories": [
+          {
+            "full_name": "rajul-kk/thermo-3dic-surrogates",
+            "html_url": "https://github.com/rajul-kk/thermo-3dic-surrogates",
+            "description": "Physics-informed thermal surrogate benchmark for 3D/2.5D IC packaging — PINN, FNO/WHNO, PI-DeepONet, and autoregressive operators trained on real 3D-ICE ground truth across 8 geometries (single-die, TSV stacks, chiplets, CoWoS+HBM).",
+            "stargazers_count": 0,
+            "forks_count": 0,
+            "open_issues_count": 0,
+            "pushed_at": "2026-07-03",
+            "updated_at": "2026-07-03",
+            "days_since_push": 41,
+            "star_delta_percent": null,
+            "fork_delta_percent": null,
+            "activity_score": 14.326,
+            "observation_date": "2026-08-13"
+          }
+        ]
       }
     },
     {
@@ -179,10 +195,15 @@
         "stargazers_count": 1,
         "forks_count": 1,
         "observation_date": "2026-08-13"
+      },
+      "github:ADVANCED_PACKAGING_HBM:rajul-kk/thermo-3dic-surrogates": {
+        "stargazers_count": 0,
+        "forks_count": 0,
+        "observation_date": "2026-08-13"
       }
     },
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "71aed0868e609b3eae84f9a87f1eec3908b3b4ef2ec665f3d015d8fd60f48db1"
+  "content_sha256": "e670de6ae48aceb33bc5541ba9ff261c205158c543525794fb0d6cf800024dc4"
 }

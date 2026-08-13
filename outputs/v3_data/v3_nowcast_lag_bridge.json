@@ -606,7 +606,7 @@
     {
       "theme_id": "SEMICONDUCTOR_EQUIPMENT",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.9876,
+      "nowcast_score": 53.7763,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -622,9 +622,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "wikimedia": {
@@ -936,7 +936,7 @@
     {
       "theme_id": "DIGITAL_IDENTITY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.0337,
+      "nowcast_score": 53.9108,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "53ffcbec7f854cc00c36c1f124c26e6d06608b5d361a351a2ce58861d24b94fc"
+  "content_sha256": "423df5442c79e8b9df8eff5ea5bc1989b4a4ec2043ab6e47d702f7dcee57604e"
 }
