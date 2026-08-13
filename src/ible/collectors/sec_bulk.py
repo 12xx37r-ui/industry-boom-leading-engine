@@ -188,14 +188,10 @@ class SecBulkClient:
                     break
                 except Exception as exc:  # noqa: BLE001
                     last_error = str(exc)
-                    # 403 = runner IP blocked; retrying the same IP won't help.
-                    # Break immediately on second 403 so the stage stays within timeout.
-                    if "HTTP 403" in last_error:
-                        if attempt >= 2:
-                            break
-                        time.sleep(1)
-                    elif attempt < 3:
-                        time.sleep(2**attempt)
+                    # A shared-runner IP block normally returns 403. Retrying once
+                    # after a longer pause is useful, but repeated long waits are not.
+                    if attempt < 3:
+                        time.sleep(8 if "HTTP 403" in last_error else 2**attempt)
             if last_error:
                 errors[ticker] = last_error
             if index == len(requested) or index % 5 == 0:
@@ -295,10 +291,7 @@ class SecBulkClient:
             api_downloaded, api_errors = self._download_companyfacts_api(ticker_to_cik, remaining)
             remaining = [ticker for ticker in requested if not (self.subset_dir / f"{ticker}.json").exists()]
 
-        # Skip bulk download when ALL API calls got 403: same runner IP is blocked
-        # for both API and bulk archive — attempting the 3 GB download just wastes time.
-        all_403 = bool(api_errors) and all("HTTP 403" in err for err in api_errors.values())
-        if mode in {"auto", "bulk"} and remaining and not all_403:
+        if mode in {"auto", "bulk"} and remaining:
             try:
                 print(f"[SEC] source=nightly_bulk fallback_companies={len(remaining)}", flush=True)
                 bulk_extracted, _ = self._extract_from_archive(
@@ -309,9 +302,6 @@ class SecBulkClient:
             except Exception as exc:  # noqa: BLE001
                 bulk_error = str(exc)
                 print(f"[SEC] bulk fallback unavailable: {bulk_error}", flush=True)
-        elif all_403 and remaining:
-            bulk_error = "skipped: all API calls returned HTTP 403 (runner IP blocked); bulk archive uses the same IP"
-            print(f"[SEC] bulk skipped — runner IP blocked (all 403)", flush=True)
 
         present = [ticker for ticker in requested if (self.subset_dir / f"{ticker}.json").exists()]
         missing = [ticker for ticker in requested if ticker not in present]

@@ -148,9 +148,7 @@ def _collect_one(row, openalex, usaspending, gdelt, wikimedia, recent_period, pr
     if enabled_sources.get('openalex') and openalex:
         tasks.append(('openalex',lambda:(openalex.count(str(row['openalex_search']),recent_period),openalex.count(str(row['openalex_search']),prior_period)),str(row['openalex_search']),'count'))
     if enabled_sources.get('gdelt') and gdelt:
-        # Truncate to 4 words: GDELT matches broader global news better with shorter queries
-        _gdelt_q = " ".join(str(row['gdelt_query']).split()[:4]) or str(row['gdelt_query'])
-        tasks.append(('gdelt', lambda q=_gdelt_q: gdelt.timeline(q, interest_period), _gdelt_q, 'series'))
+        tasks.append(('gdelt',lambda:gdelt.timeline(str(row['gdelt_query']),interest_period),str(row['gdelt_query']),'series'))
     if enabled_sources.get('wikimedia') and wikimedia:
         tasks.append(('wikimedia',lambda:wikimedia.timeline(list(row['wikipedia_titles']),interest_period),list(row['wikipedia_titles']),'series'))
     task_names={item[0] for item in tasks}
