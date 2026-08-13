@@ -393,15 +393,16 @@ def _bigquery_patents_observation(
     # Build simple regex from top keywords (avoid full-table UNNEST explosion)
     words = [w for w in re.split(r"\s+", term) if len(w) > 3][:4]
     pattern = "|".join(re.escape(w.lower()) for w in words) if words else re.escape(term.lower())
+    # title_localized is a REPEATED STRUCT {text, language}; use EXISTS + UNNEST
     sql = """
-SELECT COUNT(*) AS cnt
+SELECT COUNT(DISTINCT publication_number) AS cnt
 FROM `patents-public-data.patents.publications`
 WHERE publication_date BETWEEN @start_date AND @end_date
-  AND REGEXP_CONTAINS(
-        LOWER(COALESCE(title[SAFE_OFFSET(0)].text, '')),
-        @pattern
-      )
   AND country_code IN ('US', 'EP', 'WO', 'KR', 'JP')
+  AND EXISTS (
+    SELECT 1 FROM UNNEST(title_localized) AS t
+    WHERE REGEXP_CONTAINS(LOWER(t.text), @pattern)
+  )
 """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
@@ -492,7 +493,8 @@ def _kipris_observation(
     words = [w for w in re.split(r"\s+", term) if len(w) > 2][:3]
     search_word = " ".join(words) if words else term
     import xml.etree.ElementTree as ET  # noqa: N817
-    base_url = str(config.get("kipris_url") or "https://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/getWordSearch")
+    # KIPRIS Plus is a Korean government API — uses http:// and requires patent=Y param
+    base_url = str(config.get("kipris_url") or "http://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/getWordSearch")
     try:
         raw = client.request_text(
             base_url,
@@ -502,6 +504,8 @@ def _kipris_observation(
                 "docsCount": "1",
                 "applicationStartDate": start_dt,
                 "applicationEndDate": end_dt,
+                "patent": "Y",
+                "utility": "N",
                 "ServiceKey": key,
             },
             cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
