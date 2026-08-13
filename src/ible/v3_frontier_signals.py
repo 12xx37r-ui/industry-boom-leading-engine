@@ -491,9 +491,9 @@ def _kipris_observation(
     # Use top 3 keywords for search; KIPRIS full-text search has limited query length
     words = [w for w in re.split(r"\s+", term) if len(w) > 2][:3]
     search_word = " ".join(words) if words else term
-    base_url = str(config.get("kipris_url") or "https://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/articleSearch")
+    base_url = str(config.get("kipris_url") or "https://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/getWordSearch")
     try:
-        response = client.request_json(
+        raw = client.request_text(
             base_url,
             params={
                 "word": search_word,
@@ -506,6 +506,7 @@ def _kipris_observation(
             },
             cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
         )
+        response = json.loads(raw)
     except (HttpError, OSError, ValueError, TypeError) as exc:
         return {
             "status": "KIPRIS_UNAVAILABLE",
@@ -515,7 +516,7 @@ def _kipris_observation(
             "kipris_error": str(exc)[:500],
         }
     try:
-        body = response.get("response", response).get("body", {})
+        body = (response.get("response") or response).get("body") or {}
         count = int(body.get("totalCount") or body.get("numOfRows") or 0)
     except (TypeError, ValueError, AttributeError):
         count = 0

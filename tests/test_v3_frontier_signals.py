@@ -178,11 +178,11 @@ class FrontierSignalTests(unittest.TestCase):
         themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
 
         class KiprisClient(FakeFrontierClient):
-            def request_json(self, url, **kwargs):
+            def request_text(self, url, **kwargs):
                 self.calls.append((url, kwargs))
                 if "kipris" in url:
-                    return {"response": {"body": {"totalCount": 320}}}
-                return super().request_json(url, **kwargs)
+                    return json.dumps({"response": {"body": {"totalCount": 320}}})
+                return super().request_text(url, **kwargs)
 
         client = KiprisClient()
         with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
