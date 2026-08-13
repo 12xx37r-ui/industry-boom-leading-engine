@@ -13,39 +13,13 @@
   },
   "candidates": [],
   "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
-  "input_document_count": 6,
+  "input_document_count": 16,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
     "selected_theme_count": 3,
-    "document_count": 6,
-    "errors": [
-      {
-        "theme_id": "ADVANCED_PACKAGING_HBM",
-        "source": "openalex",
-        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":17336,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
-      },
-      {
-        "theme_id": "AI_DRUG_DISCOVERY",
-        "source": "openalex",
-        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":17329,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
-      },
-      {
-        "theme_id": "AI_SEMICONDUCTORS",
-        "source": "openalex",
-        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":17322,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
-      },
-      {
-        "theme_id": "ADVANCED_PACKAGING_HBM",
-        "source": "gdelt",
-        "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-      },
-      {
-        "theme_id": "AI_SEMICONDUCTORS",
-        "source": "gdelt",
-        "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-      }
-    ],
+    "document_count": 16,
+    "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "a5088e889023b375470ec50975618cb3f69dd9e831042824af294c54ddaca7e4"
+  "content_sha256": "cd71e8c5cc96c3f6f443816c2263e59d9d942ebbfca2ab3fc8b931be4a6500c0"
 }

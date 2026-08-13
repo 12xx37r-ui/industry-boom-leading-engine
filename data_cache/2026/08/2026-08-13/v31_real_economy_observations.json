@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.1.0-github-qcew-real-economy",
   "as_of": "2026-08-13",
-  "captured_at": "2026-08-14T04:12:32+09:00",
+  "captured_at": "2026-08-14T04:25:44+09:00",
   "qcew_quarter": "2025Q4",
   "theme_count": 50,
   "source_provenance": {
@@ -30,7 +30,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -82,7 +82,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -136,7 +136,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -188,7 +188,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -242,7 +242,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -296,7 +296,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -350,7 +350,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -404,7 +404,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -458,7 +458,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -512,7 +512,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -566,7 +566,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -620,7 +620,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -674,7 +674,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -726,7 +726,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -780,7 +780,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -832,7 +832,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -886,7 +886,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -938,7 +938,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -992,7 +992,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1046,7 +1046,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1100,7 +1100,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1152,7 +1152,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1206,7 +1206,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1260,7 +1260,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1316,7 +1316,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1370,7 +1370,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1426,7 +1426,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1478,7 +1478,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1530,7 +1530,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1584,7 +1584,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1638,7 +1638,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1692,7 +1692,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1748,7 +1748,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1802,7 +1802,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1856,7 +1856,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1910,7 +1910,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1964,7 +1964,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2018,7 +2018,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2072,7 +2072,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2126,7 +2126,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2180,7 +2180,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2234,7 +2234,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2288,7 +2288,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2344,7 +2344,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2398,7 +2398,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2452,7 +2452,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2506,7 +2506,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2560,7 +2560,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2614,7 +2614,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2668,7 +2668,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-14T04:12:32+09:00",
+          "captured_at": "2026-08-14T04:25:44+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2709,5 +2709,5 @@
       ]
     }
   ],
-  "content_sha256": "c4562fedf257dbb340414823ed36ebcfbea07c9f96fc40e9d4130954c5656305"
+  "content_sha256": "7247383a958e870d695fd4ac09e8e50bb0925aeaa10b5802dde06c07b1b27a40"
 }

@@ -3,10 +3,10 @@
   "as_of": "2026-08-13",
   "public_interest_observed": 49,
   "collection_metrics": {
-    "network_requests": 344,
-    "cache_hits": 22,
+    "network_requests": 21,
+    "cache_hits": 363,
     "stale_cache_hits": 0,
-    "cache_writes": 344,
+    "cache_writes": 21,
     "enabled_sources": [
       "openalex",
       "usaspending",
@@ -30,14 +30,14 @@
     },
     "gdelt": {
       "enabled": true,
-      "live_count": 16,
-      "cache_fallback_count": 4,
+      "live_count": 19,
+      "cache_fallback_count": 1,
       "unavailable_count": 30
     },
     "wikimedia": {
       "enabled": true,
-      "live_count": 43,
-      "cache_fallback_count": 5,
+      "live_count": 48,
+      "cache_fallback_count": 0,
       "unavailable_count": 2
     }
   }

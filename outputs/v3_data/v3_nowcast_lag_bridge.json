@@ -276,7 +276,7 @@
     {
       "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.5892,
+      "nowcast_score": 52.7559,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -342,7 +342,7 @@
     {
       "theme_id": "GENE_CELL_THERAPY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 57.6911,
+      "nowcast_score": 59.1238,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -408,7 +408,7 @@
     {
       "theme_id": "INDUSTRIAL_ROBOTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.0503,
+      "nowcast_score": 53.0296,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -430,9 +430,9 @@
           "score_used": true
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -573,7 +573,7 @@
     {
       "theme_id": "RARE_EARTHS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.7094,
+      "nowcast_score": 49.6154,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -589,9 +589,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "wikimedia": {
@@ -672,7 +672,7 @@
     {
       "theme_id": "SPACE_ECONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.8097,
+      "nowcast_score": 51.0104,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -694,9 +694,9 @@
           "score_used": false
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -903,7 +903,7 @@
     {
       "theme_id": "COMMERCIAL_DRONES",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.4177,
+      "nowcast_score": 54.7984,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -936,7 +936,7 @@
     {
       "theme_id": "DIGITAL_IDENTITY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.8674,
+      "nowcast_score": 53.0337,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -958,9 +958,9 @@
           "score_used": false
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -1101,7 +1101,7 @@
     {
       "theme_id": "MARITIME_AUTONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.1536,
+      "nowcast_score": 52.8106,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1134,7 +1134,7 @@
     {
       "theme_id": "OFFSHORE_WIND",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.0452,
+      "nowcast_score": 48.5355,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1150,9 +1150,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "wikimedia": {
@@ -1233,7 +1233,7 @@
     {
       "theme_id": "SMART_FACTORY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.5573,
+      "nowcast_score": 52.1392,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1299,7 +1299,7 @@
     {
       "theme_id": "SURGICAL_ROBOTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.6914,
+      "nowcast_score": 45.6636,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1321,9 +1321,9 @@
           "score_used": true
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -1464,7 +1464,7 @@
     {
       "theme_id": "FINTECH_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 56.9768,
+      "nowcast_score": 56.9382,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1486,9 +1486,9 @@
           "score_used": false
         },
         "wikimedia": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -1596,7 +1596,7 @@
     {
       "theme_id": "QUANTUM_COMPUTING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 56.3195,
+      "nowcast_score": 56.0196,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1612,9 +1612,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "wikimedia": {
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "24ffe17b0c18ce3c02d0cf6e522634d0a834b4b3617b49c45c217f695e46fa92"
+  "content_sha256": "53ffcbec7f854cc00c36c1f124c26e6d06608b5d361a351a2ce58861d24b94fc"
 }

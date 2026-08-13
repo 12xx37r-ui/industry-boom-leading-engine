@@ -22,6 +22,79 @@
   },
   "top_20": [
     {
+      "rank": 7,
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 64.5939,
+      "industrial_signal_score": 64.5939,
+      "public_interest_score": 21.6971,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -16.2637,
+      "boom_score": 56.0145,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 68.0212,
+      "score_change_3m": -1.4412,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "HIDDEN_EARLY",
+        "label": "아직 덜 알려진 초기 자금축적",
+        "icon": "🌱"
+      },
+      "direct_commercialization_score": 74.0301,
+      "phase3_investment_score": 62.3184,
+      "source_diffusion_percent": 60.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": true,
+      "added_by_challenger": true,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Okta",
+          "ticker": "OKTA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "CyberArk",
+          "ticker": "CYBR",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Microsoft",
+          "ticker": "MSFT",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Cloudflare",
+          "ticker": "NET",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Palo Alto Networks",
+          "ticker": "PANW",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 1
+    },
+    {
       "rank": 2,
       "theme_id": "GEOTHERMAL_ENERGY",
       "theme_name": "지열에너지",
@@ -29,12 +102,12 @@
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
       "predicted_score": 67.9014,
       "industrial_signal_score": 67.9014,
-      "public_interest_score": 42.4893,
+      "public_interest_score": 40.9268,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -14.3788,
-      "boom_score": 62.819,
+      "boom_score": 62.5065,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 65.3037,
+      "hidden_opportunity_score": 65.6944,
       "score_change_3m": -1.3468,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -92,153 +165,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 1
-    },
-    {
-      "rank": 14,
-      "theme_id": "GENE_CELL_THERAPY",
-      "theme_name": "유전자·세포치료",
-      "sector": "바이오·헬스케어",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 60.1079,
-      "industrial_signal_score": 60.1079,
-      "public_interest_score": 22.9835,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -15.7258,
-      "boom_score": 52.683,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 64.335,
-      "score_change_3m": -1.4561,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "HIDDEN_EARLY",
-        "label": "아직 덜 알려진 초기 자금축적",
-        "icon": "🌱"
-      },
-      "direct_commercialization_score": 57.8391,
-      "phase3_investment_score": 59.14,
-      "source_diffusion_percent": 80.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "CRISPR Therapeutics",
-          "ticker": "CRSP",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Intellia Therapeutics",
-          "ticker": "NTLA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Beam Therapeutics",
-          "ticker": "BEAM",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Editas Medicine",
-          "ticker": "EDIT",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Cellectis",
-          "ticker": "CLLS",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 2
-    },
-    {
-      "rank": 7,
-      "theme_id": "DIGITAL_IDENTITY",
-      "theme_name": "디지털 신원·보안인증",
-      "sector": "디지털 인프라",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 64.5939,
-      "industrial_signal_score": 64.5939,
-      "public_interest_score": 41.2655,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -9.9985,
-      "boom_score": 59.9282,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 63.129,
-      "score_change_3m": -0.9399,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "EARLY_CAPITAL",
-        "label": "초기 자금 유입",
-        "icon": "🔥"
-      },
-      "direct_commercialization_score": 74.0301,
-      "phase3_investment_score": 62.3184,
-      "source_diffusion_percent": 60.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": true,
-      "added_by_challenger": true,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Okta",
-          "ticker": "OKTA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "CyberArk",
-          "ticker": "CYBR",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Microsoft",
-          "ticker": "MSFT",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Cloudflare",
-          "ticker": "NET",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Palo Alto Networks",
-          "ticker": "PANW",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 3
     },
     {
       "rank": 5,
@@ -248,12 +175,12 @@
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
       "predicted_score": 65.3731,
       "industrial_signal_score": 65.3731,
-      "public_interest_score": 45.5985,
+      "public_interest_score": 44.036,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -21.2325,
-      "boom_score": 61.4182,
+      "boom_score": 61.1057,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 62.6302,
+      "hidden_opportunity_score": 63.0208,
       "score_change_3m": -2.0104,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -311,7 +238,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 4
+      "hidden_rank": 3
     },
     {
       "rank": 13,
@@ -321,12 +248,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 60.1571,
       "industrial_signal_score": 60.1571,
-      "public_interest_score": 34.1543,
+      "public_interest_score": 32.5918,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": 23.0026,
-      "boom_score": 54.9565,
+      "boom_score": 54.644,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.5792,
+      "hidden_opportunity_score": 61.9699,
       "score_change_3m": 1.8628,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -384,7 +311,226 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 4
+    },
+    {
+      "rank": 10,
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 60.4025,
+      "industrial_signal_score": 60.4025,
+      "public_interest_score": 33.6347,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -12.0549,
+      "boom_score": 55.0489,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.8932,
+      "score_change_3m": -0.8877,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "HIDDEN_EARLY",
+        "label": "아직 덜 알려진 초기 자금축적",
+        "icon": "🌱"
+      },
+      "direct_commercialization_score": 68.8333,
+      "phase3_investment_score": 55.7124,
+      "source_diffusion_percent": 40.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Deere",
+          "ticker": "DE",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "AGCO",
+          "ticker": "AGCO",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "CNH Industrial",
+          "ticker": "CNH",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Corteva",
+          "ticker": "CTVA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Archer-Daniels-Midland",
+          "ticker": "ADM",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 5
+    },
+    {
+      "rank": 29,
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 54.6363,
+      "industrial_signal_score": 54.6363,
+      "public_interest_score": 16.5778,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -18.6375,
+      "boom_score": 47.0246,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.8328,
+      "score_change_3m": -1.4191,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "WATCH",
+        "label": "관찰 필요",
+        "icon": "👀"
+      },
+      "direct_commercialization_score": 43.1674,
+      "phase3_investment_score": 57.4388,
+      "source_diffusion_percent": 80.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Guardant Health",
+          "ticker": "GH",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Natera",
+          "ticker": "NTRA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Illumina",
+          "ticker": "ILMN",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Thermo Fisher Scientific",
+          "ticker": "TMO",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Roche",
+          "ticker": "RHHBY",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 6
+    },
+    {
+      "rank": 9,
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 63.2776,
+      "industrial_signal_score": 63.2776,
+      "public_interest_score": 42.6811,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -10.7473,
+      "boom_score": 59.1583,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.7879,
+      "score_change_3m": -0.7908,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "EARLY_CAPITAL",
+        "label": "초기 자금 유입",
+        "icon": "🔥"
+      },
+      "direct_commercialization_score": 65.7178,
+      "phase3_investment_score": 64.3021,
+      "source_diffusion_percent": 60.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": true,
+      "added_by_challenger": true,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Fluence Energy",
+          "ticker": "FLNC",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Tesla",
+          "ticker": "TSLA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "CATL",
+          "ticker": "300750.SZ",
+          "market": "CN",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "삼성SDI",
+          "ticker": "006400.KS",
+          "market": "KR",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "LG에너지솔루션",
+          "ticker": "373220.KS",
+          "market": "KR",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 7
     },
     {
       "rank": 1,
@@ -457,226 +603,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 6
-    },
-    {
-      "rank": 29,
-      "theme_id": "PRECISION_ONCOLOGY",
-      "theme_name": "정밀종양학",
-      "sector": "바이오·헬스케어",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 54.6363,
-      "industrial_signal_score": 54.6363,
-      "public_interest_score": 18.1403,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -18.6375,
-      "boom_score": 47.3371,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.4421,
-      "score_change_3m": -1.4191,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "WATCH",
-        "label": "관찰 필요",
-        "icon": "👀"
-      },
-      "direct_commercialization_score": 43.1674,
-      "phase3_investment_score": 57.4388,
-      "source_diffusion_percent": 80.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Guardant Health",
-          "ticker": "GH",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Natera",
-          "ticker": "NTRA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Illumina",
-          "ticker": "ILMN",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Thermo Fisher Scientific",
-          "ticker": "TMO",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Roche",
-          "ticker": "RHHBY",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 7
-    },
-    {
-      "rank": 10,
-      "theme_id": "AGRITECH_FOODTECH",
-      "theme_name": "애그테크·푸드테크",
-      "sector": "소재·자원·인프라",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 60.4025,
-      "industrial_signal_score": 60.4025,
-      "public_interest_score": 36.7597,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -12.0549,
-      "boom_score": 55.6739,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.112,
-      "score_change_3m": -0.8877,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "EARLY_CAPITAL",
-        "label": "초기 자금 유입",
-        "icon": "🔥"
-      },
-      "direct_commercialization_score": 68.8333,
-      "phase3_investment_score": 55.7124,
-      "source_diffusion_percent": 40.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Deere",
-          "ticker": "DE",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "AGCO",
-          "ticker": "AGCO",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "CNH Industrial",
-          "ticker": "CNH",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Corteva",
-          "ticker": "CTVA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Archer-Daniels-Midland",
-          "ticker": "ADM",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 8
-    },
-    {
-      "rank": 9,
-      "theme_id": "ENERGY_STORAGE",
-      "theme_name": "에너지저장장치",
-      "sector": "에너지·전력",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 63.2776,
-      "industrial_signal_score": 63.2776,
-      "public_interest_score": 45.8061,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -10.7473,
-      "boom_score": 59.7833,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.0067,
-      "score_change_3m": -0.7908,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "EARLY_CAPITAL",
-        "label": "초기 자금 유입",
-        "icon": "🔥"
-      },
-      "direct_commercialization_score": 65.7178,
-      "phase3_investment_score": 64.3021,
-      "source_diffusion_percent": 60.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": true,
-      "added_by_challenger": true,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Fluence Energy",
-          "ticker": "FLNC",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Tesla",
-          "ticker": "TSLA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "CATL",
-          "ticker": "300750.SZ",
-          "market": "CN",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "삼성SDI",
-          "ticker": "006400.KS",
-          "market": "KR",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "LG에너지솔루션",
-          "ticker": "373220.KS",
-          "market": "KR",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 9
     },
     {
       "rank": 25,
@@ -686,12 +613,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 56.1315,
       "industrial_signal_score": 56.1315,
-      "public_interest_score": 25.6073,
+      "public_interest_score": 23.2636,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": 2.0324,
-      "boom_score": 50.0267,
+      "boom_score": 49.5579,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 60.6968,
+      "hidden_opportunity_score": 61.2827,
       "score_change_3m": 0.0287,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -749,7 +676,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 10
+      "hidden_rank": 9
     },
     {
       "rank": 12,
@@ -759,12 +686,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 60.2549,
       "industrial_signal_score": 60.2549,
-      "public_interest_score": 38.2388,
+      "public_interest_score": 35.8951,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": 10.5764,
-      "boom_score": 55.8517,
+      "boom_score": 55.3829,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 60.6315,
+      "hidden_opportunity_score": 61.2174,
       "score_change_3m": 1.3559,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -822,80 +749,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 11
-    },
-    {
-      "rank": 4,
-      "theme_id": "POWER_GRID_ELECTRIFICATION",
-      "theme_name": "전력망·전기화",
-      "sector": "에너지·전력",
-      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "predicted_score": 65.7423,
-      "industrial_signal_score": 65.7423,
-      "public_interest_score": 55.5191,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -6.0262,
-      "boom_score": 63.6977,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 60.4269,
-      "score_change_3m": -0.6134,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "WATCH",
-        "label": "관찰 필요",
-        "icon": "👀"
-      },
-      "direct_commercialization_score": 67.2565,
-      "phase3_investment_score": 67.8092,
-      "source_diffusion_percent": 60.0,
-      "champion_live_alert": true,
-      "challenger_live_alert": true,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Powell Industries",
-          "ticker": "POWL",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Hubbell",
-          "ticker": "HUBB",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Eaton",
-          "ticker": "ETN",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "nVent Electric",
-          "ticker": "NVT",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "GE Vernova",
-          "ticker": "GEV",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 12
+      "hidden_rank": 10
     },
     {
       "rank": 17,
@@ -905,12 +759,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 58.1109,
       "industrial_signal_score": 58.1109,
-      "public_interest_score": 33.4271,
+      "public_interest_score": 30.3021,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -32.2831,
-      "boom_score": 53.1741,
+      "boom_score": 52.5491,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 60.2264,
+      "hidden_opportunity_score": 61.0076,
       "score_change_3m": -2.5727,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -968,40 +822,186 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 13
+      "hidden_rank": 11
     },
     {
-      "rank": 37,
-      "theme_id": "SMART_FACTORY",
-      "theme_name": "스마트팩토리",
-      "sector": "산업·자동화",
-      "candidate_stage": "MONITOR_ONLY",
-      "predicted_score": 51.1032,
-      "industrial_signal_score": 51.1032,
-      "public_interest_score": 20.1657,
+      "rank": 4,
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "theme_name": "전력망·전기화",
+      "sector": "에너지·전력",
+      "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
+      "predicted_score": 65.7423,
+      "industrial_signal_score": 65.7423,
+      "public_interest_score": 53.9566,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -12.59,
-      "boom_score": 44.9157,
+      "public_interest_momentum_3m": -6.0262,
+      "boom_score": 63.3852,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 58.286,
-      "score_change_3m": -1.2773,
+      "hidden_opportunity_score": 60.8176,
+      "score_change_3m": -0.6134,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
-        "code": "WATCH",
-        "label": "관찰 필요",
-        "icon": "👀"
+        "code": "EARLY_CAPITAL",
+        "label": "초기 자금 유입",
+        "icon": "🔥"
       },
-      "direct_commercialization_score": 66.1537,
-      "phase3_investment_score": 46.5339,
-      "source_diffusion_percent": 20.0,
+      "direct_commercialization_score": 67.2565,
+      "phase3_investment_score": 67.8092,
+      "source_diffusion_percent": 60.0,
+      "champion_live_alert": true,
+      "challenger_live_alert": true,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Powell Industries",
+          "ticker": "POWL",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Hubbell",
+          "ticker": "HUBB",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Eaton",
+          "ticker": "ETN",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "nVent Electric",
+          "ticker": "NVT",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "GE Vernova",
+          "ticker": "GEV",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 12
+    },
+    {
+      "rank": 14,
+      "theme_id": "GENE_CELL_THERAPY",
+      "theme_name": "유전자·세포치료",
+      "sector": "바이오·헬스케어",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 60.1079,
+      "industrial_signal_score": 60.1079,
+      "public_interest_score": 42.0048,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -6.0087,
+      "boom_score": 56.4873,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 59.5797,
+      "score_change_3m": -0.6787,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "EARLY_CAPITAL",
+        "label": "초기 자금 유입",
+        "icon": "🔥"
+      },
+      "direct_commercialization_score": 57.8391,
+      "phase3_investment_score": 59.14,
+      "source_diffusion_percent": 80.0,
       "champion_live_alert": false,
       "challenger_live_alert": false,
       "added_by_challenger": false,
       "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
       "companies": [
         {
-          "name": "Rockwell Automation",
-          "ticker": "ROK",
+          "name": "CRISPR Therapeutics",
+          "ticker": "CRSP",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Intellia Therapeutics",
+          "ticker": "NTLA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Beam Therapeutics",
+          "ticker": "BEAM",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Editas Medicine",
+          "ticker": "EDIT",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Cellectis",
+          "ticker": "CLLS",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 13
+    },
+    {
+      "rank": 41,
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "theme_name": "물류 자동화",
+      "sector": "산업·자동화",
+      "candidate_stage": "MONITOR_ONLY",
+      "predicted_score": 48.9978,
+      "industrial_signal_score": 48.9978,
+      "public_interest_score": 17.3096,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": 57.3023,
+      "boom_score": 42.6602,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 57.421,
+      "score_change_3m": 4.4181,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "WATCH",
+        "label": "관찰 필요",
+        "icon": "👀"
+      },
+      "direct_commercialization_score": 64.3317,
+      "phase3_investment_score": 47.3411,
+      "source_diffusion_percent": 0.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Symbotic",
+          "ticker": "SYM",
           "market": "US",
           "relation_strength": "CORE_OR_MAJOR",
           "confidence": 0.7,
@@ -1016,9 +1016,17 @@
           "exposure": null
         },
         {
-          "name": "Siemens",
-          "ticker": "SIE.DE",
-          "market": "DE",
+          "name": "Amazon",
+          "ticker": "AMZN",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Teradyne",
+          "ticker": "TER",
+          "market": "US",
           "relation_strength": "CORE_OR_MAJOR",
           "confidence": 0.7,
           "exposure": null
@@ -1026,14 +1034,6 @@
         {
           "name": "ABB",
           "ticker": "ABB",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Emerson Electric",
-          "ticker": "EMR",
           "market": "US",
           "relation_strength": "CORE_OR_MAJOR",
           "confidence": 0.7,
@@ -1051,12 +1051,12 @@
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
       "predicted_score": 67.6633,
       "industrial_signal_score": 67.6633,
-      "public_interest_score": 74.8137,
+      "public_interest_score": 74.0325,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -6.8217,
-      "boom_score": 69.0934,
+      "boom_score": 68.9371,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 57.0441,
+      "hidden_opportunity_score": 57.2394,
       "score_change_3m": -0.7168,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -1117,79 +1117,6 @@
       "hidden_rank": 15
     },
     {
-      "rank": 41,
-      "theme_id": "LOGISTICS_AUTOMATION",
-      "theme_name": "물류 자동화",
-      "sector": "산업·자동화",
-      "candidate_stage": "MONITOR_ONLY",
-      "predicted_score": 48.9978,
-      "industrial_signal_score": 48.9978,
-      "public_interest_score": 18.8721,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": 57.3023,
-      "boom_score": 42.9727,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 57.0303,
-      "score_change_3m": 4.4181,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "WATCH",
-        "label": "관찰 필요",
-        "icon": "👀"
-      },
-      "direct_commercialization_score": 64.3317,
-      "phase3_investment_score": 47.3411,
-      "source_diffusion_percent": 0.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Symbotic",
-          "ticker": "SYM",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Honeywell",
-          "ticker": "HON",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Amazon",
-          "ticker": "AMZN",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Teradyne",
-          "ticker": "TER",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "ABB",
-          "ticker": "ABB",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 16
-    },
-    {
       "rank": 6,
       "theme_id": "SOLAR_ENERGY",
       "theme_name": "태양광",
@@ -1197,12 +1124,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 64.9448,
       "industrial_signal_score": 64.9448,
-      "public_interest_score": 68.2182,
+      "public_interest_score": 66.6557,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -3.4028,
-      "boom_score": 65.5995,
+      "boom_score": 65.287,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 56.6541,
+      "hidden_opportunity_score": 57.0447,
       "score_change_3m": -0.4528,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -1260,7 +1187,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 17
+      "hidden_rank": 16
     },
     {
       "rank": 46,
@@ -1270,13 +1197,13 @@
       "candidate_stage": "MONITOR_ONLY",
       "predicted_score": 46.3255,
       "industrial_signal_score": 46.3255,
-      "public_interest_score": 13.77,
+      "public_interest_score": 13.7421,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -16.9633,
-      "boom_score": 39.8144,
+      "public_interest_momentum_3m": -17.7732,
+      "boom_score": 39.8088,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 56.3016,
-      "score_change_3m": -1.2841,
+      "hidden_opportunity_score": 56.3086,
+      "score_change_3m": -1.3489,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
         "code": "WATCH",
@@ -1333,7 +1260,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 18
+      "hidden_rank": 17
     },
     {
       "rank": 21,
@@ -1406,7 +1333,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 19
+      "hidden_rank": 18
     },
     {
       "rank": 16,
@@ -1479,10 +1406,156 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 19
+    },
+    {
+      "rank": 37,
+      "theme_id": "SMART_FACTORY",
+      "theme_name": "스마트팩토리",
+      "sector": "산업·자동화",
+      "candidate_stage": "MONITOR_ONLY",
+      "predicted_score": 51.1032,
+      "industrial_signal_score": 51.1032,
+      "public_interest_score": 29.4361,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -23.871,
+      "boom_score": 46.7698,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 55.9684,
+      "score_change_3m": -2.1798,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "WATCH",
+        "label": "관찰 필요",
+        "icon": "👀"
+      },
+      "direct_commercialization_score": 66.1537,
+      "phase3_investment_score": 46.5339,
+      "source_diffusion_percent": 20.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Rockwell Automation",
+          "ticker": "ROK",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Honeywell",
+          "ticker": "HON",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Siemens",
+          "ticker": "SIE.DE",
+          "market": "DE",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "ABB",
+          "ticker": "ABB",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Emerson Electric",
+          "ticker": "EMR",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 20
     }
   ],
   "hidden_top_10": [
+    {
+      "rank": 7,
+      "theme_id": "DIGITAL_IDENTITY",
+      "theme_name": "디지털 신원·보안인증",
+      "sector": "디지털 인프라",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 64.5939,
+      "industrial_signal_score": 64.5939,
+      "public_interest_score": 21.6971,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -16.2637,
+      "boom_score": 56.0145,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 68.0212,
+      "score_change_3m": -1.4412,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "HIDDEN_EARLY",
+        "label": "아직 덜 알려진 초기 자금축적",
+        "icon": "🌱"
+      },
+      "direct_commercialization_score": 74.0301,
+      "phase3_investment_score": 62.3184,
+      "source_diffusion_percent": 60.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": true,
+      "added_by_challenger": true,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Okta",
+          "ticker": "OKTA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "CyberArk",
+          "ticker": "CYBR",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Microsoft",
+          "ticker": "MSFT",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Cloudflare",
+          "ticker": "NET",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Palo Alto Networks",
+          "ticker": "PANW",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 1
+    },
     {
       "rank": 2,
       "theme_id": "GEOTHERMAL_ENERGY",
@@ -1491,12 +1564,12 @@
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
       "predicted_score": 67.9014,
       "industrial_signal_score": 67.9014,
-      "public_interest_score": 42.4893,
+      "public_interest_score": 40.9268,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -14.3788,
-      "boom_score": 62.819,
+      "boom_score": 62.5065,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 65.3037,
+      "hidden_opportunity_score": 65.6944,
       "score_change_3m": -1.3468,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -1554,153 +1627,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 1
-    },
-    {
-      "rank": 14,
-      "theme_id": "GENE_CELL_THERAPY",
-      "theme_name": "유전자·세포치료",
-      "sector": "바이오·헬스케어",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 60.1079,
-      "industrial_signal_score": 60.1079,
-      "public_interest_score": 22.9835,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -15.7258,
-      "boom_score": 52.683,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 64.335,
-      "score_change_3m": -1.4561,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "HIDDEN_EARLY",
-        "label": "아직 덜 알려진 초기 자금축적",
-        "icon": "🌱"
-      },
-      "direct_commercialization_score": 57.8391,
-      "phase3_investment_score": 59.14,
-      "source_diffusion_percent": 80.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "CRISPR Therapeutics",
-          "ticker": "CRSP",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Intellia Therapeutics",
-          "ticker": "NTLA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Beam Therapeutics",
-          "ticker": "BEAM",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Editas Medicine",
-          "ticker": "EDIT",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Cellectis",
-          "ticker": "CLLS",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 2
-    },
-    {
-      "rank": 7,
-      "theme_id": "DIGITAL_IDENTITY",
-      "theme_name": "디지털 신원·보안인증",
-      "sector": "디지털 인프라",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 64.5939,
-      "industrial_signal_score": 64.5939,
-      "public_interest_score": 41.2655,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -9.9985,
-      "boom_score": 59.9282,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 63.129,
-      "score_change_3m": -0.9399,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "EARLY_CAPITAL",
-        "label": "초기 자금 유입",
-        "icon": "🔥"
-      },
-      "direct_commercialization_score": 74.0301,
-      "phase3_investment_score": 62.3184,
-      "source_diffusion_percent": 60.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": true,
-      "added_by_challenger": true,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Okta",
-          "ticker": "OKTA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "CyberArk",
-          "ticker": "CYBR",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Microsoft",
-          "ticker": "MSFT",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Cloudflare",
-          "ticker": "NET",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Palo Alto Networks",
-          "ticker": "PANW",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 3
     },
     {
       "rank": 5,
@@ -1710,12 +1637,12 @@
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
       "predicted_score": 65.3731,
       "industrial_signal_score": 65.3731,
-      "public_interest_score": 45.5985,
+      "public_interest_score": 44.036,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": -21.2325,
-      "boom_score": 61.4182,
+      "boom_score": 61.1057,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 62.6302,
+      "hidden_opportunity_score": 63.0208,
       "score_change_3m": -2.0104,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -1773,7 +1700,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 4
+      "hidden_rank": 3
     },
     {
       "rank": 13,
@@ -1783,12 +1710,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 60.1571,
       "industrial_signal_score": 60.1571,
-      "public_interest_score": 34.1543,
+      "public_interest_score": 32.5918,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": 23.0026,
-      "boom_score": 54.9565,
+      "boom_score": 54.644,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.5792,
+      "hidden_opportunity_score": 61.9699,
       "score_change_3m": 1.8628,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -1846,7 +1773,226 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 4
+    },
+    {
+      "rank": 10,
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 60.4025,
+      "industrial_signal_score": 60.4025,
+      "public_interest_score": 33.6347,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -12.0549,
+      "boom_score": 55.0489,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.8932,
+      "score_change_3m": -0.8877,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "HIDDEN_EARLY",
+        "label": "아직 덜 알려진 초기 자금축적",
+        "icon": "🌱"
+      },
+      "direct_commercialization_score": 68.8333,
+      "phase3_investment_score": 55.7124,
+      "source_diffusion_percent": 40.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Deere",
+          "ticker": "DE",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "AGCO",
+          "ticker": "AGCO",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "CNH Industrial",
+          "ticker": "CNH",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Corteva",
+          "ticker": "CTVA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Archer-Daniels-Midland",
+          "ticker": "ADM",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 5
+    },
+    {
+      "rank": 29,
+      "theme_id": "PRECISION_ONCOLOGY",
+      "theme_name": "정밀종양학",
+      "sector": "바이오·헬스케어",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 54.6363,
+      "industrial_signal_score": 54.6363,
+      "public_interest_score": 16.5778,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -18.6375,
+      "boom_score": 47.0246,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.8328,
+      "score_change_3m": -1.4191,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "WATCH",
+        "label": "관찰 필요",
+        "icon": "👀"
+      },
+      "direct_commercialization_score": 43.1674,
+      "phase3_investment_score": 57.4388,
+      "source_diffusion_percent": 80.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Guardant Health",
+          "ticker": "GH",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Natera",
+          "ticker": "NTRA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Illumina",
+          "ticker": "ILMN",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Thermo Fisher Scientific",
+          "ticker": "TMO",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Roche",
+          "ticker": "RHHBY",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 6
+    },
+    {
+      "rank": 9,
+      "theme_id": "ENERGY_STORAGE",
+      "theme_name": "에너지저장장치",
+      "sector": "에너지·전력",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 63.2776,
+      "industrial_signal_score": 63.2776,
+      "public_interest_score": 42.6811,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": -10.7473,
+      "boom_score": 59.1583,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.7879,
+      "score_change_3m": -0.7908,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "EARLY_CAPITAL",
+        "label": "초기 자금 유입",
+        "icon": "🔥"
+      },
+      "direct_commercialization_score": 65.7178,
+      "phase3_investment_score": 64.3021,
+      "source_diffusion_percent": 60.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": true,
+      "added_by_challenger": true,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Fluence Energy",
+          "ticker": "FLNC",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Tesla",
+          "ticker": "TSLA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "CATL",
+          "ticker": "300750.SZ",
+          "market": "CN",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "삼성SDI",
+          "ticker": "006400.KS",
+          "market": "KR",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "LG에너지솔루션",
+          "ticker": "373220.KS",
+          "market": "KR",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 7
     },
     {
       "rank": 1,
@@ -1919,226 +2065,7 @@
         }
       ],
       "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 6
-    },
-    {
-      "rank": 29,
-      "theme_id": "PRECISION_ONCOLOGY",
-      "theme_name": "정밀종양학",
-      "sector": "바이오·헬스케어",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 54.6363,
-      "industrial_signal_score": 54.6363,
-      "public_interest_score": 18.1403,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -18.6375,
-      "boom_score": 47.3371,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.4421,
-      "score_change_3m": -1.4191,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "WATCH",
-        "label": "관찰 필요",
-        "icon": "👀"
-      },
-      "direct_commercialization_score": 43.1674,
-      "phase3_investment_score": 57.4388,
-      "source_diffusion_percent": 80.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Guardant Health",
-          "ticker": "GH",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Natera",
-          "ticker": "NTRA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Illumina",
-          "ticker": "ILMN",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Thermo Fisher Scientific",
-          "ticker": "TMO",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Roche",
-          "ticker": "RHHBY",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 7
-    },
-    {
-      "rank": 10,
-      "theme_id": "AGRITECH_FOODTECH",
-      "theme_name": "애그테크·푸드테크",
-      "sector": "소재·자원·인프라",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 60.4025,
-      "industrial_signal_score": 60.4025,
-      "public_interest_score": 36.7597,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -12.0549,
-      "boom_score": 55.6739,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.112,
-      "score_change_3m": -0.8877,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "EARLY_CAPITAL",
-        "label": "초기 자금 유입",
-        "icon": "🔥"
-      },
-      "direct_commercialization_score": 68.8333,
-      "phase3_investment_score": 55.7124,
-      "source_diffusion_percent": 40.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": false,
-      "added_by_challenger": false,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Deere",
-          "ticker": "DE",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "AGCO",
-          "ticker": "AGCO",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "CNH Industrial",
-          "ticker": "CNH",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Corteva",
-          "ticker": "CTVA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Archer-Daniels-Midland",
-          "ticker": "ADM",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
       "hidden_rank": 8
-    },
-    {
-      "rank": 9,
-      "theme_id": "ENERGY_STORAGE",
-      "theme_name": "에너지저장장치",
-      "sector": "에너지·전력",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "predicted_score": 63.2776,
-      "industrial_signal_score": 63.2776,
-      "public_interest_score": 45.8061,
-      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
-      "public_interest_momentum_3m": -10.7473,
-      "boom_score": 59.7833,
-      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 61.0067,
-      "score_change_3m": -0.7908,
-      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
-      "stage": {
-        "code": "EARLY_CAPITAL",
-        "label": "초기 자금 유입",
-        "icon": "🔥"
-      },
-      "direct_commercialization_score": 65.7178,
-      "phase3_investment_score": 64.3021,
-      "source_diffusion_percent": 60.0,
-      "champion_live_alert": false,
-      "challenger_live_alert": true,
-      "added_by_challenger": true,
-      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
-      "companies": [
-        {
-          "name": "Fluence Energy",
-          "ticker": "FLNC",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "Tesla",
-          "ticker": "TSLA",
-          "market": "US",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "CATL",
-          "ticker": "300750.SZ",
-          "market": "CN",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "삼성SDI",
-          "ticker": "006400.KS",
-          "market": "KR",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        },
-        {
-          "name": "LG에너지솔루션",
-          "ticker": "373220.KS",
-          "market": "KR",
-          "relation_strength": "CORE_OR_MAJOR",
-          "confidence": 0.7,
-          "exposure": null
-        }
-      ],
-      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
-      "hidden_rank": 9
     },
     {
       "rank": 25,
@@ -2148,12 +2075,12 @@
       "candidate_stage": "PREVALIDATION_WATCH",
       "predicted_score": 56.1315,
       "industrial_signal_score": 56.1315,
-      "public_interest_score": 25.6073,
+      "public_interest_score": 23.2636,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "public_interest_momentum_3m": 2.0324,
-      "boom_score": 50.0267,
+      "boom_score": 49.5579,
       "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
-      "hidden_opportunity_score": 60.6968,
+      "hidden_opportunity_score": 61.2827,
       "score_change_3m": 0.0287,
       "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
       "stage": {
@@ -2205,6 +2132,79 @@
           "name": "POSCO Future M",
           "ticker": "003670.KS",
           "market": "KR",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        }
+      ],
+      "company_mapping_warning": "대표기업 후보 매핑입니다. 실제 테마 매출 노출도와 적정가는 기업 분석기에서 별도 검증해야 합니다.",
+      "hidden_rank": 9
+    },
+    {
+      "rank": 12,
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "theme_name": "합성생물학",
+      "sector": "바이오·헬스케어",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "predicted_score": 60.2549,
+      "industrial_signal_score": 60.2549,
+      "public_interest_score": 35.8951,
+      "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
+      "public_interest_momentum_3m": 10.5764,
+      "boom_score": 55.3829,
+      "boom_score_status": "V7_OPERATIONAL_PREVALIDATION",
+      "hidden_opportunity_score": 61.2174,
+      "score_change_3m": 1.3559,
+      "score_change_3m_method": "SOURCE_MOMENTUM_PROXY_90D",
+      "stage": {
+        "code": "EARLY_CAPITAL",
+        "label": "초기 자금 유입",
+        "icon": "🔥"
+      },
+      "direct_commercialization_score": 57.8391,
+      "phase3_investment_score": 59.5219,
+      "source_diffusion_percent": 80.0,
+      "champion_live_alert": false,
+      "challenger_live_alert": false,
+      "added_by_challenger": false,
+      "company_mapping_status": "CURATED_REPRESENTATIVE_CANDIDATES",
+      "companies": [
+        {
+          "name": "Twist Bioscience",
+          "ticker": "TWST",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Ginkgo Bioworks",
+          "ticker": "DNA",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Codexis",
+          "ticker": "CDXS",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Thermo Fisher Scientific",
+          "ticker": "TMO",
+          "market": "US",
+          "relation_strength": "CORE_OR_MAJOR",
+          "confidence": 0.7,
+          "exposure": null
+        },
+        {
+          "name": "Danaher",
+          "ticker": "DHR",
+          "market": "US",
           "relation_strength": "CORE_OR_MAJOR",
           "confidence": 0.7,
           "exposure": null

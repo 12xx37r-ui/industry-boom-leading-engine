@@ -37,7 +37,7 @@
             "updated_at": "2026-06-12",
             "days_since_push": 605,
             "star_delta_percent": 0.0,
-            "fork_delta_percent": null,
+            "fork_delta_percent": 0.0,
             "activity_score": 42.961,
             "observation_date": "2026-08-13"
           },
@@ -52,7 +52,7 @@
             "updated_at": "2025-07-11",
             "days_since_push": 217,
             "star_delta_percent": 0.0,
-            "fork_delta_percent": null,
+            "fork_delta_percent": 0.0,
             "activity_score": 43.9936,
             "observation_date": "2026-08-13"
           }
@@ -77,7 +77,7 @@
             "updated_at": "2026-06-04",
             "days_since_push": 128,
             "star_delta_percent": 0.0,
-            "fork_delta_percent": null,
+            "fork_delta_percent": 0.0,
             "activity_score": 20.9494,
             "observation_date": "2026-08-13"
           },
@@ -92,7 +92,7 @@
             "updated_at": "2026-07-14",
             "days_since_push": 30,
             "star_delta_percent": 0.0,
-            "fork_delta_percent": null,
+            "fork_delta_percent": 0.0,
             "activity_score": 23.5664,
             "observation_date": "2026-08-13"
           }
@@ -184,5 +184,5 @@
     "patent_counts": {}
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "75325b789eed0546e0da8b857a7755cc3629fa31fac4f835ff1786829705091c"
+  "content_sha256": "71aed0868e609b3eae84f9a87f1eec3908b3b4ef2ec665f3d015d8fd60f48db1"
 }
