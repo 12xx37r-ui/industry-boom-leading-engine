@@ -69,3 +69,6 @@ def write_hiring_nowcast(root: Path, output_dir: Path, report: dict[str, Any]) -
     report = dict(report)
     report["content_sha256"] = canonical_sha256({key: value for key, value in report.items() if key != "content_sha256"})
     write_json(output_dir / "v3_hiring_nowcast.json", report)
+    cache_latest = root / "data_cache/latest"
+    cache_latest.mkdir(parents=True, exist_ok=True)
+    write_json(cache_latest / "v3_hiring_nowcast.json", report)

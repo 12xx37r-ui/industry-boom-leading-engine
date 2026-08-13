@@ -344,4 +344,7 @@ def write_frontier_signals(root: Path, output_dir: Path, report: dict[str, Any])
     report["content_sha256"] = canonical_sha256({key: value for key, value in report.items() if key != "content_sha256"})
     output_dir.mkdir(parents=True, exist_ok=True)
     write_json(output_dir / "v3_frontier_signal_observations.json", report)
-    write_json(root / "data_cache/latest/v3_frontier_signal_history.json", report["history"])
+    cache_latest = root / "data_cache/latest"
+    cache_latest.mkdir(parents=True, exist_ok=True)
+    write_json(cache_latest / "v3_frontier_signal_observations.json", report)
+    write_json(cache_latest / "v3_frontier_signal_history.json", report["history"])

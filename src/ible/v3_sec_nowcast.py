@@ -113,7 +113,8 @@ def ingest_sec_companyfacts(root: Path, requested_as_of: str, max_tickers: int =
         return {"status": "SEC_INGEST_DEPENDENCY_MISSING", "external_api_calls": 0, "company_count": 0, "filing_count": 0, "error": str(exc)}
     by_theme, tickers = _selected_tickers(root, max_tickers)
     cache_dir = root / ".cache/sec_bulk"
-    client = SecBulkClient(cache_dir, user_agent, timeout=120, min_interval=0.35)
+    sec_timeout = max(10, min(120, int(os.getenv("SEC_API_TIMEOUT", "20"))))
+    client = SecBulkClient(cache_dir, user_agent, timeout=sec_timeout, min_interval=0.35)
     try:
         # A blocked GitHub runner should not spend the whole stage retrying every
         # ticker and then downloading the large archive. Live SEC refresh is capped;
