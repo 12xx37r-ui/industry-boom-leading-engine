@@ -493,8 +493,8 @@ def _kipris_observation(
     words = [w for w in re.split(r"\s+", term) if len(w) > 2][:3]
     search_word = " ".join(words) if words else term
     import xml.etree.ElementTree as ET  # noqa: N817
-    # KIPRIS Plus is a Korean government API — uses http:// and requires patent=Y param
-    base_url = str(config.get("kipris_url") or "http://plus.kipris.or.kr/openapi/rest/patUtiModInfoSearchSevice/getWordSearch")
+    # KIPRIS Plus: government API uses kipo-api path with http://
+    base_url = str(config.get("kipris_url") or "http://plus.kipris.or.kr/kipo-api/kipi/patUtiModInfoSearchSevice/getWordSearch")
     try:
         raw = client.request_text(
             base_url,
