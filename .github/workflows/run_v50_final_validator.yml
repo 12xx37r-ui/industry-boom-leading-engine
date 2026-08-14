@@ -80,7 +80,7 @@ jobs:
               echo "::warning::$label live refresh failed or timed out; sealed latest cache will be used"
             fi
           }
-          run_stage 720 "V3 research and government sources" python -m ible.v3_data_cli --root . --output-dir outputs/v3_data --run-date "${{ steps.vars.outputs.run_date }}"
+          run_stage 1200 "V3 research and government sources" python -m ible.v3_data_cli --root . --output-dir outputs/v3_data --run-date "${{ steps.vars.outputs.run_date }}"
           # Restore any missing V3 output files from sealed latest cache (survives timeout/network failure)
           mkdir -p outputs/v3_data
           for _f in v3_dynamic_theme_candidates.json v3_sec_mdna_capex_nowcast.json \
