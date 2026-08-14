@@ -510,13 +510,13 @@
       "investment_use_allowed": false
     }
   ],
-  "content_sha256": "44af3d34ea704b18206fc306108eeee15c071c7b77456c8992eab816543f4348",
+  "content_sha256": "074754fbcf5f30cdc20f5c37fdfb8a87e91ab76fe0f53bcc569ab7dac08a8600",
   "ingest": {
     "status": "SEC_INGEST_FAILED_CACHE_PRESERVED",
-    "external_api_calls": 5,
+    "external_api_calls": 6,
     "company_count": 0,
     "filing_count": 0,
-    "error": "SEC data unavailable from both official routes. API errors=5; bulk_error=not attempted. This is a network/IP access failure, not a deleted workflow-run problem.",
+    "error": "SEC data unavailable from both official routes. API errors=5; bulk_error=skipped: all API calls returned HTTP 403 (runner IP blocked); bulk archive uses the same IP. This is a network/IP access failure, not a deleted workflow-run problem.",
     "download_status": {
       "status": "SEC_UNAVAILABLE",
       "source_mode": "api",
@@ -538,7 +538,7 @@
         "FTNT": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"",
         "ZS": "HTTP 403 content-type=text/html body=<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\""
       },
-      "bulk_error": null,
+      "bulk_error": "skipped: all API calls returned HTTP 403 (runner IP blocked); bulk archive uses the same IP",
       "subset_dir": "/home/runner/work/industry-boom-leading-engine/industry-boom-leading-engine/.cache/sec_bulk/subset"
     }
   }

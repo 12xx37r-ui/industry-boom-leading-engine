@@ -28,5 +28,9 @@
       "observation_date": "2026-08-13"
     }
   },
-  "patent_counts": {}
+  "patent_counts": {
+    "ADVANCED_PACKAGING_HBM": 13,
+    "AI_DRUG_DISCOVERY": 13047,
+    "AI_SEMICONDUCTORS": 166
+  }
 }
