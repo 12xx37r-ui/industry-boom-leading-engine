@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+outputs/*
+!outputs/.gitkeep
+data_cache/http/
+*.zip
