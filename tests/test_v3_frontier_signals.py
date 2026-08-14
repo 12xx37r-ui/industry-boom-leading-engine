@@ -175,19 +175,20 @@ class FrontierSignalTests(unittest.TestCase):
 
     def test_kipris_observed_when_key_set(self):
         """KIPRIS returns korean_patent_count when KIPRIS_API_KEY is configured."""
+        from unittest.mock import patch as _patch
+
         themes = [{"theme_id": "A", "theme_name": "A", "data_build_priority": 1, "openalex_search": "advanced robotics"}]
+        client = FakeFrontierClient()
+        kipris_xml = b'<?xml version="1.0" encoding="UTF-8"?><response><body><totalCount>320</totalCount></body></response>'
 
-        class KiprisClient(FakeFrontierClient):
-            def request_text(self, url, **kwargs):
-                self.calls.append((url, kwargs))
-                if "kipris" in url:
-                    return '<?xml version="1.0" encoding="UTF-8"?><response><body><totalCount>320</totalCount></body></response>'
-                return super().request_text(url, **kwargs)
+        class _FakeResp:
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+            def read(self): return kipris_xml
 
-        client = KiprisClient()
-        with tempfile.TemporaryDirectory() as temp_dir, patch.dict(
-            os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "KIPRIS_API_KEY": "test-kipris-key", "GCP_CREDENTIALS_JSON": ""}
-        ):
+        with tempfile.TemporaryDirectory() as temp_dir, \
+             patch.dict(os.environ, {"PATENTSVIEW_API_KEY": "", "USPTO_API_KEY": "", "KIPRIS_API_KEY": "test-kipris-key", "GCP_CREDENTIALS_JSON": ""}), \
+             _patch("urllib.request.urlopen", return_value=_FakeResp()):
             report = build_frontier_signals(Path(temp_dir), themes, "2026-08-12", client, {"max_theme_queries_per_run": 1, "max_patent_queries_per_run": 1})
         self.assertIn("kipris", report)
         k = report["kipris"][0]["kipris"]

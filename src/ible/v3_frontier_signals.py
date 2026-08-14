@@ -7,6 +7,7 @@ never alter the theme universe automatically, and never use observations dated
 after the requested ``as_of`` date.
 """
 
+import math
 import os
 import json
 import re
@@ -69,12 +70,19 @@ def _days_since(observed_date: date | None, as_of: date) -> int | None:
 
 
 def _activity_score(stars: int, forks: int, days_since_push: int | None) -> float:
-    """Local heuristic; no extra API call. 0–100 scale."""
-    base = min(100.0, 15.0 * (stars + forks * 2 + 1) ** 0.35)
-    if days_since_push is not None:
-        recency = max(0.0, 1.0 - days_since_push / 365.0)
-        return round(_clamp(base * (0.6 + 0.4 * recency)), 4)
-    return round(_clamp(base * 0.7), 4)
+    """Recency-weighted heuristic. 0–100 scale.
+
+    Star/fork value decays with a 1-year halflife (historical reputation).
+    Recency bonus decays with a 90-day halflife (currently active R&D signal).
+    A repo pushed yesterday with 0 stars scores higher than an abandoned repo
+    with 70 stars last touched 2 years ago.
+    """
+    days = float(days_since_push if days_since_push is not None else 730)
+    star_decay = math.exp(-days / 365.0)
+    recency_decay = math.exp(-days / 90.0)
+    star_score = _clamp(20.0 * (max(0, stars) + max(0, forks) * 2 + 1) ** 0.30 * star_decay, 0.0, 40.0)
+    recency_score = 60.0 * recency_decay
+    return round(_clamp(star_score + recency_score), 4)
 
 
 def _github_observation(
@@ -351,6 +359,7 @@ def _bigquery_patents_observation(
     term: str,
     as_of: date,
     config: dict[str, Any],
+    theme: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Query Google Patents Public Data via BigQuery (free 1TB/month, no IP block, no ID.me).
 
@@ -390,11 +399,32 @@ def _bigquery_patents_observation(
     lookback = int(config.get("patent_lookback_days", 365))
     start_int = int((as_of - timedelta(days=lookback)).strftime("%Y%m%d"))
     end_int = int(as_of.strftime("%Y%m%d"))
-    # Build simple regex from top keywords (avoid full-table UNNEST explosion)
-    words = [w for w in re.split(r"\s+", term) if len(w) > 3][:4]
-    pattern = "|".join(re.escape(w.lower()) for w in words) if words else re.escape(term.lower())
-    # title_localized is a REPEATED STRUCT {text, language}; use EXISTS + UNNEST
-    sql = """
+    # bigquery_require_patterns: list of regex strings, ALL must match (AND logic)
+    # Reduces over-fetching for broad terms like HBM + packaging
+    require_patterns: list[str] = list((theme or {}).get("bigquery_require_patterns") or [])
+    if require_patterns:
+        # Multi-condition EXISTS: each pattern must independently match title
+        exists_clauses = "\n  ".join(
+            f"AND EXISTS (SELECT 1 FROM UNNEST(title_localized) AS t{i} WHERE REGEXP_CONTAINS(LOWER(t{i}.text), @p{i}))"
+            for i in range(len(require_patterns))
+        )
+        sql = f"""
+SELECT COUNT(DISTINCT publication_number) AS cnt
+FROM `patents-public-data.patents.publications`
+WHERE publication_date BETWEEN @start_date AND @end_date
+  AND country_code IN ('US', 'EP', 'WO', 'KR', 'JP')
+  {exists_clauses}
+"""
+        query_params = [
+            bigquery.ScalarQueryParameter("start_date", "INT64", start_int),
+            bigquery.ScalarQueryParameter("end_date", "INT64", end_int),
+        ] + [bigquery.ScalarQueryParameter(f"p{i}", "STRING", p) for i, p in enumerate(require_patterns)]
+    else:
+        # Default: OR regex across top keywords
+        words = [w for w in re.split(r"\s+", term) if len(w) > 3][:4]
+        pattern = "|".join(re.escape(w.lower()) for w in words) if words else re.escape(term.lower())
+        # title_localized is a REPEATED STRUCT {text, language}; use EXISTS + UNNEST
+        sql = """
 SELECT COUNT(DISTINCT publication_number) AS cnt
 FROM `patents-public-data.patents.publications`
 WHERE publication_date BETWEEN @start_date AND @end_date
@@ -404,13 +434,12 @@ WHERE publication_date BETWEEN @start_date AND @end_date
     WHERE REGEXP_CONTAINS(LOWER(t.text), @pattern)
   )
 """
-    job_config = bigquery.QueryJobConfig(
-        query_parameters=[
+        query_params = [
             bigquery.ScalarQueryParameter("start_date", "INT64", start_int),
             bigquery.ScalarQueryParameter("end_date", "INT64", end_int),
             bigquery.ScalarQueryParameter("pattern", "STRING", pattern),
         ]
-    )
+    job_config = bigquery.QueryJobConfig(query_parameters=query_params)
     try:
         rows = list(bq.query(sql, job_config=job_config).result(timeout=30))
         count = int((rows[0]["cnt"] if rows else 0) or 0)
@@ -444,7 +473,7 @@ def _patent_fallback_observation(root: Path, client: JsonHttpClient, theme: dict
         google["provider_chain"] = ["google_patents"]
         return google
     skipped["google_patents"] = google.get("status", "UNAVAILABLE")
-    bq = _bigquery_patents_observation(term, as_of, config)
+    bq = _bigquery_patents_observation(term, as_of, config, theme)
     if bq.get("patent_count") is not None:
         bq["provider_chain"] = ["google_patents", "bigquery"]
         return bq
@@ -494,23 +523,24 @@ def _kipris_observation(
     search_word = " ".join(words) if words else term
     import xml.etree.ElementTree as ET  # noqa: N817
     # KIPRIS Plus: government API uses kipo-api path with http://
+    import urllib.parse as _urllib_parse
+    import urllib.request as _urllib_request
+
     base_url = str(config.get("kipris_url") or "http://plus.kipris.or.kr/kipo-api/kipi/patUtiModInfoSearchSevice/getWordSearch")
+    req_url = base_url + "?" + _urllib_parse.urlencode({
+        "word": search_word,
+        "docsStart": "1",
+        "docsCount": "1",
+        "applicationStartDate": start_dt,
+        "applicationEndDate": end_dt,
+        "patent": "Y",
+        "utility": "N",
+        "ServiceKey": key,
+    })
     try:
-        raw = client.request_text(
-            base_url,
-            params={
-                "word": search_word,
-                "docsStart": "1",
-                "docsCount": "1",
-                "applicationStartDate": start_dt,
-                "applicationEndDate": end_dt,
-                "patent": "Y",
-                "utility": "N",
-                "ServiceKey": key,
-            },
-            cache_ttl_seconds=int(config.get("cache_ttl_seconds", 86400)),
-        )
-    except (HttpError, OSError, ValueError, TypeError) as exc:
+        with _urllib_request.urlopen(req_url, timeout=15) as resp:
+            raw = resp.read().decode("utf-8", errors="replace")
+    except Exception as exc:
         return {
             "status": "KIPRIS_UNAVAILABLE",
             "query": search_word,
@@ -585,9 +615,13 @@ def build_frontier_signals(
                 "forks_count": repo["forks_count"],
                 "observation_date": observed_date.isoformat(),
             }
+    _PATENT_SUCCESS = frozenset({
+        "PATENTSVIEW_OBSERVED", "BIGQUERY_OBSERVED", "GOOGLE_PATENTS_OBSERVED",
+        "EPO_OPS_OBSERVED", "USPTO_BULK_CACHE_OBSERVED",
+    })
     for row in patent_rows:
         result = row["patentsview"]
-        if result.get("status") == "PATENTSVIEW_OBSERVED":
+        if result.get("status") in _PATENT_SUCCESS and result.get("patent_count") is not None:
             patent_counts[row["theme_id"]] = result.get("patent_count")
     history_out = {
         "schema_version": 1,
@@ -599,7 +633,7 @@ def build_frontier_signals(
         "schema_version": 1,
         "as_of": observed_date.isoformat(),
         "status": "FRONTIER_SIGNALS_PARTIAL" if any(
-            row["patentsview"]["status"] != "PATENTSVIEW_OBSERVED" for row in patent_rows
+            row["patentsview"]["status"] not in _PATENT_SUCCESS for row in patent_rows
         ) else "FRONTIER_SIGNALS_OBSERVED",
         "investment_use_allowed": False,
         "official_statistics_replaced": False,
