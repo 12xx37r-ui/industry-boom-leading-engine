@@ -6,10 +6,10 @@
   "public_interest_observed_theme_count": 49,
   "public_interest_coverage_percent": 98.0,
   "collection_metrics": {
-    "network_requests": 11,
-    "cache_hits": 370,
+    "network_requests": 8,
+    "cache_hits": 381,
     "stale_cache_hits": 0,
-    "cache_writes": 11,
+    "cache_writes": 8,
     "enabled_sources": [
       "openalex",
       "usaspending",
