@@ -37,6 +37,8 @@ jobs:
       PATENTSVIEW_API_KEY: ${{ secrets.PATENTSVIEW_API_KEY }}
       GCP_CREDENTIALS_JSON: ${{ secrets.GCP_CREDENTIALS_JSON }}
       KIPRIS_API_KEY: ${{ secrets.KIPRIS_API_KEY }}
+      NAVER_API_HUB_CLIENT_ID: ${{ secrets.NAVER_API_HUB_CLIENT_ID }}
+      NAVER_API_HUB_CLIENT_SECRET: ${{ secrets.NAVER_API_HUB_CLIENT_SECRET }}
       SEC_API_TIMEOUT: "20"
 
     steps:
