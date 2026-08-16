@@ -10,7 +10,7 @@ on:
         required: false
         type: string
   schedule:
-    - cron: "20 3 * * 1"
+    - cron: "20 * * * *"
 
 permissions:
   contents: write
@@ -45,19 +45,45 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Enforce minimum 5-hour engine cadence
+        id: cadence
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          NOW="$(date +%s)"
+          MARKER=".github/industry_boom_last_success_epoch.txt"
+          LAST=0
+          if [ -s "$MARKER" ]; then LAST="$(tr -dc '0-9' < "$MARKER")"; fi
+          if [ -z "$LAST" ]; then LAST=0; fi
+          ELAPSED=$((NOW - LAST))
+          if [ "$LAST" -eq 0 ] || [ "$ELAPSED" -ge 18000 ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Skip heavy engine: ${ELAPSED}s since last successful run."
+          fi
+
       - name: Set up Python
+        if: steps.cadence.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
       - name: Install runtime requirements
+        if: steps.cadence.outputs.should_run == 'true'
         run: python -m pip install --disable-pip-version-check -r requirements.txt
 
       - name: Test V7 engine release only
+        if: steps.cadence.outputs.should_run == 'true'
         run: |
           python -m unittest -q tests.test_v62_release
 
       - name: Resolve run date
+        if: steps.cadence.outputs.should_run == 'true'
         id: vars
         shell: bash
         run: |
@@ -66,6 +92,7 @@ jobs:
           echo "run_date=$RUN_DATE" >> "$GITHUB_OUTPUT"
 
       - name: Refresh current data with bounded cache fallback
+        if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
           set -uo pipefail
@@ -109,6 +136,7 @@ jobs:
           python -m ible.v50_cli --root . --output-dir outputs/v50_final_validator --run-date "${{ steps.vars.outputs.run_date }}"
 
       - name: Run sealed historical audit
+        if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -119,6 +147,7 @@ jobs:
             --run-date "${{ steps.vars.outputs.run_date }}"
 
       - name: Run V6.0 research comparison
+        if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -129,6 +158,7 @@ jobs:
             --run-date "${{ steps.vars.outputs.run_date }}"
 
       - name: Build complete V7 operational scores and immutable snapshot
+        if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -140,6 +170,7 @@ jobs:
             --run-date "${{ steps.vars.outputs.run_date }}"
 
       - name: Verify V7 outputs
+        if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -201,11 +232,14 @@ jobs:
           PY
 
       - name: Commit immutable histories and outputs
+        if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
           set +e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          date +%s > .github/industry_boom_last_success_epoch.txt
+          git add -f .github/industry_boom_last_success_epoch.txt
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find outputs/v3_data -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
@@ -226,7 +260,74 @@ jobs:
           fi
           exit 0
 
+      - name: Push latest engine bundle to Apps Script dashboard
+        if: steps.cadence.outputs.should_run == 'true'
+        shell: bash
+        env:
+          DASHBOARD_PUSH_URL: ${{ secrets.INDUSTRY_DASHBOARD_PUSH_URL }}
+          DASHBOARD_PUSH_SECRET: ${{ secrets.INDUSTRY_DASHBOARD_PUSH_SECRET }}
+        run: |
+          set -euo pipefail
+          test -n "${DASHBOARD_PUSH_URL:-}" || { echo "::error::Missing INDUSTRY_DASHBOARD_PUSH_URL"; exit 1; }
+          test -n "${DASHBOARD_PUSH_SECRET:-}" || { echo "::error::Missing INDUSTRY_DASHBOARD_PUSH_SECRET"; exit 1; }
+
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          paths = {
+              "currentSnapshot": "outputs/v70_final_engine/v70_current_operational_snapshot.json",
+              "universe": "config/theme_universe.json",
+              "phase1": "data_cache/latest/v3_source_observations.json",
+              "phase2": "data_cache/latest/v31_real_economy_observations.json",
+              "phase3": "data_cache/latest/v32_corporate_investment_observations.json",
+              "phase4": "data_cache/latest/v33_phase4_observations.json",
+              "commercialization": "data_cache/latest/v40_direct_commercialization_observations.json",
+          }
+          bundle = {}
+          for key, filename in paths.items():
+              p = Path(filename)
+              if not p.is_file():
+                  raise SystemExit(f"missing push source: {filename}")
+              bundle[key] = json.loads(p.read_text(encoding="utf-8"))
+
+          payload = {
+              "action": "industry_push_v1",
+              "secret": os.environ["DASHBOARD_PUSH_SECRET"],
+              "repository": os.environ.get("GITHUB_REPOSITORY", ""),
+              "branch": os.environ.get("GITHUB_REF_NAME", "main"),
+              "pushed_at": datetime.now(timezone.utc).isoformat(),
+              "bundle": bundle,
+          }
+          Path("/tmp/industry_dashboard_push.json").write_text(
+              json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
+              encoding="utf-8",
+          )
+          PY
+
+          response_file="/tmp/industry_dashboard_push_response.txt"
+          success=0
+          for attempt in 1 2 3; do
+            http_code="$(
+              curl -L -sS --connect-timeout 20 --max-time 120 \
+                -o "$response_file" -w '%{http_code}' \
+                -H 'Content-Type: application/json' \
+                --data-binary @/tmp/industry_dashboard_push.json \
+                "$DASHBOARD_PUSH_URL" || true
+            )"
+            cat "$response_file" || true
+            echo
+            if [ "$http_code" = "200" ] && grep -q '"ok":true' "$response_file"; then
+              success=1
+              break
+            fi
+            sleep $((attempt * 5))
+          done
+          test "$success" -eq 1 || { echo "::error::Dashboard PUSH failed"; exit 1; }
+
       - name: Upload combined result artifact
+        if: steps.cadence.outputs.should_run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: industry-boom-v7.3-embedded-capital-radar-engine-result
