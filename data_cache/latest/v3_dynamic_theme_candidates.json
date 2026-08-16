@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-15",
+  "as_of": "2026-08-16",
   "status": "NO_QUALIFIED_CANDIDATES",
   "candidate_count": 0,
   "auto_add_allowed": false,
@@ -13,26 +13,26 @@
   },
   "candidates": [],
   "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
-  "input_document_count": 6,
+  "input_document_count": 1,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
     "selected_theme_count": 3,
-    "document_count": 6,
+    "document_count": 1,
     "errors": [
       {
         "theme_id": "ADVANCED_PACKAGING_HBM",
         "source": "openalex",
-        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":33486,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
+        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":14490,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
       },
       {
         "theme_id": "AI_DRUG_DISCOVERY",
         "source": "openalex",
-        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":33478,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
+        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":14483,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
       },
       {
         "theme_id": "AI_SEMICONDUCTORS",
         "source": "openalex",
-        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":33471,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
+        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":14476,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
       },
       {
         "theme_id": "ADVANCED_PACKAGING_HBM",
@@ -40,12 +40,17 @@
         "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
       },
       {
-        "theme_id": "AI_SEMICONDUCTORS",
+        "theme_id": "AI_DRUG_DISCOVERY",
         "source": "gdelt",
         "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
+      },
+      {
+        "theme_id": "AI_SEMICONDUCTORS",
+        "source": "gdelt",
+        "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
       }
     ],
     "lookback_days": 90
   },
-  "content_sha256": "f81cb6e13006a8a17ff5ca82ef74dd8995eb89295da0de9b3bc51fd0147fb493"
+  "content_sha256": "04f60fea42ab40e53d180250871f31504a4db0814830aa09db5cdeef7d276ca4"
 }

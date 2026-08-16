@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-15",
+  "as_of": "2026-08-16",
   "status": "WAITING_FOR_LOCAL_HIRING_CACHE",
   "observed_theme_count": 0,
   "future_observation_rejected_count": 0,
@@ -8,5 +8,5 @@
   "investment_use_allowed": false,
   "input_path": "data_cache/inbox/hiring_signal_observations.json",
   "themes": [],
-  "content_sha256": "3226cf5d92979b96598a0eebc51dd467b2ded5c1727a1184ab9e5a24c64dcae8"
+  "content_sha256": "26deb9e6107f8b8fbce95bf89ffabe52bbe8bc5625bf62684a9d15661bb9b6fa"
 }
