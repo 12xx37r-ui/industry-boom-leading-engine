@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-13",
+  "as_of": "2026-08-15",
   "status": "NO_QUALIFIED_CANDIDATES",
   "candidate_count": 0,
   "auto_add_allowed": false,
@@ -13,13 +13,39 @@
   },
   "candidates": [],
   "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
-  "input_document_count": 16,
+  "input_document_count": 6,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
     "selected_theme_count": 3,
-    "document_count": 16,
-    "errors": [],
+    "document_count": 6,
+    "errors": [
+      {
+        "theme_id": "ADVANCED_PACKAGING_HBM",
+        "source": "openalex",
+        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":33486,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
+      },
+      {
+        "theme_id": "AI_DRUG_DISCOVERY",
+        "source": "openalex",
+        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":33478,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
+      },
+      {
+        "theme_id": "AI_SEMICONDUCTORS",
+        "source": "openalex",
+        "error": "HTTP 429: {\"error\":\"Rate limit exceeded\",\"message\":\"Insufficient budget. This request costs $0.001 but you only have $0 remaining. Resets at midnight UTC. Need more? Add funds at https://openalex.org/pricing\",\"retryAfter\":33471,\"costUsd\":0.001,\"dailyRemainingUsd\":0,\"prepaidRemainingUsd\":0,\"creditsRe"
+      },
+      {
+        "theme_id": "ADVANCED_PACKAGING_HBM",
+        "source": "gdelt",
+        "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
+      },
+      {
+        "theme_id": "AI_SEMICONDUCTORS",
+        "source": "gdelt",
+        "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
+      }
+    ],
     "lookback_days": 90
   },
-  "content_sha256": "cd71e8c5cc96c3f6f443816c2263e59d9d942ebbfca2ab3fc8b931be4a6500c0"
+  "content_sha256": "f81cb6e13006a8a17ff5ca82ef74dd8995eb89295da0de9b3bc51fd0147fb493"
 }

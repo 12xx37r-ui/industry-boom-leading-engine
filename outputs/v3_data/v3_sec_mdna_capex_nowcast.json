@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-13",
+  "as_of": "2026-08-15",
   "status": "WAITING_FOR_SEC_FILING_CACHE",
   "theme_count": 50,
   "observed_theme_count": 0,
@@ -510,7 +510,7 @@
       "investment_use_allowed": false
     }
   ],
-  "content_sha256": "074754fbcf5f30cdc20f5c37fdfb8a87e91ab76fe0f53bcc569ab7dac08a8600",
+  "content_sha256": "6e1a6d25687b40f2a503a59e3526496c84450c966d91c9d23349b897070ca574",
   "ingest": {
     "status": "SEC_INGEST_FAILED_CACHE_PRESERVED",
     "external_api_calls": 6,

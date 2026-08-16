@@ -1,12 +1,12 @@
 {
   "status": "SOURCE_HEALTH_RECORDED",
-  "as_of": "2026-08-13",
+  "as_of": "2026-08-15",
   "public_interest_observed": 49,
   "collection_metrics": {
-    "network_requests": 8,
-    "cache_hits": 381,
+    "network_requests": 346,
+    "cache_hits": 19,
     "stale_cache_hits": 0,
-    "cache_writes": 8,
+    "cache_writes": 346,
     "enabled_sources": [
       "openalex",
       "usaspending",
@@ -30,14 +30,14 @@
     },
     "gdelt": {
       "enabled": true,
-      "live_count": 20,
-      "cache_fallback_count": 0,
+      "live_count": 10,
+      "cache_fallback_count": 10,
       "unavailable_count": 30
     },
     "wikimedia": {
       "enabled": true,
-      "live_count": 48,
-      "cache_fallback_count": 0,
+      "live_count": 47,
+      "cache_fallback_count": 1,
       "unavailable_count": 2
     }
   }
