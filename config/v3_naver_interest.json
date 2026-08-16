@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "source_family": "KR_SEARCH_ATTENTION",
+  "base_url": "https://naverapihub.apigw.ntruss.com/search-trend/v1/search",
+  "client_id_env": "NAVER_API_HUB_CLIENT_ID",
+  "client_secret_env": "NAVER_API_HUB_CLIENT_SECRET",
+  "time_unit": "date",
+  "max_groups_per_request": 5,
+  "anchor": {
+    "group_name": "기준_반도체",
+    "keywords": [
+      "반도체",
+      "반도체 산업"
+    ]
+  },
+  "themes": [
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "group_name": "AI 반도체",
+      "keywords": [
+        "AI 반도체",
+        "AI반도체",
+        "AI 칩",
+        "AI칩",
+        "AI 가속기",
+        "NPU"
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "group_name": "첨단 패키징·HBM",
+      "keywords": [
+        "HBM",
+        "고대역폭메모리",
+        "고대역폭 메모리",
+        "첨단 패키징",
+        "반도체 패키징"
+      ]
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "group_name": "데이터센터 인프라",
+      "keywords": [
+        "데이터센터",
+        "데이터 센터",
+        "데이터센터 인프라",
+        "IDC",
+        "AI 데이터센터"
+      ]
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "group_name": "반도체 장비",
+      "keywords": [
+        "반도체 장비",
+        "반도체장비",
+        "반도체 제조장비",
+        "반도체 설비"
+      ]
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "group_name": "전력반도체",
+      "keywords": [
+        "전력반도체",
+        "전력 반도체",
+        "SiC 반도체",
+        "GaN 반도체",
+        "와이드밴드갭 반도체"
+      ]
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "group_name": "엣지 AI",
+      "keywords": [
+        "엣지 AI",
+        "엣지AI",
+        "온디바이스 AI",
+        "온디바이스AI",
+        "AI PC",
+        "AI 스마트폰"
+      ]
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "group_name": "광자·광인터커넥트",
+      "keywords": [
+        "실리콘 포토닉스",
+        "실리콘포토닉스",
+        "광인터커넥트",
+        "광 인터커넥트",
+        "CPO"
+      ]
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "group_name": "양자컴퓨팅",
+      "keywords": [
+        "양자컴퓨팅",
+        "양자 컴퓨팅",
+        "양자컴퓨터",
+        "양자 컴퓨터"
+      ]
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "group_name": "클라우드 인프라",
+      "keywords": [
+        "클라우드 인프라",
+        "클라우드",
+        "클라우드 컴퓨팅",
+        "클라우드 서버"
+      ]
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "group_name": "사이버보안",
+      "keywords": [
+        "사이버보안",
+        "사이버 보안",
+        "제로트러스트",
+        "제로 트러스트",
+        "랜섬웨어"
+      ]
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "group_name": "전력망·전기화",
+      "keywords": [
+        "전력망",
+        "전력 인프라",
+        "전력망 인프라",
+        "스마트그리드",
+        "전력기기"
+      ]
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "group_name": "에너지저장장치",
+      "keywords": [
+        "ESS",
+        "에너지저장장치",
+        "에너지 저장장치",
+        "배터리 저장장치",
+        "BESS"
+      ]
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "group_name": "원전",
+      "keywords": [
+        "원전",
+        "원자력 발전",
+        "원자력발전",
+        "원자력"
+      ]
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "group_name": "소형모듈원전(SMR)",
+      "keywords": [
+        "SMR",
+        "소형모듈원전",
+        "소형 모듈 원전",
+        "소형원자로",
+        "소형 원자로"
+      ]
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "group_name": "수소",
+      "keywords": [
+        "수소",
+        "수소경제",
+        "수소 경제",
+        "그린수소",
+        "청정수소"
+      ]
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "group_name": "탄소포집·저장",
+      "keywords": [
+        "탄소포집",
+        "탄소 포집",
+        "CCS",
+        "CCUS",
+        "탄소포집저장"
+      ]
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "group_name": "태양광",
+      "keywords": [
+        "태양광",
+        "태양광 발전",
+        "태양광발전",
+        "태양전지",
+        "솔라"
+      ]
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "group_name": "해상풍력",
+      "keywords": [
+        "해상풍력",
+        "해상 풍력",
+        "해상풍력발전",
+        "부유식 해상풍력"
+      ]
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "group_name": "지열에너지",
+      "keywords": [
+        "지열에너지",
+        "지열 에너지",
+        "지열발전",
+        "지열 발전"
+      ]
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "group_name": "LNG 인프라",
+      "keywords": [
+        "LNG",
+        "LNG 터미널",
+        "LNG 인프라",
+        "액화천연가스"
+      ]
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "group_name": "산업용 로봇",
+      "keywords": [
+        "산업용 로봇",
+        "산업용로봇",
+        "산업 로봇",
+        "로봇 자동화"
+      ]
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "group_name": "휴머노이드 로봇",
+      "keywords": [
+        "휴머노이드",
+        "휴머노이드 로봇",
+        "인간형 로봇",
+        "피지컬 AI",
+        "피지컬AI"
+      ]
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "group_name": "스마트팩토리",
+      "keywords": [
+        "스마트팩토리",
+        "스마트 팩토리",
+        "스마트공장",
+        "스마트 공장",
+        "제조 자동화"
+      ]
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "group_name": "물류 자동화",
+      "keywords": [
+        "물류 자동화",
+        "물류자동화",
+        "창고 자동화",
+        "창고자동화",
+        "물류로봇"
+      ]
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "group_name": "건설 자동화",
+      "keywords": [
+        "건설 자동화",
+        "건설자동화",
+        "건설 로봇",
+        "건설로봇",
+        "스마트건설"
+      ]
+    },
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "group_name": "3D프린팅",
+      "keywords": [
+        "3D프린팅",
+        "3D 프린팅",
+        "적층제조",
+        "적층 제조"
+      ]
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "group_name": "자율주행",
+      "keywords": [
+        "자율주행",
+        "자율 주행",
+        "자율주행차",
+        "무인자동차",
+        "로보택시"
+      ]
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "group_name": "국방·무인체계",
+      "keywords": [
+        "무인체계",
+        "국방 무인체계",
+        "군용 드론",
+        "방산 드론",
+        "자율무기"
+      ]
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "group_name": "상업용 드론",
+      "keywords": [
+        "드론",
+        "상업용 드론",
+        "배송 드론",
+        "산업용 드론"
+      ]
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "group_name": "우주산업",
+      "keywords": [
+        "우주산업",
+        "우주 산업",
+        "민간우주",
+        "민간 우주",
+        "우주경제"
+      ]
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "group_name": "자율운항·해양무인체계",
+      "keywords": [
+        "자율운항",
+        "자율운항선박",
+        "무인선박",
+        "해양 무인체계",
+        "스마트선박"
+      ]
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "group_name": "철도 현대화",
+      "keywords": [
+        "고속철도",
+        "철도 현대화",
+        "철도 인프라",
+        "철도 신호",
+        "스마트철도"
+      ]
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "group_name": "AI 신약개발",
+      "keywords": [
+        "AI 신약",
+        "AI 신약개발",
+        "AI신약",
+        "신약 AI",
+        "인공지능 신약"
+      ]
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "group_name": "유전자·세포치료",
+      "keywords": [
+        "유전자치료",
+        "유전자 치료",
+        "세포치료",
+        "세포 치료",
+        "유전자세포치료"
+      ]
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "group_name": "정밀종양학",
+      "keywords": [
+        "정밀종양학",
+        "정밀의료 암",
+        "액체생검",
+        "액체 생검",
+        "암 정밀의료"
+      ]
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "group_name": "비만·대사질환 치료",
+      "keywords": [
+        "비만치료제",
+        "비만 치료제",
+        "GLP-1",
+        "위고비",
+        "마운자로"
+      ]
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "group_name": "수술로봇",
+      "keywords": [
+        "수술로봇",
+        "수술 로봇",
+        "로봇수술",
+        "로봇 수술"
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "group_name": "첨단진단·액체생검",
+      "keywords": [
+        "액체생검",
+        "액체 생검",
+        "분자진단",
+        "분자 진단",
+        "첨단진단"
+      ]
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "group_name": "합성생물학",
+      "keywords": [
+        "합성생물학",
+        "합성 생물학",
+        "바이오파운드리",
+        "바이오 파운드리"
+      ]
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "group_name": "노화·장수기술",
+      "keywords": [
+        "장수기술",
+        "장수 기술",
+        "항노화",
+        "노화 연구",
+        "노화치료"
+      ]
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "group_name": "핵심광물",
+      "keywords": [
+        "핵심광물",
+        "핵심 광물",
+        "전략광물",
+        "전략 광물",
+        "광물 공급망"
+      ]
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "group_name": "구리 공급망",
+      "keywords": [
+        "구리",
+        "구리 공급망",
+        "동 가격",
+        "구리 수요",
+        "동 공급망"
+      ]
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "group_name": "희토류 공급망",
+      "keywords": [
+        "희토류",
+        "희토류 공급망",
+        "희토류 광물",
+        "희토류 자석"
+      ]
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "group_name": "배터리 재활용",
+      "keywords": [
+        "배터리 재활용",
+        "배터리재활용",
+        "폐배터리",
+        "폐 배터리",
+        "배터리 리사이클링"
+      ]
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "group_name": "첨단소재",
+      "keywords": [
+        "첨단소재",
+        "첨단 소재",
+        "신소재",
+        "고기능 소재"
+      ]
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "group_name": "수자원 인프라",
+      "keywords": [
+        "수자원 인프라",
+        "수처리",
+        "물 인프라",
+        "상하수도",
+        "수처리 시설"
+      ]
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "group_name": "애그테크·푸드테크",
+      "keywords": [
+        "애그테크",
+        "푸드테크",
+        "스마트팜",
+        "농업기술",
+        "식품기술"
+      ]
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "group_name": "히트펌프·에너지효율",
+      "keywords": [
+        "히트펌프",
+        "히트 펌프",
+        "에너지효율",
+        "에너지 효율",
+        "고효율 냉난방"
+      ]
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "group_name": "디지털 신원·보안인증",
+      "keywords": [
+        "디지털 신원",
+        "디지털신원",
+        "전자신원",
+        "본인인증",
+        "디지털 인증"
+      ]
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "group_name": "핀테크 인프라",
+      "keywords": [
+        "핀테크",
+        "결제 인프라",
+        "전자결제",
+        "간편결제",
+        "디지털 금융"
+      ]
+    }
+  ],
+  "notes": [
+    "NAVER DataLab Search Trend는 절대 검색량이 아닌 상대 검색 비율을 반환합니다.",
+    "배치 간 비교를 위해 모든 요청에 공통 anchor 주제어를 포함하고 anchor 대비 최근 30일 평균 비율을 cross-sectional level로 사용합니다."
+  ]
+}

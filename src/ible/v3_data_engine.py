@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import json, math
+import json, math, os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 
 from ible.integrity import canonical_sha256, load_json, write_json
 from ible.model_lock import load_and_verify_model_lock
-from ible.v3_collectors import ArxivCollector, OpenAlexCollector, UsaSpendingCollector, GdeltCollector, WikimediaCollector, comparison_periods, three_attention_periods
+from ible.v3_collectors import ArxivCollector, OpenAlexCollector, UsaSpendingCollector, GdeltCollector, WikimediaCollector, NaverSearchTrendCollector, comparison_periods, three_attention_periods
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
 from ible.v3_dynamic_terms import build_dynamic_discovery_report, collect_dynamic_documents, discover_candidates, write_dynamic_discovery_report
 from ible.v3_lag_bridge import build_lag_bridge, write_lag_bridge
@@ -194,7 +194,7 @@ def _collect_one(row, openalex, usaspending, gdelt, wikimedia, recent_period, pr
             sources['usaspending'].update({'query_mode':'SOURCE_UNAVAILABLE','proxy_naics_codes':list(row.get('usaspending_naics') or [])})
         errors.append({"source":'usaspending',"error":str(exc)[:500]})
     core=[sources[n] for n in ('openalex','usaspending') if sources[n].get('source_signal_score') is not None]
-    return {"theme_id":tid,"theme_name":row['theme_name'],"sector":row['sector'],"data_build_priority":row['data_build_priority'],"status":"PHASE1_OBSERVED" if len(core)>=2 else ('PARTIAL_SOURCE' if core else 'NO_SOURCE_DATA'),"source_family_count":len(core),"phase1_data_signal_score":round(sum(float(x['source_signal_score']) for x in core)/len(core),4) if core else None,"public_interest_score":None,"public_interest_status":"PENDING_CROSS_SECTIONAL_NORMALIZATION","boom_score":None,"frozen_model_score_eligible":False,"sources":sources,"errors":errors,"limitations":["대중 관심도는 GDELT 글로벌 뉴스와 영문 위키피디아 열람량의 상대순위로 계산합니다.","V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."]}
+    return {"theme_id":tid,"theme_name":row['theme_name'],"sector":row['sector'],"data_build_priority":row['data_build_priority'],"status":"PHASE1_OBSERVED" if len(core)>=2 else ('PARTIAL_SOURCE' if core else 'NO_SOURCE_DATA'),"source_family_count":len(core),"phase1_data_signal_score":round(sum(float(x['source_signal_score']) for x in core)/len(core),4) if core else None,"public_interest_score":None,"public_interest_status":"PENDING_CROSS_SECTIONAL_NORMALIZATION","boom_score":None,"frozen_model_score_eligible":False,"sources":sources,"errors":errors,"limitations":["대중 관심도는 NAVER 검색어 트렌드를 주력으로 계산하고, NAVER 장애 시 GDELT 글로벌 뉴스 관심도를 보조 fallback으로 사용합니다.","V0.9.1 동결 점수와 별도인 운영용 데이터 레이어입니다."]}
 
 def _percentiles(rows, source):
     vals=[]
@@ -241,8 +241,39 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         return factory(source['base_url']) if enabled_sources.get(name) else None
     openalex=collector('openalex',lambda url:OpenAlexCollector(client,url))
     usaspending=collector('usaspending',lambda url:UsaSpendingCollector(client,url))
-    gdelt=collector('gdelt',lambda url:GdeltCollector(client,url))
+    # GDELT gets a dedicated single-attempt HTTP client. Retries are serialized
+    # inside GdeltCollector so 429 retries cannot interleave across worker threads.
+    gdelt = None
+    if enabled_sources.get('gdelt'):
+        gd_cfg = cfg['sources']['gdelt']
+        gdelt_client = JsonHttpClient(
+            HttpSettings(
+                timeout_seconds=int(net['timeout_seconds']), max_attempts=1,
+                base_backoff_seconds=float(net['base_backoff_seconds']),
+                user_agent=str(net['user_agent']), min_interval_seconds=0.0,
+                cache_ttl_seconds=int(cache_cfg.get('ttl_seconds',21600)),
+                stale_if_error_seconds=int(cache_cfg.get('stale_if_error_seconds',604800)),
+            ),
+            cache_dir=root / str(cache_cfg.get('directory','data_cache/http/v3')),
+        )
+        gdelt = GdeltCollector(
+            gdelt_client, gd_cfg['base_url'],
+            min_interval_seconds=float(gd_cfg.get('min_request_interval_seconds',6.5)),
+            max_attempts=int(gd_cfg.get('max_attempts',2)),
+            retry_backoff_seconds=float(gd_cfg.get('retry_backoff_seconds',8.0)),
+        )
     wikimedia=collector('wikimedia',lambda url:WikimediaCollector(client,url))
+
+    naver_cfg = load_json(root / 'config/v3_naver_interest.json')
+    naver = None
+    naver_credentials_error = None
+    if enabled_sources.get('naver_search_trend') and bool(naver_cfg.get('enabled', True)):
+        client_id = os.environ.get(str(naver_cfg.get('client_id_env') or 'NAVER_API_HUB_CLIENT_ID'), '').strip()
+        client_secret = os.environ.get(str(naver_cfg.get('client_secret_env') or 'NAVER_API_HUB_CLIENT_SECRET'), '').strip()
+        if client_id and client_secret:
+            naver = NaverSearchTrendCollector(client, str(naver_cfg.get('base_url') or cfg['sources']['naver_search_trend']['base_url']), client_id, client_secret)
+        else:
+            naver_credentials_error = 'NAVER_API_HUB_CLIENT_ID / NAVER_API_HUB_CLIENT_SECRET are not configured'
     dynamic_cfg = load_json(root / 'config/v3_dynamic_discovery.json')
     arxiv=ArxivCollector(client) if bool(dynamic_cfg.get('enabled', True)) else None
 
@@ -287,20 +318,91 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         futs=[ex.submit(_collect_one,row,openalex,usaspending,gdelt,wikimedia,recent,prior,interest_period,cache,captured_at,as_of,enabled_sources) for row in enriched_themes]
         for f in as_completed(futs): rows.append(f.result())
     rows.sort(key=lambda x:(int(x['data_build_priority']),str(x['theme_id'])))
-    for source in ('gdelt','wikimedia'):
+
+    # NAVER Search Trend is collected in batches because one request can compare
+    # up to five keyword groups. Each batch includes the same anchor group, so
+    # theme levels remain cross-batch comparable even though NAVER returns ratios.
+    naver_by_theme = {str(x['theme_id']): x for x in (naver_cfg.get('themes') or [])}
+    row_by_theme = {str(x['theme_id']): x for x in rows}
+    anchor_cfg = naver_cfg.get('anchor') or {'group_name':'기준_반도체','keywords':['반도체']}
+    anchor_name = str(anchor_cfg.get('group_name') or '기준_반도체')
+    max_groups = max(2, min(5, int(naver_cfg.get('max_groups_per_request',5))))
+    batch_size = max_groups - 1
+    theme_ids = [str(x['theme_id']) for x in enriched_themes]
+    for offset in range(0, len(theme_ids), batch_size):
+        ids = theme_ids[offset:offset+batch_size]
+        groups = [{'groupName':anchor_name,'keywords':list(anchor_cfg.get('keywords') or ['반도체'])}]
+        for tid in ids:
+            item = naver_by_theme.get(tid) or {}
+            groups.append({'groupName':str(item.get('group_name') or row_by_theme[tid]['theme_name']),'keywords':list(item.get('keywords') or [row_by_theme[tid]['theme_name']])})
+        try:
+            if naver is None:
+                raise ValueError(naver_credentials_error or 'NAVER Search Trend disabled')
+            series_map = naver.search(groups, interest_period, str(naver_cfg.get('time_unit') or 'date'))
+            anchor_series = series_map.get(anchor_name) or []
+            anchor_metric = attention_signal(anchor_series) if anchor_series else None
+            if not anchor_metric or float(anchor_metric.get('recent_30d_level') or 0) <= 0:
+                raise ValueError('NAVER anchor series unavailable')
+            for tid in ids:
+                row = row_by_theme[tid]
+                item = naver_by_theme.get(tid) or {}
+                title = str(item.get('group_name') or row['theme_name'])
+                values = series_map.get(title) or []
+                if not values:
+                    raise ValueError('NAVER series unavailable for ' + tid)
+                metric = attention_signal(values)
+                # Convert level fields to common-anchor units for cross-theme percentile.
+                for field in ('recent_30d_level','prior_30d_level','oldest_30d_level'):
+                    raw_value = float(metric.get(field) or 0.0)
+                    anchor_value = float(anchor_metric.get(field) or 0.0)
+                    metric['raw_' + field] = round(raw_value,6)
+                    metric[field] = round(100.0 * raw_value / max(anchor_value,1e-9),6)
+                row['sources']['naver_search_trend'] = {
+                    'status':'LIVE_COLLECTED','query':list(item.get('keywords') or []),
+                    'group_name':title,'anchor_group':anchor_name,'captured_at':captured_at,'as_of':str(as_of),
+                    'series_basis':'NAVER_RATIO_WITH_COMMON_ANCHOR', **metric,
+                }
+        except (HttpError, ValueError, TypeError) as exc:
+            for tid in ids:
+                row = row_by_theme[tid]
+                cached = _cached_source(cache,tid,'naver_search_trend',as_of)
+                if cached and cached.get('recent_30d_level') is not None:
+                    row['sources']['naver_search_trend'] = {**cached,'status':'CACHE_FALLBACK','fallback_reason':str(exc)[:500],'cache_age_days':_cache_age_days(cached,as_of)}
+                else:
+                    item=naver_by_theme.get(tid) or {}
+                    row['sources']['naver_search_trend'] = _unavailable_source(list(item.get('keywords') or []),captured_at,as_of,str(exc)[:500])
+                    row['sources']['naver_search_trend']['three_month_change_percent']=None
+                row['errors'].append({'source':'naver_search_trend','error':str(exc)[:500]})
+
+    for source in ('naver_search_trend','gdelt'):
         pct=_percentiles(rows,source)
         for row in rows:
             s=row['sources'][source]; raw=s.get('recent_30d_level',s.get('recent_count')); p=pct(raw)
             if p is not None and s.get('growth_score') is not None:
                 s['attention_percentile']=round(p,4); s['attention_score']=round(clamp(.75*p+.25*float(s['growth_score'])),4)
     for row in rows:
-        available=[row['sources'][n] for n in ('gdelt','wikimedia') if row['sources'][n].get('attention_score') is not None]
-        if available:
-            row['public_interest_score']=round(sum(float(x['attention_score']) for x in available)/len(available),4)
-            row['public_interest_momentum_3m']=round(sum(float(x.get('three_month_change_percent') or 0) for x in available)/len(available),4)
+        naver_src = row['sources'].get('naver_search_trend') or {}
+        gdelt_src = row['sources'].get('gdelt') or {}
+        if naver_src.get('attention_score') is not None:
+            selected = naver_src
+            row['public_interest_primary_source']='NAVER_SEARCH_TREND'
+            row['public_interest_score']=round(float(selected['attention_score']),4)
+            row['public_interest_momentum_3m']=round(float(selected.get('three_month_change_percent') or 0),4)
             row['public_interest_status']='LIVE_OR_CACHED_OBSERVED'
+            row['public_interest_confidence']=1.0 if selected.get('status')=='LIVE_COLLECTED' else 0.85
+        elif gdelt_src.get('attention_score') is not None:
+            selected = gdelt_src
+            row['public_interest_primary_source']='GDELT_FALLBACK'
+            row['public_interest_score']=round(float(selected['attention_score']),4)
+            row['public_interest_momentum_3m']=round(float(selected.get('three_month_change_percent') or 0),4)
+            row['public_interest_status']='LIVE_OR_CACHED_OBSERVED'
+            row['public_interest_confidence']=0.70 if selected.get('status')=='LIVE_COLLECTED' else 0.55
         else:
-            row['public_interest_score']=50.0; row['public_interest_momentum_3m']=0.0; row['public_interest_status']='NEUTRAL_FALLBACK_SOURCE_UNAVAILABLE'
+            row['public_interest_primary_source']='NEUTRAL_FALLBACK'
+            row['public_interest_score']=float((cfg.get('public_interest_policy') or {}).get('missing_all_sources_fallback',50.0))
+            row['public_interest_momentum_3m']=0.0
+            row['public_interest_status']='NEUTRAL_FALLBACK_SOURCE_UNAVAILABLE'
+            row['public_interest_confidence']=0.0
     collection_metrics=client.stats()
     collection_metrics['enabled_sources']=[name for name,enabled in enabled_sources.items() if enabled]
     collection_metrics['disabled_sources']=[name for name,enabled in enabled_sources.items() if not enabled]
@@ -360,7 +462,7 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
     collection_metrics['enabled_sources']=[name for name,enabled in enabled_sources.items() if enabled]
     collection_metrics['disabled_sources']=[name for name,enabled in enabled_sources.items() if not enabled]
     summary={"status":"V7_PUBLIC_INTEREST_AND_CORE_DATA_COLLECTED","engine_release":cfg['engine_release'],"as_of":as_of.isoformat(),"theme_count":len(rows),"public_interest_observed_theme_count":public_count,"public_interest_coverage_percent":round(100*public_count/max(1,len(rows)),2),"collection_metrics":collection_metrics,"dynamic_discovery":{"status":dynamic_report["status"],"candidate_count":dynamic_report["candidate_count"],"auto_add_allowed":False},"lag_bridge":{"status":lag_bridge["status"],"nowcast_active_theme_count":lag_bridge["nowcast_active_theme_count"],"future_data_rejected_count":lag_bridge["future_data_rejected_count"],"official_statistics_replaced":False},"sec_mdna_capex_nowcast":{"status":sec_nowcast["status"],"observed_theme_count":sec_nowcast["observed_theme_count"],"future_filing_rejected_count":sec_nowcast["future_filing_rejected_count"],"external_api_calls":0},"frontier_signals":{"status":frontier_signals["status"],"selected_theme_count":frontier_signals["selected_theme_count"],"github_query_count":frontier_signals["github_query_count"],"patent_query_count":frontier_signals["patent_query_count"],"investment_use_allowed":False},"hiring_nowcast":{"status":hiring_nowcast["status"],"observed_theme_count":hiring_nowcast["observed_theme_count"],"future_observation_rejected_count":hiring_nowcast["future_observation_rejected_count"],"investment_use_allowed":False},"model_lock":model_lock,"investment_use_allowed":False}
-    source_health={"status":"SOURCE_HEALTH_RECORDED","as_of":as_of.isoformat(),"public_interest_observed":public_count,"collection_metrics":collection_metrics,"sources":{name:{"enabled":enabled_sources.get(name,False),"live_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='LIVE_COLLECTED'),"cache_fallback_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='CACHE_FALLBACK'),"unavailable_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status') in {'SOURCE_UNAVAILABLE','SOURCE_DISABLED'})} for name in ('openalex','usaspending','gdelt','wikimedia')}}
+    source_health={"status":"SOURCE_HEALTH_RECORDED","as_of":as_of.isoformat(),"public_interest_observed":public_count,"collection_metrics":collection_metrics,"sources":{name:{"enabled":enabled_sources.get(name,False),"live_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='LIVE_COLLECTED'),"cache_fallback_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status')=='CACHE_FALLBACK'),"unavailable_count":sum(1 for row in rows if (row.get('sources') or {}).get(name,{}).get('status') in {'SOURCE_UNAVAILABLE','SOURCE_DISABLED'})} for name in ('openalex','usaspending','naver_search_trend','gdelt','wikimedia')}}
     write_json(output_dir/'v3_run_summary.json',summary); write_json(output_dir/'v3_source_observations.json',obs); write_json(output_dir/'v3_data_source_health.json',source_health); write_json(output_dir/'v3_model_lock_verification.json',model_lock); write_json(output_dir/'v3_next_gate.json',{"status":"V7_CORE_DATA_READY","investment_use_allowed":False})
     write_json(root/'data_cache/latest/v3_source_observations.json',obs); write_json(root/'data_cache'/f'{as_of.year:04d}'/f'{as_of.month:02d}'/as_of.isoformat()/'v3_source_observations.json',obs)
     return summary

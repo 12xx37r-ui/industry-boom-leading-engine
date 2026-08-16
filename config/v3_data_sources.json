@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "7.1.0-cached-nowcast-guarded",
+  "engine_release": "7.4.0-naver-interest-gdelt-resilient",
   "timezone": "Asia/Seoul",
   "lookback_days": 365,
   "minimum_theme_count": 50,
@@ -9,7 +9,7 @@
     "timeout_seconds": 25,
     "max_attempts": 3,
     "base_backoff_seconds": 2.0,
-    "min_interval_seconds": 0.20,
+    "min_interval_seconds": 0.2,
     "max_workers": 4,
     "user_agent": "IndustryBoomLeadingEngine/7.0 (GitHub Actions; public research dashboard)"
   },
@@ -36,13 +36,27 @@
       "enabled": true,
       "base_url": "https://api.gdeltproject.org/api/v2/doc/doc",
       "source_family": "GLOBAL_NEWS_ATTENTION",
-      "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/"
+      "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
+      "min_request_interval_seconds": 6.5,
+      "max_attempts": 2,
+      "retry_backoff_seconds": 8.0
     },
     "wikimedia": {
-      "enabled": true,
+      "enabled": false,
       "base_url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user",
       "source_family": "GLOBAL_PUBLIC_READING_ATTENTION",
-      "documentation": "https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html"
+      "documentation": "https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/reference/page-views.html",
+      "role": "DIAGNOSTIC_ONLY_DISABLED_FROM_PUBLIC_INTEREST"
+    },
+    "naver_search_trend": {
+      "enabled": true,
+      "base_url": "https://naverapihub.apigw.ntruss.com/search-trend/v1/search",
+      "source_family": "KR_SEARCH_ATTENTION",
+      "documentation": "https://api.ncloud-docs.com/docs/naver-api-hub-search-trend",
+      "credentials_env": [
+        "NAVER_API_HUB_CLIENT_ID",
+        "NAVER_API_HUB_CLIENT_SECRET"
+      ]
     }
   },
   "rules": {
@@ -55,5 +69,12 @@
     "operational_score_is_not_frozen_v091_score": true
   },
   "public_interest_window_days": 30,
-  "public_interest_history_days": 90
+  "public_interest_history_days": 90,
+  "public_interest_policy": {
+    "primary_source": "naver_search_trend",
+    "fallback_source": "gdelt",
+    "wikimedia_weight": 0.0,
+    "score_formula": "0.75 * cross_sectional_percentile + 0.25 * growth_score",
+    "missing_all_sources_fallback": 50.0
+  }
 }

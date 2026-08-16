@@ -136,25 +136,45 @@ class UsaSpendingCollector:
 
 
 class GdeltCollector:
-    # GDELT DOC API explicitly rate-limits high-frequency callers. The data
-    # engine runs themes concurrently, so serialize only GDELT request starts.
-    # 5.25s leaves a small safety margin over the service's 5-second guidance.
+    """Rate-limit-aware GDELT DOC 2.0 collector.
+
+    GDELT explicitly rate-limits DOC API callers. All GDELT attempts are globally
+    serialized, including retries, so concurrent theme workers cannot accidentally
+    interleave retry traffic and violate the service cadence.
+    """
     _rate_lock = threading.Lock()
     _last_request_started = 0.0
-    MIN_REQUEST_INTERVAL_SECONDS = 5.25
 
-    def __init__(self, client: JsonHttpClient, base_url: str) -> None:
+    def __init__(self, client: JsonHttpClient, base_url: str, *, min_interval_seconds: float = 6.5,
+                 max_attempts: int = 2, retry_backoff_seconds: float = 8.0) -> None:
         self.client = client
         self.base_url = base_url
+        self.min_interval_seconds = max(5.25, float(min_interval_seconds))
+        self.max_attempts = max(1, int(max_attempts))
+        self.retry_backoff_seconds = max(self.min_interval_seconds, float(retry_backoff_seconds))
 
-    def _wait_for_request_slot(self) -> None:
-        cls = type(self)
-        with cls._rate_lock:
-            now = time.monotonic()
-            delay = cls.MIN_REQUEST_INTERVAL_SECONDS - (now - cls._last_request_started)
-            if delay > 0:
-                time.sleep(delay)
-            cls._last_request_started = time.monotonic()
+    def _request_json(self, *, params: dict[str, Any]) -> dict[str, Any]:
+        last_exc: Exception | None = None
+        for attempt in range(1, self.max_attempts + 1):
+            cls = type(self)
+            with cls._rate_lock:
+                now = time.monotonic()
+                delay = self.min_interval_seconds - (now - cls._last_request_started)
+                if delay > 0:
+                    time.sleep(delay)
+                cls._last_request_started = time.monotonic()
+                try:
+                    # The dedicated GDELT HTTP client is configured for one network
+                    # attempt. Retry cadence is controlled here, not inside JsonHttpClient.
+                    return self.client.request_json(self.base_url, params=params)
+                except Exception as exc:
+                    last_exc = exc
+            if attempt < self.max_attempts:
+                # Extra cooldown after a throttled/failed request. This happens outside
+                # the lock; the next GDELT caller still must pass the global slot gate.
+                time.sleep(self.retry_backoff_seconds * attempt)
+        assert last_exc is not None
+        raise last_exc
 
     def timeline(self, query: str, period: Period) -> list[float]:
         params = {
@@ -165,10 +185,7 @@ class GdeltCollector:
             "enddatetime": (period.end + timedelta(days=1)).strftime("%Y%m%d000000"),
             "timelinesmooth": 0,
         }
-        has_cache = getattr(self.client, "has_cached_json", lambda **kwargs: False)
-        if not has_cache(url=self.base_url, params=params):
-            self._wait_for_request_slot()
-        payload = self.client.request_json(self.base_url, params=params)
+        payload = self._request_json(params=params)
         points: list[float] = []
         def walk(value: Any) -> None:
             if isinstance(value, dict):
@@ -200,10 +217,7 @@ class GdeltCollector:
             "startdatetime": period.start.strftime("%Y%m%d000000"),
             "enddatetime": (period.end + timedelta(days=1)).strftime("%Y%m%d000000"),
         }
-        has_cache = getattr(self.client, "has_cached_json", lambda **kwargs: False)
-        if not has_cache(url=self.base_url, params=params):
-            self._wait_for_request_slot()
-        payload = self.client.request_json(self.base_url, params=params)
+        payload = self._request_json(params=params)
         documents = []
         for row in payload.get("articles") or []:
             text = " ".join(value for value in (row.get("title"), row.get("snippet"), row.get("seendate")) if value)
@@ -215,6 +229,44 @@ class GdeltCollector:
                     "text": text,
                 })
         return documents
+
+
+class NaverSearchTrendCollector:
+    """NAVER DataLab Search Trend collector using a common anchor across batches."""
+    def __init__(self, client: JsonHttpClient, base_url: str, client_id: str, client_secret: str) -> None:
+        self.client = client
+        self.base_url = base_url
+        self.headers = {
+            "X-NCP-APIGW-API-KEY-ID": client_id,
+            "X-NCP-APIGW-API-KEY": client_secret,
+        }
+
+    def search(self, groups: list[dict[str, Any]], period: Period, time_unit: str = "date") -> dict[str, list[float]]:
+        payload = {
+            "startDate": period.start.isoformat(),
+            "endDate": period.end.isoformat(),
+            "timeUnit": time_unit,
+            "keywordGroups": [
+                {"groupName": str(g["groupName"]), "keywords": [str(x) for x in g.get("keywords") or []][:20]}
+                for g in groups
+            ],
+        }
+        raw = self.client.request_json(
+            self.base_url, method="POST", payload=payload, headers=self.headers,
+            cache_ttl_seconds=21600,
+        )
+        out: dict[str, list[float]] = {}
+        for item in raw.get("results") or []:
+            title = str(item.get("title") or "")
+            values: list[float] = []
+            for point in item.get("data") or []:
+                try:
+                    values.append(max(0.0, float(point.get("ratio") or 0.0)))
+                except (TypeError, ValueError):
+                    values.append(0.0)
+            if title and values:
+                out[title] = values
+        return out
 
 
 class WikimediaCollector:

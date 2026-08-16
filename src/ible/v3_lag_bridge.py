@@ -26,8 +26,8 @@ def build_lag_bridge(observations: dict[str, Any], requested_as_of: str) -> dict
     weights = {
         "openalex": 0.30,
         "usaspending": 0.25,
-        "gdelt": 0.20,
-        "wikimedia": 0.15,
+        "naver_search_trend": 0.20,
+        "gdelt": 0.15,
     }
     themes = []
     invalid_future_count = 0
