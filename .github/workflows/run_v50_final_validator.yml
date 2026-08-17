@@ -355,6 +355,7 @@ jobs:
               "v8Layer": "outputs/v8_layers/v8_current_layer_snapshot.json",
               "v8Validation": "outputs/v8_layers/v8_validation_scorecard.json",
               "v8Discovery": "outputs/v8_layers/v8_discovery_challengers.json",
+              "v9Learning": "outputs/v9_learning/v9_learning_dashboard.json",
               "universe": "config/theme_universe.json",
               "phase1": "data_cache/latest/v3_source_observations.json",
               "phase2": "data_cache/latest/v31_real_economy_observations.json",
