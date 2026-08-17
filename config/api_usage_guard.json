@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "mode": "warning_only",
+  "provider_call_ratio_warn": 2.0,
+  "provider_call_ratio_strong_warn": 3.0,
+  "total_call_ratio_warn": 2.0,
+  "total_call_ratio_strong_warn": 3.0,
+  "ratio_min_previous_calls": 3,
+  "http_429_warn": 1,
+  "http_429_strong_warn": 3,
+  "timeouts_warn": 1,
+  "timeouts_strong_warn": 3,
+  "retries_warn": 3,
+  "retries_strong_warn": 8,
+  "notes": [
+    "Monitoring only: never blocks the workflow.",
+    "Does not change API freshness, caching, retry, pacing, scoring, or fallback behavior.",
+    "Ratios are ignored when the previous provider had fewer than 3 network calls to avoid low-base false alarms."
+  ]
+}
