@@ -1,0 +1,18 @@
+{
+  "status": "V8_VALIDATION_QUALITY_DISCOVERY_ACTIVE",
+  "engine_release": "8.0.0-validation-quality-discovery",
+  "as_of": "2026-08-17",
+  "theme_count": 50,
+  "snapshot_action": "CREATED_IMMUTABLE_SNAPSHOT",
+  "proxy_quality_observed_theme_count": 50,
+  "mean_proxy_quality_score": 63.6135,
+  "validation_status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
+  "matured_snapshot_counts": {
+    "6": 0,
+    "12": 0,
+    "24": 0
+  },
+  "discovery_challenger_count": 0,
+  "locked_score_mutated": false,
+  "investment_use_allowed": false
+}

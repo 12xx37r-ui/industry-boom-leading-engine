@@ -1,0 +1,124 @@
+{
+  "status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
+  "as_of": "2026-08-17",
+  "theme_count": 50,
+  "proxy_quality": {
+    "mean_quality_score": 63.6135
+  },
+  "validation": {
+    "schema_version": 1,
+    "engine_release": "8.0.0-validation-quality-discovery",
+    "status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
+    "horizons": {
+      "6": {
+        "matured_snapshot_count": 0,
+        "evaluations": [],
+        "aggregate_metrics": {
+          "theme_observation_count": 0,
+          "threshold": 60.0,
+          "true_positive": 0,
+          "true_negative": 0,
+          "false_positive": 0,
+          "false_negative": 0,
+          "hit_rate": null,
+          "precision": null,
+          "recall": null,
+          "specificity": null,
+          "false_positive_rate": null,
+          "false_negative_rate": null,
+          "top_10_success_rate": null,
+          "top_bottom_outcome_spread": null,
+          "rank_correlation": null
+        }
+      },
+      "12": {
+        "matured_snapshot_count": 0,
+        "evaluations": [],
+        "aggregate_metrics": {
+          "theme_observation_count": 0,
+          "threshold": 60.0,
+          "true_positive": 0,
+          "true_negative": 0,
+          "false_positive": 0,
+          "false_negative": 0,
+          "hit_rate": null,
+          "precision": null,
+          "recall": null,
+          "specificity": null,
+          "false_positive_rate": null,
+          "false_negative_rate": null,
+          "top_10_success_rate": null,
+          "top_bottom_outcome_spread": null,
+          "rank_correlation": null
+        }
+      },
+      "24": {
+        "matured_snapshot_count": 0,
+        "evaluations": [],
+        "aggregate_metrics": {
+          "theme_observation_count": 0,
+          "threshold": 60.0,
+          "true_positive": 0,
+          "true_negative": 0,
+          "false_positive": 0,
+          "false_negative": 0,
+          "hit_rate": null,
+          "precision": null,
+          "recall": null,
+          "specificity": null,
+          "false_positive_rate": null,
+          "false_negative_rate": null,
+          "top_10_success_rate": null,
+          "top_bottom_outcome_spread": null,
+          "rank_correlation": null
+        }
+      }
+    },
+    "investment_use_allowed": false,
+    "gate_checks": [
+      {
+        "horizon_months": 6,
+        "matured_snapshot_count": 0,
+        "required": 3,
+        "passed": false
+      },
+      {
+        "horizon_months": 12,
+        "matured_snapshot_count": 0,
+        "required": 2,
+        "passed": false
+      },
+      {
+        "horizon_months": 24,
+        "matured_snapshot_count": 0,
+        "required": 1,
+        "passed": false
+      }
+    ]
+  },
+  "discovery": {
+    "schema_version": 1,
+    "engine_release": "8.0.0-validation-quality-discovery",
+    "as_of": "2026-08-17",
+    "status": "NO_QUALIFIED_CANDIDATES",
+    "input_document_count": 0,
+    "candidate_count": 0,
+    "challenger_count": 0,
+    "auto_add_allowed": false,
+    "promotion_rule": {
+      "input_path": "data_cache/inbox/v8_discovery_documents.json",
+      "fallback_path": "data_cache/latest/v3_dynamic_theme_candidates.json",
+      "min_documents": 2,
+      "min_source_families": 2,
+      "min_periods": 2,
+      "min_similarity": 0.15,
+      "min_novelty": 0.65,
+      "min_confidence": 70.0,
+      "max_candidates": 50,
+      "auto_add_allowed": false
+    },
+    "candidates": [],
+    "content_sha256": "5e6527425b3977057c1c08b8bddcc5029fa2a3c13c6d2191843b6bb11ebc3d76"
+  },
+  "investment_use_allowed": false
+}

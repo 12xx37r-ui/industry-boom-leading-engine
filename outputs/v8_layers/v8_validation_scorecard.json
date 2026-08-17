@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "engine_release": "8.0.0-validation-quality-discovery",
+  "status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
+  "horizons": {
+    "6": {
+      "matured_snapshot_count": 0,
+      "evaluations": [],
+      "aggregate_metrics": {
+        "theme_observation_count": 0,
+        "threshold": 60.0,
+        "true_positive": 0,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "hit_rate": null,
+        "precision": null,
+        "recall": null,
+        "specificity": null,
+        "false_positive_rate": null,
+        "false_negative_rate": null,
+        "top_10_success_rate": null,
+        "top_bottom_outcome_spread": null,
+        "rank_correlation": null
+      }
+    },
+    "12": {
+      "matured_snapshot_count": 0,
+      "evaluations": [],
+      "aggregate_metrics": {
+        "theme_observation_count": 0,
+        "threshold": 60.0,
+        "true_positive": 0,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "hit_rate": null,
+        "precision": null,
+        "recall": null,
+        "specificity": null,
+        "false_positive_rate": null,
+        "false_negative_rate": null,
+        "top_10_success_rate": null,
+        "top_bottom_outcome_spread": null,
+        "rank_correlation": null
+      }
+    },
+    "24": {
+      "matured_snapshot_count": 0,
+      "evaluations": [],
+      "aggregate_metrics": {
+        "theme_observation_count": 0,
+        "threshold": 60.0,
+        "true_positive": 0,
+        "true_negative": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "hit_rate": null,
+        "precision": null,
+        "recall": null,
+        "specificity": null,
+        "false_positive_rate": null,
+        "false_negative_rate": null,
+        "top_10_success_rate": null,
+        "top_bottom_outcome_spread": null,
+        "rank_correlation": null
+      }
+    }
+  },
+  "investment_use_allowed": false,
+  "gate_checks": [
+    {
+      "horizon_months": 6,
+      "matured_snapshot_count": 0,
+      "required": 3,
+      "passed": false
+    },
+    {
+      "horizon_months": 12,
+      "matured_snapshot_count": 0,
+      "required": 2,
+      "passed": false
+    },
+    {
+      "horizon_months": 24,
+      "matured_snapshot_count": 0,
+      "required": 1,
+      "passed": false
+    }
+  ]
+}

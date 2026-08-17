@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "engine_release": "8.0.0-validation-quality-discovery",
+  "as_of": "2026-08-17",
+  "status": "NO_QUALIFIED_CANDIDATES",
+  "input_document_count": 0,
+  "candidate_count": 0,
+  "challenger_count": 0,
+  "auto_add_allowed": false,
+  "promotion_rule": {
+    "input_path": "data_cache/inbox/v8_discovery_documents.json",
+    "fallback_path": "data_cache/latest/v3_dynamic_theme_candidates.json",
+    "min_documents": 2,
+    "min_source_families": 2,
+    "min_periods": 2,
+    "min_similarity": 0.15,
+    "min_novelty": 0.65,
+    "min_confidence": 70.0,
+    "max_candidates": 50,
+    "auto_add_allowed": false
+  },
+  "candidates": [],
+  "content_sha256": "5e6527425b3977057c1c08b8bddcc5029fa2a3c13c6d2191843b6bb11ebc3d76"
+}

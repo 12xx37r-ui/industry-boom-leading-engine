@@ -1,0 +1,808 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-17",
+  "source": "DERIVED_FROM_LATEST_ENGINE_SOURCES",
+  "themes": [
+    {
+      "theme_id": "ADDITIVE_MANUFACTURING",
+      "revenue_level": 85637.0,
+      "employment_level": 1041923.0,
+      "capex_level": 10020348.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.9142,
+      "research_growth_percent": 2.3859,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "ADVANCED_DIAGNOSTICS",
+      "revenue_level": 19889.0,
+      "employment_level": 636702.0,
+      "capex_level": 3124305.0,
+      "stock_price": null,
+      "industry_growth_percent": 0.8927,
+      "research_growth_percent": 5.3323,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "ADVANCED_MATERIALS",
+      "revenue_level": 99274.0,
+      "employment_level": 231322.6667,
+      "capex_level": 14023302.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.8989,
+      "research_growth_percent": 9.2937,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "ADVANCED_PACKAGING_HBM",
+      "revenue_level": 34696.0,
+      "employment_level": 380197.0,
+      "capex_level": 25189214.0,
+      "stock_price": null,
+      "industry_growth_percent": -2.5536,
+      "research_growth_percent": 38.4615,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "AGRITECH_FOODTECH",
+      "revenue_level": 132954.0,
+      "employment_level": 2494460.3333,
+      "capex_level": 23674819.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.1992,
+      "research_growth_percent": 15.3642,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "AI_DRUG_DISCOVERY",
+      "revenue_level": 85637.0,
+      "employment_level": 1261648.6667,
+      "capex_level": 19170007.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.5686,
+      "research_growth_percent": 37.4233,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "AI_SEMICONDUCTORS",
+      "revenue_level": 34696.0,
+      "employment_level": 380197.0,
+      "capex_level": 25189214.0,
+      "stock_price": null,
+      "industry_growth_percent": -2.5536,
+      "research_growth_percent": 42.7911,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "AUTONOMOUS_DRIVING",
+      "revenue_level": 85637.0,
+      "employment_level": 1199070.3333,
+      "capex_level": 23114823.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.3975,
+      "research_growth_percent": -1.7036,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "revenue_level": 41114.0,
+      "employment_level": 366794.6667,
+      "capex_level": 214218521.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.1417,
+      "research_growth_percent": 6.737,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "CARBON_CAPTURE",
+      "revenue_level": 85637.0,
+      "employment_level": 1822586.3333,
+      "capex_level": 20111180.0,
+      "stock_price": null,
+      "industry_growth_percent": 0.7969,
+      "research_growth_percent": 8.3287,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "CLOUD_INFRASTRUCTURE",
+      "revenue_level": 117367.0,
+      "employment_level": 485226.0,
+      "capex_level": 21630547.0,
+      "stock_price": null,
+      "industry_growth_percent": 0.4172,
+      "research_growth_percent": 27.4328,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "COMMERCIAL_DRONES",
+      "revenue_level": 110010.0,
+      "employment_level": 570229.0,
+      "capex_level": 5352046.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.1342,
+      "research_growth_percent": 10.6842,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "CONSTRUCTION_AUTOMATION",
+      "revenue_level": 42222.0,
+      "employment_level": 1136608.3333,
+      "capex_level": 10046247.0,
+      "stock_price": null,
+      "industry_growth_percent": 1.6573,
+      "research_growth_percent": 7.3658,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "COPPER_INFRASTRUCTURE",
+      "revenue_level": 12050.0,
+      "employment_level": 106218.3333,
+      "capex_level": 10796654.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.6029,
+      "research_growth_percent": 3.8112,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "CRITICAL_MINERALS",
+      "revenue_level": 12050.0,
+      "employment_level": 106218.3333,
+      "capex_level": 10796654.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.6029,
+      "research_growth_percent": 13.697,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "CYBERSECURITY",
+      "revenue_level": 310855.0,
+      "employment_level": 2868074.0,
+      "capex_level": 26991310.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.6009,
+      "research_growth_percent": 15.3315,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "DATA_CENTER_INFRASTRUCTURE",
+      "revenue_level": 289685.0,
+      "employment_level": 910444.6667,
+      "capex_level": 128702982.0,
+      "stock_price": null,
+      "industry_growth_percent": 1.509,
+      "research_growth_percent": 21.5692,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
+      "revenue_level": 10379.0,
+      "employment_level": 974802.0,
+      "capex_level": 10958109.0,
+      "stock_price": null,
+      "industry_growth_percent": 1.4324,
+      "research_growth_percent": -3.8941,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "DIGITAL_IDENTITY",
+      "revenue_level": 310855.0,
+      "employment_level": 2868074.0,
+      "capex_level": 26991310.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.6009,
+      "research_growth_percent": 8.4402,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "EDGE_AI",
+      "revenue_level": 7636.0,
+      "employment_level": 178662.0,
+      "capex_level": 1038592.0,
+      "stock_price": null,
+      "industry_growth_percent": -2.9317,
+      "research_growth_percent": 58.9002,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "ENERGY_STORAGE",
+      "revenue_level": 53339.0,
+      "employment_level": 560944.0,
+      "capex_level": 237712454.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.1391,
+      "research_growth_percent": 14.1621,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "FINTECH_INFRASTRUCTURE",
+      "revenue_level": 244603.0,
+      "employment_level": 2664860.0,
+      "capex_level": 9719272.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.7823,
+      "research_growth_percent": 6.7698,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "GENE_CELL_THERAPY",
+      "revenue_level": 85637.0,
+      "employment_level": 1261648.6667,
+      "capex_level": 19170007.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.5686,
+      "research_growth_percent": -8.232,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "GEOTHERMAL_ENERGY",
+      "revenue_level": 172318.0,
+      "employment_level": 1058728.6667,
+      "capex_level": 114729193.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.7477,
+      "research_growth_percent": -2.4798,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "HEAT_PUMPS_EFFICIENCY",
+      "revenue_level": 6657.0,
+      "employment_level": 2772065.0,
+      "capex_level": 14437614.0,
+      "stock_price": null,
+      "industry_growth_percent": 2.173,
+      "research_growth_percent": -3.4343,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "HUMANOID_ROBOTS",
+      "revenue_level": 52601.0,
+      "employment_level": 680813.6667,
+      "capex_level": 8970472.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.9862,
+      "research_growth_percent": 44.314,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "HYDROGEN_ECONOMY",
+      "revenue_level": 129446.0,
+      "employment_level": 429373.0,
+      "capex_level": 12064579.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.2846,
+      "research_growth_percent": 4.6559,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "INDUSTRIAL_ROBOTICS",
+      "revenue_level": 42222.0,
+      "employment_level": 276240.6667,
+      "capex_level": 3364409.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.1517,
+      "research_growth_percent": -0.9585,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "LNG_INFRASTRUCTURE",
+      "revenue_level": 19687.0,
+      "employment_level": 785463.3333,
+      "capex_level": 67073183.0,
+      "stock_price": null,
+      "industry_growth_percent": 2.9457,
+      "research_growth_percent": -3.9499,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "LOGISTICS_AUTOMATION",
+      "revenue_level": 42222.0,
+      "employment_level": 2235138.3333,
+      "capex_level": 9503661.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.1996,
+      "research_growth_percent": -4.828,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "LONGEVITY_TECH",
+      "revenue_level": 85637.0,
+      "employment_level": 1261648.6667,
+      "capex_level": 19170007.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.5686,
+      "research_growth_percent": 9.4253,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "MARITIME_AUTONOMY",
+      "revenue_level": 14904.0,
+      "employment_level": 553520.3333,
+      "capex_level": 7333788.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.5228,
+      "research_growth_percent": -4.2367,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "NUCLEAR_ENERGY",
+      "revenue_level": 172318.0,
+      "employment_level": 1058728.6667,
+      "capex_level": 114729193.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.7477,
+      "research_growth_percent": -3.872,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "OBESITY_METABOLIC",
+      "revenue_level": 26576.0,
+      "employment_level": 348813.0,
+      "capex_level": 10079994.0,
+      "stock_price": null,
+      "industry_growth_percent": 0.543,
+      "research_growth_percent": 33.662,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "OFFSHORE_WIND",
+      "revenue_level": 5265.0,
+      "employment_level": 726546.6667,
+      "capex_level": 8605246.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.9721,
+      "research_growth_percent": -0.67,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
+      "revenue_level": 45075.0,
+      "employment_level": 784770.0,
+      "capex_level": 30795277.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.6943,
+      "research_growth_percent": 38.7097,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "POWER_GRID_ELECTRIFICATION",
+      "revenue_level": 172318.0,
+      "employment_level": 1058728.6667,
+      "capex_level": 114729193.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.7477,
+      "research_growth_percent": 3.8344,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "POWER_SEMICONDUCTORS",
+      "revenue_level": 34696.0,
+      "employment_level": 380197.0,
+      "capex_level": 25189214.0,
+      "stock_price": null,
+      "industry_growth_percent": -2.5536,
+      "research_growth_percent": 0.0,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "PRECISION_ONCOLOGY",
+      "revenue_level": 19889.0,
+      "employment_level": 662640.3333,
+      "capex_level": 11227189.0,
+      "stock_price": null,
+      "industry_growth_percent": 0.79,
+      "research_growth_percent": 25.7696,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "QUANTUM_COMPUTING",
+      "revenue_level": 85637.0,
+      "employment_level": 1317408.6667,
+      "capex_level": 14696076.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.9519,
+      "research_growth_percent": 36.6009,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "RAIL_MODERNIZATION",
+      "revenue_level": 110010.0,
+      "employment_level": 168625.3333,
+      "capex_level": 7898504.0,
+      "stock_price": null,
+      "industry_growth_percent": 2.6813,
+      "research_growth_percent": -18.3983,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "RARE_EARTHS",
+      "revenue_level": 12050.0,
+      "employment_level": 106218.3333,
+      "capex_level": 10796654.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.6029,
+      "research_growth_percent": -1.1727,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "revenue_level": 52601.0,
+      "employment_level": 533660.3333,
+      "capex_level": 6536398.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.7584,
+      "research_growth_percent": -10.6272,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SMALL_MODULAR_REACTORS",
+      "revenue_level": 5265.0,
+      "employment_level": 726546.6667,
+      "capex_level": 8605246.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.9721,
+      "research_growth_percent": 22.4784,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SMART_FACTORY",
+      "revenue_level": 193488.0,
+      "employment_level": 2659088.6667,
+      "capex_level": 8725172.0,
+      "stock_price": null,
+      "industry_growth_percent": -1.9143,
+      "research_growth_percent": -14.7494,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SOLAR_ENERGY",
+      "revenue_level": 34696.0,
+      "employment_level": 1013707.0,
+      "capex_level": 32845972.0,
+      "stock_price": null,
+      "industry_growth_percent": 1.6815,
+      "research_growth_percent": -5.8848,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SPACE_ECONOMY",
+      "revenue_level": 4525.0,
+      "employment_level": 570229.0,
+      "capex_level": 5352046.0,
+      "stock_price": null,
+      "industry_growth_percent": 3.1342,
+      "research_growth_percent": -8.6957,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SURGICAL_ROBOTICS",
+      "revenue_level": 25070.0,
+      "employment_level": 727447.6667,
+      "capex_level": 7583173.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.1701,
+      "research_growth_percent": -3.2304,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "SYNTHETIC_BIOLOGY",
+      "revenue_level": 85637.0,
+      "employment_level": 1261648.6667,
+      "capex_level": 19170007.0,
+      "stock_price": null,
+      "industry_growth_percent": -0.5686,
+      "research_growth_percent": 33.689,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    },
+    {
+      "theme_id": "WATER_INFRASTRUCTURE",
+      "revenue_level": 5999.0,
+      "employment_level": 696755.3333,
+      "capex_level": 13489621.0,
+      "stock_price": null,
+      "industry_growth_percent": 4.2802,
+      "research_growth_percent": 24.8162,
+      "hiring_growth_percent": null,
+      "source_vintages": {
+        "revenue": null,
+        "employment": null,
+        "capex": 2023,
+        "industry_growth": null
+      }
+    }
+  ],
+  "content_sha256": "289512dd07b3f1fdfdbdfd1c5ac27b56b043cabec46315c40bdcd224e29a04a5"
+}
