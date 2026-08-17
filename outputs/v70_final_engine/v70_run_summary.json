@@ -1,20 +1,18 @@
 {
   "status": "V7_COMPLETE_OPERATIONAL_ENGINE_ACTIVE",
   "engine_release": "7.0.0-complete-operational-engine",
-  "as_of": "2026-08-02",
+  "as_of": "2026-08-17",
   "snapshot_action": "CREATED_IMMUTABLE_V7_VERSIONED_SNAPSHOT",
-  "snapshot_count": 41,
+  "snapshot_count": 42,
   "theme_count": 50,
   "public_interest_coverage_count": 50,
   "public_interest_live_source_count": 50,
   "company_mapping_count": 50,
   "boom_score_count": 50,
   "three_month_change_count": 50,
-  "champion_live_alert_count": 5,
-  "challenger_live_alert_count": 8,
+  "champion_live_alert_count": 8,
+  "challenger_live_alert_count": 9,
   "added_theme_ids": [
-    "DIGITAL_IDENTITY",
-    "CYBERSECURITY",
     "ENERGY_STORAGE"
   ],
   "policy_lock": {
