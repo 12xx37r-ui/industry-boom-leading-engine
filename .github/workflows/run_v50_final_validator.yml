@@ -100,6 +100,12 @@ jobs:
         run: |
           set -uo pipefail
           rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers outputs/v9_learning
+          if git show HEAD:outputs/api_health.json > /tmp/api_health_previous.json 2>/dev/null; then
+            echo "[API-GUARD] previous committed api_health.json captured"
+          else
+            rm -f /tmp/api_health_previous.json
+            echo "[API-GUARD] no previous api_health.json baseline; ratio checks will be skipped"
+          fi
           rm -f outputs/api_health.json
           run_stage() {
             local seconds="$1"; shift
@@ -304,7 +310,18 @@ jobs:
           print(json.dumps(summary, ensure_ascii=False, indent=2))
           PY
 
-      - name: Commit immutable histories and outputs
+      - name: Monitor API usage and call spikes
+        if: steps.cadence.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          PREVIOUS_ARG=()
+          if [ -s /tmp/api_health_previous.json ]; then
+            PREVIOUS_ARG=(--previous /tmp/api_health_previous.json)
+          fi
+          python -m ible.api_usage_guard             --current outputs/api_health.json             "${PREVIOUS_ARG[@]}"             --config config/api_usage_guard.json             --output outputs/api_usage_guard.json
+
+            - name: Commit immutable histories and outputs
         if: steps.cadence.outputs.should_run == 'true'
         shell: bash
         run: |
@@ -314,6 +331,7 @@ jobs:
           date +%s > .github/industry_boom_last_success_epoch.txt
           git add -f .github/industry_boom_last_success_epoch.txt
           if [ -s outputs/api_health.json ]; then git add -f outputs/api_health.json; fi
+          if [ -s outputs/api_usage_guard.json ]; then git add -f outputs/api_usage_guard.json; fi
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find outputs/v3_data -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
@@ -411,6 +429,7 @@ jobs:
           name: industry-boom-v7.3-embedded-capital-radar-engine-result
           path: |
             outputs/api_health.json
+            outputs/api_usage_guard.json
             outputs/v3_data
             outputs/v50_final_validator
             outputs/v51_historical_audit
