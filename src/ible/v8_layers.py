@@ -442,9 +442,26 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
         if documents:
             input_source = str(generated_input_path.relative_to(root))
     if documents:
+        # config/themes.yml uses id/name, while the dynamic-term helper expects
+        # theme_id/theme_name. Normalize here so V8 discovery can consume the
+        # canonical theme universe without changing the shared helper contract.
+        discovery_themes = []
+        for row in themes:
+            if not isinstance(row, dict):
+                continue
+            theme_id = row.get("theme_id") or row.get("id")
+            if not theme_id:
+                continue
+            normalized = dict(row)
+            normalized["theme_id"] = str(theme_id)
+            normalized["theme_name"] = row.get("theme_name") or row.get("name") or str(theme_id)
+            if not normalized.get("openalex_search") and row.get("arxiv_query"):
+                normalized["openalex_search"] = row.get("arxiv_query")
+            discovery_themes.append(normalized)
+
         report = discover_candidates(
             documents,
-            themes,
+            discovery_themes,
             as_of.isoformat(),
             min_documents=int(discovery.get("min_documents", 2)),
             min_source_families=int(discovery.get("min_source_families", 2)),
