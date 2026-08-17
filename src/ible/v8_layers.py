@@ -566,6 +566,10 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
             min_periods=int(discovery.get("min_periods", 2)),
             min_similarity=float(discovery.get("min_similarity", 0.15)),
             max_candidates=int(discovery.get("max_candidates", 50)),
+            min_phrase_tokens=int(discovery.get("min_phrase_tokens", 2)),
+            max_phrase_tokens=int(discovery.get("max_phrase_tokens", 4)),
+            min_phrase_quality=float(discovery.get("min_phrase_quality", 55.0)),
+            existing_theme_similarity=float(discovery.get("existing_theme_similarity", 0.55)),
         )
     else:
         fallback = root / str(discovery.get("fallback_path"))
@@ -574,12 +578,21 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
     for row in report.get("candidates") or []:
         similarity = float(row.get("semantic_similarity_proxy") or 0.0)
         novelty = round(1.0 - similarity, 4)
-        challenger = novelty >= float(discovery.get("min_novelty", 0.65)) and float(row.get("confidence") or 0.0) >= float(discovery.get("min_confidence", 70.0))
+        phrase_quality = float(row.get("phrase_quality_score") or 0.0)
+        existing_extension = str(row.get("promotion_status") or "") == "EXISTING_THEME_EXTENSION"
+        challenger = (
+            not existing_extension
+            and novelty >= float(discovery.get("min_novelty", 0.65))
+            and float(row.get("confidence") or 0.0) >= float(discovery.get("min_confidence", 70.0))
+            and phrase_quality >= float(discovery.get("min_phrase_quality", 55.0))
+            and int(row.get("distinct_document_count") or 0) >= int(discovery.get("min_challenger_documents", 3))
+            and int(row.get("source_family_count") or 0) >= int(discovery.get("min_source_families", 2))
+        )
         enriched = {
             **row,
             "novelty_score": novelty,
-            "candidate_class": "CHALLENGER_NEW_INDUSTRY" if challenger else "KNOWN_THEME_REVIEW",
-            "promotion_status": "CHALLENGER_REVIEW_REQUIRED" if challenger else "REVIEW_REQUIRED",
+            "candidate_class": "CHALLENGER_NEW_INDUSTRY" if challenger else ("EXISTING_THEME_EXTENSION" if existing_extension else "REVIEW_ONLY"),
+            "promotion_status": "CHALLENGER_REVIEW_REQUIRED" if challenger else ("EXISTING_THEME_EXTENSION" if existing_extension else "REVIEW_REQUIRED"),
             "auto_add_allowed": False,
         }
         enriched.update(_candidate_readiness(enriched, discovery))
@@ -703,7 +716,8 @@ def run_v8(root: Path, output_dir: Path, run_date: str | None = None, v70_output
     for horizon, result in horizon_results.items():
         required = int((config.get("validation") or {}).get("minimum_matured_snapshots", {}).get(horizon, 1))
         scorecard["gate_checks"].append({"horizon_months": int(horizon), "matured_snapshot_count": result["matured_snapshot_count"], "required": required, "passed": result["matured_snapshot_count"] >= required})
-    discovery = _discovery(root, load_yaml(root / "config/themes.yml").get("themes") or [], as_of, config)
+    # Compare discovery terms against the complete current 50-theme V7 universe, not the smaller collector config.
+    discovery = _discovery(root, source.get("decisions") or [], as_of, config)
     dashboard = {"status": scorecard["status"], "as_of": as_of.isoformat(), "theme_count": len(layer_themes), "proxy_quality": {"mean_quality_score": round(sum(row["proxy_quality"]["proxy_quality_score"] for row in layer_themes) / max(1, len(layer_themes)), 4)}, "validation": scorecard, "discovery": discovery, "investment_use_allowed": False}
     summary = {"status": "V8_VALIDATION_QUALITY_DISCOVERY_ACTIVE", "engine_release": config["engine_release"], "as_of": as_of.isoformat(), "theme_count": len(layer_themes), "snapshot_action": action, "proxy_quality_observed_theme_count": sum(row["proxy_quality"]["observed_proxy_count"] > 0 for row in layer_themes), "mean_proxy_quality_score": dashboard["proxy_quality"]["mean_quality_score"], "validation_status": scorecard["status"], "matured_snapshot_counts": {key: value["matured_snapshot_count"] for key, value in horizon_results.items()}, "discovery_challenger_count": discovery["challenger_count"], "locked_score_mutated": False, "investment_use_allowed": False}
     output_dir.mkdir(parents=True, exist_ok=True)

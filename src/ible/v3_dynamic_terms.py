@@ -28,7 +28,35 @@ _STOPWORDS = {
     "result", "results", "method", "methods", "data", "paper", "article", "first", "two",
     "multimodal", "neural", "transformer", "embedding", "algorithm", "architecture",
     "optimization", "inference", "dataset", "latent", "vision", "language", "text",
+    "across", "single", "accelerated", "accelerate", "discovery", "general", "generic",
+    "analysis", "experimental", "experiment", "evaluation", "efficient", "efficiency",
+    "effective", "effect", "impact", "application", "applications", "future", "current",
+    "high", "higher", "low", "lower", "real", "time", "multi", "multiple", "toward",
+    "towards", "via", "different", "various", "improved", "improving", "novelty",
+    "generation", "generative", "foundation", "foundationmodel", "benchmarking",
 }
+
+_DOMAIN_ANCHORS = {
+    "ai", "robot", "robotic", "automation", "semiconductor", "chip", "memory", "hbm",
+    "photonics", "optical", "quantum", "sensor", "lidar", "battery", "energy", "grid",
+    "nuclear", "reactor", "fusion", "geothermal", "hydrogen", "carbon", "solar", "storage",
+    "recycling", "material", "manufacturing", "additive", "biotech", "biology", "synthetic",
+    "gene", "cell", "therapy", "oncology", "drug", "pharma", "protein", "diagnostic",
+    "cybersecurity", "security", "identity", "satellite", "space", "drone", "defense",
+    "logistics", "warehouse", "agriculture", "food", "water", "fintech", "payment",
+    "infrastructure", "interconnect", "packaging", "compute", "computing", "edge",
+}
+_GENERIC_PHRASE_TOKENS = {
+    "across", "single", "accelerated", "general", "generic", "novel", "new", "advanced",
+    "efficient", "effective", "future", "current", "large", "small", "high", "low",
+}
+_TOKEN_ALIASES = {
+    "chips": "semiconductor", "chip": "semiconductor", "semiconductors": "semiconductor",
+    "drugs": "drug", "pharmaceutical": "drug", "pharmaceuticals": "drug",
+    "robotics": "robot", "robots": "robot", "batteries": "battery",
+    "photonic": "photonics", "computational": "computing", "compute": "computing",
+}
+
 _SHORT_TECH_TERMS = {"ai", "hbm", "llm", "gpu", "cpu", "eda", "ev", "3d"}
 
 
@@ -45,20 +73,93 @@ def _tokens(value: Any) -> list[str]:
     return result
 
 
-def _ngrams(tokens: list[str], maximum: int = 3) -> Counter[str]:
+def _canonical_token(token: str) -> str:
+    return _TOKEN_ALIASES.get(str(token), str(token))
+
+
+def _ngrams(tokens: list[str], minimum: int = 2, maximum: int = 4) -> Counter[str]:
+    """Industry discovery uses phrases, not isolated generic words."""
     result: Counter[str] = Counter()
-    for size in range(1, min(maximum, len(tokens)) + 1):
+    upper = min(maximum, len(tokens))
+    for size in range(max(1, minimum), upper + 1):
         for index in range(len(tokens) - size + 1):
-            phrase = " ".join(tokens[index:index + size])
-            if len(phrase) >= 3:
+            phrase_tokens = tokens[index:index + size]
+            if all(token in _GENERIC_PHRASE_TOKENS for token in phrase_tokens):
+                continue
+            phrase = " ".join(phrase_tokens)
+            if len(phrase) >= 6 or (len(phrase_tokens) == 1 and phrase_tokens[0] in _SHORT_TECH_TERMS):
                 result[phrase] += 1
     return result
 
 
+def _phrase_quality(term: str) -> float:
+    tokens = term.split()
+    if len(tokens) == 1:
+        token = _canonical_token(tokens[0])
+        return 72.0 if token in _SHORT_TECH_TERMS or token in _DOMAIN_ANCHORS else 0.0
+    if len(tokens) < 2:
+        return 0.0
+    anchor_count = sum(_canonical_token(token) in _DOMAIN_ANCHORS for token in tokens)
+    generic_count = sum(token in _GENERIC_PHRASE_TOKENS for token in tokens)
+    score = 45.0
+    score += min(30.0, anchor_count * 20.0)
+    score += 10.0 if 2 <= len(tokens) <= 4 else 0.0
+    score -= generic_count * 18.0
+    if len(set(tokens)) != len(tokens):
+        score -= 20.0
+    return max(0.0, min(100.0, score))
+
+
+def _normalized_set(values: set[str] | list[str]) -> set[str]:
+    return {_canonical_token(token) for token in values if token}
+
+
+def _theme_similarity(candidate: str, vocabulary: set[str]) -> float:
+    candidate_tokens = _normalized_set(candidate.split())
+    theme_tokens = _normalized_set(vocabulary)
+    if not candidate_tokens or not theme_tokens:
+        return 0.0
+    intersection = len(candidate_tokens & theme_tokens)
+    union = len(candidate_tokens | theme_tokens)
+    jaccard = intersection / union if union else 0.0
+    containment = intersection / len(candidate_tokens)
+    return max(jaccard, containment * 0.9)
+
+
+def _dedupe_candidate_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Collapse near-duplicate phrases, preferring stronger and more specific phrases."""
+    ordered = sorted(
+        rows,
+        key=lambda row: (
+            -float(row.get("confidence") or 0.0),
+            -float(row.get("phrase_quality_score") or 0.0),
+            -len(str(row.get("term") or "").split()),
+            str(row.get("term") or ""),
+        ),
+    )
+    kept: list[dict[str, Any]] = []
+    for row in ordered:
+        tokens = set(str(row.get("term") or "").split())
+        duplicate = False
+        for existing in kept:
+            other = set(str(existing.get("term") or "").split())
+            if not tokens or not other:
+                continue
+            if len(tokens) == 1 or len(other) == 1:
+                continue
+            overlap = len(tokens & other) / max(1, min(len(tokens), len(other)))
+            same_sources = set(row.get("evidence_sources") or []) == set(existing.get("evidence_sources") or [])
+            if overlap >= 0.8 and same_sources:
+                duplicate = True
+                break
+        if not duplicate:
+            kept.append(row)
+    return kept
+
 def _theme_vocabulary(themes: list[dict[str, Any]]) -> dict[str, set[str]]:
     vocabulary: dict[str, set[str]] = {}
     for row in themes:
-        values = [row.get("theme_name"), row.get("openalex_search"), row.get("gdelt_query")]
+        values = [row.get("theme_id"), row.get("theme_name"), row.get("sector"), row.get("openalex_search"), row.get("gdelt_query")]
         values.extend(row.get("usaspending_keywords") or [])
         values.extend(row.get("dynamic_aliases") or [])
         vocabulary[str(row["theme_id"])] = set(_tokens(" ".join(str(value) for value in values if value)))
@@ -66,21 +167,20 @@ def _theme_vocabulary(themes: list[dict[str, Any]]) -> dict[str, set[str]]:
 
 
 def _similarity(candidate: str, vocabulary: set[str]) -> float:
-    candidate_tokens = set(candidate.split())
-    if not candidate_tokens or not vocabulary:
-        return 0.0
-    return len(candidate_tokens & vocabulary) / len(candidate_tokens | vocabulary)
-
+    return _theme_similarity(candidate, vocabulary)
 
 def discover_candidates(
     documents: list[dict[str, Any]], themes: list[dict[str, Any]], as_of: str, *,
     min_documents: int = 2, min_source_families: int = 2, min_periods: int = 2,
     min_similarity: float = 0.15, max_candidates: int = 100,
+    min_phrase_tokens: int = 1, max_phrase_tokens: int = 4,
+    min_phrase_quality: float = 55.0, existing_theme_similarity: float = 0.55,
 ) -> dict[str, Any]:
-    """Create review-only new-term candidates from a local, timestamped corpus."""
+    """Create review-only industry-phrase candidates from a local timestamped corpus."""
     vocabulary = _theme_vocabulary(themes)
-    known_terms = set().union(*vocabulary.values()) if vocabulary else set()
-    occurrences: dict[str, dict[str, set[str]]] = defaultdict(lambda: {"documents": set(), "sources": set(), "periods": set()})
+    occurrences: dict[str, dict[str, set[str]]] = defaultdict(
+        lambda: {"documents": set(), "sources": set(), "periods": set()}
+    )
     for document in documents:
         text = document.get("text") or document.get("title") or ""
         if not str(text).strip():
@@ -92,8 +192,10 @@ def discover_candidates(
             period = date.fromisoformat(captured).strftime("%Y-%m")
         except ValueError:
             period = str(as_of)[:7]
-        for term in _ngrams(_tokens(text)):
-            if term in known_terms:
+        tokens = _tokens(text)
+        for term in _ngrams(tokens, minimum=min_phrase_tokens, maximum=max_phrase_tokens):
+            quality = _phrase_quality(term)
+            if quality < min_phrase_quality:
                 continue
             item = occurrences[term]
             item["documents"].add(document_id)
@@ -105,32 +207,68 @@ def discover_candidates(
         document_count, source_count, period_count = (len(evidence[key]) for key in ("documents", "sources", "periods"))
         if document_count < min_documents or source_count < min_source_families or period_count < min_periods:
             continue
-        term_tokens = term.split()
-        known_flags = [token in known_terms for token in term_tokens]
-        if any(known_flags):
-            continue
-        matches = sorted(((score, theme_id) for theme_id, words in vocabulary.items() if (score := _similarity(term, words)) >= min_similarity), reverse=True)
-        best_similarity, best_theme_id = matches[0] if matches else (0.0, None)
-        evidence_confidence = 10.0 * min(document_count, 10) + 10.0 * source_count + 8.0 * period_count
-        confidence = min(100.0, evidence_confidence + 30.0 * best_similarity)
-        if best_theme_id is None:
-            confidence = min(75.0, evidence_confidence)
+
+        similarities = sorted(
+            ((_theme_similarity(term, words), theme_id) for theme_id, words in vocabulary.items()),
+            reverse=True,
+        )
+        best_similarity, best_theme_id = similarities[0] if similarities else (0.0, None)
+        phrase_quality = _phrase_quality(term)
+
+        evidence_confidence = 8.0 * min(document_count, 10) + 11.0 * min(source_count, 4) + 7.0 * min(period_count, 6)
+        confidence = min(100.0, 0.65 * evidence_confidence + 0.35 * phrase_quality)
+
+        # Sparse corpora must not look artificially certain.
+        if document_count < 4:
+            confidence = min(confidence, 72.0)
+        elif document_count < 6:
+            confidence = min(confidence, 82.0)
+        if source_count < 3:
+            confidence = min(confidence, 78.0)
+
+        existing_extension = bool(best_theme_id) and best_similarity >= existing_theme_similarity
         candidates.append({
-            "term": term, "suggested_theme_id": best_theme_id,
-            "semantic_similarity_proxy": round(best_similarity, 4), "confidence": round(confidence, 4),
-            "distinct_document_count": document_count, "source_family_count": source_count,
+            "term": term,
+            "display_name": " ".join(word.upper() if word in {"ai", "hbm", "llm", "gpu", "cpu", "eda", "ev"} else word.capitalize() for word in term.split()),
+            "suggested_theme_id": best_theme_id,
+            "semantic_similarity_proxy": round(best_similarity, 4),
+            "phrase_quality_score": round(phrase_quality, 2),
+            "confidence": round(confidence, 4),
+            "distinct_document_count": document_count,
+            "source_family_count": source_count,
             "period_count": period_count,
             "evidence_sources": sorted(evidence["sources"]),
             "evidence_periods": sorted(evidence["periods"]),
             "evidence_document_ids": sorted(evidence["documents"])[:8],
-            "promotion_status": "NEW_THEME_REVIEW" if best_theme_id is None else "REVIEW_REQUIRED",
+            "promotion_status": "EXISTING_THEME_EXTENSION" if existing_extension else "NEW_THEME_REVIEW",
         })
-    candidates.sort(key=lambda row: (-row["confidence"], row["term"]))
+
+    candidates = _dedupe_candidate_rows(candidates)
+    candidates.sort(
+        key=lambda row: (
+            row.get("promotion_status") != "NEW_THEME_REVIEW",
+            -float(row.get("confidence") or 0.0),
+            -float(row.get("phrase_quality_score") or 0.0),
+            str(row.get("term") or ""),
+        )
+    )
     return {
-        "schema_version": 1, "as_of": str(as_of),
+        "schema_version": 2,
+        "as_of": str(as_of),
         "status": "CANDIDATES_FOUND" if candidates else "NO_QUALIFIED_CANDIDATES",
-        "candidate_count": min(len(candidates), max_candidates), "auto_add_allowed": False,
-        "promotion_rule": {"min_distinct_document_count": min_documents, "min_source_family_count": min_source_families, "min_period_count": min_periods, "min_similarity": min_similarity, "requires_human_review": True},
+        "candidate_count": min(len(candidates), max_candidates),
+        "auto_add_allowed": False,
+        "promotion_rule": {
+            "min_distinct_document_count": min_documents,
+            "min_source_family_count": min_source_families,
+            "min_period_count": min_periods,
+            "min_similarity": min_similarity,
+            "min_phrase_tokens": min_phrase_tokens,
+            "max_phrase_tokens": max_phrase_tokens,
+            "min_phrase_quality": min_phrase_quality,
+            "existing_theme_similarity": existing_theme_similarity,
+            "requires_human_review": True,
+        },
         "candidates": candidates[:max_candidates],
     }
 
