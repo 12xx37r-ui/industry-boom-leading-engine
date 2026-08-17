@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-08-17T01:01:45.952823+00:00",
+  "providers": {
+    "arxiv": {
+      "cache_hits": 3,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "lkg_uses": 0,
+      "network_calls": 0,
+      "retries": 0,
+      "status": "CACHE",
+      "timeouts": 0
+    },
+    "bls": {
+      "cache_hits": 0,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "last_success_at": "2026-08-17T01:01:44.269600+00:00",
+      "lkg_uses": 0,
+      "network_calls": 5,
+      "retries": 0,
+      "status": "LIVE",
+      "timeouts": 0
+    },
+    "census": {
+      "cache_hits": 0,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "last_success_at": "2026-08-17T01:01:45.952593+00:00",
+      "lkg_uses": 0,
+      "network_calls": 4,
+      "retries": 0,
+      "status": "LIVE",
+      "timeouts": 0
+    },
+    "gdelt": {
+      "cache_hits": 48,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 3,
+      "http_5xx": 0,
+      "last_success_at": "2026-08-17T01:00:56.802093+00:00",
+      "lkg_uses": 1,
+      "network_calls": 4,
+      "retries": 2,
+      "status": "LIVE",
+      "timeouts": 0
+    },
+    "github": {
+      "cache_hits": 3,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "lkg_uses": 0,
+      "network_calls": 0,
+      "retries": 0,
+      "status": "CACHE",
+      "timeouts": 0
+    },
+    "google_patents": {
+      "cache_hits": 0,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 9,
+      "http_5xx": 0,
+      "lkg_uses": 0,
+      "network_calls": 9,
+      "retries": 6,
+      "status": "UNAVAILABLE",
+      "timeouts": 0
+    },
+    "naver_api_hub": {
+      "cache_hits": 13,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "lkg_uses": 0,
+      "network_calls": 0,
+      "retries": 0,
+      "status": "CACHE",
+      "timeouts": 0
+    },
+    "ncses.nsf.gov": {
+      "cache_hits": 0,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "last_success_at": "2026-08-17T01:01:44.644043+00:00",
+      "lkg_uses": 0,
+      "network_calls": 1,
+      "retries": 0,
+      "status": "LIVE",
+      "timeouts": 0
+    },
+    "openalex": {
+      "cache_hits": 103,
+      "deduplicated_calls": 0,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "lkg_uses": 0,
+      "network_calls": 0,
+      "retries": 0,
+      "status": "CACHE",
+      "timeouts": 0
+    },
+    "usaspending": {
+      "cache_hits": 144,
+      "deduplicated_calls": 12,
+      "fallback_uses": 0,
+      "http_429": 0,
+      "http_5xx": 0,
+      "lkg_uses": 1,
+      "network_calls": 1,
+      "retries": 0,
+      "status": "LKG",
+      "timeouts": 0
+    }
+  },
+  "schema_version": 1
+}
