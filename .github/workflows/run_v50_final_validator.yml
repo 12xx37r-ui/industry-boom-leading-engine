@@ -40,6 +40,7 @@ jobs:
       NAVER_API_HUB_CLIENT_ID: ${{ secrets.NAVER_API_HUB_CLIENT_ID }}
       NAVER_API_HUB_CLIENT_SECRET: ${{ secrets.NAVER_API_HUB_CLIENT_SECRET }}
       SEC_API_TIMEOUT: "20"
+      API_HEALTH_PATH: outputs/api_health.json
 
     steps:
       - name: Checkout
@@ -99,6 +100,7 @@ jobs:
         run: |
           set -uo pipefail
           rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine
+          rm -f outputs/api_health.json
           run_stage() {
             local seconds="$1"; shift
             local label="$1"; shift
@@ -334,6 +336,7 @@ jobs:
         with:
           name: industry-boom-v7.3-embedded-capital-radar-engine-result
           path: |
+            outputs/api_health.json
             outputs/v3_data
             outputs/v50_final_validator
             outputs/v51_historical_audit
