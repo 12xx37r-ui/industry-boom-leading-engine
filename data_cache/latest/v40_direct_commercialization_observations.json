@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "4.1.0-direct-revenue-coverage-fix",
   "as_of": "2026-08-17",
-  "captured_at": "2026-08-17T14:16:40+09:00",
+  "captured_at": "2026-08-17T14:44:19+09:00",
   "theme_count": 50,
   "direct_commercialization_observed_theme_count": 50,
   "investment_use_allowed": false,
@@ -2651,5 +2651,5 @@
       ]
     }
   ],
-  "content_sha256": "1248b27c715a5becf7bdf774c7370e8bd8017df3d3bf4bfa57c51b53e8ba94d2"
+  "content_sha256": "92c614b065994f3d970751a291e096948634b8a6f4e40830dbfc7575ddc61572"
 }

@@ -22,6 +22,13 @@
         "activity_score": 70.1561,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 3,
       "direct_commercialization_score": 67.2565,
       "phase3_investment_score": 69.0175,
@@ -155,6 +162,13 @@
         "research_or_hiring_score": 66.5959,
         "activity_score": 70.754,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 11,
       "direct_commercialization_score": 57.8391,
@@ -290,6 +304,13 @@
         "activity_score": 71.1702,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 10,
       "direct_commercialization_score": 57.8391,
       "phase3_investment_score": 61.7299,
@@ -423,6 +444,13 @@
         "research_or_hiring_score": 58.0389,
         "activity_score": 67.8223,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 4,
       "direct_commercialization_score": 74.0301,
@@ -558,6 +586,13 @@
         "activity_score": 64.052,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 16,
       "direct_commercialization_score": 57.8391,
       "phase3_investment_score": 59.5336,
@@ -691,6 +726,16 @@
         "research_or_hiring_score": 62.9137,
         "activity_score": 57.9245,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 18,
       "direct_commercialization_score": 64.7749,
@@ -828,6 +873,15 @@
         "activity_score": 68.6013,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 8,
       "direct_commercialization_score": 60.276,
       "phase3_investment_score": 63.595,
@@ -961,6 +1015,13 @@
         "research_or_hiring_score": 50.7926,
         "activity_score": 62.292,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 15,
       "direct_commercialization_score": 57.8391,
@@ -1096,6 +1157,15 @@
         "activity_score": 63.9118,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 6,
       "direct_commercialization_score": 67.2565,
       "phase3_investment_score": 69.7544,
@@ -1229,6 +1299,15 @@
         "research_or_hiring_score": 56.8577,
         "activity_score": 67.5137,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 5,
       "direct_commercialization_score": 74.0301,
@@ -1364,6 +1443,16 @@
         "activity_score": 62.9686,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 30.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족",
+          "사업화 신호가 약함"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 32,
       "direct_commercialization_score": 43.1674,
       "phase3_investment_score": 57.3993,
@@ -1497,6 +1586,16 @@
         "research_or_hiring_score": 52.8603,
         "activity_score": 50.9714,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 39,
       "direct_commercialization_score": 49.9404,
@@ -1634,6 +1733,15 @@
         "activity_score": 72.0698,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 1,
       "direct_commercialization_score": 75.0021,
       "phase3_investment_score": 71.4012,
@@ -1768,6 +1876,13 @@
         "activity_score": 68.1444,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 0.0,
+        "risk_level": "LOW",
+        "reasons": [],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 19,
       "direct_commercialization_score": 45.1284,
       "phase3_investment_score": 63.9538,
@@ -1901,6 +2016,16 @@
         "research_or_hiring_score": 64.0175,
         "activity_score": 53.8341,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 25,
       "direct_commercialization_score": 63.8571,
@@ -2038,6 +2163,16 @@
         "activity_score": 62.8691,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 12,
       "direct_commercialization_score": 65.687,
       "phase3_investment_score": 61.6532,
@@ -2173,6 +2308,16 @@
         "research_or_hiring_score": 63.0099,
         "activity_score": 54.99,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 28,
       "direct_commercialization_score": 71.7283,
@@ -2310,6 +2455,16 @@
         "activity_score": 48.0178,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 23,
       "direct_commercialization_score": 68.3751,
       "phase3_investment_score": 53.144,
@@ -2446,6 +2601,15 @@
         "activity_score": 70.1628,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 2,
       "direct_commercialization_score": 67.2565,
       "phase3_investment_score": 70.415,
@@ -2579,6 +2743,16 @@
         "research_or_hiring_score": 51.7227,
         "activity_score": 46.16,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 46,
       "direct_commercialization_score": 49.982,
@@ -2716,6 +2890,17 @@
         "activity_score": 45.0149,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 58.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "다원천 확인이 약함",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 41,
       "direct_commercialization_score": 64.7749,
       "phase3_investment_score": 49.7861,
@@ -2851,6 +3036,16 @@
         "research_or_hiring_score": 64.3622,
         "activity_score": 66.7239,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 9,
       "direct_commercialization_score": 67.8926,
@@ -2988,6 +3183,16 @@
         "activity_score": 52.3473,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 34,
       "direct_commercialization_score": 67.0794,
       "phase3_investment_score": 45.0205,
@@ -3124,6 +3329,16 @@
         "activity_score": 63.3485,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 30.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족",
+          "사업화 신호가 약함"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 13,
       "direct_commercialization_score": 41.8779,
       "phase3_investment_score": 69.6489,
@@ -3257,6 +3472,16 @@
         "research_or_hiring_score": 59.1073,
         "activity_score": 61.9078,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 30.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족",
+          "사업화 신호가 약함"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 30,
       "direct_commercialization_score": 42.4936,
@@ -3392,6 +3617,15 @@
         "activity_score": 57.6178,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 20,
       "direct_commercialization_score": 66.9505,
       "phase3_investment_score": 55.0037,
@@ -3525,6 +3759,16 @@
         "research_or_hiring_score": 65.9006,
         "activity_score": 59.7237,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 14,
       "direct_commercialization_score": 69.1537,
@@ -3662,6 +3906,15 @@
         "activity_score": 49.3209,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 35,
       "direct_commercialization_score": 66.2984,
       "phase3_investment_score": 48.8604,
@@ -3795,6 +4048,16 @@
         "research_or_hiring_score": 58.1972,
         "activity_score": 68.2429,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 7,
       "direct_commercialization_score": 61.8033,
@@ -3932,6 +4195,17 @@
         "activity_score": 42.1182,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 58.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "다원천 확인이 약함",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 48,
       "direct_commercialization_score": 64.7749,
       "phase3_investment_score": 42.0339,
@@ -4067,6 +4341,17 @@
         "research_or_hiring_score": 50.6202,
         "activity_score": 46.6462,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 58.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "다원천 확인이 약함",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 44,
       "direct_commercialization_score": 61.8033,
@@ -4204,6 +4489,15 @@
         "activity_score": 59.8708,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 22,
       "direct_commercialization_score": 59.2038,
       "phase3_investment_score": 55.6493,
@@ -4337,6 +4631,16 @@
         "research_or_hiring_score": 55.8591,
         "activity_score": 53.0081,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 21,
       "direct_commercialization_score": 71.9478,
@@ -4474,6 +4778,16 @@
         "activity_score": 51.9496,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 29,
       "direct_commercialization_score": 63.8571,
       "phase3_investment_score": 54.3846,
@@ -4609,6 +4923,16 @@
         "research_or_hiring_score": 58.8789,
         "activity_score": 63.2459,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 17,
       "direct_commercialization_score": 53.6215,
@@ -4746,6 +5070,16 @@
         "activity_score": 54.7256,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 33,
       "direct_commercialization_score": 54.3285,
       "phase3_investment_score": 52.4156,
@@ -4881,6 +5215,16 @@
         "research_or_hiring_score": 59.3526,
         "activity_score": 53.2609,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 37,
       "direct_commercialization_score": 61.8033,
@@ -5018,6 +5362,16 @@
         "activity_score": 44.7704,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 30.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족",
+          "사업화 신호가 약함"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 49,
       "direct_commercialization_score": 43.1674,
       "phase3_investment_score": 36.2248,
@@ -5152,6 +5506,15 @@
         "activity_score": 51.1764,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 42,
       "direct_commercialization_score": 60.276,
       "phase3_investment_score": 46.3233,
@@ -5285,6 +5648,16 @@
         "research_or_hiring_score": 60.6867,
         "activity_score": 48.1605,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 47,
       "direct_commercialization_score": 54.7669,
@@ -5422,6 +5795,17 @@
         "activity_score": 45.7346,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 58.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "다원천 확인이 약함",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 45,
       "direct_commercialization_score": 64.2574,
       "phase3_investment_score": 43.8685,
@@ -5558,6 +5942,15 @@
         "activity_score": 61.464,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 31,
       "direct_commercialization_score": 59.392,
       "phase3_investment_score": 52.4322,
@@ -5691,6 +6084,16 @@
         "research_or_hiring_score": 56.1826,
         "activity_score": 51.827,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 27,
       "direct_commercialization_score": 63.8571,
@@ -5828,6 +6231,16 @@
         "activity_score": 52.4409,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 38,
       "direct_commercialization_score": 61.8033,
       "phase3_investment_score": 53.7619,
@@ -5963,6 +6376,17 @@
         "research_or_hiring_score": 55.2853,
         "activity_score": 43.9783,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 48.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족",
+          "사업화 신호가 약함"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 50,
       "direct_commercialization_score": 35.5282,
@@ -6100,6 +6524,15 @@
         "activity_score": 57.4024,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 20.0,
+        "risk_level": "LOW",
+        "reasons": [
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 24,
       "direct_commercialization_score": 69.4681,
       "phase3_investment_score": 57.9459,
@@ -6233,6 +6666,16 @@
         "research_or_hiring_score": 59.8044,
         "activity_score": 59.6563,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 26,
       "direct_commercialization_score": 60.6002,
@@ -6370,6 +6813,16 @@
         "activity_score": 50.5851,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 36,
       "direct_commercialization_score": 67.0794,
       "phase3_investment_score": 46.7209,
@@ -6506,6 +6959,16 @@
         "activity_score": 48.2431,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
       },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
+      },
       "base_predicted_rank": 40,
       "direct_commercialization_score": 54.3285,
       "phase3_investment_score": 51.0548,
@@ -6641,6 +7104,16 @@
         "research_or_hiring_score": 58.157,
         "activity_score": 47.4658,
         "rule": "LOW_PUBLIC_INTEREST_AND_REAL_ECONOMY_AND_CAPITAL_AND_RESEARCH_OR_HIRING"
+      },
+      "false_positive_guard": {
+        "risk_score": 38.0,
+        "risk_level": "MEDIUM",
+        "reasons": [
+          "프록시 품질이 보통 이하",
+          "저관심·실물·자금 교차조건 미충족"
+        ],
+        "locked_score_unchanged": true,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다."
       },
       "base_predicted_rank": 43,
       "direct_commercialization_score": 68.3751,
