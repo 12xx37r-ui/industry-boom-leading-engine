@@ -27,7 +27,7 @@
   },
   "dynamic_discovery": {
     "status": "CANDIDATES_FOUND",
-    "candidate_count": 2,
+    "candidate_count": 4,
     "auto_add_allowed": false
   },
   "lag_bridge": {
