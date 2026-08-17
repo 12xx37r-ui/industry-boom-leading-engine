@@ -252,7 +252,13 @@
       "as_of": "2026-08-17",
       "snapshot_sha256": "0505975b7ca457ae6d39cbdd3071b45b192469f0d6a2bce6dc64bf66a63e1790",
       "status": "AWAITING_FUTURE_OUTCOMES"
+    },
+    {
+      "snapshot_id": "2026-08-2026-08-17-2",
+      "as_of": "2026-08-17",
+      "snapshot_sha256": "d7824ef4509ec7bd19d510531cbba074627a0a0aad3235a30ba97e32d6297b28",
+      "status": "AWAITING_FUTURE_OUTCOMES"
     }
   ],
-  "content_sha256": "71e246d2b20acfd78bc41bc809bc50f15cacaa90ad3fcb47a41c177bea196cb5"
+  "content_sha256": "246bb792d2bd5bbba363d96d098af778be6f54cc3f7fbe4888fe3a7a6601f952"
 }
