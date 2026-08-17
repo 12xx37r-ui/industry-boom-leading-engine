@@ -132,7 +132,12 @@ class JsonHttpClient:
 
     def _perform(self, url: str, *, method: str, headers: dict[str, str], data: bytes | None = None) -> bytes:
         last_error = "unknown error"
-        for attempt in range(self.settings.max_attempts):
+        recorder = health()
+        remaining = recorder.cooldown_remaining(url)
+        if remaining > 0:
+            raise HttpError(f"provider cooldown active after rate limit ({remaining:.1f}s remaining)")
+        max_attempts = recorder.provider_max_attempts(url, self.settings.max_attempts)
+        for attempt in range(max_attempts):
             if attempt:
                 self._increment("retries")
                 health().record(provider_name(url), "retry")
@@ -144,6 +149,7 @@ class JsonHttpClient:
                     with urllib.request.urlopen(request, timeout=self.settings.timeout_seconds) as response:
                         raw = response.read()
                     health().record(provider, "success")
+                    recorder.clear_cooldown(url)
                     return raw
                 except urllib.error.HTTPError as exc:
                     body = exc.read(600).decode("utf-8", errors="replace")
@@ -164,9 +170,15 @@ class JsonHttpClient:
                     if isinstance(exc, TimeoutError) or isinstance(reason, TimeoutError) or "timed out" in last_error.lower():
                         self._increment("timeouts")
                         health().record(provider, "timeout")
-            if attempt + 1 >= self.settings.max_attempts or not retryable:
+            if attempt + 1 >= max_attempts or not retryable:
+                if retryable and "HTTP 429" in last_error:
+                    explicit = retry_delay(attempt, self.settings.base_backoff_seconds, retry_after)
+                    recorder.activate_cooldown(url, max(explicit, recorder.rate_limit_cooldown(url)))
                 break
-            time.sleep(retry_delay(attempt, self.settings.base_backoff_seconds, retry_after))
+            delay = retry_delay(attempt, self.settings.base_backoff_seconds, retry_after)
+            if "HTTP 429" in last_error:
+                recorder.activate_cooldown(url, delay)
+            time.sleep(delay)
         raise HttpError(last_error)
 
     def _request_bytes(self, url: str, *, method: str, headers: dict[str, str]) -> bytes:
@@ -200,12 +212,12 @@ class JsonHttpClient:
             url = f"{url}{'&' if '?' in url else '?'}{encoded}"
         key = request_fingerprint(method, url, payload)
         fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
-        memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
+        memory_raw = self._memory_get(key, url)
         if memory_raw is not None:
             return self._decode_json(memory_raw)
         cache_path = self._cache_path(url, method=method, payload=payload)
         with self._cache_lock_for(key):
-            memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
+            memory_raw = self._memory_get(key, url)
             if memory_raw is not None:
                 return self._decode_json(memory_raw)
             stale_ttl = max(fresh_ttl, self.settings.stale_if_error_seconds)
@@ -263,12 +275,12 @@ class JsonHttpClient:
             url = f"{url}{'&' if '?' in url else '?'}{encoded}"
         key = request_fingerprint(method, url, None)
         fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
-        memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
+        memory_raw = self._memory_get(key, url)
         if memory_raw is not None:
             return memory_raw.decode("utf-8-sig", errors="replace")
         cache_path = self._cache_path(url, method=method, payload=None)
         with self._cache_lock_for(key):
-            memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
+            memory_raw = self._memory_get(key, url)
             if memory_raw is not None:
                 return memory_raw.decode("utf-8-sig", errors="replace")
             stale_ttl = max(fresh_ttl, self.settings.stale_if_error_seconds)

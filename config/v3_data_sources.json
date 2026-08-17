@@ -37,9 +37,9 @@
       "base_url": "https://api.gdeltproject.org/api/v2/doc/doc",
       "source_family": "GLOBAL_NEWS_ATTENTION",
       "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
-      "min_request_interval_seconds": 6.5,
+      "min_request_interval_seconds": 7.5,
       "max_attempts": 2,
-      "retry_backoff_seconds": 8.0
+      "retry_backoff_seconds": 12.0
     },
     "wikimedia": {
       "enabled": false,

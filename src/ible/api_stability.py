@@ -17,10 +17,10 @@ from urllib.parse import urlsplit
 # ceilings; providers without a published QPS limit use low-burst operational
 # pacing only. This affects transport timing, never engine calculations.
 _PROVIDER_POLICIES: dict[str, dict[str, float | int]] = {
-    "api.gdeltproject.org": {"min_interval": 6.5, "max_concurrent": 1},
+    "api.gdeltproject.org": {"min_interval": 7.5, "max_concurrent": 1, "max_attempts": 2, "rate_limit_cooldown": 20.0},
     "data.sec.gov": {"min_interval": 0.15, "max_concurrent": 2},
     "www.sec.gov": {"min_interval": 0.15, "max_concurrent": 2},
-    "naverapihub.apigw.ntruss.com": {"min_interval": 0.25, "max_concurrent": 1},
+    "naverapihub.apigw.ntruss.com": {"min_interval": 0.25, "max_concurrent": 1, "max_attempts": 3, "rate_limit_cooldown": 30.0},
     "api.github.com": {"min_interval": 0.80, "max_concurrent": 2},
     "api.openalex.org": {"min_interval": 0.20, "max_concurrent": 2},
     "api.usaspending.gov": {"min_interval": 0.30, "max_concurrent": 2},
@@ -29,7 +29,7 @@ _PROVIDER_POLICIES: dict[str, dict[str, float | int]] = {
     "opendart.fss.or.kr": {"min_interval": 0.35, "max_concurrent": 1},
     "export.arxiv.org": {"min_interval": 3.5, "max_concurrent": 1},
     "search.patentsview.org": {"min_interval": 0.50, "max_concurrent": 1},
-    "patents.google.com": {"min_interval": 0.50, "max_concurrent": 1},
+    "patents.google.com": {"min_interval": 1.00, "max_concurrent": 1, "max_attempts": 1, "rate_limit_cooldown": 900.0},
     "data.bls.gov": {"min_interval": 0.35, "max_concurrent": 2},
     "www.census.gov": {"min_interval": 0.35, "max_concurrent": 2},
     "www2.census.gov": {"min_interval": 0.35, "max_concurrent": 2},
@@ -109,6 +109,7 @@ class ApiHealthRecorder:
         self._rate_locks: dict[str, threading.Lock] = {}
         self._semaphores: dict[str, threading.BoundedSemaphore] = {}
         self._last_started: dict[str, float] = {}
+        self._cooldown_until: dict[str, float] = {}
         self._providers: dict[str, dict[str, Any]] = {}
         self._path = Path(os.environ.get("API_HEALTH_PATH", "outputs/api_health.json"))
 
@@ -187,6 +188,38 @@ class ApiHealthRecorder:
             tmp.replace(self._path)
         except OSError:
             pass
+
+
+    def provider_max_attempts(self, url: str, configured_attempts: int) -> int:
+        host = (urlsplit(url).hostname or "unknown").lower()
+        raw = _PROVIDER_POLICIES.get(host) or {}
+        limit = int(raw.get("max_attempts", configured_attempts))
+        return max(1, min(int(configured_attempts), limit))
+
+    def rate_limit_cooldown(self, url: str) -> float:
+        host = (urlsplit(url).hostname or "unknown").lower()
+        raw = _PROVIDER_POLICIES.get(host) or {}
+        return max(0.0, float(raw.get("rate_limit_cooldown", 0.0)))
+
+    def cooldown_remaining(self, url: str) -> float:
+        provider = provider_name(url)
+        with self._lock:
+            return max(0.0, self._cooldown_until.get(provider, 0.0) - time.monotonic())
+
+    def activate_cooldown(self, url: str, seconds: float) -> None:
+        if seconds <= 0:
+            return
+        provider = provider_name(url)
+        with self._lock:
+            self._cooldown_until[provider] = max(
+                self._cooldown_until.get(provider, 0.0),
+                time.monotonic() + float(seconds),
+            )
+
+    def clear_cooldown(self, url: str) -> None:
+        provider = provider_name(url)
+        with self._lock:
+            self._cooldown_until.pop(provider, None)
 
     @contextmanager
     def slot(self, url: str, fallback_interval: float, fallback_concurrent: int = 2):

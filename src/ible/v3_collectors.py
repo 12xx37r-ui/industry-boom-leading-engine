@@ -253,7 +253,7 @@ class NaverSearchTrendCollector:
         }
         raw = self.client.request_json(
             self.base_url, method="POST", payload=payload, headers=self.headers,
-            cache_ttl_seconds=21600,
+            cache_ttl_seconds=0,
         )
         out: dict[str, list[float]] = {}
         for item in raw.get("results") or []:
