@@ -51,6 +51,7 @@ _GENERIC_PHRASE_TOKENS = {
     "efficient", "effective", "future", "current", "large", "small", "high", "low",
 }
 _TOKEN_ALIASES = {
+    "artificial": "ai", "intelligence": "ai",
     "chips": "semiconductor", "chip": "semiconductor", "semiconductors": "semiconductor",
     "drugs": "drug", "pharmaceutical": "drug", "pharmaceuticals": "drug",
     "robotics": "robot", "robots": "robot", "batteries": "battery",
@@ -112,6 +113,20 @@ def _phrase_quality(term: str) -> float:
 
 def _normalized_set(values: set[str] | list[str]) -> set[str]:
     return {_canonical_token(token) for token in values if token}
+
+
+def _is_broad_parent_phrase(term: str) -> bool:
+    """Broad parent-domain labels are not eligible as new industries."""
+    raw = [token for token in str(term or "").split() if token]
+    canonical = _normalized_set(raw)
+    if len(raw) >= 2 and len(canonical) == 1:
+        return True
+    broad = {
+        "artificial intelligence", "machine learning", "deep learning",
+        "computer vision", "natural language processing",
+        "semiconductor industry", "digital technology", "energy technology",
+    }
+    return str(term or "").strip().lower() in broad
 
 
 def _theme_similarity(candidate: str, vocabulary: set[str]) -> float:
@@ -226,13 +241,15 @@ def discover_candidates(
         if source_count < 3:
             confidence = min(confidence, 78.0)
 
-        existing_extension = bool(best_theme_id) and best_similarity >= existing_theme_similarity
+        broad_parent = _is_broad_parent_phrase(term)
+        existing_extension = bool(best_theme_id) and (best_similarity >= existing_theme_similarity or (broad_parent and best_similarity >= 0.45))
         candidates.append({
             "term": term,
             "display_name": " ".join(word.upper() if word in {"ai", "hbm", "llm", "gpu", "cpu", "eda", "ev"} else word.capitalize() for word in term.split()),
             "suggested_theme_id": best_theme_id,
             "semantic_similarity_proxy": round(best_similarity, 4),
             "phrase_quality_score": round(phrase_quality, 2),
+            "broad_parent_domain": broad_parent,
             "confidence": round(confidence, 4),
             "distinct_document_count": document_count,
             "source_family_count": source_count,
