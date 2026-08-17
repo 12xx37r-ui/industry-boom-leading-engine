@@ -1,19 +1,21 @@
 {
   "status": "SOURCE_HEALTH_RECORDED",
   "as_of": "2026-08-16",
-  "public_interest_observed": 49,
+  "public_interest_observed": 50,
   "collection_metrics": {
-    "network_requests": 342,
-    "cache_hits": 22,
+    "network_requests": 13,
+    "cache_hits": 265,
     "stale_cache_hits": 0,
-    "cache_writes": 342,
+    "cache_writes": 13,
     "enabled_sources": [
       "openalex",
       "usaspending",
       "gdelt",
-      "wikimedia"
+      "naver_search_trend"
     ],
-    "disabled_sources": []
+    "disabled_sources": [
+      "wikimedia"
+    ]
   },
   "sources": {
     "openalex": {
@@ -28,17 +30,23 @@
       "cache_fallback_count": 1,
       "unavailable_count": 0
     },
+    "naver_search_trend": {
+      "enabled": true,
+      "live_count": 50,
+      "cache_fallback_count": 0,
+      "unavailable_count": 0
+    },
     "gdelt": {
       "enabled": true,
-      "live_count": 14,
-      "cache_fallback_count": 6,
+      "live_count": 18,
+      "cache_fallback_count": 2,
       "unavailable_count": 30
     },
     "wikimedia": {
-      "enabled": true,
-      "live_count": 43,
-      "cache_fallback_count": 5,
-      "unavailable_count": 2
+      "enabled": false,
+      "live_count": 0,
+      "cache_fallback_count": 0,
+      "unavailable_count": 50
     }
   }
 }

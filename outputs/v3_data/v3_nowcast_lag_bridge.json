@@ -12,7 +12,7 @@
     {
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.0487,
+      "nowcast_score": 46.911,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -27,17 +27,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -45,7 +45,7 @@
     {
       "theme_id": "AI_DRUG_DISCOVERY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 55.5528,
+      "nowcast_score": 52.1902,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -60,13 +60,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -78,7 +78,7 @@
     {
       "theme_id": "AI_SEMICONDUCTORS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.4411,
+      "nowcast_score": 48.6068,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -93,17 +93,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -111,7 +111,7 @@
     {
       "theme_id": "AUTONOMOUS_DRIVING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.7973,
+      "nowcast_score": 41.9635,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -126,17 +126,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -144,7 +144,7 @@
     {
       "theme_id": "COPPER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.1059,
+      "nowcast_score": 47.6734,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -159,17 +159,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -177,7 +177,7 @@
     {
       "theme_id": "CRITICAL_MINERALS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.7526,
+      "nowcast_score": 49.6573,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -192,16 +192,16 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "CACHE_FALLBACK",
           "freshness": "CURRENT_PROXY",
           "lag_days": 1,
-          "score_used": true
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
           "score_used": true
         }
       },
@@ -210,7 +210,7 @@
     {
       "theme_id": "CYBERSECURITY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 55.9879,
+      "nowcast_score": 49.4638,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -225,17 +225,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "CACHE_FALLBACK",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -243,7 +243,7 @@
     {
       "theme_id": "DATA_CENTER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.9978,
+      "nowcast_score": 46.3025,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -258,13 +258,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
-          "status": "CACHE_FALLBACK",
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 3,
+          "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -276,7 +276,7 @@
     {
       "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.8261,
+      "nowcast_score": 47.6888,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -291,17 +291,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -309,7 +309,7 @@
     {
       "theme_id": "ENERGY_STORAGE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.2143,
+      "nowcast_score": 44.0929,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -324,17 +324,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -342,7 +342,7 @@
     {
       "theme_id": "GENE_CELL_THERAPY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 59.1787,
+      "nowcast_score": 53.6371,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -357,17 +357,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -375,7 +375,7 @@
     {
       "theme_id": "HUMANOID_ROBOTS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.1822,
+      "nowcast_score": 45.408,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -390,13 +390,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -408,7 +408,7 @@
     {
       "theme_id": "INDUSTRIAL_ROBOTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.3269,
+      "nowcast_score": 48.5414,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -423,13 +423,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -441,7 +441,7 @@
     {
       "theme_id": "NUCLEAR_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 54.3899,
+      "nowcast_score": 49.0382,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -456,16 +456,16 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
-          "status": "CACHE_FALLBACK",
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -474,7 +474,7 @@
     {
       "theme_id": "OBESITY_METABOLIC",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.9292,
+      "nowcast_score": 53.3436,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -489,17 +489,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -507,7 +507,7 @@
     {
       "theme_id": "POWER_GRID_ELECTRIFICATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.2643,
+      "nowcast_score": 45.1236,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -522,17 +522,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "CACHE_FALLBACK",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -540,7 +540,7 @@
     {
       "theme_id": "POWER_SEMICONDUCTORS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.0431,
+      "nowcast_score": 45.1315,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -555,17 +555,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -573,7 +573,7 @@
     {
       "theme_id": "RARE_EARTHS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.5159,
+      "nowcast_score": 44.8827,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -588,16 +588,16 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
-          "status": "CACHE_FALLBACK",
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -606,7 +606,7 @@
     {
       "theme_id": "SEMICONDUCTOR_EQUIPMENT",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.6836,
+      "nowcast_score": 49.2384,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -616,6 +616,12 @@
           "score_used": true
         },
         "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -626,12 +632,6 @@
           "freshness": "CURRENT_PROXY",
           "lag_days": 3,
           "score_used": true
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -639,7 +639,7 @@
     {
       "theme_id": "SMALL_MODULAR_REACTORS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 41.9725,
+      "nowcast_score": 38.9799,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -654,13 +654,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -672,7 +672,7 @@
     {
       "theme_id": "SPACE_ECONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.7025,
+      "nowcast_score": 47.9173,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -687,17 +687,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -705,7 +705,7 @@
     {
       "theme_id": "ADDITIVE_MANUFACTURING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 43.6603,
+      "nowcast_score": 39.0111,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -720,17 +720,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -738,7 +738,7 @@
     {
       "theme_id": "ADVANCED_DIAGNOSTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 40.6679,
+      "nowcast_score": 38.0192,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -753,46 +753,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
-          "status": "SOURCE_UNAVAILABLE",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
-        }
-      },
-      "official_statistics_replaced": false
-    },
-    {
-      "theme_id": "ADVANCED_MATERIALS",
-      "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.7342,
-      "available_proxy_source_count": 3,
-      "source_status": {
-        "openalex": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
-        },
-        "usaspending": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
         "gdelt": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
-        },
-        "wikimedia": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -802,9 +769,9 @@
       "official_statistics_replaced": false
     },
     {
-      "theme_id": "BATTERY_RECYCLING",
+      "theme_id": "ADVANCED_MATERIALS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.5627,
+      "nowcast_score": 47.0507,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -819,13 +786,46 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        }
+      },
+      "official_statistics_replaced": false
+    },
+    {
+      "theme_id": "BATTERY_RECYCLING",
+      "status": "PROXY_NOWCAST_ACTIVE",
+      "nowcast_score": 48.4984,
+      "available_proxy_source_count": 4,
+      "source_status": {
+        "openalex": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "usaspending": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -837,7 +837,7 @@
     {
       "theme_id": "CARBON_CAPTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 44.2436,
+      "nowcast_score": 40.8852,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -852,13 +852,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -870,7 +870,7 @@
     {
       "theme_id": "CLOUD_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.4456,
+      "nowcast_score": 46.5207,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -885,17 +885,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "CACHE_FALLBACK",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -903,7 +903,7 @@
     {
       "theme_id": "COMMERCIAL_DRONES",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 55.2399,
+      "nowcast_score": 51.2522,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -918,13 +918,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -936,7 +936,7 @@
     {
       "theme_id": "DIGITAL_IDENTITY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.8701,
+      "nowcast_score": 49.6791,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -951,17 +951,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -969,7 +969,7 @@
     {
       "theme_id": "EDGE_AI",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.7718,
+      "nowcast_score": 47.9837,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -984,13 +984,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
-          "status": "CACHE_FALLBACK",
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1002,7 +1002,7 @@
     {
       "theme_id": "HYDROGEN_ECONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.7558,
+      "nowcast_score": 48.4496,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1017,17 +1017,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1035,7 +1035,7 @@
     {
       "theme_id": "LNG_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.197,
+      "nowcast_score": 46.3722,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1050,17 +1050,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1068,7 +1068,7 @@
     {
       "theme_id": "LOGISTICS_AUTOMATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.057,
+      "nowcast_score": 48.8858,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1083,17 +1083,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1101,7 +1101,7 @@
     {
       "theme_id": "MARITIME_AUTONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.2916,
+      "nowcast_score": 47.261,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1116,17 +1116,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1134,7 +1134,7 @@
     {
       "theme_id": "OFFSHORE_WIND",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.0945,
+      "nowcast_score": 43.8936,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1149,13 +1149,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1167,7 +1167,7 @@
     {
       "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.2337,
+      "nowcast_score": 49.9925,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1182,17 +1182,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1200,7 +1200,7 @@
     {
       "theme_id": "PRECISION_ONCOLOGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.1379,
+      "nowcast_score": 48.5748,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1215,17 +1215,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1233,7 +1233,7 @@
     {
       "theme_id": "SMART_FACTORY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.2385,
+      "nowcast_score": 48.3091,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1248,17 +1248,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1266,7 +1266,7 @@
     {
       "theme_id": "SOLAR_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.609,
+      "nowcast_score": 46.1201,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1281,17 +1281,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1299,7 +1299,7 @@
     {
       "theme_id": "SURGICAL_ROBOTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 43.7469,
+      "nowcast_score": 43.1174,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1314,13 +1314,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1332,7 +1332,7 @@
     {
       "theme_id": "SYNTHETIC_BIOLOGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.9582,
+      "nowcast_score": 45.0956,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1347,13 +1347,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1365,7 +1365,7 @@
     {
       "theme_id": "WATER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.0465,
+      "nowcast_score": 49.5978,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1380,13 +1380,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
-          "status": "CACHE_FALLBACK",
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 3,
+          "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1398,7 +1398,7 @@
     {
       "theme_id": "AGRITECH_FOODTECH",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 58.5532,
+      "nowcast_score": 52.0246,
       "available_proxy_source_count": 2,
       "source_status": {
         "openalex": {
@@ -1413,17 +1413,17 @@
           "lag_days": null,
           "score_used": false
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1431,8 +1431,8 @@
     {
       "theme_id": "CONSTRUCTION_AUTOMATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 58.9127,
-      "available_proxy_source_count": 2,
+      "nowcast_score": 51.2348,
+      "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
           "status": "LIVE_COLLECTED",
@@ -1446,13 +1446,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
-          "status": "SOURCE_UNAVAILABLE",
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
-          "score_used": false
+          "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1464,7 +1464,7 @@
     {
       "theme_id": "FINTECH_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 56.572,
+      "nowcast_score": 52.218,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1479,17 +1479,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1497,7 +1497,7 @@
     {
       "theme_id": "GEOTHERMAL_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.8433,
+      "nowcast_score": 42.2566,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1512,13 +1512,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
+        "naver_search_trend": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1530,7 +1530,7 @@
     {
       "theme_id": "HEAT_PUMPS_EFFICIENCY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.8543,
+      "nowcast_score": 51.6563,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1545,17 +1545,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1563,7 +1563,7 @@
     {
       "theme_id": "LONGEVITY_TECH",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.0593,
+      "nowcast_score": 47.3945,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1578,17 +1578,17 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
@@ -1596,7 +1596,7 @@
     {
       "theme_id": "QUANTUM_COMPUTING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 55.6286,
+      "nowcast_score": 50.5634,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1611,13 +1611,13 @@
           "lag_days": 0,
           "score_used": true
         },
-        "gdelt": {
-          "status": "CACHE_FALLBACK",
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 3,
+          "lag_days": 0,
           "score_used": true
         },
-        "wikimedia": {
+        "gdelt": {
           "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
@@ -1629,7 +1629,7 @@
     {
       "theme_id": "RAIL_MODERNIZATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.7479,
+      "nowcast_score": 43.6706,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1644,21 +1644,21 @@
           "lag_days": 0,
           "score_used": true
         },
+        "naver_search_trend": {
+          "status": "LIVE_COLLECTED",
+          "freshness": "CURRENT_PROXY",
+          "lag_days": 0,
+          "score_used": true
+        },
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "freshness": "CURRENT_PROXY",
           "lag_days": 0,
           "score_used": false
-        },
-        "wikimedia": {
-          "status": "LIVE_COLLECTED",
-          "freshness": "CURRENT_PROXY",
-          "lag_days": 0,
-          "score_used": true
         }
       },
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "eff5fadaab5699effd66709d17d69faef66372742f1e52e3aeedf3a95d711a0c"
+  "content_sha256": "566752c9eef571df29baa38b6b31510dc1787b2ed68a5211e13262aea1255b1e"
 }
