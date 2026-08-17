@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T01:01:45.952823+00:00",
+  "generated_at": "2026-08-17T01:23:22.062058+00:00",
   "providers": {
     "arxiv": {
       "cache_hits": 3,
@@ -19,7 +19,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:01:44.269600+00:00",
+      "last_success_at": "2026-08-17T01:23:17.684930+00:00",
       "lkg_uses": 0,
       "network_calls": 5,
       "retries": 0,
@@ -32,7 +32,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:01:45.952593+00:00",
+      "last_success_at": "2026-08-17T01:23:22.061848+00:00",
       "lkg_uses": 0,
       "network_calls": 4,
       "retries": 0,
@@ -40,16 +40,15 @@
       "timeouts": 0
     },
     "gdelt": {
-      "cache_hits": 48,
+      "cache_hits": 49,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 3,
+      "http_429": 2,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:00:56.802093+00:00",
       "lkg_uses": 1,
-      "network_calls": 4,
-      "retries": 2,
-      "status": "LIVE",
+      "network_calls": 2,
+      "retries": 1,
+      "status": "LKG",
       "timeouts": 0
     },
     "github": {
@@ -68,24 +67,25 @@
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 9,
+      "http_429": 1,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_calls": 9,
-      "retries": 6,
+      "network_calls": 1,
+      "retries": 0,
       "status": "UNAVAILABLE",
       "timeouts": 0
     },
     "naver_api_hub": {
-      "cache_hits": 13,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
+      "last_success_at": "2026-08-17T01:23:15.571317+00:00",
       "lkg_uses": 0,
-      "network_calls": 0,
+      "network_calls": 13,
       "retries": 0,
-      "status": "CACHE",
+      "status": "LIVE",
       "timeouts": 0
     },
     "ncses.nsf.gov": {
@@ -94,7 +94,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:01:44.644043+00:00",
+      "last_success_at": "2026-08-17T01:23:18.678685+00:00",
       "lkg_uses": 0,
       "network_calls": 1,
       "retries": 0,
