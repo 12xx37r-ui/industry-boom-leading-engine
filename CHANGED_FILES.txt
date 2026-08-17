@@ -1,0 +1,8 @@
+Replace/add only these files:
+- .github/workflows/run_v50_final_validator.yml
+- src/ible/api_stability.py
+- src/ible/http.py
+- src/ible/v3_http.py
+- src/ible/v3_data_engine.py
+
+Do not upload any other files from the previous full package.

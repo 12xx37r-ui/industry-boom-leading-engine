@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import random
 import re
 import threading
 import time
@@ -10,6 +9,8 @@ from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
+
+from ible.api_stability import health, provider_name, request_fingerprint, retry_delay
 
 
 class HttpError(RuntimeError):
@@ -57,7 +58,7 @@ def safe_request_url(url: str, params: dict[str, Any] | None = None) -> str:
 
 
 class JsonHttpClient:
-    """Thread-safe HTTP client with a global rate limiter and disk cache."""
+    """Thread-safe HTTP client with dedupe, provider pacing, bounded retry and disk cache."""
 
     def __init__(
         self,
@@ -72,10 +73,12 @@ class JsonHttpClient:
         self.timeout = timeout
         self.min_interval = min_interval
         self.retries = retries
-        self.last_request_at = 0.0
         self._local = threading.local()
-        self._rate_lock = threading.Lock()
         self._cache_lock = threading.Lock()
+        self._key_lock_guard = threading.Lock()
+        self._key_locks: dict[str, threading.Lock] = {}
+        self._memory_lock = threading.Lock()
+        self._memory_cache: dict[str, bytes] = {}
         self.cache_dir = Path(cache_dir) if cache_dir else None
         if self.cache_dir:
             self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -93,13 +96,9 @@ class JsonHttpClient:
             self._local.session = session
         return session
 
-    def _wait_for_slot(self, min_interval: float | None = None) -> None:
-        interval = self.min_interval if min_interval is None else min_interval
-        with self._rate_lock:
-            wait = interval - (time.monotonic() - self.last_request_at)
-            if wait > 0:
-                time.sleep(wait)
-            self.last_request_at = time.monotonic()
+    def _key_lock(self, key: str) -> threading.Lock:
+        with self._key_lock_guard:
+            return self._key_locks.setdefault(key, threading.Lock())
 
     def _cache_path(self, cache_key: str | None, suffix: str) -> Path | None:
         if not self.cache_dir or not cache_key:
@@ -126,6 +125,17 @@ class JsonHttpClient:
                 tmp.write_text(value, encoding="utf-8")
             tmp.replace(path)
 
+    def _memory_get(self, key: str, url: str) -> bytes | None:
+        with self._memory_lock:
+            value = self._memory_cache.get(key)
+        if value is not None:
+            health().record(provider_name(url), "dedupe")
+        return value
+
+    def _memory_put(self, key: str, value: bytes) -> None:
+        with self._memory_lock:
+            self._memory_cache[key] = value
+
     def _request(
         self,
         method: str,
@@ -139,119 +149,150 @@ class JsonHttpClient:
     ) -> requests.Response:
         safe_url = safe_request_url(url, params)
         last_detail = "unknown error"
+        effective_interval = self.min_interval if min_interval is None else min_interval
         for attempt in range(self.retries + 1):
-            self._wait_for_slot(min_interval)
-            try:
-                response = self.session.request(
-                    method,
-                    url,
-                    params=params,
-                    json=json_body,
-                    headers=headers,
-                    timeout=timeout or self.timeout,
-                )
-                if response.status_code in {429, 500, 502, 503, 504}:
-                    err = requests.HTTPError(f"retryable status={response.status_code}")
-                    err.response = response
-                    raise err
-                response.raise_for_status()
-                return response
-            except requests.RequestException as exc:
-                status = getattr(getattr(exc, "response", None), "status_code", None)
-                last_detail = f"{exc.__class__.__name__}" + (f" status={status}" if status else "")
-                if attempt >= self.retries:
-                    break
-                time.sleep(0.75 * (2**attempt) + random.random() * 0.25)
+            if attempt:
+                health().record(provider_name(url), "retry")
+            retry_after = None
+            with health().slot(url, effective_interval, 2) as provider:
+                health().record(provider, "network")
+                try:
+                    response = self.session.request(
+                        method, url, params=params, json=json_body, headers=headers,
+                        timeout=timeout or self.timeout,
+                    )
+                    if response.status_code == 429:
+                        health().record(provider, "429")
+                        retry_after = response.headers.get("Retry-After")
+                        raise requests.HTTPError("retryable status=429", response=response)
+                    if 500 <= response.status_code <= 599:
+                        health().record(provider, "5xx")
+                        raise requests.HTTPError(f"retryable status={response.status_code}", response=response)
+                    response.raise_for_status()
+                    health().record(provider, "success")
+                    return response
+                except requests.Timeout as exc:
+                    health().record(provider, "timeout")
+                    last_detail = exc.__class__.__name__
+                except requests.RequestException as exc:
+                    status = getattr(getattr(exc, "response", None), "status_code", None)
+                    last_detail = f"{exc.__class__.__name__}" + (f" status={status}" if status else "")
+                    if status not in {408, 425, 429, 500, 502, 503, 504, None}:
+                        break
+            if attempt >= self.retries:
+                break
+            time.sleep(retry_delay(attempt, 0.75, retry_after))
         raise HttpError(f"{method} failed after {self.retries + 1} attempts: {safe_url}: {last_detail}")
 
-    def get_json(
-        self,
-        url: str,
-        *,
-        params: dict[str, Any] | None = None,
-        cache_key: str | None = None,
-        cache_ttl_seconds: int | None = None,
-        min_interval: float | None = None,
-    ) -> dict[str, Any]:
-        cache_path = self._cache_path(cache_key, ".json")
-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
-        if isinstance(cached, str):
-            return json.loads(cached)
-        response = self._request("GET", url, params=params, min_interval=min_interval)
-        try:
-            payload = response.json()
-        except ValueError as exc:
-            raise HttpError("Expected JSON response") from exc
-        if not isinstance(payload, dict):
-            raise HttpError("Expected JSON object")
-        self._write_cache(cache_path, json.dumps(payload, ensure_ascii=False))
-        return payload
+    def _canonical_url(self, url: str, params: dict[str, Any] | None) -> str:
+        if not params:
+            return url
+        return url + ("&" if "?" in url else "?") + urlencode(sorted(params.items()), doseq=True)
 
-    def post_json(
-        self,
-        url: str,
-        *,
-        json_body: dict[str, Any],
-        headers: dict[str, str] | None = None,
-        cache_key: str | None = None,
-        cache_ttl_seconds: int | None = None,
-        min_interval: float | None = None,
-    ) -> dict[str, Any]:
-        cache_path = self._cache_path(cache_key, ".json")
-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
-        if isinstance(cached, str):
-            return json.loads(cached)
-        response = self._request(
-            "POST", url, json_body=json_body, headers=headers, min_interval=min_interval
-        )
-        try:
-            payload = response.json()
-        except ValueError as exc:
-            raise HttpError("Expected JSON response") from exc
-        if not isinstance(payload, dict):
-            raise HttpError("Expected JSON object")
-        self._write_cache(cache_path, json.dumps(payload, ensure_ascii=False))
-        return payload
+    def get_json(self, url: str, *, params: dict[str, Any] | None = None, cache_key: str | None = None,
+                 cache_ttl_seconds: int | None = None, min_interval: float | None = None) -> dict[str, Any]:
+        canonical = self._canonical_url(url, params)
+        key = request_fingerprint("GET", canonical, None)
+        memory = self._memory_get(key, url)
+        if memory is not None:
+            return json.loads(memory.decode("utf-8"))
+        with self._key_lock(key):
+            memory = self._memory_get(key, url)
+            if memory is not None:
+                return json.loads(memory.decode("utf-8"))
+            cache_path = self._cache_path(cache_key, ".json")
+            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
+            if isinstance(cached, str):
+                health().record(provider_name(url), "cache")
+                self._memory_put(key, cached.encode("utf-8"))
+                return json.loads(cached)
+            response = self._request("GET", url, params=params, min_interval=min_interval)
+            try:
+                payload = response.json()
+            except ValueError as exc:
+                raise HttpError("Expected JSON response") from exc
+            if not isinstance(payload, dict):
+                raise HttpError("Expected JSON object")
+            raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+            self._write_cache(cache_path, raw.decode("utf-8"))
+            self._memory_put(key, raw)
+            return payload
 
-    def get_text(
-        self,
-        url: str,
-        *,
-        params: dict[str, Any] | None = None,
-        cache_key: str | None = None,
-        cache_ttl_seconds: int | None = None,
-        min_interval: float | None = None,
-        encoding: str | None = None,
-    ) -> str:
-        cache_path = self._cache_path(cache_key, ".txt")
-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
-        if isinstance(cached, str):
-            return cached
-        response = self._request("GET", url, params=params, min_interval=min_interval)
-        if encoding:
-            response.encoding = encoding
-        text = response.text
-        self._write_cache(cache_path, text)
-        return text
+    def post_json(self, url: str, *, json_body: dict[str, Any], headers: dict[str, str] | None = None,
+                  cache_key: str | None = None, cache_ttl_seconds: int | None = None,
+                  min_interval: float | None = None) -> dict[str, Any]:
+        key = request_fingerprint("POST", url, json_body)
+        memory = self._memory_get(key, url)
+        if memory is not None:
+            return json.loads(memory.decode("utf-8"))
+        with self._key_lock(key):
+            memory = self._memory_get(key, url)
+            if memory is not None:
+                return json.loads(memory.decode("utf-8"))
+            cache_path = self._cache_path(cache_key, ".json")
+            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
+            if isinstance(cached, str):
+                health().record(provider_name(url), "cache")
+                self._memory_put(key, cached.encode("utf-8"))
+                return json.loads(cached)
+            response = self._request("POST", url, json_body=json_body, headers=headers, min_interval=min_interval)
+            try:
+                payload = response.json()
+            except ValueError as exc:
+                raise HttpError("Expected JSON response") from exc
+            if not isinstance(payload, dict):
+                raise HttpError("Expected JSON object")
+            raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+            self._write_cache(cache_path, raw.decode("utf-8"))
+            self._memory_put(key, raw)
+            return payload
 
-    def get_bytes(
-        self,
-        url: str,
-        *,
-        params: dict[str, Any] | None = None,
-        headers: dict[str, str] | None = None,
-        cache_key: str | None = None,
-        cache_ttl_seconds: int | None = None,
-        min_interval: float | None = None,
-        timeout: int | None = None,
-    ) -> bytes:
-        cache_path = self._cache_path(cache_key, ".bin")
-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=True)
-        if isinstance(cached, bytes):
-            return cached
-        response = self._request(
-            "GET", url, params=params, headers=headers, min_interval=min_interval, timeout=timeout
-        )
-        data = response.content
-        self._write_cache(cache_path, data)
-        return data
+    def get_text(self, url: str, *, params: dict[str, Any] | None = None, cache_key: str | None = None,
+                 cache_ttl_seconds: int | None = None, min_interval: float | None = None,
+                 encoding: str | None = None) -> str:
+        canonical = self._canonical_url(url, params)
+        key = request_fingerprint("GET", canonical, None)
+        memory = self._memory_get(key, url)
+        if memory is not None:
+            return memory.decode(encoding or "utf-8", errors="replace")
+        with self._key_lock(key):
+            memory = self._memory_get(key, url)
+            if memory is not None:
+                return memory.decode(encoding or "utf-8", errors="replace")
+            cache_path = self._cache_path(cache_key, ".txt")
+            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
+            if isinstance(cached, str):
+                health().record(provider_name(url), "cache")
+                self._memory_put(key, cached.encode("utf-8"))
+                return cached
+            response = self._request("GET", url, params=params, min_interval=min_interval)
+            if encoding:
+                response.encoding = encoding
+            text = response.text
+            self._write_cache(cache_path, text)
+            self._memory_put(key, text.encode(response.encoding or "utf-8", errors="replace"))
+            return text
+
+    def get_bytes(self, url: str, *, params: dict[str, Any] | None = None, headers: dict[str, str] | None = None,
+                  cache_key: str | None = None, cache_ttl_seconds: int | None = None,
+                  min_interval: float | None = None, timeout: int | None = None) -> bytes:
+        canonical = self._canonical_url(url, params)
+        key = request_fingerprint("GET", canonical, None)
+        memory = self._memory_get(key, url)
+        if memory is not None:
+            return memory
+        with self._key_lock(key):
+            memory = self._memory_get(key, url)
+            if memory is not None:
+                return memory
+            cache_path = self._cache_path(cache_key, ".bin")
+            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=True)
+            if isinstance(cached, bytes):
+                health().record(provider_name(url), "cache")
+                self._memory_put(key, cached)
+                return cached
+            response = self._request("GET", url, params=params, headers=headers, min_interval=min_interval, timeout=timeout)
+            data = response.content
+            self._write_cache(cache_path, data)
+            self._memory_put(key, data)
+            return data

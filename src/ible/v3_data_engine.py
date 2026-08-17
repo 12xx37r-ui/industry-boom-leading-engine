@@ -8,6 +8,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from ible.integrity import canonical_sha256, load_json, write_json
+from ible.api_stability import health
 from ible.model_lock import load_and_verify_model_lock
 from ible.v3_collectors import ArxivCollector, OpenAlexCollector, UsaSpendingCollector, GdeltCollector, WikimediaCollector, NaverSearchTrendCollector, comparison_periods, three_attention_periods
 from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
@@ -173,6 +174,7 @@ def _collect_one(row, openalex, usaspending, gdelt, wikimedia, recent_period, pr
             )
             if cached_usable:
                 sources[name]={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500],"cache_age_days":_cache_age_days(cached,as_of)}
+                health().record({"gdelt":"gdelt","openalex":"openalex","wikimedia":"wikimedia"}.get(name,name), "lkg")
             else:
                 sources[name]=_unavailable_source(query,captured_at,as_of,str(exc)[:500])
                 sources[name]['three_month_change_percent']=None
@@ -189,6 +191,7 @@ def _collect_one(row, openalex, usaspending, gdelt, wikimedia, recent_period, pr
         cached_usable = bool(cached) and cached.get('source_signal_score') is not None
         if cached_usable:
             sources['usaspending']={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500],"cache_age_days":_cache_age_days(cached,as_of)}
+            health().record("usaspending", "lkg")
         else:
             sources['usaspending'] = _unavailable_source(list(row.get('usaspending_keywords') or []),captured_at,as_of,str(exc)[:500])
             sources['usaspending'].update({'query_mode':'SOURCE_UNAVAILABLE','proxy_naics_codes':list(row.get('usaspending_naics') or [])})
@@ -241,16 +244,16 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         return factory(source['base_url']) if enabled_sources.get(name) else None
     openalex=collector('openalex',lambda url:OpenAlexCollector(client,url))
     usaspending=collector('usaspending',lambda url:UsaSpendingCollector(client,url))
-    # GDELT gets a dedicated single-attempt HTTP client. Retries are serialized
-    # inside GdeltCollector so 429 retries cannot interleave across worker threads.
+    # GDELT gets a dedicated transport client. Retry-After / bounded backoff,
+    # pacing and provider concurrency are enforced by the shared HTTP stability layer.
     gdelt = None
     if enabled_sources.get('gdelt'):
         gd_cfg = cfg['sources']['gdelt']
         gdelt_client = JsonHttpClient(
             HttpSettings(
-                timeout_seconds=int(net['timeout_seconds']), max_attempts=1,
-                base_backoff_seconds=float(net['base_backoff_seconds']),
-                user_agent=str(net['user_agent']), min_interval_seconds=0.0,
+                timeout_seconds=int(net['timeout_seconds']), max_attempts=int(gd_cfg.get('max_attempts',2)),
+                base_backoff_seconds=float(gd_cfg.get('retry_backoff_seconds',8.0)),
+                user_agent=str(net['user_agent']), min_interval_seconds=float(gd_cfg.get('min_request_interval_seconds',6.5)),
                 cache_ttl_seconds=int(cache_cfg.get('ttl_seconds',21600)),
                 stale_if_error_seconds=int(cache_cfg.get('stale_if_error_seconds',604800)),
             ),
@@ -259,7 +262,7 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
         gdelt = GdeltCollector(
             gdelt_client, gd_cfg['base_url'],
             min_interval_seconds=float(gd_cfg.get('min_request_interval_seconds',6.5)),
-            max_attempts=int(gd_cfg.get('max_attempts',2)),
+            max_attempts=1,
             retry_backoff_seconds=float(gd_cfg.get('retry_backoff_seconds',8.0)),
         )
     wikimedia=collector('wikimedia',lambda url:WikimediaCollector(client,url))
@@ -368,6 +371,7 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
                 cached = _cached_source(cache,tid,'naver_search_trend',as_of)
                 if cached and cached.get('recent_30d_level') is not None:
                     row['sources']['naver_search_trend'] = {**cached,'status':'CACHE_FALLBACK','fallback_reason':str(exc)[:500],'cache_age_days':_cache_age_days(cached,as_of)}
+                    health().record("naver_api_hub", "lkg")
                 else:
                     item=naver_by_theme.get(tid) or {}
                     row['sources']['naver_search_trend'] = _unavailable_source(list(item.get('keywords') or []),captured_at,as_of,str(exc)[:500])
@@ -392,6 +396,7 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
             row['public_interest_confidence']=1.0 if selected.get('status')=='LIVE_COLLECTED' else 0.85
         elif gdelt_src.get('attention_score') is not None:
             selected = gdelt_src
+            health().record("gdelt", "fallback")
             row['public_interest_primary_source']='GDELT_FALLBACK'
             row['public_interest_score']=round(float(selected['attention_score']),4)
             row['public_interest_momentum_3m']=round(float(selected.get('three_month_change_percent') or 0),4)

@@ -1,0 +1,1007 @@
+--- a/.github/workflows/run_v50_final_validator.yml
++++ b/.github/workflows/run_v50_final_validator.yml
+@@ -40,6 +40,7 @@
+       NAVER_API_HUB_CLIENT_ID: ${{ secrets.NAVER_API_HUB_CLIENT_ID }}
+       NAVER_API_HUB_CLIENT_SECRET: ${{ secrets.NAVER_API_HUB_CLIENT_SECRET }}
+       SEC_API_TIMEOUT: "20"
++      API_HEALTH_PATH: outputs/api_health.json
+ 
+     steps:
+       - name: Checkout
+@@ -99,6 +100,7 @@
+         run: |
+           set -uo pipefail
+           rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine
++          rm -f outputs/api_health.json
+           run_stage() {
+             local seconds="$1"; shift
+             local label="$1"; shift
+@@ -334,6 +336,7 @@
+         with:
+           name: industry-boom-v7.3-embedded-capital-radar-engine-result
+           path: |
++            outputs/api_health.json
+             outputs/v3_data
+             outputs/v50_final_validator
+             outputs/v51_historical_audit
+--- a/src/ible/api_stability.py
++++ b/src/ible/api_stability.py
+@@ -0,0 +1,221 @@
++from __future__ import annotations
++
++import email.utils
++import hashlib
++import json
++import os
++import random
++import threading
++import time
++from contextlib import contextmanager
++from datetime import datetime, timezone
++from pathlib import Path
++from typing import Any
++from urllib.parse import urlsplit
++
++# Conservative provider pacing. Explicit published limits are kept below their
++# ceilings; providers without a published QPS limit use low-burst operational
++# pacing only. This affects transport timing, never engine calculations.
++_PROVIDER_POLICIES: dict[str, dict[str, float | int]] = {
++    "api.gdeltproject.org": {"min_interval": 6.5, "max_concurrent": 1},
++    "data.sec.gov": {"min_interval": 0.15, "max_concurrent": 2},
++    "www.sec.gov": {"min_interval": 0.15, "max_concurrent": 2},
++    "naverapihub.apigw.ntruss.com": {"min_interval": 0.25, "max_concurrent": 1},
++    "api.github.com": {"min_interval": 0.80, "max_concurrent": 2},
++    "api.openalex.org": {"min_interval": 0.20, "max_concurrent": 2},
++    "api.usaspending.gov": {"min_interval": 0.30, "max_concurrent": 2},
++    "api.stlouisfed.org": {"min_interval": 0.30, "max_concurrent": 2},
++    "apps.bea.gov": {"min_interval": 0.40, "max_concurrent": 1},
++    "opendart.fss.or.kr": {"min_interval": 0.35, "max_concurrent": 1},
++    "export.arxiv.org": {"min_interval": 3.5, "max_concurrent": 1},
++    "search.patentsview.org": {"min_interval": 0.50, "max_concurrent": 1},
++    "patents.google.com": {"min_interval": 0.50, "max_concurrent": 1},
++    "data.bls.gov": {"min_interval": 0.35, "max_concurrent": 2},
++    "www.census.gov": {"min_interval": 0.35, "max_concurrent": 2},
++    "www2.census.gov": {"min_interval": 0.35, "max_concurrent": 2},
++    "www.googleapis.com": {"min_interval": 0.25, "max_concurrent": 2},
++    "financialmodelingprep.com": {"min_interval": 0.35, "max_concurrent": 1},
++    "plus.kipris.or.kr": {"min_interval": 0.50, "max_concurrent": 1},
++}
++_DEFAULT_POLICY = {"min_interval": 0.25, "max_concurrent": 2}
++
++
++def provider_name(url: str) -> str:
++    host = (urlsplit(url).hostname or "unknown").lower()
++    aliases = {
++        "api.gdeltproject.org": "gdelt",
++        "data.sec.gov": "sec",
++        "www.sec.gov": "sec",
++        "naverapihub.apigw.ntruss.com": "naver_api_hub",
++        "api.github.com": "github",
++        "api.openalex.org": "openalex",
++        "api.usaspending.gov": "usaspending",
++        "api.stlouisfed.org": "fred",
++        "apps.bea.gov": "bea",
++        "opendart.fss.or.kr": "opendart",
++        "export.arxiv.org": "arxiv",
++        "search.patentsview.org": "patentsview",
++        "patents.google.com": "google_patents",
++        "data.bls.gov": "bls",
++        "www.census.gov": "census",
++        "www2.census.gov": "census",
++        "www.googleapis.com": "googleapis",
++        "financialmodelingprep.com": "fmp",
++        "plus.kipris.or.kr": "kipris",
++    }
++    return aliases.get(host, host)
++
++
++def policy_for_url(url: str, fallback_interval: float = 0.25, fallback_concurrent: int = 2) -> tuple[float, int]:
++    host = (urlsplit(url).hostname or "unknown").lower()
++    raw = _PROVIDER_POLICIES.get(host)
++    if raw is None:
++        return max(float(fallback_interval), float(_DEFAULT_POLICY["min_interval"])), max(1, int(fallback_concurrent))
++    return max(float(fallback_interval), float(raw["min_interval"])), max(1, min(int(fallback_concurrent), int(raw["max_concurrent"])))
++
++
++def request_fingerprint(method: str, url: str, payload: Any = None) -> str:
++    canonical = json.dumps(
++        {"method": method.upper(), "url": url, "payload": payload},
++        ensure_ascii=False,
++        sort_keys=True,
++        separators=(",", ":"),
++        default=str,
++    ).encode("utf-8")
++    return hashlib.sha256(canonical).hexdigest()
++
++
++def parse_retry_after(value: str | None) -> float | None:
++    if not value:
++        return None
++    value = value.strip()
++    try:
++        seconds = float(value)
++        return max(0.0, seconds)
++    except ValueError:
++        pass
++    try:
++        dt = email.utils.parsedate_to_datetime(value)
++        if dt.tzinfo is None:
++            dt = dt.replace(tzinfo=timezone.utc)
++        return max(0.0, (dt - datetime.now(timezone.utc)).total_seconds())
++    except Exception:
++        return None
++
++
++class ApiHealthRecorder:
++    def __init__(self) -> None:
++        self._lock = threading.RLock()
++        self._rate_locks: dict[str, threading.Lock] = {}
++        self._semaphores: dict[str, threading.BoundedSemaphore] = {}
++        self._last_started: dict[str, float] = {}
++        self._providers: dict[str, dict[str, Any]] = {}
++        self._path = Path(os.environ.get("API_HEALTH_PATH", "outputs/api_health.json"))
++
++    def _entry(self, provider: str) -> dict[str, Any]:
++        return self._providers.setdefault(provider, {
++            "status": "UNAVAILABLE",
++            "network_calls": 0,
++            "deduplicated_calls": 0,
++            "cache_hits": 0,
++            "retries": 0,
++            "http_429": 0,
++            "http_5xx": 0,
++            "timeouts": 0,
++            "lkg_uses": 0,
++            "fallback_uses": 0,
++            "last_success_at": None,
++        })
++
++    def record(self, provider: str, event: str, amount: int = 1) -> None:
++        with self._lock:
++            row = self._entry(provider)
++            mapping = {
++                "network": "network_calls", "dedupe": "deduplicated_calls", "cache": "cache_hits",
++                "retry": "retries", "429": "http_429", "5xx": "http_5xx", "timeout": "timeouts",
++                "lkg": "lkg_uses", "fallback": "fallback_uses",
++            }
++            key = mapping.get(event)
++            if key:
++                row[key] += amount
++            if event == "success":
++                row["last_success_at"] = datetime.now(timezone.utc).isoformat()
++                row["status"] = "LIVE"
++            elif event == "lkg" and row["status"] != "LIVE":
++                row["status"] = "LKG"
++            elif event == "cache" and row["status"] not in {"LIVE", "LKG"}:
++                row["status"] = "CACHE"
++            elif event == "fallback" and row["status"] not in {"LIVE", "LKG"}:
++                row["status"] = "FALLBACK"
++            self.flush()
++
++    def flush(self) -> None:
++        try:
++            self._path.parent.mkdir(parents=True, exist_ok=True)
++            existing: dict[str, Any] = {}
++            if self._path.is_file():
++                try:
++                    existing = json.loads(self._path.read_text(encoding="utf-8"))
++                except Exception:
++                    existing = {}
++            merged = dict(existing.get("providers") or {})
++            for provider, current in self._providers.items():
++                previous = merged.get(provider) or {}
++                combined = dict(previous)
++                for key in ("network_calls", "deduplicated_calls", "cache_hits", "retries", "http_429", "http_5xx", "timeouts", "lkg_uses", "fallback_uses"):
++                    # Existing values belong to earlier processes in the same workflow.
++                    base = int(previous.get(key) or 0)
++                    prior_local = int(current.get("_persisted_" + key) or 0)
++                    delta = int(current.get(key) or 0) - prior_local
++                    combined[key] = base + max(0, delta)
++                    current["_persisted_" + key] = int(current.get(key) or 0)
++                if current.get("last_success_at"):
++                    combined["last_success_at"] = current["last_success_at"]
++                statuses = [str(previous.get("status") or "UNAVAILABLE"), str(current.get("status") or "UNAVAILABLE")]
++                for candidate in ("LIVE", "LKG", "FALLBACK", "CACHE", "UNAVAILABLE"):
++                    if candidate in statuses:
++                        combined["status"] = candidate
++                        break
++                merged[provider] = combined
++            payload = {
++                "schema_version": 1,
++                "generated_at": datetime.now(timezone.utc).isoformat(),
++                "providers": merged,
++            }
++            tmp = self._path.with_suffix(self._path.suffix + ".tmp")
++            tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
++            tmp.replace(self._path)
++        except OSError:
++            pass
++
++    @contextmanager
++    def slot(self, url: str, fallback_interval: float, fallback_concurrent: int = 2):
++        provider = provider_name(url)
++        interval, concurrent = policy_for_url(url, fallback_interval, fallback_concurrent)
++        with self._lock:
++            rate_lock = self._rate_locks.setdefault(provider, threading.Lock())
++            semaphore = self._semaphores.setdefault(provider, threading.BoundedSemaphore(concurrent))
++        semaphore.acquire()
++        try:
++            with rate_lock:
++                wait = interval - (time.monotonic() - self._last_started.get(provider, 0.0))
++                if wait > 0:
++                    time.sleep(wait)
++                self._last_started[provider] = time.monotonic()
++            yield provider
++        finally:
++            semaphore.release()
++
++
++_HEALTH = ApiHealthRecorder()
++
++
++def health() -> ApiHealthRecorder:
++    return _HEALTH
++
++
++def retry_delay(attempt_index: int, base_seconds: float, retry_after: str | None = None) -> float:
++    explicit = parse_retry_after(retry_after)
++    if explicit is not None:
++        return explicit + random.uniform(0.05, 0.35)
++    return base_seconds * (2 ** max(0, attempt_index)) + random.uniform(0.15, 0.85)
+--- a/src/ible/http.py
++++ b/src/ible/http.py
+@@ -1,7 +1,6 @@
+ from __future__ import annotations
+ 
+ import json
+-import random
+ import re
+ import threading
+ import time
+@@ -10,6 +9,8 @@
+ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+ 
+ import requests
++
++from ible.api_stability import health, provider_name, request_fingerprint, retry_delay
+ 
+ 
+ class HttpError(RuntimeError):
+@@ -57,7 +58,7 @@
+ 
+ 
+ class JsonHttpClient:
+-    """Thread-safe HTTP client with a global rate limiter and disk cache."""
++    """Thread-safe HTTP client with dedupe, provider pacing, bounded retry and disk cache."""
+ 
+     def __init__(
+         self,
+@@ -72,10 +73,12 @@
+         self.timeout = timeout
+         self.min_interval = min_interval
+         self.retries = retries
+-        self.last_request_at = 0.0
+         self._local = threading.local()
+-        self._rate_lock = threading.Lock()
+         self._cache_lock = threading.Lock()
++        self._key_lock_guard = threading.Lock()
++        self._key_locks: dict[str, threading.Lock] = {}
++        self._memory_lock = threading.Lock()
++        self._memory_cache: dict[str, bytes] = {}
+         self.cache_dir = Path(cache_dir) if cache_dir else None
+         if self.cache_dir:
+             self.cache_dir.mkdir(parents=True, exist_ok=True)
+@@ -93,13 +96,9 @@
+             self._local.session = session
+         return session
+ 
+-    def _wait_for_slot(self, min_interval: float | None = None) -> None:
+-        interval = self.min_interval if min_interval is None else min_interval
+-        with self._rate_lock:
+-            wait = interval - (time.monotonic() - self.last_request_at)
+-            if wait > 0:
+-                time.sleep(wait)
+-            self.last_request_at = time.monotonic()
++    def _key_lock(self, key: str) -> threading.Lock:
++        with self._key_lock_guard:
++            return self._key_locks.setdefault(key, threading.Lock())
+ 
+     def _cache_path(self, cache_key: str | None, suffix: str) -> Path | None:
+         if not self.cache_dir or not cache_key:
+@@ -125,6 +124,17 @@
+             else:
+                 tmp.write_text(value, encoding="utf-8")
+             tmp.replace(path)
++
++    def _memory_get(self, key: str, url: str) -> bytes | None:
++        with self._memory_lock:
++            value = self._memory_cache.get(key)
++        if value is not None:
++            health().record(provider_name(url), "dedupe")
++        return value
++
++    def _memory_put(self, key: str, value: bytes) -> None:
++        with self._memory_lock:
++            self._memory_cache[key] = value
+ 
+     def _request(
+         self,
+@@ -139,119 +149,150 @@
+     ) -> requests.Response:
+         safe_url = safe_request_url(url, params)
+         last_detail = "unknown error"
++        effective_interval = self.min_interval if min_interval is None else min_interval
+         for attempt in range(self.retries + 1):
+-            self._wait_for_slot(min_interval)
++            if attempt:
++                health().record(provider_name(url), "retry")
++            retry_after = None
++            with health().slot(url, effective_interval, 2) as provider:
++                health().record(provider, "network")
++                try:
++                    response = self.session.request(
++                        method, url, params=params, json=json_body, headers=headers,
++                        timeout=timeout or self.timeout,
++                    )
++                    if response.status_code == 429:
++                        health().record(provider, "429")
++                        retry_after = response.headers.get("Retry-After")
++                        raise requests.HTTPError("retryable status=429", response=response)
++                    if 500 <= response.status_code <= 599:
++                        health().record(provider, "5xx")
++                        raise requests.HTTPError(f"retryable status={response.status_code}", response=response)
++                    response.raise_for_status()
++                    health().record(provider, "success")
++                    return response
++                except requests.Timeout as exc:
++                    health().record(provider, "timeout")
++                    last_detail = exc.__class__.__name__
++                except requests.RequestException as exc:
++                    status = getattr(getattr(exc, "response", None), "status_code", None)
++                    last_detail = f"{exc.__class__.__name__}" + (f" status={status}" if status else "")
++                    if status not in {408, 425, 429, 500, 502, 503, 504, None}:
++                        break
++            if attempt >= self.retries:
++                break
++            time.sleep(retry_delay(attempt, 0.75, retry_after))
++        raise HttpError(f"{method} failed after {self.retries + 1} attempts: {safe_url}: {last_detail}")
++
++    def _canonical_url(self, url: str, params: dict[str, Any] | None) -> str:
++        if not params:
++            return url
++        return url + ("&" if "?" in url else "?") + urlencode(sorted(params.items()), doseq=True)
++
++    def get_json(self, url: str, *, params: dict[str, Any] | None = None, cache_key: str | None = None,
++                 cache_ttl_seconds: int | None = None, min_interval: float | None = None) -> dict[str, Any]:
++        canonical = self._canonical_url(url, params)
++        key = request_fingerprint("GET", canonical, None)
++        memory = self._memory_get(key, url)
++        if memory is not None:
++            return json.loads(memory.decode("utf-8"))
++        with self._key_lock(key):
++            memory = self._memory_get(key, url)
++            if memory is not None:
++                return json.loads(memory.decode("utf-8"))
++            cache_path = self._cache_path(cache_key, ".json")
++            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
++            if isinstance(cached, str):
++                health().record(provider_name(url), "cache")
++                self._memory_put(key, cached.encode("utf-8"))
++                return json.loads(cached)
++            response = self._request("GET", url, params=params, min_interval=min_interval)
+             try:
+-                response = self.session.request(
+-                    method,
+-                    url,
+-                    params=params,
+-                    json=json_body,
+-                    headers=headers,
+-                    timeout=timeout or self.timeout,
+-                )
+-                if response.status_code in {429, 500, 502, 503, 504}:
+-                    err = requests.HTTPError(f"retryable status={response.status_code}")
+-                    err.response = response
+-                    raise err
+-                response.raise_for_status()
+-                return response
+-            except requests.RequestException as exc:
+-                status = getattr(getattr(exc, "response", None), "status_code", None)
+-                last_detail = f"{exc.__class__.__name__}" + (f" status={status}" if status else "")
+-                if attempt >= self.retries:
+-                    break
+-                time.sleep(0.75 * (2**attempt) + random.random() * 0.25)
+-        raise HttpError(f"{method} failed after {self.retries + 1} attempts: {safe_url}: {last_detail}")
+-
+-    def get_json(
+-        self,
+-        url: str,
+-        *,
+-        params: dict[str, Any] | None = None,
+-        cache_key: str | None = None,
+-        cache_ttl_seconds: int | None = None,
+-        min_interval: float | None = None,
+-    ) -> dict[str, Any]:
+-        cache_path = self._cache_path(cache_key, ".json")
+-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
+-        if isinstance(cached, str):
+-            return json.loads(cached)
+-        response = self._request("GET", url, params=params, min_interval=min_interval)
+-        try:
+-            payload = response.json()
+-        except ValueError as exc:
+-            raise HttpError("Expected JSON response") from exc
+-        if not isinstance(payload, dict):
+-            raise HttpError("Expected JSON object")
+-        self._write_cache(cache_path, json.dumps(payload, ensure_ascii=False))
+-        return payload
+-
+-    def post_json(
+-        self,
+-        url: str,
+-        *,
+-        json_body: dict[str, Any],
+-        headers: dict[str, str] | None = None,
+-        cache_key: str | None = None,
+-        cache_ttl_seconds: int | None = None,
+-        min_interval: float | None = None,
+-    ) -> dict[str, Any]:
+-        cache_path = self._cache_path(cache_key, ".json")
+-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
+-        if isinstance(cached, str):
+-            return json.loads(cached)
+-        response = self._request(
+-            "POST", url, json_body=json_body, headers=headers, min_interval=min_interval
+-        )
+-        try:
+-            payload = response.json()
+-        except ValueError as exc:
+-            raise HttpError("Expected JSON response") from exc
+-        if not isinstance(payload, dict):
+-            raise HttpError("Expected JSON object")
+-        self._write_cache(cache_path, json.dumps(payload, ensure_ascii=False))
+-        return payload
+-
+-    def get_text(
+-        self,
+-        url: str,
+-        *,
+-        params: dict[str, Any] | None = None,
+-        cache_key: str | None = None,
+-        cache_ttl_seconds: int | None = None,
+-        min_interval: float | None = None,
+-        encoding: str | None = None,
+-    ) -> str:
+-        cache_path = self._cache_path(cache_key, ".txt")
+-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
+-        if isinstance(cached, str):
+-            return cached
+-        response = self._request("GET", url, params=params, min_interval=min_interval)
+-        if encoding:
+-            response.encoding = encoding
+-        text = response.text
+-        self._write_cache(cache_path, text)
+-        return text
+-
+-    def get_bytes(
+-        self,
+-        url: str,
+-        *,
+-        params: dict[str, Any] | None = None,
+-        headers: dict[str, str] | None = None,
+-        cache_key: str | None = None,
+-        cache_ttl_seconds: int | None = None,
+-        min_interval: float | None = None,
+-        timeout: int | None = None,
+-    ) -> bytes:
+-        cache_path = self._cache_path(cache_key, ".bin")
+-        cached = self._read_cache(cache_path, cache_ttl_seconds, binary=True)
+-        if isinstance(cached, bytes):
+-            return cached
+-        response = self._request(
+-            "GET", url, params=params, headers=headers, min_interval=min_interval, timeout=timeout
+-        )
+-        data = response.content
+-        self._write_cache(cache_path, data)
+-        return data
++                payload = response.json()
++            except ValueError as exc:
++                raise HttpError("Expected JSON response") from exc
++            if not isinstance(payload, dict):
++                raise HttpError("Expected JSON object")
++            raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
++            self._write_cache(cache_path, raw.decode("utf-8"))
++            self._memory_put(key, raw)
++            return payload
++
++    def post_json(self, url: str, *, json_body: dict[str, Any], headers: dict[str, str] | None = None,
++                  cache_key: str | None = None, cache_ttl_seconds: int | None = None,
++                  min_interval: float | None = None) -> dict[str, Any]:
++        key = request_fingerprint("POST", url, json_body)
++        memory = self._memory_get(key, url)
++        if memory is not None:
++            return json.loads(memory.decode("utf-8"))
++        with self._key_lock(key):
++            memory = self._memory_get(key, url)
++            if memory is not None:
++                return json.loads(memory.decode("utf-8"))
++            cache_path = self._cache_path(cache_key, ".json")
++            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
++            if isinstance(cached, str):
++                health().record(provider_name(url), "cache")
++                self._memory_put(key, cached.encode("utf-8"))
++                return json.loads(cached)
++            response = self._request("POST", url, json_body=json_body, headers=headers, min_interval=min_interval)
++            try:
++                payload = response.json()
++            except ValueError as exc:
++                raise HttpError("Expected JSON response") from exc
++            if not isinstance(payload, dict):
++                raise HttpError("Expected JSON object")
++            raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
++            self._write_cache(cache_path, raw.decode("utf-8"))
++            self._memory_put(key, raw)
++            return payload
++
++    def get_text(self, url: str, *, params: dict[str, Any] | None = None, cache_key: str | None = None,
++                 cache_ttl_seconds: int | None = None, min_interval: float | None = None,
++                 encoding: str | None = None) -> str:
++        canonical = self._canonical_url(url, params)
++        key = request_fingerprint("GET", canonical, None)
++        memory = self._memory_get(key, url)
++        if memory is not None:
++            return memory.decode(encoding or "utf-8", errors="replace")
++        with self._key_lock(key):
++            memory = self._memory_get(key, url)
++            if memory is not None:
++                return memory.decode(encoding or "utf-8", errors="replace")
++            cache_path = self._cache_path(cache_key, ".txt")
++            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=False)
++            if isinstance(cached, str):
++                health().record(provider_name(url), "cache")
++                self._memory_put(key, cached.encode("utf-8"))
++                return cached
++            response = self._request("GET", url, params=params, min_interval=min_interval)
++            if encoding:
++                response.encoding = encoding
++            text = response.text
++            self._write_cache(cache_path, text)
++            self._memory_put(key, text.encode(response.encoding or "utf-8", errors="replace"))
++            return text
++
++    def get_bytes(self, url: str, *, params: dict[str, Any] | None = None, headers: dict[str, str] | None = None,
++                  cache_key: str | None = None, cache_ttl_seconds: int | None = None,
++                  min_interval: float | None = None, timeout: int | None = None) -> bytes:
++        canonical = self._canonical_url(url, params)
++        key = request_fingerprint("GET", canonical, None)
++        memory = self._memory_get(key, url)
++        if memory is not None:
++            return memory
++        with self._key_lock(key):
++            memory = self._memory_get(key, url)
++            if memory is not None:
++                return memory
++            cache_path = self._cache_path(cache_key, ".bin")
++            cached = self._read_cache(cache_path, cache_ttl_seconds, binary=True)
++            if isinstance(cached, bytes):
++                health().record(provider_name(url), "cache")
++                self._memory_put(key, cached)
++                return cached
++            response = self._request("GET", url, params=params, headers=headers, min_interval=min_interval, timeout=timeout)
++            data = response.content
++            self._write_cache(cache_path, data)
++            self._memory_put(key, data)
++            return data
+--- a/src/ible/v3_http.py
++++ b/src/ible/v3_http.py
+@@ -2,16 +2,17 @@
+ 
+ import hashlib
+ import json
+-import random
+ import threading
+ import time
+ import urllib.error
+ import urllib.parse
+ import urllib.request
++from contextlib import nullcontext
+ from dataclasses import dataclass
+-from contextlib import nullcontext
+ from pathlib import Path
+ from typing import Any
++
++from ible.api_stability import health, provider_name, request_fingerprint, retry_delay
+ 
+ 
+ class HttpError(RuntimeError):
+@@ -27,25 +28,33 @@
+     min_interval_seconds: float = 0.20
+     cache_ttl_seconds: int = 21600
+     stale_if_error_seconds: int = 604800
++    max_concurrent_requests: int = 2
+ 
+ 
+ class JsonHttpClient:
++    """JSON/text client with run-local request dedupe, pacing, bounded retry and LKG cache."""
++
+     def __init__(self, settings: HttpSettings, *, cache_dir: str | Path | None = None) -> None:
+         self.settings = settings
+         self.cache_dir = Path(cache_dir) if cache_dir else None
+         if self.cache_dir:
+             self.cache_dir.mkdir(parents=True, exist_ok=True)
+-        self._rate_lock = threading.Lock()
+-        self._last_request_started = 0.0
+         self._stats_lock = threading.Lock()
+         self._stats = {
+             "network_requests": 0,
+             "cache_hits": 0,
+             "stale_cache_hits": 0,
+             "cache_writes": 0,
++            "deduplicated_requests": 0,
++            "retries": 0,
++            "http_429": 0,
++            "http_5xx": 0,
++            "timeouts": 0,
+         }
+         self._key_locks_lock = threading.Lock()
+         self._key_locks: dict[str, threading.Lock] = {}
++        self._memory_lock = threading.Lock()
++        self._memory_cache: dict[str, bytes] = {}
+ 
+     def stats(self) -> dict[str, int]:
+         with self._stats_lock:
+@@ -54,13 +63,6 @@
+     def _increment(self, key: str) -> None:
+         with self._stats_lock:
+             self._stats[key] += 1
+-
+-    def _wait_for_slot(self) -> None:
+-        with self._rate_lock:
+-            delay = self.settings.min_interval_seconds - (time.monotonic() - self._last_request_started)
+-            if delay > 0:
+-                time.sleep(delay)
+-            self._last_request_started = time.monotonic()
+ 
+     def _cache_path(self, url: str, *, method: str, payload: dict[str, Any] | None) -> Path | None:
+         if not self.cache_dir:
+@@ -75,16 +77,23 @@
+         digest = hashlib.sha256(canonical).hexdigest()
+         return self.cache_dir / f"{digest}.json"
+ 
+-    def _read_cache(self, path: Path | None, max_age_seconds: int) -> tuple[bytes | None, bool]:
++    @staticmethod
++    def _cache_age(path: Path | None) -> float | None:
+         if not path or not path.is_file():
+-            return None, False
+-        age = max(0.0, time.time() - path.stat().st_mtime)
+-        if age > max_age_seconds:
+-            return None, False
++            return None
+         try:
+-            return path.read_bytes(), age > self.settings.cache_ttl_seconds
++            return max(0.0, time.time() - path.stat().st_mtime)
+         except OSError:
+-            return None, False
++            return None
++
++    def _read_cache(self, path: Path | None, max_age_seconds: int) -> bytes | None:
++        age = self._cache_age(path)
++        if age is None or age > max_age_seconds:
++            return None
++        try:
++            return path.read_bytes() if path else None
++        except OSError:
++            return None
+ 
+     def _write_cache(self, path: Path | None, raw: bytes) -> None:
+         if not path:
+@@ -94,50 +103,87 @@
+         temporary.replace(path)
+         self._increment("cache_writes")
+ 
+-    def _cache_lock_for(self, path: Path | None):
+-        if not path:
++    def _cache_lock_for(self, key: str):
++        if not key:
+             return nullcontext()
+-        key = str(path)
+         with self._key_locks_lock:
+             lock = self._key_locks.setdefault(key, threading.Lock())
+         return lock
++
++    def _memory_get(self, key: str, url: str) -> bytes | None:
++        with self._memory_lock:
++            raw = self._memory_cache.get(key)
++        if raw is not None:
++            self._increment("deduplicated_requests")
++            self._increment("cache_hits")
++            health().record(provider_name(url), "dedupe")
++        return raw
++
++    def _memory_put(self, key: str, raw: bytes) -> None:
++        with self._memory_lock:
++            self._memory_cache[key] = raw
+ 
+     def has_cached_json(self, url: str, *, params: dict[str, Any] | None = None) -> bool:
+         if params:
+             encoded = urllib.parse.urlencode(sorted(params.items()), doseq=True)
+             url = f"{url}{'&' if '?' in url else '?'}{encoded}"
+         path = self._cache_path(url, method="GET", payload=None)
+-        raw, _ = self._read_cache(path, self.settings.cache_ttl_seconds)
+-        return raw is not None
+-
+-    def _request_bytes(self, url: str, *, method: str, headers: dict[str, str]) -> bytes:
++        return self._read_cache(path, self.settings.cache_ttl_seconds) is not None
++
++    def _perform(self, url: str, *, method: str, headers: dict[str, str], data: bytes | None = None) -> bytes:
+         last_error = "unknown error"
+-        for attempt in range(1, self.settings.max_attempts + 1):
+-            self._wait_for_slot()
+-            request = urllib.request.Request(url, headers=headers, method=method)
+-            try:
+-                with urllib.request.urlopen(request, timeout=self.settings.timeout_seconds) as response:
+-                    self._increment("network_requests")
+-                    return response.read()
+-            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+-                if isinstance(exc, urllib.error.HTTPError):
++        for attempt in range(self.settings.max_attempts):
++            if attempt:
++                self._increment("retries")
++                health().record(provider_name(url), "retry")
++            with health().slot(url, self.settings.min_interval_seconds, self.settings.max_concurrent_requests) as provider:
++                request = urllib.request.Request(url, data=data, headers=headers, method=method)
++                self._increment("network_requests")
++                health().record(provider, "network")
++                try:
++                    with urllib.request.urlopen(request, timeout=self.settings.timeout_seconds) as response:
++                        raw = response.read()
++                    health().record(provider, "success")
++                    return raw
++                except urllib.error.HTTPError as exc:
+                     body = exc.read(600).decode("utf-8", errors="replace")
+                     last_error = f"HTTP {exc.code}: {body}"
++                    if exc.code == 429:
++                        self._increment("http_429")
++                        health().record(provider, "429")
++                    elif 500 <= exc.code <= 599:
++                        self._increment("http_5xx")
++                        health().record(provider, "5xx")
+                     retryable = exc.code in {408, 425, 429, 500, 502, 503, 504}
+-                else:
++                    retry_after = exc.headers.get("Retry-After") if exc.headers else None
++                except (urllib.error.URLError, TimeoutError) as exc:
+                     last_error = str(exc)
+                     retryable = True
+-                if attempt >= self.settings.max_attempts or not retryable:
+-                    break
+-                delay = self.settings.base_backoff_seconds * (2 ** (attempt - 1)) + random.uniform(0.0, 0.7)
+-                time.sleep(delay)
++                    retry_after = None
++                    reason = getattr(exc, "reason", None)
++                    if isinstance(exc, TimeoutError) or isinstance(reason, TimeoutError) or "timed out" in last_error.lower():
++                        self._increment("timeouts")
++                        health().record(provider, "timeout")
++            if attempt + 1 >= self.settings.max_attempts or not retryable:
++                break
++            time.sleep(retry_delay(attempt, self.settings.base_backoff_seconds, retry_after))
+         raise HttpError(last_error)
+ 
++    def _request_bytes(self, url: str, *, method: str, headers: dict[str, str]) -> bytes:
++        return self._perform(url, method=method, headers=headers, data=None)
++
+     def request_bytes(self, url: str, *, method: str = "GET", accept: str = "*/*") -> bytes:
+-        return self._request_bytes(url, method=method, headers={
+-            "Accept": accept,
+-            "User-Agent": self.settings.user_agent,
+-        })
++        key = request_fingerprint(method, url, None)
++        cached = self._memory_get(key, url)
++        if cached is not None:
++            return cached
++        with self._cache_lock_for(key):
++            cached = self._memory_get(key, url)
++            if cached is not None:
++                return cached
++            raw = self._request_bytes(url, method=method, headers={"Accept": accept, "User-Agent": self.settings.user_agent})
++            self._memory_put(key, raw)
++            return raw
+ 
+     def request_json(
+         self,
+@@ -152,57 +198,46 @@
+         if params:
+             encoded = urllib.parse.urlencode(sorted(params.items()), doseq=True)
+             url = f"{url}{'&' if '?' in url else '?'}{encoded}"
++        key = request_fingerprint(method, url, payload)
++        fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
++        memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
++        if memory_raw is not None:
++            return self._decode_json(memory_raw)
+         cache_path = self._cache_path(url, method=method, payload=payload)
+-        with self._cache_lock_for(cache_path):
+-            fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
++        with self._cache_lock_for(key):
++            memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
++            if memory_raw is not None:
++                return self._decode_json(memory_raw)
+             stale_ttl = max(fresh_ttl, self.settings.stale_if_error_seconds)
+-            fresh_raw, _ = self._read_cache(cache_path, fresh_ttl)
++            fresh_raw = self._read_cache(cache_path, fresh_ttl)
+             if fresh_raw is not None:
+                 self._increment("cache_hits")
++                health().record(provider_name(url), "cache")
++                self._memory_put(key, fresh_raw)
+                 return self._decode_json(fresh_raw)
+-            data = None
+             request_headers = {"Accept": "application/json", "User-Agent": self.settings.user_agent}
+             if headers:
+-                request_headers.update({str(key): str(value) for key, value in headers.items()})
++                request_headers.update({str(k): str(v) for k, v in headers.items()})
++            data = None
+             if payload is not None:
+                 data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+                 request_headers["Content-Type"] = "application/json"
+             try:
+-                if data is None:
+-                    raw = self._request_bytes(url, method=method, headers=request_headers)
+-                else:
+-                    raw = self._request_payload(url, method=method, headers=request_headers, data=data)
++                raw = self._request_bytes(url, method=method, headers=request_headers) if data is None else self._request_payload(url, method=method, headers=request_headers, data=data)
+             except HttpError:
+-                stale_raw, is_stale = self._read_cache(cache_path, stale_ttl)
+-                if stale_raw is None or not is_stale:
++                stale_raw = self._read_cache(cache_path, stale_ttl)
++                if stale_raw is None or (self._cache_age(cache_path) or 0.0) <= fresh_ttl:
+                     raise
+                 self._increment("stale_cache_hits")
++                health().record(provider_name(url), "lkg")
++                self._memory_put(key, stale_raw)
+                 return self._decode_json(stale_raw)
+             self._write_cache(cache_path, raw)
++            self._memory_put(key, raw)
+             return self._decode_json(raw)
+ 
+     def _request_payload(self, url: str, *, method: str, headers: dict[str, str], data: bytes) -> bytes:
+-        last_error = "unknown error"
+-        for attempt in range(1, self.settings.max_attempts + 1):
+-            self._wait_for_slot()
+-            request = urllib.request.Request(url, data=data, headers=headers, method=method)
+-            try:
+-                with urllib.request.urlopen(request, timeout=self.settings.timeout_seconds) as response:
+-                    self._increment("network_requests")
+-                    return response.read()
+-            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+-                if isinstance(exc, urllib.error.HTTPError):
+-                    body = exc.read(600).decode("utf-8", errors="replace")
+-                    last_error = f"HTTP {exc.code}: {body}"
+-                    retryable = exc.code in {408, 425, 429, 500, 502, 503, 504}
+-                else:
+-                    last_error = str(exc)
+-                    retryable = True
+-                if attempt >= self.settings.max_attempts or not retryable:
+-                    raise HttpError(last_error) from exc
+-                delay = self.settings.base_backoff_seconds * (2 ** (attempt - 1)) + random.uniform(0.0, 0.7)
+-                time.sleep(delay)
+-        raise HttpError(last_error)
++        return self._perform(url, method=method, headers=headers, data=data)
+ 
+     @staticmethod
+     def _decode_json(raw: bytes) -> dict[str, Any]:
+@@ -224,26 +259,35 @@
+         cache_ttl_seconds: int | None = None,
+     ) -> str:
+         if params:
+-            encoded = urllib.parse.urlencode(params, doseq=True)
++            encoded = urllib.parse.urlencode(sorted(params.items()), doseq=True)
+             url = f"{url}{'&' if '?' in url else '?'}{encoded}"
++        key = request_fingerprint(method, url, None)
++        fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
++        memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
++        if memory_raw is not None:
++            return memory_raw.decode("utf-8-sig", errors="replace")
+         cache_path = self._cache_path(url, method=method, payload=None)
+-        with self._cache_lock_for(cache_path):
+-            fresh_ttl = self.settings.cache_ttl_seconds if cache_ttl_seconds is None else cache_ttl_seconds
++        with self._cache_lock_for(key):
++            memory_raw = self._memory_get(key, url) if fresh_ttl > 0 else None
++            if memory_raw is not None:
++                return memory_raw.decode("utf-8-sig", errors="replace")
+             stale_ttl = max(fresh_ttl, self.settings.stale_if_error_seconds)
+-            fresh_raw, _ = self._read_cache(cache_path, fresh_ttl)
++            fresh_raw = self._read_cache(cache_path, fresh_ttl)
+             if fresh_raw is not None:
+                 self._increment("cache_hits")
++                health().record(provider_name(url), "cache")
++                self._memory_put(key, fresh_raw)
+                 return fresh_raw.decode("utf-8-sig", errors="replace")
+             try:
+-                raw = self._request_bytes(url, method=method, headers={
+-                    "Accept": accept,
+-                    "User-Agent": self.settings.user_agent,
+-                })
++                raw = self._request_bytes(url, method=method, headers={"Accept": accept, "User-Agent": self.settings.user_agent})
+             except HttpError:
+-                stale_raw, is_stale = self._read_cache(cache_path, stale_ttl)
+-                if stale_raw is None or not is_stale:
++                stale_raw = self._read_cache(cache_path, stale_ttl)
++                if stale_raw is None or (self._cache_age(cache_path) or 0.0) <= fresh_ttl:
+                     raise
+                 self._increment("stale_cache_hits")
++                health().record(provider_name(url), "lkg")
++                self._memory_put(key, stale_raw)
+                 return stale_raw.decode("utf-8-sig", errors="replace")
+             self._write_cache(cache_path, raw)
++            self._memory_put(key, raw)
+             return raw.decode("utf-8-sig", errors="replace")
+--- a/src/ible/v3_data_engine.py
++++ b/src/ible/v3_data_engine.py
+@@ -8,6 +8,7 @@
+ from zoneinfo import ZoneInfo
+ 
+ from ible.integrity import canonical_sha256, load_json, write_json
++from ible.api_stability import health
+ from ible.model_lock import load_and_verify_model_lock
+ from ible.v3_collectors import ArxivCollector, OpenAlexCollector, UsaSpendingCollector, GdeltCollector, WikimediaCollector, NaverSearchTrendCollector, comparison_periods, three_attention_periods
+ from ible.v3_http import HttpError, HttpSettings, JsonHttpClient
+@@ -173,6 +174,7 @@
+             )
+             if cached_usable:
+                 sources[name]={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500],"cache_age_days":_cache_age_days(cached,as_of)}
++                health().record({"gdelt":"gdelt","openalex":"openalex","wikimedia":"wikimedia"}.get(name,name), "lkg")
+             else:
+                 sources[name]=_unavailable_source(query,captured_at,as_of,str(exc)[:500])
+                 sources[name]['three_month_change_percent']=None
+@@ -189,6 +191,7 @@
+         cached_usable = bool(cached) and cached.get('source_signal_score') is not None
+         if cached_usable:
+             sources['usaspending']={**cached,"status":"CACHE_FALLBACK","fallback_reason":str(exc)[:500],"cache_age_days":_cache_age_days(cached,as_of)}
++            health().record("usaspending", "lkg")
+         else:
+             sources['usaspending'] = _unavailable_source(list(row.get('usaspending_keywords') or []),captured_at,as_of,str(exc)[:500])
+             sources['usaspending'].update({'query_mode':'SOURCE_UNAVAILABLE','proxy_naics_codes':list(row.get('usaspending_naics') or [])})
+@@ -241,16 +244,16 @@
+         return factory(source['base_url']) if enabled_sources.get(name) else None
+     openalex=collector('openalex',lambda url:OpenAlexCollector(client,url))
+     usaspending=collector('usaspending',lambda url:UsaSpendingCollector(client,url))
+-    # GDELT gets a dedicated single-attempt HTTP client. Retries are serialized
+-    # inside GdeltCollector so 429 retries cannot interleave across worker threads.
++    # GDELT gets a dedicated transport client. Retry-After / bounded backoff,
++    # pacing and provider concurrency are enforced by the shared HTTP stability layer.
+     gdelt = None
+     if enabled_sources.get('gdelt'):
+         gd_cfg = cfg['sources']['gdelt']
+         gdelt_client = JsonHttpClient(
+             HttpSettings(
+-                timeout_seconds=int(net['timeout_seconds']), max_attempts=1,
+-                base_backoff_seconds=float(net['base_backoff_seconds']),
+-                user_agent=str(net['user_agent']), min_interval_seconds=0.0,
++                timeout_seconds=int(net['timeout_seconds']), max_attempts=int(gd_cfg.get('max_attempts',2)),
++                base_backoff_seconds=float(gd_cfg.get('retry_backoff_seconds',8.0)),
++                user_agent=str(net['user_agent']), min_interval_seconds=float(gd_cfg.get('min_request_interval_seconds',6.5)),
+                 cache_ttl_seconds=int(cache_cfg.get('ttl_seconds',21600)),
+                 stale_if_error_seconds=int(cache_cfg.get('stale_if_error_seconds',604800)),
+             ),
+@@ -259,7 +262,7 @@
+         gdelt = GdeltCollector(
+             gdelt_client, gd_cfg['base_url'],
+             min_interval_seconds=float(gd_cfg.get('min_request_interval_seconds',6.5)),
+-            max_attempts=int(gd_cfg.get('max_attempts',2)),
++            max_attempts=1,
+             retry_backoff_seconds=float(gd_cfg.get('retry_backoff_seconds',8.0)),
+         )
+     wikimedia=collector('wikimedia',lambda url:WikimediaCollector(client,url))
+@@ -368,6 +371,7 @@
+                 cached = _cached_source(cache,tid,'naver_search_trend',as_of)
+                 if cached and cached.get('recent_30d_level') is not None:
+                     row['sources']['naver_search_trend'] = {**cached,'status':'CACHE_FALLBACK','fallback_reason':str(exc)[:500],'cache_age_days':_cache_age_days(cached,as_of)}
++                    health().record("naver_api_hub", "lkg")
+                 else:
+                     item=naver_by_theme.get(tid) or {}
+                     row['sources']['naver_search_trend'] = _unavailable_source(list(item.get('keywords') or []),captured_at,as_of,str(exc)[:500])
+@@ -392,6 +396,7 @@
+             row['public_interest_confidence']=1.0 if selected.get('status')=='LIVE_COLLECTED' else 0.85
+         elif gdelt_src.get('attention_score') is not None:
+             selected = gdelt_src
++            health().record("gdelt", "fallback")
+             row['public_interest_primary_source']='GDELT_FALLBACK'
+             row['public_interest_score']=round(float(selected['attention_score']),4)
+             row['public_interest_momentum_3m']=round(float(selected.get('three_month_change_percent') or 0),4)

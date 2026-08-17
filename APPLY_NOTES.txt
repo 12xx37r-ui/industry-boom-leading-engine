@@ -1,0 +1,7 @@
+API stability-only patch.
+- No scoring formula, metric weight, JSON key, existing output filename, or dashboard calculation was intentionally changed.
+- Existing workflow concurrency was already present and is preserved.
+- Adds outputs/api_health.json to the workflow artifact.
+- GDELT retry ownership moves into the transport layer so Retry-After/backoff/pacing are handled in one place.
+- Existing targeted release tests: 21/21 passed.
+- Full legacy suite has the same pre-existing 7 failures/errors as the V7.4 baseline (no additional failures).
