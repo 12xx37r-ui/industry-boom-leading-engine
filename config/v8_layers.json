@@ -106,6 +106,11 @@
     "min_confidence": 70.0,
     "max_candidates": 50,
     "auto_add_allowed": false,
-    "generated_input_path": "data_cache/latest/v3_dynamic_discovery_documents.json"
+    "generated_input_path": "data_cache/latest/v3_dynamic_discovery_documents.json",
+    "min_challenger_documents": 3,
+    "min_phrase_tokens": 2,
+    "max_phrase_tokens": 4,
+    "min_phrase_quality": 55.0,
+    "existing_theme_similarity": 0.55
   }
 }
