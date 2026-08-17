@@ -1,130 +1,180 @@
 {
-  "generated_at": "2026-08-17T07:02:11.645828+00:00",
-  "providers": {
-    "arxiv": {
+  "blocking": false,
+  "current_health_generated_at": "2026-08-17T07:02:11.645828+00:00",
+  "generated_at": "2026-08-17T07:02:13.095334+00:00",
+  "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
+  "previous_health_generated_at": "2026-08-17T06:50:39.050827+00:00",
+  "providers": [
+    {
       "cache_hits": 3,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 0,
+      "previous_network_calls": 0,
+      "provider": "arxiv",
       "retries": 0,
       "status": "CACHE",
       "timeouts": 0
     },
-    "bls": {
+    {
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T07:02:07.249049+00:00",
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": 1.0,
       "network_calls": 5,
+      "previous_network_calls": 5,
+      "provider": "bls",
       "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
-    "census": {
+    {
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T07:02:11.645626+00:00",
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": 1.0,
       "network_calls": 4,
+      "previous_network_calls": 4,
+      "provider": "census",
       "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
-    "gdelt": {
+    {
       "cache_hits": 50,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 0,
+      "previous_network_calls": 0,
+      "provider": "gdelt",
       "retries": 0,
       "status": "CACHE",
       "timeouts": 0
     },
-    "github": {
+    {
       "cache_hits": 3,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 0,
+      "previous_network_calls": 0,
+      "provider": "github",
       "retries": 0,
       "status": "CACHE",
       "timeouts": 0
     },
-    "google_patents": {
+    {
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 1,
       "http_5xx": 0,
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 1,
+      "previous_network_calls": 1,
+      "provider": "google_patents",
       "retries": 0,
       "status": "UNAVAILABLE",
       "timeouts": 0
     },
-    "naver_api_hub": {
+    {
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T07:02:05.465279+00:00",
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": 1.0,
       "network_calls": 13,
+      "previous_network_calls": 13,
+      "provider": "naver_api_hub",
       "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
-    "ncses.nsf.gov": {
+    {
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T07:02:08.060906+00:00",
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 1,
+      "previous_network_calls": 1,
+      "provider": "ncses.nsf.gov",
       "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
-    "openalex": {
+    {
       "cache_hits": 103,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 0,
+      "previous_network_calls": 0,
+      "provider": "openalex",
       "retries": 0,
       "status": "CACHE",
       "timeouts": 0
     },
-    "usaspending": {
+    {
       "cache_hits": 144,
       "deduplicated_calls": 12,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 1,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 1,
+      "previous_network_calls": 1,
+      "provider": "usaspending",
       "retries": 0,
       "status": "LKG",
       "timeouts": 0
     }
+  ],
+  "schema_version": 1,
+  "status": "WARN",
+  "summary": {
+    "previous_total_network_calls": 25,
+    "strong_warning_count": 0,
+    "total_cache_hits": 303,
+    "total_http_429": 1,
+    "total_network_call_ratio_vs_previous": 1.0,
+    "total_network_calls": 25,
+    "total_retries": 0,
+    "total_timeouts": 0,
+    "warning_count": 1
   },
-  "schema_version": 1
+  "warnings": [
+    {
+      "message": "google_patents: HTTP 429 count=1",
+      "provider": "google_patents",
+      "severity": "WARN",
+      "type": "HTTP_429"
+    }
+  ]
 }
