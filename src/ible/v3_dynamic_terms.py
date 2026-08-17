@@ -190,11 +190,12 @@ def discover_candidates(
     min_similarity: float = 0.15, max_candidates: int = 100,
     min_phrase_tokens: int = 1, max_phrase_tokens: int = 4,
     min_phrase_quality: float = 55.0, existing_theme_similarity: float = 0.55,
+    min_distinct_dates: int = 1, min_date_span_days: int = 0,
 ) -> dict[str, Any]:
     """Create review-only industry-phrase candidates from a local timestamped corpus."""
     vocabulary = _theme_vocabulary(themes)
     occurrences: dict[str, dict[str, set[str]]] = defaultdict(
-        lambda: {"documents": set(), "sources": set(), "periods": set()}
+        lambda: {"documents": set(), "sources": set(), "periods": set(), "dates": set()}
     )
     for document in documents:
         text = document.get("text") or document.get("title") or ""
@@ -204,9 +205,12 @@ def discover_candidates(
         source = str(document.get("source") or "unknown")
         captured = str(document.get("captured_at") or document.get("as_of") or as_of)[:10]
         try:
-            period = date.fromisoformat(captured).strftime("%Y-%m")
+            captured_date = date.fromisoformat(captured)
+            period = captured_date.strftime("%Y-%m")
+            captured_day = captured_date.isoformat()
         except ValueError:
             period = str(as_of)[:7]
+            captured_day = str(as_of)[:10]
         tokens = _tokens(text)
         for term in _ngrams(tokens, minimum=min_phrase_tokens, maximum=max_phrase_tokens):
             quality = _phrase_quality(term)
@@ -216,11 +220,24 @@ def discover_candidates(
             item["documents"].add(document_id)
             item["sources"].add(source)
             item["periods"].add(period)
+            item["dates"].add(captured_day)
 
     candidates: list[dict[str, Any]] = []
     for term, evidence in occurrences.items():
         document_count, source_count, period_count = (len(evidence[key]) for key in ("documents", "sources", "periods"))
-        if document_count < min_documents or source_count < min_source_families or period_count < min_periods:
+        evidence_dates = sorted(evidence["dates"])
+        date_count = len(evidence_dates)
+        try:
+            date_span_days = (date.fromisoformat(evidence_dates[-1]) - date.fromisoformat(evidence_dates[0])).days if date_count >= 2 else 0
+        except ValueError:
+            date_span_days = 0
+        if (
+            document_count < min_documents
+            or source_count < min_source_families
+            or period_count < min_periods
+            or date_count < min_distinct_dates
+            or date_span_days < min_date_span_days
+        ):
             continue
 
         similarities = sorted(
@@ -231,6 +248,8 @@ def discover_candidates(
         phrase_quality = _phrase_quality(term)
 
         evidence_confidence = 8.0 * min(document_count, 10) + 11.0 * min(source_count, 4) + 7.0 * min(period_count, 6)
+        if min_distinct_dates > 1:
+            evidence_confidence += 5.0 * min(date_count, 6) + min(10.0, date_span_days / 7.0)
         confidence = min(100.0, 0.65 * evidence_confidence + 0.35 * phrase_quality)
 
         # Sparse corpora must not look artificially certain.
@@ -254,8 +273,11 @@ def discover_candidates(
             "distinct_document_count": document_count,
             "source_family_count": source_count,
             "period_count": period_count,
+            "distinct_date_count": date_count,
+            "date_span_days": date_span_days,
             "evidence_sources": sorted(evidence["sources"]),
             "evidence_periods": sorted(evidence["periods"]),
+            "evidence_dates": evidence_dates[:16],
             "evidence_document_ids": sorted(evidence["documents"])[:8],
             "promotion_status": "EXISTING_THEME_EXTENSION" if existing_extension else "NEW_THEME_REVIEW",
         })
@@ -284,6 +306,8 @@ def discover_candidates(
             "max_phrase_tokens": max_phrase_tokens,
             "min_phrase_quality": min_phrase_quality,
             "existing_theme_similarity": existing_theme_similarity,
+            "min_distinct_dates": min_distinct_dates,
+            "min_date_span_days": min_date_span_days,
             "requires_human_review": True,
         },
         "candidates": candidates[:max_candidates],

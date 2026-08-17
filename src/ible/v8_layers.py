@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import math
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -455,15 +455,24 @@ def _candidate_readiness(row: dict[str, Any], discovery: dict[str, Any]) -> dict
     documents = int(row.get("distinct_document_count") or 0)
     sources = int(row.get("source_family_count") or 0)
     periods = int(row.get("period_count") or 0)
-    evidence_score = min(100.0, documents * 8.0 + sources * 12.0 + periods * 10.0)
+    dates = int(row.get("distinct_date_count") or 0)
+    date_span_days = int(row.get("date_span_days") or 0)
+    evidence_score = min(
+        100.0,
+        documents * 6.0 + sources * 12.0 + periods * 4.0 + dates * 8.0 + min(12.0, date_span_days / 3.0),
+    )
     score = round(0.55 * confidence + 0.25 * novelty + 0.20 * evidence_score, 2)
     missing = []
     if documents < int(discovery.get("min_documents", 2)):
         missing.append("문서 수")
     if sources < int(discovery.get("min_source_families", 2)):
         missing.append("서로 다른 원천")
-    if periods < int(discovery.get("min_periods", 2)):
+    if periods < int(discovery.get("min_periods", 1)):
         missing.append("서로 다른 기간")
+    if dates < int(discovery.get("min_distinct_dates", 1)):
+        missing.append("서로 다른 날짜")
+    if date_span_days < int(discovery.get("min_date_span_days", 0)):
+        missing.append("관측 간격")
     if confidence < float(discovery.get("min_confidence", 70.0)):
         missing.append("신뢰도")
     if float(row.get("novelty_score") or 0.0) < float(discovery.get("min_novelty", 0.65)):
@@ -512,6 +521,148 @@ def _false_positive_guard(item: dict[str, Any], quality: dict[str, Any], hidden:
     }
 
 
+
+def _discovery_document_date(document: dict[str, Any], fallback: date) -> date:
+    for key in ("captured_at", "published_at", "published", "as_of", "date"):
+        value = document.get(key)
+        if not value:
+            continue
+        parsed = _date_from(value, fallback)
+        if parsed != fallback or str(value)[:10] == fallback.isoformat():
+            return parsed
+    return fallback
+
+
+def _discovery_document_fingerprint(document: dict[str, Any]) -> str:
+    text = str(document.get("text") or document.get("abstract") or document.get("summary") or document.get("title") or "")
+    normalized = " ".join(text.lower().split())
+    title = " ".join(str(document.get("title") or "").lower().split())
+    return canonical_sha256({"title": title, "text": normalized})
+
+
+def _rolling_discovery_corpus(
+    root: Path,
+    current_documents: list[dict[str, Any]],
+    as_of: date,
+    discovery: dict[str, Any],
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Persist a bounded rolling discovery corpus without making any extra API calls."""
+    history_path = root / str(discovery.get("rolling_corpus_path") or "prospective_history/v8_discovery_rolling_corpus.json")
+    window_days = max(1, int(discovery.get("rolling_window_days", 90)))
+    max_documents = max(10, int(discovery.get("max_rolling_documents", 600)))
+    balance_min_size = max(0, int(discovery.get("source_balance_min_corpus_size", 40)))
+    max_source_share = max(0.1, min(1.0, float(discovery.get("max_source_share", 0.50))))
+    cutoff = as_of - timedelta(days=window_days - 1)
+
+    previous_documents: list[dict[str, Any]] = []
+    if history_path.is_file():
+        try:
+            previous_payload = load_json(history_path)
+            previous_documents = list((previous_payload or {}).get("documents") or [])
+        except (OSError, ValueError, TypeError):
+            previous_documents = []
+
+    merged: dict[str, dict[str, Any]] = {}
+    duplicate_count = 0
+    for origin, rows in (("history", previous_documents), ("current", current_documents)):
+        for raw in rows:
+            if not isinstance(raw, dict):
+                continue
+            text = str(raw.get("text") or raw.get("abstract") or raw.get("summary") or raw.get("title") or "").strip()
+            if not text:
+                continue
+            document = dict(raw)
+            observed = _discovery_document_date(document, as_of)
+            if origin == "current" and not any(document.get(key) for key in ("captured_at", "published_at", "published", "as_of", "date")):
+                observed = as_of
+                document["captured_at"] = as_of.isoformat()
+            elif not document.get("captured_at"):
+                document["captured_at"] = observed.isoformat()
+            fingerprint = _discovery_document_fingerprint(document)
+            document["discovery_fingerprint"] = fingerprint
+            document.setdefault("document_id", str(document.get("id") or fingerprint[:16]))
+            existing = merged.get(fingerprint)
+            if existing is None:
+                merged[fingerprint] = document
+                continue
+            duplicate_count += 1
+            existing_date = _discovery_document_date(existing, as_of)
+            candidate_date = _discovery_document_date(document, as_of)
+            richer = document if len(text) > len(str(existing.get("text") or existing.get("abstract") or existing.get("summary") or existing.get("title") or "")) else existing
+            preserved = dict(richer)
+            preserved["captured_at"] = min(existing_date, candidate_date).isoformat()
+            preserved["discovery_fingerprint"] = fingerprint
+            preserved.setdefault("document_id", str(existing.get("document_id") or document.get("document_id") or fingerprint[:16]))
+            merged[fingerprint] = preserved
+
+    in_window: list[dict[str, Any]] = []
+    expired_count = 0
+    for document in merged.values():
+        observed = _discovery_document_date(document, as_of)
+        if cutoff <= observed <= as_of:
+            in_window.append(document)
+        else:
+            expired_count += 1
+
+    in_window.sort(
+        key=lambda row: (
+            _discovery_document_date(row, as_of),
+            len(str(row.get("text") or row.get("abstract") or row.get("summary") or row.get("title") or "")),
+        ),
+        reverse=True,
+    )
+
+    source_balance_dropped_count = 0
+    if len(in_window) >= balance_min_size and max_source_share < 1.0:
+        cap = max(1, int(math.ceil(len(in_window) * max_source_share)))
+        source_counts: dict[str, int] = {}
+        balanced: list[dict[str, Any]] = []
+        for document in in_window:
+            source = str(document.get("source") or "unknown")
+            count = source_counts.get(source, 0)
+            if count >= cap:
+                source_balance_dropped_count += 1
+                continue
+            source_counts[source] = count + 1
+            balanced.append(document)
+        in_window = balanced
+
+    max_document_dropped_count = max(0, len(in_window) - max_documents)
+    if max_document_dropped_count:
+        in_window = in_window[:max_documents]
+
+    source_counts: dict[str, int] = {}
+    for document in in_window:
+        source = str(document.get("source") or "unknown")
+        source_counts[source] = source_counts.get(source, 0) + 1
+
+    payload = {
+        "schema_version": 1,
+        "as_of": as_of.isoformat(),
+        "window_days": window_days,
+        "cutoff_date": cutoff.isoformat(),
+        "document_count": len(in_window),
+        "source_counts": dict(sorted(source_counts.items())),
+        "documents": in_window,
+    }
+    payload["content_sha256"] = canonical_sha256(payload)
+    history_path.parent.mkdir(parents=True, exist_ok=True)
+    write_json(history_path, payload)
+
+    stats = {
+        "rolling_corpus_path": str(history_path.relative_to(root)),
+        "rolling_window_days": window_days,
+        "previous_document_count": len(previous_documents),
+        "current_run_document_count": len(current_documents),
+        "rolling_document_count": len(in_window),
+        "deduplicated_document_count": duplicate_count,
+        "expired_document_count": expired_count,
+        "source_balance_dropped_count": source_balance_dropped_count,
+        "max_document_dropped_count": max_document_dropped_count,
+        "source_counts": dict(sorted(source_counts.items())),
+    }
+    return in_window, stats
+
 def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: dict[str, Any]) -> dict[str, Any]:
     discovery = config.get("discovery") or {}
     input_path = root / str(discovery.get("input_path"))
@@ -534,11 +685,7 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
     if frontier_documents:
         documents.extend(frontier_documents)
         input_sources.append("github_frontier")
-    deduped_documents: dict[tuple[str, str], dict[str, Any]] = {}
-    for document in documents:
-        key = (str(document.get("source") or "unknown"), str(document.get("document_id") or document.get("id") or canonical_sha256(document)[:16]))
-        deduped_documents[key] = document
-    documents = list(deduped_documents.values())
+    documents, rolling_stats = _rolling_discovery_corpus(root, documents, as_of, discovery)
     if documents:
         # config/themes.yml uses id/name, while the dynamic-term helper expects
         # theme_id/theme_name. Normalize here so V8 discovery can consume the
@@ -570,6 +717,8 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
             max_phrase_tokens=int(discovery.get("max_phrase_tokens", 4)),
             min_phrase_quality=float(discovery.get("min_phrase_quality", 55.0)),
             existing_theme_similarity=float(discovery.get("existing_theme_similarity", 0.55)),
+            min_distinct_dates=int(discovery.get("min_distinct_dates", 1)),
+            min_date_span_days=int(discovery.get("min_date_span_days", 0)),
         )
     else:
         fallback = root / str(discovery.get("fallback_path"))
@@ -587,6 +736,8 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
             and phrase_quality >= float(discovery.get("min_phrase_quality", 55.0))
             and int(row.get("distinct_document_count") or 0) >= int(discovery.get("min_challenger_documents", 3))
             and int(row.get("source_family_count") or 0) >= int(discovery.get("min_source_families", 2))
+            and int(row.get("distinct_date_count") or 0) >= int(discovery.get("min_distinct_dates", 1))
+            and int(row.get("date_span_days") or 0) >= int(discovery.get("min_date_span_days", 0))
         )
         enriched = {
             **row,
@@ -605,6 +756,7 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
         "status": "CHALLENGERS_FOUND" if any(row["candidate_class"] == "CHALLENGER_NEW_INDUSTRY" for row in candidates) else report.get("status", "NO_QUALIFIED_CANDIDATES"),
         "input_document_count": len(documents),
         "input_source_families": sorted(set(input_sources)),
+        "rolling_corpus": rolling_stats,
         "candidate_count": len(candidates),
         "challenger_count": sum(row["candidate_class"] == "CHALLENGER_NEW_INDUSTRY" for row in candidates),
         "auto_add_allowed": False,
