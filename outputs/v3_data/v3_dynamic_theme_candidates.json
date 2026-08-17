@@ -12,7 +12,7 @@
     "requires_human_review": true
   },
   "candidates": [],
-  "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
+  "input_path": "data_cache/latest/v3_dynamic_discovery_documents.json",
   "input_document_count": 16,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
@@ -21,5 +21,5 @@
     "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "d82e662ebb9eadfc5fa7213105d2b492540666973a4ce7f104c7f1d1ca5d4a92"
+  "content_sha256": "248e786eadef369e15ee6d70f3bbc52c7b10fdb6cb4c2a1aaa5caa7b9d867fe6"
 }

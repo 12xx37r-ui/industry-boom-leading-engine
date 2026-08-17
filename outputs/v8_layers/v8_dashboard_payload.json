@@ -100,10 +100,11 @@
     "schema_version": 1,
     "engine_release": "8.0.0-validation-quality-discovery",
     "as_of": "2026-08-17",
-    "status": "NO_QUALIFIED_CANDIDATES",
-    "input_document_count": 0,
-    "candidate_count": 0,
-    "challenger_count": 0,
+    "status": "CHALLENGERS_FOUND",
+    "input_document_count": 16,
+    "input_source": "data_cache/latest/v3_dynamic_discovery_documents.json",
+    "candidate_count": 5,
+    "challenger_count": 4,
     "auto_add_allowed": false,
     "promotion_rule": {
       "input_path": "data_cache/inbox/v8_discovery_documents.json",
@@ -115,10 +116,77 @@
       "min_novelty": 0.65,
       "min_confidence": 70.0,
       "max_candidates": 50,
-      "auto_add_allowed": false
+      "auto_add_allowed": false,
+      "generated_input_path": "data_cache/latest/v3_dynamic_discovery_documents.json"
     },
-    "candidates": [],
-    "content_sha256": "5e6527425b3977057c1c08b8bddcc5029fa2a3c13c6d2191843b6bb11ebc3d76"
+    "candidates": [
+      {
+        "term": "discovery",
+        "suggested_theme_id": null,
+        "semantic_similarity_proxy": 0.0,
+        "confidence": 75.0,
+        "distinct_document_count": 6,
+        "source_family_count": 2,
+        "period_count": 3,
+        "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
+        "novelty_score": 1.0,
+        "candidate_class": "CHALLENGER_NEW_INDUSTRY",
+        "auto_add_allowed": false
+      },
+      {
+        "term": "drug",
+        "suggested_theme_id": null,
+        "semantic_similarity_proxy": 0.0,
+        "confidence": 75.0,
+        "distinct_document_count": 6,
+        "source_family_count": 2,
+        "period_count": 3,
+        "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
+        "novelty_score": 1.0,
+        "candidate_class": "CHALLENGER_NEW_INDUSTRY",
+        "auto_add_allowed": false
+      },
+      {
+        "term": "drug discovery",
+        "suggested_theme_id": null,
+        "semantic_similarity_proxy": 0.0,
+        "confidence": 75.0,
+        "distinct_document_count": 5,
+        "source_family_count": 2,
+        "period_count": 3,
+        "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
+        "novelty_score": 1.0,
+        "candidate_class": "CHALLENGER_NEW_INDUSTRY",
+        "auto_add_allowed": false
+      },
+      {
+        "term": "edge",
+        "suggested_theme_id": null,
+        "semantic_similarity_proxy": 0.0,
+        "confidence": 75.0,
+        "distinct_document_count": 4,
+        "source_family_count": 2,
+        "period_count": 3,
+        "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
+        "novelty_score": 1.0,
+        "candidate_class": "CHALLENGER_NEW_INDUSTRY",
+        "auto_add_allowed": false
+      },
+      {
+        "term": "molecular",
+        "suggested_theme_id": null,
+        "semantic_similarity_proxy": 0.0,
+        "confidence": 66.0,
+        "distinct_document_count": 3,
+        "source_family_count": 2,
+        "period_count": 2,
+        "promotion_status": "REVIEW_REQUIRED",
+        "novelty_score": 1.0,
+        "candidate_class": "KNOWN_THEME_REVIEW",
+        "auto_add_allowed": false
+      }
+    ],
+    "content_sha256": "58e96aef7be43a738390221e371833e2efdaef90cfdbd1e468e1612646fe52c1"
   },
   "investment_use_allowed": false
 }
