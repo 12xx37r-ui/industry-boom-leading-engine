@@ -83,7 +83,7 @@ jobs:
       - name: Test V7 engine release only
         if: steps.cadence.outputs.should_run == 'true'
         run: |
-          python -m unittest -q tests.test_v62_release tests.test_v8_layers
+          python -m unittest -q tests.test_v62_release tests.test_v8_layers tests.test_v9_learning
 
       - name: Resolve run date
         if: steps.cadence.outputs.should_run == 'true'
@@ -99,7 +99,7 @@ jobs:
         shell: bash
         run: |
           set -uo pipefail
-          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers
+          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers outputs/v9_learning
           rm -f outputs/api_health.json
           run_stage() {
             local seconds="$1"; shift
@@ -284,6 +284,26 @@ jobs:
           print(json.dumps(summary, ensure_ascii=False, indent=2))
           PY
 
+      - name: Build V9 evidence-gated learning candidate
+        if: steps.cadence.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m ible.v9_cli \
+            --root . \
+            --output-dir outputs/v9_learning \
+            --run-date "${{ steps.vars.outputs.run_date }}"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary = json.loads(Path("outputs/v9_learning/v9_run_summary.json").read_text(encoding="utf-8"))
+          if summary.get("automatic_promotion_allowed"):
+              raise SystemExit("V9 automatic promotion must remain disabled")
+          if summary.get("investment_use_allowed"):
+              raise SystemExit("V9 investment use must remain disabled")
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+
       - name: Commit immutable histories and outputs
         if: steps.cadence.outputs.should_run == 'true'
         shell: bash
@@ -298,7 +318,7 @@ jobs:
           find outputs/v3_data -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find historical_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
-          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers outputs/v9_learning -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           for workflow in .github/workflows/*; do
             [ -e "$workflow" ] || continue
             if [ "$(basename "$workflow")" != "run_v50_final_validator.yml" ]; then
@@ -396,6 +416,7 @@ jobs:
             outputs/v60_champion_challenger
             outputs/v70_final_engine
             outputs/v8_layers
+            outputs/v9_learning
             historical_history/v51_audits
             historical_history/v60_audits
             prospective_history/v50_snapshot_registry.json
