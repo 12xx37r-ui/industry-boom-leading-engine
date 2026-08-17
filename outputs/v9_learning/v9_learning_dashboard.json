@@ -1,0 +1,58 @@
+{
+  "status": "V9_LEARNING_ACCUMULATING",
+  "as_of": "2026-08-17",
+  "learning": {
+    "schema_version": 1,
+    "engine_release": "9.0.0-evidence-gated-learning",
+    "as_of": "2026-08-17",
+    "source_v8_layer_sha256": "57ea11bd8947dba1a99ad1c1a7aa78bb46e7d12ce4b53ebca1e06545d155db6c",
+    "observation_count": 0,
+    "matured_snapshot_counts": {
+      "6": 0,
+      "12": 0,
+      "24": 0
+    },
+    "baseline_weights": {
+      "revenue_growth": 0.25,
+      "employment_growth": 0.2,
+      "capex_growth": 0.2,
+      "stock_return": 0.2,
+      "industry_growth": 0.15
+    },
+    "raw_candidate_weights": {
+      "revenue_growth": 0.25,
+      "employment_growth": 0.2,
+      "capex_growth": 0.2,
+      "stock_return": 0.2,
+      "industry_growth": 0.15
+    },
+    "blended_candidate_weights": {
+      "revenue_growth": 0.25,
+      "employment_growth": 0.2,
+      "capex_growth": 0.2,
+      "stock_return": 0.2,
+      "industry_growth": 0.15
+    },
+    "feature_correlations": {
+      "revenue_growth": null,
+      "employment_growth": null,
+      "capex_growth": null,
+      "stock_return": null,
+      "industry_growth": null
+    },
+    "usable_feature_counts": {
+      "revenue_growth": 0,
+      "employment_growth": 0,
+      "capex_growth": 0,
+      "stock_return": 0,
+      "industry_growth": 0
+    },
+    "evidence_sufficient": false,
+    "automatic_promotion_allowed": false,
+    "promotion_status": "WAITING_FOR_MATURE_OUTCOMES",
+    "investment_use_allowed": false,
+    "content_sha256": "3841700971ef276c6dab30141fc52d72be9747ffd490b4156d46cdc7594731ff"
+  },
+  "locked_v7_v8_scores_unchanged": true,
+  "investment_use_allowed": false
+}

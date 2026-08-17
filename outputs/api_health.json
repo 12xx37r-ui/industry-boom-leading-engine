@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T03:16:33.480631+00:00",
+  "generated_at": "2026-08-17T03:31:44.955042+00:00",
   "providers": {
     "arxiv": {
       "cache_hits": 3,
@@ -19,7 +19,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T03:16:31.717941+00:00",
+      "last_success_at": "2026-08-17T03:31:43.218451+00:00",
       "lkg_uses": 0,
       "network_calls": 5,
       "retries": 0,
@@ -32,7 +32,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T03:16:33.480408+00:00",
+      "last_success_at": "2026-08-17T03:31:44.954850+00:00",
       "lkg_uses": 0,
       "network_calls": 4,
       "retries": 0,
@@ -81,7 +81,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T03:16:29.981726+00:00",
+      "last_success_at": "2026-08-17T03:31:41.475031+00:00",
       "lkg_uses": 0,
       "network_calls": 13,
       "retries": 0,
@@ -94,7 +94,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T03:16:32.164509+00:00",
+      "last_success_at": "2026-08-17T03:31:43.641652+00:00",
       "lkg_uses": 0,
       "network_calls": 1,
       "retries": 0,
