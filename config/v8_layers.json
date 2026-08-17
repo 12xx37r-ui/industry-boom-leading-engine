@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "8.0.0-validation-quality-discovery",
+  "engine_release": "8.0.1-rolling-discovery-corpus",
   "timezone": "Asia/Seoul",
   "evaluation_horizons_months": [
     6,
@@ -100,7 +100,7 @@
     "fallback_path": "data_cache/latest/v3_dynamic_theme_candidates.json",
     "min_documents": 2,
     "min_source_families": 2,
-    "min_periods": 2,
+    "min_periods": 1,
     "min_similarity": 0.15,
     "min_novelty": 0.72,
     "min_confidence": 72.0,
@@ -111,6 +111,13 @@
     "min_phrase_tokens": 2,
     "max_phrase_tokens": 4,
     "min_phrase_quality": 55.0,
-    "existing_theme_similarity": 0.48
+    "existing_theme_similarity": 0.48,
+    "rolling_corpus_path": "prospective_history/v8_discovery_rolling_corpus.json",
+    "rolling_window_days": 90,
+    "max_rolling_documents": 600,
+    "source_balance_min_corpus_size": 40,
+    "max_source_share": 0.5,
+    "min_distinct_dates": 2,
+    "min_date_span_days": 7
   }
 }
