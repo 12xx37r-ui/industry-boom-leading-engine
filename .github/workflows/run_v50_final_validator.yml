@@ -244,7 +244,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           date +%s > .github/industry_boom_last_success_epoch.txt
           git add -f .github/industry_boom_last_success_epoch.txt
-          if [ -s outputs/api_health.json ]; then git add -f outputs/api_health.json; fi
+          test -s outputs/api_health.json || {
+            echo "::error::outputs/api_health.json was not created"
+            exit 1
+          }
+          git add -f outputs/api_health.json
           find data_cache -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find outputs/v3_data -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
