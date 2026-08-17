@@ -17,7 +17,7 @@ from urllib.parse import urlsplit
 # ceilings; providers without a published QPS limit use low-burst operational
 # pacing only. This affects transport timing, never engine calculations.
 _PROVIDER_POLICIES: dict[str, dict[str, float | int]] = {
-    "api.gdeltproject.org": {"min_interval": 7.5, "max_concurrent": 1, "max_attempts": 2, "rate_limit_cooldown": 20.0},
+    "api.gdeltproject.org": {"min_interval": 7.5, "max_concurrent": 1, "max_attempts": 1, "rate_limit_cooldown": 300.0},
     "data.sec.gov": {"min_interval": 0.15, "max_concurrent": 2},
     "www.sec.gov": {"min_interval": 0.15, "max_concurrent": 2},
     "naverapihub.apigw.ntruss.com": {"min_interval": 0.25, "max_concurrent": 1, "max_attempts": 3, "rate_limit_cooldown": 30.0},
