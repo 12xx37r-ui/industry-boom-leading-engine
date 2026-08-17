@@ -371,6 +371,7 @@ def run_v50(root: Path, output_dir: Path, run_date: str | None = None) -> dict[s
     output_dir.mkdir(parents=True, exist_ok=True)
     write_json(output_dir / "v50_run_summary.json", summary)
     write_json(output_dir / "v50_current_monthly_snapshot.json", registered_snapshot)
+    write_json(output_dir / "v50_current_run_snapshot.json", current_snapshot)
     write_json(output_dir / "v50_candidate_ranking.json", {"status": "PREVALIDATION_ONLY", "as_of": as_of.isoformat(), "ranking": ranking})
     write_json(output_dir / "v50_prospective_scorecard.json", scorecard)
     write_json(output_dir / "v50_snapshot_registry.json", registry)
