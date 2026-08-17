@@ -8,8 +8,8 @@
     "github_frontier",
     "v3_dynamic_text"
   ],
-  "candidate_count": 24,
-  "challenger_count": 13,
+  "candidate_count": 6,
+  "challenger_count": 1,
   "auto_add_allowed": false,
   "promotion_rule": {
     "input_path": "data_cache/inbox/v8_discovery_documents.json",
@@ -22,52 +22,66 @@
     "min_confidence": 70.0,
     "max_candidates": 50,
     "auto_add_allowed": false,
-    "generated_input_path": "data_cache/latest/v3_dynamic_discovery_documents.json"
+    "generated_input_path": "data_cache/latest/v3_dynamic_discovery_documents.json",
+    "min_challenger_documents": 3,
+    "min_phrase_tokens": 2,
+    "max_phrase_tokens": 4,
+    "min_phrase_quality": 55.0,
+    "existing_theme_similarity": 0.55
   },
   "candidates": [
     {
-      "term": "across",
-      "suggested_theme_id": null,
+      "term": "artificial intelligence",
+      "display_name": "Artificial Intelligence",
+      "suggested_theme_id": "WATER_INFRASTRUCTURE",
       "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 8,
-      "source_family_count": 2,
-      "period_count": 2,
+      "phrase_quality_score": 55.0,
+      "confidence": 100.0,
+      "distinct_document_count": 10,
+      "source_family_count": 3,
+      "period_count": 6,
       "evidence_sources": [
+        "arxiv",
         "github_frontier",
         "openalex"
       ],
       "evidence_periods": [
+        "2023-11",
+        "2024-12",
+        "2026-01",
+        "2026-05",
         "2026-06",
         "2026-07"
       ],
       "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
+        "github:AstraZeneca/kgem-in-drug-discovery",
+        "github:gfzhou/OpenVS",
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W4416043407",
+        "https://openalex.org/W7161746976",
+        "https://openalex.org/W7162285465",
         "https://openalex.org/W7163234986",
-        "https://openalex.org/W7164121164",
-        "https://openalex.org/W7165050114",
-        "https://openalex.org/W7166198461",
-        "https://openalex.org/W7166301583",
-        "https://openalex.org/W7166735986",
-        "https://openalex.org/W7172377876"
+        "https://openalex.org/W7164121164"
       ],
       "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
       "novelty_score": 1.0,
       "candidate_class": "CHALLENGER_NEW_INDUSTRY",
       "auto_add_allowed": false,
-      "readiness_score": 86.25,
+      "readiness_score": 100.0,
       "evidence_score": 100.0,
       "missing_requirements": [],
       "review_priority": "HIGH"
     },
     {
-      "term": "chip",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
+      "term": "ai accelerator",
+      "display_name": "AI Accelerator",
+      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "semantic_similarity_proxy": 0.45,
+      "phrase_quality_score": 75.0,
+      "confidence": 78.0,
       "distinct_document_count": 6,
       "source_family_count": 2,
-      "period_count": 4,
+      "period_count": 3,
       "evidence_sources": [
         "github_frontier",
         "openalex"
@@ -75,562 +89,69 @@
       "evidence_periods": [
         "2026-04",
         "2026-05",
-        "2026-06",
         "2026-07"
       ],
       "evidence_document_ids": [
         "github:Alexzoofficial/T1C",
         "https://openalex.org/W7162247298",
         "https://openalex.org/W7162258120",
-        "https://openalex.org/W7165050114",
-        "https://openalex.org/W7166198461",
-        "https://openalex.org/W7168869168"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 86.25,
-      "evidence_score": 100.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "discovery",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 8,
-      "source_family_count": 3,
-      "period_count": 5,
-      "evidence_sources": [
-        "arxiv",
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2023-11",
-        "2024-12",
-        "2026-01",
-        "2026-05",
-        "2026-06"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
-        "github:gfzhou/OpenVS",
-        "http://arxiv.org/abs/2311.16666v2",
-        "https://openalex.org/W4416043407",
-        "https://openalex.org/W7161746976",
-        "https://openalex.org/W7162285465",
-        "https://openalex.org/W7163234986",
-        "https://openalex.org/W7166301583"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 86.25,
-      "evidence_score": 100.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "drug",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 8,
-      "source_family_count": 3,
-      "period_count": 5,
-      "evidence_sources": [
-        "arxiv",
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2023-11",
-        "2024-12",
-        "2026-01",
-        "2026-05",
-        "2026-06"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
-        "github:gfzhou/OpenVS",
-        "http://arxiv.org/abs/2311.16666v2",
-        "https://openalex.org/W4416043407",
-        "https://openalex.org/W7161746976",
-        "https://openalex.org/W7162285465",
-        "https://openalex.org/W7163234986",
-        "https://openalex.org/W7166301583"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 86.25,
-      "evidence_score": 100.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "drug discovery",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 7,
-      "source_family_count": 3,
-      "period_count": 5,
-      "evidence_sources": [
-        "arxiv",
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2023-11",
-        "2024-12",
-        "2026-01",
-        "2026-05",
-        "2026-06"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
-        "github:gfzhou/OpenVS",
-        "http://arxiv.org/abs/2311.16666v2",
-        "https://openalex.org/W7161746976",
-        "https://openalex.org/W7162285465",
-        "https://openalex.org/W7163234986",
-        "https://openalex.org/W7166301583"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 86.25,
-      "evidence_score": 100.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "process",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 7,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-05",
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:roboco-io/semiconductor-design",
-        "https://openalex.org/W4416043407",
-        "https://openalex.org/W7162285465",
-        "https://openalex.org/W7166198461",
-        "https://openalex.org/W7166735986",
-        "https://openalex.org/W7168869168",
-        "https://openalex.org/W7172377876"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 86.25,
-      "evidence_score": 100.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "screening",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 5,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2024-12",
-        "2026-05",
-        "2026-06"
-      ],
-      "evidence_document_ids": [
-        "github:gfzhou/OpenVS",
-        "https://openalex.org/W7161746976",
-        "https://openalex.org/W7162285465",
-        "https://openalex.org/W7163234986",
-        "https://openalex.org/W7166301583"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 85.05,
-      "evidence_score": 94.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "edge",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 4,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "arxiv",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2023-11",
-        "2026-05",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "http://arxiv.org/abs/2311.16666v2",
-        "https://openalex.org/W7162247298",
-        "https://openalex.org/W7162258120",
-        "https://openalex.org/W7172377876"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 83.45,
-      "evidence_score": 86.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "single",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 75.0,
-      "distinct_document_count": 4,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
-        "https://openalex.org/W7166198461",
-        "https://openalex.org/W7166301583",
-        "https://openalex.org/W7166735986"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 81.45,
-      "evidence_score": 76.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "accelerated",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 74.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2024-12",
-        "2026-05",
-        "2026-06"
-      ],
-      "evidence_document_ids": [
-        "github:gfzhou/OpenVS",
-        "https://openalex.org/W4416043407",
-        "https://openalex.org/W7166301583"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 81.3,
-      "evidence_score": 78.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "graph",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 74.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "arxiv",
-        "github_frontier"
-      ],
-      "evidence_periods": [
-        "2023-11",
-        "2026-01",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
-        "github:roboco-io/semiconductor-design",
-        "http://arxiv.org/abs/2311.16666v2"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 81.3,
-      "evidence_score": 78.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "knowledge",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 74.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-01",
-        "2026-05",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
-        "github:roboco-io/semiconductor-design",
-        "https://openalex.org/W4416043407"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 81.3,
-      "evidence_score": 78.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "open",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 74.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 3,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-04",
-        "2026-05",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:Alexzoofficial/T1C",
-        "github:roboco-io/semiconductor-design",
-        "https://openalex.org/W7162285465"
-      ],
-      "promotion_status": "CHALLENGER_REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "CHALLENGER_NEW_INDUSTRY",
-      "auto_add_allowed": false,
-      "readiness_score": 81.3,
-      "evidence_score": 78.0,
-      "missing_requirements": [],
-      "review_priority": "HIGH"
-    },
-    {
-      "term": "hbm",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 66.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
-        "https://openalex.org/W7166735986",
+        "https://openalex.org/W7167670549",
+        "https://openalex.org/W7167702329",
         "https://openalex.org/W7168869168"
       ],
       "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
+      "novelty_score": 0.55,
+      "candidate_class": "REVIEW_ONLY",
       "auto_add_allowed": false,
-      "readiness_score": 74.9,
-      "evidence_score": 68.0,
+      "readiness_score": 76.65,
+      "evidence_score": 100.0,
       "missing_requirements": [
-        "신뢰도"
+        "신규성"
       ],
       "review_priority": "MEDIUM"
     },
     {
-      "term": "molecular",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 66.0,
+      "term": "artificial intelligence drug",
+      "display_name": "Artificial Intelligence Drug",
+      "suggested_theme_id": "AI_DRUG_DISCOVERY",
+      "semantic_similarity_proxy": 0.3,
+      "phrase_quality_score": 75.0,
+      "confidence": 69.8,
       "distinct_document_count": 3,
       "source_family_count": 2,
-      "period_count": 2,
+      "period_count": 3,
       "evidence_sources": [
         "arxiv",
         "openalex"
       ],
       "evidence_periods": [
         "2023-11",
+        "2026-05",
         "2026-06"
       ],
       "evidence_document_ids": [
         "http://arxiv.org/abs/2311.16666v2",
-        "https://openalex.org/W7163234986",
+        "https://openalex.org/W7162285465",
         "https://openalex.org/W7166301583"
       ],
       "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
+      "novelty_score": 0.7,
+      "candidate_class": "REVIEW_ONLY",
       "auto_add_allowed": false,
-      "readiness_score": 74.9,
-      "evidence_score": 68.0,
+      "readiness_score": 71.49,
+      "evidence_score": 78.0,
       "missing_requirements": [
         "신뢰도"
       ],
       "review_priority": "MEDIUM"
     },
     {
-      "term": "science",
-      "suggested_theme_id": null,
+      "term": "virtual screening",
+      "display_name": "Virtual Screening",
+      "suggested_theme_id": "WATER_INFRASTRUCTURE",
       "semantic_similarity_proxy": 0.0,
-      "confidence": 66.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-01",
-        "2026-05"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
-        "https://openalex.org/W7161746976",
-        "https://openalex.org/W7162285465"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 74.9,
-      "evidence_score": 68.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "stack",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 66.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-05",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
-        "https://openalex.org/W7162247298",
-        "https://openalex.org/W7162258120"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 74.9,
-      "evidence_score": 68.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "thermal",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 66.0,
-      "distinct_document_count": 3,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
-        "https://openalex.org/W7166198461",
-        "https://openalex.org/W7168869168"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 74.9,
-      "evidence_score": 68.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "agent",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 56.0,
+      "phrase_quality_score": 55.0,
+      "confidence": 53.05,
       "distinct_document_count": 2,
       "source_family_count": 2,
       "period_count": 2,
@@ -639,179 +160,92 @@
         "openalex"
       ],
       "evidence_periods": [
-        "2026-05",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:roboco-io/semiconductor-design",
-        "https://openalex.org/W4416043407"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 67.8,
-      "evidence_score": 60.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "fully",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 56.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-04",
+        "2024-12",
         "2026-06"
       ],
       "evidence_document_ids": [
-        "github:Alexzoofficial/T1C",
-        "https://openalex.org/W7166301583"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 67.8,
-      "evidence_score": 60.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "real",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 56.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-05",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
-        "https://openalex.org/W4416043407"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 67.8,
-      "evidence_score": 60.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "substrate",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 56.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:roboco-io/semiconductor-design",
-        "https://openalex.org/W7165050114"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 67.8,
-      "evidence_score": 60.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "thermo",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 56.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_document_ids": [
-        "github:rajul-kk/thermo-3dic-surrogates",
-        "https://openalex.org/W7166198461"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
-      "auto_add_allowed": false,
-      "readiness_score": 67.8,
-      "evidence_score": 60.0,
-      "missing_requirements": [
-        "신뢰도"
-      ],
-      "review_priority": "MEDIUM"
-    },
-    {
-      "term": "understanding",
-      "suggested_theme_id": null,
-      "semantic_similarity_proxy": 0.0,
-      "confidence": 56.0,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-01",
-        "2026-06"
-      ],
-      "evidence_document_ids": [
-        "github:AstraZeneca/kgem-in-drug-discovery",
+        "github:gfzhou/OpenVS",
         "https://openalex.org/W7163234986"
       ],
       "promotion_status": "REVIEW_REQUIRED",
       "novelty_score": 1.0,
-      "candidate_class": "KNOWN_THEME_REVIEW",
+      "candidate_class": "REVIEW_ONLY",
       "auto_add_allowed": false,
-      "readiness_score": 67.8,
+      "readiness_score": 66.18,
       "evidence_score": 60.0,
       "missing_requirements": [
         "신뢰도"
       ],
       "review_priority": "MEDIUM"
+    },
+    {
+      "term": "semiconductor design",
+      "display_name": "Semiconductor Design",
+      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "semantic_similarity_proxy": 0.45,
+      "phrase_quality_score": 75.0,
+      "confidence": 60.05,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "evidence_sources": [
+        "github_frontier",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2026-06",
+        "2026-07"
+      ],
+      "evidence_document_ids": [
+        "github:roboco-io/semiconductor-design",
+        "https://openalex.org/W7166735986"
+      ],
+      "promotion_status": "REVIEW_REQUIRED",
+      "novelty_score": 0.55,
+      "candidate_class": "REVIEW_ONLY",
+      "auto_add_allowed": false,
+      "readiness_score": 58.78,
+      "evidence_score": 60.0,
+      "missing_requirements": [
+        "신뢰도",
+        "신규성"
+      ],
+      "review_priority": "LOW"
+    },
+    {
+      "term": "ai chip",
+      "display_name": "AI Chip",
+      "suggested_theme_id": "AI_SEMICONDUCTORS",
+      "semantic_similarity_proxy": 1.0,
+      "phrase_quality_score": 85.0,
+      "confidence": 63.55,
+      "distinct_document_count": 2,
+      "source_family_count": 2,
+      "period_count": 2,
+      "evidence_sources": [
+        "github_frontier",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2026-04",
+        "2026-07"
+      ],
+      "evidence_document_ids": [
+        "github:Alexzoofficial/T1C",
+        "https://openalex.org/W7168869168"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION",
+      "novelty_score": 0.0,
+      "candidate_class": "EXISTING_THEME_EXTENSION",
+      "auto_add_allowed": false,
+      "readiness_score": 46.95,
+      "evidence_score": 60.0,
+      "missing_requirements": [
+        "신뢰도",
+        "신규성"
+      ],
+      "review_priority": "LOW"
     }
   ],
-  "content_sha256": "6f8e47decf5453d42cf4c27d0fcaf663f8144e89d356b48fb4d8a1a90c4d0886"
+  "content_sha256": "928b43f626f0714cbe4aeb9ae8e3d16b241e6bd589318ff834f202537ed4a533"
 }

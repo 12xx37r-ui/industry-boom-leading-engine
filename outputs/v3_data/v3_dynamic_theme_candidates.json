@@ -1,17 +1,80 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "as_of": "2026-08-16",
-  "status": "NO_QUALIFIED_CANDIDATES",
-  "candidate_count": 0,
+  "status": "CANDIDATES_FOUND",
+  "candidate_count": 2,
   "auto_add_allowed": false,
   "promotion_rule": {
     "min_distinct_document_count": 2,
     "min_source_family_count": 2,
     "min_period_count": 2,
     "min_similarity": 0.15,
+    "min_phrase_tokens": 1,
+    "max_phrase_tokens": 4,
+    "min_phrase_quality": 55.0,
+    "existing_theme_similarity": 0.55,
     "requires_human_review": true
   },
-  "candidates": [],
+  "candidates": [
+    {
+      "term": "artificial intelligence",
+      "display_name": "Artificial Intelligence",
+      "suggested_theme_id": "HUMANOID_ROBOTS",
+      "semantic_similarity_proxy": 0.9,
+      "phrase_quality_score": 55.0,
+      "confidence": 78.0,
+      "distinct_document_count": 8,
+      "source_family_count": 2,
+      "period_count": 4,
+      "evidence_sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2023-11",
+        "2026-05",
+        "2026-06",
+        "2026-07"
+      ],
+      "evidence_document_ids": [
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W4416043407",
+        "https://openalex.org/W7161746976",
+        "https://openalex.org/W7162285465",
+        "https://openalex.org/W7163234986",
+        "https://openalex.org/W7164121164",
+        "https://openalex.org/W7166301583",
+        "https://openalex.org/W7172377876"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION"
+    },
+    {
+      "term": "intelligence drug",
+      "display_name": "Intelligence Drug",
+      "suggested_theme_id": "AI_DRUG_DISCOVERY",
+      "semantic_similarity_proxy": 0.9,
+      "phrase_quality_score": 75.0,
+      "confidence": 69.8,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "evidence_sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2023-11",
+        "2026-05",
+        "2026-06"
+      ],
+      "evidence_document_ids": [
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W7162285465",
+        "https://openalex.org/W7166301583"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION"
+    }
+  ],
   "input_path": "data_cache/latest/v3_dynamic_discovery_documents.json",
   "input_document_count": 16,
   "collection": {
@@ -21,5 +84,5 @@
     "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "248e786eadef369e15ee6d70f3bbc52c7b10fdb6cb4c2a1aaa5caa7b9d867fe6"
+  "content_sha256": "443d3b166a284493176002134d2861ad93d505b6270910daf5435daec7888a79"
 }

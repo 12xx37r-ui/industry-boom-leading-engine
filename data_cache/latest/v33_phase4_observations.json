@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.3.0-github-final-auto",
   "as_of": "2026-08-17",
-  "captured_at": "2026-08-17T14:44:19+09:00",
+  "captured_at": "2026-08-17T15:07:10+09:00",
   "theme_count": 50,
   "source_cache_as_of": {
     "phase1": "2026-08-16",
@@ -1862,5 +1862,5 @@
       ]
     }
   ],
-  "content_sha256": "6d328e403fbd772efa48f45c87fec29ac142b961ba5510c168cedddac1ed68e1"
+  "content_sha256": "0a87cc5258a4fc33c776ba142231cdd0ed2f499801d2528b682c50525a13f419"
 }
