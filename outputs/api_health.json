@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T01:33:24.579801+00:00",
+  "generated_at": "2026-08-17T01:51:58.627070+00:00",
   "providers": {
     "arxiv": {
       "cache_hits": 3,
@@ -19,7 +19,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:33:20.401939+00:00",
+      "last_success_at": "2026-08-17T01:51:56.096617+00:00",
       "lkg_uses": 0,
       "network_calls": 5,
       "retries": 0,
@@ -32,7 +32,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:33:24.579569+00:00",
+      "last_success_at": "2026-08-17T01:51:58.626801+00:00",
       "lkg_uses": 0,
       "network_calls": 4,
       "retries": 0,
@@ -40,16 +40,15 @@
       "timeouts": 0
     },
     "gdelt": {
-      "cache_hits": 49,
+      "cache_hits": 50,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:27:20.701107+00:00",
       "lkg_uses": 0,
-      "network_calls": 1,
+      "network_calls": 0,
       "retries": 0,
-      "status": "LIVE",
+      "status": "CACHE",
       "timeouts": 0
     },
     "github": {
@@ -82,7 +81,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:33:18.235201+00:00",
+      "last_success_at": "2026-08-17T01:51:54.217565+00:00",
       "lkg_uses": 0,
       "network_calls": 13,
       "retries": 0,
@@ -95,7 +94,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-17T01:33:21.274209+00:00",
+      "last_success_at": "2026-08-17T01:51:56.775067+00:00",
       "lkg_uses": 0,
       "network_calls": 1,
       "retries": 0,

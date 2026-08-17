@@ -200,6 +200,12 @@
       "status": "AWAITING_FUTURE_OUTCOMES"
     },
     {
+      "snapshot_id": "2026-08-2026-08-02-39",
+      "as_of": "2026-08-02",
+      "snapshot_sha256": "acd71b0e6513fac5d4404a86822fcc6f54117d9e90c5c9f0fccf445ead12163a",
+      "status": "AWAITING_FUTURE_OUTCOMES"
+    },
+    {
       "snapshot_id": "2026-08-2026-08-02-4",
       "as_of": "2026-08-02",
       "snapshot_sha256": "e56eaf9552b8aa47978b2b645bfe321b96c839e56cc4280d139a124af105fdd2",
@@ -236,5 +242,5 @@
       "status": "AWAITING_FUTURE_OUTCOMES"
     }
   ],
-  "content_sha256": "1453aa203feab9f3f1fd9201ca84a2bd85ddd0555364ed20dc3699e8bb8c6b92"
+  "content_sha256": "ae6f630a7eca6c92be81bed2bf1464a136f0d3868a88554a2f3469432b31125a"
 }
