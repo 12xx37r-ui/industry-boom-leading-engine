@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "engine_release": "9.0.0-evidence-gated-learning",
+  "baseline_weights": {
+    "revenue_growth": 0.25,
+    "employment_growth": 0.20,
+    "capex_growth": 0.20,
+    "stock_return": 0.20,
+    "industry_growth": 0.15
+  },
+  "minimum_observations": 100,
+  "minimum_matured_snapshots": {"6": 3, "12": 2, "24": 1},
+  "shrinkage_to_baseline": 0.75,
+  "promotion": {
+    "automatic_promotion_allowed": false,
+    "minimum_positive_recall": 0.70,
+    "maximum_false_positive_rate": 0.25,
+    "minimum_hit_rate": 0.65,
+    "require_all_horizons": true
+  }
+}
