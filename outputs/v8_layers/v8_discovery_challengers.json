@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "engine_release": "8.0.1-rolling-discovery-corpus",
-  "as_of": "2026-08-17",
+  "as_of": "2026-08-18",
   "status": "CANDIDATES_FOUND",
-  "input_document_count": 13,
+  "input_document_count": 12,
   "input_source_families": [
     "github_frontier",
     "v3_dynamic_text"
@@ -13,14 +13,14 @@
     "rolling_window_days": 90,
     "previous_document_count": 13,
     "current_run_document_count": 21,
-    "rolling_document_count": 13,
+    "rolling_document_count": 12,
     "deduplicated_document_count": 15,
-    "expired_document_count": 6,
+    "expired_document_count": 7,
     "source_balance_dropped_count": 0,
     "max_document_dropped_count": 0,
     "source_counts": {
       "github_frontier": 2,
-      "openalex": 11
+      "openalex": 10
     }
   },
   "candidate_count": 2,
@@ -133,5 +133,5 @@
       "review_priority": "LOW"
     }
   ],
-  "content_sha256": "81c66adbdad8c649d8efce80f79db9c845bcced6547f340f491d52ad546a0ddb"
+  "content_sha256": "7a18b6d94d3b6221d5f9bb25c475fd73fecd3ca90500e6861ace1681e352015c"
 }

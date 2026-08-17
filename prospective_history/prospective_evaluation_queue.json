@@ -70,6 +70,16 @@
         24
       ],
       "status": "AWAITING_FUTURE_OUTCOMES"
+    },
+    {
+      "as_of": "2026-08-18",
+      "observation_sha256": "cc7ca9b6014a7dfd5299909228fac1108bebd45138b301459106a120f77a37e8",
+      "evaluation_horizons_months": [
+        6,
+        12,
+        24
+      ],
+      "status": "AWAITING_FUTURE_OUTCOMES"
     }
   ]
 }

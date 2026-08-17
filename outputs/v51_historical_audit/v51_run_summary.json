@@ -1,7 +1,7 @@
 {
   "status": "V5_1_HISTORICAL_AUDIT_COMPLETED_RECALL_GAP",
   "engine_release": "5.1.0-historical-prospective-audit",
-  "as_of": "2026-08-17",
+  "as_of": "2026-08-18",
   "audit_receipt_action": "REUSED_IMMUTABLE_AUDIT_RECEIPT",
   "benchmark_metrics": {
     "scenario_count": 7,
@@ -95,7 +95,7 @@
   "prospective_validator": {
     "status": "V5_0_PROSPECTIVE_VALIDATION_ACTIVE",
     "engine_release": "5.0.0-prospective-validation-final",
-    "as_of": "2026-08-17",
+    "as_of": "2026-08-18",
     "theme_count": 50,
     "commercialization_coverage_theme_count": 50,
     "monthly_snapshot_action": "REUSED_IMMUTABLE_MONTHLY_SNAPSHOT",

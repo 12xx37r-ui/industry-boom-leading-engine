@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-17",
+  "as_of": "2026-08-18",
   "window_days": 90,
-  "cutoff_date": "2026-05-20",
-  "document_count": 13,
+  "cutoff_date": "2026-05-21",
+  "document_count": 12,
   "source_counts": {
     "github_frontier": 2,
-    "openalex": 11
+    "openalex": 10
   },
   "documents": [
     {
@@ -96,14 +96,7 @@
       "captured_at": "2026-05-25",
       "text": "Artificial intelligence in drug discovery for fungal diseases: a scoping review BACKGROUND: Fungal diseases represent a global health threat, with high mortality rates and growing antifungal resistance demanding new therapeutic strategies. Artificial intelligence (AI) has emerged as a key methodology to accelerate the costly and time-consuming process of drug discovery. OBJECTIVES: To map the available evidence on the applications of AI methodologies in predicting biological activity for antifungal drug discovery and repurposing. METHODS: This scoping review followed the Joanna Briggs Institute (JBI) methodology and is reported according to the PRISMA-ScR checklist. The protocol was registered on the Open Science Framework at DOI: 10.17605/OSF.IO/79TYS. A comprehensive search was conducted in PubMed, Scopus, and Web of Science for studies published until July 2025. RESULTS: The review included 106 primary studies. The Prediction of Activity Spectra for Substances (PASS) was the most frequently employed method (50%), though a recent trend toward computationally more complex methods, such as ensemble models and deep learning, was observed. Four primary application areas were identified: designed molecules; mechanisms of action; omics data; and natural products. While these applications identified promising candidates, a gap exists between prediction and validation: only half of the studies performed in vitro experimental assays. Notably, studies employing advanced deep learning architectures were less likely to include experimental validation. CONCLUSION: There is a reliance on accessible screening tools and a disconnection between advanced computational modeling and experimental confirmation. To bridge this translational gap, future research should prioritize the construction of more robust antifungal datasets and the integration of in silico predictions with prospective experimental validation.",
       "discovery_fingerprint": "3dcb6b03fa8af8ea79f435e1d27abb6e40734056f305cca34c8d9b554c0a49eb"
-    },
-    {
-      "document_id": "https://openalex.org/W7162258120",
-      "source": "openalex",
-      "captured_at": "2026-05-20",
-      "text": "The Taiwan Chip Chokepoint: Global Dependence on the World's Most Contested Semiconductor Hub Taiwan’s semiconductor ecosystem is a systemic chokepoint in the global economy. Led by Taiwan Semiconductor Manufacturing Company (TSMC), whose share of global foundry revenue reached 69.9% in 2025, Taiwan controls the overwhelming majority of advanced logic manufacturing capacity at the leading edge. The dependency spans the full stack: AI accelerators, military electronics, autonomous systems, cloud infrastructure, and the microcontrollers embedded in hospital equipment and power grids all rely on production concentrated within a geographically constrained, actively contested environment. China’s accelerating legacy-node capacity expansion adds a parallel vulnerability, creating a two-stage coercive structure with leverage over both advanced AI and everyday embedded infrastructure. ISRS assesses that the most consequential disruption scenarios operate below the threshold of full-scale invasion, and that current planning frameworks consistently underweight sub-kinetic coercion as a primary threat vector.",
-      "discovery_fingerprint": "6b70eafe04c2f14c02b93d9d3b7a037c353fbb9aef9725c74d8cf7b9cb1eed39"
     }
   ],
-  "content_sha256": "27a06c769de5746d791b5de72e31ba17698c2b8625c13b3dc28b3427f3fb9fed"
+  "content_sha256": "246c466a58e4420bbc2589733a6012b8f8fb80a1e91aa1df6ebcbcfa53a6f08d"
 }
