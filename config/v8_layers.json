@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "engine_release": "8.0.0-validation-quality-discovery",
+  "timezone": "Asia/Seoul",
+  "evaluation_horizons_months": [6, 12, 24],
+  "prediction": {
+    "locked_score_field": "boom_score",
+    "positive_threshold": 60.0,
+    "outcome_success_threshold": 60.0
+  },
+  "proxy_quality": {
+    "freshness_half_life_days": 365,
+    "minimum_observed_proxy_count": 2,
+    "quality_multiplier_floor": 0.70,
+    "quality_multiplier_ceiling": 1.00,
+    "source_defaults": {
+      "v40_qss_revenue": {"directness": 1.0, "publication_lag_days": 45, "revision_risk": 0.20},
+      "v40_m3_proxy": {"directness": 0.70, "publication_lag_days": 60, "revision_risk": 0.30},
+      "v31_qcew": {"directness": 0.70, "publication_lag_days": 90, "revision_risk": 0.30},
+      "v32_aies_capex": {"directness": 0.65, "publication_lag_days": 730, "revision_risk": 0.45},
+      "v32_berd_rd": {"directness": 0.65, "publication_lag_days": 730, "revision_risk": 0.40},
+      "v33_phase4": {"directness": 0.55, "publication_lag_days": 120, "revision_risk": 0.35},
+      "openalex_research": {"directness": 0.50, "publication_lag_days": 30, "revision_risk": 0.15},
+      "usaspending_proxy": {"directness": 0.55, "publication_lag_days": 90, "revision_risk": 0.25},
+      "naver_interest": {"directness": 0.35, "publication_lag_days": 14, "revision_risk": 0.20},
+      "hiring_nowcast": {"directness": 0.55, "publication_lag_days": 45, "revision_risk": 0.35}
+    }
+  },
+  "hidden_interaction": {
+    "public_interest_max": 45.0,
+    "minimum_real_economy_score": 55.0,
+    "minimum_capital_score": 50.0,
+    "minimum_diffusion_score": 50.0,
+    "minimum_research_or_hiring_score": 50.0,
+    "bonus_cap": 15.0,
+    "base_weight": 0.75,
+    "interaction_weight": 0.25
+  },
+  "validation": {
+    "outcome_weights": {
+      "revenue_growth": 0.25,
+      "employment_growth": 0.20,
+      "capex_growth": 0.20,
+      "stock_return": 0.20,
+      "industry_growth": 0.15
+    },
+    "minimum_observed_outcome_metrics": 2,
+    "minimum_matured_snapshots": {"6": 3, "12": 2, "24": 1}
+  },
+  "discovery": {
+    "input_path": "data_cache/inbox/v8_discovery_documents.json",
+    "fallback_path": "data_cache/latest/v3_dynamic_theme_candidates.json",
+    "min_documents": 2,
+    "min_source_families": 2,
+    "min_periods": 2,
+    "min_similarity": 0.15,
+    "min_novelty": 0.65,
+    "min_confidence": 70.0,
+    "max_candidates": 50,
+    "auto_add_allowed": false
+  }
+}
