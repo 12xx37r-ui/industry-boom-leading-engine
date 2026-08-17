@@ -102,8 +102,8 @@
     "min_source_families": 2,
     "min_periods": 2,
     "min_similarity": 0.15,
-    "min_novelty": 0.65,
-    "min_confidence": 70.0,
+    "min_novelty": 0.72,
+    "min_confidence": 72.0,
     "max_candidates": 50,
     "auto_add_allowed": false,
     "generated_input_path": "data_cache/latest/v3_dynamic_discovery_documents.json",
@@ -111,6 +111,6 @@
     "min_phrase_tokens": 2,
     "max_phrase_tokens": 4,
     "min_phrase_quality": 55.0,
-    "existing_theme_similarity": 0.55
+    "existing_theme_similarity": 0.48
   }
 }
