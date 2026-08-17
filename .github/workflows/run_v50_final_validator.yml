@@ -83,7 +83,7 @@ jobs:
       - name: Test V7 engine release only
         if: steps.cadence.outputs.should_run == 'true'
         run: |
-          python -m unittest -q tests.test_v62_release
+          python -m unittest -q tests.test_v62_release tests.test_v8_layers
 
       - name: Resolve run date
         if: steps.cadence.outputs.should_run == 'true'
@@ -99,7 +99,7 @@ jobs:
         shell: bash
         run: |
           set -uo pipefail
-          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine
+          rm -rf outputs/v3_data outputs/v31_real_economy outputs/v32_investment outputs/v33_auto outputs/v40_final_auto outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers
           rm -f outputs/api_health.json
           run_stage() {
             local seconds="$1"; shift
@@ -257,6 +257,33 @@ jobs:
           }, ensure_ascii=False, indent=2))
           PY
 
+      - name: Build V8 validation, proxy quality and discovery layers
+        if: steps.cadence.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m ible.v8_cli \
+            --root . \
+            --output-dir outputs/v8_layers \
+            --v70-output-dir outputs/v70_final_engine \
+            --run-date "${{ steps.vars.outputs.run_date }}"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected = "${{ steps.vars.outputs.run_date }}"
+          summary = json.loads(Path("outputs/v8_layers/v8_run_summary.json").read_text(encoding="utf-8"))
+          layer = json.loads(Path("outputs/v8_layers/v8_current_layer_snapshot.json").read_text(encoding="utf-8"))
+          if summary.get("as_of") != expected or layer.get("as_of") != expected:
+              raise SystemExit("V8 as_of mismatch")
+          if summary.get("theme_count") != 50:
+              raise SystemExit(f"V8 theme count mismatch: {summary.get('theme_count')}")
+          if summary.get("locked_score_mutated"):
+              raise SystemExit("V8 mutated the locked V7 score")
+          if not all(row.get("proxy_quality") for row in layer.get("themes") or []):
+              raise SystemExit("V8 proxy-quality records missing")
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+
       - name: Commit immutable histories and outputs
         if: steps.cadence.outputs.should_run == 'true'
         shell: bash
@@ -271,7 +298,7 @@ jobs:
           find outputs/v3_data -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find prospective_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           find historical_history -type f -name '*.json' -print0 | xargs -0 -r git add -f --
-          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine -type f -name '*.json' -print0 | xargs -0 -r git add -f --
+          find outputs/v50_final_validator outputs/v51_historical_audit outputs/v60_champion_challenger outputs/v70_final_engine outputs/v8_layers -type f -name '*.json' -print0 | xargs -0 -r git add -f --
           for workflow in .github/workflows/*; do
             [ -e "$workflow" ] || continue
             if [ "$(basename "$workflow")" != "run_v50_final_validator.yml" ]; then
@@ -305,6 +332,9 @@ jobs:
 
           paths = {
               "currentSnapshot": "outputs/v70_final_engine/v70_current_operational_snapshot.json",
+              "v8Layer": "outputs/v8_layers/v8_current_layer_snapshot.json",
+              "v8Validation": "outputs/v8_layers/v8_validation_scorecard.json",
+              "v8Discovery": "outputs/v8_layers/v8_discovery_challengers.json",
               "universe": "config/theme_universe.json",
               "phase1": "data_cache/latest/v3_source_observations.json",
               "phase2": "data_cache/latest/v31_real_economy_observations.json",
@@ -365,6 +395,7 @@ jobs:
             outputs/v51_historical_audit
             outputs/v60_champion_challenger
             outputs/v70_final_engine
+            outputs/v8_layers
             historical_history/v51_audits
             historical_history/v60_audits
             prospective_history/v50_snapshot_registry.json
