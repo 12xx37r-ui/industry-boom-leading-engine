@@ -1,9 +1,9 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-17T07:28:22.025119+00:00",
-  "generated_at": "2026-08-17T07:28:23.917643+00:00",
+  "current_health_generated_at": "2026-08-17T14:09:54.164256+00:00",
+  "generated_at": "2026-08-17T14:09:56.028864+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-17T07:02:11.645828+00:00",
+  "previous_health_generated_at": "2026-08-17T07:28:22.025119+00:00",
   "providers": [
     {
       "cache_hits": 3,
@@ -84,15 +84,15 @@
       "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 1,
+      "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
       "network_call_ratio_vs_previous": null,
-      "network_calls": 1,
+      "network_calls": 3,
       "previous_network_calls": 1,
       "provider": "google_patents",
       "retries": 0,
-      "status": "UNAVAILABLE",
+      "status": "LIVE",
       "timeouts": 0
     },
     {
@@ -157,24 +157,17 @@
     }
   ],
   "schema_version": 1,
-  "status": "WARN",
+  "status": "OK",
   "summary": {
     "previous_total_network_calls": 25,
     "strong_warning_count": 0,
     "total_cache_hits": 303,
-    "total_http_429": 1,
-    "total_network_call_ratio_vs_previous": 1.0,
-    "total_network_calls": 25,
+    "total_http_429": 0,
+    "total_network_call_ratio_vs_previous": 1.08,
+    "total_network_calls": 27,
     "total_retries": 0,
     "total_timeouts": 0,
-    "warning_count": 1
+    "warning_count": 0
   },
-  "warnings": [
-    {
-      "message": "google_patents: HTTP 429 count=1",
-      "provider": "google_patents",
-      "severity": "WARN",
-      "type": "HTTP_429"
-    }
-  ]
+  "warnings": []
 }

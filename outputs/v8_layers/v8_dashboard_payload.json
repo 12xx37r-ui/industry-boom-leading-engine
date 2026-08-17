@@ -109,10 +109,10 @@
     "rolling_corpus": {
       "rolling_corpus_path": "prospective_history/v8_discovery_rolling_corpus.json",
       "rolling_window_days": 90,
-      "previous_document_count": 0,
+      "previous_document_count": 13,
       "current_run_document_count": 21,
       "rolling_document_count": 13,
-      "deduplicated_document_count": 2,
+      "deduplicated_document_count": 15,
       "expired_document_count": 6,
       "source_balance_dropped_count": 0,
       "max_document_dropped_count": 0,
@@ -231,7 +231,7 @@
         "review_priority": "LOW"
       }
     ],
-    "content_sha256": "75df4a9597b52547d8ccd219d8da69595c1d0e33fb9af9d830291f9c8d1381c0"
+    "content_sha256": "81c66adbdad8c649d8efce80f79db9c845bcced6547f340f491d52ad546a0ddb"
   },
   "investment_use_allowed": false
 }

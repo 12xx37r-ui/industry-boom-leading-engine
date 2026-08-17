@@ -3,13 +3,13 @@
   "as_of": "2026-08-16",
   "public_interest_observed": 50,
   "collection_metrics": {
-    "network_requests": 15,
+    "network_requests": 17,
     "cache_hits": 265,
     "stale_cache_hits": 0,
-    "cache_writes": 13,
+    "cache_writes": 16,
     "deduplicated_requests": 12,
     "retries": 0,
-    "http_429": 1,
+    "http_429": 0,
     "http_5xx": 0,
     "timeouts": 0,
     "enabled_sources": [
