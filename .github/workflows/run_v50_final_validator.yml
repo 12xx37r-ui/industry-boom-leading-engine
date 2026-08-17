@@ -138,6 +138,18 @@ jobs:
           done
           set -euo pipefail
           python -m ible.v50_cli --root . --output-dir outputs/v50_final_validator --run-date "${{ steps.vars.outputs.run_date }}"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected = "${{ steps.vars.outputs.run_date }}"
+          path = Path("outputs/v50_final_validator/v50_current_run_snapshot.json")
+          if not path.is_file():
+              raise SystemExit("v50_current_run_snapshot.json missing: V50 date patch not applied")
+          actual = str(json.loads(path.read_text(encoding="utf-8")).get("as_of"))
+          if actual != expected:
+              raise SystemExit(f"V50 current-run as_of mismatch: expected={expected} actual={actual}")
+          print(f"[DATE-CHECK] V50 current run as_of={actual}")
+          PY
 
       - name: Run sealed historical audit
         if: steps.cadence.outputs.should_run == 'true'
@@ -172,6 +184,16 @@ jobs:
             --v50-output-dir outputs/v50_final_validator \
             --v60-output-dir outputs/v60_champion_challenger \
             --run-date "${{ steps.vars.outputs.run_date }}"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected = "${{ steps.vars.outputs.run_date }}"
+          path = Path("outputs/v70_final_engine/v70_run_summary.json")
+          actual = str(json.loads(path.read_text(encoding="utf-8")).get("as_of"))
+          if actual != expected:
+              raise SystemExit(f"V70 as_of mismatch: expected={expected} actual={actual}")
+          print(f"[DATE-CHECK] V70 as_of={actual}")
+          PY
 
       - name: Verify V7 outputs
         if: steps.cadence.outputs.should_run == 'true'
