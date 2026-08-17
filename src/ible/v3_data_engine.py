@@ -421,11 +421,21 @@ def run_v3_data(root:Path, output_dir:Path, run_date:str|None=None)->dict[str,An
             lookback_days=int(dynamic_cfg.get('lookback_days', 90)),
         )
     if dynamic_documents:
+        # Persist the exact timestamped corpus already collected for V3 discovery so
+        # V8 can evaluate new-industry challengers without making any extra API calls.
+        dynamic_corpus = {
+            'schema_version': 1,
+            'as_of': as_of.isoformat(),
+            'collection': dynamic_collection,
+            'documents': dynamic_documents,
+        }
+        write_json(root / 'data_cache/latest/v3_dynamic_discovery_documents.json', dynamic_corpus)
+        write_json(output_dir / 'v3_dynamic_discovery_documents.json', dynamic_corpus)
         dynamic_report = discover_candidates(
             dynamic_documents, enriched_themes, as_of.isoformat(),
             **(dynamic_cfg.get('promotion_rule') or {}),
         )
-        dynamic_report['input_path'] = 'generated_from_openalex_arxiv_or_gdelt_cached_documents'
+        dynamic_report['input_path'] = 'data_cache/latest/v3_dynamic_discovery_documents.json'
         dynamic_report['input_document_count'] = len(dynamic_documents)
     else:
         dynamic_report = build_dynamic_discovery_report(root, enriched_themes, as_of.isoformat())

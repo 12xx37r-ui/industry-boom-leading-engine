@@ -428,10 +428,19 @@ def _save_immutable(root: Path, relative_dir: str, snapshot_id: str, payload: di
 def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: dict[str, Any]) -> dict[str, Any]:
     discovery = config.get("discovery") or {}
     input_path = root / str(discovery.get("input_path"))
+    generated_input_path = root / str(discovery.get("generated_input_path") or "data_cache/latest/v3_dynamic_discovery_documents.json")
     documents: list[dict[str, Any]] = []
+    input_source = None
     if input_path.is_file():
         payload = load_json(input_path)
         documents = payload if isinstance(payload, list) else list((payload or {}).get("documents") or [])
+        if documents:
+            input_source = str(input_path.relative_to(root))
+    if not documents and generated_input_path.is_file():
+        payload = load_json(generated_input_path)
+        documents = payload if isinstance(payload, list) else list((payload or {}).get("documents") or [])
+        if documents:
+            input_source = str(generated_input_path.relative_to(root))
     if documents:
         report = discover_candidates(
             documents,
@@ -464,6 +473,7 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
         "as_of": as_of.isoformat(),
         "status": "CHALLENGERS_FOUND" if any(row["candidate_class"] == "CHALLENGER_NEW_INDUSTRY" for row in candidates) else report.get("status", "NO_QUALIFIED_CANDIDATES"),
         "input_document_count": len(documents),
+        "input_source": input_source or (str(discovery.get("fallback_path")) if not documents else None),
         "candidate_count": len(candidates),
         "challenger_count": sum(row["candidate_class"] == "CHALLENGER_NEW_INDUSTRY" for row in candidates),
         "auto_add_allowed": False,
