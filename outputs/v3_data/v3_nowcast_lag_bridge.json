@@ -177,7 +177,7 @@
     {
       "theme_id": "CRITICAL_MINERALS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.6573,
+      "nowcast_score": 49.6722,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -199,9 +199,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "566752c9eef571df29baa38b6b31510dc1787b2ed68a5211e13262aea1255b1e"
+  "content_sha256": "7212492fc5879eb0de6af6b02756db160e9aae8faf7c57e2e5a04016ee506fc3"
 }

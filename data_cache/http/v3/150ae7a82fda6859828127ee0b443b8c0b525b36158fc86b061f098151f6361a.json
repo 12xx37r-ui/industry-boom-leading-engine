@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/o0rvXamy47qVCpwIW99KHkNzSjA</id>
+  <title>arXiv Query: search_query=all:"artificial intelligence drug discovery"&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-17T00:21:58Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:%22artificial+intelligence+drug+discovery%22&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2311.16666v2</id>
+    <title>MultiModal-Learning for Predicting Molecular Properties: A Framework Based on Image and Graph Structures</title>
+    <updated>2024-04-19T13:19:53Z</updated>
+    <link href="https://arxiv.org/abs/2311.16666v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2311.16666v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The quest for accurate prediction of drug molecule properties poses a fundamental challenge in the realm of Artificial Intelligence Drug Discovery (AIDD). An effective representation of drug molecules emerges as a pivotal component in this pursuit. Contemporary leading-edge research predominantly resorts to self-supervised learning (SSL) techniques to extract meaningful structural representations from large-scale, unlabeled molecular data, subsequently fine-tuning these representations for an array of downstream tasks. However, an inherent shortcoming of these studies lies in their singular reliance on one modality of molecular information, such as molecule image or SMILES representations, thus neglecting the potential complementarity of various molecular modalities. In response to this limitation, we propose MolIG, a novel MultiModaL molecular pre-training framework for predicting molecular properties based on Image and Graph structures. MolIG model innovatively leverages the coherence and correlation between molecule graph and molecule image to execute self-supervised tasks, effectively amalgamating the strengths of both molecular representation forms. This holistic approach allows for the capture of pivotal molecular structural characteristics and high-level semantic information. Upon completion of pre-training, Graph Neural Network (GNN) Encoder is used for the prediction of downstream tasks. In comparison to advanced baseline models, MolIG exhibits enhanced performance in downstream tasks pertaining to molecular property prediction within benchmark groups such as MoleculeNet Benchmark Group and ADMET Benchmark Group.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.chem-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="q-bio.BM" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-11-28T10:28:35Z</published>
+    <arxiv:comment>8 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Zhuoyuan Wang</name>
+    </author>
+    <author>
+      <name>Jiacong Mi</name>
+    </author>
+    <author>
+      <name>Shan Lu</name>
+    </author>
+    <author>
+      <name>Jieyue He</name>
+    </author>
+  </entry>
+</feed>

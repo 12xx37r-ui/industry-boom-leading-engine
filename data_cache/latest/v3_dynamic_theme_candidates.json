@@ -13,44 +13,13 @@
   },
   "candidates": [],
   "input_path": "generated_from_openalex_arxiv_or_gdelt_cached_documents",
-  "input_document_count": 1,
+  "input_document_count": 16,
   "collection": {
     "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
     "selected_theme_count": 3,
-    "document_count": 1,
-    "errors": [
-      {
-        "theme_id": "ADVANCED_PACKAGING_HBM",
-        "source": "openalex",
-        "error": "HTTP 503: {\"error\":\"Search temporarily unavailable\",\"message\":\"Anonymous search is paused while the search cluster recovers from heavy load. Please retry shortly, or use a free API key for uninterrupted access: https://openalex.org/rest-api.\"}"
-      },
-      {
-        "theme_id": "AI_DRUG_DISCOVERY",
-        "source": "openalex",
-        "error": "HTTP 503: {\"error\":\"Search temporarily unavailable\",\"message\":\"Anonymous search is paused while the search cluster recovers from heavy load. Please retry shortly, or use a free API key for uninterrupted access: https://openalex.org/rest-api.\"}"
-      },
-      {
-        "theme_id": "AI_SEMICONDUCTORS",
-        "source": "openalex",
-        "error": "HTTP 503: {\"error\":\"Search temporarily unavailable\",\"message\":\"Anonymous search is paused while the search cluster recovers from heavy load. Please retry shortly, or use a free API key for uninterrupted access: https://openalex.org/rest-api.\"}"
-      },
-      {
-        "theme_id": "ADVANCED_PACKAGING_HBM",
-        "source": "gdelt",
-        "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
-      },
-      {
-        "theme_id": "AI_DRUG_DISCOVERY",
-        "source": "gdelt",
-        "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our dai"
-      },
-      {
-        "theme_id": "AI_SEMICONDUCTORS",
-        "source": "gdelt",
-        "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
-      }
-    ],
+    "document_count": 16,
+    "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "6cb128bd4271f6dd3b7a0ed00c7585bccfb3378e1561f44384c8ebbda954d56b"
+  "content_sha256": "d82e662ebb9eadfc5fa7213105d2b492540666973a4ce7f104c7f1d1ca5d4a92"
 }
