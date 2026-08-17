@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "engine_release": "8.0.0-validation-quality-discovery",
+  "engine_release": "8.0.1-rolling-discovery-corpus",
   "status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
   "horizons": {
     "6": {

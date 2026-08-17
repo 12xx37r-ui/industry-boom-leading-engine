@@ -1,9 +1,9 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-17T07:02:11.645828+00:00",
-  "generated_at": "2026-08-17T07:02:13.095334+00:00",
+  "current_health_generated_at": "2026-08-17T07:28:22.025119+00:00",
+  "generated_at": "2026-08-17T07:28:23.917643+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-17T06:50:39.050827+00:00",
+  "previous_health_generated_at": "2026-08-17T07:02:11.645828+00:00",
   "providers": [
     {
       "cache_hits": 3,
