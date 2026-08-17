@@ -606,7 +606,7 @@
     {
       "theme_id": "SEMICONDUCTOR_EQUIPMENT",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.2384,
+      "nowcast_score": 49.0238,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -628,9 +628,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 3,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "7212492fc5879eb0de6af6b02756db160e9aae8faf7c57e2e5a04016ee506fc3"
+  "content_sha256": "9432b92f6d06b051baddac2b9be8fb6930f82d93ef9c2fe0536b14da0d0c9831"
 }

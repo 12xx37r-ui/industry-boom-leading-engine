@@ -43,8 +43,8 @@
     },
     "gdelt": {
       "enabled": true,
-      "live_count": 19,
-      "cache_fallback_count": 1,
+      "live_count": 20,
+      "cache_fallback_count": 0,
       "unavailable_count": 30
     },
     "wikimedia": {
