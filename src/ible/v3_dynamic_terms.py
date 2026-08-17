@@ -120,6 +120,9 @@ def discover_candidates(
             "semantic_similarity_proxy": round(best_similarity, 4), "confidence": round(confidence, 4),
             "distinct_document_count": document_count, "source_family_count": source_count,
             "period_count": period_count,
+            "evidence_sources": sorted(evidence["sources"]),
+            "evidence_periods": sorted(evidence["periods"]),
+            "evidence_document_ids": sorted(evidence["documents"])[:8],
             "promotion_status": "NEW_THEME_REVIEW" if best_theme_id is None else "REVIEW_REQUIRED",
         })
     candidates.sort(key=lambda row: (-row["confidence"], row["term"]))

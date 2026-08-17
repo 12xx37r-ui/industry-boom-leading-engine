@@ -425,22 +425,120 @@ def _save_immutable(root: Path, relative_dir: str, snapshot_id: str, payload: di
     return "CREATED_IMMUTABLE_SNAPSHOT", payload
 
 
+def _frontier_discovery_documents(root: Path, as_of: date) -> list[dict[str, Any]]:
+    """Reuse already-collected GitHub frontier text without any extra API calls."""
+    payload = _load_optional(root, "data_cache/latest/v3_frontier_signal_observations.json")
+    documents: list[dict[str, Any]] = []
+    for row in payload.get("github") or []:
+        theme_id = str(row.get("theme_id") or "")
+        github = row.get("github") or {}
+        for repo in github.get("repositories") or []:
+            name = str(repo.get("full_name") or "").strip()
+            description = str(repo.get("description") or "").strip()
+            if not name and not description:
+                continue
+            captured = str(repo.get("pushed_at") or repo.get("updated_at") or repo.get("observation_date") or as_of.isoformat())[:10]
+            documents.append({
+                "document_id": "github:" + (name or canonical_sha256({"description": description})[:16]),
+                "source": "github_frontier",
+                "captured_at": captured,
+                "title": name,
+                "text": (name.replace("/", " ") + " " + description).strip(),
+                "seed_theme_id": theme_id,
+            })
+    return documents
+
+
+def _candidate_readiness(row: dict[str, Any], discovery: dict[str, Any]) -> dict[str, Any]:
+    confidence = float(row.get("confidence") or 0.0)
+    novelty = float(row.get("novelty_score") or 0.0) * 100.0
+    documents = int(row.get("distinct_document_count") or 0)
+    sources = int(row.get("source_family_count") or 0)
+    periods = int(row.get("period_count") or 0)
+    evidence_score = min(100.0, documents * 8.0 + sources * 12.0 + periods * 10.0)
+    score = round(0.55 * confidence + 0.25 * novelty + 0.20 * evidence_score, 2)
+    missing = []
+    if documents < int(discovery.get("min_documents", 2)):
+        missing.append("문서 수")
+    if sources < int(discovery.get("min_source_families", 2)):
+        missing.append("서로 다른 원천")
+    if periods < int(discovery.get("min_periods", 2)):
+        missing.append("서로 다른 기간")
+    if confidence < float(discovery.get("min_confidence", 70.0)):
+        missing.append("신뢰도")
+    if float(row.get("novelty_score") or 0.0) < float(discovery.get("min_novelty", 0.65)):
+        missing.append("신규성")
+    return {
+        "readiness_score": score,
+        "evidence_score": round(evidence_score, 2),
+        "missing_requirements": missing,
+        "review_priority": "HIGH" if score >= 80 else ("MEDIUM" if score >= 65 else "LOW"),
+    }
+
+
+def _false_positive_guard(item: dict[str, Any], quality: dict[str, Any], hidden: dict[str, Any]) -> dict[str, Any]:
+    """Pre-maturity warning layer. It never changes the locked V7 score."""
+    reasons: list[str] = []
+    risk = 0.0
+    q = float(quality.get("proxy_quality_score") or 0.0)
+    observed = int(quality.get("observed_proxy_count") or 0)
+    diffusion = finite(item.get("source_diffusion_percent"))
+    if q < 50:
+        risk += 35
+        reasons.append("프록시 품질이 낮음")
+    elif q < 65:
+        risk += 18
+        reasons.append("프록시 품질이 보통 이하")
+    if observed < 3:
+        risk += 15
+        reasons.append("관측 프록시 수가 적음")
+    if diffusion is None or diffusion < 40:
+        risk += 20
+        reasons.append("다원천 확인이 약함")
+    if hidden.get("eligible") is not True:
+        risk += 20
+        reasons.append("저관심·실물·자금 교차조건 미충족")
+    commercialization = finite(item.get("direct_commercialization_score"))
+    if commercialization is not None and commercialization < 45:
+        risk += 10
+        reasons.append("사업화 신호가 약함")
+    risk = round(min(100.0, risk), 2)
+    return {
+        "risk_score": risk,
+        "risk_level": "HIGH" if risk >= 60 else ("MEDIUM" if risk >= 30 else "LOW"),
+        "reasons": reasons,
+        "locked_score_unchanged": True,
+        "note": "장기 실측 검증 전 오탐 가능성을 낮추기 위한 경고 레이어이며 V7 점수는 변경하지 않습니다.",
+    }
+
+
 def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: dict[str, Any]) -> dict[str, Any]:
     discovery = config.get("discovery") or {}
     input_path = root / str(discovery.get("input_path"))
     generated_input_path = root / str(discovery.get("generated_input_path") or "data_cache/latest/v3_dynamic_discovery_documents.json")
     documents: list[dict[str, Any]] = []
-    input_source = None
+    input_sources: list[str] = []
     if input_path.is_file():
         payload = load_json(input_path)
-        documents = payload if isinstance(payload, list) else list((payload or {}).get("documents") or [])
-        if documents:
-            input_source = str(input_path.relative_to(root))
-    if not documents and generated_input_path.is_file():
+        inbox_documents = payload if isinstance(payload, list) else list((payload or {}).get("documents") or [])
+        if inbox_documents:
+            documents.extend(inbox_documents)
+            input_sources.append("manual_inbox")
+    if generated_input_path.is_file():
         payload = load_json(generated_input_path)
-        documents = payload if isinstance(payload, list) else list((payload or {}).get("documents") or [])
-        if documents:
-            input_source = str(generated_input_path.relative_to(root))
+        generated_documents = payload if isinstance(payload, list) else list((payload or {}).get("documents") or [])
+        if generated_documents:
+            documents.extend(generated_documents)
+            input_sources.append("v3_dynamic_text")
+    frontier_documents = _frontier_discovery_documents(root, as_of)
+    if frontier_documents:
+        documents.extend(frontier_documents)
+        input_sources.append("github_frontier")
+    deduped_documents: dict[tuple[str, str], dict[str, Any]] = {}
+    for document in documents:
+        key = (str(document.get("source") or "unknown"), str(document.get("document_id") or document.get("id") or canonical_sha256(document)[:16]))
+        deduped_documents[key] = document
+    documents = list(deduped_documents.values())
     if documents:
         # config/themes.yml uses id/name, while the dynamic-term helper expects
         # theme_id/theme_name. Normalize here so V8 discovery can consume the
@@ -477,20 +575,23 @@ def _discovery(root: Path, themes: list[dict[str, Any]], as_of: date, config: di
         similarity = float(row.get("semantic_similarity_proxy") or 0.0)
         novelty = round(1.0 - similarity, 4)
         challenger = novelty >= float(discovery.get("min_novelty", 0.65)) and float(row.get("confidence") or 0.0) >= float(discovery.get("min_confidence", 70.0))
-        candidates.append({
+        enriched = {
             **row,
             "novelty_score": novelty,
             "candidate_class": "CHALLENGER_NEW_INDUSTRY" if challenger else "KNOWN_THEME_REVIEW",
             "promotion_status": "CHALLENGER_REVIEW_REQUIRED" if challenger else "REVIEW_REQUIRED",
             "auto_add_allowed": False,
-        })
+        }
+        enriched.update(_candidate_readiness(enriched, discovery))
+        candidates.append(enriched)
+    candidates.sort(key=lambda row: (-float(row.get("readiness_score") or 0.0), -float(row.get("confidence") or 0.0), str(row.get("term") or "")))
     result = {
         "schema_version": 1,
         "engine_release": config.get("engine_release"),
         "as_of": as_of.isoformat(),
         "status": "CHALLENGERS_FOUND" if any(row["candidate_class"] == "CHALLENGER_NEW_INDUSTRY" for row in candidates) else report.get("status", "NO_QUALIFIED_CANDIDATES"),
         "input_document_count": len(documents),
-        "input_source": input_source or (str(discovery.get("fallback_path")) if not documents else None),
+        "input_source_families": sorted(set(input_sources)),
         "candidate_count": len(candidates),
         "challenger_count": sum(row["candidate_class"] == "CHALLENGER_NEW_INDUSTRY" for row in candidates),
         "auto_add_allowed": False,
@@ -521,6 +622,7 @@ def run_v8(root: Path, output_dir: Path, run_date: str | None = None, v70_output
         base_score = finite(item.get("boom_score"))
         adjusted = None if base_score is None else round(base_score * quality["quality_multiplier"], 4)
         hidden = _hidden_interaction(root, item, theme_id, config)
+        false_positive_guard = _false_positive_guard(item, quality, hidden)
         v50_row = v50_map.get(theme_id) or {}
         layer_themes.append({
             "theme_id": theme_id,
@@ -530,6 +632,7 @@ def run_v8(root: Path, output_dir: Path, run_date: str | None = None, v70_output
             "locked_base_score": base_score,
             "quality_adjusted_score": adjusted,
             "hidden_interaction": hidden,
+            "false_positive_guard": false_positive_guard,
             "base_predicted_rank": item.get("rank"),
             "direct_commercialization_score": item.get("direct_commercialization_score") or v50_row.get("direct_commercialization_score"),
             "phase3_investment_score": item.get("phase3_investment_score") or v50_row.get("phase3_investment_score"),
