@@ -1,12 +1,12 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-17T20:05:34.703103+00:00",
-  "generated_at": "2026-08-17T20:05:36.637027+00:00",
+  "current_health_generated_at": "2026-08-18T03:20:26.683305+00:00",
+  "generated_at": "2026-08-18T03:20:28.551334+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-17T14:09:54.164256+00:00",
+  "previous_health_generated_at": "2026-08-17T20:05:34.703103+00:00",
   "providers": [
     {
-      "cache_hits": 0,
+      "cache_hits": 3,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
@@ -17,7 +17,7 @@
       "previous_network_calls": 0,
       "provider": "arxiv",
       "retries": 0,
-      "status": "UNAVAILABLE",
+      "status": "CACHE",
       "timeouts": 0
     },
     {
@@ -51,15 +51,15 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 1,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 2,
       "http_5xx": 0,
-      "lkg_uses": 20,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 3,
-      "previous_network_calls": 0,
+      "lkg_uses": 19,
+      "network_call_ratio_vs_previous": 1.333,
+      "network_calls": 4,
+      "previous_network_calls": 3,
       "provider": "gdelt",
       "retries": 0,
       "status": "LIVE",
@@ -87,9 +87,9 @@
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_call_ratio_vs_previous": 0.0,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 0,
-      "previous_network_calls": 3,
+      "previous_network_calls": 0,
       "provider": "google_patents",
       "retries": 0,
       "status": "CACHE",
@@ -102,12 +102,12 @@
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_call_ratio_vs_previous": 0.0,
-      "network_calls": 0,
-      "previous_network_calls": 13,
+      "network_call_ratio_vs_previous": null,
+      "network_calls": 13,
+      "previous_network_calls": 0,
       "provider": "naver_api_hub",
       "retries": 0,
-      "status": "UNAVAILABLE",
+      "status": "LIVE",
       "timeouts": 0
     },
     {
@@ -126,30 +126,30 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 99,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 1,
+      "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 100,
-      "previous_network_calls": 0,
+      "network_call_ratio_vs_previous": 0.04,
+      "network_calls": 4,
+      "previous_network_calls": 100,
       "provider": "openalex",
       "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 140,
       "deduplicated_calls": 12,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 1,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 141,
-      "previous_network_calls": 1,
+      "network_call_ratio_vs_previous": 0.035,
+      "network_calls": 5,
+      "previous_network_calls": 141,
       "provider": "usaspending",
       "retries": 0,
       "status": "LIVE",
@@ -157,17 +157,17 @@
     }
   ],
   "schema_version": 1,
-  "status": "STRONG_WARN",
+  "status": "WARN",
   "summary": {
-    "previous_total_network_calls": 27,
-    "strong_warning_count": 1,
-    "total_cache_hits": 6,
-    "total_http_429": 3,
-    "total_network_call_ratio_vs_previous": 9.407,
-    "total_network_calls": 254,
+    "previous_total_network_calls": 254,
+    "strong_warning_count": 0,
+    "total_cache_hits": 249,
+    "total_http_429": 2,
+    "total_network_call_ratio_vs_previous": 0.142,
+    "total_network_calls": 36,
     "total_retries": 0,
     "total_timeouts": 0,
-    "warning_count": 2
+    "warning_count": 1
   },
   "warnings": [
     {
@@ -175,18 +175,6 @@
       "provider": "gdelt",
       "severity": "WARN",
       "type": "HTTP_429"
-    },
-    {
-      "message": "openalex: HTTP 429 count=1",
-      "provider": "openalex",
-      "severity": "WARN",
-      "type": "HTTP_429"
-    },
-    {
-      "message": "total network calls 254 vs previous 27 (9.41x)",
-      "provider": "ALL",
-      "severity": "STRONG_WARN",
-      "type": "TOTAL_NETWORK_CALL_SPIKE"
     }
   ]
 }

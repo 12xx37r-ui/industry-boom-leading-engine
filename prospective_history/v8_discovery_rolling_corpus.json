@@ -3,12 +3,19 @@
   "as_of": "2026-08-18",
   "window_days": 90,
   "cutoff_date": "2026-05-21",
-  "document_count": 12,
+  "document_count": 14,
   "source_counts": {
     "github_frontier": 2,
-    "openalex": 10
+    "openalex": 12
   },
   "documents": [
+    {
+      "document_id": "https://openalex.org/W7172440409",
+      "source": "openalex",
+      "captured_at": "2026-08-04",
+      "text": "Artificial intelligence applications in medicinal and aromatic plants: a review of cultivation, phytochemical profiling, drug discovery, and processing energy Medicinal and aromatic plants are vital for global healthcare and drug discovery, but their sustainable use is challenged by inefficient cultivation, inconsistent quality, and energy‑intensive processing. Artificial intelligence offers powerful tools to address these problems. This review provides a comprehensive and accessible synthesis of AI applications across the entire value chain of these plants. Major application domains include cultivation, where AI assists in species identification, disease diagnosis, and optimization of water, nutrient, and energy inputs; phytochemical profiling, where machine learning models predict bioactive compound concentrations, authenticate geographical origins, and optimize extraction protocols; drug discovery, where AI enables virtual screening of phytochemicals, network pharmacology, and decoding of synergistic effects in herbal formulations; and processing energy, where AI is applied to reduce energy consumption in drying, distillation, and solvent extraction, with quantitative data on energy intensities and savings. The review also covers AI integration with traditional knowledge and in vitro biotechnology. Performance claims are critically evaluated, including dataset sizes, validation methods, and real‑world applicability. Key challenges such as data scarcity, model interpretability, and ethical concerns are discussed, and a future roadmap is outlined. By synthesizing the current state of AI in medicinal and aromatic plant research, this review serves as a practical resource for researchers, farmers, and industry professionals seeking to harness AI for more sustainable and efficient production of high‑value botanical products.",
+      "discovery_fingerprint": "9881ee3ca1db7f3c891dcb3b654c6f5359a215717e4ebe2d88927bd1f4bb5298"
+    },
     {
       "document_id": "https://openalex.org/W7172377876",
       "source": "openalex",
@@ -70,6 +77,13 @@
       "discovery_fingerprint": "da3342721115f1b642cd016491802eda9decdb9c44ab818a8c59a2005bc81fcc"
     },
     {
+      "document_id": "https://openalex.org/W7165746285",
+      "source": "openalex",
+      "captured_at": "2026-06-24",
+      "text": "Facilitating structure-based drug discovery with an artificial intelligence-driven virtual screening platform",
+      "discovery_fingerprint": "59bc6407447dfb797ebf2ca6cc74a0e234791a0168078223dce71dfb4f48ce55"
+    },
+    {
       "document_id": "https://openalex.org/W7165050114",
       "source": "openalex",
       "captured_at": "2026-06-17",
@@ -98,5 +112,5 @@
       "discovery_fingerprint": "3dcb6b03fa8af8ea79f435e1d27abb6e40734056f305cca34c8d9b554c0a49eb"
     }
   ],
-  "content_sha256": "246c466a58e4420bbc2589733a6012b8f8fb80a1e91aa1df6ebcbcfa53a6f08d"
+  "content_sha256": "6eb24a893b8962bd386affc9c4a5d1499d8d88a84608a1a6f1647bdb0af3b086"
 }

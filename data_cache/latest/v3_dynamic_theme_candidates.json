@@ -1,23 +1,204 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "as_of": "2026-08-17",
-  "status": "WAITING_FOR_LOCAL_TEXT_CORPUS",
-  "candidate_count": 0,
+  "status": "CANDIDATES_FOUND",
+  "candidate_count": 4,
   "auto_add_allowed": false,
-  "input_path": "data_cache/inbox/v3_text_documents.json",
   "promotion_rule": {
-    "min_documents": 2,
-    "min_source_families": 2,
-    "min_periods": 2,
+    "min_distinct_document_count": 2,
+    "min_source_family_count": 2,
+    "min_period_count": 2,
     "min_similarity": 0.15,
-    "max_candidates": 20
+    "min_phrase_tokens": 1,
+    "max_phrase_tokens": 4,
+    "min_phrase_quality": 55.0,
+    "existing_theme_similarity": 0.55,
+    "min_distinct_dates": 1,
+    "min_date_span_days": 0,
+    "requires_human_review": true
   },
-  "candidates": [],
+  "candidates": [
+    {
+      "term": "artificial intelligence",
+      "display_name": "Artificial Intelligence",
+      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "semantic_similarity_proxy": 0.9,
+      "phrase_quality_score": 85.0,
+      "broad_parent_domain": true,
+      "confidence": 78.0,
+      "distinct_document_count": 8,
+      "source_family_count": 2,
+      "period_count": 5,
+      "distinct_date_count": 8,
+      "date_span_days": 980,
+      "evidence_sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2023-11",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08"
+      ],
+      "evidence_dates": [
+        "2023-11-28",
+        "2026-05-25",
+        "2026-06-02",
+        "2026-06-10",
+        "2026-06-24",
+        "2026-06-27",
+        "2026-07-30",
+        "2026-08-04"
+      ],
+      "evidence_document_ids": [
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W7162285465",
+        "https://openalex.org/W7163234986",
+        "https://openalex.org/W7164121164",
+        "https://openalex.org/W7165746285",
+        "https://openalex.org/W7166301583",
+        "https://openalex.org/W7172377876",
+        "https://openalex.org/W7172440409"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION"
+    },
+    {
+      "term": "artificial",
+      "display_name": "Artificial",
+      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "semantic_similarity_proxy": 0.9,
+      "phrase_quality_score": 72.0,
+      "broad_parent_domain": false,
+      "confidence": 78.0,
+      "distinct_document_count": 8,
+      "source_family_count": 2,
+      "period_count": 5,
+      "distinct_date_count": 8,
+      "date_span_days": 980,
+      "evidence_sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2023-11",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08"
+      ],
+      "evidence_dates": [
+        "2023-11-28",
+        "2026-05-25",
+        "2026-06-02",
+        "2026-06-10",
+        "2026-06-24",
+        "2026-06-27",
+        "2026-07-30",
+        "2026-08-04"
+      ],
+      "evidence_document_ids": [
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W7162285465",
+        "https://openalex.org/W7163234986",
+        "https://openalex.org/W7164121164",
+        "https://openalex.org/W7165746285",
+        "https://openalex.org/W7166301583",
+        "https://openalex.org/W7172377876",
+        "https://openalex.org/W7172440409"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION"
+    },
+    {
+      "term": "intelligence",
+      "display_name": "Intelligence",
+      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "semantic_similarity_proxy": 0.9,
+      "phrase_quality_score": 72.0,
+      "broad_parent_domain": false,
+      "confidence": 78.0,
+      "distinct_document_count": 8,
+      "source_family_count": 2,
+      "period_count": 5,
+      "distinct_date_count": 8,
+      "date_span_days": 980,
+      "evidence_sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2023-11",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08"
+      ],
+      "evidence_dates": [
+        "2023-11-28",
+        "2026-05-25",
+        "2026-06-02",
+        "2026-06-10",
+        "2026-06-24",
+        "2026-06-27",
+        "2026-07-30",
+        "2026-08-04"
+      ],
+      "evidence_document_ids": [
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W7162285465",
+        "https://openalex.org/W7163234986",
+        "https://openalex.org/W7164121164",
+        "https://openalex.org/W7165746285",
+        "https://openalex.org/W7166301583",
+        "https://openalex.org/W7172377876",
+        "https://openalex.org/W7172440409"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION"
+    },
+    {
+      "term": "intelligence drug",
+      "display_name": "Intelligence Drug",
+      "suggested_theme_id": "AI_DRUG_DISCOVERY",
+      "semantic_similarity_proxy": 0.9,
+      "phrase_quality_score": 85.0,
+      "broad_parent_domain": false,
+      "confidence": 72.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "distinct_date_count": 3,
+      "date_span_days": 942,
+      "evidence_sources": [
+        "arxiv",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2023-11",
+        "2026-05",
+        "2026-06"
+      ],
+      "evidence_dates": [
+        "2023-11-28",
+        "2026-05-25",
+        "2026-06-27"
+      ],
+      "evidence_document_ids": [
+        "http://arxiv.org/abs/2311.16666v2",
+        "https://openalex.org/W7162285465",
+        "https://openalex.org/W7166301583"
+      ],
+      "promotion_status": "EXISTING_THEME_EXTENSION"
+    }
+  ],
+  "input_path": "data_cache/latest/v3_dynamic_discovery_documents.json",
+  "input_document_count": 16,
   "collection": {
-    "status": "PENDING_LIVE_COLLECTION",
-    "document_count": 0,
-    "selected_theme_count": 0,
-    "errors": []
+    "status": "LIVE_OR_CACHED_TEXT_SAMPLE",
+    "selected_theme_count": 3,
+    "document_count": 16,
+    "errors": [],
+    "lookback_days": 90
   },
-  "content_sha256": "b3cc93963655de463fed0dabb6a6d5b5f7200b2b2c4e78d8b97b640af3624c05"
+  "content_sha256": "95c15c918b35a3e91964064211411c805d5f19b667d5c60ac017a6ce5fa67ddc"
 }
