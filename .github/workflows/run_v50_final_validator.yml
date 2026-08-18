@@ -10,7 +10,9 @@ on:
         required: false
         type: string
   schedule:
-    - cron: "20 * * * *"
+    # Heavy engine is intrinsically >=5h guarded below; wake it only every 6h.
+    # This removes 20 unnecessary workflow starts/day while retaining the 5h safety guard.
+    - cron: "05 1,7,13,19 * * *"
 
 permissions:
   contents: write
