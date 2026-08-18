@@ -243,7 +243,7 @@
     {
       "theme_id": "DATA_CENTER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 46.3131,
+      "nowcast_score": 47.0397,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -265,9 +265,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -771,7 +771,7 @@
     {
       "theme_id": "ADVANCED_MATERIALS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.0609,
+      "nowcast_score": 47.4052,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -793,9 +793,9 @@
           "score_used": true
         },
         "gdelt": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         }
       },
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "b51e319a8b110ec48812443d3a8f9c77c41eb6d86de739d7e8e86d07a6e0b02e"
+  "content_sha256": "137d8a25dbd59a0808b8185664432cf42bc6f7f8ef7a180e275d1ff1b6c6befe"
 }
