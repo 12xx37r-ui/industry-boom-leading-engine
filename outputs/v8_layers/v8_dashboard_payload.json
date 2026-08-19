@@ -3,7 +3,7 @@
   "as_of": "2026-08-19",
   "theme_count": 50,
   "proxy_quality": {
-    "mean_quality_score": 63.6018
+    "mean_quality_score": 63.6021
   },
   "validation": {
     "schema_version": 1,
@@ -109,10 +109,10 @@
     "rolling_corpus": {
       "rolling_corpus_path": "prospective_history/v8_discovery_rolling_corpus.json",
       "rolling_window_days": 90,
-      "previous_document_count": 14,
+      "previous_document_count": 16,
       "current_run_document_count": 21,
       "rolling_document_count": 16,
-      "deduplicated_document_count": 15,
+      "deduplicated_document_count": 17,
       "expired_document_count": 4,
       "source_balance_dropped_count": 0,
       "max_document_dropped_count": 0,
@@ -233,7 +233,7 @@
         "review_priority": "MEDIUM"
       }
     ],
-    "content_sha256": "c02225fcbfd3836f6592be102f666daa273ea9966b0ed3d7d7c713e3891a1cb4"
+    "content_sha256": "b1f8afa3c0004f258b5e439f39f8839594a89cd7e2798617427c4c6b73d8cfd2"
   },
   "investment_use_allowed": false
 }

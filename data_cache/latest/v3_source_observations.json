@@ -2,7 +2,7 @@
   "schema_version": 3,
   "engine_release": "7.4.0-naver-interest-gdelt-resilient",
   "as_of": "2026-08-18",
-  "captured_at": "2026-08-19T12:33:30+09:00",
+  "captured_at": "2026-08-19T18:07:17+09:00",
   "theme_count": 50,
   "source_provenance": {
     "openalex": {
@@ -45,13 +45,13 @@
     }
   },
   "collection_metrics": {
-    "network_requests": 256,
-    "cache_hits": 18,
+    "network_requests": 18,
+    "cache_hits": 258,
     "stale_cache_hits": 0,
-    "cache_writes": 253,
+    "cache_writes": 17,
     "deduplicated_requests": 12,
-    "retries": 2,
-    "http_429": 2,
+    "retries": 0,
+    "http_429": 0,
     "http_5xx": 0,
     "timeouts": 0,
     "enabled_sources": [
@@ -82,7 +82,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['High Bandwidth Memory', 'Semiconductor package']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -94,7 +94,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "high bandwidth memory advanced semiconductor packaging",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 795.0,
           "prior_count": 570.0,
@@ -106,9 +106,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"high bandwidth memory\" OR",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "provider cooldown active after rate limit (292.5s remaining)",
+          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -128,7 +128,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -158,7 +158,7 @@
           ],
           "group_name": "첨단 패키징·HBM",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 2.4271,
@@ -182,7 +182,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (292.5s remaining)"
+          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
         }
       ],
       "limitations": [
@@ -209,7 +209,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Artificial intelligence in healthcare', 'Drug discovery']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -221,7 +221,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "artificial intelligence drug discovery",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 37814.0,
           "prior_count": 27633.0,
@@ -264,7 +264,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -294,7 +294,7 @@
           ],
           "group_name": "AI 신약개발",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0445,
@@ -345,7 +345,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Artificial intelligence accelerator', 'AI accelerator']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -357,7 +357,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "AI semiconductor accelerators",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 1851.0,
           "prior_count": 1293.0,
@@ -369,9 +369,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"AI accelerator\" OR \"AI",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "provider cooldown active after rate limit (292.5s remaining)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -391,7 +391,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -422,7 +422,7 @@
           ],
           "group_name": "AI 반도체",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.8193,
@@ -446,7 +446,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "provider cooldown active after rate limit (292.5s remaining)"
         }
       ],
       "limitations": [
@@ -473,7 +473,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Self-driving car']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -485,7 +485,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous driving advanced driver assistance",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 6109.0,
           "prior_count": 6272.0,
@@ -497,7 +497,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous driving\" OR \"self-driving",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (112.5s remaining)",
           "source_signal_score": null,
@@ -514,7 +514,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -542,7 +542,7 @@
           ],
           "group_name": "자율주행",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 1.417,
@@ -593,7 +593,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Copper', 'Copper extraction']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -605,7 +605,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "copper supply mining infrastructure",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 3510.0,
           "prior_count": 3416.0,
@@ -617,9 +617,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"copper supply\" OR \"copper",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
+          "availability_reason": "invalid JSON: Expecting value: line 1 column 1 (char 0)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -640,7 +640,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -670,7 +670,7 @@
           ],
           "group_name": "구리 공급망",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 4.4166,
@@ -694,7 +694,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
+          "error": "invalid JSON: Expecting value: line 1 column 1 (char 0)"
         }
       ],
       "limitations": [
@@ -721,7 +721,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Critical mineral raw materials']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -733,7 +733,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "critical minerals supply chain",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 26685.0,
           "prior_count": 23575.0,
@@ -770,7 +770,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -798,7 +798,7 @@
           ],
           "group_name": "핵심광물",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0999,
@@ -849,7 +849,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Computer security', 'Zero trust security model']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -861,7 +861,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cybersecurity zero trust ransomware",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 2498.0,
           "prior_count": 2189.0,
@@ -873,7 +873,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "cybersecurity OR \"zero trust\"",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (240.0s remaining)",
           "source_signal_score": null,
@@ -896,7 +896,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -926,7 +926,7 @@
           ],
           "group_name": "사이버보안",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.861,
@@ -977,7 +977,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Data center']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -989,7 +989,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "data center infrastructure power cooling",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 15898.0,
           "prior_count": 13149.0,
@@ -1026,7 +1026,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1054,7 +1054,7 @@
           ],
           "group_name": "데이터센터 인프라",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 4.1081,
@@ -1105,7 +1105,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Military robot', 'Unmanned combat aerial vehicle']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1117,7 +1117,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "defense autonomous systems unmanned military",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 1791.0,
           "prior_count": 1939.0,
@@ -1129,7 +1129,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous defense\" OR \"military",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (105.0s remaining)",
           "source_signal_score": null,
@@ -1152,7 +1152,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1182,7 +1182,7 @@
           ],
           "group_name": "국방·무인체계",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0362,
@@ -1233,7 +1233,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Energy storage', 'Grid energy storage']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1245,7 +1245,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "grid energy storage battery storage",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 29156.0,
           "prior_count": 25671.0,
@@ -1257,7 +1257,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"energy storage\" OR \"battery",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (225.0s remaining)",
           "source_signal_score": null,
@@ -1274,7 +1274,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1302,7 +1302,7 @@
           ],
           "group_name": "에너지저장장치",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 2.7236,
@@ -1353,7 +1353,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Gene therapy', 'Cell therapy']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1365,7 +1365,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "gene therapy cell therapy",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 191860.0,
           "prior_count": 209676.0,
@@ -1377,7 +1377,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"gene therapy\" OR \"cell",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (60.0s remaining)",
           "source_signal_score": null,
@@ -1400,7 +1400,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1430,7 +1430,7 @@
           ],
           "group_name": "유전자·세포치료",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0363,
@@ -1472,7 +1472,7 @@
       "data_build_priority": 1,
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
-      "phase1_data_signal_score": 46.1846,
+      "phase1_data_signal_score": 46.1865,
       "public_interest_score": 79.346,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
@@ -1481,7 +1481,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Humanoid robot']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1491,18 +1491,16 @@
           "prior_count": null
         },
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": "humanoid robots embodied artificial intelligence",
-          "captured_at": "2026-08-18T23:57:11+09:00",
-          "as_of": "2026-08-17",
-          "recent_count": 1966.0,
-          "prior_count": 1363.0,
-          "growth_percent": 44.2406,
-          "growth_score": 59.9671,
-          "scale_score": 59.2885,
-          "source_signal_score": 59.6957,
-          "fallback_reason": "provider cooldown active after rate limit (7.1s remaining)",
-          "cache_age_days": 1
+          "captured_at": "2026-08-19T18:07:17+09:00",
+          "as_of": "2026-08-18",
+          "recent_count": 1970.0,
+          "prior_count": 1366.0,
+          "growth_percent": 44.2167,
+          "growth_score": 59.9629,
+          "scale_score": 59.3044,
+          "source_signal_score": 59.6995
         },
         "gdelt": {
           "status": "CACHE_FALLBACK",
@@ -1522,7 +1520,7 @@
           "series_points": 86,
           "attention_percentile": 97.5,
           "attention_score": 87.3971,
-          "fallback_reason": "provider cooldown active after rate limit (157.5s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (150.0s remaining)",
           "cache_age_days": 2
         },
         "usaspending": {
@@ -1532,7 +1530,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1560,7 +1558,7 @@
           ],
           "group_name": "휴머노이드 로봇",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 6.0725,
@@ -1583,12 +1581,8 @@
       },
       "errors": [
         {
-          "source": "openalex",
-          "error": "provider cooldown active after rate limit (7.1s remaining)"
-        },
-        {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (157.5s remaining)"
+          "error": "provider cooldown active after rate limit (150.0s remaining)"
         }
       ],
       "limitations": [
@@ -1615,7 +1609,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Industrial robot']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1627,7 +1621,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "industrial robotics automation",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 34312.0,
           "prior_count": 34883.0,
@@ -1654,7 +1648,7 @@
           "series_points": 86,
           "attention_percentile": 72.5,
           "attention_score": 69.5024,
-          "fallback_reason": "provider cooldown active after rate limit (150.0s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (157.5s remaining)",
           "cache_age_days": 2
         },
         "usaspending": {
@@ -1664,7 +1658,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1691,7 +1685,7 @@
           ],
           "group_name": "산업용 로봇",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1029,
@@ -1715,7 +1709,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (150.0s remaining)"
+          "error": "provider cooldown active after rate limit (157.5s remaining)"
         }
       ],
       "limitations": [
@@ -1742,7 +1736,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Nuclear power']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1754,7 +1748,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "nuclear energy reactor technology",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 10710.0,
           "prior_count": 11171.0,
@@ -1797,7 +1791,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1826,7 +1820,7 @@
           ],
           "group_name": "원전",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 5.1961,
@@ -1877,7 +1871,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Anti-obesity medication', 'Glucagon-like peptide-1 receptor agonist']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -1889,7 +1883,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "obesity metabolic disease therapeutics GLP-1",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 2985.0,
           "prior_count": 2239.0,
@@ -1901,7 +1895,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"obesity drug\" OR GLP-1",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (45.0s remaining)",
           "source_signal_score": null,
@@ -1923,7 +1917,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -1953,7 +1947,7 @@
           ],
           "group_name": "비만·대사질환 치료",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 53.1098,
@@ -2004,7 +1998,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Electrical grid', 'Smart grid']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2016,7 +2010,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "electric grid modernization transmission electrification",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 680.0,
           "prior_count": 654.0,
@@ -2028,7 +2022,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"grid modernization\" OR \"power",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (232.5s remaining)",
           "source_signal_score": null,
@@ -2051,7 +2045,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2081,7 +2075,7 @@
           ],
           "group_name": "전력망·전기화",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.646,
@@ -2132,7 +2126,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Power semiconductor device', 'Wide-bandgap semiconductor']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2144,7 +2138,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "power semiconductors silicon carbide gallium nitride",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 730.0,
           "prior_count": 735.0,
@@ -2156,7 +2150,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"power semiconductor\" OR \"silicon",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (277.5s remaining)",
           "source_signal_score": null,
@@ -2178,7 +2172,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2208,7 +2202,7 @@
           ],
           "group_name": "전력반도체",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.3082,
@@ -2259,7 +2253,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Rare-earth element']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2271,7 +2265,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rare earth elements supply chain",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 5882.0,
           "prior_count": 5988.0,
@@ -2298,7 +2292,7 @@
           "series_points": 87,
           "attention_percentile": 77.5,
           "attention_score": 70.3778,
-          "fallback_reason": "provider cooldown active after rate limit (300.0s remaining)",
+          "fallback_reason": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n",
           "cache_age_days": 1
         },
         "usaspending": {
@@ -2308,7 +2302,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2335,7 +2329,7 @@
           ],
           "group_name": "희토류 공급망",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 1.5303,
@@ -2359,7 +2353,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (300.0s remaining)"
+          "error": "HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the-new-web-ngrams-dataset-to-find-relevant-coverage/. For trend analysis, please see our daily newsletter briefings: https://blog.gdeltproject.org/announcing-our-new-daily-todays-trends-on-capitol-hill-todays-media-trends-newsletter-briefings/.\n\n"
         }
       ],
       "limitations": [
@@ -2386,7 +2380,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Semiconductor device fabrication', 'Semiconductor industry']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2398,7 +2392,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "semiconductor manufacturing equipment",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 7887.0,
           "prior_count": 8859.0,
@@ -2441,7 +2435,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2470,7 +2464,7 @@
           ],
           "group_name": "반도체 장비",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1818,
@@ -2521,7 +2515,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Small modular reactor']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2533,7 +2527,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "small modular reactor microreactor",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 423.0,
           "prior_count": 350.0,
@@ -2570,7 +2564,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2598,7 +2592,7 @@
           ],
           "group_name": "소형모듈원전(SMR)",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 5.8676,
@@ -2649,7 +2643,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Space industry', 'Commercial spaceflight']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2661,7 +2655,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial space satellite launch",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 5293.0,
           "prior_count": 5800.0,
@@ -2673,7 +2667,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"space economy\" OR \"commercial",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (90.0s remaining)",
           "source_signal_score": null,
@@ -2695,7 +2689,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2725,7 +2719,7 @@
           ],
           "group_name": "우주산업",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1283,
@@ -2776,7 +2770,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['3D printing', 'Additive manufacturing']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2788,7 +2782,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "additive manufacturing 3D printing",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 18706.0,
           "prior_count": 18340.0,
@@ -2800,7 +2794,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"additive manufacturing\" OR \"3D",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (120.0s remaining)",
           "source_signal_score": null,
@@ -2817,7 +2811,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2844,7 +2838,7 @@
           ],
           "group_name": "3D프린팅",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.6886,
@@ -2895,7 +2889,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Liquid biopsy', 'Molecular diagnostics']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -2907,7 +2901,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquid biopsy advanced molecular diagnostics",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 8350.0,
           "prior_count": 7948.0,
@@ -2919,7 +2913,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"liquid biopsy\" OR \"molecular",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (30.0s remaining)",
           "source_signal_score": null,
@@ -2936,7 +2930,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -2964,7 +2958,7 @@
           ],
           "group_name": "첨단진단·액체생검",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0674,
@@ -3015,7 +3009,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Advanced materials']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3027,7 +3021,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "advanced materials nanomaterials composites",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 23831.0,
           "prior_count": 21907.0,
@@ -3054,7 +3048,7 @@
           "series_points": 87,
           "attention_percentile": 57.5,
           "attention_score": 56.1065,
-          "fallback_reason": "provider cooldown active after rate limit (285.0s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (292.5s remaining)",
           "cache_age_days": 1
         },
         "usaspending": {
@@ -3064,7 +3058,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3091,7 +3085,7 @@
           ],
           "group_name": "첨단소재",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1761,
@@ -3115,7 +3109,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (285.0s remaining)"
+          "error": "provider cooldown active after rate limit (292.5s remaining)"
         }
       ],
       "limitations": [
@@ -3142,7 +3136,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Battery recycling']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3154,7 +3148,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "lithium ion battery recycling",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 8260.0,
           "prior_count": 7804.0,
@@ -3181,7 +3175,7 @@
           "series_points": 86,
           "attention_percentile": 12.5,
           "attention_score": 20.9742,
-          "fallback_reason": "provider cooldown active after rate limit (292.5s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (300.0s remaining)",
           "cache_age_days": 2
         },
         "usaspending": {
@@ -3197,7 +3191,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3227,7 +3221,7 @@
           ],
           "group_name": "배터리 재활용",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1867,
@@ -3251,7 +3245,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (292.5s remaining)"
+          "error": "provider cooldown active after rate limit (300.0s remaining)"
         }
       ],
       "limitations": [
@@ -3278,7 +3272,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Carbon capture and storage']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3290,7 +3284,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "carbon capture utilization storage",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 46503.0,
           "prior_count": 43064.0,
@@ -3327,7 +3321,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3355,7 +3349,7 @@
           ],
           "group_name": "탄소포집·저장",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.5523,
@@ -3406,7 +3400,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Cloud computing']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3418,7 +3412,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "cloud computing infrastructure",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 79896.0,
           "prior_count": 63038.0,
@@ -3430,7 +3424,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"cloud infrastructure\" OR \"cloud",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (247.5s remaining)",
           "source_signal_score": null,
@@ -3447,7 +3441,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3474,7 +3468,7 @@
           ],
           "group_name": "클라우드 인프라",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 9.6156,
@@ -3525,7 +3519,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Unmanned aerial vehicle', 'Delivery drone']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3537,7 +3531,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "commercial drones unmanned aerial systems",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 4698.0,
           "prior_count": 4282.0,
@@ -3579,7 +3573,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3608,7 +3602,7 @@
           ],
           "group_name": "상업용 드론",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 4.7534,
@@ -3659,7 +3653,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Digital identity', 'Identity management']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3671,7 +3665,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "digital identity authentication biometrics",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 5082.0,
           "prior_count": 4713.0,
@@ -3683,9 +3677,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"digital identity\" OR \"identity",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "provider cooldown active after rate limit (255.0s remaining)",
+          "availability_reason": "provider cooldown active after rate limit (262.5s remaining)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -3706,7 +3700,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3736,7 +3730,7 @@
           ],
           "group_name": "디지털 신원·보안인증",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1661,
@@ -3760,7 +3754,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (255.0s remaining)"
+          "error": "provider cooldown active after rate limit (262.5s remaining)"
         }
       ],
       "limitations": [
@@ -3787,7 +3781,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Edge computing', 'Artificial intelligence']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3799,7 +3793,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "edge artificial intelligence inference",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 59140.0,
           "prior_count": 37325.0,
@@ -3836,7 +3830,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3865,7 +3859,7 @@
           ],
           "group_name": "엣지 AI",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.6389,
@@ -3916,7 +3910,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Hydrogen economy', 'Green hydrogen']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -3928,7 +3922,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "green hydrogen electrolyzer fuel cell",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 3055.0,
           "prior_count": 2930.0,
@@ -3940,7 +3934,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"green hydrogen\" OR \"hydrogen",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (202.5s remaining)",
           "source_signal_score": null,
@@ -3963,7 +3957,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -3993,7 +3987,7 @@
           ],
           "group_name": "수소",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 1.7123,
@@ -4044,7 +4038,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Liquefied natural gas']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4056,7 +4050,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "liquefied natural gas infrastructure",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 2990.0,
           "prior_count": 3124.0,
@@ -4068,7 +4062,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"liquefied natural gas\" OR",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (165.0s remaining)",
           "source_signal_score": null,
@@ -4092,7 +4086,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4121,7 +4115,7 @@
           ],
           "group_name": "LNG 인프라",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 1.2012,
@@ -4172,7 +4166,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Warehouse automation', 'Logistics automation']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4184,7 +4178,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "warehouse logistics automation robotics",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 3424.0,
           "prior_count": 3617.0,
@@ -4196,7 +4190,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"warehouse automation\" OR \"logistics",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (135.0s remaining)",
           "source_signal_score": null,
@@ -4219,7 +4213,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4249,7 +4243,7 @@
           ],
           "group_name": "물류 자동화",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1087,
@@ -4300,7 +4294,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Autonomous cargo ship', 'Unmanned surface vehicle']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4312,7 +4306,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "autonomous ships maritime unmanned systems",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 1310.0,
           "prior_count": 1377.0,
@@ -4324,7 +4318,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"autonomous ship\" OR \"unmanned",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (82.5s remaining)",
           "source_signal_score": null,
@@ -4347,7 +4341,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4377,7 +4371,7 @@
           ],
           "group_name": "자율운항·해양무인체계",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0537,
@@ -4428,7 +4422,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Offshore wind power']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4440,7 +4434,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "offshore wind energy",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 16303.0,
           "prior_count": 16479.0,
@@ -4467,7 +4461,7 @@
           "series_points": 86,
           "attention_percentile": 62.5,
           "attention_score": 59.4326,
-          "fallback_reason": "provider cooldown active after rate limit (172.5s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (180.0s remaining)",
           "cache_age_days": 2
         },
         "usaspending": {
@@ -4477,7 +4471,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4504,7 +4498,7 @@
           ],
           "group_name": "해상풍력",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 1.0507,
@@ -4528,7 +4522,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (172.5s remaining)"
+          "error": "provider cooldown active after rate limit (180.0s remaining)"
         }
       ],
       "limitations": [
@@ -4555,7 +4549,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Silicon photonics', 'Optical interconnect']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4567,7 +4561,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "silicon photonics optical interconnect",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 1767.0,
           "prior_count": 1272.0,
@@ -4579,7 +4573,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"silicon photonics\" OR \"optical",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (262.5s remaining)",
           "source_signal_score": null,
@@ -4602,7 +4596,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4632,7 +4626,7 @@
           ],
           "group_name": "광자·광인터커넥트",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.7872,
@@ -4683,7 +4677,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Precision medicine', 'Liquid biopsy']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4695,7 +4689,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "precision oncology targeted cancer therapy",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 33183.0,
           "prior_count": 26466.0,
@@ -4707,7 +4701,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"precision oncology\" OR \"liquid",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (52.5s remaining)",
           "source_signal_score": null,
@@ -4724,7 +4718,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4752,7 +4746,7 @@
           ],
           "group_name": "정밀종양학",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0499,
@@ -4803,7 +4797,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Industry 4.0', 'Smart manufacturing']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4815,7 +4809,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "smart factory industrial internet",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 7927.0,
           "prior_count": 9390.0,
@@ -4827,7 +4821,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"smart factory\" OR \"Industry",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (142.5s remaining)",
           "source_signal_score": null,
@@ -4850,7 +4844,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -4880,7 +4874,7 @@
           ],
           "group_name": "스마트팩토리",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.6475,
@@ -4931,7 +4925,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Solar power', 'Photovoltaics']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -4943,7 +4937,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "solar photovoltaic manufacturing",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 11439.0,
           "prior_count": 12184.0,
@@ -4955,7 +4949,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"solar energy\" OR photovoltaics",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (187.5s remaining)",
           "source_signal_score": null,
@@ -4972,7 +4966,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5000,7 +4994,7 @@
           ],
           "group_name": "태양광",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 6.5962,
@@ -5051,7 +5045,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Robot-assisted surgery']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5063,7 +5057,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "robotic surgery surgical robotics",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 21802.0,
           "prior_count": 22370.0,
@@ -5100,7 +5094,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5127,7 +5121,7 @@
           ],
           "group_name": "수술로봇",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.2428,
@@ -5178,7 +5172,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Synthetic biology']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5190,7 +5184,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "synthetic biology biomanufacturing",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 1757.0,
           "prior_count": 1244.0,
@@ -5227,7 +5221,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5254,7 +5248,7 @@
           ],
           "group_name": "합성생물학",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0744,
@@ -5305,7 +5299,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Water supply network', 'Water industry']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5317,7 +5311,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "water infrastructure treatment desalination",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 3401.0,
           "prior_count": 2737.0,
@@ -5344,7 +5338,7 @@
           "series_points": 86,
           "attention_percentile": 82.5,
           "attention_score": 76.0801,
-          "fallback_reason": "provider cooldown active after rate limit (277.5s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (285.0s remaining)",
           "cache_age_days": 2
         },
         "usaspending": {
@@ -5360,7 +5354,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5390,7 +5384,7 @@
           ],
           "group_name": "수자원 인프라",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.3338,
@@ -5414,7 +5408,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (277.5s remaining)"
+          "error": "provider cooldown active after rate limit (285.0s remaining)"
         }
       ],
       "limitations": [
@@ -5441,7 +5435,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Agricultural technology', 'Food technology']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5453,7 +5447,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "agricultural technology food technology precision agriculture",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 45076.0,
           "prior_count": 39261.0,
@@ -5465,9 +5459,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "agritech OR foodtech",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "provider cooldown active after rate limit (270.0s remaining)",
+          "availability_reason": "provider cooldown active after rate limit (277.5s remaining)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -5501,7 +5495,7 @@
           ],
           "group_name": "애그테크·푸드테크",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 2.3771,
@@ -5525,7 +5519,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (270.0s remaining)"
+          "error": "provider cooldown active after rate limit (277.5s remaining)"
         },
         {
           "source": "usaspending",
@@ -5556,7 +5550,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Construction robotics']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5568,7 +5562,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "construction robotics automation",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 25413.0,
           "prior_count": 23804.0,
@@ -5580,7 +5574,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"construction automation\" OR \"construction",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (127.5s remaining)",
           "source_signal_score": null,
@@ -5603,7 +5597,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5633,7 +5627,7 @@
           ],
           "group_name": "건설 자동화",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0948,
@@ -5684,7 +5678,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Financial technology', 'Payment system']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5696,7 +5690,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "financial technology payments infrastructure",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 42296.0,
           "prior_count": 39700.0,
@@ -5708,9 +5702,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"fintech infrastructure\" OR \"payment",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "provider cooldown active after rate limit (247.5s remaining)",
+          "availability_reason": "provider cooldown active after rate limit (255.0s remaining)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -5731,7 +5725,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5761,7 +5755,7 @@
           ],
           "group_name": "핀테크 인프라",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.9771,
@@ -5785,7 +5779,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (247.5s remaining)"
+          "error": "provider cooldown active after rate limit (255.0s remaining)"
         }
       ],
       "limitations": [
@@ -5803,7 +5797,7 @@
       "data_build_priority": 3,
       "status": "PHASE1_OBSERVED",
       "source_family_count": 2,
-      "phase1_data_signal_score": 46.9253,
+      "phase1_data_signal_score": 46.8902,
       "public_interest_score": 21.6108,
       "public_interest_status": "LIVE_OR_CACHED_OBSERVED",
       "boom_score": null,
@@ -5812,7 +5806,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Geothermal energy']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5822,18 +5816,16 @@
           "prior_count": null
         },
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "query": "enhanced geothermal systems",
-          "captured_at": "2026-08-18T23:57:11+09:00",
-          "as_of": "2026-08-17",
-          "recent_count": 12300.0,
-          "prior_count": 12625.0,
-          "growth_percent": -2.5743,
-          "growth_score": 49.2699,
-          "scale_score": 73.6189,
-          "source_signal_score": 59.0095,
-          "fallback_reason": "provider cooldown active after rate limit (3.0s remaining)",
-          "cache_age_days": 1
+          "captured_at": "2026-08-19T18:07:17+09:00",
+          "as_of": "2026-08-18",
+          "recent_count": 12305.0,
+          "prior_count": 12684.0,
+          "growth_percent": -2.988,
+          "growth_score": 49.1508,
+          "scale_score": 73.6221,
+          "source_signal_score": 58.9393
         },
         "gdelt": {
           "status": "CACHE_FALLBACK",
@@ -5853,7 +5845,7 @@
           "series_points": 86,
           "attention_percentile": 27.5,
           "attention_score": 31.3637,
-          "fallback_reason": "provider cooldown active after rate limit (180.0s remaining)",
+          "fallback_reason": "provider cooldown active after rate limit (172.5s remaining)",
           "cache_age_days": 2
         },
         "usaspending": {
@@ -5863,7 +5855,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -5890,7 +5882,7 @@
           ],
           "group_name": "지열에너지",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.0732,
@@ -5913,12 +5905,8 @@
       },
       "errors": [
         {
-          "source": "openalex",
-          "error": "provider cooldown active after rate limit (3.0s remaining)"
-        },
-        {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (180.0s remaining)"
+          "error": "provider cooldown active after rate limit (172.5s remaining)"
         }
       ],
       "limitations": [
@@ -5945,7 +5933,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Heat pump', 'Efficient energy use']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -5957,7 +5945,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "heat pumps building energy efficiency",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 12367.0,
           "prior_count": 12847.0,
@@ -5969,9 +5957,9 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"heat pump\" OR \"energy",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
-          "availability_reason": "provider cooldown active after rate limit (262.5s remaining)",
+          "availability_reason": "provider cooldown active after rate limit (270.0s remaining)",
           "source_signal_score": null,
           "growth_score": null,
           "growth_percent": null,
@@ -5992,7 +5980,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -6022,7 +6010,7 @@
           ],
           "group_name": "히트펌프·에너지효율",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 3.6104,
@@ -6046,7 +6034,7 @@
       "errors": [
         {
           "source": "gdelt",
-          "error": "provider cooldown active after rate limit (262.5s remaining)"
+          "error": "provider cooldown active after rate limit (270.0s remaining)"
         }
       ],
       "limitations": [
@@ -6073,7 +6061,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Life extension', 'Gerontology']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -6085,7 +6073,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "longevity aging therapeutics geroscience",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 477.0,
           "prior_count": 437.0,
@@ -6097,7 +6085,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "longevity OR \"anti-aging biotechnology\"",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (15.0s remaining)",
           "source_signal_score": null,
@@ -6120,7 +6108,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -6150,7 +6138,7 @@
           ],
           "group_name": "노화·장수기술",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.1067,
@@ -6201,7 +6189,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Quantum computing']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -6213,7 +6201,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "quantum computing",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 124043.0,
           "prior_count": 90974.0,
@@ -6250,7 +6238,7 @@
           ],
           "query_mode": "THEME_KEYWORD",
           "specificity": "HIGH",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -6277,7 +6265,7 @@
           ],
           "group_name": "양자컴퓨팅",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 3.3169,
@@ -6328,7 +6316,7 @@
         "wikimedia": {
           "status": "SOURCE_DISABLED",
           "query": "['Rail transport', 'High-speed rail']",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "SOURCE_DISABLED_BY_CONFIG",
           "source_signal_score": null,
@@ -6340,7 +6328,7 @@
         "openalex": {
           "status": "LIVE_COLLECTED",
           "query": "rail modernization signaling high speed rail",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "recent_count": 757.0,
           "prior_count": 939.0,
@@ -6352,7 +6340,7 @@
         "gdelt": {
           "status": "SOURCE_UNAVAILABLE",
           "query": "\"rail modernization\" OR \"high",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "availability_reason": "provider cooldown active after rate limit (75.0s remaining)",
           "source_signal_score": null,
@@ -6375,7 +6363,7 @@
           ],
           "strict_recent_count": 0,
           "strict_prior_count": 0,
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "recent_period": {
             "start_date": "2025-08-19",
             "end_date": "2026-08-18"
@@ -6405,7 +6393,7 @@
           ],
           "group_name": "철도 현대화",
           "anchor_group": "기준_반도체",
-          "captured_at": "2026-08-19T12:33:30+09:00",
+          "captured_at": "2026-08-19T18:07:17+09:00",
           "as_of": "2026-08-18",
           "series_basis": "NAVER_RATIO_WITH_COMMON_ANCHOR",
           "recent_count": 0.213,
@@ -6441,7 +6429,7 @@
       "public_interest_confidence": 1.0
     }
   ],
-  "content_sha256": "37a0b9622b14c43557c21361e9babd0f510c69ce8291e60407db2d43d36770d8",
+  "content_sha256": "5360c60d4c118c84ae842bbdf017fc00bc582eec7c01c65bb9b85f08eaaa7bf6",
   "dynamic_discovery": {
     "status": "CANDIDATES_FOUND",
     "candidate_count": 4,

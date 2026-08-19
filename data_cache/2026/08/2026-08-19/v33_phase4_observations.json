@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.3.0-github-final-auto",
   "as_of": "2026-08-19",
-  "captured_at": "2026-08-19T12:40:58+09:00",
+  "captured_at": "2026-08-19T18:14:08+09:00",
   "theme_count": 50,
   "source_cache_as_of": {
     "phase1": "2026-08-18",
@@ -129,10 +129,10 @@
       "data_build_priority": 3,
       "status": "PHASE4_PROXY_OBSERVED",
       "readiness_stage": "HIGH_COMMERCIALIZATION_READINESS",
-      "phase3_investment_signal_score": 69.0158,
+      "phase3_investment_signal_score": 69.0095,
       "commercialization_proxy_score": 65.1129,
       "supply_chain_diffusion_proxy_score": 69.6,
-      "phase4_readiness_signal_score": 68.1569,
+      "phase4_readiness_signal_score": 68.1535,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "actual_source_family_count": 5,
@@ -146,7 +146,7 @@
         "naics_breadth_percentile_score": 54.0,
         "cross_source_diffusion_score": 80.0,
         "source_signals": {
-          "research": 59.0095,
+          "research": 58.9393,
           "government_spending": 34.841,
           "real_economy": 60.6617,
           "capex": 92.4212,
@@ -1535,10 +1535,10 @@
       "data_build_priority": 1,
       "status": "PHASE4_PROXY_OBSERVED",
       "readiness_stage": "MONITOR_ONLY",
-      "phase3_investment_signal_score": 46.5092,
+      "phase3_investment_signal_score": 46.5096,
       "commercialization_proxy_score": 49.9267,
       "supply_chain_diffusion_proxy_score": 45.6,
-      "phase4_readiness_signal_score": 47.1817,
+      "phase4_readiness_signal_score": 47.182,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "actual_source_family_count": 5,
@@ -1552,7 +1552,7 @@
         "naics_breadth_percentile_score": 54.0,
         "cross_source_diffusion_score": 40.0,
         "source_signals": {
-          "research": 59.6957,
+          "research": 59.6995,
           "government_spending": 32.6735,
           "real_economy": 55.7439,
           "capex": 39.65,
@@ -1862,5 +1862,5 @@
       ]
     }
   ],
-  "content_sha256": "c1e340a4439227a8b6323600e5b0af9042e6f1bcf2ee001eaea24114a9175d33"
+  "content_sha256": "5c48664ff2a720ce6dbe637fda5642239605dbe49bc9bfffb5ff4bae3e7b77cf"
 }

@@ -3,7 +3,7 @@
   "engine_release": "5.0.0-prospective-validation-final",
   "snapshot_id": "2026-08",
   "as_of": "2026-08-19",
-  "captured_at": "2026-08-19T12:41:01+09:00",
+  "captured_at": "2026-08-19T18:14:10+09:00",
   "theme_count": 50,
   "source_as_of": {
     "v31": "2026-08-18",
@@ -12,10 +12,10 @@
     "v40": "2026-08-19"
   },
   "source_content_sha256": {
-    "v31": "d38144dfcf993f1f745fcac607bf0cad57a044d70464baf48d818f76af330f53",
-    "v32": "3c55577367fd97102d93b1d2b529591d4aa3750343ea507aae84542f4e59fa90",
-    "v33": "c1e340a4439227a8b6323600e5b0af9042e6f1bcf2ee001eaea24114a9175d33",
-    "v40": "f5b1f3e348c0a8da495c169c6cf5fafa83704185b3fe6044bd7969268341ec30"
+    "v31": "f71cd3b75b053e116351565434adbdad26859f18881e87b62b355ebdce992aa6",
+    "v32": "5af78d706c4108debd19fe92e06faf35385f3adbf2f1a6e15ecc5f6efd9813e1",
+    "v33": "5c48664ff2a720ce6dbe637fda5642239605dbe49bc9bfffb5ff4bae3e7b77cf",
+    "v40": "477017da3cb9bb2cc189d686ec017916fa214ce3df2bcdff00e0ded9ada53d57"
   },
   "investment_use_allowed": false,
   "themes": [
@@ -63,11 +63,11 @@
       "theme_id": "GEOTHERMAL_ENERGY",
       "theme_name": "지열에너지",
       "sector": "에너지·전력",
-      "predicted_score": 67.8868,
+      "predicted_score": 67.8844,
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "phase4_readiness_score": 68.1569,
+      "phase4_readiness_score": 68.1535,
       "direct_commercialization_score": 67.2565,
-      "phase3_investment_score": 69.0158,
+      "phase3_investment_score": 69.0095,
       "commercial_metric_family": "QSS_REVENUE",
       "commercial_metric_value_million_usd": 172318.0,
       "commercial_metric_period": null,
@@ -723,11 +723,11 @@
       "theme_id": "HUMANOID_ROBOTS",
       "theme_name": "휴머노이드 로봇",
       "sector": "산업·자동화",
-      "predicted_score": 53.151,
+      "predicted_score": 53.1512,
       "candidate_stage": "PREVALIDATION_WATCH",
-      "phase4_readiness_score": 47.1817,
+      "phase4_readiness_score": 47.182,
       "direct_commercialization_score": 67.0794,
-      "phase3_investment_score": 46.5092,
+      "phase3_investment_score": 46.5096,
       "commercial_metric_family": "M3_SHIPMENTS",
       "commercial_metric_value_million_usd": 52601.0,
       "commercial_metric_period": "2026-06",
@@ -1020,5 +1020,5 @@
       "predicted_rank": 50
     }
   ],
-  "content_sha256": "045df12b453730ad2dcc3134240839d9ee1376a1bcb5fcef40bf41901a7b394e"
+  "content_sha256": "73abe30286febb19a3f239f836258d4bdacb64d831e444f880bb4a8963874f77"
 }

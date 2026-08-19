@@ -375,13 +375,13 @@
     {
       "theme_id": "HUMANOID_ROBOTS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 44.9675,
+      "nowcast_score": 44.9688,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1497,13 +1497,13 @@
     {
       "theme_id": "GEOTHERMAL_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 42.2917,
+      "nowcast_score": 42.2683,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "71d9ab5035fecd74d646bb1ecb6fc8a9b2028e58acf84f62be805075ace4a45a"
+  "content_sha256": "3273f773e39113d98fee565534510983a0b5cede9e65d2a60cef77409a54aacd"
 }

@@ -170,7 +170,7 @@
       "kipris": {
         "status": "KIPRIS_OBSERVED",
         "query": "high bandwidth memory",
-        "korean_patent_count": 10199,
+        "korean_patent_count": 10225,
         "observation_date": "2026-08-18",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
@@ -182,7 +182,7 @@
       "kipris": {
         "status": "KIPRIS_OBSERVED",
         "query": "artificial intelligence drug",
-        "korean_patent_count": 208,
+        "korean_patent_count": 209,
         "observation_date": "2026-08-18",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
@@ -194,7 +194,7 @@
       "kipris": {
         "status": "KIPRIS_OBSERVED",
         "query": "semiconductor accelerators",
-        "korean_patent_count": 2386,
+        "korean_patent_count": 2389,
         "observation_date": "2026-08-18",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
@@ -238,5 +238,5 @@
     }
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "7705495e50751a5638d33421cdabc5084e5ce8babcaf25e18699143ec7a2b762"
+  "content_sha256": "78925c5f610c5e1c7560d43b81ae023eb79ac89d9a0f0a8ace6e34306d9546e1"
 }

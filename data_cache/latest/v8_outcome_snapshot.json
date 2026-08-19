@@ -378,7 +378,7 @@
       "capex_level": 114729193.0,
       "stock_price": null,
       "industry_growth_percent": 3.7477,
-      "research_growth_percent": -2.5743,
+      "research_growth_percent": -2.988,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -410,7 +410,7 @@
       "capex_level": 8970472.0,
       "stock_price": null,
       "industry_growth_percent": -0.9862,
-      "research_growth_percent": 44.2406,
+      "research_growth_percent": 44.2167,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -804,5 +804,5 @@
       }
     }
   ],
-  "content_sha256": "9823ace3f55372b6fbc0408b46fa80a7670f3e32461fae39578fe8f6711980f4"
+  "content_sha256": "7757e5d56e7915f48dd1450631a6d85f24260454e5d78317f7de7339532212bd"
 }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.2.0-github-corporate-investment",
   "as_of": "2026-08-18",
-  "captured_at": "2026-08-19T12:40:57+09:00",
+  "captured_at": "2026-08-19T18:14:07+09:00",
   "theme_count": 50,
   "source_provenance": {
     "aies_capex": {
@@ -686,10 +686,10 @@
       "sector": "산업·자동화",
       "data_build_priority": 1,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 51.4422,
+      "phase2_data_signal_score": 51.4431,
       "capex_investment_signal_score": 39.65,
       "business_rd_signal_score": 46.7911,
-      "phase3_investment_signal_score": 46.5092,
+      "phase3_investment_signal_score": 46.5096,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -2704,10 +2704,10 @@
       "sector": "에너지·전력",
       "data_build_priority": 3,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 54.4803,
+      "phase2_data_signal_score": 54.4645,
       "capex_investment_signal_score": 92.4212,
       "business_rd_signal_score": 64.991,
-      "phase3_investment_signal_score": 69.0158,
+      "phase3_investment_signal_score": 69.0095,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -3000,5 +3000,5 @@
       ]
     }
   ],
-  "content_sha256": "3c55577367fd97102d93b1d2b529591d4aa3750343ea507aae84542f4e59fa90"
+  "content_sha256": "5af78d706c4108debd19fe92e06faf35385f3adbf2f1a6e15ecc5f6efd9813e1"
 }

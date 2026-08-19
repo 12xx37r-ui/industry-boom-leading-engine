@@ -3,13 +3,13 @@
   "as_of": "2026-08-18",
   "public_interest_observed": 50,
   "collection_metrics": {
-    "network_requests": 259,
-    "cache_hits": 21,
+    "network_requests": 18,
+    "cache_hits": 264,
     "stale_cache_hits": 0,
-    "cache_writes": 256,
+    "cache_writes": 17,
     "deduplicated_requests": 12,
-    "retries": 2,
-    "http_429": 2,
+    "retries": 0,
+    "http_429": 0,
     "http_5xx": 0,
     "timeouts": 0,
     "enabled_sources": [
@@ -25,8 +25,8 @@
   "sources": {
     "openalex": {
       "enabled": true,
-      "live_count": 48,
-      "cache_fallback_count": 2,
+      "live_count": 50,
+      "cache_fallback_count": 0,
       "unavailable_count": 0
     },
     "usaspending": {

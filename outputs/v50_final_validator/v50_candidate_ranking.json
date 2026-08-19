@@ -30,7 +30,7 @@
       "theme_name": "지열에너지",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 67.8868,
+      "prevalidation_candidate_score": 67.8844,
       "direct_commercialization_score": 67.2565,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -393,7 +393,7 @@
       "theme_name": "휴머노이드 로봇",
       "sector": "산업·자동화",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 53.151,
+      "prevalidation_candidate_score": 53.1512,
       "direct_commercialization_score": 67.0794,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
