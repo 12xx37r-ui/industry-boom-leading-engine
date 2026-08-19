@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "engine_release": "8.0.1-rolling-discovery-corpus",
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "status": "CANDIDATES_FOUND",
-  "input_document_count": 14,
+  "input_document_count": 16,
   "input_source_families": [
     "github_frontier",
     "v3_dynamic_text"
@@ -13,14 +13,14 @@
     "rolling_window_days": 90,
     "previous_document_count": 14,
     "current_run_document_count": 21,
-    "rolling_document_count": 14,
-    "deduplicated_document_count": 16,
-    "expired_document_count": 5,
+    "rolling_document_count": 16,
+    "deduplicated_document_count": 15,
+    "expired_document_count": 4,
     "source_balance_dropped_count": 0,
     "max_document_dropped_count": 0,
     "source_counts": {
       "github_frontier": 2,
-      "openalex": 12
+      "openalex": 14
     }
   },
   "candidate_count": 2,
@@ -52,6 +52,49 @@
     "min_date_span_days": 7
   },
   "candidates": [
+    {
+      "term": "semiconductor design",
+      "display_name": "Semiconductor Design",
+      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "semantic_similarity_proxy": 0.45,
+      "phrase_quality_score": 75.0,
+      "broad_parent_domain": false,
+      "confidence": 72.0,
+      "distinct_document_count": 3,
+      "source_family_count": 2,
+      "period_count": 3,
+      "distinct_date_count": 3,
+      "date_span_days": 46,
+      "evidence_sources": [
+        "github_frontier",
+        "openalex"
+      ],
+      "evidence_periods": [
+        "2026-06",
+        "2026-07",
+        "2026-08"
+      ],
+      "evidence_dates": [
+        "2026-06-30",
+        "2026-07-14",
+        "2026-08-15"
+      ],
+      "evidence_document_ids": [
+        "github:roboco-io/semiconductor-design",
+        "https://openalex.org/W7166261595",
+        "https://openalex.org/W7166735986"
+      ],
+      "promotion_status": "REVIEW_REQUIRED",
+      "novelty_score": 0.55,
+      "candidate_class": "REVIEW_ONLY",
+      "auto_add_allowed": false,
+      "readiness_score": 71.35,
+      "evidence_score": 90.0,
+      "missing_requirements": [
+        "신규성"
+      ],
+      "review_priority": "MEDIUM"
+    },
     {
       "term": "physic informed",
       "display_name": "Physic Informed",
@@ -90,48 +133,7 @@
         "신뢰도"
       ],
       "review_priority": "MEDIUM"
-    },
-    {
-      "term": "semiconductor design",
-      "display_name": "Semiconductor Design",
-      "suggested_theme_id": "SEMICONDUCTOR_EQUIPMENT",
-      "semantic_similarity_proxy": 0.45,
-      "phrase_quality_score": 75.0,
-      "broad_parent_domain": false,
-      "confidence": 67.85,
-      "distinct_document_count": 2,
-      "source_family_count": 2,
-      "period_count": 2,
-      "distinct_date_count": 2,
-      "date_span_days": 14,
-      "evidence_sources": [
-        "github_frontier",
-        "openalex"
-      ],
-      "evidence_periods": [
-        "2026-06",
-        "2026-07"
-      ],
-      "evidence_dates": [
-        "2026-06-30",
-        "2026-07-14"
-      ],
-      "evidence_document_ids": [
-        "github:roboco-io/semiconductor-design",
-        "https://openalex.org/W7166735986"
-      ],
-      "promotion_status": "REVIEW_REQUIRED",
-      "novelty_score": 0.55,
-      "candidate_class": "REVIEW_ONLY",
-      "auto_add_allowed": false,
-      "readiness_score": 64.0,
-      "evidence_score": 64.67,
-      "missing_requirements": [
-        "신뢰도",
-        "신규성"
-      ],
-      "review_priority": "LOW"
     }
   ],
-  "content_sha256": "49dcfbea6b169cd8760d29a3e08dc236c80da7060977d0ca2c5be4526aa45049"
+  "content_sha256": "c02225fcbfd3836f6592be102f666daa273ea9966b0ed3d7d7c713e3891a1cb4"
 }

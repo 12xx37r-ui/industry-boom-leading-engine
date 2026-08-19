@@ -1,7 +1,7 @@
 {
   "status": "V6_0_CHALLENGER_RESEARCH_GATE_PASSED_SHADOW_ONLY",
   "engine_release": "6.0.0-champion-challenger-research",
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "comparison_receipt_action": "REUSED_IMMUTABLE_COMPARISON_RECEIPT",
   "policy_lock": {
     "status": "POLICY_LOCK_VERIFIED",

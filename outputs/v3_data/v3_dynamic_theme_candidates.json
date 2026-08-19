@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "as_of": "2026-08-17",
+  "as_of": "2026-08-18",
   "status": "CANDIDATES_FOUND",
   "candidate_count": 4,
   "auto_add_allowed": false,
@@ -26,11 +26,11 @@
       "phrase_quality_score": 85.0,
       "broad_parent_domain": true,
       "confidence": 78.0,
-      "distinct_document_count": 8,
+      "distinct_document_count": 10,
       "source_family_count": 2,
       "period_count": 5,
-      "distinct_date_count": 8,
-      "date_span_days": 980,
+      "distinct_date_count": 10,
+      "date_span_days": 991,
       "evidence_sources": [
         "arxiv",
         "openalex"
@@ -49,8 +49,10 @@
         "2026-06-10",
         "2026-06-24",
         "2026-06-27",
+        "2026-07-01",
         "2026-07-30",
-        "2026-08-04"
+        "2026-08-04",
+        "2026-08-15"
       ],
       "evidence_document_ids": [
         "http://arxiv.org/abs/2311.16666v2",
@@ -58,9 +60,9 @@
         "https://openalex.org/W7163234986",
         "https://openalex.org/W7164121164",
         "https://openalex.org/W7165746285",
+        "https://openalex.org/W7166261595",
         "https://openalex.org/W7166301583",
-        "https://openalex.org/W7172377876",
-        "https://openalex.org/W7172440409"
+        "https://openalex.org/W7169655903"
       ],
       "promotion_status": "EXISTING_THEME_EXTENSION"
     },
@@ -72,11 +74,11 @@
       "phrase_quality_score": 72.0,
       "broad_parent_domain": false,
       "confidence": 78.0,
-      "distinct_document_count": 8,
+      "distinct_document_count": 10,
       "source_family_count": 2,
       "period_count": 5,
-      "distinct_date_count": 8,
-      "date_span_days": 980,
+      "distinct_date_count": 10,
+      "date_span_days": 991,
       "evidence_sources": [
         "arxiv",
         "openalex"
@@ -95,8 +97,10 @@
         "2026-06-10",
         "2026-06-24",
         "2026-06-27",
+        "2026-07-01",
         "2026-07-30",
-        "2026-08-04"
+        "2026-08-04",
+        "2026-08-15"
       ],
       "evidence_document_ids": [
         "http://arxiv.org/abs/2311.16666v2",
@@ -104,9 +108,9 @@
         "https://openalex.org/W7163234986",
         "https://openalex.org/W7164121164",
         "https://openalex.org/W7165746285",
+        "https://openalex.org/W7166261595",
         "https://openalex.org/W7166301583",
-        "https://openalex.org/W7172377876",
-        "https://openalex.org/W7172440409"
+        "https://openalex.org/W7169655903"
       ],
       "promotion_status": "EXISTING_THEME_EXTENSION"
     },
@@ -118,11 +122,11 @@
       "phrase_quality_score": 72.0,
       "broad_parent_domain": false,
       "confidence": 78.0,
-      "distinct_document_count": 8,
+      "distinct_document_count": 10,
       "source_family_count": 2,
       "period_count": 5,
-      "distinct_date_count": 8,
-      "date_span_days": 980,
+      "distinct_date_count": 10,
+      "date_span_days": 991,
       "evidence_sources": [
         "arxiv",
         "openalex"
@@ -141,8 +145,10 @@
         "2026-06-10",
         "2026-06-24",
         "2026-06-27",
+        "2026-07-01",
         "2026-07-30",
-        "2026-08-04"
+        "2026-08-04",
+        "2026-08-15"
       ],
       "evidence_document_ids": [
         "http://arxiv.org/abs/2311.16666v2",
@@ -150,9 +156,9 @@
         "https://openalex.org/W7163234986",
         "https://openalex.org/W7164121164",
         "https://openalex.org/W7165746285",
+        "https://openalex.org/W7166261595",
         "https://openalex.org/W7166301583",
-        "https://openalex.org/W7172377876",
-        "https://openalex.org/W7172440409"
+        "https://openalex.org/W7169655903"
       ],
       "promotion_status": "EXISTING_THEME_EXTENSION"
     },
@@ -200,5 +206,5 @@
     "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "95c15c918b35a3e91964064211411c805d5f19b667d5c60ac017a6ce5fa67ddc"
+  "content_sha256": "969d68637555e6f10b81f5d9aee36ca7d49bd0f5a5c6d29ddaf486a46fb1953d"
 }

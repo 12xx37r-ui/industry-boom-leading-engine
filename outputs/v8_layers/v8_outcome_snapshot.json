@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "source": "DERIVED_FROM_LATEST_ENGINE_SOURCES",
   "themes": [
     {
@@ -10,7 +10,7 @@
       "capex_level": 10020348.0,
       "stock_price": null,
       "industry_growth_percent": -0.9142,
-      "research_growth_percent": 2.1821,
+      "research_growth_percent": 1.9956,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -26,7 +26,7 @@
       "capex_level": 3124305.0,
       "stock_price": null,
       "industry_growth_percent": 0.8927,
-      "research_growth_percent": 5.2824,
+      "research_growth_percent": 5.0579,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -42,7 +42,7 @@
       "capex_level": 14023302.0,
       "stock_price": null,
       "industry_growth_percent": -1.8989,
-      "research_growth_percent": 9.1142,
+      "research_growth_percent": 8.7826,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -58,7 +58,7 @@
       "capex_level": 25189214.0,
       "stock_price": null,
       "industry_growth_percent": -2.5536,
-      "research_growth_percent": 38.9474,
+      "research_growth_percent": 39.4737,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -74,7 +74,7 @@
       "capex_level": 23674819.0,
       "stock_price": null,
       "industry_growth_percent": -1.1992,
-      "research_growth_percent": 15.2587,
+      "research_growth_percent": 14.8111,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -90,7 +90,7 @@
       "capex_level": 19170007.0,
       "stock_price": null,
       "industry_growth_percent": -0.5686,
-      "research_growth_percent": 37.3556,
+      "research_growth_percent": 36.8436,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -106,7 +106,7 @@
       "capex_level": 25189214.0,
       "stock_price": null,
       "industry_growth_percent": -2.5536,
-      "research_growth_percent": 42.4499,
+      "research_growth_percent": 43.1555,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -122,7 +122,7 @@
       "capex_level": 23114823.0,
       "stock_price": null,
       "industry_growth_percent": -0.3975,
-      "research_growth_percent": -1.975,
+      "research_growth_percent": -2.5989,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -138,7 +138,7 @@
       "capex_level": 214218521.0,
       "stock_price": null,
       "industry_growth_percent": 3.1417,
-      "research_growth_percent": 6.5793,
+      "research_growth_percent": 5.8432,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -154,7 +154,7 @@
       "capex_level": 20111180.0,
       "stock_price": null,
       "industry_growth_percent": 0.7969,
-      "research_growth_percent": 8.2416,
+      "research_growth_percent": 7.9858,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -170,7 +170,7 @@
       "capex_level": 21630547.0,
       "stock_price": null,
       "industry_growth_percent": 0.4172,
-      "research_growth_percent": 27.2856,
+      "research_growth_percent": 26.7426,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -186,7 +186,7 @@
       "capex_level": 5352046.0,
       "stock_price": null,
       "industry_growth_percent": 3.1342,
-      "research_growth_percent": 10.7411,
+      "research_growth_percent": 9.7151,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -202,7 +202,7 @@
       "capex_level": 10046247.0,
       "stock_price": null,
       "industry_growth_percent": 1.6573,
-      "research_growth_percent": 7.2206,
+      "research_growth_percent": 6.7594,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -218,7 +218,7 @@
       "capex_level": 10796654.0,
       "stock_price": null,
       "industry_growth_percent": -1.6029,
-      "research_growth_percent": 3.7526,
+      "research_growth_percent": 2.7518,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -234,7 +234,7 @@
       "capex_level": 10796654.0,
       "stock_price": null,
       "industry_growth_percent": -1.6029,
-      "research_growth_percent": 13.6149,
+      "research_growth_percent": 13.1919,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -250,7 +250,7 @@
       "capex_level": 26991310.0,
       "stock_price": null,
       "industry_growth_percent": -1.6009,
-      "research_growth_percent": 14.9425,
+      "research_growth_percent": 14.116,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -266,7 +266,7 @@
       "capex_level": 128702982.0,
       "stock_price": null,
       "industry_growth_percent": 1.509,
-      "research_growth_percent": 21.4008,
+      "research_growth_percent": 20.9065,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -282,7 +282,7 @@
       "capex_level": 10958109.0,
       "stock_price": null,
       "industry_growth_percent": 1.4324,
-      "research_growth_percent": -3.8981,
+      "research_growth_percent": -7.6328,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -298,7 +298,7 @@
       "capex_level": 26991310.0,
       "stock_price": null,
       "industry_growth_percent": -1.6009,
-      "research_growth_percent": 8.3316,
+      "research_growth_percent": 7.8294,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -314,7 +314,7 @@
       "capex_level": 1038592.0,
       "stock_price": null,
       "industry_growth_percent": -2.9317,
-      "research_growth_percent": 58.7489,
+      "research_growth_percent": 58.4461,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -330,7 +330,7 @@
       "capex_level": 237712454.0,
       "stock_price": null,
       "industry_growth_percent": -0.1391,
-      "research_growth_percent": 13.9268,
+      "research_growth_percent": 13.5756,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -346,7 +346,7 @@
       "capex_level": 9719272.0,
       "stock_price": null,
       "industry_growth_percent": -1.7823,
-      "research_growth_percent": 6.6375,
+      "research_growth_percent": 6.539,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -362,7 +362,7 @@
       "capex_level": 19170007.0,
       "stock_price": null,
       "industry_growth_percent": -0.5686,
-      "research_growth_percent": -8.2479,
+      "research_growth_percent": -8.4969,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -394,7 +394,7 @@
       "capex_level": 14437614.0,
       "stock_price": null,
       "industry_growth_percent": 2.173,
-      "research_growth_percent": -3.6425,
+      "research_growth_percent": -3.7363,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -426,7 +426,7 @@
       "capex_level": 12064579.0,
       "stock_price": null,
       "industry_growth_percent": -1.2846,
-      "research_growth_percent": 4.4475,
+      "research_growth_percent": 4.2662,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -442,7 +442,7 @@
       "capex_level": 3364409.0,
       "stock_price": null,
       "industry_growth_percent": -1.1517,
-      "research_growth_percent": -1.1534,
+      "research_growth_percent": -1.6369,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -458,7 +458,7 @@
       "capex_level": 67073183.0,
       "stock_price": null,
       "industry_growth_percent": 2.9457,
-      "research_growth_percent": -3.8882,
+      "research_growth_percent": -4.2894,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -474,7 +474,7 @@
       "capex_level": 9503661.0,
       "stock_price": null,
       "industry_growth_percent": -1.1996,
-      "research_growth_percent": -5.018,
+      "research_growth_percent": -5.3359,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -490,7 +490,7 @@
       "capex_level": 19170007.0,
       "stock_price": null,
       "industry_growth_percent": -0.5686,
-      "research_growth_percent": 9.4253,
+      "research_growth_percent": 9.1533,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -506,7 +506,7 @@
       "capex_level": 7333788.0,
       "stock_price": null,
       "industry_growth_percent": -0.5228,
-      "research_growth_percent": -4.6647,
+      "research_growth_percent": -4.8656,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -522,7 +522,7 @@
       "capex_level": 114729193.0,
       "stock_price": null,
       "industry_growth_percent": 3.7477,
-      "research_growth_percent": -3.8303,
+      "research_growth_percent": -4.1268,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -538,7 +538,7 @@
       "capex_level": 10079994.0,
       "stock_price": null,
       "industry_growth_percent": 0.543,
-      "research_growth_percent": 33.5724,
+      "research_growth_percent": 33.3184,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -554,7 +554,7 @@
       "capex_level": 8605246.0,
       "stock_price": null,
       "industry_growth_percent": 3.9721,
-      "research_growth_percent": -0.7189,
+      "research_growth_percent": -1.068,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -570,7 +570,7 @@
       "capex_level": 30795277.0,
       "stock_price": null,
       "industry_growth_percent": -1.6943,
-      "research_growth_percent": 38.5523,
+      "research_growth_percent": 38.9151,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -586,7 +586,7 @@
       "capex_level": 114729193.0,
       "stock_price": null,
       "industry_growth_percent": 3.7477,
-      "research_growth_percent": 3.5222,
+      "research_growth_percent": 3.9755,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -602,7 +602,7 @@
       "capex_level": 25189214.0,
       "stock_price": null,
       "industry_growth_percent": -2.5536,
-      "research_growth_percent": 0.0,
+      "research_growth_percent": -0.6803,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -618,7 +618,7 @@
       "capex_level": 11227189.0,
       "stock_price": null,
       "industry_growth_percent": 0.79,
-      "research_growth_percent": 25.7518,
+      "research_growth_percent": 25.3797,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -634,7 +634,7 @@
       "capex_level": 14696076.0,
       "stock_price": null,
       "industry_growth_percent": -0.9519,
-      "research_growth_percent": 36.6201,
+      "research_growth_percent": 36.3499,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -650,7 +650,7 @@
       "capex_level": 7898504.0,
       "stock_price": null,
       "industry_growth_percent": 2.6813,
-      "research_growth_percent": -18.3983,
+      "research_growth_percent": -19.3823,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -666,7 +666,7 @@
       "capex_level": 10796654.0,
       "stock_price": null,
       "industry_growth_percent": -1.6029,
-      "research_growth_percent": -1.2062,
+      "research_growth_percent": -1.7702,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -682,7 +682,7 @@
       "capex_level": 6536398.0,
       "stock_price": null,
       "industry_growth_percent": -0.7584,
-      "research_growth_percent": -10.9287,
+      "research_growth_percent": -10.9719,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -698,7 +698,7 @@
       "capex_level": 8605246.0,
       "stock_price": null,
       "industry_growth_percent": 3.9721,
-      "research_growth_percent": 22.4784,
+      "research_growth_percent": 20.8571,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -714,7 +714,7 @@
       "capex_level": 8725172.0,
       "stock_price": null,
       "industry_growth_percent": -1.9143,
-      "research_growth_percent": -14.9187,
+      "research_growth_percent": -15.5804,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -730,7 +730,7 @@
       "capex_level": 32845972.0,
       "stock_price": null,
       "industry_growth_percent": 1.6815,
-      "research_growth_percent": -5.9497,
+      "research_growth_percent": -6.1146,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -746,7 +746,7 @@
       "capex_level": 5352046.0,
       "stock_price": null,
       "industry_growth_percent": 3.1342,
-      "research_growth_percent": -8.7144,
+      "research_growth_percent": -8.7414,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -762,7 +762,7 @@
       "capex_level": 7583173.0,
       "stock_price": null,
       "industry_growth_percent": -0.1701,
-      "research_growth_percent": -3.3157,
+      "research_growth_percent": -2.5391,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -778,7 +778,7 @@
       "capex_level": 19170007.0,
       "stock_price": null,
       "industry_growth_percent": -0.5686,
-      "research_growth_percent": 33.791,
+      "research_growth_percent": 41.2379,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -794,7 +794,7 @@
       "capex_level": 13489621.0,
       "stock_price": null,
       "industry_growth_percent": 4.2802,
-      "research_growth_percent": 24.8162,
+      "research_growth_percent": 24.2601,
       "hiring_growth_percent": null,
       "source_vintages": {
         "revenue": null,
@@ -804,5 +804,5 @@
       }
     }
   ],
-  "content_sha256": "be03ac37c6c7660fc85007ff72acf222d65fae5bb89cd531bee43f99d969b541"
+  "content_sha256": "9823ace3f55372b6fbc0408b46fa80a7670f3e32461fae39578fe8f6711980f4"
 }

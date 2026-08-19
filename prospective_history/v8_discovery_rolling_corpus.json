@@ -1,14 +1,21 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "window_days": 90,
-  "cutoff_date": "2026-05-21",
-  "document_count": 14,
+  "cutoff_date": "2026-05-22",
+  "document_count": 16,
   "source_counts": {
     "github_frontier": 2,
-    "openalex": 12
+    "openalex": 14
   },
   "documents": [
+    {
+      "document_id": "https://openalex.org/W7166261595",
+      "source": "openalex",
+      "captured_at": "2026-08-15",
+      "text": "Investment Opportunities in Artificial Intelligence (AI) Artificial intelligence (AI) is reshaping the global economy through advances in generative AI, cloud computing, semiconductor design, cybersecurity, robotics, and enterprise software integration. We have all heard the expression, “The cobbler’s 'children have no shoes.” It could likely be said ITIS Professors have no “Technology stock portfolios!” This paper examines stock market opportunities across key companies positioned to benefit from accelerating AI adoption in both consumer and enterprise markets. We examine firms that control critical infrastructure layers of the AI ecosystem, including chip manufacturing, hyperscale cloud platforms, data management, and software applications. Special attention is given to those firms that could possibly be the next big “Killer App” and produce exponential returns on investments! Among semiconductor leaders, NVIDIA (NASDAQ: NVDA) has emerged as the dominant supplier of graphics processing units (GPUs) used in machine learning and large language models. Advanced Micro Devices (NASDAQ: AMD) and Taiwan Semiconductor Manufacturing Company (NYSE: TSM) represent additional growth opportunities through advanced chip fabrication and accelerator competition. In cloud computing, Microsoft (NASDAQ: MSFT), Amazon (NASDAQ: AMZ), and Alphabet (NASDAQ:GOOG) continue investing heavily in AI-enabled platforms and enterprise productivity solutions. Enterprise software firms such as Palantir Technologies (NASDAQ:PLTR) and Salesforce (NYSE:CRM) are leveraging AI-driven analytics and automation to improve operational efficiency and customer engagement. The TREO also evaluates investment risks, including regulatory uncertainty, valuation volatility, supply chain dependencies, and increasing global competition. Although many AI-related equities trade at historically elevated valuation multiples, long-term demand for computational infrastructure and intelligent automation suggests sustained growth potential. For business and information technology scholars, the AI sector provides a valuable case study in technological disruption, strategic innovation, and capital market behavior. The author suggests that diversified exposure across semiconductors, cloud infrastructure, and enterprise software may provide the most balanced approach for private investors seeking participation in the expanding AI economy. We are hopeful this TREO will generate some lively discussions.",
+      "discovery_fingerprint": "20eed8088b2e3ee6521070070bacfdd33ce24ab07c062519a1a979569067ca16"
+    },
     {
       "document_id": "https://openalex.org/W7172440409",
       "source": "openalex",
@@ -54,6 +61,13 @@
       "text": "rajul-kk thermo-3dic-surrogates Physics-informed thermal surrogate benchmark for 3D/2.5D IC packaging — PINN, FNO/WHNO, PI-DeepONet, and autoregressive operators trained on real 3D-ICE ground truth across 8 geometries (single-die, TSV stacks, chiplets, CoWoS+HBM).",
       "seed_theme_id": "ADVANCED_PACKAGING_HBM",
       "discovery_fingerprint": "a0e24a0ae0ac513e791f7cddc49da80370690ec1cb59fab168842bad93f859fe"
+    },
+    {
+      "document_id": "https://openalex.org/W7169655903",
+      "source": "openalex",
+      "captured_at": "2026-07-01",
+      "text": "Artificial Intelligence, Internet of Things, and Advanced Semiconductor Technologies for Intelligent Edge Computing Systems: Challenges, Opportunities, and Future Directions The rapid expansion of Internet of Things (IoT) devices and the growing demand for real-time intelligent services have accelerated the adoption of edge computing as a fundamental computing paradigm. The convergence of Artificial Intelligence (AI), IoT, and advanced semiconductor technologies has enabled the development of intelligent edge computing systems capable of processing large volumes of data with low latency, reduced energy consumption, and enhanced security. Recent advances in semiconductor technologies, including FinFETs, Gate-All-Around Field-Effect Transistors (GAAFETs), System-on-Chip (SoC) platforms, AI accelerators, neuromorphic processors, and RISC-V architectures, have significantly improved the computational capabilities and energy efficiency of edge devices. At the same time, AI techniques such as deep learning, TinyML, federated learning, and reinforcement learning have enabled intelligent data analytics, autonomous decision-making, and privacy-preserving inference directly on resource-constrained edge devices. This paper investigates the integration of AI, IoT, and advanced semiconductor technologies for developing intelligent edge computing systems. It presents a unified architecture that illustrates the interaction between semiconductor hardware, IoT communication networks, edge computing platforms, and AI-driven analytics to support real-time applications. The study analyzes the impact of emerging semiconductor technologies on edge intelligence and evaluates their role in improving computational performance, energy efficiency, scalability, and system reliability. In addition, the paper discusses the application of intelligent edge computing in smart healthcare, Industry 5.0, smart cities, intelligent transportation, precision agriculture, and environmental monitoring. Key technical challenges, including resource limitations, interoperability, cybersecurity, privacy preservation, thermal management, and sustainable hardware design, are critically examined. Finally, future research opportunities involving heterogeneous chiplet architectures, neuromorphic computing, quantum-inspired AI accelerators, 6G-enabled AIoT, and green semiconductor manufacturing are identified. The proposed perspective provides a comprehensive foundation for designing next-generation intelligent edge computing systems capable of supporting emerging digital ecosystems.",
+      "discovery_fingerprint": "cd1837a8741de20f242bb64df69c8ec14abd903522aad86fae0a7c51f944bc97"
     },
     {
       "document_id": "https://openalex.org/W7166735986",
@@ -112,5 +126,5 @@
       "discovery_fingerprint": "3dcb6b03fa8af8ea79f435e1d27abb6e40734056f305cca34c8d9b554c0a49eb"
     }
   ],
-  "content_sha256": "6eb24a893b8962bd386affc9c4a5d1499d8d88a84608a1a6f1647bdb0af3b086"
+  "content_sha256": "585fddc84f3812a2d41af751434351c3cd7804b7fc60098b77df07acdd6f518b"
 }
