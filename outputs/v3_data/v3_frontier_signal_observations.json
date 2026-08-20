@@ -170,7 +170,7 @@
       "kipris": {
         "status": "KIPRIS_OBSERVED",
         "query": "high bandwidth memory",
-        "korean_patent_count": 10225,
+        "korean_patent_count": 10229,
         "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
@@ -238,5 +238,5 @@
     }
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "a9f18b01539ba2ab1aef4dd3f82b1fd37c6abdd198a51e4b5791de700cd6114f"
+  "content_sha256": "c3c13318c26c0fe1f7712249ad8353c4b35109d299cff5d0ebfce12b41800d65"
 }

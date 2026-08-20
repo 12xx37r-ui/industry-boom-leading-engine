@@ -1,12 +1,12 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-20T03:53:36.228051+00:00",
-  "generated_at": "2026-08-20T03:53:38.190779+00:00",
+  "current_health_generated_at": "2026-08-20T09:13:14.525895+00:00",
+  "generated_at": "2026-08-20T09:13:16.434824+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-19T15:05:20.333010+00:00",
+  "previous_health_generated_at": "2026-08-20T03:53:36.228051+00:00",
   "providers": [
     {
-      "cache_hits": 0,
+      "cache_hits": 3,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
@@ -17,7 +17,7 @@
       "previous_network_calls": 0,
       "provider": "arxiv",
       "retries": 0,
-      "status": "UNAVAILABLE",
+      "status": "CACHE",
       "timeouts": 0
     },
     {
@@ -51,15 +51,15 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 1,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 2,
       "http_5xx": 0,
-      "lkg_uses": 19,
-      "network_call_ratio_vs_previous": null,
+      "lkg_uses": 20,
+      "network_call_ratio_vs_previous": 1.0,
       "network_calls": 3,
-      "previous_network_calls": 2,
+      "previous_network_calls": 3,
       "provider": "gdelt",
       "retries": 0,
       "status": "LIVE",
@@ -102,12 +102,12 @@
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_call_ratio_vs_previous": 0.0,
-      "network_calls": 0,
-      "previous_network_calls": 13,
+      "network_call_ratio_vs_previous": null,
+      "network_calls": 13,
+      "previous_network_calls": 0,
       "provider": "naver_api_hub",
       "retries": 0,
-      "status": "UNAVAILABLE",
+      "status": "LIVE",
       "timeouts": 0
     },
     {
@@ -126,30 +126,30 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 65,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 1,
+      "http_429": 2,
       "http_5xx": 0,
-      "lkg_uses": 17,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 66,
-      "previous_network_calls": 0,
+      "lkg_uses": 2,
+      "network_call_ratio_vs_previous": 0.545,
+      "network_calls": 36,
+      "previous_network_calls": 66,
       "provider": "openalex",
-      "retries": 0,
+      "retries": 2,
       "status": "LIVE",
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
-      "deduplicated_calls": 10,
+      "cache_hits": 142,
+      "deduplicated_calls": 12,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 1,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 143,
-      "previous_network_calls": 1,
+      "network_call_ratio_vs_previous": 0.021,
+      "network_calls": 3,
+      "previous_network_calls": 143,
       "provider": "usaspending",
       "retries": 0,
       "status": "LIVE",
@@ -157,15 +157,15 @@
     }
   ],
   "schema_version": 1,
-  "status": "STRONG_WARN",
+  "status": "WARN",
   "summary": {
-    "previous_total_network_calls": 26,
-    "strong_warning_count": 1,
-    "total_cache_hits": 6,
-    "total_http_429": 3,
-    "total_network_call_ratio_vs_previous": 8.538,
-    "total_network_calls": 222,
-    "total_retries": 0,
+    "previous_total_network_calls": 222,
+    "strong_warning_count": 0,
+    "total_cache_hits": 217,
+    "total_http_429": 4,
+    "total_network_call_ratio_vs_previous": 0.293,
+    "total_network_calls": 65,
+    "total_retries": 2,
     "total_timeouts": 0,
     "warning_count": 2
   },
@@ -177,16 +177,10 @@
       "type": "HTTP_429"
     },
     {
-      "message": "openalex: HTTP 429 count=1",
+      "message": "openalex: HTTP 429 count=2",
       "provider": "openalex",
       "severity": "WARN",
       "type": "HTTP_429"
-    },
-    {
-      "message": "total network calls 222 vs previous 26 (8.54x)",
-      "provider": "ALL",
-      "severity": "STRONG_WARN",
-      "type": "TOTAL_NETWORK_CALL_SPIKE"
     }
   ]
 }

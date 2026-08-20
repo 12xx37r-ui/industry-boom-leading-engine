@@ -20,7 +20,7 @@
       "theme_name": "데이터센터 인프라",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 70.8153,
+      "prevalidation_candidate_score": 70.8124,
       "direct_commercialization_score": 75.0021,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -31,7 +31,7 @@
       "theme_name": "원전",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 68.4216,
+      "prevalidation_candidate_score": 68.4184,
       "direct_commercialization_score": 67.2565,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -42,7 +42,7 @@
       "theme_name": "지열에너지",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 67.8844,
+      "prevalidation_candidate_score": 67.8419,
       "direct_commercialization_score": 67.2565,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -53,7 +53,7 @@
       "theme_name": "디지털 신원·보안인증",
       "sector": "디지털 인프라",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 67.1532,
+      "prevalidation_candidate_score": 67.1484,
       "direct_commercialization_score": 74.0301,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -64,7 +64,7 @@
       "theme_name": "사이버보안",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 67.109,
+      "prevalidation_candidate_score": 67.1064,
       "direct_commercialization_score": 74.0301,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -75,7 +75,7 @@
       "theme_name": "전력망·전기화",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 66.4903,
+      "prevalidation_candidate_score": 66.4936,
       "direct_commercialization_score": 67.2565,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -86,7 +86,7 @@
       "theme_name": "태양광",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 65.7972,
+      "prevalidation_candidate_score": 65.802,
       "direct_commercialization_score": 61.8033,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -97,7 +97,7 @@
       "theme_name": "탄소포집·저장",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 65.4241,
+      "prevalidation_candidate_score": 65.4217,
       "direct_commercialization_score": 60.276,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -108,7 +108,7 @@
       "theme_name": "에너지저장장치",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 63.7527,
+      "prevalidation_candidate_score": 63.7494,
       "direct_commercialization_score": 67.8926,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -119,7 +119,7 @@
       "theme_name": "AI 신약개발",
       "sector": "바이오·헬스케어",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 62.7837,
+      "prevalidation_candidate_score": 62.7822,
       "direct_commercialization_score": 57.8391,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -130,7 +130,7 @@
       "theme_name": "유전자·세포치료",
       "sector": "바이오·헬스케어",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 62.7292,
+      "prevalidation_candidate_score": 62.7282,
       "direct_commercialization_score": 57.8391,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -141,7 +141,7 @@
       "theme_name": "광자·광인터커넥트",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 61.7153,
+      "prevalidation_candidate_score": 61.7159,
       "direct_commercialization_score": 65.687,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -152,31 +152,31 @@
       "theme_name": "LNG 인프라",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 61.0014,
+      "prevalidation_candidate_score": 60.9951,
       "direct_commercialization_score": 41.8779,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
     },
     {
       "rank": 14,
-      "theme_id": "AGRITECH_FOODTECH",
-      "theme_name": "애그테크·푸드테크",
-      "sector": "소재·자원·인프라",
-      "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 60.503,
-      "direct_commercialization_score": 69.1537,
-      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
-      "boom_score": null
-    },
-    {
-      "rank": 15,
       "theme_id": "LONGEVITY_TECH",
       "theme_name": "노화·장수기술",
       "sector": "바이오·헬스케어",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 60.502,
+      "prevalidation_candidate_score": 60.5005,
       "direct_commercialization_score": 57.8391,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
+      "boom_score": null
+    },
+    {
+      "rank": 15,
+      "theme_id": "AGRITECH_FOODTECH",
+      "theme_name": "애그테크·푸드테크",
+      "sector": "소재·자원·인프라",
+      "candidate_stage": "PREVALIDATION_WATCH",
+      "prevalidation_candidate_score": 60.5,
+      "direct_commercialization_score": 69.1537,
+      "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
     },
     {
@@ -185,7 +185,7 @@
       "theme_name": "합성생물학",
       "sector": "바이오·헬스케어",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 60.2896,
+      "prevalidation_candidate_score": 60.2921,
       "direct_commercialization_score": 57.8391,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -196,7 +196,7 @@
       "theme_name": "히트펌프·에너지효율",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 59.8979,
+      "prevalidation_candidate_score": 59.895,
       "direct_commercialization_score": 53.6215,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -207,7 +207,7 @@
       "theme_name": "건설 자동화",
       "sector": "산업·자동화",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 59.2456,
+      "prevalidation_candidate_score": 59.2408,
       "direct_commercialization_score": 64.7749,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -218,7 +218,7 @@
       "theme_name": "배터리 재활용",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 58.8403,
+      "prevalidation_candidate_score": 58.834,
       "direct_commercialization_score": 45.1284,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -229,7 +229,7 @@
       "theme_name": "핀테크 인프라",
       "sector": "디지털 인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 58.499,
+      "prevalidation_candidate_score": 58.4954,
       "direct_commercialization_score": 66.9505,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -240,7 +240,7 @@
       "theme_name": "수소",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 57.4656,
+      "prevalidation_candidate_score": 57.4661,
       "direct_commercialization_score": 71.9478,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -251,7 +251,7 @@
       "theme_name": "자율주행",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 57.3584,
+      "prevalidation_candidate_score": 57.3538,
       "direct_commercialization_score": 59.2038,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -262,7 +262,7 @@
       "theme_name": "철도 현대화",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 56.8563,
+      "prevalidation_candidate_score": 56.8474,
       "direct_commercialization_score": 68.3751,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -273,7 +273,7 @@
       "theme_name": "클라우드 인프라",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 56.4609,
+      "prevalidation_candidate_score": 56.4578,
       "direct_commercialization_score": 69.4681,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -284,7 +284,7 @@
       "theme_name": "핵심광물",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 56.2396,
+      "prevalidation_candidate_score": 56.2364,
       "direct_commercialization_score": 63.8571,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -295,7 +295,7 @@
       "theme_name": "비만·대사질환 치료",
       "sector": "바이오·헬스케어",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 56.0047,
+      "prevalidation_candidate_score": 56.0006,
       "direct_commercialization_score": 60.6002,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -306,7 +306,7 @@
       "theme_name": "구리 공급망",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 55.946,
+      "prevalidation_candidate_score": 55.9481,
       "direct_commercialization_score": 63.8571,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -317,7 +317,7 @@
       "theme_name": "첨단소재",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 55.7341,
+      "prevalidation_candidate_score": 55.7311,
       "direct_commercialization_score": 71.7283,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -328,7 +328,7 @@
       "theme_name": "희토류 공급망",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 55.733,
+      "prevalidation_candidate_score": 55.7262,
       "direct_commercialization_score": 63.8571,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -339,7 +339,7 @@
       "theme_name": "수자원 인프라",
       "sector": "소재·자원·인프라",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 55.676,
+      "prevalidation_candidate_score": 55.6748,
       "direct_commercialization_score": 42.4936,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -350,7 +350,7 @@
       "theme_name": "양자컴퓨팅",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 55.4873,
+      "prevalidation_candidate_score": 55.4625,
       "direct_commercialization_score": 59.392,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -368,23 +368,23 @@
     },
     {
       "rank": 33,
-      "theme_id": "OFFSHORE_WIND",
-      "theme_name": "해상풍력",
-      "sector": "에너지·전력",
+      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
+      "theme_name": "반도체 장비",
+      "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 53.9693,
-      "direct_commercialization_score": 54.3285,
+      "prevalidation_candidate_score": 53.962,
+      "direct_commercialization_score": 67.0794,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
     },
     {
       "rank": 34,
-      "theme_id": "SEMICONDUCTOR_EQUIPMENT",
-      "theme_name": "반도체 장비",
-      "sector": "AI·컴퓨팅",
+      "theme_id": "OFFSHORE_WIND",
+      "theme_name": "해상풍력",
+      "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 53.9659,
-      "direct_commercialization_score": 67.0794,
+      "prevalidation_candidate_score": 53.9603,
+      "direct_commercialization_score": 54.3285,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
     },
@@ -394,7 +394,7 @@
       "theme_name": "스마트팩토리",
       "sector": "산업·자동화",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 53.7157,
+      "prevalidation_candidate_score": 53.7125,
       "direct_commercialization_score": 66.2984,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -405,7 +405,7 @@
       "theme_name": "휴머노이드 로봇",
       "sector": "산업·자동화",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 53.1512,
+      "prevalidation_candidate_score": 53.1474,
       "direct_commercialization_score": 67.0794,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -416,7 +416,7 @@
       "theme_name": "AI 반도체",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 52.4661,
+      "prevalidation_candidate_score": 52.4643,
       "direct_commercialization_score": 61.8033,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -427,7 +427,7 @@
       "theme_name": "첨단 패키징·HBM",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 52.3604,
+      "prevalidation_candidate_score": 52.3623,
       "direct_commercialization_score": 61.8033,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -438,7 +438,7 @@
       "theme_name": "국방·무인체계",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 51.8596,
+      "prevalidation_candidate_score": 51.8536,
       "direct_commercialization_score": 49.9404,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -449,7 +449,7 @@
       "theme_name": "소형모듈원전(SMR)",
       "sector": "에너지·전력",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 51.7715,
+      "prevalidation_candidate_score": 51.7682,
       "direct_commercialization_score": 54.3285,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -460,7 +460,7 @@
       "theme_name": "물류 자동화",
       "sector": "산업·자동화",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 51.7477,
+      "prevalidation_candidate_score": 51.7452,
       "direct_commercialization_score": 64.7749,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -471,7 +471,7 @@
       "theme_name": "3D프린팅",
       "sector": "산업·자동화",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 51.3833,
+      "prevalidation_candidate_score": 51.3803,
       "direct_commercialization_score": 60.276,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -482,7 +482,7 @@
       "theme_name": "상업용 드론",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 50.4875,
+      "prevalidation_candidate_score": 50.487,
       "direct_commercialization_score": 68.3751,
       "mapping_quality": "M3_BROAD_TRANSPORTATION_EQUIPMENT_PROXY",
       "boom_score": null
@@ -493,7 +493,7 @@
       "theme_name": "전력반도체",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 50.4783,
+      "prevalidation_candidate_score": 50.4786,
       "direct_commercialization_score": 61.8033,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -504,7 +504,7 @@
       "theme_name": "엣지 AI",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 48.9442,
+      "prevalidation_candidate_score": 48.9597,
       "direct_commercialization_score": 64.2574,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -515,7 +515,7 @@
       "theme_name": "자율운항·해양무인체계",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 48.335,
+      "prevalidation_candidate_score": 48.3282,
       "direct_commercialization_score": 49.982,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -537,7 +537,7 @@
       "theme_name": "산업용 로봇",
       "sector": "산업·자동화",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 45.7301,
+      "prevalidation_candidate_score": 45.7264,
       "direct_commercialization_score": 64.7749,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -548,7 +548,7 @@
       "theme_name": "첨단진단·액체생검",
       "sector": "바이오·헬스케어",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 41.2739,
+      "prevalidation_candidate_score": 41.2711,
       "direct_commercialization_score": 43.1674,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -559,7 +559,7 @@
       "theme_name": "우주산업",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 40.5394,
+      "prevalidation_candidate_score": 40.5346,
       "direct_commercialization_score": 35.5282,
       "mapping_quality": "M3_GUIDED_MISSILE_SPACE_VEHICLE_PROXY",
       "boom_score": null

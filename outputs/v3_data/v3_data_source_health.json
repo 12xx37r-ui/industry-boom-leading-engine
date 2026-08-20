@@ -1,15 +1,15 @@
 {
   "status": "SOURCE_HEALTH_RECORDED",
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "public_interest_observed": 50,
   "collection_metrics": {
-    "network_requests": 14,
-    "cache_hits": 268,
+    "network_requests": 52,
+    "cache_hits": 228,
     "stale_cache_hits": 0,
-    "cache_writes": 13,
+    "cache_writes": 49,
     "deduplicated_requests": 12,
-    "retries": 0,
-    "http_429": 0,
+    "retries": 2,
+    "http_429": 2,
     "http_5xx": 0,
     "timeouts": 0,
     "enabled_sources": [
@@ -25,8 +25,8 @@
   "sources": {
     "openalex": {
       "enabled": true,
-      "live_count": 50,
-      "cache_fallback_count": 0,
+      "live_count": 48,
+      "cache_fallback_count": 2,
       "unavailable_count": 0
     },
     "usaspending": {
