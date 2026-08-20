@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-19",
+  "as_of": "2026-08-20",
   "window_days": 90,
-  "cutoff_date": "2026-05-22",
+  "cutoff_date": "2026-05-23",
   "document_count": 16,
   "source_counts": {
     "github_frontier": 2,
@@ -126,5 +126,5 @@
       "discovery_fingerprint": "3dcb6b03fa8af8ea79f435e1d27abb6e40734056f305cca34c8d9b554c0a49eb"
     }
   ],
-  "content_sha256": "585fddc84f3812a2d41af751434351c3cd7804b7fc60098b77df07acdd6f518b"
+  "content_sha256": "3ea8124ca8e24bdd7ea2b38d225538d41cb61882fb488869c962b5a45ad266d7"
 }

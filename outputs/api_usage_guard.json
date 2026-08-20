@@ -1,12 +1,12 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-19T15:05:20.333010+00:00",
-  "generated_at": "2026-08-19T15:05:21.855530+00:00",
+  "current_health_generated_at": "2026-08-20T03:53:36.228051+00:00",
+  "generated_at": "2026-08-20T03:53:38.190779+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-19T09:14:10.253840+00:00",
+  "previous_health_generated_at": "2026-08-19T15:05:20.333010+00:00",
   "providers": [
     {
-      "cache_hits": 3,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
@@ -17,7 +17,7 @@
       "previous_network_calls": 0,
       "provider": "arxiv",
       "retries": 0,
-      "status": "CACHE",
+      "status": "UNAVAILABLE",
       "timeouts": 0
     },
     {
@@ -51,18 +51,18 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 1,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 2,
       "http_5xx": 0,
-      "lkg_uses": 20,
-      "network_call_ratio_vs_previous": 0.667,
-      "network_calls": 2,
-      "previous_network_calls": 3,
+      "lkg_uses": 19,
+      "network_call_ratio_vs_previous": null,
+      "network_calls": 3,
+      "previous_network_calls": 2,
       "provider": "gdelt",
       "retries": 0,
-      "status": "LKG",
+      "status": "LIVE",
       "timeouts": 0
     },
     {
@@ -102,12 +102,12 @@
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_call_ratio_vs_previous": 1.0,
-      "network_calls": 13,
+      "network_call_ratio_vs_previous": 0.0,
+      "network_calls": 0,
       "previous_network_calls": 13,
       "provider": "naver_api_hub",
       "retries": 0,
-      "status": "LIVE",
+      "status": "UNAVAILABLE",
       "timeouts": 0
     },
     {
@@ -126,48 +126,48 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 103,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 0,
+      "http_429": 1,
       "http_5xx": 0,
-      "lkg_uses": 0,
-      "network_call_ratio_vs_previous": 0.0,
-      "network_calls": 0,
-      "previous_network_calls": 4,
+      "lkg_uses": 17,
+      "network_call_ratio_vs_previous": null,
+      "network_calls": 66,
+      "previous_network_calls": 0,
       "provider": "openalex",
       "retries": 0,
-      "status": "CACHE",
+      "status": "LIVE",
       "timeouts": 0
     },
     {
-      "cache_hits": 144,
-      "deduplicated_calls": 12,
+      "cache_hits": 0,
+      "deduplicated_calls": 10,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 1,
       "network_call_ratio_vs_previous": null,
-      "network_calls": 1,
+      "network_calls": 143,
       "previous_network_calls": 1,
       "provider": "usaspending",
       "retries": 0,
-      "status": "LKG",
+      "status": "LIVE",
       "timeouts": 0
     }
   ],
   "schema_version": 1,
-  "status": "WARN",
+  "status": "STRONG_WARN",
   "summary": {
-    "previous_total_network_calls": 31,
-    "strong_warning_count": 0,
-    "total_cache_hits": 257,
-    "total_http_429": 2,
-    "total_network_call_ratio_vs_previous": 0.839,
-    "total_network_calls": 26,
+    "previous_total_network_calls": 26,
+    "strong_warning_count": 1,
+    "total_cache_hits": 6,
+    "total_http_429": 3,
+    "total_network_call_ratio_vs_previous": 8.538,
+    "total_network_calls": 222,
     "total_retries": 0,
     "total_timeouts": 0,
-    "warning_count": 1
+    "warning_count": 2
   },
   "warnings": [
     {
@@ -175,6 +175,18 @@
       "provider": "gdelt",
       "severity": "WARN",
       "type": "HTTP_429"
+    },
+    {
+      "message": "openalex: HTTP 429 count=1",
+      "provider": "openalex",
+      "severity": "WARN",
+      "type": "HTTP_429"
+    },
+    {
+      "message": "total network calls 222 vs previous 26 (8.54x)",
+      "provider": "ALL",
+      "severity": "STRONG_WARN",
+      "type": "TOTAL_NETWORK_CALL_SPIKE"
     }
   ]
 }

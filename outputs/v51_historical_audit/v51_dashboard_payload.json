@@ -1,6 +1,6 @@
 {
   "status": "V5_1_HISTORICAL_AUDIT_COMPLETED_RECALL_GAP",
-  "as_of": "2026-08-19",
+  "as_of": "2026-08-20",
   "investment_use_allowed": false,
   "historical_validation": {
     "benchmark_metrics": {
@@ -36,7 +36,7 @@
   },
   "prospective": {
     "status": "V5_0_PROSPECTIVE_VALIDATION_ACTIVE",
-    "as_of": "2026-08-19",
+    "as_of": "2026-08-20",
     "progress": {
       "engine_build_percent": 100,
       "total_project_percent": 88,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "status": "FRONTIER_SIGNALS_OBSERVED",
   "investment_use_allowed": false,
   "official_statistics_replaced": false,
@@ -26,11 +26,11 @@
             "open_issues_count": 0,
             "pushed_at": "2026-07-03",
             "updated_at": "2026-07-03",
-            "days_since_push": 46,
+            "days_since_push": 47,
             "star_delta_percent": 0.0,
             "fork_delta_percent": 0.0,
-            "activity_score": 53.6215,
-            "observation_date": "2026-08-18"
+            "activity_score": 53.1756,
+            "observation_date": "2026-08-19"
           }
         ]
       }
@@ -51,11 +51,11 @@
             "open_issues_count": 12,
             "pushed_at": "2024-12-16",
             "updated_at": "2026-06-12",
-            "days_since_push": 610,
+            "days_since_push": 611,
             "star_delta_percent": 0.0,
             "fork_delta_percent": 0.0,
-            "activity_score": 14.4258,
-            "observation_date": "2026-08-18"
+            "activity_score": 14.3858,
+            "observation_date": "2026-08-19"
           },
           {
             "full_name": "AstraZeneca/kgem-in-drug-discovery",
@@ -66,11 +66,11 @@
             "open_issues_count": 2,
             "pushed_at": "2026-01-08",
             "updated_at": "2025-07-11",
-            "days_since_push": 222,
+            "days_since_push": 223,
             "star_delta_percent": 0.0,
             "fork_delta_percent": 0.0,
-            "activity_score": 39.6472,
-            "observation_date": "2026-08-18"
+            "activity_score": 39.4964,
+            "observation_date": "2026-08-19"
           }
         ]
       }
@@ -91,11 +91,11 @@
             "open_issues_count": 0,
             "pushed_at": "2026-04-07",
             "updated_at": "2026-06-04",
-            "days_since_push": 133,
+            "days_since_push": 134,
             "star_delta_percent": 0.0,
             "fork_delta_percent": 0.0,
-            "activity_score": 34.7457,
-            "observation_date": "2026-08-18"
+            "activity_score": 34.5369,
+            "observation_date": "2026-08-19"
           },
           {
             "full_name": "roboco-io/semiconductor-design",
@@ -106,11 +106,11 @@
             "open_issues_count": 3,
             "pushed_at": "2026-07-14",
             "updated_at": "2026-07-14",
-            "days_since_push": 35,
+            "days_since_push": 36,
             "star_delta_percent": 0.0,
             "fork_delta_percent": 0.0,
-            "activity_score": 68.2111,
-            "observation_date": "2026-08-18"
+            "activity_score": 67.6863,
+            "observation_date": "2026-08-19"
           }
         ]
       }
@@ -124,7 +124,7 @@
         "status": "BIGQUERY_OBSERVED",
         "query": "high bandwidth memory advanced semiconductor packaging",
         "patent_count": 13,
-        "observation_date": "2026-08-18",
+        "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
@@ -138,8 +138,8 @@
       "patentsview": {
         "status": "BIGQUERY_OBSERVED",
         "query": "artificial intelligence drug discovery",
-        "patent_count": 12795,
-        "observation_date": "2026-08-18",
+        "patent_count": 12774,
+        "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
@@ -154,7 +154,7 @@
         "status": "BIGQUERY_OBSERVED",
         "query": "AI semiconductor accelerators",
         "patent_count": 163,
-        "observation_date": "2026-08-18",
+        "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "provider_chain": [
           "google_patents",
@@ -171,7 +171,7 @@
         "status": "KIPRIS_OBSERVED",
         "query": "high bandwidth memory",
         "korean_patent_count": 10225,
-        "observation_date": "2026-08-18",
+        "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
       }
@@ -183,7 +183,7 @@
         "status": "KIPRIS_OBSERVED",
         "query": "artificial intelligence drug",
         "korean_patent_count": 209,
-        "observation_date": "2026-08-18",
+        "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
       }
@@ -195,7 +195,7 @@
         "status": "KIPRIS_OBSERVED",
         "query": "semiconductor accelerators",
         "korean_patent_count": 2389,
-        "observation_date": "2026-08-18",
+        "observation_date": "2026-08-19",
         "external_call_allowed": true,
         "note": "KR domestic patents only (KIPRIS Plus)"
       }
@@ -203,40 +203,40 @@
   ],
   "history": {
     "schema_version": 1,
-    "as_of": "2026-08-18",
+    "as_of": "2026-08-19",
     "observations": {
       "github:AI_DRUG_DISCOVERY:gfzhou/OpenVS": {
         "stargazers_count": 70,
         "forks_count": 8,
-        "observation_date": "2026-08-18"
+        "observation_date": "2026-08-19"
       },
       "github:AI_DRUG_DISCOVERY:AstraZeneca/kgem-in-drug-discovery": {
         "stargazers_count": 34,
         "forks_count": 6,
-        "observation_date": "2026-08-18"
+        "observation_date": "2026-08-19"
       },
       "github:AI_SEMICONDUCTORS:Alexzoofficial/T1C": {
         "stargazers_count": 3,
         "forks_count": 0,
-        "observation_date": "2026-08-18"
+        "observation_date": "2026-08-19"
       },
       "github:AI_SEMICONDUCTORS:roboco-io/semiconductor-design": {
         "stargazers_count": 1,
         "forks_count": 1,
-        "observation_date": "2026-08-18"
+        "observation_date": "2026-08-19"
       },
       "github:ADVANCED_PACKAGING_HBM:rajul-kk/thermo-3dic-surrogates": {
         "stargazers_count": 0,
         "forks_count": 0,
-        "observation_date": "2026-08-18"
+        "observation_date": "2026-08-19"
       }
     },
     "patent_counts": {
       "ADVANCED_PACKAGING_HBM": 13,
-      "AI_DRUG_DISCOVERY": 12795,
+      "AI_DRUG_DISCOVERY": 12774,
       "AI_SEMICONDUCTORS": 163
     }
   },
   "lookahead_guard": "FUTURE_DATA_REJECTED",
-  "content_sha256": "78925c5f610c5e1c7560d43b81ae023eb79ac89d9a0f0a8ace6e34306d9546e1"
+  "content_sha256": "a9f18b01539ba2ab1aef4dd3f82b1fd37c6abdd198a51e4b5791de700cd6114f"
 }

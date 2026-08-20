@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "engine_release": "9.0.0-evidence-gated-learning",
-  "as_of": "2026-08-19",
-  "source_v8_layer_sha256": "86e8b05587333ff081194677431ee3001d6d9033fed16e215892f4c43699efd2",
+  "as_of": "2026-08-20",
+  "source_v8_layer_sha256": "b1f47218ed15e030cd86d5b150605926750b755e73d0a8cff29bbbbfae731c74",
   "observation_count": 0,
   "matured_snapshot_counts": {
     "6": 0,
@@ -48,5 +48,5 @@
   "automatic_promotion_allowed": false,
   "promotion_status": "WAITING_FOR_MATURE_OUTCOMES",
   "investment_use_allowed": false,
-  "content_sha256": "a7ece2a8957052007df3967f6bd81f1f5710a1487c9ad0d7e468ec673df2c6b5"
+  "content_sha256": "820c3c523c21c403c8ffd00bd840a77bd8aa82749b6875e78860d1c94f399331"
 }

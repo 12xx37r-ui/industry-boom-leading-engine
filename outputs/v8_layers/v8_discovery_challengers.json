@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "engine_release": "8.0.1-rolling-discovery-corpus",
-  "as_of": "2026-08-19",
+  "as_of": "2026-08-20",
   "status": "CANDIDATES_FOUND",
   "input_document_count": 16,
   "input_source_families": [
@@ -135,5 +135,5 @@
       "review_priority": "MEDIUM"
     }
   ],
-  "content_sha256": "b1f8afa3c0004f258b5e439f39f8839594a89cd7e2798617427c4c6b73d8cfd2"
+  "content_sha256": "8e921ecf4d20d5e54e373111ffed3412428a15a5d41790c3816c391654f95df2"
 }

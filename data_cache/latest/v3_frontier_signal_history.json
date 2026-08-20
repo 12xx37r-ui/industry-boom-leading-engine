@@ -1,36 +1,36 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "observations": {
     "github:AI_DRUG_DISCOVERY:gfzhou/OpenVS": {
       "stargazers_count": 70,
       "forks_count": 8,
-      "observation_date": "2026-08-18"
+      "observation_date": "2026-08-19"
     },
     "github:AI_DRUG_DISCOVERY:AstraZeneca/kgem-in-drug-discovery": {
       "stargazers_count": 34,
       "forks_count": 6,
-      "observation_date": "2026-08-18"
+      "observation_date": "2026-08-19"
     },
     "github:AI_SEMICONDUCTORS:Alexzoofficial/T1C": {
       "stargazers_count": 3,
       "forks_count": 0,
-      "observation_date": "2026-08-18"
+      "observation_date": "2026-08-19"
     },
     "github:AI_SEMICONDUCTORS:roboco-io/semiconductor-design": {
       "stargazers_count": 1,
       "forks_count": 1,
-      "observation_date": "2026-08-18"
+      "observation_date": "2026-08-19"
     },
     "github:ADVANCED_PACKAGING_HBM:rajul-kk/thermo-3dic-surrogates": {
       "stargazers_count": 0,
       "forks_count": 0,
-      "observation_date": "2026-08-18"
+      "observation_date": "2026-08-19"
     }
   },
   "patent_counts": {
     "ADVANCED_PACKAGING_HBM": 13,
-    "AI_DRUG_DISCOVERY": 12795,
+    "AI_DRUG_DISCOVERY": 12774,
     "AI_SEMICONDUCTORS": 163
   }
 }
