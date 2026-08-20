@@ -1,9 +1,9 @@
 {
   "status": "PROSPECTIVE_VALIDATION_ACCUMULATING",
-  "as_of": "2026-08-20",
+  "as_of": "2026-08-21",
   "theme_count": 50,
   "proxy_quality": {
-    "mean_quality_score": 63.596
+    "mean_quality_score": 63.5647
   },
   "validation": {
     "schema_version": 1,
@@ -99,7 +99,7 @@
   "discovery": {
     "schema_version": 1,
     "engine_release": "8.0.1-rolling-discovery-corpus",
-    "as_of": "2026-08-20",
+    "as_of": "2026-08-21",
     "status": "CANDIDATES_FOUND",
     "input_document_count": 16,
     "input_source_families": [
@@ -233,7 +233,7 @@
         "review_priority": "MEDIUM"
       }
     ],
-    "content_sha256": "8e921ecf4d20d5e54e373111ffed3412428a15a5d41790c3816c391654f95df2"
+    "content_sha256": "6a209712a0ddc7e74937e64d705c4bddfb30bd6653c824dcf31606a47b0a6dcb"
   },
   "investment_use_allowed": false
 }

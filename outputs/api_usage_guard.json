@@ -1,12 +1,12 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-20T09:13:14.525895+00:00",
-  "generated_at": "2026-08-20T09:13:16.434824+00:00",
+  "current_health_generated_at": "2026-08-20T15:25:30.591019+00:00",
+  "generated_at": "2026-08-20T15:25:32.614628+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-20T03:53:36.228051+00:00",
+  "previous_health_generated_at": "2026-08-20T09:13:14.525895+00:00",
   "providers": [
     {
-      "cache_hits": 3,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
@@ -17,7 +17,7 @@
       "previous_network_calls": 0,
       "provider": "arxiv",
       "retries": 0,
-      "status": "CACHE",
+      "status": "UNAVAILABLE",
       "timeouts": 0
     },
     {
@@ -51,18 +51,18 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 1,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 2,
       "http_5xx": 0,
       "lkg_uses": 20,
-      "network_call_ratio_vs_previous": 1.0,
-      "network_calls": 3,
+      "network_call_ratio_vs_previous": 0.667,
+      "network_calls": 2,
       "previous_network_calls": 3,
       "provider": "gdelt",
       "retries": 0,
-      "status": "LIVE",
+      "status": "LKG",
       "timeouts": 0
     },
     {
@@ -102,9 +102,9 @@
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 0,
-      "network_call_ratio_vs_previous": null,
+      "network_call_ratio_vs_previous": 1.0,
       "network_calls": 13,
-      "previous_network_calls": 0,
+      "previous_network_calls": 13,
       "provider": "naver_api_hub",
       "retries": 0,
       "status": "LIVE",
@@ -126,30 +126,30 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 65,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 2,
+      "http_429": 1,
       "http_5xx": 0,
-      "lkg_uses": 2,
-      "network_call_ratio_vs_previous": 0.545,
-      "network_calls": 36,
-      "previous_network_calls": 66,
+      "lkg_uses": 0,
+      "network_call_ratio_vs_previous": 2.806,
+      "network_calls": 101,
+      "previous_network_calls": 36,
       "provider": "openalex",
-      "retries": 2,
+      "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
     {
-      "cache_hits": 142,
+      "cache_hits": 0,
       "deduplicated_calls": 12,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 1,
-      "network_call_ratio_vs_previous": 0.021,
-      "network_calls": 3,
-      "previous_network_calls": 143,
+      "network_call_ratio_vs_previous": 48.333,
+      "network_calls": 145,
+      "previous_network_calls": 3,
       "provider": "usaspending",
       "retries": 0,
       "status": "LIVE",
@@ -157,17 +157,17 @@
     }
   ],
   "schema_version": 1,
-  "status": "WARN",
+  "status": "STRONG_WARN",
   "summary": {
-    "previous_total_network_calls": 222,
-    "strong_warning_count": 0,
-    "total_cache_hits": 217,
-    "total_http_429": 4,
-    "total_network_call_ratio_vs_previous": 0.293,
-    "total_network_calls": 65,
-    "total_retries": 2,
+    "previous_total_network_calls": 65,
+    "strong_warning_count": 2,
+    "total_cache_hits": 6,
+    "total_http_429": 3,
+    "total_network_call_ratio_vs_previous": 4.169,
+    "total_network_calls": 271,
+    "total_retries": 0,
     "total_timeouts": 0,
-    "warning_count": 2
+    "warning_count": 3
   },
   "warnings": [
     {
@@ -177,10 +177,28 @@
       "type": "HTTP_429"
     },
     {
-      "message": "openalex: HTTP 429 count=2",
+      "message": "openalex: network calls 101 vs previous 36 (2.81x)",
+      "provider": "openalex",
+      "severity": "WARN",
+      "type": "NETWORK_CALL_SPIKE"
+    },
+    {
+      "message": "openalex: HTTP 429 count=1",
       "provider": "openalex",
       "severity": "WARN",
       "type": "HTTP_429"
+    },
+    {
+      "message": "usaspending: network calls 145 vs previous 3 (48.33x)",
+      "provider": "usaspending",
+      "severity": "STRONG_WARN",
+      "type": "NETWORK_CALL_SPIKE"
+    },
+    {
+      "message": "total network calls 271 vs previous 65 (4.17x)",
+      "provider": "ALL",
+      "severity": "STRONG_WARN",
+      "type": "TOTAL_NETWORK_CALL_SPIKE"
     }
   ]
 }

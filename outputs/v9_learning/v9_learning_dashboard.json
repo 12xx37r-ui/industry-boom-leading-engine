@@ -1,11 +1,11 @@
 {
   "status": "V9_LEARNING_ACCUMULATING",
-  "as_of": "2026-08-20",
+  "as_of": "2026-08-21",
   "learning": {
     "schema_version": 1,
     "engine_release": "9.0.0-evidence-gated-learning",
-    "as_of": "2026-08-20",
-    "source_v8_layer_sha256": "b1f47218ed15e030cd86d5b150605926750b755e73d0a8cff29bbbbfae731c74",
+    "as_of": "2026-08-21",
+    "source_v8_layer_sha256": "4c097b3e1ee8a6e3fa47d96b151a25da785a37b20b6077d433688c877ec6afe9",
     "observation_count": 0,
     "matured_snapshot_counts": {
       "6": 0,
@@ -51,7 +51,7 @@
     "automatic_promotion_allowed": false,
     "promotion_status": "WAITING_FOR_MATURE_OUTCOMES",
     "investment_use_allowed": false,
-    "content_sha256": "820c3c523c21c403c8ffd00bd840a77bd8aa82749b6875e78860d1c94f399331"
+    "content_sha256": "471fcb41bf7da63b704f4bbdfccb3cef9100eefc56e98c2dbe713fee7df20992"
   },
   "locked_v7_v8_scores_unchanged": true,
   "investment_use_allowed": false
