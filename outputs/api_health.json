@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T09:17:28.408072+00:00",
+  "generated_at": "2026-08-21T15:09:17.807659+00:00",
   "providers": {
     "arxiv": {
       "cache_hits": 3,
@@ -19,7 +19,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T09:17:26.747542+00:00",
+      "last_success_at": "2026-08-21T15:09:16.165928+00:00",
       "lkg_uses": 0,
       "network_calls": 5,
       "retries": 0,
@@ -32,7 +32,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T09:17:28.407874+00:00",
+      "last_success_at": "2026-08-21T15:09:17.807456+00:00",
       "lkg_uses": 0,
       "network_calls": 4,
       "retries": 0,
@@ -40,16 +40,15 @@
       "timeouts": 0
     },
     "gdelt": {
-      "cache_hits": 1,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 2,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T09:10:56.044612+00:00",
       "lkg_uses": 20,
-      "network_calls": 3,
+      "network_calls": 2,
       "retries": 0,
-      "status": "LIVE",
+      "status": "LKG",
       "timeouts": 0
     },
     "github": {
@@ -82,7 +81,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T09:17:24.588066+00:00",
+      "last_success_at": "2026-08-21T15:09:13.830441+00:00",
       "lkg_uses": 0,
       "network_calls": 13,
       "retries": 0,
@@ -95,7 +94,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T09:17:27.117770+00:00",
+      "last_success_at": "2026-08-21T15:09:16.528901+00:00",
       "lkg_uses": 0,
       "network_calls": 1,
       "retries": 0,
@@ -103,27 +102,29 @@
       "timeouts": 0
     },
     "openalex": {
-      "cache_hits": 103,
+      "cache_hits": 0,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 0,
+      "http_429": 8,
       "http_5xx": 0,
-      "lkg_uses": 0,
-      "network_calls": 0,
-      "retries": 0,
-      "status": "CACHE",
+      "last_success_at": "2026-08-21T15:09:14.361879+00:00",
+      "lkg_uses": 11,
+      "network_calls": 89,
+      "retries": 8,
+      "status": "LIVE",
       "timeouts": 0
     },
     "usaspending": {
-      "cache_hits": 144,
+      "cache_hits": 0,
       "deduplicated_calls": 12,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
+      "last_success_at": "2026-08-21T15:08:56.958373+00:00",
       "lkg_uses": 1,
-      "network_calls": 1,
+      "network_calls": 145,
       "retries": 0,
-      "status": "LKG",
+      "status": "LIVE",
       "timeouts": 0
     }
   },

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "as_of": "2026-08-20",
+  "as_of": "2026-08-21",
   "status": "CANDIDATES_FOUND",
   "candidate_count": 4,
   "auto_add_allowed": false,
@@ -206,5 +206,5 @@
     "errors": [],
     "lookback_days": 90
   },
-  "content_sha256": "871d8c656475d8073bf2ee79aa6f4a4b013e64327959a889767082df48b61b5c"
+  "content_sha256": "4f3b37da546145d31ca7f023eeffbb2398fc575edfe28fea0a9e189a40bbf580"
 }
