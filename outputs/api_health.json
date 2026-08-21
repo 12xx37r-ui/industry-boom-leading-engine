@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T04:04:35.335750+00:00",
+  "generated_at": "2026-08-21T09:17:28.408072+00:00",
   "providers": {
     "arxiv": {
       "cache_hits": 3,
@@ -19,7 +19,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T04:04:31.553872+00:00",
+      "last_success_at": "2026-08-21T09:17:26.747542+00:00",
       "lkg_uses": 0,
       "network_calls": 5,
       "retries": 0,
@@ -32,7 +32,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T04:04:35.335486+00:00",
+      "last_success_at": "2026-08-21T09:17:28.407874+00:00",
       "lkg_uses": 0,
       "network_calls": 4,
       "retries": 0,
@@ -40,12 +40,12 @@
       "timeouts": 0
     },
     "gdelt": {
-      "cache_hits": 0,
+      "cache_hits": 1,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 2,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T04:03:16.865869+00:00",
+      "last_success_at": "2026-08-21T09:10:56.044612+00:00",
       "lkg_uses": 20,
       "network_calls": 3,
       "retries": 0,
@@ -82,7 +82,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T04:04:28.018483+00:00",
+      "last_success_at": "2026-08-21T09:17:24.588066+00:00",
       "lkg_uses": 0,
       "network_calls": 13,
       "retries": 0,
@@ -95,7 +95,7 @@
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T04:04:32.350216+00:00",
+      "last_success_at": "2026-08-21T09:17:27.117770+00:00",
       "lkg_uses": 0,
       "network_calls": 1,
       "retries": 0,
@@ -103,16 +103,15 @@
       "timeouts": 0
     },
     "openalex": {
-      "cache_hits": 100,
+      "cache_hits": 103,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
-      "last_success_at": "2026-08-21T04:04:29.505476+00:00",
       "lkg_uses": 0,
-      "network_calls": 3,
+      "network_calls": 0,
       "retries": 0,
-      "status": "LIVE",
+      "status": "CACHE",
       "timeouts": 0
     },
     "usaspending": {
