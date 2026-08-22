@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-22",
+  "as_of": "2026-08-23",
   "source": "DERIVED_FROM_LATEST_ENGINE_SOURCES",
   "themes": [
     {
@@ -804,5 +804,5 @@
       }
     }
   ],
-  "content_sha256": "ba3e67a7f3ed9294c03b71d7010cebf8cbb2da6ebe88809ea1bba95a2667574d"
+  "content_sha256": "abe268b2135154740ffbcb48c7a7742ca8359db73abfd2fb9c6638ba52dca0ad"
 }

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-22",
+  "as_of": "2026-08-23",
   "window_days": 90,
-  "cutoff_date": "2026-05-25",
-  "document_count": 16,
+  "cutoff_date": "2026-05-26",
+  "document_count": 15,
   "source_counts": {
     "github_frontier": 2,
-    "openalex": 14
+    "openalex": 13
   },
   "documents": [
     {
@@ -117,14 +117,7 @@
       "captured_at": "2026-06-02",
       "text": "Multi-omics and artificial intelligence for precision drug discovery and potential clinical applications The integration of multiomics technologies with artificial intelligence (AI) has become a transformative force in modern precision medicine, particularly within drug discovery. Multiomics approaches, including genome-wide association studies, transcriptomic profiling, proteomic interaction mapping, and metabolomic sequencing, provide unparalleled insights into the molecular dynamics of disease pathogenesis. Advanced AI methodologies, which leverage deep learning architectures, exhibit extraordinary capabilities in deciphering these intricate biological datasets, elucidating latent patterns, and constructing high-fidelity predictive models. The combined application of multiomics and AI has significant potential to accelerate target identification, streamline lead optimization processes, and enhance the precision of clinical trial designs. However, challenges persist, such as the need to harmonize disparate omics data streams, ensure reproducibility, and mitigate algorithmic biases. This review offers an in-depth analysis of multiomics applications across the drug development pipeline, covering target deconvolution, drug repositioning, and de novo compound discovery. It also explores the critical role of AI in drug discovery, focusing on virtual screening, pharmacokinetic modeling, and safety assessment frameworks. The fusion of multiomics with AI provides distinct advantages in hypothesis generation and data-driven discovery, opening new pathways for therapeutic innovation. By examining cases in oncology, neurodegenerative diseases, and cardiovascular conditions supported by robust technological infrastructures, this review presents a forward-thinking vision for future drug development. The convergence of these technologies not only enables comprehensive molecular understanding but also allows for more precise therapeutic interventions, marking the beginning of a new era in bench-to-clinic translational medicine.",
       "discovery_fingerprint": "8b817199481af52f213a3bf17821aff102372882a306cbe5ff6bc2cae930df83"
-    },
-    {
-      "document_id": "https://openalex.org/W7162285465",
-      "source": "openalex",
-      "captured_at": "2026-05-25",
-      "text": "Artificial intelligence in drug discovery for fungal diseases: a scoping review BACKGROUND: Fungal diseases represent a global health threat, with high mortality rates and growing antifungal resistance demanding new therapeutic strategies. Artificial intelligence (AI) has emerged as a key methodology to accelerate the costly and time-consuming process of drug discovery. OBJECTIVES: To map the available evidence on the applications of AI methodologies in predicting biological activity for antifungal drug discovery and repurposing. METHODS: This scoping review followed the Joanna Briggs Institute (JBI) methodology and is reported according to the PRISMA-ScR checklist. The protocol was registered on the Open Science Framework at DOI: 10.17605/OSF.IO/79TYS. A comprehensive search was conducted in PubMed, Scopus, and Web of Science for studies published until July 2025. RESULTS: The review included 106 primary studies. The Prediction of Activity Spectra for Substances (PASS) was the most frequently employed method (50%), though a recent trend toward computationally more complex methods, such as ensemble models and deep learning, was observed. Four primary application areas were identified: designed molecules; mechanisms of action; omics data; and natural products. While these applications identified promising candidates, a gap exists between prediction and validation: only half of the studies performed in vitro experimental assays. Notably, studies employing advanced deep learning architectures were less likely to include experimental validation. CONCLUSION: There is a reliance on accessible screening tools and a disconnection between advanced computational modeling and experimental confirmation. To bridge this translational gap, future research should prioritize the construction of more robust antifungal datasets and the integration of in silico predictions with prospective experimental validation.",
-      "discovery_fingerprint": "3dcb6b03fa8af8ea79f435e1d27abb6e40734056f305cca34c8d9b554c0a49eb"
     }
   ],
-  "content_sha256": "12e9bb12edc5f5037a35df75d01312b4b175ed40efda9a6261ac7db12005f1b1"
+  "content_sha256": "7f3787b2405ba248fc7749cb386db5b55e81c41afae2d97a99ba1cabec5f0d28"
 }
