@@ -3,7 +3,7 @@
   "engine_release": "5.0.0-prospective-validation-final",
   "snapshot_id": "2026-08",
   "as_of": "2026-08-22",
-  "captured_at": "2026-08-22T12:33:11+09:00",
+  "captured_at": "2026-08-22T22:44:45+09:00",
   "theme_count": 50,
   "source_as_of": {
     "v31": "2026-08-21",
@@ -12,10 +12,10 @@
     "v40": "2026-08-22"
   },
   "source_content_sha256": {
-    "v31": "b1527b23406b915463d44549a1c400142ddff7fde077f23a9afe8bc09c035f94",
-    "v32": "e5dad48cff1d641e524e8104b1b10c241627a206b1d41b5aaba9b70a7bbb02b2",
-    "v33": "039a8f35fd49908c114d6463f8e1d9f64205942a8bab34c4f2e91be06a552c95",
-    "v40": "1866af5010017c6155e61de78b83898b03483db49ad25354b6a4a10b629b5579"
+    "v31": "e749d17640a34fbe2b7f77f43476e607903034f5502957d57075dc6e18b6bf46",
+    "v32": "6a0e29f82d4e50f1d317febbf5faaa60a0fb22d348ff89561248b824064c4a27",
+    "v33": "9134d46f0621b2cd2d934c2d96a353e1bc4bd0db30e57997b7f6ffc291e611e5",
+    "v40": "f0c40ee7c26e5a982566cef7484af9ef5fe107d9fd9fed68bceadf846403ceca"
   },
   "investment_use_allowed": false,
   "themes": [
@@ -1020,5 +1020,5 @@
       "predicted_rank": 50
     }
   ],
-  "content_sha256": "6f75e672cfb92cbb0540557ca9e7ddc3f3c5fd045aeba5e517e0da74f2f719de"
+  "content_sha256": "691ea24f15d9ca34917487bd95610c40d77b817061bfbbb152275610cc4735e8"
 }
