@@ -1,9 +1,9 @@
 {
   "blocking": false,
-  "current_health_generated_at": "2026-08-21T15:09:17.807659+00:00",
-  "generated_at": "2026-08-21T15:09:19.709012+00:00",
+  "current_health_generated_at": "2026-08-22T03:33:10.573977+00:00",
+  "generated_at": "2026-08-22T03:33:12.507678+00:00",
   "policy_note": "Monitoring only. This guard never changes LIVE/CACHE/LKG selection and never blocks the engine.",
-  "previous_health_generated_at": "2026-08-21T09:17:28.408072+00:00",
+  "previous_health_generated_at": "2026-08-21T15:09:17.807659+00:00",
   "providers": [
     {
       "cache_hits": 3,
@@ -57,9 +57,9 @@
       "http_429": 2,
       "http_5xx": 0,
       "lkg_uses": 20,
-      "network_call_ratio_vs_previous": 0.667,
+      "network_call_ratio_vs_previous": null,
       "network_calls": 2,
-      "previous_network_calls": 3,
+      "previous_network_calls": 2,
       "provider": "gdelt",
       "retries": 0,
       "status": "LKG",
@@ -126,46 +126,46 @@
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 81,
       "deduplicated_calls": 0,
       "fallback_uses": 0,
-      "http_429": 8,
+      "http_429": 0,
       "http_5xx": 0,
-      "lkg_uses": 11,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 89,
-      "previous_network_calls": 0,
+      "lkg_uses": 0,
+      "network_call_ratio_vs_previous": 0.247,
+      "network_calls": 22,
+      "previous_network_calls": 89,
       "provider": "openalex",
-      "retries": 8,
+      "retries": 0,
       "status": "LIVE",
       "timeouts": 0
     },
     {
-      "cache_hits": 0,
+      "cache_hits": 144,
       "deduplicated_calls": 12,
       "fallback_uses": 0,
       "http_429": 0,
       "http_5xx": 0,
       "lkg_uses": 1,
-      "network_call_ratio_vs_previous": null,
-      "network_calls": 145,
-      "previous_network_calls": 1,
+      "network_call_ratio_vs_previous": 0.007,
+      "network_calls": 1,
+      "previous_network_calls": 145,
       "provider": "usaspending",
       "retries": 0,
-      "status": "LIVE",
+      "status": "LKG",
       "timeouts": 0
     }
   ],
   "schema_version": 1,
-  "status": "STRONG_WARN",
+  "status": "WARN",
   "summary": {
-    "previous_total_network_calls": 27,
-    "strong_warning_count": 3,
-    "total_cache_hits": 9,
-    "total_http_429": 10,
-    "total_network_call_ratio_vs_previous": 9.593,
-    "total_network_calls": 259,
-    "total_retries": 8,
+    "previous_total_network_calls": 259,
+    "strong_warning_count": 0,
+    "total_cache_hits": 234,
+    "total_http_429": 2,
+    "total_network_call_ratio_vs_previous": 0.185,
+    "total_network_calls": 48,
+    "total_retries": 0,
     "total_timeouts": 0,
     "warning_count": 1
   },
@@ -175,24 +175,6 @@
       "provider": "gdelt",
       "severity": "WARN",
       "type": "HTTP_429"
-    },
-    {
-      "message": "openalex: HTTP 429 count=8",
-      "provider": "openalex",
-      "severity": "STRONG_WARN",
-      "type": "HTTP_429"
-    },
-    {
-      "message": "openalex: retries=8",
-      "provider": "openalex",
-      "severity": "STRONG_WARN",
-      "type": "RETRY_PRESSURE"
-    },
-    {
-      "message": "total network calls 259 vs previous 27 (9.59x)",
-      "provider": "ALL",
-      "severity": "STRONG_WARN",
-      "type": "TOTAL_NETWORK_CALL_SPIKE"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.2.0-github-corporate-investment",
   "as_of": "2026-08-21",
-  "captured_at": "2026-08-22T00:09:16+09:00",
+  "captured_at": "2026-08-22T12:33:07+09:00",
   "theme_count": 50,
   "source_provenance": {
     "aies_capex": {
@@ -208,10 +208,10 @@
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 51.9673,
+      "phase2_data_signal_score": 51.9753,
       "capex_investment_signal_score": 74.2,
       "business_rd_signal_score": 41.9071,
-      "phase3_investment_signal_score": 55.6191,
+      "phase3_investment_signal_score": 55.6223,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -389,10 +389,10 @@
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 55.1114,
+      "phase2_data_signal_score": 55.1583,
       "capex_investment_signal_score": 83.7293,
       "business_rd_signal_score": 57.6795,
-      "phase3_investment_signal_score": 64.4672,
+      "phase3_investment_signal_score": 64.486,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -509,10 +509,10 @@
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 56.851,
+      "phase2_data_signal_score": 56.8887,
       "capex_investment_signal_score": 54.3005,
       "business_rd_signal_score": 49.7206,
-      "phase3_investment_signal_score": 53.9467,
+      "phase3_investment_signal_score": 53.9618,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -568,10 +568,10 @@
       "sector": "에너지·전력",
       "data_build_priority": 1,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 50.2629,
+      "phase2_data_signal_score": 50.2824,
       "capex_investment_signal_score": 99.08,
       "business_rd_signal_score": 43.1013,
-      "phase3_investment_signal_score": 62.7595,
+      "phase3_investment_signal_score": 62.7674,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -745,10 +745,10 @@
       "sector": "산업·자동화",
       "data_build_priority": 1,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 53.5514,
+      "phase2_data_signal_score": 53.5668,
       "capex_investment_signal_score": 23.2,
       "business_rd_signal_score": 45.4266,
-      "phase3_investment_signal_score": 42.0085,
+      "phase3_investment_signal_score": 42.0147,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -1575,10 +1575,10 @@
       "sector": "AI·컴퓨팅",
       "data_build_priority": 2,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 50.7122,
+      "phase2_data_signal_score": 50.7332,
       "capex_investment_signal_score": 73.52,
       "business_rd_signal_score": 51.9413,
-      "phase3_investment_signal_score": 57.9233,
+      "phase3_investment_signal_score": 57.9317,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -1864,10 +1864,10 @@
       "sector": "에너지·전력",
       "data_build_priority": 2,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 55.7044,
+      "phase2_data_signal_score": 55.725,
       "capex_investment_signal_score": 88.9252,
       "business_rd_signal_score": 68.8297,
-      "phase3_investment_signal_score": 69.6082,
+      "phase3_investment_signal_score": 69.6165,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -1928,10 +1928,10 @@
       "sector": "산업·자동화",
       "data_build_priority": 2,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 54.4761,
+      "phase2_data_signal_score": 54.4787,
       "capex_investment_signal_score": 40.955,
       "business_rd_signal_score": 52.2884,
-      "phase3_investment_signal_score": 49.7635,
+      "phase3_investment_signal_score": 49.7645,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -2225,10 +2225,10 @@
       "sector": "산업·자동화",
       "data_build_priority": 2,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 55.0587,
+      "phase2_data_signal_score": 55.09,
       "capex_investment_signal_score": 37.4526,
       "business_rd_signal_score": 51.8841,
-      "phase3_investment_signal_score": 48.8245,
+      "phase3_investment_signal_score": 48.837,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -2284,10 +2284,10 @@
       "sector": "에너지·전력",
       "data_build_priority": 2,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 53.797,
+      "phase2_data_signal_score": 53.8078,
       "capex_investment_signal_score": 85.68,
       "business_rd_signal_score": 71.3201,
-      "phase3_investment_signal_score": 68.6188,
+      "phase3_investment_signal_score": 68.6232,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -2584,10 +2584,10 @@
       "sector": "산업·자동화",
       "data_build_priority": 3,
       "status": "PHASE3_OBSERVED",
-      "phase2_data_signal_score": 58.8485,
+      "phase2_data_signal_score": 58.8696,
       "capex_investment_signal_score": 42.2085,
       "business_rd_signal_score": 69.9402,
-      "phase3_investment_signal_score": 57.184,
+      "phase3_investment_signal_score": 57.1925,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
@@ -3000,5 +3000,5 @@
       ]
     }
   ],
-  "content_sha256": "105b59f907240901d03f82a4bea82d200f59729514ab105ce207a152faf756d1"
+  "content_sha256": "e5dad48cff1d641e524e8104b1b10c241627a206b1d41b5aaba9b70a7bbb02b2"
 }

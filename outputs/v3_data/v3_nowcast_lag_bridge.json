@@ -12,7 +12,7 @@
     {
       "theme_id": "ADVANCED_PACKAGING_HBM",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.0683,
+      "nowcast_score": 47.1923,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -45,7 +45,7 @@
     {
       "theme_id": "AI_DRUG_DISCOVERY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.1441,
+      "nowcast_score": 52.1583,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -78,7 +78,7 @@
     {
       "theme_id": "AI_SEMICONDUCTORS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.7106,
+      "nowcast_score": 48.7132,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -111,13 +111,13 @@
     {
       "theme_id": "AUTONOMOUS_DRIVING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 42.0475,
+      "nowcast_score": 42.1089,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -144,7 +144,7 @@
     {
       "theme_id": "COPPER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.567,
+      "nowcast_score": 47.6253,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -177,7 +177,7 @@
     {
       "theme_id": "CRITICAL_MINERALS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.6444,
+      "nowcast_score": 50.6405,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -210,13 +210,13 @@
     {
       "theme_id": "CYBERSECURITY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.356,
+      "nowcast_score": 49.4274,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -243,7 +243,7 @@
     {
       "theme_id": "DATA_CENTER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 46.9464,
+      "nowcast_score": 46.9466,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -276,13 +276,13 @@
     {
       "theme_id": "DEFENSE_AUTONOMOUS_SYSTEMS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.182,
+      "nowcast_score": 47.249,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -309,13 +309,13 @@
     {
       "theme_id": "ENERGY_STORAGE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 41.1131,
+      "nowcast_score": 41.1848,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -342,7 +342,7 @@
     {
       "theme_id": "GENE_CELL_THERAPY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.5469,
+      "nowcast_score": 53.5446,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -375,7 +375,7 @@
     {
       "theme_id": "HUMANOID_ROBOTS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 44.8494,
+      "nowcast_score": 44.7839,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -408,13 +408,13 @@
     {
       "theme_id": "INDUSTRIAL_ROBOTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.5567,
+      "nowcast_score": 48.5807,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -441,7 +441,7 @@
     {
       "theme_id": "NUCLEAR_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.1228,
+      "nowcast_score": 49.0897,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -474,7 +474,7 @@
     {
       "theme_id": "OBESITY_METABOLIC",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 53.3791,
+      "nowcast_score": 53.4046,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -507,7 +507,7 @@
     {
       "theme_id": "POWER_GRID_ELECTRIFICATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.0529,
+      "nowcast_score": 45.0708,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -540,7 +540,7 @@
     {
       "theme_id": "POWER_SEMICONDUCTORS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.2422,
+      "nowcast_score": 45.2518,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -573,7 +573,7 @@
     {
       "theme_id": "RARE_EARTHS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.101,
+      "nowcast_score": 45.2783,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -606,7 +606,7 @@
     {
       "theme_id": "SEMICONDUCTOR_EQUIPMENT",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.9381,
+      "nowcast_score": 48.9411,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -639,7 +639,7 @@
     {
       "theme_id": "SMALL_MODULAR_REACTORS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 39.6042,
+      "nowcast_score": 39.6179,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -672,7 +672,7 @@
     {
       "theme_id": "SPACE_ECONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.814,
+      "nowcast_score": 47.821,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -705,7 +705,7 @@
     {
       "theme_id": "ADDITIVE_MANUFACTURING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 38.9401,
+      "nowcast_score": 38.9148,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -738,7 +738,7 @@
     {
       "theme_id": "ADVANCED_DIAGNOSTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 37.8319,
+      "nowcast_score": 37.805,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -771,7 +771,7 @@
     {
       "theme_id": "ADVANCED_MATERIALS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.3222,
+      "nowcast_score": 47.3418,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -804,7 +804,7 @@
     {
       "theme_id": "BATTERY_RECYCLING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.3583,
+      "nowcast_score": 48.3528,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -837,7 +837,7 @@
     {
       "theme_id": "CARBON_CAPTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 40.8172,
+      "nowcast_score": 40.7724,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -870,13 +870,13 @@
     {
       "theme_id": "CLOUD_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 46.5218,
+      "nowcast_score": 46.5147,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -903,7 +903,7 @@
     {
       "theme_id": "COMMERCIAL_DRONES",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.2197,
+      "nowcast_score": 51.2183,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -936,7 +936,7 @@
     {
       "theme_id": "DIGITAL_IDENTITY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.561,
+      "nowcast_score": 49.5673,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -969,7 +969,7 @@
     {
       "theme_id": "EDGE_AI",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.452,
+      "nowcast_score": 47.478,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1002,7 +1002,7 @@
     {
       "theme_id": "HYDROGEN_ECONOMY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.4516,
+      "nowcast_score": 48.4589,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1035,13 +1035,13 @@
     {
       "theme_id": "LNG_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 46.3801,
+      "nowcast_score": 46.4753,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1068,13 +1068,13 @@
     {
       "theme_id": "LOGISTICS_AUTOMATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.8354,
+      "nowcast_score": 48.8566,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1134,7 +1134,7 @@
     {
       "theme_id": "OFFSHORE_WIND",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 43.7721,
+      "nowcast_score": 43.7886,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1167,7 +1167,7 @@
     {
       "theme_id": "PHOTONICS_OPTICAL_INTERCONNECT",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 50.214,
+      "nowcast_score": 50.2204,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1200,7 +1200,7 @@
     {
       "theme_id": "PRECISION_ONCOLOGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.5899,
+      "nowcast_score": 48.5852,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1233,13 +1233,13 @@
     {
       "theme_id": "SMART_FACTORY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 48.3805,
+      "nowcast_score": 48.4079,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1266,13 +1266,13 @@
     {
       "theme_id": "SOLAR_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 46.4918,
+      "nowcast_score": 46.5512,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1299,7 +1299,7 @@
     {
       "theme_id": "SURGICAL_ROBOTICS",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 43.1395,
+      "nowcast_score": 43.0986,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1332,7 +1332,7 @@
     {
       "theme_id": "SYNTHETIC_BIOLOGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 45.3342,
+      "nowcast_score": 45.339,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1365,7 +1365,7 @@
     {
       "theme_id": "WATER_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.5015,
+      "nowcast_score": 49.4645,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1398,7 +1398,7 @@
     {
       "theme_id": "AGRITECH_FOODTECH",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.0123,
+      "nowcast_score": 51.9284,
       "available_proxy_source_count": 2,
       "source_status": {
         "openalex": {
@@ -1431,13 +1431,13 @@
     {
       "theme_id": "CONSTRUCTION_AUTOMATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.13,
+      "nowcast_score": 51.1618,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
-          "status": "CACHE_FALLBACK",
+          "status": "LIVE_COLLECTED",
           "freshness": "CURRENT_PROXY",
-          "lag_days": 1,
+          "lag_days": 0,
           "score_used": true
         },
         "usaspending": {
@@ -1464,7 +1464,7 @@
     {
       "theme_id": "FINTECH_INFRASTRUCTURE",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 52.2558,
+      "nowcast_score": 52.2747,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1497,7 +1497,7 @@
     {
       "theme_id": "GEOTHERMAL_ENERGY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 41.7062,
+      "nowcast_score": 41.7596,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1530,7 +1530,7 @@
     {
       "theme_id": "HEAT_PUMPS_EFFICIENCY",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 51.0411,
+      "nowcast_score": 50.7734,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1563,7 +1563,7 @@
     {
       "theme_id": "LONGEVITY_TECH",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 47.2661,
+      "nowcast_score": 47.2069,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1596,7 +1596,7 @@
     {
       "theme_id": "QUANTUM_COMPUTING",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 49.8822,
+      "nowcast_score": 49.8735,
       "available_proxy_source_count": 4,
       "source_status": {
         "openalex": {
@@ -1629,7 +1629,7 @@
     {
       "theme_id": "RAIL_MODERNIZATION",
       "status": "PROXY_NOWCAST_ACTIVE",
-      "nowcast_score": 43.441,
+      "nowcast_score": 43.442,
       "available_proxy_source_count": 3,
       "source_status": {
         "openalex": {
@@ -1660,5 +1660,5 @@
       "official_statistics_replaced": false
     }
   ],
-  "content_sha256": "07f36e41a0b9c88d8bf4b10f9cd7fba6bbd7671c704258fbeebfb679cec7915b"
+  "content_sha256": "4d602488a3f76869156eb75d64e8a6634b189c5cea85a49d9b7fbfd4a3a378dc"
 }

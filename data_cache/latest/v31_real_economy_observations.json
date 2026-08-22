@@ -2,7 +2,7 @@
   "schema_version": 1,
   "engine_release": "3.1.0-github-qcew-real-economy",
   "as_of": "2026-08-21",
-  "captured_at": "2026-08-22T00:09:14+09:00",
+  "captured_at": "2026-08-22T12:33:04+09:00",
   "qcew_quarter": "2025Q4",
   "theme_count": 50,
   "source_provenance": {
@@ -30,7 +30,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -82,7 +82,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -136,7 +136,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -180,15 +180,15 @@
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 44.4032,
+      "phase1_data_signal_score": 44.4209,
       "qcew_real_economy_signal_score": 58.1561,
-      "phase2_data_signal_score": 51.9673,
+      "phase2_data_signal_score": 51.9753,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -242,7 +242,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -296,7 +296,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -342,15 +342,15 @@
       "sector": "AI·컴퓨팅",
       "data_build_priority": 1,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 55.7499,
+      "phase1_data_signal_score": 55.8543,
       "qcew_real_economy_signal_score": 54.5889,
-      "phase2_data_signal_score": 55.1114,
+      "phase2_data_signal_score": 55.1583,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -404,7 +404,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -450,15 +450,15 @@
       "sector": "모빌리티·우주·방산",
       "data_build_priority": 1,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 53.5832,
+      "phase1_data_signal_score": 53.667,
       "qcew_real_economy_signal_score": 59.5246,
-      "phase2_data_signal_score": 56.851,
+      "phase2_data_signal_score": 56.8887,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -504,15 +504,15 @@
       "sector": "에너지·전력",
       "data_build_priority": 1,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 42.8458,
+      "phase1_data_signal_score": 42.8892,
       "qcew_real_economy_signal_score": 56.3314,
-      "phase2_data_signal_score": 50.2629,
+      "phase2_data_signal_score": 50.2824,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -566,7 +566,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -620,7 +620,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -666,15 +666,15 @@
       "sector": "산업·자동화",
       "data_build_priority": 1,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 52.4849,
+      "phase1_data_signal_score": 52.5192,
       "qcew_real_economy_signal_score": 54.424,
-      "phase2_data_signal_score": 53.5514,
+      "phase2_data_signal_score": 53.5668,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -726,7 +726,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -780,7 +780,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -832,7 +832,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -886,7 +886,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -938,7 +938,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -992,7 +992,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1046,7 +1046,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1100,7 +1100,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1152,7 +1152,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1206,7 +1206,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1260,7 +1260,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1316,7 +1316,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1370,7 +1370,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1418,15 +1418,15 @@
       "sector": "AI·컴퓨팅",
       "data_build_priority": 2,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 48.3111,
+      "phase1_data_signal_score": 48.3577,
       "qcew_real_economy_signal_score": 52.6768,
-      "phase2_data_signal_score": 50.7122,
+      "phase2_data_signal_score": 50.7332,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1478,7 +1478,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1530,7 +1530,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1584,7 +1584,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1638,7 +1638,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1684,15 +1684,15 @@
       "sector": "에너지·전력",
       "data_build_priority": 2,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 51.7766,
+      "phase1_data_signal_score": 51.8225,
       "qcew_real_economy_signal_score": 58.918,
-      "phase2_data_signal_score": 55.7044,
+      "phase2_data_signal_score": 55.725,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1740,15 +1740,15 @@
       "sector": "산업·자동화",
       "data_build_priority": 2,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 55.6136,
+      "phase1_data_signal_score": 55.6194,
       "qcew_real_economy_signal_score": 53.5454,
-      "phase2_data_signal_score": 54.4761,
+      "phase2_data_signal_score": 54.4787,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1802,7 +1802,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1856,7 +1856,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1910,7 +1910,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -1964,7 +1964,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2010,15 +2010,15 @@
       "sector": "산업·자동화",
       "data_build_priority": 2,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 55.2973,
+      "phase1_data_signal_score": 55.3668,
       "qcew_real_economy_signal_score": 54.8635,
-      "phase2_data_signal_score": 55.0587,
+      "phase2_data_signal_score": 55.09,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2064,15 +2064,15 @@
       "sector": "에너지·전력",
       "data_build_priority": 2,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 48.559,
+      "phase1_data_signal_score": 48.583,
       "qcew_real_economy_signal_score": 58.0827,
-      "phase2_data_signal_score": 53.797,
+      "phase2_data_signal_score": 53.8078,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2126,7 +2126,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2180,7 +2180,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2234,7 +2234,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2288,7 +2288,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2336,15 +2336,15 @@
       "sector": "산업·자동화",
       "data_build_priority": 3,
       "status": "PHASE2_OBSERVED",
-      "phase1_data_signal_score": 58.3332,
+      "phase1_data_signal_score": 58.3802,
       "qcew_real_economy_signal_score": 59.2701,
-      "phase2_data_signal_score": 58.8485,
+      "phase2_data_signal_score": 58.8696,
       "boom_score": null,
       "frozen_model_score_eligible": false,
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2398,7 +2398,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2452,7 +2452,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2506,7 +2506,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2560,7 +2560,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2614,7 +2614,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2668,7 +2668,7 @@
       "sources": {
         "qcew": {
           "status": "LIVE_COLLECTED",
-          "captured_at": "2026-08-22T00:09:14+09:00",
+          "captured_at": "2026-08-22T12:33:04+09:00",
           "quarter": "2025Q4",
           "prior_year_quarter": "2024Q4",
           "qcew_naics": [
@@ -2709,5 +2709,5 @@
       ]
     }
   ],
-  "content_sha256": "8b7f35119acc563c7a877c0a4bb42a4a62faeb20df66f1c19a87c157d4823e74"
+  "content_sha256": "b1527b23406b915463d44549a1c400142ddff7fde077f23a9afe8bc09c035f94"
 }

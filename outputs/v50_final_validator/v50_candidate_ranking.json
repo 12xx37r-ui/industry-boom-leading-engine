@@ -52,7 +52,7 @@
       "theme_name": "사이버보안",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 67.1012,
+      "prevalidation_candidate_score": 67.1084,
       "direct_commercialization_score": 74.0301,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -74,7 +74,7 @@
       "theme_name": "태양광",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_HIGH_CANDIDATE",
-      "prevalidation_candidate_score": 65.7999,
+      "prevalidation_candidate_score": 65.8016,
       "direct_commercialization_score": 61.8033,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -96,7 +96,7 @@
       "theme_name": "에너지저장장치",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 63.3362,
+      "prevalidation_candidate_score": 63.3392,
       "direct_commercialization_score": 67.8926,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -140,7 +140,7 @@
       "theme_name": "LNG 인프라",
       "sector": "에너지·전력",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 60.9914,
+      "prevalidation_candidate_score": 60.9946,
       "direct_commercialization_score": 41.8779,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -195,7 +195,7 @@
       "theme_name": "건설 자동화",
       "sector": "산업·자동화",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 59.2372,
+      "prevalidation_candidate_score": 59.2405,
       "direct_commercialization_score": 64.7749,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -239,7 +239,7 @@
       "theme_name": "자율주행",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 57.3522,
+      "prevalidation_candidate_score": 57.3534,
       "direct_commercialization_score": 59.2038,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -261,7 +261,7 @@
       "theme_name": "클라우드 인프라",
       "sector": "AI·컴퓨팅",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 56.4553,
+      "prevalidation_candidate_score": 56.4585,
       "direct_commercialization_score": 69.4681,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -382,7 +382,7 @@
       "theme_name": "스마트팩토리",
       "sector": "산업·자동화",
       "candidate_stage": "PREVALIDATION_WATCH",
-      "prevalidation_candidate_score": 53.7085,
+      "prevalidation_candidate_score": 53.7133,
       "direct_commercialization_score": 66.2984,
       "mapping_quality": "DIRECT_QSS_NAICS_REVENUE",
       "boom_score": null
@@ -426,7 +426,7 @@
       "theme_name": "국방·무인체계",
       "sector": "모빌리티·우주·방산",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 51.8485,
+      "prevalidation_candidate_score": 51.8543,
       "direct_commercialization_score": 49.9404,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -448,7 +448,7 @@
       "theme_name": "물류 자동화",
       "sector": "산업·자동화",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 51.7433,
+      "prevalidation_candidate_score": 51.7437,
       "direct_commercialization_score": 64.7749,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
@@ -525,7 +525,7 @@
       "theme_name": "산업용 로봇",
       "sector": "산업·자동화",
       "candidate_stage": "MONITOR_ONLY",
-      "prevalidation_candidate_score": 45.7246,
+      "prevalidation_candidate_score": 45.727,
       "direct_commercialization_score": 64.7749,
       "mapping_quality": "M3_INDUSTRY_SHIPMENTS_PROXY",
       "boom_score": null
